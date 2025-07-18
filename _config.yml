@@ -14,93 +14,109 @@ heading_anchors: true
 mermaid:
   version: "9.1.3"
 
-# Define Jekyll collections
-collections:
-  comprendre-maquettage:
-    permalink: "/:collection/:path/"
-    output: true
-  concevoir-ux-ui:
-    permalink: "/:collection/:path/"
-    output: true
-  structurer-html:
-    permalink: "/:collection/:path/"
-    output: true
-  styliser-css:
-    permalink: "/:collection/:path/"
-    output: true
-  javascript-premiers-pas:
-    permalink: "/:collection/:path/"
-    output: true
-  javascript-plus-loin:
-    permalink: "/:collection/:path/"
-    output: true
-  wordpress-demarrage:
-    permalink: "/:collection/:path/"
-    output: true
-  concevoir-bdd:
-    permalink: "/:collection/:path/"
-    output: true
-  requetes-sql:
-    permalink: "/:collection/:path/"
-    output: true
-  connecter-bdd:
-    permalink: "/:collection/:path/"
-    output: true
-  php-bases:
-    permalink: "/:collection/:path/"
-    output: true
-  php-formulaires:
-    permalink: "/:collection/:path/"
-    output: true
-  php-poo:
-    permalink: "/:collection/:path/"
-    output: true
-  react-initiation:
-    permalink: "/:collection/:path/"
-    output: true
-  pedagogie-solicode:
-    permalink: "/:collection/:path/"
-    output: true
-  collaboration-posture:
-    permalink: "/:collection/:path/"
-    output: true
-  git-github:
-    permalink: "/:collection/:path/"
-    output: true
 
-just_the_docs:
-  collections:
-    comprendre-maquettage:
-      name: Comprendre le maquettage
-    concevoir-ux-ui:
-      name: Concevoir avec UX/UI
-    structurer-html:
-      name: Structurer le HTML
-    styliser-css:
-      name: Styliser avec CSS
-    javascript-premiers-pas:
-      name: JavaScript - Premiers pas
-    javascript-plus-loin:
-      name: JavaScript - Aller plus loin
-    wordpress-demarrage:
-      name: Démarrer avec WordPress
-    concevoir-bdd:
-      name: Concevoir une base relationnelle
-    requetes-sql:
-      name: Requêtes et manipulation SQL
-    connecter-bdd:
-      name: Connecter une application à une base de données
-    php-bases:
-      name: Bases et logique PHP
-    php-formulaires:
-      name: Formulaires et navigation sécurisée
-    php-poo:
-      name: Programmation orientée objet
-    react-initiation:
-      name: Découvrir React
-    pedagogie-solicode:
-      name: Comprendre la démarche pédagogique à Solicode
-    collaboration-posture:
-      name: Collaboration & posture professionnelle
-    git-github:
-      name: Git & GitHub
+
+# Activer la recherche intégrée
+search_enabled: true
+
+# Activer le menu collapsible
+show_collapsed: true
+
+# Afficher le logo (optionnel)
+# logo: /assets/images/logo-solicode.svg
+
+
+
+# Define Jekyll collections
+# collections:
+#   comprendre-maquettage:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   concevoir-ux-ui:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   structurer-html:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   styliser-css:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   javascript-premiers-pas:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   javascript-plus-loin:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   wordpress-demarrage:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   concevoir-bdd:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   requetes-sql:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   connecter-bdd:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   php-bases:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   php-formulaires:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   php-poo:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   react-initiation:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   pedagogie-solicode:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   collaboration-posture:
+#     permalink: "/:collection/:path/"
+#     output: true
+#   git-github:
+#     permalink: "/:collection/:path/"
+#     output: true
+
+# just_the_docs:
+#   collections:
+#     comprendre-maquettage:
+#       name: Comprendre le maquettage
+#     concevoir-ux-ui:
+#       name: Concevoir avec UX/UI
+#     structurer-html:
+#       name: Structurer le HTML
+#     styliser-css:
+#       name: Styliser avec CSS
+#       nav_exclude: false
+#     javascript-premiers-pas:
+#       name: JavaScript - Premiers pas
+#     javascript-plus-loin:
+#       name: JavaScript - Aller plus loin
+#     wordpress-demarrage:
+#       name: Démarrer avec WordPress
+#     concevoir-bdd:
+#       name: Concevoir une base relationnelle
+#     requetes-sql:
+#       name: Requêtes et manipulation SQL
+#     connecter-bdd:
+#       name: Connecter une application à une base de données
+#     php-bases:
+#       name: Bases et logique PHP
+#     php-formulaires:
+#       name: Formulaires et navigation sécurisée
+#     php-poo:
+#       name: Programmation orientée objet
+#     react-initiation:
+#       name: Découvrir React
+#     pedagogie-solicode:
+#       name: Comprendre la démarche pédagogique à Solicode
+#     collaboration-posture:
+#       name: Collaboration & posture professionnelle
+#     git-github:
+#       name: Git & GitHub
+
+ 
