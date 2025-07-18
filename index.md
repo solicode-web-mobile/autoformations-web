@@ -6,6 +6,7 @@ nav_order: 0
 
 # **Autoformations Web Solicode**
 
+![introduction](assets/images/introduction-350.png)
 
 Bienvenue sur la **plateforme des autoformations Web Solicode**.
 Cet espace a été conçu pour permettre aux apprenants de progresser de manière autonome, selon un **parcours structuré par compétences, micro-compétences et unités d’apprentissage (UAs)**, en complément des sessions encadrées.
@@ -24,3 +25,4 @@ Vous y trouverez **toutes les ressources nécessaires** pour maîtriser :
 * La **collaboration en équipe et la gestion de versions** (Git & GitHub).
 
 > L’objectif est d’offrir un **apprentissage progressif et pratique**, centré sur la réalisation de projets concrets, jusqu’au **projet final autonome** présenté en soutenance.
+
