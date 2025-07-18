@@ -3,8 +3,10 @@ description: Autoformations
 theme: just-the-docs
 url: https://solicode-web-mobile.github.io/referentiel-pedagogique-web/
 aux_links:
+  Référentiel : https://solicode-web-mobile.github.io/referentiel-pedagogique-web/
   solicode.co: https://solicode.co/
-aux_links_new_tab: false
+
+aux_links_new_tab: true
 
 nav_enabled: true
 heading_anchors: true
