@@ -1,7 +1,7 @@
 ---
 title: T.1 – Comprendre la démarche pédagogique à Solicode
 layout: home
-nav_order: 15
+nav_order: 101
 ---
 
 ## T.1 – Comprendre la démarche pédagogique à Solicode

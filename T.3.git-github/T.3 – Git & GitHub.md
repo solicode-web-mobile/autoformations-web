@@ -1,7 +1,7 @@
 ---
 title: T.3 – Git & GitHub
 layout: home
-nav_order: 17
+nav_order: 103
 ---
 
 ## T.3 – Git & GitHub
