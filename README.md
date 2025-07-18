@@ -1,2 +1,2 @@
-# autoformations-web
-Les autoformations Web
+
+- [referentiel-pedagogique-web](https://solicode-web-mobile.github.io/referentiel-pedagogique-web/)
