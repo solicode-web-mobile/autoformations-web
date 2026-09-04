@@ -1,0 +1,27 @@
+{% assign base_url = page.permalink | remove: '/compact/' | remove: '/detaille/' %}
+
+<div class="tutorial-versions">
+  <span class="tutorial-versions-label">Version :</span>
+
+  {% if page.version == "compact" %}
+    <strong>Compact</strong>
+  {% else %}
+    <a href="{{ base_url }}compact/">Compact</a>
+  {% endif %}
+
+  <span>·</span>
+
+  {% if page.version == "normal" %}
+    <strong>Normal</strong>
+  {% else %}
+    <a href="{{ base_url }}">Normal</a>
+  {% endif %}
+
+  <span>·</span>
+
+  {% if page.version == "detaillee" %}
+    <strong>Détaillée</strong>
+  {% else %}
+    <a href="{{ base_url }}detaille/">Détaillée</a>
+  {% endif %}
+</div>
