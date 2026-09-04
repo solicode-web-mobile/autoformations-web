@@ -8,3 +8,37 @@ layout: home
 
 {{ content }}
 
+
+
+<script src="{{ '/assets/js/tutorial-font-size.js' | relative_url }}"></script>
+
+
+
+<style>
+.tutorial-font-size {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  margin-bottom: 1.5rem;
+  font-size: .85rem;
+}
+
+.tutorial-font-size button {
+  padding: .2rem .45rem;
+  border: 1px solid #d9dee5;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: .85rem;
+}
+
+.tutorial-font-size button:hover {
+  background: #f5f7fa;
+}
+
+.tutorial-font-size button:focus {
+  outline: 2px solid #94a3b8;
+  outline-offset: 1px;
+}
+
+</style>
