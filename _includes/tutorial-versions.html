@@ -1,6 +1,5 @@
-{% assign base_url = page.permalink | remove: '/compact/' | remove: '/detaille/' %}
+{% assign base_url = page.permalink | remove: '/compact/' | remove: '/detaille/' | append: '/' | replace: '//', '/' %}
 
-{{base_url}}
 <div class="tutorial-versions">
   <span class="tutorial-versions-label">Version :</span>
 
@@ -20,7 +19,7 @@
 
   <span>·</span>
 
-  {% if page.version == "detaillee" %}
+  {% if page.version == "detaille" %}
     <strong>Détaillée</strong>
   {% else %}
     <a href="{{ base_url }}detaille/">Détaillée</a>

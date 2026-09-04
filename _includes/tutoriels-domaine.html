@@ -1,0 +1,27 @@
+{% assign domaine_tutoriels = site.pages
+  | where: "domaine_code", page.domaine_code
+  | where: "version", "normal"
+  | sort: "nav_order"
+%}
+
+
+
+<div class="tutorial-domain-menu">
+
+  <h3>{{ page.domaine_code }} — {{ page.domaine_title }}</h3>
+
+  <ul>
+    {% for tutoriel in domaine_tutoriels %}
+      <li>
+        {% if tutoriel.url == page.url %}
+          <strong>{{ tutoriel.title }}</strong>
+        {% else %}
+          <a href="{{ tutoriel.url | relative_url }}">
+            {{ tutoriel.title }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
