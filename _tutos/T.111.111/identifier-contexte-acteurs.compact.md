@@ -2,19 +2,11 @@
 title: "Identifier le contexte et les acteurs"
 layout: tuto
 slug: "identifier-contexte-acteurs"
-permalink: /tutos/:slug/compact/
-
-tuto_id: "T.111.111"
+permalink: /tutos/:slug/
 version: "compact"
-
 ua: "UA.111.11"
-domaine: "D.1.1.1.1"
-competence: "C.111"
-mission: "M1"
-session: "S1"
-
-nav_exclude: true
 ---
+
 
 Comprendre une application à partir de ses maquettes et identifier sa finalité, son périmètre et ses acteurs.
 

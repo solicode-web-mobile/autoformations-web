@@ -19,6 +19,4 @@ livrable: >
   Lien URL fonctionnel pointant vers la présentation d'une slide partagée.
 travail_a_faire: >
   Créer une présentation d’une slide et la partager avec un lien.
-tutos:
-  - "T.161.111"
 ---

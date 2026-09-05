@@ -3,17 +3,9 @@ title: "Identifier le contexte et les acteurs"
 layout: tuto
 slug: "identifier-contexte-acteurs"
 permalink: /tutos/:slug/
-
 tuto_id: "T.111.111"
 version: "normal"
-
 ua: "UA.111.11"
-domaine: "D.111.1"
-competence: "C.111"
-mission: "M1"
-session: "S1"
-
-nav_exclude: true
 ---
 
 

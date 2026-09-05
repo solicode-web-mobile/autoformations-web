@@ -25,6 +25,4 @@ livrable: >
 travail_a_faire: >
   À partir des maquettes d’un Blog personnel, identifier l’application, sa finalité 
   ainsi que les acteurs Administrateur et Visiteur.
-tutos:
-  - "T.111.111"
 ---

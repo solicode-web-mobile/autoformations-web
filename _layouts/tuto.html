@@ -2,14 +2,205 @@
 layout: default
 ---
 
-<div class="tuto-header">
-  <h1>{{ page.title }}</h1>
-</div>
-
-<!-- Injection automatique du sélecteur -->
-{% include version_switcher.html %}
-
 <div class="tuto-page">
-  {% include text-size-control.html %}
-  {{ content }}
+
+  <!-- ==================================================
+       EN-TÊTE DU TUTORIEL
+       ================================================== -->
+
+  <header class="tuto-header">
+
+    <h1>{{ page.title }}</h1>
+
+    <!-- Code du tutoriel -->
+
+    {% if page.tuto_id %}
+      <p class="tuto-reference">
+        <strong>Tutoriel :</strong>
+        {{ page.tuto_id }}
+      </p>
+    {% endif %}
+
+
+    <!-- Compétence -->
+
+    {% if page.competence %}
+
+      {% assign competence =
+        site.competences
+        | where: "code", page.competence
+        | first
+      %}
+
+      <p class="tuto-reference">
+
+        <strong>Compétence :</strong>
+
+        {% if competence %}
+
+          <a href="{{ competence.url | relative_url }}">
+            {{ competence.code }} — {{ competence.title }}
+          </a>
+
+        {% else %}
+
+          {{ page.competence }}
+
+        {% endif %}
+
+      </p>
+
+    {% endif %}
+
+
+    <!-- Domaine -->
+
+    {% if page.domaine %}
+
+      {% assign domaine =
+        site.domaines
+        | where: "code", page.domaine
+        | first
+      %}
+
+      <p class="tuto-reference">
+
+        <strong>Domaine :</strong>
+
+        {% if domaine %}
+
+          <a href="{{ domaine.url | relative_url }}">
+            {{ domaine.code }} — {{ domaine.title }}
+          </a>
+
+        {% else %}
+
+          {{ page.domaine }}
+
+        {% endif %}
+
+      </p>
+
+    {% endif %}
+
+
+    <!-- UA -->
+
+    {% if page.ua %}
+
+      {% assign ua =
+        site.uas
+        | where: "code", page.ua
+        | first
+      %}
+
+      <p class="tuto-reference">
+
+        <strong>UA :</strong>
+
+        {% if ua %}
+
+          <a href="{{ ua.url | relative_url }}">
+            {{ ua.code }} — {{ ua.title }}
+          </a>
+
+        {% else %}
+
+          {{ page.ua }}
+
+        {% endif %}
+
+      </p>
+
+    {% endif %}
+
+  </header>
+
+
+  <!-- ==================================================
+       OUTILS DE LECTURE
+       ================================================== -->
+
+  <div class="tuto-tools">
+
+    <!-- Sélecteur de version -->
+
+    {% include version-switcher.html %}
+
+
+    <!-- Taille du texte -->
+
+    {% include text-size-control.html %}
+
+  </div>
+
+
+  <!-- ==================================================
+       CONTENU DU TUTORIEL
+       ================================================== -->
+
+  <main class="tuto-content">
+
+    {{ content }}
+
+  </main>
+
+
+  <!-- ==================================================
+       NAVIGATION DU TUTORIEL
+       ================================================== -->
+
+  <nav class="tuto-navigation"
+       aria-label="Navigation entre les tutoriels">
+
+    <a
+      href="#"
+      id="tuto-previous"
+      class="tuto-navigation-link"
+      hidden>
+      ← Tutoriel précédent
+    </a>
+
+    <a
+      href="#"
+      id="tuto-next"
+      class="tuto-navigation-link"
+      hidden>
+      Tutoriel suivant →
+    </a>
+
+  </nav>
+
 </div>
+
+
+<!-- ==================================================
+     DONNÉES POUR JAVASCRIPT
+     ================================================== -->
+
+<script>
+
+  /*
+   * Données du tutoriel courant.
+   */
+
+  window.formationTuto = {
+
+    id: "{{ page.tuto_id | escape }}",
+
+    version: "{{ page.version | escape }}",
+
+    slug: "{{ page.slug | escape }}",
+
+    normalUrl:
+      "{% if page.version == 'normal' %}{{ page.url | relative_url }}{% endif %}",
+
+    compactUrl:
+      "{% if page.version == 'compact' %}{{ page.url | relative_url }}{% endif %}",
+
+    detailleUrl:
+      "{% if page.version == 'detaille' %}{{ page.url | relative_url }}{% endif %}"
+
+  };
+
+</script>

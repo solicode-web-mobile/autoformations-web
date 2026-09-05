@@ -1,9 +1,11 @@
 ---
-title: Partage google slides
+title: "Partage google slides"
 layout: tuto
-nav_order: 1
-version : normal
-domaine_code : D.161.1
+slug: "partage-google-slides"
+permalink: /tutos/:slug/
+tuto_id: "T.161.111"
+version: "normal"
+ua: "UA.161.11"
 ---
 
 
