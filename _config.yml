@@ -128,7 +128,7 @@ just_the_docs:
       nav_exclude: false
 
     missions:
-      name: "Missions"
+      name: "Formations"
       nav_exclude: false
 
     domaines:
@@ -145,16 +145,16 @@ just_the_docs:
 
     tutos:
       name: "Tutoriels"
-      nav_exclude: false
+      nav_exclude: true
 
     labs:
       name: "Labs"
-      nav_exclude: false
+      nav_exclude: true
 
     prototypes:
       name: "Prototypes"
-      nav_exclude: false
+      nav_exclude: true
 
     projets:
       name: "Sprints"
-      nav_exclude: false
+      nav_exclude: true

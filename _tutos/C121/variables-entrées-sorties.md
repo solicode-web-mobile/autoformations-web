@@ -1,14 +1,13 @@
 ---
-title: Variables et les entrées-sorties
-layout: tutorial
-nav_order: 4
-parent: S1. Tutoriels
-permalink: /premiers-pas-web/variables-entrées-sorties/
-version : normal
-domaine_code:  D.121.1
-domaine_title: Programmer des traitements logiques
+title: "Variables et les entrées-sorties"
+layout: tuto
+slug: "variables-entrées-sorties"
+permalink: /tutos/:slug/
+tuto_id: "T.121.111"
+version: "normal"
+ua: "UA.121.11"
+nav_order: 1
 ---
-
 
 
 # Tutoriel 121.11 — Manipuler les variables et les entrées-sorties

@@ -1,14 +1,12 @@
 ---
-title: Rôle des données
-layout: tutorial
-nav_order: 3
-parent: S1. Tutoriels
-permalink: /premiers-pas-web/rôle-données/detaille/
-tutorial_id: role-donnees
-version: detaille
-nav_exclude: true
-domaine_code : D.112.1
-domaine_title: Modéliser les données
+title: "Rôle des données"
+layout: tuto
+slug: "rôle-données"
+permalink: /tutos/:slug/detaille
+tuto_id: "T.112.111"
+version: "detaille"
+ua: "UA.112.11"
+nav_order: 1
 ---
 
 

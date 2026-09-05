@@ -1,13 +1,15 @@
 ---
-title: Apprendre à Solicode
-layout: tutorial
-nav_order: 1
-parent: S1. Tutoriels
-permalink: /premiers-pas-web/apprendre-à-solicode/
-version: normal
-nav_exclude: true
-domaine_code : D1
+title: "Apprendre à Solicode"
+layout: tuto
+slug: "apprendre-à-solicode"
+permalink: /tutos/:slug/
+tuto_id: "T.162.111"
+version: "normal"
+ua: "UA.162.11"
 ---
+
+
+
 
 # Comment apprendre à Solicode ?
 

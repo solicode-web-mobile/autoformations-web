@@ -1,11 +1,11 @@
 ---
-title: Comment apprendre à Solicode
-layout: tutorial
-nav_order: 1
-parent: S1. Tutoriels
-permalink: /premiers-pas-web/apprendre-à-solicode/compact/
-version: compact
-domaine_code : D1
+title: "Apprendre à Solicode"
+layout: tuto
+slug: "apprendre-à-solicode"
+permalink: /tutos/:slug/compact
+tuto_id: "T.162.111"
+version: "compact"
+ua: "UA.162.11"
 ---
 
 

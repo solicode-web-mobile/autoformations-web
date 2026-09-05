@@ -1,15 +1,15 @@
 ---
-title: Rôle des données
-layout: tutorial
-nav_order: 3
-parent: S1. Tutoriels
-permalink: /premiers-pas-web/rôle-données/compact/
-tutorial_id: role-donnees
-version: compact
-nav_exclude: true
-domaine_code : D.112.1
-domaine_title: Modéliser les données
+title: "Rôle des données"
+layout: tuto
+slug: "rôle-données"
+permalink: /tutos/:slug/compact
+tuto_id: "T.112.111"
+version: "compact"
+ua: "UA.112.11"
+nav_order: 1
 ---
+
+
 
 
 # compact — Comprendre le rôle des données dans une application

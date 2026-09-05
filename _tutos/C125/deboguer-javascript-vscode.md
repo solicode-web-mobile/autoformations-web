@@ -1,12 +1,12 @@
 ---
-title: Déboguer avec VS Code
-layout: tutorial
-nav_order: 5
-parent: S1. Tutoriels
-permalink: /premiers-pas-web/deboguer-javascript-vscode/
-version : normal
-domaine_code:  D.125.2
-domaine_title: Déboguer et résoudre les erreurs
+title: "Déboguer avec VS Code"
+layout: tuto
+slug: "deboguer-javascript-vscode"
+permalink: /tutos/:slug/
+tuto_id: "T.125.211"
+version: "normal"
+ua: "UA.125.21"
+nav_order: 1
 ---
 
 

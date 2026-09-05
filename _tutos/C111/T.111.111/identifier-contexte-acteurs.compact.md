@@ -6,6 +6,7 @@ permalink: /tutos/:slug/compact
 version: "compact"
 tuto_id: "T.111.111"
 ua: "UA.111.11"
+nav_order: 1
 ---
 
 
