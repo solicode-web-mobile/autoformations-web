@@ -1,13 +1,9 @@
 ---
-
-title: Google Slides
-layout: tutorial
+title: Partage google slides
+layout: tuto
 nav_order: 1
-parent: S1. Veille technologique
-permalink: /premiers-pas-web/google-slides-partage/
 version : normal
 domaine_code : D.161.1
-domaine_title: Technologies de développement
 ---
 
 
