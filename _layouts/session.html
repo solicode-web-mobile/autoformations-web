@@ -156,13 +156,13 @@ layout: default
                 <div class="ua-card-header">
 
                   <span class="ua-card-code">
-                    {{ ua.code }}
+                     <a href="{{ ua.url | relative_url }}">
+                       {{ ua.code }}
+                    </a>
                   </span>
 
                   <h3>
-                    <a href="{{ ua.url | relative_url }}">
                       {{ ua.title }}
-                    </a>
                   </h3>
 
                   {% if ua.objectif %}

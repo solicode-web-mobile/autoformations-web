@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * TUTO
+   * TUTO / SESSION
    * ==========================================================
    *
    * Fonctionnalité :
@@ -137,16 +137,21 @@ document.addEventListener("DOMContentLoaded", function () {
    * - Taille progressive du texte
    * - Mémorisation dans localStorage
    *
+   *
+   * La taille normale est définie par le CSS.
+   * JavaScript applique uniquement une taille personnalisée.
    */
 
 
   /*
    * ==========================================================
-   * TUTO — CONTENU
+   * CONTENU
    * ==========================================================
    *
-   * Les contrôles de taille existent uniquement
-   * sur les pages de tutoriels.
+   * Les contrôles existent sur :
+   *
+   * - Tutoriel
+   * - Session
    */
 
   const content =
@@ -160,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * TUTO — BOUTONS
+   * BOUTONS
    * ==========================================================
    */
 
@@ -182,11 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * TUTO — CONFIGURATION
+   * CONFIGURATION
    * ==========================================================
    */
 
-  const DEFAULT_SIZE = 20;
   const STEP = 2;
   const MIN_SIZE = 12;
   const MAX_SIZE = 32;
@@ -194,55 +198,84 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * TUTO — RÉCUPÉRER LA TAILLE ENREGISTRÉE
+   * TAILLE ENREGISTRÉE
    * ==========================================================
+   *
+   * null = aucune personnalisation.
+   *
+   * Dans ce cas, le CSS définit la taille normale.
    */
 
-  let fontSize =
-    parseInt(
-      localStorage.getItem("text_size"),
-      10
-    );
+  const savedSize =
+    localStorage.getItem("text_size");
+
+  let fontSize = null;
 
 
-  /*
-   * Vérifier la valeur récupérée.
-   */
+  if (savedSize !== null) {
 
-  if (
-    Number.isNaN(fontSize) ||
-    fontSize < MIN_SIZE ||
-    fontSize > MAX_SIZE
-  ) {
+    const parsedSize =
+      parseInt(savedSize, 10);
 
-    fontSize =
-      DEFAULT_SIZE;
+
+    if (
+      !Number.isNaN(parsedSize) &&
+      parsedSize >= MIN_SIZE &&
+      parsedSize <= MAX_SIZE
+    ) {
+
+      fontSize =
+        parsedSize;
+
+    }
 
   }
 
 
   /*
    * ==========================================================
-   * TUTO — APPLIQUER LA TAILLE
+   * OBTENIR LA TAILLE CSS ACTUELLE
+   * ==========================================================
+   *
+   * Permet de commencer A+ ou A− à partir de la taille
+   * réellement définie par le CSS.
+   */
+
+  function getCurrentFontSize() {
+
+    return parseFloat(
+      window.getComputedStyle(content).fontSize
+    );
+
+  }
+
+
+  /*
+   * ==========================================================
+   * APPLIQUER UNE TAILLE PERSONNALISÉE
    * ==========================================================
    */
 
   function applyFontSize() {
 
+    if (fontSize === null) {
+
+      content.style.removeProperty("font-size");
+
+      return;
+
+    }
+
+
     content.style.fontSize =
       `${fontSize}px`;
-
-    localStorage.setItem(
-      "text_size",
-      String(fontSize)
-    );
 
   }
 
 
   /*
    * ==========================================================
-   * TUTO — A+
+   * A+
    * ==========================================================
    */
 
@@ -254,11 +287,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
+
+        /*
+         * Première modification :
+         * partir de la taille définie par le CSS.
+         */
+
+        if (fontSize === null) {
+
+          fontSize =
+            getCurrentFontSize();
+
+        }
+
+
         fontSize =
           Math.min(
             fontSize + STEP,
             MAX_SIZE
           );
+
+
+        localStorage.setItem(
+          "text_size",
+          String(fontSize)
+        );
+
 
         applyFontSize();
 
@@ -270,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * TUTO — A−
+   * A−
    * ==========================================================
    */
 
@@ -282,11 +336,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
+
+        /*
+         * Première modification :
+         * partir de la taille définie par le CSS.
+         */
+
+        if (fontSize === null) {
+
+          fontSize =
+            getCurrentFontSize();
+
+        }
+
+
         fontSize =
           Math.max(
             fontSize - STEP,
             MIN_SIZE
           );
+
+
+        localStorage.setItem(
+          "text_size",
+          String(fontSize)
+        );
+
 
         applyFontSize();
 
@@ -298,8 +373,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * TUTO — A : TAILLE NORMALE
+   * A — TAILLE NORMALE
    * ==========================================================
+   *
+   * Supprimer la personnalisation JavaScript.
+   *
+   * La taille normale revient donc automatiquement
+   * à celle définie dans le CSS.
    */
 
   if (resetButton) {
@@ -310,10 +390,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
-        fontSize =
-          DEFAULT_SIZE;
 
-        applyFontSize();
+        fontSize =
+          null;
+
+
+        localStorage.removeItem(
+          "text_size"
+        );
+
+
+        content.style.removeProperty(
+          "font-size"
+        );
 
       }
     );
@@ -323,12 +412,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * TUTO — INITIALISATION
+   * INITIALISATION
    * ==========================================================
    *
-   * Restaurer la préférence enregistrée.
+   * Restaurer uniquement une taille personnalisée
+   * réellement enregistrée.
+   *
+   * Sinon, ne rien modifier :
+   * le CSS reste maître de la taille normale.
    */
 
   applyFontSize();
 
 });
+
