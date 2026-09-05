@@ -1,11 +1,6 @@
 ---
 ---
 
-@import "custom";
-
----
----
-
 /* =========================
    Formation Web
    ========================= */
@@ -40,8 +35,9 @@
   margin-top: 0.25rem;
 }
 
-
-// text-size
+/* =========================
+   Taille du texte
+   ========================= */
 
 .text-size-control {
   display: inline-flex;
@@ -79,4 +75,3 @@ html[data-text-size="large"] {
 .tuto-page {
   font-size: var(--formation-text-size, 1rem);
 }
-
