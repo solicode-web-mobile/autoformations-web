@@ -4,30 +4,106 @@ layout: default
 
 <div class="ua-page">
 
-  <!-- ==========================================
-       En-tête de l'UA
-       ========================================== -->
+  <!-- ==================================================
+       EN-TÊTE
+       ================================================== -->
 
   <header class="ua-header">
 
-    <h1>
-       {{ page.title }}
-    </h1>
+    <h1>{{ page.title }}</h1>
 
 
-    {% if page.session %}
+    <!-- Code de l'UA -->
+
+    {% if page.code %}
+
       <p class="ua-reference">
-        <strong>Session :</strong>
-        {{ page.session }}
+        <strong>Code :</strong>
+        {{ page.code }}
       </p>
+
+    {% endif %}
+
+
+    <!-- Compétence -->
+
+    {% if page.competence %}
+
+      {% assign competence =
+        site.competences
+        | where: "code", page.competence
+        | first
+      %}
+
+      <p class="ua-reference">
+
+        <strong>Compétence :</strong>
+
+        {% if competence %}
+
+          <a href="{{ competence.url | relative_url }}">
+            {{ competence.code }} — {{ competence.title }}
+          </a>
+
+        {% else %}
+
+          {{ page.competence }}
+
+        {% endif %}
+
+      </p>
+
+    {% endif %}
+
+
+    <!-- Domaine -->
+
+    {% if page.domaine %}
+
+      {% assign domaine =
+        site.domaines
+        | where: "code", page.domaine
+        | first
+      %}
+
+      <p class="ua-reference">
+
+        <strong>Domaine :</strong>
+
+        {% if domaine %}
+
+          <a href="{{ domaine.url | relative_url }}">
+            {{ domaine.code }} — {{ domaine.title }}
+          </a>
+
+        {% else %}
+
+          {{ page.domaine }}
+
+        {% endif %}
+
+      </p>
+
+    {% endif %}
+
+
+    <!-- Durée -->
+
+    {% if page.duree %}
+
+      <p class="ua-reference">
+        <strong>Durée :</strong>
+        {{ page.duree }} h
+      </p>
+
     {% endif %}
 
   </header>
 
 
-  <!-- ==========================================
-       Objectif
-       ========================================== -->
+  <!-- ==================================================
+       OBJECTIF
+       ================================================== -->
 
   {% if page.objectif %}
 
@@ -44,9 +120,9 @@ layout: default
   {% endif %}
 
 
-  <!-- ==========================================
-       Description
-       ========================================== -->
+  <!-- ==================================================
+       DESCRIPTION
+       ================================================== -->
 
   {% if page.description %}
 
@@ -54,18 +130,18 @@ layout: default
 
       <h2>Description</h2>
 
-      <div>
-        {{ page.description | markdownify }}
-      </div>
+      <p>
+        {{ page.description }}
+      </p>
 
     </section>
 
   {% endif %}
 
 
-  <!-- ==========================================
-       Notions
-       ========================================== -->
+  <!-- ==================================================
+       NOTIONS
+       ================================================== -->
 
   {% if page.notions and page.notions.size > 0 %}
 
@@ -90,9 +166,9 @@ layout: default
   {% endif %}
 
 
-  <!-- ==========================================
-       Livrable
-       ========================================== -->
+  <!-- ==================================================
+       LIVRABLE
+       ================================================== -->
 
   {% if page.livrable %}
 
@@ -109,9 +185,9 @@ layout: default
   {% endif %}
 
 
-  <!-- ==========================================
-       Travail à faire
-       ========================================== -->
+  <!-- ==================================================
+       TRAVAIL À FAIRE
+       ================================================== -->
 
   {% if page.travail_a_faire %}
 
@@ -128,37 +204,41 @@ layout: default
   {% endif %}
 
 
-  <!-- ==========================================
-       Tutoriels
-       ========================================== -->
+  <!-- ==================================================
+       CONTENU MARKDOWN
+       ================================================== -->
+
+  {% if content != "" %}
+
+    <section class="ua-section">
+
+      {{ content }}
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==================================================
+       TUTORIELS
+       ================================================== -->
 
   <section class="ua-section">
 
     <h2>Tutoriels</h2>
 
-    {% include tuto-list.html tutos=page.tutos %}
+    {% if page.tutos and page.tutos.size > 0 %}
+
+      {% include tuto-list.html tutos=page.tutos %}
+
+    {% else %}
+
+      <p>
+        Aucun tutoriel associé à cette unité d'apprentissage.
+      </p>
+
+    {% endif %}
 
   </section>
-
-
-  <!-- ==========================================
-       Navigation
-       ========================================== -->
-
-  <div class="ua-navigation">
-
-    {% if page.previous %}
-      <a href="{{ page.previous.url | relative_url }}">
-        ← {{ page.previous.title }}
-      </a>
-    {% endif %}
-
-    {% if page.next %}
-      <a href="{{ page.next.url | relative_url }}">
-        {{ page.next.title }} →
-      </a>
-    {% endif %}
-
-  </div>
 
 </div>
