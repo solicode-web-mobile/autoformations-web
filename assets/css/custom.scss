@@ -54,24 +54,36 @@
   background: transparent;
   cursor: pointer;
   font-size: 0.9rem;
+  line-height: 1;
 }
 
-.text-size-button.active {
-  font-weight: 700;
+.text-size-button:hover {
+  text-decoration: none;
 }
 
-html[data-text-size="small"] {
-  --formation-text-size: 0.9rem;
-}
-
-html[data-text-size="normal"] {
-  --formation-text-size: 1rem;
-}
-
-html[data-text-size="large"] {
-  --formation-text-size: 1.15rem;
-}
+/* =========================
+   Contenu du tutoriel
+   ========================= */
 
 .tuto-page {
-  font-size: var(--formation-text-size, 1rem);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Respecte la taille choisie
+   par le JavaScript */
+
+.tuto-page p,
+.tuto-page li,
+.tuto-page blockquote {
+  font-size: inherit;
+}
+
+.tuto-page h1,
+.tuto-page h2,
+.tuto-page h3,
+.tuto-page h4,
+.tuto-page h5,
+.tuto-page h6 {
+  line-height: 1.3;
 }

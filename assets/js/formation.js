@@ -61,3 +61,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const content = document.querySelector(".tuto-page");
+
+  if (!content) {
+    return;
+  }
+
+  const increaseButton =
+    document.querySelector('[data-text-size-action="increase"]');
+
+  const decreaseButton =
+    document.querySelector('[data-text-size-action="decrease"]');
+
+  const resetButton =
+    document.querySelector('[data-text-size-action="reset"]');
+
+  const DEFAULT_SIZE = 16;
+  const STEP = 2;
+  const MIN_SIZE = 12;
+  const MAX_SIZE = 32;
+
+  let fontSize =
+    parseInt(localStorage.getItem("text_size"), 10);
+
+  if (isNaN(fontSize)) {
+    fontSize = DEFAULT_SIZE;
+  }
+
+  function applyFontSize() {
+    content.style.fontSize = fontSize + "px";
+
+    localStorage.setItem("text_size", fontSize);
+  }
+
+  increaseButton?.addEventListener("click", function () {
+    if (fontSize < MAX_SIZE) {
+      fontSize += STEP;
+      applyFontSize();
+    }
+  });
+
+  decreaseButton?.addEventListener("click", function () {
+    if (fontSize > MIN_SIZE) {
+      fontSize -= STEP;
+      applyFontSize();
+    }
+  });
+
+  resetButton?.addEventListener("click", function () {
+    fontSize = DEFAULT_SIZE;
+    applyFontSize();
+  });
+
+  applyFontSize();
+
+});
