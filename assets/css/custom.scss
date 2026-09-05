@@ -29,7 +29,8 @@
 .mission-header,
 .competence-header,
 .domaine-header,
-.ua-header {
+.ua-header,
+.tuto-header {
   margin-bottom: 2rem;
 }
 
@@ -37,7 +38,8 @@
 .mission-header h1,
 .competence-header h1,
 .domaine-header h1,
-.ua-header h1 {
+.ua-header h1,
+.tuto-header h1 {
   margin-bottom: 1rem;
 }
 
@@ -66,13 +68,26 @@
 .competence-level,
 .competence-mission,
 .domaine-reference,
-.ua-reference {
+.ua-reference,
+.tuto-reference {
   margin: 0.25rem 0;
 }
 
 
 /* =========================================================
-   5. MISSIONS
+   5. OBJECTIFS
+   ========================================================= */
+
+.session-objective,
+.competence-objective,
+.ua-objective,
+.ua-card-objective {
+  margin-bottom: 1rem;
+}
+
+
+/* =========================================================
+   6. MISSIONS
    ========================================================= */
 
 .mission-competences {
@@ -83,7 +98,7 @@
 
 
 /* =========================================================
-   6. COMPÉTENCES
+   7. COMPÉTENCES
    ========================================================= */
 
 .competence-domaines,
@@ -102,7 +117,7 @@
 
 
 /* =========================================================
-   7. DOMAINES
+   8. DOMAINES
    ========================================================= */
 
 .domaine-uas {
@@ -113,7 +128,7 @@
 
 
 /* =========================================================
-   8. UNITÉS D'APPRENTISSAGE
+   9. UNITÉS D'APPRENTISSAGE
    ========================================================= */
 
 .session-uas {
@@ -136,17 +151,6 @@
 
 .ua-card-tutos {
   margin-top: 1.25rem;
-}
-
-
-/* =========================================================
-   9. LISTES
-   ========================================================= */
-
-.ua-section ul,
-.competence-section ul,
-.domaine-section ul {
-  margin-bottom: 1rem;
 }
 
 
@@ -239,6 +243,10 @@
   line-height: 1.7;
 }
 
+.tuto-content {
+  width: 100%;
+}
+
 .tuto-page p,
 .tuto-page li,
 .tuto-page blockquote {
@@ -320,7 +328,6 @@
 
 .text-size-control {
   display: inline-flex;
-
   align-items: center;
 
   gap: 0.25rem;
@@ -345,12 +352,16 @@
 
   transition:
     background-color 0.15s ease,
-    border-color 0.15s ease;
+    border-color 0.15s ease,
+    transform 0.1s ease;
 }
 
 .text-size-button:hover {
-  text-decoration: none;
   border-color: #b8b8b8;
+}
+
+.text-size-button:active {
+  transform: scale(0.96);
 }
 
 .text-size-button:focus-visible {
@@ -360,10 +371,137 @@
 
 
 /* =========================================================
-   17. NAVIGATION
+   17. OUTILS DE LECTURE
    ========================================================= */
 
-.tuto-navigation,
+.tuto-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 2rem;
+
+  padding-bottom: 1rem;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* =========================================================
+   18. SÉLECTEUR DE VERSION
+   ========================================================= */
+
+.version-switcher {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.25rem;
+}
+
+.version-switcher a,
+.version-switcher button {
+  padding: 0.4rem 0.7rem;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 0.35rem;
+
+  background: transparent;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  font-size: 0.9rem;
+}
+
+.version-switcher a:hover,
+.version-switcher button:hover {
+  text-decoration: none;
+  border-color: #b8b8b8;
+}
+
+.version-switcher .active {
+  font-weight: 700;
+  background-color: #e5e7eb;
+  border-color: #94a3b8;
+}
+
+
+/* =========================================================
+   19. ÉTAPE SUIVANTE
+   ========================================================= */
+
+.next-step {
+  margin-top: 3rem;
+
+  padding-top: 1.5rem;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.next-step-label {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.next-step-link {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  padding: 1rem;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+
+  text-decoration: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.next-step-link:hover {
+  text-decoration: none;
+
+  border-color: #cbd5e1;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.next-step-type {
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.next-step-title {
+  flex: 1;
+
+  font-weight: 500;
+}
+
+.next-step-arrow {
+  font-size: 1.2rem;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   20. NAVIGATION UA
+   ========================================================= */
+
 .ua-navigation {
   display: flex;
 
@@ -372,6 +510,7 @@
   gap: 1rem;
 
   margin-top: 2rem;
+
   padding-top: 1.5rem;
 
   border-top: 1px solid #e5e7eb;
@@ -379,7 +518,7 @@
 
 
 /* =========================================================
-   18. ERREURS
+   21. ERREURS
    ========================================================= */
 
 .content-error {
@@ -394,7 +533,7 @@
 
 
 /* =========================================================
-   19. JUST THE DOCS — SIDEBAR
+   22. JUST THE DOCS — SIDEBAR
    ========================================================= */
 
 @media (min-width: 50rem) {
@@ -418,6 +557,7 @@
     white-space: nowrap;
 
     overflow: visible;
+
     text-overflow: unset;
   }
 
@@ -426,11 +566,12 @@
   .site-nav .nav-list .nav-list-link {
     width: 100%;
   }
+
 }
 
 
 /* =========================================================
-   20. MOBILE
+   23. RESPONSIVE
    ========================================================= */
 
 @media (max-width: 49.99rem) {
@@ -454,15 +595,33 @@
     max-width: 100%;
   }
 
-  .tuto-navigation,
+  .tuto-tools {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .version-switcher {
+    flex-wrap: wrap;
+  }
+
+  .next-step-link {
+    align-items: flex-start;
+  }
+
+  .next-step-type {
+    white-space: normal;
+  }
+
   .ua-navigation {
     flex-direction: column;
   }
+
 }
 
 
 /* =========================================================
-   21. ACCESSIBILITÉ
+   24. ACCESSIBILITÉ
    ========================================================= */
 
 button:focus-visible,
@@ -473,27 +632,32 @@ a:focus-visible {
 
 
 /* =========================================================
-   22. RÉDUCTION DES ANIMATIONS
+   25. ANIMATIONS RÉDUITES
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
   .tuto-card,
-  .text-size-button {
+  .text-size-button,
+  .version-switcher a,
+  .version-switcher button,
+  .next-step-link {
     transition: none;
   }
+
 }
 
 
 /* =========================================================
-   23. IMPRESSION
+   26. IMPRESSION
    ========================================================= */
 
 @media print {
 
   .side-bar,
-  .text-size-control,
-  .tuto-navigation {
+  .tuto-tools,
+  .next-step,
+  .ua-navigation {
     display: none;
   }
 

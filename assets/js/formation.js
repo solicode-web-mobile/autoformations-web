@@ -1,25 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /*
-   * ==========================================
-   * FORMATION WEB — Préférences apprenant
-   * ==========================================
-   *
-   * Ce fichier gère les préférences générales
-   * de lecture dans la plateforme.
+   * ==========================================================
+   * FORMATION WEB
+   * Préférences et navigation de l'apprenant
+   * ==========================================================
    *
    * Fonctionnalités :
-   * 1. Version du tutoriel
-   * 2. Taille du texte
+   *
+   * 1. Version de lecture du tutoriel
+   * 2. Navigation vers l'étape suivante
+   * 3. Taille progressive du texte
+   * 4. Mémorisation dans localStorage
    */
 
 
   /*
-   * ==========================================
+   * ==========================================================
    * 1. VERSION DU TUTORIEL
-   * ==========================================
+   * ==========================================================
    *
-   * Valeurs possibles :
+   * Valeurs :
    * - compact
    * - normal
    * - detaille
@@ -31,29 +32,121 @@ document.addEventListener("DOMContentLoaded", function () {
   const tutoVersion =
     localStorage.getItem("tuto_version") || "normal";
 
-  document.documentElement.dataset.tutoVersion = tutoVersion;
+  /*
+   * Vérifier la valeur enregistrée.
+   */
+
+  const validVersions = [
+    "compact",
+    "normal",
+    "detaille"
+  ];
+
+  const currentVersion =
+    validVersions.includes(tutoVersion)
+      ? tutoVersion
+      : "normal";
+
+  document.documentElement.dataset.tutoVersion =
+    currentVersion;
 
 
   /*
-   * ==========================================
-   * 2. TAILLE DU TEXTE
-   * ==========================================
+   * ==========================================================
+   * 2. NAVIGATION — ÉTAPE SUIVANTE
+   * ==========================================================
    *
-   * La taille est progressive.
+   * L'ordre est défini par next-step.html :
    *
-   * A+ → augmente de 2px
-   * A− → diminue de 2px
-   * A  → revient à la taille normale
+   * Tutoriel suivant
+   *       ↓
+   * UA suivante
+   *       ↓
+   * Lab
+   *       ↓
+   * Prototype
+   *       ↓
+   * Projet Fil Rouge
    *
-   * La valeur est enregistrée dans localStorage.
+   * Pour un tutoriel, la version sélectionnée est conservée.
    */
 
-  const content = document.querySelector(".tuto-page");
+  const nextStepLink =
+    document.querySelector("#next-step-link");
+
+  if (nextStepLink) {
+
+    const nextType =
+      nextStepLink.dataset.nextType;
+
+
+    /*
+     * Les Tutoriels possèdent trois versions.
+     */
+
+    if (nextType === "tuto") {
+
+      let nextUrl =
+        nextStepLink.dataset.normalUrl;
+
+
+      if (
+        currentVersion === "compact" &&
+        nextStepLink.dataset.compactUrl
+      ) {
+
+        nextUrl =
+          nextStepLink.dataset.compactUrl;
+
+      }
+
+
+      if (
+        currentVersion === "detaille" &&
+        nextStepLink.dataset.detailleUrl
+      ) {
+
+        nextUrl =
+          nextStepLink.dataset.detailleUrl;
+
+      }
+
+
+      nextStepLink.href =
+        nextUrl;
+
+    }
+
+  }
+
 
   /*
-   * La gestion de la taille du texte
-   * concerne uniquement les pages de tutoriels.
+   * ==========================================================
+   * 3. TAILLE DU TEXTE
+   * ==========================================================
+   *
+   * Fonctionnement :
+   *
+   * A+ → +2px
+   * A− → -2px
+   * A  → retour à 16px
+   *
+   * Limites :
+   *
+   * minimum : 12px
+   * maximum : 32px
    */
+
+
+  const content =
+    document.querySelector(".tuto-page");
+
+
+  /*
+   * Les contrôles de taille existent uniquement
+   * sur les pages de tutoriels.
+   */
+
   if (!content) {
     return;
   }
@@ -90,129 +183,138 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /*
-   * Récupérer la taille enregistrée
+   * ==========================================================
+   * 4. RÉCUPÉRER LA TAILLE ENREGISTRÉE
+   * ==========================================================
    */
 
-  let fontSize = parseInt(
-    localStorage.getItem("text_size"),
-    10
-  );
+  let fontSize =
+    parseInt(
+      localStorage.getItem("text_size"),
+      10
+    );
+
 
   /*
-   * Si aucune valeur valide n'est enregistrée,
-   * utiliser la taille normale.
+   * Vérifier la valeur récupérée.
    */
 
-  if (isNaN(fontSize)) {
-    fontSize = DEFAULT_SIZE;
+  if (
+    Number.isNaN(fontSize) ||
+    fontSize < MIN_SIZE ||
+    fontSize > MAX_SIZE
+  ) {
+
+    fontSize =
+      DEFAULT_SIZE;
+
   }
 
 
   /*
-   * ==========================================
-   * Appliquer la taille du texte
-   * ==========================================
+   * ==========================================================
+   * 5. APPLIQUER LA TAILLE
+   * ==========================================================
    */
 
   function applyFontSize() {
 
-    content.style.fontSize = fontSize + "px";
+    content.style.fontSize =
+      `${fontSize}px`;
 
     localStorage.setItem(
       "text_size",
-      fontSize
+      String(fontSize)
     );
+
   }
 
 
   /*
-   * ==========================================
-   * A+ : augmenter la taille
-   * ==========================================
+   * ==========================================================
+   * 6. A+
+   * ==========================================================
    */
 
   if (increaseButton) {
 
     increaseButton.addEventListener(
       "click",
-      function () {
+      function (event) {
 
-        if (fontSize < MAX_SIZE) {
+        event.preventDefault();
 
-          fontSize += STEP;
-
-          /*
-           * Ne pas dépasser la limite maximale.
-           */
-          fontSize = Math.min(
-            fontSize,
+        fontSize =
+          Math.min(
+            fontSize + STEP,
             MAX_SIZE
           );
 
-          applyFontSize();
-        }
+        applyFontSize();
 
       }
     );
+
   }
 
 
   /*
-   * ==========================================
-   * A− : diminuer la taille
-   * ==========================================
+   * ==========================================================
+   * 7. A−
+   * ==========================================================
    */
 
   if (decreaseButton) {
 
     decreaseButton.addEventListener(
       "click",
-      function () {
+      function (event) {
 
-        if (fontSize > MIN_SIZE) {
+        event.preventDefault();
 
-          fontSize -= STEP;
-
-          /*
-           * Ne pas descendre sous la limite minimale.
-           */
-          fontSize = Math.max(
-            fontSize,
+        fontSize =
+          Math.max(
+            fontSize - STEP,
             MIN_SIZE
           );
 
-          applyFontSize();
-        }
+        applyFontSize();
 
       }
     );
+
   }
 
 
   /*
-   * ==========================================
-   * A : revenir à la taille normale
-   * ==========================================
+   * ==========================================================
+   * 8. A — TAILLE NORMALE
+   * ==========================================================
    */
 
   if (resetButton) {
 
     resetButton.addEventListener(
       "click",
-      function () {
+      function (event) {
 
-        fontSize = DEFAULT_SIZE;
+        event.preventDefault();
+
+        fontSize =
+          DEFAULT_SIZE;
 
         applyFontSize();
+
       }
     );
+
   }
 
 
   /*
-   * ==========================================
-   * Initialisation
-   * ==========================================
+   * ==========================================================
+   * 9. INITIALISATION
+   * ==========================================================
    *
    * Restaurer la préférence enregistrée.
    */
