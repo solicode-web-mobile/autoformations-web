@@ -5,48 +5,79 @@ layout: default
 <div class="session-page">
 
   <!-- ==================================================
-       EN-TÊTE
+       EN-TÊTE DE LA SESSION
        ================================================== -->
 
   <header class="session-header">
 
     <h1>{{ page.title }}</h1>
 
-    {% if page.objectif %}
-      <section class="session-section">
-        <h2>Objectif</h2>
-        <p>{{ page.objectif }}</p>
-      </section>
-    {% endif %}
-
-    {% if page.description %}
-      <section class="session-section">
-        <h2>Description</h2>
-        <div>
-          {{ page.description | markdownify }}
-        </div>
-      </section>
+    {% if page.code %}
+      <p class="session-reference">
+        <strong>Code :</strong>
+        {{ page.code }}
+      </p>
     {% endif %}
 
   </header>
 
 
   <!-- ==================================================
-       UNITÉS D'APPRENTISSAGE
+       OBJECTIF
        ================================================== -->
 
-  {% if page.uas and page.uas.size > 0 %}
+  {% if page.objectif %}
 
     <section class="session-section">
 
-      <h2>Unités d'apprentissage</h2>
+      <h2>Objectif</h2>
+
+      <p>
+        {{ page.objectif }}
+      </p>
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==================================================
+       DESCRIPTION
+       ================================================== -->
+
+  {% if page.description %}
+
+    <section class="session-section">
+
+      <h2>Description</h2>
+
+      <p>
+        {{ page.description }}
+      </p>
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==================================================
+       UNITÉS D'APPRENTISSAGE
+       ================================================== -->
+
+  <section class="session-section">
+
+    <h2>Unités d'apprentissage</h2>
+
+    {% if page.uas and page.uas.size > 0 %}
 
       <div class="session-uas">
 
         {% for ua_code in page.uas %}
 
           {% assign ua =
-            site.uas | where: "code", ua_code | first
+            site.uas
+            | where: "code", ua_code
+            | first
           %}
 
           {% if ua %}
@@ -55,17 +86,82 @@ layout: default
 
               <h3>
                 <a href="{{ ua.url | relative_url }}">
-                   {{ ua.title }}
+                  {{ ua.code }} — {{ ua.title }}
                 </a>
               </h3>
 
               {% if ua.objectif %}
-                <p>{{ ua.objectif }}</p>
+
+                <p class="ua-card-objective">
+                  {{ ua.objectif }}
+                </p>
+
               {% endif %}
+
+              {% if ua.competence %}
+
+                <p class="ua-card-reference">
+
+                  <strong>Compétence :</strong>
+
+                  {% assign competence =
+                    site.competences
+                    | where: "code", ua.competence
+                    | first
+                  %}
+
+                  {% if competence %}
+
+                    <a href="{{ competence.url | relative_url }}">
+                      {{ competence.code }} — {{ competence.title }}
+                    </a>
+
+                  {% else %}
+
+                    {{ ua.competence }}
+
+                  {% endif %}
+
+                </p>
+
+              {% endif %}
+
+              {% if ua.domaine %}
+
+                <p class="ua-card-reference">
+
+                  <strong>Domaine :</strong>
+
+                  {% assign domaine =
+                    site.domaines
+                    | where: "code", ua.domaine
+                    | first
+                  %}
+
+                  {% if domaine %}
+
+                    <a href="{{ domaine.url | relative_url }}">
+                      {{ domaine.code }} — {{ domaine.title }}
+                    </a>
+
+                  {% else %}
+
+                    {{ ua.domaine }}
+
+                  {% endif %}
+
+                </p>
+
+              {% endif %}
+
+
+              <!-- ==========================================
+                   TUTORIELS
+                   ========================================== -->
 
               {% if ua.tutos and ua.tutos.size > 0 %}
 
-                <div class="ua-tutos">
+                <div class="ua-card-tutos">
 
                   <h4>Tutoriels</h4>
 
@@ -89,9 +185,15 @@ layout: default
 
       </div>
 
-    </section>
+    {% else %}
 
-  {% endif %}
+      <p>
+        Aucune unité d'apprentissage associée à cette session.
+      </p>
+
+    {% endif %}
+
+  </section>
 
 
   <!-- ==================================================
@@ -109,7 +211,9 @@ layout: default
         {% for lab_code in page.labs %}
 
           {% assign lab =
-            site.labs | where: "code", lab_code | first
+            site.labs
+            | where: "code", lab_code
+            | first
           %}
 
           {% if lab %}
@@ -123,7 +227,11 @@ layout: default
               </h3>
 
               {% if lab.objectif %}
-                <p>{{ lab.objectif }}</p>
+
+                <p>
+                  {{ lab.objectif }}
+                </p>
+
               {% endif %}
 
             </article>
@@ -176,7 +284,11 @@ layout: default
               </h3>
 
               {% if prototype.objectif %}
-                <p>{{ prototype.objectif }}</p>
+
+                <p>
+                  {{ prototype.objectif }}
+                </p>
+
               {% endif %}
 
             </article>
@@ -229,7 +341,11 @@ layout: default
               </h3>
 
               {% if projet.objectif %}
-                <p>{{ projet.objectif }}</p>
+
+                <p>
+                  {{ projet.objectif }}
+                </p>
+
               {% endif %}
 
             </article>
