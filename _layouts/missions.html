@@ -14,18 +14,6 @@ layout: default
       {{ page.title }}
     </h1>
 
-    {% if page.code %}
-      <p class="mission-code">
-        <strong>Code :</strong> {{ page.code }}
-      </p>
-    {% endif %}
-
-    {% if page.niveau %}
-      <p class="mission-level">
-        <strong>Niveau :</strong> {{ page.niveau }}
-      </p>
-    {% endif %}
-
     {% if page.description %}
       <section class="mission-section">
         <h2>Description</h2>
@@ -64,8 +52,6 @@ layout: default
 
               <a href="{{ competence.url | relative_url }}">
 
-                {{ competence.code }}
-                — 
                 {{ competence.title }}
 
               </a>

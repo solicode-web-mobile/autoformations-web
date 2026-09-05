@@ -14,18 +14,7 @@ layout: default
       {{ page.title }}
     </h1>
 
-    {% if page.code %}
-      <p class="competence-code">
-        <strong>Code :</strong> {{ page.code }}
-      </p>
-    {% endif %}
-
-    {% if page.niveau %}
-      <p class="competence-level">
-        <strong>Niveau :</strong> {{ page.niveau }}
-      </p>
-    {% endif %}
-
+    
     {% if page.mission %}
       {% assign mission =
         site.missions

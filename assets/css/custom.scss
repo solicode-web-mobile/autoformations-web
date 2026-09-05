@@ -1,6 +1,8 @@
 ---
 ---
 
+
+
 /* =========================
    Formation Web
    ========================= */
@@ -77,6 +79,7 @@
 .tuto-page li,
 .tuto-page blockquote {
   font-size: inherit;
+  line-height: 1.7;
 }
 
 .tuto-page h1,
@@ -86,4 +89,148 @@
 .tuto-page h5,
 .tuto-page h6 {
   line-height: 1.3;
+}
+
+.tuto-page h1 {
+  font-size: 2rem;
+}
+
+.tuto-page h2 {
+  font-size: 1.5rem;
+}
+
+.tuto-page h3 {
+  font-size: 1.25rem;
+}
+
+
+/* =========================================================
+   1. LARGEUR DE LA SIDEBAR
+   ========================================================= */
+
+/*
+ * Largeur standard de la sidebar :
+ * 320px
+ *
+ * Vous pouvez augmenter cette valeur :
+ *
+ * 300px → 320px → 350px → 380px
+ */
+
+$nav-width: 350px;
+$nav-width-md: 350px;
+
+
+/* =========================================================
+   2. SIDEBAR
+   ========================================================= */
+
+.side-bar {
+  width: $nav-width;
+  min-width: $nav-width;
+}
+
+
+/* =========================================================
+   3. CONTENU PRINCIPAL
+   ========================================================= */
+
+.main {
+  margin-left: $nav-width;
+}
+
+
+/* =========================================================
+   4. MENU JUST THE DOCS
+   ========================================================= */
+
+.site-nav {
+  width: 100%;
+}
+
+
+/* =========================================================
+   5. TEXTE DU MENU
+   ========================================================= */
+
+.site-nav a,
+.site-nav .nav-list-link {
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  /*
+   * Évite les retours à la ligne pour les titres courts
+   * et moyens.
+   */
+
+
+}
+
+
+/* =========================================================
+   6. SOUS-MENU
+   ========================================================= */
+
+.site-nav .nav-list .nav-list-item {
+  width: 100%;
+}
+
+.site-nav .nav-list .nav-list-link {
+  width: 100%;
+}
+
+
+/* =========================================================
+   7. TITRES LONGS
+   ========================================================= */
+
+/*
+ * Permet aux titres longs de profiter de toute
+ * la largeur de la sidebar.
+ */
+
+.site-nav .nav-list-link {
+  overflow: visible;
+  text-overflow: unset;
+}
+
+
+/* =========================================================
+   8. RESPONSIVE — DESKTOP
+   ========================================================= */
+
+@media (min-width: 50rem) {
+
+  .side-bar {
+    width: $nav-width-md;
+    min-width: $nav-width-md;
+  }
+
+  .main {
+    margin-left: $nav-width-md;
+  }
+
+}
+
+
+/* =========================================================
+   9. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 49.99rem) {
+
+  .side-bar {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .site-nav a,
+  .site-nav .nav-list-link {
+    white-space: normal;
+  }
+
 }
