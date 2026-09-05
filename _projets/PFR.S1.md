@@ -1,16 +1,16 @@
 ---
-title: "Prototype 1 — Identifier le contexte et les acteurs du Portfolio"
-layout: prototype
-code: "P.S1"
+title: "Sprint 1 — Identifier le contexte et les acteurs de projet fil rouge"
+layout: projet-fil-rouge
+code: "PFR.S1"
 session: "S1"
 
 travail_a_faire: >
-  Réaliser une première analyse du Portfolio de l’apprenant.
+  Réaliser une première analyse du projet fil rouge de l’apprenant.
   Définir son contexte, identifier ses acteurs et préciser les principales
   fonctionnalités réalisées par chaque acteur.
 
 livrable:
-  - "Contexte du Portfolio"
+  - "Contexte"
   - "Liste des acteurs"
   - "Actions principales de chaque acteur"
 
