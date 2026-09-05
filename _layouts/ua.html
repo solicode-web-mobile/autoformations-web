@@ -1,0 +1,177 @@
+---
+layout: default
+---
+
+<div class="ua-page">
+
+  <!-- ==========================================
+       En-tête de l'UA
+       ========================================== -->
+
+  <header class="ua-header">
+
+    <h1>
+      {{ page.code }} — {{ page.title }}
+    </h1>
+
+    {% if page.competence %}
+      <p class="ua-reference">
+        <strong>Compétence :</strong>
+        {{ page.competence }}
+      </p>
+    {% endif %}
+
+    {% if page.domaine %}
+      <p class="ua-reference">
+        <strong>Domaine :</strong>
+        {{ page.domaine }}
+      </p>
+    {% endif %}
+
+    {% if page.session %}
+      <p class="ua-reference">
+        <strong>Session :</strong>
+        {{ page.session }}
+      </p>
+    {% endif %}
+
+  </header>
+
+
+  <!-- ==========================================
+       Objectif
+       ========================================== -->
+
+  {% if page.objectif %}
+
+    <section class="ua-section">
+
+      <h2>Objectif</h2>
+
+      <p>
+        {{ page.objectif }}
+      </p>
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==========================================
+       Description
+       ========================================== -->
+
+  {% if page.description %}
+
+    <section class="ua-section">
+
+      <h2>Description</h2>
+
+      <div>
+        {{ page.description | markdownify }}
+      </div>
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==========================================
+       Notions
+       ========================================== -->
+
+  {% if page.notions and page.notions.size > 0 %}
+
+    <section class="ua-section">
+
+      <h2>Notions</h2>
+
+      <ul>
+
+        {% for notion in page.notions %}
+
+          <li>
+            {{ notion }}
+          </li>
+
+        {% endfor %}
+
+      </ul>
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==========================================
+       Livrable
+       ========================================== -->
+
+  {% if page.livrable %}
+
+    <section class="ua-section">
+
+      <h2>Livrable attendu</h2>
+
+      <p>
+        {{ page.livrable }}
+      </p>
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==========================================
+       Travail à faire
+       ========================================== -->
+
+  {% if page.travail_a_faire %}
+
+    <section class="ua-section">
+
+      <h2>Travail à faire</h2>
+
+      <p>
+        {{ page.travail_a_faire }}
+      </p>
+
+    </section>
+
+  {% endif %}
+
+
+  <!-- ==========================================
+       Tutoriels
+       ========================================== -->
+
+  <section class="ua-section">
+
+    <h2>Tutoriels</h2>
+
+    {% include tuto-list.html tutos=page.tutos %}
+
+  </section>
+
+
+  <!-- ==========================================
+       Navigation
+       ========================================== -->
+
+  <div class="ua-navigation">
+
+    {% if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}">
+        ← {{ page.previous.title }}
+      </a>
+    {% endif %}
+
+    {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}">
+        {{ page.next.title }} →
+      </a>
+    {% endif %}
+
+  </div>
+
+</div>

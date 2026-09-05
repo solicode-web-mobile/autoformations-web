@@ -80,6 +80,19 @@ collections:
     output: true
     permalink: /sessions/:slug/
 
+  labs:
+    output: true
+    permalink: /labs/:slug/
+
+  prototypes:
+    output: true
+    permalink: /prototypes/:slug/
+
+  projets:
+    output: true
+    permalink: /projets/:slug/
+
+
 
   missions:
     output: true
@@ -99,6 +112,8 @@ collections:
 
   tutos:
     output: true
+
+
 
 # --------------------------------------------------
 # Navigation Just the Docs
@@ -130,4 +145,16 @@ just_the_docs:
 
     tutos:
       name: "Tutoriels"
+      nav_exclude: true
+
+    labs:
+      name: "Labs"
+      nav_exclude: true
+
+    prototypes:
+      name: "Labs"
+      nav_exclude: true
+
+    projets:
+      name: "Labs"
       nav_exclude: true
