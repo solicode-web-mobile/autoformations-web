@@ -28,6 +28,4 @@ livrable: >
 travail_a_faire: >
   Déclarer des variables contenant le titre d’un article, son prix et sa quantité, 
   puis calculer et afficher le résultat à partir de ces valeurs.
-tutos:
-  - "T.121.111"
 ---

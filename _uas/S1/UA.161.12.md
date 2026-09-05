@@ -23,6 +23,4 @@ livrable: >
 travail_a_faire: >
   Réaliser une courte recherche et produire une explication écrite ou visuelle 
   différenciant le Web de l'Internet.
-tutos:
-  - "T.161.121"
 ---

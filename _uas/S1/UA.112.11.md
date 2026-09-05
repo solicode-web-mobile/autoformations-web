@@ -28,6 +28,4 @@ livrable: >
 travail_a_faire: >
   À partir des fonctionnalités observées dans un Blog personnel, identifier 
   les premières données nécessaires à son fonctionnement.
-tutos:
-  - "T.112.111"
 ---

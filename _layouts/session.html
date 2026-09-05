@@ -104,7 +104,7 @@ layout: default
                   {% if competence %}
 
                     <a href="{{ competence.url | relative_url }}">
-                      {{ competence.code }} — {{ competence.title }}
+                       {{ competence.title }}
                     </a>
 
                   {% else %}
@@ -132,7 +132,7 @@ layout: default
                   {% if domaine %}
 
                     <a href="{{ domaine.url | relative_url }}">
-                      {{ domaine.code }} — {{ domaine.title }}
+                       {{ domaine.title }}
                     </a>
 
                   {% else %}
@@ -150,13 +150,18 @@ layout: default
                    TUTORIELS
                    ========================================== -->
 
-              {% if ua.tutos and ua.tutos.size > 0 %}
+              {% assign ua_tutos =
+                site.tutos
+                | where: "ua", ua.code
+              %}
+
+              {% if ua_tutos.size > 0 %}
 
                 <div class="ua-card-tutos">
 
                   <h4>Tutoriels</h4>
 
-                  {% include tuto-list.html tutos=ua.tutos %}
+                  {% include tuto-list.html tutos=ua_tutos %}
 
                 </div>
 

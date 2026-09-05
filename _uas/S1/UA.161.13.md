@@ -22,6 +22,4 @@ livrable: >
 travail_a_faire: >
   Réaliser une recherche sur les langages du Web et produire un court résumé 
   expliquant les responsabilités de HTML, CSS et JavaScript.
-tutos:
-  - "T.161.131"
 ---

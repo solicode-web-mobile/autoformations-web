@@ -23,6 +23,4 @@ livrable: >
 travail_a_faire: >
   Effectuer une recherche sur le métier de développeur et rédiger une courte 
   fiche métier décrivant les rôles, les outils et les compétences nécessaires.
-tutos:
-  - "T.161.141"
 ---
