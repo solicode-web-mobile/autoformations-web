@@ -1,84 +1,247 @@
 ---
 ---
 
+/* =========================================================
+   FORMATION WEB
+   Jekyll + Just the Docs
+   ========================================================= */
 
 
-/* =========================
-   Formation Web
-   ========================= */
+/* =========================================================
+   1. STRUCTURE GÉNÉRALE
+   ========================================================= */
 
-.session-page {
-  max-width: 100%;
+.session-page,
+.mission-page,
+.competence-page,
+.domaine-page,
+.ua-page,
+.tuto-page {
+  width: 100%;
+}
+
+
+/* =========================================================
+   2. EN-TÊTES
+   ========================================================= */
+
+.session-header,
+.mission-header,
+.competence-header,
+.domaine-header,
+.ua-header {
+  margin-bottom: 2rem;
+}
+
+.session-header h1,
+.mission-header h1,
+.competence-header h1,
+.domaine-header h1,
+.ua-header h1 {
+  margin-bottom: 1rem;
+}
+
+
+/* =========================================================
+   3. SECTIONS
+   ========================================================= */
+
+.session-section,
+.mission-section,
+.competence-section,
+.domaine-section,
+.ua-section {
+  margin-top: 2rem;
+}
+
+
+/* =========================================================
+   4. RÉFÉRENCES
+   ========================================================= */
+
+.session-reference,
+.mission-code,
+.mission-level,
+.competence-code,
+.competence-level,
+.competence-mission,
+.domaine-reference,
+.ua-reference {
+  margin: 0.25rem 0;
+}
+
+
+/* =========================================================
+   5. MISSIONS
+   ========================================================= */
+
+.mission-competences {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+/* =========================================================
+   6. COMPÉTENCES
+   ========================================================= */
+
+.competence-domaines,
+.competence-uas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.competence-header h1,
+.competence-card h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   7. DOMAINES
+   ========================================================= */
+
+.domaine-uas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+/* =========================================================
+   8. UNITÉS D'APPRENTISSAGE
+   ========================================================= */
+
+.session-uas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .ua-card {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.ua-card-header {
+  margin-bottom: 1rem;
+}
+
+.ua-card-reference {
+  margin: 0.25rem 0;
+}
+
+.ua-card-tutos {
+  margin-top: 1.25rem;
+}
+
+
+/* =========================================================
+   9. LISTES
+   ========================================================= */
+
+.ua-section ul,
+.competence-section ul,
+.domaine-section ul {
+  margin-bottom: 1rem;
+}
+
+
+/* =========================================================
+   10. TUTORIELS
+   ========================================================= */
+
+.tuto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .tuto-card {
   display: block;
+
   padding: 1rem;
-  margin-bottom: 0.75rem;
+
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
+
   text-decoration: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .tuto-card:hover {
   text-decoration: none;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .tuto-card-code {
+  display: block;
+
+  margin-bottom: 0.25rem;
+
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .tuto-card-title {
-  margin-top: 0.25rem;
+  display: block;
+
+  font-size: 1rem;
 }
 
-/* =========================
-   Taille du texte
-   ========================= */
-
-.text-size-control {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-bottom: 1rem;
+.tuto-card-error {
+  color: #b00020;
 }
 
-.text-size-button {
-  min-width: 2.25rem;
-  padding: 0.4rem 0.6rem;
-  border: 1px solid #d9d9d9;
-  border-radius: 0.35rem;
-  background: transparent;
-  cursor: pointer;
-  font-size: 0.9rem;
-  line-height: 1;
+
+/* =========================================================
+   11. ACTIVITÉS
+   ========================================================= */
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.text-size-button:hover {
-  text-decoration: none;
+.activity-card {
+  padding: 1rem;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
 }
 
-/* =========================
-   Contenu du tutoriel
-   ========================= */
+.activity-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.activity-card p {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   12. CONTENU DU TUTORIEL
+   ========================================================= */
 
 .tuto-page {
+  max-width: 800px;
+
   font-size: 16px;
   line-height: 1.7;
 }
 
-/* Respecte la taille choisie
-   par le JavaScript */
-
 .tuto-page p,
 .tuto-page li,
 .tuto-page blockquote {
-  font-size: inherit;
   line-height: 1.7;
 }
 
@@ -103,118 +266,171 @@
   font-size: 1.25rem;
 }
 
-
-/* =========================================================
-   1. LARGEUR DE LA SIDEBAR
-   ========================================================= */
-
-/*
- * Largeur standard de la sidebar :
- * 320px
- *
- * Vous pouvez augmenter cette valeur :
- *
- * 300px → 320px → 350px → 380px
- */
-
-$nav-width: 350px;
-$nav-width-md: 350px;
-
-
-/* =========================================================
-   2. SIDEBAR
-   ========================================================= */
-
-.side-bar {
-  width: $nav-width;
-  min-width: $nav-width;
+.tuto-page h4 {
+  font-size: 1.1rem;
 }
 
 
 /* =========================================================
-   3. CONTENU PRINCIPAL
+   13. CODE
    ========================================================= */
 
-.main {
-  margin-left: $nav-width;
+.tuto-page pre {
+  max-width: 100%;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+.tuto-page code {
+  line-height: 1.5;
 }
 
 
 /* =========================================================
-   4. MENU JUST THE DOCS
+   14. IMAGES
    ========================================================= */
 
-.site-nav {
-  width: 100%;
+.tuto-page img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 
 /* =========================================================
-   5. TEXTE DU MENU
+   15. TABLEAUX
    ========================================================= */
 
-.site-nav a,
-.site-nav .nav-list-link {
-  font-size: 0.95rem;
-  line-height: 1.4;
+.tuto-page table {
+  display: block;
 
-  /*
-   * Évite les retours à la ligne pour les titres courts
-   * et moyens.
-   */
+  max-width: 100%;
 
-
+  overflow-x: auto;
 }
 
 
 /* =========================================================
-   6. SOUS-MENU
+   16. CONTRÔLE DE TAILLE DU TEXTE
    ========================================================= */
 
-.site-nav .nav-list .nav-list-item {
-  width: 100%;
+.text-size-control {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.25rem;
+
+  margin-bottom: 1rem;
 }
 
-.site-nav .nav-list .nav-list-link {
-  width: 100%;
+.text-size-button {
+  min-width: 2.25rem;
+
+  padding: 0.4rem 0.6rem;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 0.35rem;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 0.9rem;
+  line-height: 1;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.text-size-button:hover {
+  text-decoration: none;
+  border-color: #b8b8b8;
+}
+
+.text-size-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 
 /* =========================================================
-   7. TITRES LONGS
+   17. NAVIGATION
    ========================================================= */
 
-/*
- * Permet aux titres longs de profiter de toute
- * la largeur de la sidebar.
- */
+.tuto-navigation,
+.ua-navigation {
+  display: flex;
 
-.site-nav .nav-list-link {
-  overflow: visible;
-  text-overflow: unset;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid #e5e7eb;
 }
 
 
 /* =========================================================
-   8. RESPONSIVE — DESKTOP
+   18. ERREURS
+   ========================================================= */
+
+.content-error {
+  padding: 0.75rem 1rem;
+
+  margin: 1rem 0;
+
+  border-left: 3px solid #b00020;
+
+  background: #fff5f5;
+}
+
+
+/* =========================================================
+   19. JUST THE DOCS — SIDEBAR
    ========================================================= */
 
 @media (min-width: 50rem) {
 
   .side-bar {
-    width: $nav-width-md;
-    min-width: $nav-width-md;
+    width: 350px !important;
+    min-width: 350px !important;
   }
 
-  .main {
-    margin-left: $nav-width-md;
+  .site-nav {
+    width: 100%;
   }
 
+  .site-nav a,
+  .site-nav .nav-list-link {
+    width: 100%;
+
+    font-size: 0.95rem;
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .site-nav .nav-list,
+  .site-nav .nav-list .nav-list-item,
+  .site-nav .nav-list .nav-list-link {
+    width: 100%;
+  }
 }
 
 
 /* =========================================================
-   9. RESPONSIVE — MOBILE
+   20. MOBILE
    ========================================================= */
 
 @media (max-width: 49.99rem) {
@@ -224,13 +440,69 @@ $nav-width-md: 350px;
     min-width: 0;
   }
 
-  .main {
-    margin-left: 0;
-  }
-
   .site-nav a,
   .site-nav .nav-list-link {
     white-space: normal;
   }
 
+  .competence-header h1,
+  .competence-card h3 {
+    white-space: normal;
+  }
+
+  .tuto-page {
+    max-width: 100%;
+  }
+
+  .tuto-navigation,
+  .ua-navigation {
+    flex-direction: column;
+  }
+}
+
+
+/* =========================================================
+   21. ACCESSIBILITÉ
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   22. RÉDUCTION DES ANIMATIONS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tuto-card,
+  .text-size-button {
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   23. IMPRESSION
+   ========================================================= */
+
+@media print {
+
+  .side-bar,
+  .text-size-control,
+  .tuto-navigation {
+    display: none;
+  }
+
+  .tuto-page,
+  .session-page,
+  .mission-page,
+  .competence-page,
+  .domaine-page,
+  .ua-page {
+    max-width: 100%;
+  }
 }
