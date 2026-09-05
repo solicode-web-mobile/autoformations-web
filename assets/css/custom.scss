@@ -393,41 +393,82 @@
    18. SÉLECTEUR DE VERSION
    ========================================================= */
 
-.version-switcher {
-  display: inline-flex;
-  align-items: center;
+/* =========================================================
+   18. SÉLECTEUR DE VERSION
+   ========================================================= */
 
-  gap: 0.25rem;
+.version-switcher {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-left: 4px solid #7253ed;
+  border-radius: 4px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.version-switcher span {
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #495057;
+  margin-right: 10px;
 }
 
 .version-switcher a,
 .version-switcher button {
+  margin: 0;
   padding: 0.4rem 0.7rem;
 
-  border: 1px solid #d9d9d9;
+  border: 1px solid #d9d9d9 !important;
   border-radius: 0.35rem;
 
-  background: transparent;
+ 
+ 
 
   text-decoration: none;
-
   cursor: pointer;
-
   font-size: 0.9rem;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .version-switcher a:hover,
 .version-switcher button:hover {
   text-decoration: none;
-  border-color: #b8b8b8;
+
+  border-color: #7253ed !important;
+  background: #f5f1ff !important;
+  color: #7253ed !important;
 }
 
-.version-switcher .active {
+.version-switcher a:focus,
+.version-switcher button:focus {
+  outline: 2px solid rgba(114, 83, 237, 0.25);
+  outline-offset: 2px;
+}
+
+/* Version active */
+.version-switcher a.active,
+.version-switcher button.active {
   font-weight: 700;
-  background-color: #e5e7eb;
-  border-color: #94a3b8;
+  background-color: #7253ed !important;
+  border-color: #7253ed !important;
+  color: #fff !important;
 }
 
+/* Hover sur la version active */
+.version-switcher a.active:hover,
+.version-switcher button.active:hover {
+  background-color: #5f42d6 !important;
+  border-color: #5f42d6 !important;
+  color: #fff !important;
+}
 
 /* =========================================================
    19. ÉTAPE SUIVANTE
