@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
    * ==========================================================
    */
 
-  const DEFAULT_SIZE = 16;
+  const DEFAULT_SIZE = 20;
   const STEP = 2;
   const MIN_SIZE = 12;
   const MAX_SIZE = 32;
