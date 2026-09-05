@@ -1,23 +1,29 @@
+/*
+ * ==========================================================
+ * FORMATION WEB
+ * JavaScript — Organisation par template
+ * ==========================================================
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
+
 
   /*
    * ==========================================================
-   * FORMATION WEB
-   * Préférences et navigation de l'apprenant
+   * BASE
    * ==========================================================
    *
-   * Fonctionnalités :
+   * Fonctionnalités communes :
    *
-   * 1. Version de lecture du tutoriel
+   * 1. Version du tutoriel
    * 2. Navigation vers l'étape suivante
-   * 3. Taille progressive du texte
-   * 4. Mémorisation dans localStorage
+   *
    */
 
 
   /*
    * ==========================================================
-   * 1. VERSION DU TUTORIEL
+   * BASE — VERSION DU TUTORIEL
    * ==========================================================
    *
    * Valeurs :
@@ -31,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const tutoVersion =
     localStorage.getItem("tuto_version") || "normal";
+
 
   /*
    * Vérifier la valeur enregistrée.
@@ -53,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 2. NAVIGATION — ÉTAPE SUIVANTE
+   * BASE — NAVIGATION ÉTAPE SUIVANTE
    * ==========================================================
    *
    * L'ordre est défini par next-step.html :
@@ -122,30 +129,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 3. TAILLE DU TEXTE
+   * TUTO
    * ==========================================================
    *
-   * Fonctionnement :
+   * Fonctionnalité :
    *
-   * A+ → +2px
-   * A− → -2px
-   * A  → retour à 16px
+   * - Taille progressive du texte
+   * - Mémorisation dans localStorage
    *
-   * Limites :
-   *
-   * minimum : 12px
-   * maximum : 32px
    */
 
+
+  /*
+   * ==========================================================
+   * TUTO — CONTENU
+   * ==========================================================
+   *
+   * Les contrôles de taille existent uniquement
+   * sur les pages de tutoriels.
+   */
 
   const content =
     document.querySelector(".tuto-page");
 
-
-  /*
-   * Les contrôles de taille existent uniquement
-   * sur les pages de tutoriels.
-   */
 
   if (!content) {
     return;
@@ -153,7 +159,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /*
-   * Boutons
+   * ==========================================================
+   * TUTO — BOUTONS
+   * ==========================================================
    */
 
   const increaseButton =
@@ -173,7 +181,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /*
-   * Configuration
+   * ==========================================================
+   * TUTO — CONFIGURATION
+   * ==========================================================
    */
 
   const DEFAULT_SIZE = 16;
@@ -184,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 4. RÉCUPÉRER LA TAILLE ENREGISTRÉE
+   * TUTO — RÉCUPÉRER LA TAILLE ENREGISTRÉE
    * ==========================================================
    */
 
@@ -213,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 5. APPLIQUER LA TAILLE
+   * TUTO — APPLIQUER LA TAILLE
    * ==========================================================
    */
 
@@ -232,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 6. A+
+   * TUTO — A+
    * ==========================================================
    */
 
@@ -260,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 7. A−
+   * TUTO — A−
    * ==========================================================
    */
 
@@ -288,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 8. A — TAILLE NORMALE
+   * TUTO — A : TAILLE NORMALE
    * ==========================================================
    */
 
@@ -313,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /*
    * ==========================================================
-   * 9. INITIALISATION
+   * TUTO — INITIALISATION
    * ==========================================================
    *
    * Restaurer la préférence enregistrée.
