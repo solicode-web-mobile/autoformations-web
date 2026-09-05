@@ -26,8 +26,9 @@ layout: default
 
         <p class="domaine-reference">
           <strong>Compétence :</strong>
+
           <a href="{{ competence.url | relative_url }}">
-             {{ competence.title }}
+            {{ competence.title }}
           </a>
         </p>
 
@@ -49,11 +50,15 @@ layout: default
        CONTENU DU DOMAINE
        ================================================== -->
 
-  <section class="domaine-section">
+  {% if content != "" %}
 
-    {{ content }}
+    <section class="domaine-section">
 
-  </section>
+      {{ content }}
+
+    </section>
+
+  {% endif %}
 
 
   <!-- ==================================================
@@ -97,22 +102,31 @@ layout: default
           <article class="ua-card">
 
             <h3>
+
               <a href="{{ ua.url | relative_url }}">
-                {{ ua.code }} — {{ ua.title }}
+                 {{ ua.title }}
               </a>
+
             </h3>
 
             {% if ua.objectif %}
 
-              <p>
+              <p class="ua-card-objective">
                 {{ ua.objectif }}
               </p>
 
             {% endif %}
 
+
+            <!-- ==========================================
+                 TUTORIELS DE L'UA
+                 ========================================== -->
+
             {% if ua.tutos and ua.tutos.size > 0 %}
 
               <div class="ua-card-tutos">
+
+                <h4>Tutoriels</h4>
 
                 {% include tuto-list.html tutos=ua.tutos %}
 
@@ -130,6 +144,113 @@ layout: default
 
       <p>
         Aucune unité d'apprentissage associée à ce domaine.
+      </p>
+
+    {% endif %}
+
+  </section>
+
+
+  <!-- ==================================================
+       SESSIONS
+       ================================================== -->
+
+  <section class="domaine-section">
+
+    <h2>Sessions</h2>
+
+    {% assign domaine_session_codes = "" | split: "," %}
+
+
+    <!-- ==========================================
+         Identifier les UA du domaine
+         ========================================== -->
+
+    {% assign domaine_uas =
+      site.uas
+      | where: "domaine", page.code
+    %}
+
+
+    <!-- ==========================================
+         Rechercher les Sessions contenant
+         les UA du domaine
+         ========================================== -->
+
+    {% for session in site.sessions %}
+
+      {% for ua_code in session.uas %}
+
+        {% for ua in domaine_uas %}
+
+          {% if ua_code == ua.code %}
+
+            {% unless domaine_session_codes contains session.code %}
+
+              {% assign domaine_session_codes =
+                domaine_session_codes
+                | push: session.code
+              %}
+
+            {% endunless %}
+
+          {% endif %}
+
+        {% endfor %}
+
+      {% endfor %}
+
+    {% endfor %}
+
+
+    <!-- ==========================================
+         Affichage
+         ========================================== -->
+
+    {% if domaine_session_codes.size > 0 %}
+
+      <div class="activity-list">
+
+        {% for session_code in domaine_session_codes %}
+
+          {% assign session =
+            site.sessions
+            | where: "code", session_code
+            | first
+          %}
+
+          {% if session %}
+
+            <article class="activity-card">
+
+              <h3>
+
+                <a href="{{ session.url | relative_url }}">
+                   {{ session.title }}
+                </a>
+
+              </h3>
+
+              {% if session.objectif %}
+
+                <p>
+                  {{ session.objectif }}
+                </p>
+
+              {% endif %}
+
+            </article>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+
+      <p>
+        Aucune session associée à ce domaine.
       </p>
 
     {% endif %}

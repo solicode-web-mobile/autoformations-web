@@ -11,22 +11,9 @@ layout: default
   <header class="ua-header">
 
     <h1>
-      {{ page.code }} — {{ page.title }}
+       {{ page.title }}
     </h1>
 
-    {% if page.competence %}
-      <p class="ua-reference">
-        <strong>Compétence :</strong>
-        {{ page.competence }}
-      </p>
-    {% endif %}
-
-    {% if page.domaine %}
-      <p class="ua-reference">
-        <strong>Domaine :</strong>
-        {{ page.domaine }}
-      </p>
-    {% endif %}
 
     {% if page.session %}
       <p class="ua-reference">
