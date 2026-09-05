@@ -1,0 +1,184 @@
+---
+layout: default
+---
+
+<div class="session-page">
+
+  <!-- ============================= -->
+  <!-- En-tête de la session        -->
+  <!-- ============================= -->
+
+  <header class="session-header">
+
+    <h1>{{ page.title }}</h1>
+
+    {% if page.objectif %}
+      <p class="session-objective">
+        <strong>Objectif :</strong>
+        {{ page.objectif }}
+      </p>
+    {% endif %}
+
+    {% if page.description %}
+      <div class="session-description">
+        {{ page.description | markdownify }}
+      </div>
+    {% endif %}
+
+  </header>
+
+
+  <!-- ============================= -->
+  <!-- UA de la session             -->
+  <!-- ============================= -->
+
+  <section class="session-uas">
+
+    <h2>Unités d'apprentissage</h2>
+
+    {% assign session_code = page.code %}
+
+    {% assign session_uas = site.uas | where: "session", session_code %}
+
+    {% if session_uas.size > 0 %}
+
+      {% for ua in session_uas %}
+
+        <article class="ua-card">
+
+          <!-- UA -->
+          <header class="ua-header">
+
+            <h3>
+              <a href="{{ ua.url | relative_url }}">
+                {{ ua.code }} — {{ ua.title }}
+              </a>
+            </h3>
+
+            <div class="ua-meta">
+
+              {% if ua.competence %}
+                <span>
+                  {{ ua.competence }}
+                </span>
+              {% endif %}
+
+              {% if ua.domaine %}
+                <span>
+                  {{ ua.domaine }}
+                </span>
+              {% endif %}
+
+            </div>
+
+          </header>
+
+
+          <!-- Objectif UA -->
+          {% if ua.objectif %}
+            <p class="ua-objective">
+              {{ ua.objectif }}
+            </p>
+          {% endif %}
+
+
+          <!-- ============================= -->
+          <!-- Tutoriels de l'UA             -->
+          <!-- ============================= -->
+
+          {% if ua.tutos and ua.tutos.size > 0 %}
+
+            <div class="ua-tutos">
+
+              <h4>Tutoriels</h4>
+
+              {% for tuto_code in ua.tutos %}
+
+                {% assign tuto_versions = site.tutos | where: "tuto_id", tuto_code %}
+
+                {% assign tuto_normal = tuto_versions | where: "version", "normal" | first %}
+                {% assign tuto_compact = tuto_versions | where: "version", "compact" | first %}
+                {% assign tuto_detaille = tuto_versions | where: "version", "detaille" | first %}
+
+                {% if tuto_normal %}
+
+                  <a
+                    class="tuto-card"
+                    href="{{ tuto_normal.url | relative_url }}"
+                    data-tuto-link
+
+                    data-normal-url="{{ tuto_normal.url | relative_url }}"
+
+                    data-compact-url="{% if tuto_compact %}{{ tuto_compact.url | relative_url }}{% endif %}"
+
+                    data-detaille-url="{% if tuto_detaille %}{{ tuto_detaille.url | relative_url }}{% endif %}"
+                  >
+
+                    <div class="tuto-card-code">
+                      {{ tuto_code }}
+                    </div>
+
+                    <div class="tuto-card-title">
+                      {{ tuto_normal.title }}
+                    </div>
+
+                  </a>
+
+                {% endif %}
+
+              {% endfor %}
+
+            </div>
+
+          {% endif %}
+
+        </article>
+
+      {% endfor %}
+
+    {% else %}
+
+      <p>
+        Aucune unité d'apprentissage n'est encore associée à cette session.
+      </p>
+
+    {% endif %}
+
+  </section>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- Gestion de la version         -->
+<!-- ============================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const selectedVersion =
+    localStorage.getItem("tuto_version") || "normal";
+
+  const tutoLinks =
+    document.querySelectorAll("[data-tuto-link]");
+
+  tutoLinks.forEach(function (link) {
+
+    let url = link.dataset.normalUrl;
+
+    if (selectedVersion === "compact" && link.dataset.compactUrl) {
+      url = link.dataset.compactUrl;
+    }
+
+    if (selectedVersion === "detaille" && link.dataset.detailleUrl) {
+      url = link.dataset.detailleUrl;
+    }
+
+    link.href = url;
+
+  });
+
+});
+
+</script>

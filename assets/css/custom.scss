@@ -1,0 +1,82 @@
+---
+---
+
+@import "custom";
+
+---
+---
+
+/* =========================
+   Formation Web
+   ========================= */
+
+.session-page {
+  max-width: 100%;
+}
+
+.ua-card {
+  margin-bottom: 2rem;
+}
+
+.tuto-card {
+  display: block;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.tuto-card:hover {
+  text-decoration: none;
+}
+
+.tuto-card-code {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tuto-card-title {
+  margin-top: 0.25rem;
+}
+
+
+// text-size
+
+.text-size-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.text-size-button {
+  min-width: 2.25rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 0.35rem;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.text-size-button.active {
+  font-weight: 700;
+}
+
+html[data-text-size="small"] {
+  --formation-text-size: 0.9rem;
+}
+
+html[data-text-size="normal"] {
+  --formation-text-size: 1rem;
+}
+
+html[data-text-size="large"] {
+  --formation-text-size: 1.15rem;
+}
+
+.tuto-page {
+  font-size: var(--formation-text-size, 1rem);
+}
+

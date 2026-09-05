@@ -1,19 +1,20 @@
 ---
-title: Contexte et les acteurs
-layout: tutorial
-nav_order: 2
-parent: S1. Tutoriels
-permalink: /premiers-pas-web/identifier-contexte-acteurs/
-version : normal
-domaine_code: D.111.1
-domaine_title: Identifier les actions des acteurs
+title: "Identifier le contexte et les acteurs"
+layout: tuto
+slug: "identifier-contexte-acteurs"
+permalink: /tutos/:slug/
 
+tuto_id: "T.111.111"
+version: "normal"
+
+ua: "UA.111.11"
+domaine: "D.1.1.1.1"
+competence: "C.111"
+mission: "M1"
+session: "S1"
+
+nav_exclude: true
 ---
-
-
-# Tutoriel — Identifier le contexte et les acteurs
-
-
 
 Comprendre une application à partir de ses maquettes et identifier sa finalité, son périmètre et ses acteurs.
 
@@ -45,8 +46,8 @@ Le **rôle** indique ce qu’un acteur peut faire dans l’application.
 
 **Exemple :**
 
-* **Administrateur** : gérer les articles.
-* **Visiteur** : consulter les articles.
+- **Administrateur** : gérer les articles.
+- **Visiteur** : consulter les articles.
 
 ## 1.5. Périmètre
 
@@ -56,11 +57,11 @@ Le **périmètre** indique ce qui est pris en compte dans l’application.
 
 ## 1.6. À retenir
 
-* **Application** → ce que le système est.
-* **Finalité** → pourquoi il existe.
-* **Acteur** → qui utilise le système.
-* **Rôle** → ce que l’acteur peut faire.
-* **Périmètre** → ce qui est inclus dans le système.
+- **Application** → ce que le système est.
+- **Finalité** → pourquoi il existe.
+- **Acteur** → qui utilise le système.
+- **Rôle** → ce que l’acteur peut faire.
+- **Périmètre** → ce qui est inclus dans le système.
 
 # Partie 2 — Pratique
 
@@ -86,8 +87,8 @@ Notez les principales fonctionnalités visibles dans les maquettes.
 
 Identifiez les deux acteurs :
 
-* **Administrateur**
-* **Visiteur**
+- **Administrateur**
+- **Visiteur**
 
 ### Étape 5 — Identifier les rôles
 
@@ -97,8 +98,9 @@ Exemple :
 
 ```text
 Administrateur → gérer les articles
+
 Visiteur → consulter les articles
-```
+````
 
 ## 2.3. Réaliser l’analyse
 
@@ -108,9 +110,12 @@ Réalisez une analyse contenant :
 
 ```text
 Application
-→ Finalité
-→ Acteurs
-→ Rôles
+    ↓
+Finalité
+    ↓
+Acteurs
+    ↓
+Rôles
 ```
 
 Ajoutez le **périmètre** identifié à partir des maquettes.
@@ -133,3 +138,7 @@ Une analyse claire permettant de comprendre l’application, sa finalité, son p
 * **Rôle** : actions qu’un acteur peut réaliser.
 * **Périmètre** : éléments et fonctionnalités pris en compte dans l’application.
 * **Maquette** : représentation visuelle d’une interface.
+
+
+
+
