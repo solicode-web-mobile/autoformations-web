@@ -5,120 +5,123 @@ layout: default
 <div class="tuto-page">
 
   <!-- ==================================================
-       EN-TÊTE DU TUTORIEL
+       EN-TÊTE
        ================================================== -->
 
   <header class="tuto-header">
 
-    <h1>{{ page.title }}</h1>
+    <div class="tuto-header-title">
 
-  
+      {% if page.tuto_id %}
+        <span class="tuto-code">
+          {{ page.tuto_id }}
+        </span>
+      {% endif %}
 
-    <!-- Code du tutoriel -->
+      <h1>{{ page.title }}</h1>
 
-    {% if page.tuto_id %}
-      <p class="tuto-reference">
-        <strong>Tutoriel :</strong>
-        {{ page.tuto_id }}
-      </p>
-    {% endif %}
-
-
-    <!-- Compétence -->
-
-    {% if page.competence %}
-
-      {% assign competence =
-        site.competences
-        | where: "code", page.competence
-        | first
-      %}
-
-      <p class="tuto-reference">
-
-        <strong>Compétence :</strong>
-
-        {% if competence %}
-
-          <a href="{{ competence.url | relative_url }}">
-            {{ competence.code }} — {{ competence.title }}
-          </a>
-
-        {% else %}
-
-          {{ page.competence }}
-
-        {% endif %}
-
-      </p>
-
-    {% endif %}
+    </div>
 
 
-    <!-- Domaine -->
+    <!-- ==================================================
+         RÉFÉRENCES
+         ================================================== -->
 
-    {% if page.domaine %}
+    <div class="tuto-references">
 
-      {% assign domaine =
-        site.domaines
-        | where: "code", page.domaine
-        | first
-      %}
+      {% if page.competence %}
 
-      <p class="tuto-reference">
+        {% assign competence =
+          site.competences
+          | where: "code", page.competence
+          | first
+        %}
 
-        <strong>Domaine :</strong>
+        <span class="tuto-reference">
 
-        {% if domaine %}
+          <strong class="tuto-reference-label">
+            Compétence
+          </strong>
 
-          <a href="{{ domaine.url | relative_url }}">
-            {{ domaine.code }} — {{ domaine.title }}
-          </a>
+          {% if competence %}
 
-        {% else %}
+            <a href="{{ competence.url | relative_url }}">
+              {{ competence.code }} — {{ competence.title }}
+            </a>
 
-          {{ page.domaine }}
+          {% else %}
 
-        {% endif %}
+            {{ page.competence }}
 
-      </p>
+          {% endif %}
 
-    {% endif %}
+        </span>
 
-
-    <!-- UA -->
-
-    {% if page.ua %}
-
-      {% assign ua =
-        site.uas
-        | where: "code", page.ua
-        | first
-      %}
-
-      <p class="tuto-reference">
-
-        <strong>UA :</strong>
-
-        {% if ua %}
-
-          <a href="{{ ua.url | relative_url }}">
-            {{ ua.code }} — {{ ua.title }}
-          </a>
-
-        {% else %}
-
-          {{ page.ua }}
-
-        {% endif %}
-
-      </p>
-
-    {% endif %}
+      {% endif %}
 
 
+      {% if page.domaine %}
+
+        {% assign domaine =
+          site.domaines
+          | where: "code", page.domaine
+          | first
+        %}
+
+        <span class="tuto-reference">
+
+          <strong class="tuto-reference-label">
+            Domaine
+          </strong>
+
+          {% if domaine %}
+
+            <a href="{{ domaine.url | relative_url }}">
+              {{ domaine.code }} — {{ domaine.title }}
+            </a>
+
+          {% else %}
+
+            {{ page.domaine }}
+
+          {% endif %}
+
+        </span>
+
+      {% endif %}
 
 
+      {% if page.ua %}
+
+        {% assign ua =
+          site.uas
+          | where: "code", page.ua
+          | first
+        %}
+
+        <span class="tuto-reference">
+
+          <strong class="tuto-reference-label">
+            UA
+          </strong>
+
+          {% if ua %}
+
+            <a href="{{ ua.url | relative_url }}">
+              {{ ua.code }} — {{ ua.title }}
+            </a>
+
+          {% else %}
+
+            {{ page.ua }}
+
+          {% endif %}
+
+        </span>
+
+      {% endif %}
+
+    </div>
 
   </header>
 
@@ -129,48 +132,38 @@ layout: default
 
   <div class="tuto-tools">
 
-    <!-- Sélecteur de version -->
-
     {% include version-switcher.html %}
-
-    <!-- Taille du texte -->
 
     {% include text-size-control.html %}
 
-   
-
   </div>
 
-   
 
   <!-- ==================================================
-       CONTENU DU TUTORIEL
+       CONTENU
        ================================================== -->
 
   <main class="tuto-content">
-
-   
-  
 
     {{ content }}
 
   </main>
 
 
-   {% include next-step.html %}
+  <!-- ==================================================
+       NAVIGATION
+       ================================================== -->
+
+  {% include next-step.html %}
 
 </div>
 
 
-<!-- ==================================================
+<!-- ======================================================
      DONNÉES POUR JAVASCRIPT
-     ================================================== -->
+     ====================================================== -->
 
 <script>
-
-  /*
-   * Données du tutoriel courant.
-   */
 
   window.formationTuto = {
 

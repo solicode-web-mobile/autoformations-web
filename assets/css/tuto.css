@@ -1,15 +1,16 @@
+
 /* =========================================================
    FORMATION WEB — TUTORIEL
    ========================================================= */
 
 
 /* =========================================================
-   1. STRUCTURE
+   1. PAGE
    ========================================================= */
 
 .tuto-page {
   width: 100%;
-  max-width: 800px;
+  max-width: 820px;
 
   font-size: 16px;
   line-height: 1.7;
@@ -21,75 +22,98 @@
 
 
 /* =========================================================
-   2. EN-TÊTE
+   2. EN-TÊTE COMPACT
    ========================================================= */
 
 .tuto-header {
-  margin-bottom: 2rem;
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.tuto-header h1 {
-  margin-bottom: 1rem;
+.tuto-header-title {
+  display: block;
 }
 
-
-/* =========================================================
-   3. RÉFÉRENCE
-   ========================================================= */
-
-.tuto-reference {
-  margin: 0.25rem 0;
-}
-
-
-/* =========================================================
-   4. LISTE DES TUTORIELS
-   ========================================================= */
-
-.tuto-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.tuto-card {
+.tuto-code {
   display: block;
 
-  padding: 1rem;
+  margin-bottom: 0.15rem;
 
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
+  color: #7253ed;
 
-  text-decoration: none;
-
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.tuto-card:hover {
-  text-decoration: none;
-  border-color: #cbd5e1;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.tuto-card-code {
-  display: block;
-
-  margin-bottom: 0.25rem;
-
-  font-size: 0.85rem;
+  font-family: monospace;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
-.tuto-card-title {
-  display: block;
+.tuto-header h1 {
+  margin: 0;
 
-  font-size: 1rem;
+  font-size: 1.75rem;
+  line-height: 1.2;
 }
 
-.tuto-card-error {
-  color: #b00020;
+
+/* =========================================================
+   3. RÉFÉRENCES COMPACTES
+   ========================================================= */
+
+.tuto-references {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.2rem 0.9rem;
+
+  margin-top: 0.45rem;
+}
+
+.tuto-reference {
+  display: inline-flex;
+  align-items: baseline;
+
+  gap: 0.25rem;
+
+  min-width: 0;
+
+  color: #6b7280;
+
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.tuto-reference-label {
+  color: #374151;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.tuto-reference a {
+  color: #6b7280;
+
+  text-decoration: none;
+}
+
+.tuto-reference a:hover {
+  color: #7253ed;
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   4. OUTILS DE LECTURE
+   ========================================================= */
+
+.tuto-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 
@@ -136,6 +160,7 @@
 .tuto-page pre {
   max-width: 100%;
   overflow-x: auto;
+
   line-height: 1.5;
 }
 
@@ -172,107 +197,69 @@
 }
 
 
-
-
 /* =========================================================
-   10. OUTILS DE LECTURE
+   9. LISTE DES TUTORIELS
    ========================================================= */
 
-.tuto-tools {
+.tuto-list {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 
-  gap: 1rem;
-
-  margin-bottom: 2rem;
-
-  padding-bottom: 1rem;
-
-  border-bottom: 1px solid #e5e7eb;
+  gap: 0.75rem;
 }
 
+.tuto-card {
+  display: block;
 
-/* =========================================================
-   11. SÉLECTEUR DE VERSION
-   ========================================================= */
-
-.version-switcher {
-  margin-bottom: 2rem;
   padding: 1rem;
-  background-color: #f8f9fa;
-  border-left: 4px solid #7253ed;
-  border-radius: 4px;
 
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-.version-switcher span {
-  font-weight: 600;
-  font-size: 0.9em;
-  color: #495057;
-  margin-right: 10px;
-}
-
-.version-switcher a,
-.version-switcher button {
-  margin: 0;
-  padding: 0.4rem 0.7rem;
-
-  border: 1px solid #d9d9d9 !important;
-  border-radius: 0.35rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
 
   text-decoration: none;
-  cursor: pointer;
-  font-size: 0.9rem;
 
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-.version-switcher a:hover,
-.version-switcher button:hover {
+.tuto-card:hover {
   text-decoration: none;
 
-  border-color: #7253ed !important;
-  background: #f5f1ff !important;
-  color: #7253ed !important;
+  border-color: #cbd5e1;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.version-switcher a:focus,
-.version-switcher button:focus {
-  outline: 2px solid rgba(114, 83, 237, 0.25);
-  outline-offset: 2px;
-}
+.tuto-card-code {
+  display: block;
 
-.version-switcher a.active,
-.version-switcher button.active {
+  margin-bottom: 0.25rem;
+
+  font-size: 0.85rem;
   font-weight: 700;
-  background-color: #7253ed !important;
-  border-color: #7253ed !important;
-  color: #fff !important;
 }
 
-.version-switcher a.active:hover,
-.version-switcher button.active:hover {
-  background-color: #5f42d6 !important;
-  border-color: #5f42d6 !important;
-  color: #fff !important;
+.tuto-card-title {
+  display: block;
+
+  font-size: 1rem;
+}
+
+.tuto-card-error {
+  color: #b00020;
 }
 
 
 /* =========================================================
-   12. ÉTAPE SUIVANTE
+   10. NAVIGATION
    ========================================================= */
 
 .next-step {
-  margin: 0 0 1.5rem;
-  padding: 0.5rem 0;
+  margin: 2rem 0 1rem;
+
+  padding: 0.6rem 0;
+
   border-top: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -281,50 +268,64 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+
+  gap: 0.75rem;
 }
 
 .next-step-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+
+  gap: 0.35rem;
+
   max-width: 48%;
+
   color: #495057;
+
   text-decoration: none;
-  font-size: 0.85rem;
+
+  font-size: 0.8rem;
 }
 
 .next-step-link:hover {
   color: #7253ed;
+
   text-decoration: none;
 }
 
 .next-step-content {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+
+  gap: 0;
 }
 
 .next-step-label {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
+
   color: #9ca3af;
+
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .next-step-type {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+
   color: #6b7280;
 }
 
 .next-step-title {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+
   font-weight: 500;
 }
 
 .next-step-arrow {
   flex-shrink: 0;
-  font-size: 1rem;
+
+  font-size: 0.9rem;
+
   color: #9ca3af;
 }
 
@@ -338,6 +339,7 @@
 
 .next-step-link:not(.previous-step-link) {
   margin-left: auto;
+
   text-align: right;
 }
 
@@ -347,7 +349,7 @@
 
 
 /* =========================================================
-   13. RESPONSIVE TUTORIEL
+   11. MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
@@ -356,23 +358,45 @@
     max-width: 100%;
   }
 
-  .tuto-tools {
-    align-items: flex-start;
-    flex-direction: column;
+  .tuto-header {
+    margin-bottom: 1px;
+    padding-bottom: 1px;
   }
 
-  .version-switcher {
-    flex-wrap: wrap;
+  .tuto-code {
+    margin-bottom: 0.1rem;
+  }
+
+  .tuto-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .tuto-references {
+    flex-direction: column;
+
+    gap: 0.2rem;
+
+    margin-top: 0.35rem;
+  }
+
+  .tuto-tools {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    margin-bottom: 1rem;
   }
 
   .next-step-navigation {
     flex-direction: column;
+
     align-items: stretch;
   }
 
   .next-step-link {
     max-width: 100%;
     width: 100%;
+
     align-items: flex-start;
   }
 
@@ -383,4 +407,5 @@
   .next-step-type {
     white-space: normal;
   }
+
 }
