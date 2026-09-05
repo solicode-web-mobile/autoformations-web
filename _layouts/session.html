@@ -5,18 +5,12 @@ layout: default
 <div class="session-page">
 
   <!-- ==================================================
-       EN-TÊTE DE LA SESSION
+       EN-TÊTE
        ================================================== -->
 
   <header class="session-header">
 
     <h1>{{ page.title }}</h1>
-
-    {% if page.code %}
-      <p class="session-code">
-        <strong>Session :</strong> {{ page.code }}
-      </p>
-    {% endif %}
 
     {% if page.objectif %}
       <section class="session-section">
@@ -38,58 +32,40 @@ layout: default
 
 
   <!-- ==================================================
-       1. UNITÉS D'APPRENTISSAGE
+       UNITÉS D'APPRENTISSAGE
        ================================================== -->
 
-  <section class="session-section">
+  {% if page.uas and page.uas.size > 0 %}
 
-    <h2>Unités d'apprentissage</h2>
+    <section class="session-section">
 
-    {% if page.uas and page.uas.size > 0 %}
+      <h2>Unités d'apprentissage</h2>
 
       <div class="session-uas">
 
         {% for ua_code in page.uas %}
 
-          {% assign ua = site.uas | where: "code", ua_code | first %}
+          {% assign ua =
+            site.uas | where: "code", ua_code | first
+          %}
 
           {% if ua %}
 
             <article class="ua-card">
 
-              <header class="ua-card-header">
-
-                <h3>
-                  <a href="{{ ua.url | relative_url }}">
-                    {{ ua.code }} — {{ ua.title }}
-                  </a>
-                </h3>
-
-                {% if ua.competence %}
-                  <p>
-                    <strong>Compétence :</strong>
-                    {{ ua.competence }}
-                  </p>
-                {% endif %}
-
-                {% if ua.domaine %}
-                  <p>
-                    <strong>Domaine :</strong>
-                    {{ ua.domaine }}
-                  </p>
-                {% endif %}
-
-              </header>
+              <h3>
+                <a href="{{ ua.url | relative_url }}">
+                  {{ ua.code }} — {{ ua.title }}
+                </a>
+              </h3>
 
               {% if ua.objectif %}
-                <p class="ua-card-objective">
-                  {{ ua.objectif }}
-                </p>
+                <p>{{ ua.objectif }}</p>
               {% endif %}
 
               {% if ua.tutos and ua.tutos.size > 0 %}
 
-                <div class="ua-card-tutos">
+                <div class="ua-tutos">
 
                   <h4>Tutoriels</h4>
 
@@ -113,30 +89,28 @@ layout: default
 
       </div>
 
-    {% else %}
+    </section>
 
-      <p>Aucune unité d'apprentissage associée à cette session.</p>
-
-    {% endif %}
-
-  </section>
+  {% endif %}
 
 
   <!-- ==================================================
-       2. LABS
+       LABS
        ================================================== -->
 
-  <section class="session-section">
+  {% if page.labs and page.labs.size > 0 %}
 
-    <h2>Labs</h2>
+    <section class="session-section">
 
-    {% if page.activites and page.activites.labs and page.activites.labs.size > 0 %}
+      <h2>Labs</h2>
 
       <div class="activity-list">
 
-        {% for lab_code in page.activites.labs %}
+        {% for lab_code in page.labs %}
 
-          {% assign lab = site.labs | where: "code", lab_code | first %}
+          {% assign lab =
+            site.labs | where: "code", lab_code | first
+          %}
 
           {% if lab %}
 
@@ -166,31 +140,29 @@ layout: default
 
       </div>
 
-    {% else %}
+    </section>
 
-      <p>Aucun Lab associé à cette session.</p>
-
-    {% endif %}
-
-  </section>
+  {% endif %}
 
 
   <!-- ==================================================
-       3. PROTOTYPE
+       PROTOTYPE
        ================================================== -->
 
-  <section class="session-section">
+  {% if page.prototype and page.prototype.size > 0 %}
 
-    <h2>Prototype</h2>
+    <section class="session-section">
 
-    {% if page.activites and page.activites.prototypes and page.activites.prototypes.size > 0 %}
+      <h2>Prototype</h2>
 
       <div class="activity-list">
 
-        {% for prototype_code in page.activites.prototypes %}
+        {% for prototype_code in page.prototype %}
 
           {% assign prototype =
-            site.prototypes | where: "code", prototype_code | first
+            site.prototypes
+            | where: "code", prototype_code
+            | first
           %}
 
           {% if prototype %}
@@ -221,33 +193,29 @@ layout: default
 
       </div>
 
-    {% else %}
+    </section>
 
-      <p>Aucun prototype associé à cette session.</p>
-
-    {% endif %}
-
-  </section>
+  {% endif %}
 
 
   <!-- ==================================================
-       4. PROJET FIL ROUGE
+       PROJET FIL ROUGE
        ================================================== -->
 
-  <section class="session-section">
+  {% if page.projet_fil_rouge and page.projet_fil_rouge.size > 0 %}
 
-    <h2>Projet Fil Rouge</h2>
+    <section class="session-section">
 
-    {% if page.activites
-          and page.activites.projets_fil_rouge
-          and page.activites.projets_fil_rouge.size > 0 %}
+      <h2>Projet Fil Rouge</h2>
 
       <div class="activity-list">
 
-        {% for projet_code in page.activites.projets_fil_rouge %}
+        {% for projet_code in page.projet_fil_rouge %}
 
           {% assign projet =
-            site.projets | where: "code", projet_code | first
+            site.projets
+            | where: "code", projet_code
+            | first
           %}
 
           {% if projet %}
@@ -278,12 +246,8 @@ layout: default
 
       </div>
 
-    {% else %}
+    </section>
 
-      <p>Aucun Sprint Projet Fil Rouge associé à cette session.</p>
-
-    {% endif %}
-
-  </section>
+  {% endif %}
 
 </div>

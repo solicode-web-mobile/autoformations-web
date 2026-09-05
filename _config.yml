@@ -133,28 +133,28 @@ just_the_docs:
 
     competences:
       name: "Référentiel de compétences"
-      nav_exclude: true
+      nav_exclude: false
 
     missions:
       name: "Missions"
-      nav_exclude: true
+      nav_exclude: false
 
     uas:
       name: "Unités d'apprentissage"
-      nav_exclude: true
+      nav_exclude: false
 
     tutos:
       name: "Tutoriels"
-      nav_exclude: true
+      nav_exclude: false
 
     labs:
       name: "Labs"
-      nav_exclude: true
+      nav_exclude: false
 
     prototypes:
-      name: "Labs"
-      nav_exclude: true
+      name: "Prototypes"
+      nav_exclude: false
 
     projets:
-      name: "Labs"
-      nav_exclude: true
+      name: "Sprints"
+      nav_exclude: false
