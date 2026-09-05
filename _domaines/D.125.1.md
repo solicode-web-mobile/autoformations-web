@@ -1,5 +1,5 @@
 ---
-title: "D.125.1 — Structurer le code"
+title: "Structurer le code"
 layout: domaines
 code: "D.125.1"
 competence: "C.125"

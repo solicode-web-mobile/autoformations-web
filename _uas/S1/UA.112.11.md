@@ -1,5 +1,5 @@
 ---
-title: "UA.112.11 — Comprendre le rôle des données dans une application"
+title: "Comprendre le rôle des données dans une application"
 layout: ua
 code: "UA.112.11"
 competence: "C.112"

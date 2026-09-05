@@ -1,10 +1,11 @@
 /* =========================================================
    FORMATION WEB — SESSION
+   Jekyll + Just the Docs
    ========================================================= */
 
 
 /* =========================================================
-   1. STRUCTURE
+   1. PAGE
    ========================================================= */
 
 .session-page {
@@ -37,13 +38,13 @@
 
   margin-bottom: 0.5rem;
 
+  color: #7253ed;
+
   font-size: 0.75rem;
   font-weight: 700;
 
   text-transform: uppercase;
   letter-spacing: 0.05em;
-
-  color: #7253ed;
 }
 
 .session-header h1 {
@@ -75,14 +76,19 @@
    ========================================================= */
 
 .session-section {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
-.session-section-header {
-  margin-bottom: 1rem;
+.session-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  margin-bottom: 1.25rem;
 }
 
-.session-section-header h2 {
+.session-section-heading h2 {
+  margin-top: 0;
   margin-bottom: 0.25rem;
 }
 
@@ -90,7 +96,28 @@
   margin: 0;
 
   color: #6b7280;
+
   font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.session-section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f3f0ff;
+  color: #7253ed;
+
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 
@@ -99,10 +126,10 @@
    ========================================================= */
 
 .session-objective-section {
-  padding: 1.15rem 1.25rem;
+  padding: 1.25rem 1.35rem;
 
-  border-left: 3px solid #7253ed;
-  border-radius: 0 0.4rem 0.4rem 0;
+  border-left: 4px solid #7253ed;
+  border-radius: 0 0.5rem 0.5rem 0;
 
   background: #f8f9fa;
 }
@@ -113,6 +140,7 @@
 
 .session-objective {
   margin-bottom: 0;
+
   line-height: 1.7;
 }
 
@@ -127,22 +155,113 @@
 
 
 /* =========================================================
-   6. UNITÉS D'APPRENTISSAGE
+   6. PARCOURS
+   ========================================================= */
+
+.session-path-section {
+  position: relative;
+}
+
+
+/* =========================================================
+   7. PHASES
+   ========================================================= */
+
+.session-phase {
+  position: relative;
+
+  margin-top: 2rem;
+  padding-left: 3.25rem;
+}
+
+.session-phase::before {
+  content: "";
+
+  position: absolute;
+
+  top: 2.75rem;
+  bottom: -2rem;
+  left: 1rem;
+
+  width: 1px;
+
+  background: #e5e7eb;
+}
+
+.session-phase:last-child::before {
+  display: none;
+}
+
+.session-phase-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.session-phase-marker {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  border: 2px solid #7253ed;
+  border-radius: 50%;
+
+  background: #fff;
+  color: #7253ed;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  z-index: 1;
+}
+
+.session-phase-label {
+  display: block;
+
+  margin-bottom: 0.15rem;
+
+  color: #7253ed;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.session-phase-header h3 {
+  margin: 0;
+
+  font-size: 1.25rem;
+}
+
+
+/* =========================================================
+   8. UNITÉS D'APPRENTISSAGE
    ========================================================= */
 
 .session-uas {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 
 /* =========================================================
-   7. CARTE UA
+   9. CARTE UA
    ========================================================= */
 
 .ua-card {
-  margin-bottom: 0;
   padding: 1.25rem;
 
   border: 1px solid #e5e7eb;
@@ -153,6 +272,18 @@
 
 .ua-card-header {
   margin-bottom: 1rem;
+}
+
+.ua-card-code {
+  display: block;
+
+  margin-bottom: 0.35rem;
+
+  color: #7253ed;
+
+  font-family: monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .ua-card-header h3 {
@@ -169,15 +300,16 @@
 }
 
 .ua-card-objective {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 
   color: #374151;
+
   line-height: 1.6;
 }
 
 
 /* =========================================================
-   8. RÉFÉRENCES UA
+   10. RÉFÉRENCES UA
    ========================================================= */
 
 .ua-card-references {
@@ -190,8 +322,9 @@
 .ua-card-reference {
   margin: 0.25rem 0;
 
-  font-size: 0.88rem;
   color: #6b7280;
+
+  font-size: 0.88rem;
 }
 
 .ua-card-reference strong {
@@ -200,7 +333,7 @@
 
 
 /* =========================================================
-   9. TUTORIELS UA
+   11. TUTORIELS
    ========================================================= */
 
 .ua-card-tutos {
@@ -210,26 +343,54 @@
   border-top: 1px solid #e5e7eb;
 }
 
-.ua-card-tutos h4 {
-  margin-top: 0;
+.ua-card-tutos-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 0.75rem;
+
   margin-bottom: 0.75rem;
+}
+
+.ua-card-tutos-header h4 {
+  margin: 0;
 
   font-size: 1rem;
 }
 
+.ua-card-tutos-header span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 1.75rem;
+  height: 1.5rem;
+
+  padding: 0 0.4rem;
+
+  border-radius: 0.3rem;
+
+  background: #f3f0ff;
+  color: #7253ed;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
 
 /* =========================================================
-   10. ACTIVITÉS
+   12. ACTIVITÉS
    ========================================================= */
 
 .activity-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .activity-card {
-  padding: 1rem 1.1rem;
+  padding: 1.1rem 1.2rem;
 
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
@@ -237,16 +398,32 @@
   background: #fff;
 }
 
-.activity-card h3 {
+.activity-card-header {
+  margin-bottom: 1rem;
+}
+
+.activity-code {
+  display: block;
+
+  margin-bottom: 0.35rem;
+
+  color: #7253ed;
+
+  font-family: monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.activity-card h4 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
-.activity-card h3 a {
+.activity-card h4 a {
   text-decoration: none;
 }
 
-.activity-card h3 a:hover {
+.activity-card h4 a:hover {
   text-decoration: underline;
 }
 
@@ -258,7 +435,74 @@
 
 
 /* =========================================================
-   11. ERREURS
+   13. ACTIVITÉ — RÉALISATION
+   ========================================================= */
+
+.activity-card-featured {
+  padding: 1.25rem;
+
+  border-left: 4px solid #7253ed;
+}
+
+.activity-work {
+  margin-top: 1rem;
+  padding: 1rem;
+
+  border-radius: 0.4rem;
+
+  background: #f8f9fa;
+}
+
+.activity-work h5 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+
+  font-size: 0.9rem;
+}
+
+.activity-work p {
+  margin-bottom: 0;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   14. LIVRABLES
+   ========================================================= */
+
+.activity-deliverables {
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.activity-deliverables h5 {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+
+  font-size: 0.9rem;
+}
+
+.activity-deliverables ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.activity-deliverables li {
+  margin-bottom: 0.35rem;
+
+  line-height: 1.5;
+}
+
+.activity-deliverables li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   15. ERREURS
    ========================================================= */
 
 .content-error {
@@ -273,7 +517,7 @@
 
 
 /* =========================================================
-   12. MOBILE
+   16. MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
@@ -292,13 +536,33 @@
     align-self: flex-start;
   }
 
+  .session-section {
+    margin-top: 2rem;
+  }
+
   .session-objective-section {
     padding: 1rem;
+  }
+
+  .session-phase {
+    padding-left: 2.75rem;
+  }
+
+  .session-phase::before {
+    left: 0.85rem;
+  }
+
+  .session-phase-marker {
+    width: 1.75rem;
+    height: 1.75rem;
   }
 
   .ua-card {
     padding: 1rem;
   }
 
-}
+  .activity-card-featured {
+    padding: 1rem;
+  }
 
+}

@@ -1,5 +1,5 @@
 ---
-title: "D.125.2 — Déboguer et résoudre les erreurs"
+title: "Déboguer et résoudre les erreurs"
 layout: domaines
 code: "D.125.2"
 competence: "C.125"

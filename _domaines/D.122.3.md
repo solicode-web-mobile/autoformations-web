@@ -1,5 +1,5 @@
 ---
-title: "D.122.3 — Rendre l’interface interactive avec JavaScript"
+title: "Rendre l’interface interactive avec JavaScript"
 layout: domaines
 code: "D.122.3"
 competence: "C.122"

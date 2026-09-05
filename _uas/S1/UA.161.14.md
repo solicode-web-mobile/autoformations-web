@@ -1,5 +1,5 @@
 ---
-title: "UA.161.14 — Découvrir le métier de développeur"
+title: "Découvrir le métier de développeur"
 layout: ua
 code: "UA.161.14"
 competence: "C.161"

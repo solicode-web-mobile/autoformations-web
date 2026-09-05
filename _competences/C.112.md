@@ -1,5 +1,5 @@
 ---
-title: "C.112 — Modéliser les données"
+title: "Modéliser les données"
 layout: competences
 code: "C.112"
 niveau: "N1"

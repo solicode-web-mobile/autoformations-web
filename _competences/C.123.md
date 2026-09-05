@@ -1,5 +1,5 @@
 ---
-title: "C.123 — Réaliser le traitement serveur"
+title: "Réaliser le traitement serveur"
 layout: competences
 code: "C.123"
 niveau: "N1"

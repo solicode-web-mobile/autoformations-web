@@ -1,5 +1,5 @@
 ---
-title: "D.122.1 — Structurer une interface avec HTML"
+title: "Structurer une interface avec HTML"
 layout: domaines
 code: "D.122.1"
 competence: "C.122"

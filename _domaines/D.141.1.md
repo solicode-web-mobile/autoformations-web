@@ -1,5 +1,5 @@
 ---
-title: "D.141.1 — Déployer une application Web dans un environnement local"
+title: "Déployer une application Web dans un environnement local"
 layout: domaines
 code: "D.141.1"
 competence: "C.141"

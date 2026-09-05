@@ -1,7 +1,7 @@
 ---
-title: "Sprint 1 — Identifier le contexte et les acteurs de projet fil rouge"
+title: "Identifier le contexte et les acteurs de projet fil rouge"
 layout: projet-fil-rouge
-code: "PFR.S1"
+code: "Sprint 1"
 session: "S1"
 
 travail_a_faire: >

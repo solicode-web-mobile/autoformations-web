@@ -1,5 +1,5 @@
 ---
-title: "D.111.1 — Analyser et formaliser un besoin fonctionnel existant"
+title: "Analyser et formaliser un besoin fonctionnel existant"
 layout: domaines
 code: "D.111.1"
 competence: "C.111"

@@ -1,5 +1,5 @@
 ---
-title: "C.161 — Veille technologique"
+title: "Veille technologique"
 layout: competences
 code: "C.161"
 niveau: "N1"

@@ -1,5 +1,5 @@
 ---
-title: "UA.121.11 — Manipuler les variables et les entrées-sorties"
+title: "Manipuler les variables et les entrées-sorties"
 layout: ua
 code: "UA.121.11"
 competence: "C.121"

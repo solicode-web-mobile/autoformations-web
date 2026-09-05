@@ -1,5 +1,5 @@
 ---
-title: "D.131.1 — Vérifier le fonctionnement d’une solution"
+title: "Vérifier le fonctionnement d’une solution"
 layout: domaines
 code: "D.131.1"
 competence: "C.131"

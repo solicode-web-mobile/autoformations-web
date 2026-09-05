@@ -1,5 +1,5 @@
 ---
-title: "UA.161.11 — Partager un document Google Docs"
+title: "Partager un document Google Docs"
 layout: ua
 code: "UA.161.11"
 competence: "C.161"

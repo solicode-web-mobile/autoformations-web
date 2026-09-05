@@ -1,5 +1,5 @@
 ---
-title: "D.124.1 — Interroger une base de données avec SQL"
+title: "Interroger une base de données avec SQL"
 layout: domaines
 code: "D.124.1"
 competence: "C.124"

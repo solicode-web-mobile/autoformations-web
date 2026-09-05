@@ -1,5 +1,5 @@
 ---
-title: "UA.161.13 — Découvrir les langages du Web"
+title: "Découvrir les langages du Web"
 layout: ua
 code: "UA.161.13"
 competence: "C.161"

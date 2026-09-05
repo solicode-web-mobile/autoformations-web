@@ -1,5 +1,5 @@
 ---
-title: "C.131 — Vérifier une solution"
+title: "Vérifier une solution"
 layout: competences
 code: "C.131"
 niveau: "N1"

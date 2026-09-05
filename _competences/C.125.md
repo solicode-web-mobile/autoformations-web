@@ -1,5 +1,5 @@
 ---
-title: "C.125 — Structurer et déboguer une solution"
+title: "Structurer et déboguer une solution"
 layout: competences
 code: "C.125"
 niveau: "N1"

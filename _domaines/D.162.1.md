@@ -1,5 +1,5 @@
 ---
-title: "D.162.1 — Apprendre avec la pédagogie active"
+title: "Apprendre avec la pédagogie active"
 layout: domaines
 code: "D.162.1"
 competence: "C.162"

@@ -1,5 +1,5 @@
 ---
-title: "D.161.1 — Technologies de développement"
+title: "Technologies de développement"
 layout: domaines
 code: "D.161.1"
 competence: "C.161"

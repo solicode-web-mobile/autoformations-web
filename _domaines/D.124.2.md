@@ -1,5 +1,5 @@
 ---
-title: "D.124.2 — Exploiter les résultats et les données dans l’application"
+title: "Exploiter les résultats et les données dans l’application"
 layout: domaines
 code: "D.124.2"
 competence: "C.124"

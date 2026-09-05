@@ -1,5 +1,5 @@
 ---
-title: "C.124 — Exploiter les données"
+title: "Exploiter les données"
 layout: competences
 code: "C.124"
 niveau: "N1"

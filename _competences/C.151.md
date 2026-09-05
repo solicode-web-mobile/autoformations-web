@@ -1,5 +1,5 @@
 ---
-title: "C.151 — Versionner son propre travail"
+title: "Versionner son propre travail"
 layout: competences
 code: "C.151"
 niveau: "N1"

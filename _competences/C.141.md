@@ -1,5 +1,5 @@
 ---
-title: "C.141 — Mettre une application en service localement"
+title: "Mettre une application en service localement"
 layout: competences
 code: "C.141"
 niveau: "N1"

@@ -1,5 +1,5 @@
 ---
-title: "UA.161.12 — Découvrir Web et Internet"
+title: "Découvrir Web et Internet"
 layout: ua
 code: "UA.161.12"
 competence: "C.161"

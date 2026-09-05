@@ -1,5 +1,5 @@
 ---
-title: "UA.111.11 — Identifier le contexte et les acteurs"
+title: "Identifier le contexte et les acteurs"
 layout: ua
 code: "UA.111.11"
 competence: "C.111"

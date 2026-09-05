@@ -1,5 +1,5 @@
 ---
-title: "D.151.1 — Versionner et synchroniser son travail avec Git"
+title: "Versionner et synchroniser son travail avec Git"
 layout: domaines
 code: "D.151.1"
 competence: "C.151"

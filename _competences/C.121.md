@@ -1,5 +1,5 @@
 ---
-title: "C.121 — Construire le traitement logique"
+title: "Construire le traitement logique"
 layout: competences
 code: "C.121"
 niveau: "N1"

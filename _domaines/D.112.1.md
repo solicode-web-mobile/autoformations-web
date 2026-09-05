@@ -1,5 +1,5 @@
 ---
-title: "D.112.1 — Modéliser les données"
+title: "Modéliser les données"
 layout: domaines
 code: "D.112.1"
 competence: "C.112"

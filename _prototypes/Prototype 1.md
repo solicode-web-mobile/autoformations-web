@@ -1,7 +1,7 @@
 ---
-title: "Prototype 1 — Identifier le contexte et les acteurs du Portfolio"
+title: "Identifier le contexte et les acteurs du Portfolio"
 layout: prototype
-code: "P.S1"
+code: "Prototype 1"
 session: "S1"
 
 travail_a_faire: >

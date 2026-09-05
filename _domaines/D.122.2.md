@@ -1,5 +1,5 @@
 ---
-title: "D.122.2 — Mettre en forme une interface avec CSS"
+title: "Mettre en forme une interface avec CSS"
 layout: domaines
 code: "D.122.2"
 competence: "C.122"

@@ -1,5 +1,5 @@
 ---
-title: "UA.162.11 — Apprendre à Solicode"
+title: "Apprendre à Solicode"
 layout: ua
 code: "UA.162.11"
 competence: "C.162"

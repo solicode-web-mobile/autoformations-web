@@ -1,5 +1,5 @@
 ---
-title: "D.121.1 — Construire le traitement logique"
+title: "Construire le traitement logique"
 layout: domaines
 code: "D.121.1"
 competence: "C.121"

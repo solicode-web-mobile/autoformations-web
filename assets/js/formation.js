@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
    */
 
   const content =
-    document.querySelector(".tuto-page");
+    document.querySelector(".tuto-page, .session-page");
 
 
   if (!content) {

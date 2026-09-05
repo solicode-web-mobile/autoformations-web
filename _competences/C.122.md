@@ -1,5 +1,5 @@
 ---
-title: "C.122 — Construire l’interface"
+title: "Construire l’interface"
 layout: competences
 code: "C.122"
 niveau: "N1"

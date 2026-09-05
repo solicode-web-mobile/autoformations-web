@@ -1,5 +1,5 @@
 ---
-title: "C.152 — Organiser et rendre visible son travail"
+title: "Organiser et rendre visible son travail"
 layout: competences
 code: "C.152"
 niveau: "N1"

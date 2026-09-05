@@ -1,5 +1,5 @@
 ---
-title: "D.152.2 — Organiser et rendre visible son travail"
+title: "Organiser et rendre visible son travail"
 layout: domaines
 code: "D.152.2"
 competence: "C.152"

@@ -1,5 +1,5 @@
 ---
-title: "D.123.1 — Programmer des traitements serveur avec PHP"
+title: "Programmer des traitements serveur avec PHP"
 layout: domaines
 code: "D.123.1"
 competence: "C.123"
