@@ -1,13 +1,14 @@
 ---
-title: Langages du Web
-layout: tutorial
-nav_order: 3
-parent: S1. Veille technologique
-permalink: /premiers-pas-web/langages-du-web/
-version : normal
-domaine_code : D.161.1
-domaine_title: Technologies de développement
+title: "Langages du Web"
+layout: tuto
+slug: "langages-du-web"
+permalink: /tutos/:slug/
+tuto_id: "T.161.131"
+version: "normal"
+ua: "UA.161.13"
 ---
+
+
 
 # Veille — Découvrir les langages du Web
 

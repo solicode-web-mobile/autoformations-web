@@ -1,13 +1,13 @@
 ---
-title: Métier de développeur
-layout: tutorial
-nav_order: 4
-parent: S1. Veille technologique
-permalink: /premiers-pas-web/métier-développeur/
-version : normal
-domaine_code : D.161.1
-domaine_title: Technologies de développement
+title: "Métier de développeur"
+layout: tuto
+slug: "métier-développeur"
+permalink: /tutos/:slug/
+tuto_id: "T.161.141"
+version: "normal"
+ua: "UA.161.14"
 ---
+
 
 # Veille — Découvrir le métier de développeur
 

@@ -53,9 +53,7 @@ layout: default
   {% if content != "" %}
 
     <section class="domaine-section">
-
       {{ content }}
-
     </section>
 
   {% endif %}
@@ -102,11 +100,9 @@ layout: default
           <article class="ua-card">
 
             <h3>
-
               <a href="{{ ua.url | relative_url }}">
-                 {{ ua.title }}
+                {{ ua.title }}
               </a>
-
             </h3>
 
             {% if ua.objectif %}
@@ -122,13 +118,18 @@ layout: default
                  TUTORIELS DE L'UA
                  ========================================== -->
 
-            {% if ua.tutos and ua.tutos.size > 0 %}
+            {% assign ua_tutos =
+              site.tutos
+              | where: "ua", ua.code
+            %}
+
+            {% if ua_tutos.size > 0 %}
 
               <div class="ua-card-tutos">
 
                 <h4>Tutoriels</h4>
 
-                {% include tuto-list.html tutos=ua.tutos %}
+                {% include tuto-list.html tutos=ua_tutos %}
 
               </div>
 
@@ -160,11 +161,6 @@ layout: default
     <h2>Sessions</h2>
 
     {% assign domaine_session_codes = "" | split: "," %}
-
-
-    <!-- ==========================================
-         Identifier les UA du domaine
-         ========================================== -->
 
     {% assign domaine_uas =
       site.uas
@@ -204,7 +200,7 @@ layout: default
 
 
     <!-- ==========================================
-         Affichage
+         Affichage des Sessions
          ========================================== -->
 
     {% if domaine_session_codes.size > 0 %}
@@ -224,11 +220,9 @@ layout: default
             <article class="activity-card">
 
               <h3>
-
                 <a href="{{ session.url | relative_url }}">
-                   {{ session.title }}
+                  {{ session.title }}
                 </a>
-
               </h3>
 
               {% if session.objectif %}

@@ -2,8 +2,9 @@
 title: "Identifier le contexte et les acteurs"
 layout: tuto
 slug: "identifier-contexte-acteurs"
-permalink: /tutos/:slug/
+permalink: /tutos/:slug/compact
 version: "compact"
+tuto_id: "T.111.111"
 ua: "UA.111.11"
 ---
 

@@ -1,13 +1,14 @@
 ---
-title: Web et Internet
-layout: tutorial
-nav_order: 2
-parent: S1. Veille technologique
-permalink: /premiers-pas-web/web-internet/
-version : normal
-domaine_code : D.161.1
-domaine_title: Technologies de développement
+title: "Web et Internet"
+layout: tuto
+slug: "web-internet"
+permalink: /tutos/:slug/
+tuto_id: "T.161.121"
+version: "normal"
+ua: "UA.161.12"
 ---
+
+
 
 # Veille — Découvrir le Web et Internet
 
