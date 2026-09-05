@@ -2,12 +2,13 @@
 title: "Découvrir le Web et Internet"
 layout: tuto
 slug: "web-internet"
-permalink: /tutos/:slug/
+permalink: /tutos/:slug/compact
 tuto_id: "T.161.121"
-version: "normal"
+version: "compact"
 ua: "UA.161.12"
 nav_order: 1
 ---
+
 
 Comprendre Internet, le Web, le navigateur, le site Web et l’application Web.
 
@@ -17,7 +18,7 @@ Comprendre Internet, le Web, le navigateur, le site Web et l’application Web.
 
 ## 1.1. Internet
 
-**Internet** est un réseau mondial qui permet aux appareils de communiquer et d’échanger des informations.
+**Internet** est un réseau mondial qui permet aux appareils de communiquer.
 
 **Exemple :** un ordinateur utilise Internet pour accéder à un site Web.
 
@@ -37,21 +38,19 @@ Un **navigateur Web** est un logiciel qui permet d’accéder au Web.
 
 Un **site Web** est un ensemble de pages Web liées entre elles.
 
-**Exemple :** un site peut contenir une page d’accueil, une page de contact et des pages d’articles.
+**Exemple :** une page d’accueil, une page de contact et des pages d’articles.
 
 ## 1.5. L’application Web
 
 Une **application Web** est un logiciel accessible avec un navigateur.
 
-Elle permet à l’utilisateur de réaliser des actions.
-
-**Exemple :** une application Web permet d’envoyer un message ou de gérer une commande.
+**Exemple :** envoyer un message ou gérer une commande.
 
 ## 1.6. À retenir
 
-* **Internet** : le réseau qui relie les appareils.
-* **Web** : un service qui utilise Internet.
-* **Navigateur** : logiciel utilisé pour accéder au Web.
+* **Internet** : réseau qui relie les appareils.
+* **Web** : service qui utilise Internet.
+* **Navigateur** : logiciel pour accéder au Web.
 * **Site Web** : ensemble de pages Web.
 * **Application Web** : logiciel accessible avec un navigateur.
 
@@ -160,7 +159,7 @@ Les autres apprenants peuvent consulter votre présentation et vous pouvez expli
 # 4. Glossaire
 
 * **Internet** : réseau mondial qui permet aux appareils de communiquer.
-* **Web** : service qui utilise Internet pour accéder à des pages et des applications.
+* **Web** : service qui utilise Internet.
 * **Navigateur** : logiciel utilisé pour accéder au Web.
 * **Page Web** : contenu affiché dans un navigateur.
 * **Site Web** : ensemble de pages Web liées entre elles.

@@ -2,51 +2,61 @@
 
 ## 1. Objectif
 
-Produire un **tutoriel technique N1** simple et guidé permettant de **comprendre puis reproduire** une réalisation.
+Produire un **tutoriel technique N1** simple, guidé et directement réalisable.
 
-Le tutoriel doit exister en **3 niveaux de lecture** :
+Le tutoriel existe en **3 versions** :
 
-* **Compact** : comprendre rapidement l’essentiel.
-* **Normal** : comprendre et réaliser. C’est la version principale.
-* **Détaillé** : approfondir lorsqu’une explication supplémentaire est nécessaire.
+* **Compact** : essentiel.
+* **Normal** : réalisation complète et version de référence.
+* **Détaillé** : mêmes contenus et mêmes étapes, avec plus d’explications.
 
-Les trois versions doivent rester **strictement cohérentes** : mêmes données, mêmes notions, même réalisation et même objectif. Seule la profondeur d’explication change.
+Les trois versions sont **strictement cohérentes** : mêmes données, notions, objectif, réalisation, livrable et étapes.
 
-## 2. Entrées
+## 2. Données de référence
 
-S’appuyer sur les données validées :
+S’appuyer sur les données validées : **Session, Sprint, UA, prérequis, notions, réalisation, livrable, Projet** si nécessaire.
 
-**Session, Sprint, UA, prérequis, notions, réalisation, livrable, Projet** si nécessaire.
+Ne jamais modifier, fusionner, supprimer ou renommer une donnée validée.
 
-**Ne jamais modifier ces données.**
+Respecter :
 
-## 3. Principe
+**Compétence → Domaine → UA → Sprint → Session → Projet**
 
-**Comprendre → Reproduire → Tester → Présenter**
+## 3. Principe N1
 
-Le N1 suit :
+Privilégier :
 
-**Je vois → Je comprends → Je reproduis.**
+**Je vois → Je comprends → Je reproduis**
 
-Les trois niveaux de lecture répondent au même principe :
+La pratique suit les besoins de l’activité : **comprendre, reproduire, tester**, puis réaliser l’action d’évaluation ou de restitution prévue par **Active LMS**.
 
-**Compact → découvrir rapidement**
-**Normal → apprendre et réaliser**
-**Détaillé → approfondir et résoudre une difficulté**
+Cette action peut être une **présentation, un live coding ou une autre modalité définie par l’application**.
 
-## 4. Structure obligatoire
+Ne jamais imposer une modalité non prévue.
 
-Chaque tutoriel doit respecter la structure suivante :
+## 4. Template obligatoire
+
+Utiliser exactement le template suivant pour les trois versions :
 
 ```markdown
-# Tutoriel — [Titre]
+---
+title: "[Titre]"
+layout: tuto
+slug: "[slug]"
+permalink: /tutos/:slug/[version]
+tuto_id: "[Code tutoriel]"
+version: "[compact|normal|detaille]"
+ua: "[Code UA]"
+nav_order: [ordre]
+---
 
-> - C.[Code compétence] — [Nom compétence] / D.[Code domaine] — [Nom domaine]
-> - UA.[Code unité d’apprentissage] — [Nom unité d’apprentissage]
+## 1. Objectif
 
-[Objectif : 1–2 phrases maximum.]
+[Objectif en 1–2 phrases.]
 
-**Prérequis** : [Très compact.]
+## 2. Prérequis
+
+[Prérequis très courts.]
 
 # Partie 1 — Théorie
 
@@ -91,190 +101,146 @@ Chaque tutoriel doit respecter la structure suivante :
 
 # 3. Bilan
 
-**Vous avez réalisé :** [résumé.]
+**Vous avez réalisé :**
 
-**Vous savez maintenant :** [capacités.]
+[Résumé.]
+
+**Vous savez maintenant :**
+
+- [Capacité]
+- [Capacité]
 
 # 4. Glossaire
 
 - **Terme** : définition simple.
 ```
 
-La structure reste identique pour les trois niveaux. La quantité et la profondeur des explications varient.
+Le template doit être conservé. Ne pas ajouter de sections sans nécessité pédagogique.
 
-## 5. Niveaux de lecture
+## 5. Versions
 
-### 5.1. Version Compacte
+### Compact
 
-Objectif : **comprendre rapidement avant d’agir**.
-
-La version compacte doit contenir uniquement les informations indispensables :
+Contient uniquement l’essentiel :
 
 **notion → exemple → action → résultat**
 
-Règles :
+Texte court, consignes directes, explications minimales.
 
-* très courte ;
-* phrases très simples ;
-* une idée par phrase ;
-* uniquement les notions nécessaires ;
-* peu ou pas d'explications secondaires ;
-* étapes regroupées lorsque cela reste clair.
+### Normal
 
-La version compacte doit permettre de répondre rapidement à :
+Version de référence.
 
-> **Qu’est-ce que je dois comprendre ? Que dois-je faire ? Quel résultat dois-je obtenir ?**
-
-### 5.2. Version Normale
-
-Objectif : **apprendre et réaliser**.
-
-C’est la **version de référence** du tutoriel.
-
-Elle contient :
+Contient tout ce qui est nécessaire pour réaliser l’activité :
 
 **explication → exemple → étapes → code → résultat**
 
-Règles :
+### Détaillé
 
-* explications courtes ;
-* toutes les étapes nécessaires ;
-* exemples simples ;
-* code directement utilisable ;
-* explication minimale du code ;
-* résultat observable.
+Reprend **exactement la même structure et les mêmes étapes** que la version normale.
 
-Un débutant doit pouvoir réaliser le travail avec cette version.
+Elle développe seulement les explications utiles :
 
-### 5.3. Version Détaillée
+* pourquoi ;
+* comment ;
+* points importants ;
+* erreurs fréquentes ;
+* exemples complémentaires.
 
-Objectif : **approfondir une notion ou résoudre une difficulté**.
+**Interdiction d’ajouter une étape, une activité, une réalisation, un livrable ou une notion avancée.**
 
-Elle conserve exactement le même objectif et la même réalisation, mais ajoute les explications utiles.
+## 6. Théorie
 
-Elle peut préciser :
+Pour chaque notion :
 
-* pourquoi utiliser cette solution ;
-* comment elle fonctionne ;
-* les points importants du code ;
-* les erreurs fréquentes ;
-* les cas simples à connaître ;
-* des exemples supplémentaires ;
-* les liens entre les notions.
+**Définition → Exemple → À retenir**
 
-La version détaillée ne doit pas introduire de notion avancée qui n’est pas nécessaire à l’UA.
+La théorie doit être courte et directement utile à la pratique.
 
-## 6. Règles
+**Compact** : essentiel.
+**Normal** : nécessaire à la réalisation.
+**Détaillé** : compréhension approfondie.
 
-### Théorie
+## 7. Pratique
 
-Pour les trois versions :
+La pratique est :
 
-**Définition → exemple → idée à retenir**
+**progressive → guidée → exécutable → adaptée au N1**
 
-La théorie reste courte et directement liée à la réalisation.
+Une étape = **une action principale**.
 
-La profondeur évolue ainsi :
+Utiliser des verbes d’action :
 
-**Compact : essentiel**
-**Normal : nécessaire pour réaliser**
-**Détaillé : compréhension approfondie**
-
-### Pratique
-
-La pratique doit être :
-
-* progressive ;
-* guidée ;
-* exécutable ;
-* adaptée au N1.
-
-**Une action principale par étape.**
-
-Utiliser des titres d’action :
-
-*Créer, Ajouter, Modifier, Lancer, Tester, Partager…*
+**Créer, Ajouter, Modifier, Ouvrir, Lancer, Tester, Vérifier, Partager…**
 
 Pour le code :
 
-**fichier → action → code → explication → résultat**
+**Fichier → Action → Code → Explication → Résultat**
 
-### Présentation
+La version détaillée peut expliquer davantage une étape, mais ne doit pas la découper.
 
-Si une présentation est prévue dans l’activité, elle fait partie de la pratique.
+## 8. Résultat et évaluation
 
-Indiquer précisément :
+Le résultat attendu doit être **observable, concret et vérifiable** lorsque nécessaire.
 
-* le nombre de slides ;
-* le contenu ;
-* les règles demandées.
+La modalité de restitution ou d’évaluation dépend de l’activité définie par **Active LMS** : présentation, live coding ou autre modalité prévue.
 
-Ne jamais ajouter une présentation si elle n’est pas prévue.
+Ne jamais inventer cette modalité.
 
-### Résultat
-
-Chaque réalisation importante doit avoir, lorsque nécessaire, un résultat **observable et concret**.
-
-### Cohérence entre les niveaux
-
-Contrôler que les trois versions utilisent exactement :
-
-**les mêmes données → les mêmes notions → la même réalisation → le même livrable**
-
-Une version ne doit pas contredire ou modifier une autre.
-
-### Cohérence pédagogique
+## 9. Cohérence
 
 Contrôler :
 
 **Prérequis → Notions → Étapes → Réalisation → Livrable**
 
-Toute notion utilisée doit être connue, introduite ou prévue dans l’UA.
+Et entre les versions :
 
-Signaler toute incohérence.
+**Même données → mêmes notions → mêmes étapes → même réalisation → même livrable → même objectif**
 
-### Niveau N1
+Aucune version ne doit modifier le parcours.
 
-Privilégier :
+## 10. N1 et français
+
+N1 :
 
 **Observation → Compréhension → Imitation → Reproduction**
 
-Partir du simple vers le complexe.
-
-Limiter la créativité.
-
-Ne pas ajouter de notion avancée inutile.
-
-### Français
+Privilégier le simple, limiter la créativité et éviter les notions avancées inutiles.
 
 Français **A1–A2**, préférence A1 :
 
-* phrases courtes ;
-* mots simples ;
-* une idée par phrase ;
-* verbes d’action ;
-* consignes directes.
+**phrases courtes, mots simples, une idée par phrase, verbes d’action, consignes directes.**
 
-La version détaillée peut être plus longue, mais le français reste simple.
+La version détaillée peut être plus longue, mais reste simple.
 
-### Exemples
+## 11. Glossaire
+
+Prévoir un glossaire lorsque plusieurs termes techniques nouveaux sont utilisés.
+
+Format :
+
+```text
+- **Terme** : définition simple.
+```
+
+## 12. Exemples
 
 Utiliser des exemples neutres.
 
-Ne pas utiliser **« Spartel Dev Academy »** dans les exemples, sauf demande explicite.
+Ne pas utiliser **« Spartel Dev Academy »** sauf demande explicite.
 
-## 7. Contrôle final
+## 13. Contrôle final
 
 Vérifier :
 
-**UA respectée, prérequis respectés, notions cohérentes, trois niveaux cohérents, théorie compacte, étapes exécutables, résultats observables, livrable concret, glossaire adapté, français simple, aucune notion inutile.**
+**UA, prérequis, notions, structure, étapes, réalisation, livrable, résultat, glossaire, français et cohérence des trois versions.**
 
-Vérifier également :
+Contrôle spécifique :
 
 **Compact = essentiel**
 **Normal = réalisation complète**
-**Détaillé = approfondissement**
+**Détaillé = mêmes étapes + plus d’explications**
 
-## 8. Règle finale
+## 14. Règle fondamentale
 
-> **Un bon tutoriel N1 permet à un débutant de comprendre rapidement une notion, de réaliser une activité et de présenter son travail. Les trois niveaux de lecture permettent de choisir la profondeur nécessaire sans changer l’apprentissage.**
+> **Les trois versions sont trois niveaux de lecture d’un même tutoriel. Le texte évolue, mais l’apprentissage, les étapes, la réalisation, le livrable et l’objectif restent identiques.**
