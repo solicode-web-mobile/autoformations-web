@@ -4,181 +4,286 @@ layout: default
 
 <div class="session-page">
 
-  <!-- ============================= -->
-  <!-- En-tête de la session        -->
-  <!-- ============================= -->
+  <!-- ==================================================
+       EN-TÊTE DE LA SESSION
+       ================================================== -->
 
   <header class="session-header">
 
     <h1>{{ page.title }}</h1>
 
-    {% if page.objectif %}
-      <p class="session-objective">
-        <strong>Objectif :</strong>
-        {{ page.objectif }}
+    {% if page.code %}
+      <p class="session-code">
+        <strong>Session :</strong> {{ page.code }}
       </p>
     {% endif %}
 
+    {% if page.objectif %}
+      <section class="session-section">
+        <h2>Objectif</h2>
+        <p>{{ page.objectif }}</p>
+      </section>
+    {% endif %}
+
     {% if page.description %}
-      <div class="session-description">
-        {{ page.description | markdownify }}
-      </div>
+      <section class="session-section">
+        <h2>Description</h2>
+        <div>
+          {{ page.description | markdownify }}
+        </div>
+      </section>
     {% endif %}
 
   </header>
 
 
-  <!-- ============================= -->
-  <!-- UA de la session             -->
-  <!-- ============================= -->
+  <!-- ==================================================
+       1. UNITÉS D'APPRENTISSAGE
+       ================================================== -->
 
-  <section class="session-uas">
+  <section class="session-section">
 
     <h2>Unités d'apprentissage</h2>
 
-    {% assign session_code = page.code %}
+    {% if page.uas and page.uas.size > 0 %}
 
-    {% assign session_uas = site.uas | where: "session", session_code %}
+      <div class="session-uas">
 
-    {% if session_uas.size > 0 %}
+        {% for ua_code in page.uas %}
 
-      {% for ua in session_uas %}
+          {% assign ua = site.uas | where: "code", ua_code | first %}
 
-        <article class="ua-card">
+          {% if ua %}
 
-          <!-- UA -->
-          <header class="ua-header">
+            <article class="ua-card">
 
-            <h3>
-              <a href="{{ ua.url | relative_url }}">
-                {{ ua.code }} — {{ ua.title }}
-              </a>
-            </h3>
+              <header class="ua-card-header">
 
-            <div class="ua-meta">
-
-              {% if ua.competence %}
-                <span>
-                  {{ ua.competence }}
-                </span>
-              {% endif %}
-
-              {% if ua.domaine %}
-                <span>
-                  {{ ua.domaine }}
-                </span>
-              {% endif %}
-
-            </div>
-
-          </header>
-
-
-          <!-- Objectif UA -->
-          {% if ua.objectif %}
-            <p class="ua-objective">
-              {{ ua.objectif }}
-            </p>
-          {% endif %}
-
-
-          <!-- ============================= -->
-          <!-- Tutoriels de l'UA             -->
-          <!-- ============================= -->
-
-          {% if ua.tutos and ua.tutos.size > 0 %}
-
-            <div class="ua-tutos">
-
-              <h4>Tutoriels</h4>
-
-              {% for tuto_code in ua.tutos %}
-
-                {% assign tuto_versions = site.tutos | where: "tuto_id", tuto_code %}
-
-                {% assign tuto_normal = tuto_versions | where: "version", "normal" | first %}
-                {% assign tuto_compact = tuto_versions | where: "version", "compact" | first %}
-                {% assign tuto_detaille = tuto_versions | where: "version", "detaille" | first %}
-
-                {% if tuto_normal %}
-
-                  <a
-                    class="tuto-card"
-                    href="{{ tuto_normal.url | relative_url }}"
-                    data-tuto-link
-
-                    data-normal-url="{{ tuto_normal.url | relative_url }}"
-
-                    data-compact-url="{% if tuto_compact %}{{ tuto_compact.url | relative_url }}{% endif %}"
-
-                    data-detaille-url="{% if tuto_detaille %}{{ tuto_detaille.url | relative_url }}{% endif %}"
-                  >
-
-                    <div class="tuto-card-code">
-                      {{ tuto_code }}
-                    </div>
-
-                    <div class="tuto-card-title">
-                      {{ tuto_normal.title }}
-                    </div>
-
+                <h3>
+                  <a href="{{ ua.url | relative_url }}">
+                    {{ ua.code }} — {{ ua.title }}
                   </a>
+                </h3>
 
+                {% if ua.competence %}
+                  <p>
+                    <strong>Compétence :</strong>
+                    {{ ua.competence }}
+                  </p>
                 {% endif %}
 
-              {% endfor %}
+                {% if ua.domaine %}
+                  <p>
+                    <strong>Domaine :</strong>
+                    {{ ua.domaine }}
+                  </p>
+                {% endif %}
 
-            </div>
+              </header>
+
+              {% if ua.objectif %}
+                <p class="ua-card-objective">
+                  {{ ua.objectif }}
+                </p>
+              {% endif %}
+
+              {% if ua.tutos and ua.tutos.size > 0 %}
+
+                <div class="ua-card-tutos">
+
+                  <h4>Tutoriels</h4>
+
+                  {% include tuto-list.html tutos=ua.tutos %}
+
+                </div>
+
+              {% endif %}
+
+            </article>
+
+          {% else %}
+
+            <p class="content-error">
+              UA introuvable : {{ ua_code }}
+            </p>
 
           {% endif %}
 
-        </article>
+        {% endfor %}
 
-      {% endfor %}
+      </div>
 
     {% else %}
 
-      <p>
-        Aucune unité d'apprentissage n'est encore associée à cette session.
-      </p>
+      <p>Aucune unité d'apprentissage associée à cette session.</p>
+
+    {% endif %}
+
+  </section>
+
+
+  <!-- ==================================================
+       2. LABS
+       ================================================== -->
+
+  <section class="session-section">
+
+    <h2>Labs</h2>
+
+    {% if page.activites and page.activites.labs and page.activites.labs.size > 0 %}
+
+      <div class="activity-list">
+
+        {% for lab_code in page.activites.labs %}
+
+          {% assign lab = site.labs | where: "code", lab_code | first %}
+
+          {% if lab %}
+
+            <article class="activity-card">
+
+              <h3>
+                <a href="{{ lab.url | relative_url }}">
+                  {{ lab.code }} — {{ lab.title }}
+                </a>
+              </h3>
+
+              {% if lab.objectif %}
+                <p>{{ lab.objectif }}</p>
+              {% endif %}
+
+            </article>
+
+          {% else %}
+
+            <p class="content-error">
+              Lab introuvable : {{ lab_code }}
+            </p>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+
+      <p>Aucun Lab associé à cette session.</p>
+
+    {% endif %}
+
+  </section>
+
+
+  <!-- ==================================================
+       3. PROTOTYPE
+       ================================================== -->
+
+  <section class="session-section">
+
+    <h2>Prototype</h2>
+
+    {% if page.activites and page.activites.prototypes and page.activites.prototypes.size > 0 %}
+
+      <div class="activity-list">
+
+        {% for prototype_code in page.activites.prototypes %}
+
+          {% assign prototype =
+            site.prototypes | where: "code", prototype_code | first
+          %}
+
+          {% if prototype %}
+
+            <article class="activity-card">
+
+              <h3>
+                <a href="{{ prototype.url | relative_url }}">
+                  {{ prototype.code }} — {{ prototype.title }}
+                </a>
+              </h3>
+
+              {% if prototype.objectif %}
+                <p>{{ prototype.objectif }}</p>
+              {% endif %}
+
+            </article>
+
+          {% else %}
+
+            <p class="content-error">
+              Prototype introuvable : {{ prototype_code }}
+            </p>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+
+      <p>Aucun prototype associé à cette session.</p>
+
+    {% endif %}
+
+  </section>
+
+
+  <!-- ==================================================
+       4. PROJET FIL ROUGE
+       ================================================== -->
+
+  <section class="session-section">
+
+    <h2>Projet Fil Rouge</h2>
+
+    {% if page.activites
+          and page.activites.projets_fil_rouge
+          and page.activites.projets_fil_rouge.size > 0 %}
+
+      <div class="activity-list">
+
+        {% for projet_code in page.activites.projets_fil_rouge %}
+
+          {% assign projet =
+            site.projets | where: "code", projet_code | first
+          %}
+
+          {% if projet %}
+
+            <article class="activity-card">
+
+              <h3>
+                <a href="{{ projet.url | relative_url }}">
+                  {{ projet.code }} — {{ projet.title }}
+                </a>
+              </h3>
+
+              {% if projet.objectif %}
+                <p>{{ projet.objectif }}</p>
+              {% endif %}
+
+            </article>
+
+          {% else %}
+
+            <p class="content-error">
+              Projet Fil Rouge introuvable : {{ projet_code }}
+            </p>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+
+      <p>Aucun Sprint Projet Fil Rouge associé à cette session.</p>
 
     {% endif %}
 
   </section>
 
 </div>
-
-
-<!-- ============================= -->
-<!-- Gestion de la version         -->
-<!-- ============================= -->
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const selectedVersion =
-    localStorage.getItem("tuto_version") || "normal";
-
-  const tutoLinks =
-    document.querySelectorAll("[data-tuto-link]");
-
-  tutoLinks.forEach(function (link) {
-
-    let url = link.dataset.normalUrl;
-
-    if (selectedVersion === "compact" && link.dataset.compactUrl) {
-      url = link.dataset.compactUrl;
-    }
-
-    if (selectedVersion === "detaille" && link.dataset.detailleUrl) {
-      url = link.dataset.detailleUrl;
-    }
-
-    link.href = url;
-
-  });
-
-});
-
-</script>
