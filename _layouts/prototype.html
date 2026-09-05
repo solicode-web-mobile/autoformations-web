@@ -1,0 +1,326 @@
+---
+layout: default
+---
+
+<div class="prototype-page">
+
+  <!-- ==================================================
+       EN-TÊTE
+       ================================================== -->
+
+  <header class="prototype-header">
+
+    <h1>{{ page.title }}</h1>
+
+    {% if page.code %}
+      <div class="prototype-reference">
+        <strong>Prototype :</strong>
+        {{ page.code }}
+      </div>
+    {% endif %}
+
+    {% if page.session %}
+      {% assign session = site.sessions | where: "code", page.session | first %}
+
+      {% if session %}
+        <div class="prototype-reference">
+          <strong>Session :</strong>
+          <a href="{{ session.url | relative_url }}">
+            {{ session.title }}
+          </a>
+        </div>
+      {% endif %}
+    {% endif %}
+
+  </header>
+
+
+  <!-- ==================================================
+       OBJECTIF
+       ================================================== -->
+
+  {% if page.objectif %}
+    <section class="prototype-section prototype-objectif">
+
+      <h2>Objectif</h2>
+
+      <p>
+        {{ page.objectif }}
+      </p>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       POSITIONNEMENT PÉDAGOGIQUE
+       ================================================== -->
+
+  {% if page.positionnement %}
+    <section class="prototype-section">
+
+      <h2>Positionnement pédagogique</h2>
+
+      <p>
+        {{ page.positionnement }}
+      </p>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       CONSIGNE
+       ================================================== -->
+
+  {% if page.consigne %}
+    <section class="prototype-section">
+
+      <h2>Travail à réaliser</h2>
+
+      <div class="prototype-consigne">
+        {{ page.consigne | markdownify }}
+      </div>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       PÉRIMÈTRE
+       ================================================== -->
+
+  {% if page.perimetre %}
+    <section class="prototype-section">
+
+      <h2>Périmètre</h2>
+
+      {% if page.perimetre.size %}
+        <ul class="prototype-list">
+
+          {% for element in page.perimetre %}
+            <li>{{ element }}</li>
+          {% endfor %}
+
+        </ul>
+      {% else %}
+
+        <p>
+          {{ page.perimetre }}
+        </p>
+
+      {% endif %}
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       COMPÉTENCES MOBILISÉES
+       ================================================== -->
+
+  {% if page.competences %}
+    <section class="prototype-section">
+
+      <h2>Compétences mobilisées</h2>
+
+      <div class="prototype-cards">
+
+        {% for competence_code in page.competences %}
+
+          {% assign competence =
+            site.competences
+            | where: "code", competence_code
+            | first
+          %}
+
+          {% if competence %}
+
+            <a
+              href="{{ competence.url | relative_url }}"
+              class="prototype-card"
+            >
+
+              <span class="prototype-card-code">
+                {{ competence.code }}
+              </span>
+
+              <span class="prototype-card-title">
+                {{ competence.title }}
+              </span>
+
+            </a>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       UNITÉS D'APPRENTISSAGE
+       ================================================== -->
+
+  {% if page.uas %}
+    <section class="prototype-section">
+
+      <h2>Unités d’apprentissage mobilisées</h2>
+
+      <div class="prototype-cards">
+
+        {% for ua_code in page.uas %}
+
+          {% assign ua =
+            site.uas
+            | where: "code", ua_code
+            | first
+          %}
+
+          {% if ua %}
+
+            <a
+              href="{{ ua.url | relative_url }}"
+              class="prototype-card"
+            >
+
+              <span class="prototype-card-code">
+                {{ ua.code }}
+              </span>
+
+              <span class="prototype-card-title">
+                {{ ua.title }}
+              </span>
+
+              {% if ua.objectif %}
+                <span class="prototype-card-description">
+                  {{ ua.objectif }}
+                </span>
+              {% endif %}
+
+            </a>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       ÉTAPES DE RÉALISATION
+       ================================================== -->
+
+  {% if page.etapes %}
+    <section class="prototype-section">
+
+      <h2>Étapes de réalisation</h2>
+
+      <ol class="prototype-steps">
+
+        {% for etape in page.etapes %}
+
+          <li class="prototype-step">
+
+            {% if etape.titre %}
+              <h3>{{ etape.titre }}</h3>
+            {% endif %}
+
+            {% if etape.description %}
+              <p>
+                {{ etape.description }}
+              </p>
+            {% endif %}
+
+          </li>
+
+        {% endfor %}
+
+      </ol>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       LIVRABLES
+       ================================================== -->
+
+  {% if page.livrables %}
+    <section class="prototype-section">
+
+      <h2>Livrables attendus</h2>
+
+      <ul class="prototype-list">
+
+        {% for livrable in page.livrables %}
+          <li>
+            {{ livrable }}
+          </li>
+        {% endfor %}
+
+      </ul>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       CRITÈRES DE RÉUSSITE
+       ================================================== -->
+
+  {% if page.criteres %}
+    <section class="prototype-section">
+
+      <h2>Critères de réussite</h2>
+
+      <ul class="prototype-list">
+
+        {% for critere in page.criteres %}
+          <li>
+            {{ critere }}
+          </li>
+        {% endfor %}
+
+      </ul>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       RÉSULTAT ATTENDU
+       ================================================== -->
+
+  {% if page.resultat_attendu %}
+    <section class="prototype-section prototype-resultat">
+
+      <h2>Résultat attendu</h2>
+
+      <p>
+        {{ page.resultat_attendu }}
+      </p>
+
+    </section>
+  {% endif %}
+
+
+  <!-- ==================================================
+       CONTENU MARKDOWN LIBRE
+       ================================================== -->
+
+  {% if content != "" %}
+    <section class="prototype-content">
+
+      {{ content }}
+
+    </section>
+  {% endif %}
+
+</div>

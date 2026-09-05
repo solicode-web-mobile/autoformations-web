@@ -12,6 +12,8 @@ layout: default
 
     <h1>{{ page.title }}</h1>
 
+  
+
     <!-- Code du tutoriel -->
 
     {% if page.tuto_id %}
@@ -114,6 +116,10 @@ layout: default
 
     {% endif %}
 
+
+
+
+
   </header>
 
 
@@ -131,8 +137,11 @@ layout: default
 
     {% include text-size-control.html %}
 
+   
+
   </div>
 
+   
 
   <!-- ==================================================
        CONTENU DU TUTORIEL
@@ -140,16 +149,15 @@ layout: default
 
   <main class="tuto-content">
 
+   
+  
+
     {{ content }}
 
   </main>
 
 
-  <!-- ==================================================
-       NAVIGATION DU TUTORIEL
-       ================================================== -->
-
-    {% include next-step.html %}
+   {% include next-step.html %}
 
 </div>
 
