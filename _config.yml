@@ -127,17 +127,17 @@ just_the_docs:
       name: "Parcours par sessions"
       nav_exclude: false
 
-    domaines:
-      name: "Formations"
-      nav_exclude: false
-
-    competences:
-      name: "Compétences"
-      nav_exclude: false
-
     missions:
       name: "Missions"
       nav_exclude: false
+
+    domaines:
+      name: "Formations"
+      nav_exclude: true
+
+    competences:
+      name: "Compétences"
+      nav_exclude: true
 
     uas:
       name: "Unités d'apprentissage"
