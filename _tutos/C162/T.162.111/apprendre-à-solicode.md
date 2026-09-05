@@ -1,5 +1,5 @@
 ---
-title: "Apprendre à Solicode"
+title: "Comment apprendre à Solicode ?"
 layout: tuto
 slug: "apprendre-à-solicode"
 permalink: /tutos/:slug/
@@ -9,125 +9,70 @@ ua: "UA.162.11"
 ---
 
 
-
-
-# Comment apprendre à Solicode ?
-
-À Solicode, vous apprenez surtout **en faisant**.
-
-Vous lisez des tutoriels, vous pratiquez, vous cherchez des solutions, vous réalisez des travaux et vous expliquez ce que vous avez appris.
-
-Le formateur prépare les activités, accompagne le travail, observe les réalisations et complète les connaissances lorsque cela est nécessaire.
-
-La progression est :
-
-**Apprendre → Pratiquer → Expliquer → Chercher → S’entraîner → Construire**
+À Solicode, vous apprenez surtout **en faisant**. Vous lisez, pratiquez, cherchez, réalisez et expliquez votre travail.
 
 ## 1. Tutoriels — Apprendre les bases
 
-Les **tutoriels** sont des supports préparés pour vous permettre d’apprendre en **autoformation**.
-
-Vous lisez le tutoriel, observez les exemples et réalisez les étapes.
+Les tutoriels vous permettent d’apprendre une notion et de reproduire une réalisation simple en **autoformation**.
 
 **Lire → Comprendre → Reproduire → Tester**
 
-Vous pouvez aussi échanger avec les autres apprenants pour comprendre une difficulté ou aider un camarade.
-
-Après la réalisation du tutoriel, un apprenant peut être choisi pour faire un **Live Coding**. Il reproduit le travail et explique sa démarche.
-
-Le formateur participe au Live Coding. Il confirme la compréhension, corrige les erreurs et complète les connaissances nécessaires.
-
-**Impact :** vous développez vos bases, votre autonomie et votre capacité à expliquer ce que vous faites.
+Un **Live Coding** peut ensuite permettre à un apprenant d’expliquer sa réalisation. Le formateur vérifie la compréhension et complète si nécessaire.
 
 ## 2. Labs — Chercher et expérimenter
 
-Un **Lab** est proposé lorsqu’une recherche ou une expérimentation technique est utile pour le Sprint.
+Lorsqu’un Lab est prévu, vous cherchez une solution dans **Internet, la documentation ou des exemples**, puis vous la testez.
 
-Vous recherchez une solution dans :
+**Chercher → Tester → Trouver une solution**
 
-**Internet → Documentation → Exemples**
+Le Lab vous aide à développer votre autonomie pour résoudre un problème.
 
-Vous testez ensuite la solution et vérifiez si elle répond au besoin.
+## 3. Prototype — S’entraîner
 
-**Chercher → Comprendre → Tester → Choisir**
+Le Prototype est une **petite réalisation avant le projet complet**.
 
-Un Lab n’est pas nécessaire dans toutes les Sessions.
+Vous réutilisez un apprentissage dans un nouveau contexte pour vous entraîner, trouver les difficultés et corriger les erreurs.
 
-**Impact :** vous apprenez à chercher une solution technique et à résoudre un problème avec plus d’autonomie.
+**Apprendre → Réutiliser → Adapter → Corriger**
 
-## 3. Prototype — S’entraîner avant le projet
+## 4. Projet Fil Rouge — Construire
 
-Le **Prototype** est une petite réalisation qui vous permet d’utiliser vos acquis avant de réaliser une partie plus importante du Projet Fil Rouge.
+Le Projet Fil Rouge est construit progressivement à travers les **Sprints**.
 
-Exemple :
+**Tutoriels → Labs si nécessaire → Prototype → Projet Fil Rouge**
 
-**Tutoriel :** apprendre à réaliser une page.
-**Prototype :** réaliser une page détail d’un projet du Portfolio.
+Vous réutilisez les apprentissages précédents pour réaliser une partie du projet, puis la partie suivante.
 
-Le contexte change, mais vous réutilisez les connaissances apprises.
+## 5. Présentation — Expliquer
 
-Le Prototype permet de voir rapidement :
+Vous présentez votre travail selon la modalité prévue par **Active LMS**.
 
-**ce que vous maîtrisez → ce qui est difficile → ce qu’il faut corriger**
-
-Il peut aussi être réalisé en **Live Coding** pour montrer votre niveau de compréhension.
-
-Le Prototype sert donc de **pont entre l’apprentissage et le projet**.
-
-**Impact :** vous vous entraînez dans un contexte plus simple, vous corrigez vos difficultés et vous êtes mieux préparé pour la réalisation complète.
-
-## 4. Projet Fil Rouge — Construire progressivement
-
-Le **Projet Fil Rouge** est construit pendant la formation.
-
-Chaque étape de construction correspond à un **Sprint**.
-
-Exemple :
-
-**Page d’accueil → Page détail d’un article → Gestion des catégories → Gestion des articles**
-
-Dans chaque Sprint, vous réutilisez les acquis des tutoriels, des Labs et du Prototype.
-
-Vous passez ainsi progressivement de petites réalisations à des réalisations plus complètes.
-
-**Impact :** vous apprenez à réutiliser, combiner et adapter vos connaissances pour construire une solution complète.
-
-## 5. Présentation — Expliquer son travail
-
-Vous présentez votre travail à certaines étapes de la formation.
-
-Vous expliquez :
+Vous pouvez être amené à expliquer :
 
 **Ce que j’ai appris → Ce que j’ai réalisé → Comment je l’ai réalisé**
 
-La présentation vous aide à organiser vos idées et à expliquer votre travail.
-
-**Impact :** vous développez votre capacité à communiquer et à expliquer une réalisation technique.
+La présentation permet de montrer votre travail et de vérifier votre compréhension.
 
 ## 6. À retenir
 
-Chaque étape a un rôle :
-
-**Tutoriels** → apprendre les bases.
-**Labs** → chercher et expérimenter.
+**Tutoriel** → apprendre et reproduire.
+**Lab** → chercher et expérimenter.
 **Prototype** → s’entraîner et adapter.
 **Projet Fil Rouge** → réutiliser et construire.
 **Présentation** → expliquer et montrer.
 
-La Session vous fait progresser de manière continue :
+La progression d’une Session suit donc :
 
-**Je découvre → Je comprends → Je reproduis → Je cherche → Je m’entraîne → J’adapte → Je construis → J’explique**
+**Apprendre → Pratiquer → Chercher → S’entraîner → Construire → Expliquer**
 
 ## 7. Travail à faire
 
-Dans **Google Slides**, créez un schéma qui présente les étapes d’une Session :
+Dans **Google Slides**, créez un schéma qui montre les principales étapes d’une Session :
 
 **Tutoriels → Labs si nécessaire → Prototype → Projet Fil Rouge → Présentation**
 
-Pour chaque étape, ajoutez :
+Pour chaque étape, ajoutez **une phrase sur ce que vous faites et ce que vous apprenez**.
 
-**ce que vous faites** + **ce que vous apprenez**.
+Présentez votre schéma selon la modalité prévue par **Active LMS**.
 
-Présentez ensuite votre schéma devant les autres apprenants.
-
-**Résultat attendu :** vous savez expliquer comment vous allez apprendre, pratiquer et progresser pendant une Session à Solicode.
+**Résultat attendu :** vous savez expliquer simplement comment vous allez apprendre et travailler pendant une Session à Solicode.

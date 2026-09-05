@@ -1,15 +1,13 @@
 ---
-
-title: "Apprendre à Solicode"
+title: "Comment apprendre à Solicode ?"
 layout: tuto
 slug: "apprendre-à-solicode"
 permalink: /tutos/:slug/compact
 tuto_id: "T.162.111"
 version: "compact"
 ua: "UA.162.11"
----------------
+---
 
-# Comment apprendre à Solicode ?
 
 À Solicode, vous apprenez surtout **en faisant** : vous lisez, pratiquez, cherchez, réalisez et expliquez.
 
