@@ -30,11 +30,17 @@ Le **contexte** décrit la situation dans laquelle l’application est utilisée
 
 Le contexte aide à comprendre l’application avant de commencer son développement.
 
+![Le Contexte]({{ '/assets/images/c111/t.111.111/contexte.500.jpg' | relative_url }})
+
+
 ## 1.2. Application
 
 L’**application** est le système créé pour répondre au besoin identifié.
 
 **Exemple :** le **Blog personnel** permet de publier et de consulter des articles.
+
+![application]({{ '/assets/images/c111/t.111.111/application.500.jpg' | relative_url }})
+
 
 ## 1.3. Acteur
 
@@ -44,6 +50,9 @@ Un **acteur** est une personne ou un système qui utilise l’application.
 
 * **Administrateur** : gérer les articles.
 * **Visiteur** : consulter les articles.
+
+![acteurs]({{ '/assets/images/c111/t.111.111/acteurs.500.jpg' | relative_url }})
+
 
 ## 1.4. Action
 
@@ -55,6 +64,8 @@ Une **action** est une opération réalisée par un acteur dans l’application.
 Administrateur → publier et gérer des articles
 Visiteur       → consulter des articles
 ```
+
+![Action]({{ '/assets/images/c111/t.111.111/action.500.jpg' | relative_url }})
 
 ## 1.5. À retenir
 
@@ -76,6 +87,10 @@ Acteurs
    ↓
 Actions
 ```
+
+![À retenir]({{ '/assets/images/c111/t.111.111/acteur-contexte-application.500.jpg' | relative_url }})
+
+
 
 # Partie 2 — Pratique
 

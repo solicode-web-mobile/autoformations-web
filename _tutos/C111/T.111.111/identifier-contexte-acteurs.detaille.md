@@ -44,9 +44,9 @@ Besoin
 Application
 ```
 
-
 ![Le Contexte]({{ '/assets/images/c111/t.111.111/contexte.500.jpg' | relative_url }})
 
+ 
 
 ## 1.2. Application
 
@@ -59,6 +59,9 @@ Elle regroupe les écrans, les traitements et les fonctionnalités nécessaires 
 Le **Blog personnel** est une application Web qui permet de publier et de consulter des articles.
 
 Il ne faut pas encore chercher toutes les fonctionnalités techniques. À ce stade, on cherche surtout à comprendre **ce que fait l’application dans son ensemble**.
+
+![application]({{ '/assets/images/c111/t.111.111/application.500.jpg' | relative_url }})
+
 
 ## 1.3. Acteur
 
@@ -74,6 +77,9 @@ Dans le Blog personnel, nous avons deux acteurs :
 * **Visiteur** : il consulte les articles.
 
 Les acteurs sont identifiés à partir de la situation et des maquettes.
+
+![acteurs]({{ '/assets/images/c111/t.111.111/acteurs.500.jpg' | relative_url }})
+
 
 ## 1.4. Action
 
@@ -91,6 +97,9 @@ Visiteur       → consulter des articles
 ```
 
 Ces actions permettent ensuite de déterminer les fonctionnalités de l’application.
+
+![Action]({{ '/assets/images/c111/t.111.111/action.500.jpg' | relative_url }})
+
 
 ## 1.5. À retenir
 
