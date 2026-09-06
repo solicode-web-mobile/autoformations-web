@@ -10,6 +10,7 @@ nav_order: 1
 ---
 
 
+
 ## 1. Objectif
 
 Comprendre le contexte du **Blog personnel** à partir de ses maquettes et identifier ses acteurs et leurs actions.
@@ -28,9 +29,7 @@ Le **contexte** décrit la situation et le besoin autour de l’application.
 
 **Exemple :** une personne veut publier des articles et les partager avec des visiteurs.
 
-
 ![Le Contexte]({{ '/assets/images/c111/t.111.111/contexte.500.jpg' | relative_url }})
-
 
 ## 1.2. Application
 
@@ -38,10 +37,7 @@ L’**application** est le système créé pour répondre au besoin.
 
 **Exemple :** le **Blog personnel** permet de publier et de consulter des articles.
 
-
 ![application]({{ '/assets/images/c111/t.111.111/application.500.jpg' | relative_url }})
-
-
 
 ## 1.3. Acteur
 
@@ -49,19 +45,25 @@ Un **acteur** est une personne ou un système qui utilise l’application.
 
 **Exemple :** **Administrateur** et **Visiteur**.
 
-
 ![acteurs]({{ '/assets/images/c111/t.111.111/acteurs.500.jpg' | relative_url }})
 
-## 1.4. À retenir
+## 1.4. Action
+
+Une **action** est ce qu’un acteur fait dans l’application.
+
+**Exemple :** l’Administrateur publie un article ; le Visiteur consulte un article.
+
+![Action]({{ '/assets/images/c111/t.111.111/action.500.jpg' | relative_url }})
+
+
+## 1.5. À retenir
 
 * **Contexte** → situation et besoin.
 * **Application** → système qui répond au besoin.
 * **Acteur** → personne ou système qui utilise l’application.
 * **Action** → ce que l’acteur fait.
 
-
 ![À retenir]({{ '/assets/images/c111/t.111.111/acteur-contexte-application.500.jpg' | relative_url }})
-
 
 # Partie 2 — Pratique
 
@@ -87,6 +89,7 @@ Identifiez les deux acteurs :
 
 ```text
 Administrateur
+
 Visiteur
 ```
 
@@ -96,6 +99,7 @@ Associez les actions aux acteurs :
 
 ```text
 Administrateur → publier et gérer des articles
+
 Visiteur → consulter des articles
 ```
 
