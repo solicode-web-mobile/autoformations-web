@@ -1,10 +1,10 @@
 ---
 title: "Afficher son nom avec JavaScript"
 layout: tuto
-slug: "variables-entrées-sorties"
-permalink: /tutos/:slug/
+slug: "afficher-son-nom-javascript"
+permalink: /tutos/:slug/compact
 tuto_id: "T.121.111"
-version: "normal"
+version: "compact"
 ua: "UA.121.11"
 nav_order: 1
 ---
@@ -35,17 +35,17 @@ Calculer une valeur.
 
 **JavaScript** est un langage de programmation.
 
-Dans ce tutoriel, nous l’utilisons pour afficher un message dans la console.
+Dans ce tutoriel, nous l’utilisons pour afficher un message.
 
 ## 1.3. Node.js
 
-**Node.js** permet d’exécuter JavaScript directement sur l’ordinateur, sans navigateur.
+**Node.js** permet d’exécuter JavaScript directement sur l’ordinateur.
 
-Nous l’utiliserons pour exécuter nos fichiers `.js`.
+Nous l’utilisons pour exécuter un fichier `.js`.
 
 ## 1.4. console.log()
 
-`console.log()` permet d’afficher une valeur ou un message dans la console.
+`console.log()` permet d’afficher une valeur dans la console.
 
 **Exemple :**
 
@@ -53,18 +53,11 @@ Nous l’utiliserons pour exécuter nos fichiers `.js`.
 console.log("Bonjour !");
 ```
 
-**Résultat :**
-
-```text
-Bonjour !
-```
-
 ## 1.5. À retenir
 
-* **Langage de programmation** → permet d’écrire des instructions.
 * **JavaScript** → langage de programmation.
 * **Node.js** → permet d’exécuter JavaScript sur l’ordinateur.
-* **console.log()** → affiche un message dans la console.
+* **console.log()** → affiche un résultat dans la console.
 
 # Partie 2 — Pratique
 
@@ -72,7 +65,7 @@ Bonjour !
 
 ### Étape 1 — Installer Node.js
 
-Téléchargez et installez **Node.js** depuis le site officiel :
+Téléchargez et installez **Node.js** :
 
 <a href="https://nodejs.org/" target="_blank">Node.js</a>
 
@@ -94,7 +87,7 @@ Une version de Node.js s’affiche.
 
 ### Étape 3 — Créer le fichier
 
-Créez un fichier nommé :
+Créez un fichier :
 
 ```text
 bonjour.js
@@ -102,13 +95,13 @@ bonjour.js
 
 ### Étape 4 — Ajouter votre nom
 
-Ouvrez `bonjour.js` et ajoutez :
+Ajoutez :
 
 ```javascript
-console.log("Je m'appelle Ali.");
+console.log("Je m'appelle Fouad.");
 ```
 
-Remplacez **Ali** par votre prénom.
+Remplacez **Fouad** par votre prénom.
 
 **Exemple :**
 
@@ -118,9 +111,7 @@ console.log("Je m'appelle Sara.");
 
 ### Étape 5 — Exécuter le programme
 
-Dans le terminal, placez-vous dans le dossier contenant `bonjour.js`.
-
-Exécutez :
+Dans le terminal, placez-vous dans le dossier du fichier et exécutez :
 
 ```bash
 node bonjour.js
@@ -142,15 +133,13 @@ Créez un fichier :
 presentation.js
 ```
 
-Utilisez `console.log()` pour afficher :
+Affichez avec `console.log()` :
 
-```javascript
-console.log("Nom : Madani");
-console.log("Prénom : Ali");
-console.log("Formation : Développement Web");
+```text
+Votre nom
+Votre prénom
+Votre métier ou votre formation
 ```
-
-Remplacez les informations par les vôtres.
 
 N’utilisez pas de variable.
 
@@ -164,7 +153,7 @@ node presentation.js
 
 **Résultat attendu :**
 
-Les trois informations sont affichées dans la console.
+Votre nom, votre prénom et votre métier ou votre formation sont affichés dans la console.
 
 # 3. Bilan
 
@@ -174,9 +163,8 @@ Les trois informations sont affichées dans la console.
 
 # 4. Glossaire
 
-* **Langage de programmation** : langage utilisé pour écrire des instructions pour un ordinateur.
+* **Langage de programmation** : langage utilisé pour écrire des instructions.
 * **JavaScript** : langage de programmation.
-* **Node.js** : environnement permettant d’exécuter JavaScript sur l’ordinateur.
-* **Fichier `.js`** : fichier contenant du code JavaScript.
-* **console.log()** : instruction qui affiche un message dans la console.
+* **Node.js** : outil permettant d’exécuter JavaScript sur l’ordinateur.
+* **console.log()** : instruction qui affiche une valeur dans la console.
 * **Console** : espace où le programme affiche ses résultats.

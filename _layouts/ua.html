@@ -4,28 +4,15 @@ layout: default
 
 <div class="ua-page">
 
-  <!-- ==================================================
-       EN-TÊTE
-       ================================================== -->
-
   <header class="ua-header">
 
     <h1>{{ page.title }}</h1>
 
-
-    <!-- Code de l'UA -->
-
     {% if page.code %}
-
       <p class="ua-reference">
-        <strong>Code :</strong>
-        {{ page.code }}
+        <strong>Code :</strong> {{ page.code }}
       </p>
-
     {% endif %}
-
-
-    <!-- Compétence -->
 
     {% if page.competence %}
 
@@ -36,27 +23,19 @@ layout: default
       %}
 
       <p class="ua-reference">
-
         <strong>Compétence :</strong>
 
         {% if competence %}
-
           <a href="{{ competence.url | relative_url }}">
             {{ competence.code }} — {{ competence.title }}
           </a>
-
         {% else %}
-
           {{ page.competence }}
-
         {% endif %}
-
       </p>
 
     {% endif %}
 
-
-    <!-- Domaine -->
 
     {% if page.domaine %}
 
@@ -67,155 +46,86 @@ layout: default
       %}
 
       <p class="ua-reference">
-
         <strong>Domaine :</strong>
 
         {% if domaine %}
-
           <a href="{{ domaine.url | relative_url }}">
             {{ domaine.code }} — {{ domaine.title }}
           </a>
-
         {% else %}
-
           {{ page.domaine }}
-
         {% endif %}
-
       </p>
 
     {% endif %}
 
 
-    <!-- Durée -->
-
     {% if page.duree %}
-
       <p class="ua-reference">
-        <strong>Durée :</strong>
-        {{ page.duree }} h
+        <strong>Durée :</strong> {{ page.duree }} h
       </p>
-
     {% endif %}
 
   </header>
 
 
-  <!-- ==================================================
-       OBJECTIF
-       ================================================== -->
-
   {% if page.objectif %}
-
     <section class="ua-section">
-
       <h2>Objectif</h2>
-
-      <p>
-        {{ page.objectif }}
-      </p>
-
+      <p>{{ page.objectif }}</p>
     </section>
-
   {% endif %}
 
-
-  <!-- ==================================================
-       DESCRIPTION
-       ================================================== -->
 
   {% if page.description %}
-
     <section class="ua-section">
-
       <h2>Description</h2>
-
-      <p>
-        {{ page.description }}
-      </p>
-
+      <p>{{ page.description }}</p>
     </section>
-
   {% endif %}
 
 
-  <!-- ==================================================
-       NOTIONS
-       ================================================== -->
-
   {% if page.notions and page.notions.size > 0 %}
-
     <section class="ua-section">
 
       <h2>Notions</h2>
 
       <ul>
-
         {% for notion in page.notions %}
-
-          <li>
-            {{ notion }}
-          </li>
-
+          <li>{{ notion }}</li>
         {% endfor %}
-
       </ul>
 
     </section>
-
   {% endif %}
 
 
-  <!-- ==================================================
-       LIVRABLE
-       ================================================== -->
-
   {% if page.livrable %}
-
     <section class="ua-section">
 
       <h2>Livrable attendu</h2>
 
-      <p>
-        {{ page.livrable }}
-      </p>
+      <p>{{ page.livrable }}</p>
 
     </section>
-
   {% endif %}
 
 
-  <!-- ==================================================
-       TRAVAIL À FAIRE
-       ================================================== -->
-
   {% if page.travail_a_faire %}
-
     <section class="ua-section">
 
       <h2>Travail à faire</h2>
 
-      <p>
-        {{ page.travail_a_faire }}
-      </p>
+      <p>{{ page.travail_a_faire }}</p>
 
     </section>
-
   {% endif %}
 
 
-  <!-- ==================================================
-       CONTENU MARKDOWN
-       ================================================== -->
-
   {% if content != "" %}
-
     <section class="ua-section">
-
       {{ content }}
-
     </section>
-
   {% endif %}
 
 
@@ -223,13 +133,18 @@ layout: default
        TUTORIELS
        ================================================== -->
 
+  {% assign ua_tutos =
+    site.tutos
+    | where: "ua", page.code
+  %}
+
   <section class="ua-section">
 
     <h2>Tutoriels</h2>
 
-    {% if page.tutos and page.tutos.size > 0 %}
+    {% if ua_tutos.size > 0 %}
 
-      {% include tuto-list.html tutos=page.tutos %}
+      {% include tuto-list.html tutos=ua_tutos %}
 
     {% else %}
 
@@ -242,3 +157,4 @@ layout: default
   </section>
 
 </div>
+

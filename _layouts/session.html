@@ -242,32 +242,39 @@ layout: default
 
                 <!-- TUTORIELS -->
 
-                {% assign ua_tutos =
-                  site.tutos
-                  | where: "ua", ua.code
-                  | where: "version", "normal"
-                  | sort: "nav_order"
-                %}
+{% assign ua_tutos =
+  site.tutos
+  | where: "ua", ua.code
+%}
 
-                {% if ua_tutos.size > 0 %}
+{% assign ua_tutos_normal =
+  ua_tutos
+  | where: "version", "normal"
+  | sort: "nav_order"
+%}
 
-                  <div class="ua-card-tutos">
+{% if ua_tutos_normal.size > 0 %}
 
-                    <div class="ua-card-tutos-header">
+  <div class="ua-card-tutos">
 
-                      <h4>Tutoriels</h4>
+    <div class="ua-card-tutos-header">
 
-                      <span>
-                        {{ ua_tutos.size }}
-                      </span>
+      <h4>Tutoriels</h4>
 
-                    </div>
+      <span>
+        {{ ua_tutos_normal.size }}
+      </span>
 
-                    {% include tuto-list.html tutos=ua_tutos %}
+    </div>
 
-                  </div>
+    {% include tuto-list.html tutos=ua_tutos %}
 
-                {% endif %}
+  </div>
+
+{% endif %}
+
+
+
 
               </article>
 
