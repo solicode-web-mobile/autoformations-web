@@ -10,124 +10,109 @@ nav_order: 1
 ---
 
 
-Comprendre une application à partir de ses maquettes et identifier sa finalité, son périmètre et ses acteurs.
+## 1. Objectif
 
-**Prérequis** : Les maquettes du **Blog personnel** sont nécessaires.
+Comprendre le contexte du **Blog personnel** à partir de ses maquettes et identifier ses acteurs et leurs actions.
+
+## 2. Prérequis
+
+Les maquettes du **Blog personnel** sont nécessaires.
+
+<a href="https://solicode-web-mobile.github.io/maquette-blog/" target="_blank">Maquette blog</a>
 
 # Partie 1 — Théorie
 
-## 1.1. Application
+## 1.1. Contexte
 
-Une **application** répond à un besoin.
+Le **contexte** décrit la situation et le besoin autour de l’application.
 
-**Exemple :** un blog permet de publier et consulter des articles.
+**Exemple :** une personne veut publier des articles et les partager avec des visiteurs.
 
-## 1.2. Finalité
 
-La **finalité** explique pourquoi l’application existe.
+![Le Contexte]({{ '/assets/images/c111/t.111.111/contexte.500.jpg' | relative_url }})
 
-**Exemple :** publier et partager des articles.
+
+## 1.2. Application
+
+L’**application** est le système créé pour répondre au besoin.
+
+**Exemple :** le **Blog personnel** permet de publier et de consulter des articles.
+
+
+![application]({{ '/assets/images/c111/t.111.111/application.500.jpg' | relative_url }})
+
+
 
 ## 1.3. Acteur
 
-Un **acteur** utilise l’application.
+Un **acteur** est une personne ou un système qui utilise l’application.
 
 **Exemple :** **Administrateur** et **Visiteur**.
 
-## 1.4. Rôle
 
-Le **rôle** indique ce qu’un acteur peut faire.
+![acteurs]({{ '/assets/images/c111/t.111.111/acteurs.500.jpg' | relative_url }})
 
-**Exemple :**
+## 1.4. À retenir
 
-- **Administrateur** → gérer les articles.
-- **Visiteur** → consulter les articles.
+* **Contexte** → situation et besoin.
+* **Application** → système qui répond au besoin.
+* **Acteur** → personne ou système qui utilise l’application.
+* **Action** → ce que l’acteur fait.
 
-## 1.5. Périmètre
 
-Le **périmètre** indique ce qui est pris en compte.
+![À retenir]({{ '/assets/images/c111/t.111.111/acteur-contexte-application.500.jpg' | relative_url }})
 
-**Exemple :** gérer et consulter les articles.
-
-## 1.6. À retenir
-
-- **Application** → système qui répond à un besoin.
-- **Finalité** → pourquoi il existe.
-- **Acteur** → qui utilise le système.
-- **Rôle** → ce qu’il peut faire.
-- **Périmètre** → ce qui est inclus.
 
 # Partie 2 — Pratique
 
-## 2.1. Observer les maquettes
+## 2.1. Déterminer le contexte
 
-### Étape 1 — Observer
+### Étape 1 — Observer les maquettes
 
-Observez les maquettes du **Blog personnel**.
+Ouvrez la <a href="https://solicode-web-mobile.github.io/maquette-blog/" target="_blank">maquette du Blog personnel</a> et identifiez le besoin principal.
 
-Repérez les pages et les informations principales.
+### Étape 2 — Décrire l’application
 
-### Étape 2 — Identifier la finalité
+Écrivez une phrase pour présenter l’application.
 
-Écrivez pourquoi le Blog personnel existe.
-
-### Étape 3 — Identifier le périmètre
-
-Notez les fonctionnalités visibles.
+```text
+Le Blog personnel permet de publier et de consulter des articles.
+```
 
 ## 2.2. Identifier les acteurs
 
-### Étape 4 — Identifier les acteurs
+### Étape 3 — Identifier les acteurs
 
-Identifiez :
-
-- **Administrateur**
-- **Visiteur**
-
-### Étape 5 — Identifier les rôles
-
-Notez les actions de chaque acteur.
+Identifiez les deux acteurs :
 
 ```text
-Administrateur → gérer les articles
-
-Visiteur → consulter les articles
-````
-
-## 2.3. Réaliser l’analyse
-
-### Étape 6 — Créer le livrable
-
-Réalisez :
-
-```text
-Application
-    ↓
-Finalité
-    ↓
-Acteurs
-    ↓
-Rôles
+Administrateur
+Visiteur
 ```
 
-Ajoutez le **périmètre**.
+### Étape 4 — Identifier les actions
+
+Associez les actions aux acteurs :
+
+```text
+Administrateur → publier et gérer des articles
+Visiteur → consulter des articles
+```
 
 **Résultat attendu :**
 
-Une analyse claire de l’application, de sa finalité, de son périmètre et des rôles de l’Administrateur et du Visiteur.
+Une analyse simple du **Blog personnel** montrant son contexte, son besoin, son application, ses acteurs et leurs actions.
 
 # 3. Bilan
 
-**Vous avez réalisé :** une analyse du contexte et des acteurs du Blog personnel.
+**Vous avez réalisé :** une première analyse du contexte du **Blog personnel**.
 
-**Vous savez maintenant :** identifier l’application, sa finalité, son périmètre, ses acteurs et leurs rôles.
+**Vous savez maintenant :** décrire le contexte d’une application et identifier ses acteurs et leurs actions.
 
 # 4. Glossaire
 
-* **Application** : système qui répond à un besoin.
-* **Finalité** : raison d’exister de l’application.
+* **Contexte** : situation et besoin autour d’une application.
+* **Application** : système créé pour répondre à un besoin.
 * **Acteur** : personne ou système qui utilise l’application.
-* **Rôle** : actions qu’un acteur peut réaliser.
-* **Périmètre** : éléments pris en compte dans l’application.
+* **Action** : opération réalisée par un acteur.
 * **Maquette** : représentation visuelle d’une interface.
-

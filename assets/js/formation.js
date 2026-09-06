@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
    */
 
   const content =
-    document.querySelector(".tuto-page, .session-page");
+    document.querySelector(".tuto-content, .session-page");
 
 
   if (!content) {

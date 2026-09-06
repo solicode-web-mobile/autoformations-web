@@ -207,10 +207,8 @@ a:focus-visible {
 .text-size-control {
   display: inline-flex;
   align-items: center;
-
   gap: 0.25rem;
-
-  margin-bottom: 1rem;
+  margin-bottom: 0.1rem;
 }
 
 .text-size-button {

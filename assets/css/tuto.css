@@ -11,13 +11,13 @@
 .tuto-page {
   width: 100%;
   max-width: 820px;
-
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
 .tuto-content {
   width: 100%;
+  font-size: 18px;
 }
 
 

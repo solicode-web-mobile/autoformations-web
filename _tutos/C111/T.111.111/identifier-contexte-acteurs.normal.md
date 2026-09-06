@@ -10,130 +10,147 @@ nav_order: 1
 ---
 
 
+## 1. Objectif
 
-Comprendre une application à partir de ses maquettes et identifier sa finalité, son périmètre et ses acteurs.
+Comprendre le contexte du **Blog personnel** à partir de ses maquettes et identifier ses acteurs et leurs actions.
 
-**Prérequis** : Les maquettes du **Blog personnel** sont nécessaires.
+## 2. Prérequis
+
+Les maquettes du **Blog personnel** sont nécessaires.
+
+<a href="https://solicode-web-mobile.github.io/maquette-blog/" target="_blank">Maquette blog</a>
 
 # Partie 1 — Théorie
 
-## 1.1. Application
+## 1.1. Contexte
 
-Une **application** est un système qui permet de répondre à un besoin.
+Le **contexte** décrit la situation dans laquelle l’application est utilisée et le besoin auquel elle répond.
 
-**Exemple :** un blog permet de publier et de consulter des articles.
+**Exemple :** une personne veut publier des articles sur le Web et permettre à d’autres personnes de les consulter.
 
-## 1.2. Finalité
+Le contexte aide à comprendre l’application avant de commencer son développement.
 
-La **finalité** explique pourquoi l’application existe.
+## 1.2. Application
 
-**Exemple :** permettre à un utilisateur de publier et partager des articles.
+L’**application** est le système créé pour répondre au besoin identifié.
+
+**Exemple :** le **Blog personnel** permet de publier et de consulter des articles.
 
 ## 1.3. Acteur
 
 Un **acteur** est une personne ou un système qui utilise l’application.
 
-**Exemple :** un blog peut avoir un **Administrateur** et un **Visiteur**.
+**Exemple :**
 
-## 1.4. Rôle
+* **Administrateur** : gérer les articles.
+* **Visiteur** : consulter les articles.
 
-Le **rôle** indique ce qu’un acteur peut faire dans l’application.
+## 1.4. Action
+
+Une **action** est une opération réalisée par un acteur dans l’application.
 
 **Exemple :**
 
-- **Administrateur** : gérer les articles.
-- **Visiteur** : consulter les articles.
+```text
+Administrateur → publier et gérer des articles
+Visiteur       → consulter des articles
+```
 
-## 1.5. Périmètre
+## 1.5. À retenir
 
-Le **périmètre** indique ce qui est pris en compte dans l’application.
+* **Contexte** → situation et besoin.
+* **Application** → système qui répond au besoin.
+* **Acteur** → personne ou système qui utilise l’application.
+* **Action** → ce que l’acteur fait.
 
-**Exemple :** le blog permet de gérer et consulter des articles, mais ne gère pas les commandes.
+La démarche est :
 
-## 1.6. À retenir
-
-- **Application** → ce que le système est.
-- **Finalité** → pourquoi il existe.
-- **Acteur** → qui utilise le système.
-- **Rôle** → ce que l’acteur peut faire.
-- **Périmètre** → ce qui est inclus dans le système.
+```text
+Contexte
+   ↓
+Besoin
+   ↓
+Application
+   ↓
+Acteurs
+   ↓
+Actions
+```
 
 # Partie 2 — Pratique
 
-## 2.1. Observer les maquettes
+## 2.1. Déterminer le contexte
 
-### Étape 1 — Observer l’application
+### Étape 1 — Observer les maquettes
 
-Observez les maquettes du **Blog personnel**.
+Ouvrez la <a href="https://solicode-web-mobile.github.io/maquette-blog/" target="_blank">maquette du Blog personnel</a>.
 
-Identifiez les principales pages et informations visibles.
+Observez les pages et les informations visibles.
 
-### Étape 2 — Identifier la finalité
+Identifiez le besoin principal et les personnes qui utilisent l’application.
 
-À partir des maquettes, écrivez en une phrase pourquoi le Blog personnel existe.
+### Étape 2 — Décrire l’application
 
-### Étape 3 — Identifier le périmètre
+Écrivez une phrase pour présenter l’application.
 
-Notez les principales fonctionnalités visibles dans les maquettes.
+```text
+Le Blog personnel permet de publier et de consulter des articles.
+```
 
 ## 2.2. Identifier les acteurs
 
-### Étape 4 — Identifier les acteurs
+### Étape 3 — Identifier les acteurs
 
-Identifiez les deux acteurs :
-
-- **Administrateur**
-- **Visiteur**
-
-### Étape 5 — Identifier les rôles
-
-Pour chaque acteur, indiquez les actions qu’il peut réaliser à partir des maquettes.
-
-Exemple :
+Identifiez les acteurs du Blog personnel :
 
 ```text
-Administrateur → gérer les articles
+Administrateur
+Visiteur
+```
 
-Visiteur → consulter les articles
-````
+### Étape 4 — Identifier les actions
+
+Pour chaque acteur, indiquez les actions qu’il peut réaliser.
+
+```text
+Administrateur → publier et gérer des articles
+Visiteur       → consulter des articles
+```
 
 ## 2.3. Réaliser l’analyse
 
-### Étape 6 — Créer le livrable
+### Étape 5 — Créer le livrable
 
-Réalisez une analyse contenant :
+Présentez votre analyse sous cette forme :
 
 ```text
+Contexte
+  ↓
+Besoin
+  ↓
 Application
-    ↓
-Finalité
-    ↓
+  ↓
 Acteurs
-    ↓
-Rôles
+  ↓
+Actions
 ```
 
-Ajoutez le **périmètre** identifié à partir des maquettes.
+Ajoutez les informations identifiées dans les étapes précédentes.
 
 **Résultat attendu :**
 
-Une analyse claire permettant de comprendre l’application, sa finalité, son périmètre et les rôles de l’Administrateur et du Visiteur.
+Une analyse claire du **Blog personnel** montrant son contexte, son besoin, son application, ses acteurs et leurs actions.
 
 # 3. Bilan
 
-**Vous avez réalisé :** une analyse du contexte et des acteurs du Blog personnel.
+**Vous avez réalisé :** une première analyse du contexte du **Blog personnel** à partir de ses maquettes.
 
-**Vous savez maintenant :** identifier une application, sa finalité, son périmètre, ses acteurs et leurs rôles à partir d’un support fonctionnel.
+**Vous savez maintenant :** décrire le contexte d’une application et identifier ses acteurs et leurs actions.
 
 # 4. Glossaire
 
+* **Contexte** : situation et besoin autour d’une application.
 * **Application** : système créé pour répondre à un besoin.
-* **Finalité** : raison pour laquelle l’application existe.
 * **Acteur** : personne ou système qui utilise l’application.
-* **Rôle** : actions qu’un acteur peut réaliser.
-* **Périmètre** : éléments et fonctionnalités pris en compte dans l’application.
+* **Action** : opération réalisée par un acteur.
 * **Maquette** : représentation visuelle d’une interface.
-
-
-
-
