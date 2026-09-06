@@ -1,5 +1,5 @@
 ---
-title: "Variables et les entrées-sorties"
+title: "Manipuler les variables et les entrées-sorties"
 layout: tuto
 slug: "variables-entrées-sorties"
 permalink: /tutos/:slug/
@@ -9,11 +9,6 @@ ua: "UA.121.11"
 nav_order: 1
 ---
 
-
-# Tutoriel 121.11 — Manipuler les variables et les entrées-sorties
-
-> * C.1.2.1 — Construire le traitement logique / D.121.1 — Programmer des traitements logiques
-> * UA.121.11 — Manipuler les variables et les entrées-sorties
 
 Comprendre les variables, les entrées, les traitements simples et les sorties en JavaScript.
 

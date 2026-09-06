@@ -1,3 +1,9 @@
+
+- l'IA doit demnder la progression pédagogie : Liste des unité d'apprentissage de données d'apprentissage pour positioner le tuto dans la progression des autre Unité d'apprentissage et ces tutoriuels. 
+  - si ces information n'esit pas disponible il faut demdner au concepteur des tuto ( Formateur dans ce cas )
+
+
+
 # Skill — Rédaction de tutoriel
 
 ## 1. Rôle

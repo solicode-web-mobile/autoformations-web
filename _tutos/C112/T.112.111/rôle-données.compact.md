@@ -1,5 +1,5 @@
 ---
-title: "Rôle des données"
+title: "Rôle des données dans une application"
 layout: tuto
 slug: "rôle-données"
 permalink: /tutos/:slug/compact
@@ -10,77 +10,102 @@ nav_order: 1
 ---
 
 
+## 1. Objectif
 
+Comprendre la différence entre **information** et **donnée**, et comprendre pourquoi une application utilise des données pour réaliser une fonctionnalité.
 
-# compact — Comprendre le rôle des données dans une application
-> - C.1.1.2 — Modéliser les données / D.112.1 — Modéliser les données
-> - UA.112.11 — Comprendre le rôle des données dans une application
+## 2. Prérequis
 
+- Connaître les principales fonctionnalités du **Blog personnel**.
 
+- Les maquettes du **Blog personnel** sont nécessaires : <a href="https://solicode-web-mobile.github.io/maquette-blog/" target="_blank">Maquette blog</a>
 
-Identifier les données nécessaires au fonctionnement d’une application et les relier à ses fonctionnalités.
-
-**Prérequis** : connaître les principales fonctionnalités du Blog personnel.
 
 # Partie 1 — Théorie
 
-## 1.1. Donnée
+## 1.1. Information
 
-Une **donnée** est une information utilisée par une application.
+Une **information** est ce que l’on veut connaître, transmettre ou communiquer.
 
-**Exemple :** le titre et le contenu d’un article sont des données.
+**Exemple :** le titre d’un article est « Mon premier voyage ».
 
-## 1.2. Donnée structurée
+![Information]({{ '/assets/images/c112/T.112.111/information.600.jpg' | relative_url }})
 
-Une donnée **structurée** est organisée pour pouvoir être facilement utilisée par l’application.
 
-**Exemple :** un article peut avoir un titre, un contenu et une date.
+## 1.2. Donnée
 
-## 1.3. Fonctionnalité et données
-
-Une fonctionnalité utilise des données pour réaliser une action.
-
-**Exemple :**
-
-> Afficher les articles → utiliser les données des articles.
-
-## 1.4. À retenir
-
-* Une application a besoin de données pour fonctionner.
-* Une fonctionnalité utilise une ou plusieurs données.
-* Les données doivent être organisées pour être facilement utilisées.
-
-# Partie 2 — Pratique
-
-## 2.1. Observer les fonctionnalités
-
-### Étape 1 — Observer le Blog personnel
-
-Observez les fonctionnalités présentées dans les maquettes du **Blog personnel**.
-
-Notez les principales fonctionnalités.
-
-### Étape 2 — Identifier les données
-
-Pour chaque fonctionnalité, cherchez les informations nécessaires à son fonctionnement.
+Une **donnée** est une information représentée sous une forme que l’application peut utiliser.
 
 **Exemple :**
 
 ```text
-Afficher un article
+titre = "Mon premier voyage"
+```
+
+L’application peut alors stocker, retrouver, modifier ou afficher cette donnée.
+
+![donnée]({{ '/assets/images/c112/T.112.111/donnée.600.jpg' | relative_url }})
+
+
+## 1.3. Fonctionnalité
+
+Une **fonctionnalité** est une exécution de l’application réalisée par un **acteur** pour répondre à un besoin.
+
+**Exemple :**
+
+```text
+Acteur : Visiteur
+Fonctionnalité : afficher le détail d’un article
+```
+
+Le Visiteur demande le détail d’un article et l’application utilise les données de cet article pour l’afficher.
+
+![fonctionnalité]({{ '/assets/images/c112/T.112.111/fonctionnalité.600.jpg' | relative_url }})
+
+
+## 1.4. Données et fonctionnalité
+
+Une fonctionnalité utilise les données dont elle a besoin.
+
+**Exemple :**
+
+```text
+Visiteur
+   ↓
+Afficher le détail d’un article
+   ↓
+Données :
 → titre
 → contenu
 → date
 → auteur
 ```
+![Données et fonctionnalité]({{ '/assets/images/c112/T.112.111/données-fonctionnalité.600.jpg' | relative_url }})
 
-## 2.2. Organiser les données
+## 1.5. À retenir
 
-### Étape 3 — Créer la liste des données
+* **Information** → ce que l’on veut connaître ou communiquer.
+* **Donnée** → information sous une forme exploitable par l’application.
+* **Fonctionnalité** → exécution de l’application par un acteur.
+* **Données** → éléments utilisés par la fonctionnalité.
 
-Créez une liste des principales données utilisées par l’application.
+![Données et fonctionnalité]({{ '/assets/images/c112/T.112.111/synthèse.600.jpg' | relative_url }})
 
-Regroupez les données qui appartiennent au même élément.
+# Partie 2 — Pratique
+
+## 2.1. Identifier les données
+
+### Étape 1 — Choisir la fonctionnalité
+
+Prenez la fonctionnalité :
+
+```text
+Visiteur → afficher le détail d’un article
+```
+
+### Étape 2 — Chercher les données
+
+Identifiez les données nécessaires pour afficher le détail de l’article.
 
 **Exemple :**
 
@@ -89,25 +114,34 @@ Article
 → titre
 → contenu
 → date
+→ auteur
 ```
 
-### Étape 4 — Relier les données aux fonctionnalités
+### Étape 3 — Relier les données à la fonctionnalité
 
-Associez chaque donnée aux fonctionnalités qui l’utilisent.
+Présentez le lien :
+
+```text
+Visiteur
+   ↓
+Afficher le détail d’un article
+   ↓
+titre · contenu · date · auteur
+```
 
 **Résultat attendu :**
 
-Une liste claire des données nécessaires au fonctionnement du Blog personnel, reliées aux principales fonctionnalités.
+Une identification simple des données nécessaires à la fonctionnalité **« Afficher le détail d’un article »**.
 
 # 3. Bilan
 
-**Vous avez réalisé :** une première liste des données du Blog personnel.
+**Vous avez réalisé :** l’identification des données utilisées pour afficher le détail d’un article.
 
-**Vous savez maintenant :** identifier les données nécessaires à une application et les relier à ses fonctionnalités.
+**Vous savez maintenant :** distinguer une information d’une donnée et relier des données à une fonctionnalité.
 
 # 4. Glossaire
 
-* **Donnée** : information utilisée par une application.
-* **Donnée structurée** : donnée organisée pour être facilement utilisée.
-* **Fonctionnalité** : action proposée par une application.
-* **Article** : contenu publié dans le blog.
+* **Information** : ce que l’on veut connaître ou communiquer.
+* **Donnée** : information sous une forme exploitable par une application.
+* **Fonctionnalité** : exécution de l’application par un acteur pour répondre à un besoin.
+* **Acteur** : personne ou système qui utilise l’application.
