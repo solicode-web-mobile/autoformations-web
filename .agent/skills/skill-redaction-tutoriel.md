@@ -26,6 +26,8 @@ Ne jamais inventer, modifier ou déduire une progression non fournie.
 
 
 
+- Ne pas utilisr mon nom dans les exemple : ESSARRAJ Fouad, mais utiliser "Madani Ali"
+
 
 
 

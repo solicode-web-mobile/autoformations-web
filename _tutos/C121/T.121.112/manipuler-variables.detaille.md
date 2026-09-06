@@ -2,12 +2,13 @@
 title: "Manipuler les variables"
 layout: tuto
 slug: "manipuler-variables"
-permalink: /tutos/:slug/
+permalink: /tutos/:slug/detaille
 tuto_id: "T.121.112"
-version: "normal"
+version: "detaille"
 ua: "UA.121.11"
 nav_order: 2
 ---
+
 
 ## 1. Objectif
 
@@ -23,7 +24,9 @@ Savoir créer et exécuter un fichier JavaScript avec Node.js et utiliser `conso
 
 Une **variable** permet de stocker une valeur dans un programme.
 
-En JavaScript, on peut créer une variable avec `let`.
+Une valeur peut être un texte, un nombre ou une autre donnée utilisée par le programme.
+
+En JavaScript, on peut créer une variable avec le mot-clé `let`.
 
 **Exemple :**
 
@@ -31,7 +34,21 @@ En JavaScript, on peut créer une variable avec `let`.
 let nom = "Sara";
 ```
 
-La variable `nom` contient la valeur `"Sara"`.
+Dans cet exemple :
+
+* `let` permet de créer la variable ;
+* `nom` est le nom de la variable ;
+* `"Sara"` est la valeur stockée.
+
+On peut représenter cette variable ainsi :
+
+```text
+nom
+ ↓
+"Sara"
+```
+
+La variable `nom` permet donc de conserver la valeur `"Sara"` pour pouvoir l’utiliser dans le programme.
 
 ## 1.2. Utiliser une variable
 
@@ -43,7 +60,7 @@ Une variable peut être utilisée dans une instruction.
 console.log(nom);
 ```
 
-Le programme affiche la valeur contenue dans `nom`.
+Le programme utilise la variable `nom` et affiche sa valeur dans la console.
 
 **Résultat :**
 
@@ -51,7 +68,23 @@ Le programme affiche la valeur contenue dans `nom`.
 Sara
 ```
 
-## 1.3. Modifier une variable
+La variable peut aussi être utilisée plusieurs fois dans le programme.
+
+```javascript
+console.log(nom);
+console.log(nom);
+```
+
+**Résultat :**
+
+```text
+Sara
+Sara
+```
+
+La variable conserve sa valeur tant qu’elle n’est pas modifiée.
+
+## 1.3. Modifier la valeur d’une variable
 
 Une variable créée avec `let` peut recevoir une nouvelle valeur.
 
@@ -71,13 +104,23 @@ console.log(nom);
 Ali
 ```
 
+La valeur `"Sara"` a été remplacée par `"Ali"`.
+
+Dans ce tutoriel, nous utilisons surtout les variables pour **stocker puis afficher des valeurs**.
+
 ## 1.4. À retenir
 
-* **Variable** → stocker une valeur.
-* `let` → créer une variable.
-* Une variable possède un nom et une valeur.
+* **Variable** → permet de stocker une valeur.
+* `let` → permet de créer une variable.
+* La variable possède un **nom** et une **valeur**.
 * Une variable peut être utilisée dans le programme.
-* `console.log()` → afficher la valeur d’une variable.
+* `console.log()` → affiche la valeur d’une variable.
+
+On peut retenir :
+
+```text
+Créer → Stocker → Utiliser → Afficher
+```
 
 # Partie 2 — Pratique
 
@@ -87,12 +130,20 @@ Ali
 
 Créez un fichier `presentation.js`.
 
-Ajoutez :
+Dans ce fichier, créez trois variables :
 
 ```javascript
 let nom = "Madani";
 let prenom = "Ali";
 let formation = "Développement Web";
+```
+
+Chaque variable contient une information différente :
+
+```text
+nom        → Madani
+prenom     → Ali
+formation  → Développement Web
 ```
 
 ### Étape 2 — Afficher les variables
@@ -105,6 +156,16 @@ console.log(prenom);
 console.log(formation);
 ```
 
+Chaque instruction affiche la valeur d’une variable.
+
+**Résultat attendu :**
+
+```text
+Madani
+Ali
+Développement Web
+```
+
 ### Étape 3 — Exécuter le programme
 
 Dans le terminal, exécutez :
@@ -112,6 +173,8 @@ Dans le terminal, exécutez :
 ```bash
 node presentation.js
 ```
+
+Node.js exécute le fichier JavaScript et les résultats apparaissent dans la console.
 
 **Résultat attendu :**
 
@@ -125,7 +188,7 @@ Développement Web
 
 ### Étape 4 — Créer votre présentation
 
-Modifiez les valeurs des trois variables avec vos propres informations :
+Modifiez les valeurs des variables avec vos propres informations :
 
 ```javascript
 let nom = "Votre nom";
@@ -133,7 +196,15 @@ let prenom = "Votre prénom";
 let formation = "Votre formation";
 ```
 
-Affichez les trois variables avec `console.log()`.
+Gardez les trois variables.
+
+Affichez-les avec `console.log()` :
+
+```javascript
+console.log(nom);
+console.log(prenom);
+console.log(formation);
+```
 
 Exécutez ensuite :
 

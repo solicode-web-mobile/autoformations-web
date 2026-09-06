@@ -16,19 +16,19 @@ layout: default
         {{ page.code }}
       </span>
 
-      <h1>{{ page.tuto_title }}</h1>
+      <h1>{{ page.title }}</h1>
 
     </div>
 
     <div class="session-tools">
       {% include text-size-control.html %}
-     </div>
+    </div>
 
   </header>
 
 
   <!-- ==================================================
-       OBJECTIF
+       01. OBJECTIF
        ================================================== -->
 
   {% if page.objectif %}
@@ -43,6 +43,7 @@ layout: default
 
         <div>
           <h2>Objectif</h2>
+
           <p class="session-section-intro">
             Ce que vous devez être capable de réaliser à la fin de la session.
           </p>
@@ -60,7 +61,7 @@ layout: default
 
 
   <!-- ==================================================
-       DESCRIPTION
+       02. DÉROULEMENT
        ================================================== -->
 
   {% if page.description %}
@@ -75,6 +76,7 @@ layout: default
 
         <div>
           <h2>Déroulement</h2>
+
           <p class="session-section-intro">
             Vue d'ensemble du travail réalisé pendant la session.
           </p>
@@ -92,7 +94,7 @@ layout: default
 
 
   <!-- ==================================================
-       PARCOURS
+       03. PARCOURS
        ================================================== -->
 
   <section class="session-section session-path-section">
@@ -115,7 +117,7 @@ layout: default
 
 
     <!-- ==================================================
-         UNITÉS D'APPRENTISSAGE
+         1. APPRENDRE — UNITÉS D'APPRENTISSAGE
          ================================================== -->
 
     <section class="session-phase session-phase-learning">
@@ -153,16 +155,20 @@ layout: default
 
               <article class="ua-card">
 
+                <!-- ======================================
+                     EN-TÊTE UA
+                     ====================================== -->
+
                 <div class="ua-card-header">
 
                   <span class="ua-card-code">
-                     <a href="{{ ua.url | relative_url }}">
-                       {{ ua.code }}
+                    <a href="{{ ua.url | relative_url }}">
+                      {{ ua.code }}
                     </a>
                   </span>
 
                   <h3>
-                      {{ ua.title }}
+                    {{ ua.title }}
                   </h3>
 
                   {% if ua.objectif %}
@@ -176,7 +182,9 @@ layout: default
                 </div>
 
 
-                <!-- RÉFÉRENCES -->
+                <!-- ======================================
+                     RÉFÉRENCES
+                     ====================================== -->
 
                 <div class="ua-card-references">
 
@@ -240,41 +248,43 @@ layout: default
                 </div>
 
 
-                <!-- TUTORIELS -->
+                <!-- ======================================
+                     TUTORIELS
+                     ====================================== -->
 
-{% assign ua_tutos =
-  site.tutos
-  | where: "ua", ua.code
-%}
+                {% assign ua_tutos =
+                  site.tutos
+                  | where: "ua", ua.code
+                %}
 
-{% assign ua_tutos_normal =
-  ua_tutos
-  | where: "version", "normal"
-  | sort: "nav_order"
-%}
-
-{% if ua_tutos_normal.size > 0 %}
-
-  <div class="ua-card-tutos">
-
-    <div class="ua-card-tutos-header">
-
-      <h4>Tutoriels</h4>
-
-      <span>
-        {{ ua_tutos_normal.size }}
-      </span>
-
-    </div>
-
-    {% include tuto-list.html tutos=ua_tutos %}
-
-  </div>
-
-{% endif %}
+                {% assign ua_tutos_normal =
+                  ua_tutos
+                  | where: "version", "normal"
+                  | sort: "nav_order"
+                %}
 
 
+                {% if ua_tutos_normal.size > 0 %}
 
+                  <div class="ua-card-tutos">
+
+                    <div class="ua-card-tutos-header">
+
+                      <h4>
+                        Tutoriels
+                      </h4>
+
+                      <span>
+                        {{ ua_tutos_normal.size }}
+                      </span>
+
+                    </div>
+
+                    {% include tuto-list.html tutos=ua_tutos %}
+
+                  </div>
+
+                {% endif %}
 
               </article>
 
@@ -302,7 +312,7 @@ layout: default
 
 
     <!-- ==================================================
-         LAB
+         2. EXPLORER — LAB
          ================================================== -->
 
     {% if page.labs and page.labs.size > 0 %}
@@ -382,7 +392,7 @@ layout: default
 
 
     <!-- ==================================================
-         PROTOTYPE
+         3. ADAPTER — PROTOTYPE
          ================================================== -->
 
     {% if page.prototype and page.prototype.size > 0 %}
@@ -441,9 +451,9 @@ layout: default
 
                     <h5>Travail à faire</h5>
 
-                    <p>
-                      {{ prototype.travail_a_faire }}
-                    </p>
+                    <div>
+                      {{ prototype.travail_a_faire | markdownify }}
+                    </div>
 
                   </div>
 
@@ -492,7 +502,7 @@ layout: default
 
 
     <!-- ==================================================
-         PROJET FIL ROUGE
+         4. TRANSPOSER — PROJET FIL ROUGE
          ================================================== -->
 
     {% if page.projet_fil_rouge and page.projet_fil_rouge.size > 0 %}
@@ -551,9 +561,9 @@ layout: default
 
                     <h5>Travail à faire</h5>
 
-                    <p>
-                      {{ projet.travail_a_faire }}
-                    </p>
+                    <div>
+                      {{ projet.travail_a_faire | markdownify }}
+                    </div>
 
                   </div>
 

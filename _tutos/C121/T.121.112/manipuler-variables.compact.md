@@ -61,8 +61,8 @@ Créez un fichier `presentation.js`.
 Ajoutez :
 
 ```javascript
-let nom = "Essarraj";
-let prenom = "Fouad";
+let nom = "Madani";
+let prenom = "Ali";
 let formation = "Développement Web";
 ```
 
@@ -87,8 +87,8 @@ node presentation.js
 **Résultat attendu :**
 
 ```text
-Essarraj
-Fouad
+Madani
+Ali
 Développement Web
 ```
 
