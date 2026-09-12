@@ -1,5 +1,5 @@
 ---
-title: "Créer son premier document HTML"
+title: "Structure d’un document HTML - Débutant"
 layout: tuto
 slug: "structure-document-html"
 permalink: /tutos/:slug/
@@ -7,18 +7,8 @@ tuto_id: "T.122.111"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 1
----
 ---
 
-title: "Créer son premier document HTML"
-layout: tuto
-slug: "structure-document-html"
-permalink: /tutos/:slug/
-tuto_id: "T.122.111"
-version: "normal"
-ua: "UA.122.11"
-nav_order: 1
-------------
 
 ## 1. Objectif
 
@@ -170,13 +160,24 @@ Ce fichier doit contenir le code HTML complet de la page finale.
 
 Le résultat final attendu est présenté ci-dessous :
 
-<iframe
-    src="[URL_DE_LA_PAGE_FINALE]"
+
+
+
+<div class="iframe-container">
+  <button type="button" class="fullscreen-btn" onclick="toggleFullscreen()">Plein écran ⛶</button>
+  <iframe
+    id="tutoIframe"
+    src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
     width="100%"
     height="700"
     title="Résultat final de la page détaille d’un article"
-    style="border:1px solid #ddd; border-radius:8px;">
-</iframe>
+    allowfullscreen="true"
+    allow="fullscreen">
+  </iframe>
+</div>
+
+
+
 
 **Observez le résultat final.**
 
