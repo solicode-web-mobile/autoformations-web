@@ -166,12 +166,67 @@ window.initAutoIframe = function (iframe) {
 
     };
 
+    // ==================================================
+    // Bouton : supprimer
+    // ==================================================
+
+    const deleteBtn = document.createElement("button");
+
+    deleteBtn.className = "delete-toggle";
+
+    deleteBtn.setAttribute(
+        "title",
+        "Supprimer"
+    );
+
+    deleteBtn.setAttribute(
+        "aria-label",
+        "Supprimer"
+    );
+
+    deleteBtn.innerHTML = `
+        <svg width="16"
+             height="16"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+
+            <polyline points="3 6 5 6 21 6"></polyline>
+
+            <path d="M19 6l-1 14H6L5 6"></path>
+
+            <path d="M10 11v6"></path>
+            <path d="M14 11v6"></path>
+
+            <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+
+        </svg>
+    `;
+
+    deleteBtn.onclick = function () {
+
+        // Si l'iframe est en plein écran,
+        // on quitte d'abord le plein écran.
+        if (document.fullscreenElement === wrapper) {
+            document.exitFullscreen().finally(function () {
+                wrapper.remove();
+            });
+        } else {
+            wrapper.remove();
+        }
+
+    };
+
     // --------------------------------------------------
-    // Assemblage
+    // Assemblage des boutons
     // --------------------------------------------------
 
     actions.appendChild(externalBtn);
     actions.appendChild(fullscreenBtn);
+    actions.appendChild(deleteBtn);
 
     header.appendChild(titleSpan);
     header.appendChild(actions);
@@ -197,6 +252,10 @@ window.initAutoIframe = function (iframe) {
 
     wrapper.appendChild(iframe);
 };
+
+// ======================================================
+// Initialisation automatique
+// ======================================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
