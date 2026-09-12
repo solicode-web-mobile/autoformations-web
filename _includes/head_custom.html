@@ -22,6 +22,29 @@
     <link rel="stylesheet" href="{{ '/assets/css/projet.css' | relative_url }}">
 {% endcase %}
 
+
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/vs2015.min.css"
+    >
+
+<!-- Highlight.js -->
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        document
+            .querySelectorAll("pre code")
+            .forEach(function (codeBlock) {
+
+                hljs.highlightElement(codeBlock);
+
+            });
+
+    });
+</script>
+
 <script defer
         src="{{ '/assets/js/formation.js' | relative_url }}">
 </script>

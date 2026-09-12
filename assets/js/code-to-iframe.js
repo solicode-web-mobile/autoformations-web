@@ -6,97 +6,114 @@ document.addEventListener("DOMContentLoaded", function () {
 
     codeBlocks.forEach(function (codeBlock) {
 
-        // Récupère le code HTML original
-        const htmlCode = codeBlock.textContent.trim();
-
-        // Récupère le <pre>
         const pre = codeBlock.closest("pre");
 
-        // --------------------------------------------------
-        // Créer le bouton
-        // --------------------------------------------------
-        const button = document.createElement("button");
+        if (!pre) {
+            return;
+        }
 
-        button.className = "open-editor-btn";
-        button.type = "button";
-        button.textContent = "Ouvrir dans l’éditeur";
+        // Code HTML original
+        const htmlCode = codeBlock.textContent.trim();
 
         // --------------------------------------------------
-        // Créer le conteneur du bouton
+        // Bouton
         // --------------------------------------------------
+
         const buttonWrapper = document.createElement("div");
-
         buttonWrapper.className = "code-editor-action";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "open-editor-btn";
+        button.textContent = "Exécuter le code";
+
         buttonWrapper.appendChild(button);
 
-        // Ajouter le bouton après le code
-        pre.insertAdjacentElement("afterend", buttonWrapper);
+        // Ajouter le bouton après le bloc de code
+        pre.insertAdjacentElement(
+            "afterend",
+            buttonWrapper
+        );
 
         // --------------------------------------------------
-        // Au clic : créer l'iframe
+        // Au clic
         // --------------------------------------------------
+
         button.addEventListener("click", function () {
 
-            // Évite de créer plusieurs iframes
-            if (document.querySelector(".code-editor-modal")) {
+            /*
+             * Cherche une iframe déjà créée pour ce bloc.
+             * Elle est placée juste après le bouton.
+             */
+            let iframe = buttonWrapper.nextElementSibling;
+
+            if (
+                iframe &&
+                iframe.matches("iframe.auto-wrapper")
+            ) {
+                // L'iframe existe déjà : on l'affiche
+                iframe.style.display = "block";
                 return;
             }
 
             // --------------------------------------------------
-            // Conteneur plein écran
+            // Créer l'iframe
             // --------------------------------------------------
-            const wrapper = document.createElement("div");
 
-            wrapper.className = "code-editor-modal";
+            iframe = document.createElement("iframe");
 
-            // --------------------------------------------------
-            // iframe
-            // --------------------------------------------------
-            const iframe = document.createElement("iframe");
+            iframe.className = "auto-wrapper";
 
+            iframe.height = "500";
+
+            iframe.title =
+                "Résultat du code HTML";
+
+            /*
+             * URL de l'éditeur
+             */
+            const editorUrl =
+                window.editeurCodeUrl ||
+                "/editeur-code";
+
+            /*
+             * Construire l'URL :
+             *
+             * /editeur-code?html=<h1>Bonjour</h1>
+             *
+             * encodeURIComponent est important pour les
+             * caractères spéciaux du HTML.
+             */
             iframe.src =
-                window.editeurCodeUrl +
+                editorUrl +
                 "?html=" +
                 encodeURIComponent(htmlCode);
 
+            // --------------------------------------------------
+            // Afficher l'iframe
+            // --------------------------------------------------
+
+            iframe.style.display = "block";
             iframe.style.width = "100%";
-            iframe.style.height = "100%";
             iframe.style.border = "none";
 
-            iframe.title = "Éditeur de code HTML";
-
-            // --------------------------------------------------
-            // Ajouter l'iframe
-            // --------------------------------------------------
-            wrapper.appendChild(iframe);
-
-            document.body.appendChild(wrapper);
-
-            // --------------------------------------------------
-            // Passage en plein écran
-            // --------------------------------------------------
-            if (wrapper.requestFullscreen) {
-                wrapper.requestFullscreen();
-            }
-
-            // --------------------------------------------------
-            // Nettoyage après sortie du plein écran
-            // --------------------------------------------------
-            function removeEditor() {
-
-                if (!document.fullscreenElement && wrapper.parentNode) {
-                    wrapper.remove();
-                    document.removeEventListener(
-                        "fullscreenchange",
-                        removeEditor
-                    );
-                }
-            }
-
-            document.addEventListener(
-                "fullscreenchange",
-                removeEditor
+            /*
+             * IMPORTANT :
+             * on place l'iframe juste après le bouton.
+             */
+            buttonWrapper.insertAdjacentElement(
+                "afterend",
+                iframe
             );
+
+            /*
+             * Demande au gestionnaire des iframes
+             * d'ajouter la barre d'outils.
+             */
+            if (typeof window.initAutoIframe === "function") {
+                window.initAutoIframe(iframe);
+            }
+
         });
 
     });

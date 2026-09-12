@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hello Highlight.js</title>
+
+    <!-- Thème VS Code -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/vs2015.min.css"
+    >
+
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .code-block {
+            margin-bottom: 30px;
+        }
+
+        .code-title {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        pre {
+            margin: 0;
+        }
+
+        pre code.hljs {
+            display: block;
+            padding: 20px;
+            border-radius: 6px;
+
+            font-family:
+                "Cascadia Code",
+                "Consolas",
+                monospace;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Hello Highlight.js</h1>
+
+
+    <!-- HTML -->
+    <div class="code-block">
+
+        <div class="code-title">
+            HTML
+        </div>
+
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Bonjour&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1 class="title"&gt;
+        Bonjour
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+        Bienvenue dans Highlight.js.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    </div>
+
+
+    <!-- CSS -->
+    <div class="code-block">
+
+        <div class="code-title">
+            CSS
+        </div>
+
+        <pre><code class="language-css">body {
+    margin: 0;
+    padding: 20px;
+    background: white;
+}
+
+.title {
+    color: #007acc;
+    font-size: 32px;
+}</code></pre>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <div class="code-block">
+
+        <div class="code-title">
+            JavaScript
+        </div>
+
+        <pre><code class="language-javascript">const message = "Bonjour";
+
+function afficherMessage(message) {
+    console.log(message);
+}
+
+afficherMessage(message);</code></pre>
+
+    </div>
+
+
+    <!-- PHP -->
+    <div class="code-block">
+
+        <div class="code-title">
+            PHP
+        </div>
+
+        <pre><code class="language-php">&lt;?php
+
+$name = "Fouad";
+
+function sayHello($name)
+{
+    return "Bonjour " . $name;
+}
+
+echo sayHello($name);</code></pre>
+
+    </div>
+
+</div>
+
+
+<!-- Highlight.js -->
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        document
+            .querySelectorAll("pre code")
+            .forEach(function (codeBlock) {
+
+                hljs.highlightElement(codeBlock);
+
+            });
+
+    });
+</script>
+
+</body>
+</html>

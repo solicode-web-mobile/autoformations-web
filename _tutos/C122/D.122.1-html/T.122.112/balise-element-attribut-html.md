@@ -39,14 +39,6 @@ Exemple :
 </p>
 ```
  
-<iframe
-    class="auto-wrapper"
-    src="{{'/editeur-code' | relative_url}}?html=<h1>Bonjour</h1>"
-    height="500"
-    title="Résultat du tutoriel 3 : HTML">
-</iframe>
-
-
 
 
 `<p>` est la balise ouvrante.
