@@ -162,37 +162,28 @@ Le résultat final attendu est présenté ci-dessous :
 
 
 
-
-<div class="iframe-wrapper" id="tutoWrapper">
-  <!-- Bouton flottant -->
-  <button type="button" class="fullscreen-fab" id="fsToggleBtn" aria-label="Basculer en plein écran" title="Plein écran">
+<div class="iframe-wrapper" id="iframeWrapper">
+  <!-- Barre d'outils -->
+  <div class="iframe-header">
+    <span class="iframe-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+      Résultat final
+    </span>
     
-    <!-- Icône Agrandir -->
-    <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 3 21 3 21 9"></polyline>
-      <polyline points="9 21 3 21 3 15"></polyline>
-      <line x1="21" y1="3" x2="14" y2="10"></line>
-      <line x1="3" y1="21" x2="10" y2="14"></line>
-    </svg>
+    <button class="fullscreen-toggle" id="fs-btn" onclick="toggleFullscreen()" title="Plein écran">
+      <!-- Icône Agrandir -->
+      <svg class="icon-maximize" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+      <!-- Icône Réduire (masquée par défaut) -->
+      <svg class="icon-minimize" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+    </button>
+  </div>
 
-    <!-- Icône Réduire (Masquée par défaut) -->
-    <svg id="icon-compress" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="4 14 10 14 10 20"></polyline>
-      <polyline points="20 10 14 10 14 4"></polyline>
-      <line x1="14" y1="10" x2="21" y2="3"></line>
-      <line x1="3" y1="21" x2="10" y2="14"></line>
-    </svg>
-    
-  </button>
-
+  <!-- Contenu -->
   <iframe
-    id="tutoIframe"
     src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
-    title="Résultat final de la page détaille d’un article"
-    allowfullscreen="true">
+    title="Résultat final de la page détaille d’un article">
   </iframe>
 </div>
-
 
 
 
