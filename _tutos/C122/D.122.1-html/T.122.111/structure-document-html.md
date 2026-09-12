@@ -1,5 +1,5 @@
 ---
-title: "Structure d’un document HTML - Débutant"
+title: "Créer son premier document HTML"
 layout: tuto
 slug: "structure-document-html"
 permalink: /tutos/:slug/
@@ -10,7 +10,7 @@ nav_order: 1
 ---
 ---
 
-title: "Structure d’un document HTML - Débutant"
+title: "Créer son premier document HTML"
 layout: tuto
 slug: "structure-document-html"
 permalink: /tutos/:slug/
