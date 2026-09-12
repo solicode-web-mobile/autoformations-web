@@ -287,7 +287,7 @@ Après l’application des notions des tutoriels précédents et du T.122.114, v
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/blog/page-detaille-v1/page-detaile-html-v1.tuto-4-html.html' | relative_url}}"
+    src="{{'/code/blog/page-detaille-v1/page-detail-html-v1.tuto-4-html.html' | relative_url}}"
     height="700"
     title="Résultat attendu après le tutoriel 4">
 </iframe>

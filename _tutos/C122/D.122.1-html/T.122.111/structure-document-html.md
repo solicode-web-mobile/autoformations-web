@@ -200,7 +200,7 @@ La page finale sera :
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/blog/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
+    src="{{'/code/blog/page-detaille-v1/page-detail-html-v1.html' | relative_url}}"
     height="700"
     title="Résultat final de la page détaille d’un article">
 </iframe>

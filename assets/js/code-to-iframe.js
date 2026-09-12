@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const codeBlocks = document.querySelectorAll(
-        "pre > code.language-html"
+        "pre > code.language-html, " +
+        "pre > code.language-css, " +
+        "pre > code.language-js, " +
+        "pre > code.language-javascript, " +
+        "pre > code.language-php"
     );
 
     codeBlocks.forEach(function (codeBlock) {
@@ -12,8 +16,43 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Code HTML original
-        const htmlCode = codeBlock.textContent.trim();
+        // --------------------------------------------------
+        // Déterminer le langage
+        // --------------------------------------------------
+
+        let language = "";
+
+        if (
+            codeBlock.classList.contains("language-html")
+        ) {
+            language = "html";
+        }
+
+        else if (
+            codeBlock.classList.contains("language-css")
+        ) {
+            language = "css";
+        }
+
+        else if (
+            codeBlock.classList.contains("language-js") ||
+            codeBlock.classList.contains("language-javascript")
+        ) {
+            language = "js";
+        }
+
+        else if (
+            codeBlock.classList.contains("language-php")
+        ) {
+            language = "php";
+        }
+
+        if (!language) {
+            return;
+        }
+
+        // Code original
+        const code = codeBlock.textContent.trim();
 
         // --------------------------------------------------
         // Bouton
@@ -43,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             /*
              * Cherche une iframe déjà créée pour ce bloc.
-             * Elle est placée juste après le bouton.
              */
             let iframe = buttonWrapper.nextElementSibling;
 
@@ -51,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 iframe &&
                 iframe.matches("iframe.auto-wrapper")
             ) {
-                // L'iframe existe déjà : on l'affiche
                 iframe.style.display = "block";
                 return;
             }
@@ -67,27 +104,49 @@ document.addEventListener("DOMContentLoaded", function () {
             iframe.height = "500";
 
             iframe.title =
-                "Résultat du code HTML";
+                "Résultat du code " + language.toUpperCase();
 
-            /*
-             * URL de l'éditeur
-             */
+            // --------------------------------------------------
+            // URL de l'éditeur
+            // --------------------------------------------------
+
             const editorUrl =
                 window.editeurCodeUrl ||
                 "/editeur-code";
 
+            // --------------------------------------------------
+            // Construire les paramètres
+            // --------------------------------------------------
+
+            const params = new URLSearchParams();
+
             /*
-             * Construire l'URL :
+             * Chaque bloc de code est transmis
+             * dans le paramètre correspondant.
+             */
+
+            params.set(language, code);
+
+            /*
+             * Exemple :
              *
+             * HTML :
              * /editeur-code?html=<h1>Bonjour</h1>
              *
-             * encodeURIComponent est important pour les
-             * caractères spéciaux du HTML.
+             * CSS :
+             * /editeur-code?css=body%20%7B...
+             *
+             * JS :
+             * /editeur-code?js=console.log(...)
+             *
+             * PHP :
+             * /editeur-code?php=%3C%3Fphp...
              */
+
             iframe.src =
                 editorUrl +
-                "?html=" +
-                encodeURIComponent(htmlCode);
+                "?" +
+                params.toString();
 
             // --------------------------------------------------
             // Afficher l'iframe
@@ -99,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             /*
              * IMPORTANT :
-             * on place l'iframe juste après le bouton.
+             * placer l'iframe juste après le bouton.
              */
             buttonWrapper.insertAdjacentElement(
                 "afterend",
@@ -107,10 +166,11 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             /*
-             * Demande au gestionnaire des iframes
-             * d'ajouter la barre d'outils.
+             * Initialiser la barre d'outils
              */
-            if (typeof window.initAutoIframe === "function") {
+            if (
+                typeof window.initAutoIframe === "function"
+            ) {
                 window.initAutoIframe(iframe);
             }
 

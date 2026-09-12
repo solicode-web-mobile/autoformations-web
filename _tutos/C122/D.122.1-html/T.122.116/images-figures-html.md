@@ -4,6 +4,7 @@ layout: tuto
 slug: "images-figures-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.116"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 6
@@ -14,48 +15,47 @@ nav_order: 6
 
 Ajouter des images et des figures dans une page HTML.
 
-À la fin du tutoriel, la page de détail du Blog personnel contient les images de l’auteur et de l’article, avec leurs textes alternatifs et leurs légendes.
+À la fin du tutoriel, vous saurez utiliser `<img>`, `src`, `alt`, `width`, `height`, `<figure>` et `<figcaption>`.
 
 ## 2. Prérequis
 
-* Avoir réalisé `T.122.111` à `T.122.115`.
-* Connaître les éléments HTML de base.
+* Connaître la structure d’un document HTML.
+* Savoir utiliser les balises, les éléments et les attributs HTML.
+* Savoir utiliser `<div>`, `<span>`, `class`, `<ul>` et `<li>`.
 * Savoir utiliser un chemin relatif.
-* Disposer des images du projet.
+* Savoir créer et tester une page HTML.
 
-# Partie 1 — Théorie
+## Partie 1 — Théorie
 
-## 1.1. L’image `<img>`
+### 1.1. L’image `<img>`
 
 `<img>` permet d’afficher une image.
 
-L’élément utilise notamment l’attribut `src` pour indiquer le fichier de l’image.
-
-**Exemple :**
+Exemple :
 
 ```html
 <img src="images/author.jpg">
 ```
 
-## 1.2. L’attribut `src`
+`<img>` utilise notamment l’attribut `src` pour indiquer le fichier de l’image.
+
+### 1.2. L’attribut `src`
 
 `src` indique le chemin de l’image.
 
-**Exemple :**
+Exemple :
 
 ```html
 <img src="images/article-cover.png">
 ```
 
-Le navigateur cherche `article-cover.png` dans le dossier `images`.
+Le navigateur cherche l’image dans le dossier `images`.
 
-## 1.3. L’attribut `alt`
+### 1.3. L’attribut `alt`
 
 `alt` donne une description de l’image.
 
-Cette description est utile lorsque l’image ne peut pas être affichée.
-
-**Exemple :**
+Exemple :
 
 ```html
 <img
@@ -64,15 +64,15 @@ Cette description est utile lorsque l’image ne peut pas être affichée.
 >
 ```
 
-Le texte de `alt` doit décrire l’image.
+Le texte de `alt` décrit l’image.
 
-## 1.4. Les attributs `width` et `height`
+### 1.4. Les attributs `width` et `height`
 
 `width` indique la largeur de l’image.
 
-`height` indique sa hauteur.
+`height` indique la hauteur de l’image.
 
-**Exemple :**
+Exemple :
 
 ```html
 <img
@@ -83,11 +83,11 @@ Le texte de `alt` doit décrire l’image.
 >
 ```
 
-## 1.5. La figure `<figure>`
+### 1.5. La figure `<figure>`
 
 `<figure>` permet de regrouper une image avec son contenu associé.
 
-**Exemple :**
+Exemple :
 
 ```html
 <figure>
@@ -98,11 +98,11 @@ Le texte de `alt` doit décrire l’image.
 </figure>
 ```
 
-## 1.6. La légende `<figcaption>`
+### 1.6. La légende `<figcaption>`
 
-`<figcaption>` permet d'ajouter une légende à une figure.
+`<figcaption>` permet d’ajouter une légende à une figure.
 
-**Exemple :**
+Exemple :
 
 ```html
 <figure>
@@ -110,13 +110,14 @@ Le texte de `alt` doit décrire l’image.
         src="images/article-example.png"
         alt="Développeur écrivant du code"
     >
+
     <figcaption>
         Le développeur écrit le code de l'application.
     </figcaption>
 </figure>
 ```
 
-## 1.7. À retenir
+### 1.7. À retenir
 
 * `<img>` affiche une image.
 * `src` indique le chemin de l’image.
@@ -126,298 +127,206 @@ Le texte de `alt` doit décrire l’image.
 * `<figure>` regroupe une image et son contenu associé.
 * `<figcaption>` ajoute une légende à une figure.
 
-# Partie 2 — Pratique
+## Partie 2 — Pratique
 
-## 2.1. Ajouter l’image de l’auteur
+### 2.1. Créer le fichier de travail
 
-### Étape 1 — Ouvrir `index.html`
+#### Étape 1 — Créer le fichier
 
-Ouvrez le fichier `index.html` réalisé dans les tutoriels précédents.
-
-Dans le bloc `article-meta`, ajoutez l’image de l’auteur :
-
-```html
-<div class="article-meta">
-
-    <div class="article-author">
-        <img
-            src="images/author.jpg"
-            alt="Portrait d'un développeur"
-        >
-
-        <div>
-            <strong>
-                Madani Ali
-            </strong>
-
-            <span>
-                Auteur du blog
-            </span>
-        </div>
-    </div>
-
-    <span>
-        14 Février 2026
-    </span>
-
-    <span>
-        5 min de lecture
-    </span>
-
-</div>
-```
-
-Le chemin :
+Créez :
 
 ```text
-images/author.jpg
+tuto-6-html.html
 ```
 
-correspond à la position de l’image dans le projet.
+#### Étape 2 — Ajouter la structure
 
-## 2.2. Ajouter l’image principale de l’article
-
-### Étape 2 — Créer la figure principale
-
-Après l’en-tête de l’article, ajoutez :
-
-```html
-<figure class="article-cover">
-    <img
-        src="images/article-cover.png"
-        alt="Écran montrant du code informatique"
-    >
-</figure>
-```
-
-L’image est maintenant regroupée dans un élément `<figure>`.
-
-## 2.3. Ajouter l’image dans le contenu
-
-### Étape 3 — Ajouter une figure dans l’article
-
-Après le titre :
-
-```html
-<h3>
-    Réaliser l'application
-</h3>
-```
-
-ajoutez :
-
-```html
-<figure class="article-figure">
-    <img
-        src="images/article-example.png"
-        alt="Développeur écrivant du code"
-    >
-    <figcaption>
-        Le développeur écrit le code de l'application.
-    </figcaption>
-</figure>
-```
-
-La figure contient maintenant une image et sa légende.
-
-## 2.4. Vérifier les images
-
-### Étape 4 — Enregistrer le fichier
-
-Enregistrez `index.html`.
-
-### Étape 5 — Ouvrir la page
-
-Ouvrez la page dans le navigateur.
-
-Vérifiez que les trois images s’affichent :
-
-```text
-images/author.jpg
-images/article-cover.png
-images/article-example.png
-```
-
-Vérifiez aussi que :
-
-* l’image de l’auteur apparaît ;
-* l’image principale apparaît ;
-* l’image dans l’article apparaît ;
-* la légende de l’image dans l’article apparaît.
-
-**Résultat attendu :**
-
-La page contient maintenant :
-
-```html
-<div class="article-author">
-    <img
-        src="images/author.jpg"
-        alt="Portrait d'un développeur"
-    >
-</div>
-
-<figure class="article-cover">
-    <img
-        src="images/article-cover.png"
-        alt="Écran montrant du code informatique"
-    >
-</figure>
-
-<figure class="article-figure">
-    <img
-        src="images/article-example.png"
-        alt="Développeur écrivant du code"
-    >
-    <figcaption>
-        Le développeur écrit le code de l'application.
-    </figcaption>
-</figure>
-```
-
-## 2.5. Vérifier la réalisation finale
-
-### Étape 6 — Vérifier toute la page
-
-Relisez maintenant `index.html`.
-
-La page doit contenir :
-
-* la structure HTML ;
-* les informations du document ;
-* les titres et paragraphes ;
-* les conteneurs et classes ;
-* la liste des missions ;
-* les liens ;
-* les images ;
-* les figures et la légende.
-
-**Résultat attendu :**
-
-Vous avez construit progressivement la page de détail d’un article du Blog personnel.
-
-La structure obtenue est proche de :
+Ajoutez :
 
 ```html
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
+
     <title>
-        Métier de développeur - Les principales missions
+        Images et figures HTML
     </title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <article>
-
-        <header class="article-header">
-
-            <span class="article-category">
-                Développement
-            </span>
-
-            <h1>
-                Le métier de développeur et ses principales missions
-            </h1>
-
-            <div class="article-meta">
-
-                <div class="article-author">
-
-                    <img
-                        src="images/author.jpg"
-                        alt="Portrait d'un développeur"
-                    >
-
-                    <div>
-                        <strong>
-                            Madani Ali
-                        </strong>
-
-                        <span>
-                            Auteur du blog
-                        </span>
-                    </div>
-
-                </div>
-
-                <span>
-                    14 Février 2026
-                </span>
-
-                <span>
-                    5 min de lecture
-                </span>
-
-            </div>
-
-        </header>
-
-        <figure class="article-cover">
-
-            <img
-                src="images/article-cover.png"
-                alt="Écran montrant du code informatique"
-            >
-
-        </figure>
-
-        <main class="article-main">
-
-            <section class="article-body">
-
-                <h2>
-                    Le rôle du développeur
-                </h2>
-
-                <p>
-                    Le développeur crée des applications.
-                    Il transforme un besoin en solution informatique.
-                    Son travail se fait en plusieurs étapes.
-                    Il doit bien comprendre le projet.
-                </p>
-
-                <h3>
-                    Réaliser l'application
-                </h3>
-
-                <figure class="article-figure">
-
-                    <img
-                        src="images/article-example.png"
-                        alt="Développeur écrivant du code"
-                    >
-
-                    <figcaption>
-                        Le développeur écrit le code de l'application.
-                    </figcaption>
-
-                </figure>
-
-            </section>
-
-        </main>
-
-    </article>
-
 </body>
+
 </html>
 ```
 
-# 3. Bilan
+### 2.2. Ajouter une image
 
-**Vous avez réalisé :** les images et les figures de la page de détail du Blog personnel.
+#### Étape 3 — Ajouter une image
 
-**Vous savez maintenant :** afficher une image avec `<img>`, utiliser `src`, `alt`, `width` et `height`, et associer une image à une légende avec `<figure>` et `<figcaption>`.
+Dans `<body>`, ajoutez :
 
-**Vous avez maintenant construit progressivement la structure HTML de la page finale de l’UA `UA.122.11`.**
+```html
+<img
+    src="images/author.jpg"
+    alt="Portrait d'un développeur"
+>
+```
 
-# 4. Glossaire
+### 2.3. Utiliser `width` et `height`
 
-* **Image** : ressource visuelle affichée dans une page Web.
+#### Étape 4 — Définir les dimensions
+
+Modifiez l’image :
+
+```html
+<img
+    src="images/author.jpg"
+    alt="Portrait d'un développeur"
+    width="120"
+    height="120"
+>
+```
+
+### 2.4. Créer une figure
+
+#### Étape 5 — Ajouter `<figure>`
+
+Ajoutez :
+
+```html
+<figure>
+
+    <img
+        src="images/article-example.png"
+        alt="Développeur écrivant du code"
+    >
+
+</figure>
+```
+
+### 2.5. Ajouter une légende
+
+#### Étape 6 — Ajouter `<figcaption>`
+
+Ajoutez :
+
+```html
+<figure>
+
+    <img
+        src="images/article-example.png"
+        alt="Développeur écrivant du code"
+    >
+
+    <figcaption>
+        Le développeur écrit le code de l'application.
+    </figcaption>
+
+</figure>
+```
+
+### 2.6. Tester
+
+#### Étape 7 — Ouvrir la page
+
+Enregistrez `tuto-6-html.html`.
+
+Ouvrez le fichier dans le navigateur.
+
+Vérifiez que les images s’affichent et que la légende apparaît.
+
+**Résultat attendu :**
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/html/tuto-6-html.html' | relative_url}}"
+    height="500"
+    title="Résultat du tutoriel 6 : HTML">
+</iframe>
+
+## Partie 3 — Développement de blog
+
+### 3.1. Exercice
+
+Poursuivez la réalisation de :
+
+```text
+detaille-article.html
+```
+
+Utilisez les notions étudiées dans ce tutoriel :
+
+* `<img>`
+* `src`
+* `alt`
+* `width`
+* `height`
+* `<figure>`
+* `<figcaption>`
+
+Ajoutez les images et les figures nécessaires à la page.
+
+Utilisez les chemins relatifs correspondant aux fichiers du projet.
+
+### 3.2. Résultat attendu
+
+Après l’application des notions des tutoriels précédents et du T.122.116, reproduisez la nouvelle version de la page :
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/blog/page-detail-v1/page-detail-html-v1.html' | relative_url}}"
+    height="700"
+    title="Résultat attendu après le tutoriel 6">
+</iframe>
+
+**Travail à faire :**
+
+Complétez votre fichier :
+
+```text
+detaille-article.html
+```
+
+pour obtenir le résultat présenté dans l’iframe.
+
+Utilisez uniquement les notions étudiées jusqu’à ce tutoriel.
+
+**Livrable :**
+
+```text
+detaille-article.html
+```
+
+**Critère de réussite :**
+
+La page obtenue correspond au résultat présenté dans l’iframe.
+
+### 3.3. Résultat final de la série
+
+Le résultat final de la page détaille est :
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/blog/page-detail-v1/page-detail-html-v1.html' | relative_url}}"
+    height="700"
+    title="Résultat final de la page détaille d’un article">
+</iframe>
+
+La version réalisée dans ce tutoriel doit être l’étape finale de la progression HTML de cette série.
+
+## Bilan
+
+**Vous avez réalisé :** la dernière version HTML de la page détaille avec des images, des figures et des légendes.
+
+**Vous savez maintenant :** afficher une image, utiliser un chemin relatif, ajouter un texte alternatif et associer une légende à une image.
+
+## Glossaire
+
+* **Image** : contenu visuel affiché dans une page Web.
 * **`src`** : attribut qui indique le fichier de l’image.
 * **`alt`** : texte qui décrit une image.
 * **Figure** : élément qui regroupe une image et son contenu associé.
