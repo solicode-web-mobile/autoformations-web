@@ -4,6 +4,7 @@ layout: tuto
 slug: "structure-document-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.111"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 1
@@ -12,13 +13,15 @@ nav_order: 1
 
 ## 1. Objectif
 
-Créer la structure de base d’une page HTML.
+Créer la structure de base d’un document HTML.
 
-À la fin de ce tutoriel, vous avez créé le fichier HTML qui servira à construire progressivement la page détaille d’un article.
+À la fin du tutoriel, vous saurez créer une page HTML avec un titre et un paragraphe.
 
 ## 2. Prérequis
 
-* Avoir un éditeur de code.
+* Avoir installé Visual Studio Code.
+* Savoir ouvrir un dossier.
+* Savoir créer un fichier.
 * Avoir un navigateur Web.
 
 ## Partie 1 — Théorie
@@ -27,15 +30,6 @@ Créer la structure de base d’une page HTML.
 
 Un document HTML possède une structure de base.
 
-Il contient :
-
-* `<!DOCTYPE html>` : indique que le document utilise HTML.
-* `<html>` : contient tout le document.
-* `<head>` : contient les informations du document.
-* `<body>` : contient le contenu visible de la page.
-
-**Exemple :**
-
 ```html
 <!DOCTYPE html>
 
@@ -50,47 +44,87 @@ Il contient :
 </html>
 ```
 
-## 1.2. Attribut `lang`
+`<!DOCTYPE html>` indique que le document utilise HTML.
 
-L’attribut `lang` indique la langue du document.
+`<html>` contient tout le document.
 
-Pour une page en français :
+`<head>` contient les informations du document.
 
-```html
-<html lang="fr">
+`<body>` contient le contenu visible de la page.
+
+### 1.2. L’élément `<html>`
+
+`<html>` est l’élément racine du document.
+
+Il contient :
+
+```text
+html
+├── head
+└── body
 ```
 
-`fr` indique que le document est en français.
+Un document HTML possède un seul élément `<html>`.
 
-## 1.3. À retenir
+### 1.3. La partie `<head>`
 
-* `<!DOCTYPE html>` indique le type du document.
-* `<html>` contient le document HTML.
+`<head>` contient les informations du document.
+
+Par exemple, `<title>` permet de définir le titre de la page :
+
+```html
+<head>
+    <title>Mon article</title>
+</head>
+```
+
+Le titre apparaît dans l’onglet du navigateur.
+
+### 1.4. La partie `<body>`
+
+`<body>` contient le contenu visible de la page.
+
+Par exemple, `<p>` permet d’afficher un paragraphe :
+
+```html
+<body>
+    <p>Le développeur crée des applications.</p>
+</body>
+```
+
+### 1.5. À retenir
+
+* `<!DOCTYPE html>` indique que le document utilise HTML.
+* `<html>` contient tout le document.
 * `<head>` contient les informations du document.
+* `<title>` définit le titre de la page.
 * `<body>` contient le contenu visible.
-* `lang="fr"` indique que la page est en français.
+* `<p>` permet d’afficher un paragraphe.
+* Un document HTML possède un seul élément `<html>`.
 
-# Partie 2 — Pratique
+## Partie 2 — Pratique
 
-## 2.1. Créer le fichier HTML
+### 2.1. Créer un premier fichier HTML
 
-### Étape 1 — Ouvrir le projet
+Dans cette partie, vous allez créer un petit fichier pour tester la structure HTML.
 
-Ouvrez le dossier du projet.
+#### Étape 1 — Ouvrir VS Code
 
-### Étape 2 — Créer le fichier
+Ouvrez Visual Studio Code.
+
+#### Étape 2 — Créer le fichier
 
 Créez un fichier nommé :
 
 ```text
-index.html
+tuto-1-html.html
 ```
 
-## 2.2. Ajouter la structure HTML
+### 2.2. Écrire la structure HTML
 
-### Étape 3 — Écrire la structure du document
+#### Étape 3 — Ajouter la structure
 
-Dans `index.html`, ajoutez :
+Dans `tuto-1-html.html`, ajoutez :
 
 ```html
 <!DOCTYPE html>
@@ -98,6 +132,7 @@ Dans `index.html`, ajoutez :
 <html lang="fr">
 
 <head>
+    <title>Mon premier article</title>
 </head>
 
 <body>
@@ -106,69 +141,62 @@ Dans `index.html`, ajoutez :
 </html>
 ```
 
-### Étape 4 — Enregistrer le fichier
+### 2.3. Ajouter le contenu
 
-Enregistrez `index.html`.
+#### Étape 4 — Ajouter un paragraphe
 
-## 2.3. Vérifier la structure
+Dans `<body>`, ajoutez un paragraphe.
 
-### Étape 5 — Ouvrir la page
+Par exemple :
 
-Ouvrez `index.html` dans un navigateur.
+```html
+<p>Le développeur crée des applications.</p>
+```
 
-La page est blanche.
-
-C’est normal.
-
-La structure HTML est présente, mais aucun contenu n’a encore été ajouté.
-
-**Résultat attendu :**
-
-Le fichier `index.html` contient :
+Le fichier devient :
 
 ```html
 <!DOCTYPE html>
 
 <html lang="fr">
 
-    <head>
+<head>
+    <title>Mon premier article</title>
+</head>
 
-    </head>
-
-    <body>
-
-    </body>
+<body>
+    <p>Le développeur crée des applications.</p>
+</body>
 
 </html>
 ```
 
-# Partie 3 — Travail final et progression des 6 tutoriels
+Vous pouvez remplacer la phrase par une autre phrase.
 
-## 3.1. Travail final
+### 2.4. Tester la page
 
-Pendant les 6 tutoriels de cette UA, vous allez construire une **page détaille d’un article**.
+#### Étape 5 — Ouvrir le fichier
 
-Le livrable final est :
+Ouvrez `tuto-1-html.html` dans votre navigateur.
 
-```text
-index.html
-```
+**Résultat attendu :**
 
-Ce fichier doit contenir le code HTML complet de la page finale.
-
-Le résultat final attendu est présenté ci-dessous :
-
-
+La page affiche une phrase.
 
 <iframe
-    src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
-    width="100%"
-    height="700"
-    title="Résultat final de la page détaille d’un article"
-    style="border:1px solid #ddd; border-radius:8px;">
-   
+    class="auto-wrapper"
+    src="{{'//code/html/tuto-1-html.html' | relative_url}}"
+    height="220"
+    title="Résultat du tutoriel 1">
 </iframe>
 
+## Partie 3 — Développement de blog
+
+### 3.1. Travail final
+
+Pendant les 6 tutoriels, vous allez construire progressivement une page détaille d’un article pour un blog.
+
+La page finale sera :
 
 <iframe
     class="auto-wrapper"
@@ -177,148 +205,124 @@ Le résultat final attendu est présenté ci-dessous :
     title="Résultat final de la page détaille d’un article">
 </iframe>
 
+Les six tutoriels sont :
 
+* **T.122.111 — Structure d’un document HTML**
+* **T.122.112 — Balise, élément et attribut HTML**
+* **T.122.113 — Informations et textes HTML**
+* **T.122.114 — Conteneurs et listes HTML**
+* **T.122.115 — Liens et chemins relatifs HTML**
+* **T.122.116 — Images et figures HTML**
 
+### 3.2. Créer le site du blog
 
-**Observez le résultat final.**
+Créez un dossier pour votre blog.
 
-Vous allez construire cette page progressivement.
-
-Vous ne devez pas copier le code final.
-
-Vous devez utiliser les notions HTML étudiées dans chaque tutoriel.
-
-## 3.2. Construction progressive
-
-La page finale est construite en plusieurs étapes.
-
-### T.122.111 — Structure d’un document HTML
-
-Dans ce tutoriel, vous créez la structure de base :
+Dans ce dossier, créez une seule page :
 
 ```text
-Document HTML
-├── html
-│   ├── head
-│   └── body
+detaille-article.html
 ```
 
-Cette structure prépare le fichier pour les tutoriels suivants.
+Pour le moment, le blog contient seulement cette page.
 
-### T.122.112 — Balise, élément et attribut HTML
+### 3.3. Réaliser la première version de la page
 
-Vous ajoutez les premiers éléments HTML.
+Dans `detaille-article.html`, reprenez la structure étudiée dans ce tutoriel.
 
-Vous apprenez à utiliser :
+Ajoutez un titre dans `<head>` :
 
-* une balise ouvrante ;
-* une balise fermante ;
-* un élément ;
-* un attribut ;
-* une valeur d’attribut.
+```html
+<head>
+    <title>Le métier de développeur</title>
+</head>
+```
 
-Vous utilisez ces notions pour commencer à construire le contenu de la page.
+Ajoutez un seul paragraphe dans `<body>`.
 
-### T.122.113 — Informations et textes HTML
+Utilisez une seule phrase de l’article :
 
-Vous ajoutez les informations du document et le contenu textuel.
+```html
+<body>
+    <p>Le développeur crée des applications.</p>
+</body>
+```
 
-Vous utilisez notamment :
+La structure de votre page est donc :
 
-* `<meta charset>`;
-* `<title>`;
-* `<h1>` à `<h6>`;
-* `<p>`;
-* `<br>`;
-* `<hr>`.
+```html
+<!DOCTYPE html>
 
-La page commence à prendre la forme d’un véritable article.
+<html lang="fr">
 
-### T.122.114 — Conteneurs et listes HTML
+<head>
+    <title>Le métier de développeur</title>
+</head>
 
-Vous organisez le contenu de la page avec :
+<body>
+    <p>Le développeur crée des applications.</p>
+</body>
 
-* `<div>`;
-* `<span>`;
-* `class`;
-* `<ul>`;
-* `<li>`.
+</html>
+```
 
-Vous construisez les différentes zones de la page et les listes de contenu.
+### 3.4. Résultat de ce tutoriel
 
-### T.122.115 — Liens et chemins relatifs HTML
+Ouvrez `detaille-article.html` dans le navigateur.
 
-Vous ajoutez les liens nécessaires à la page.
+La page contient uniquement :
 
-Vous utilisez :
+* le titre de la page dans l’onglet ;
+* une phrase dans la page.
 
-* `<a>`;
-* `href`;
-* les chemins relatifs.
+<iframe
+    class="auto-wrapper"
+    src="{{'//code/page-detaille-v1/tuto-1-html.html' | relative_url}}"
+    height="220"
+    title="Résultat du tutoriel 1">
+</iframe>
 
-Vous apprenez aussi à indiquer l’emplacement d’un fichier dans le projet.
+**À ce stade, ne cherchez pas à reproduire toute la page finale.**
 
-### T.122.116 — Images et figures HTML
+Vous avez seulement construit sa structure de base.
 
-Vous ajoutez les images et leurs informations.
+### 3.5. Résultat du blog
 
-Vous utilisez :
+La page finale que vous allez construire progressivement est :
 
-* `<img>`;
-* `src`;
-* `alt`;
-* `width`;
-* `height`;
-* `<figure>`;
-* `<figcaption>`.
+<iframe
+    class="auto-wrapper"
+    src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
+    height="700"
+    title="Résultat final de la page détaille d’un article">
+</iframe>
 
-Vous terminez ainsi la construction de la page HTML.
+Dans les tutoriels suivants, vous allez enrichir `detaille-article.html` avec les nouvelles notions HTML.
 
-## 3.3. Méthode de travail
+### 3.6. Information complémentaire — HTML et XML
 
-À chaque tutoriel :
-
-1. Observez le résultat attendu.
-2. Utilisez les notions déjà étudiées.
-3. Ajoutez les nouvelles notions du tutoriel.
-4. Testez la page dans le navigateur.
-5. Comparez votre résultat avec le résultat attendu.
-
-À la fin des 6 tutoriels, votre page doit correspondre au résultat final présenté dans l’iframe.
-
-## 3.4. Livrable final
-
-**Travail à faire :**
-
-Construire progressivement la page détaille de l’article pendant les 6 tutoriels.
-
-**Livrable :**
+Vous pouvez observer que le document HTML possède une structure en arbre :
 
 ```text
-index.html
+html
+├── head
+└── body
 ```
 
-**Résultat attendu :**
+Un document possède un élément racine.
 
-Une page HTML complète correspondant exactement au résultat final présenté dans l’iframe.
+Cette idée existe aussi en XML.
 
-**Critère de réussite :**
+**XML** est un langage utilisé pour structurer des données.
 
-Le rendu final de votre page correspond au résultat attendu et le code HTML utilise les notions étudiées dans les 6 tutoriels.
+**HTML** est un langage utilisé pour structurer le contenu d’une page Web.
 
-# Partie 4 — Bilan
+HTML n’est pas un document XML.
 
-**Vous avez réalisé :** la structure de base du fichier HTML de la page détaille d’un article.
+Les deux utilisent cependant une organisation en éléments avec un élément racine. Cette notion permet de mieux comprendre la structure d’un document.
 
-**Vous savez maintenant :** créer un document HTML avec `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>` et l’attribut `lang`.
+## 4. Bilan
 
-Vous savez également comment la page finale sera construite progressivement pendant les 6 tutoriels.
+**Vous avez réalisé :** une première page HTML avec sa structure de base, un titre et un paragraphe.
 
-# Partie 5 — Glossaire
-
-* **HTML** : langage utilisé pour structurer une page Web.
-* **Document HTML** : fichier qui contient la structure d’une page Web.
-* **Élément** : partie d’un document HTML définie par une balise.
-* **Attribut** : information ajoutée à un élément HTML.
-* **Navigateur** : logiciel utilisé pour afficher une page Web.
-* **Chemin relatif** : chemin qui indique l’emplacement d’un fichier à partir du fichier courant.
+**Vous savez maintenant :** créer un document HTML a

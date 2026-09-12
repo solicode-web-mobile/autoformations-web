@@ -110,9 +110,13 @@
     min-width: 350px !important;
   }
 
-
- 
-
+  /* --- AJOUT POUR CORRIGER LE CHEVAUCHEMENT (ZOOM / GRAND ÉCRAN) --- */
+  .main-content-wrap,
+  .main-content {
+    margin-left: 350px !important;
+    width: calc(100% - 350px) !important;
+  }
+  /* ----------------------------------------------------------------- */
 
   .site-nav {
     width: 100%;
@@ -179,6 +183,14 @@ a:focus-visible {
     width: 100%;
     min-width: 0;
   }
+
+  /* --- AJOUT POUR RÉINITIALISER L'ESPACE SUR PETIT ÉCRAN / ZOOM ÉLEVÉ --- */
+  .main-content-wrap,
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  /* ---------------------------------------------------------------------- */
 
   .site-nav a,
   .site-nav .nav-list-link {
@@ -248,6 +260,7 @@ a:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
 
 
 /* =========================================================
@@ -381,20 +394,12 @@ a:focus-visible {
 }
 
 
-/* =========================================
-   Bouton plein écran
-   ========================================= */
-
 .fullscreen-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
-/* =========================================
-   Comportement en mode plein écran
-   ========================================= */
 
 .iframe-wrapper:fullscreen {
   width: 100vw;

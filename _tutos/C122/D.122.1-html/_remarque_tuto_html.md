@@ -29,3 +29,32 @@ Il faut ajouter la classe css : "class="auto-wrapper""
     height="700"
     title="Résultat final de la page détaille d’un article">
 </iframe>
+
+
+Dans chaque element head et body on doit donner un exemple de balise pour compredre son rôle, 
+
+par exemple dnas head on peut donner l'exemple de balise title, dnas body on peut donner l'exemple de balise "p".
+
+indique une remaruquye que dnas une document HMTL, il existe un seul balide : html, c'est par ce que HTML est un document XML, on doit aussi parler de XML, que XML permert de strcutrer des données, ces information doit être citer aprés que l'appreannt à affiche le résultat de la page HTML avec Titre, Paragrame, il peut être donnée comme information suplimentaire indéspenssable à savoire.
+
+le nom de fichier dans le tuto est "index.html", mais par suite dans la partie 3, l'apprenant doit nomer le fichier page-article.html, car la page index.html sera réserver pour la page d'accueille de blog.
+
+- le nom de l'UA : Construire la structure de base d’une page HTML - Débutant
+
+- Dans la parite 3 : on doit 
+  - Présenter le travail finale de ces 6 tutoriels, on peut ciser leurs non, sans détaille technique
+  - On demande de l'apprenant de fournir la strcutre de la page : page-article.html
+  - à la fin de tuto l'apprenant va voire la strcutre 
+    - Résultat de Tuto
+    - Résultat de blog
+
+---
+
+
+la partie : Développement progressif doit être présenter aprés la théorie dans la parite 3
+
+- Partie 1 : Partie 1 — Théorie
+- Partie 2 — Pratique
+- Partie 3 — Développement de blog
+
+dans l'introduction de tuto il faut ce concentrer sur ce que on va apprednre , et non ce que on va développer dnas le blog, pour commencer le tuto avec un charg congitif minimal
