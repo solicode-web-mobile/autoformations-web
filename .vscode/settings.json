@@ -4,6 +4,16 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "serve.ps1": true,
+        "README.md": true,
+        "LICENSE": true,
+        "index.md": true,
+        "Gemfile.lock": true,
+        "Gemfile": true,
+        "autoformations-web.code-workspace": true,
+        ".gitignore": true,
+        "_config.yml": true,
+        ".jekyll-cache": true
     }
 }

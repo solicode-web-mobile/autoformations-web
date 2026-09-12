@@ -5,6 +5,17 @@
 		}
 	],
 	"settings": {
-		"hide-files.files": []
+		"hide-files.files": [
+			"serve.ps1",
+			"README.md",
+			"LICENSE",
+			"index.md",
+			"Gemfile.lock",
+			"Gemfile",
+			"autoformations-web.code-workspace",
+			".gitignore",
+			"_config.yml",
+			".jekyll-cache"
+		]
 	}
 }
