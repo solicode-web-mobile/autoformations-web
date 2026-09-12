@@ -253,35 +253,79 @@ a:focus-visible {
 
  
 
-.iframe-container {
+/* Conteneur principal */
+.iframe-wrapper {
   position: relative;
   width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Évite le fond noir en plein écran */
+  transition: all 0.3s ease;
 }
 
-.fullscreen-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 10;
-  padding: 8px 14px;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #ffffff;
+/* L'iframe s'adapte au conteneur */
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 700px;
   border: none;
-  border-radius: 4px;
-  font-size: 14px;
+  display: block; /* Supprime l'espace fantôme sous l'iframe */
+}
+
+/* Bouton d'action flottant (FAB) */
+.fullscreen-fab {
+  position: absolute;
+  bottom: 20px; /* Placé en bas à droite pour moins gêner la lecture */
+  right: 20px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6; /* Semi-transparent par défaut */
+  transition: transform 0.2s ease, opacity 0.3s ease, box-shadow 0.2s ease;
 }
 
-.fullscreen-btn:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+/* Apparition complète au survol du conteneur ou du bouton */
+.iframe-wrapper:hover .fullscreen-fab {
+  opacity: 1;
 }
 
-/* Style de l'iframe lorsqu'elle passe en mode plein écran natif */
-iframe:fullscreen {
-  width: 100vw !important;
-  height: 100vh !important;
-  border: none !important;
-  border-radius: 0 !important;
-  background-color: #ffffff !important; /* Force le fond blanc en plein écran */
+.fullscreen-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  color: #0f172a;
+}
+
+/* =========================================
+   Styles lors du passage en plein écran 
+   ========================================= */
+.iframe-wrapper:fullscreen {
+  border: none;
+  border-radius: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.iframe-wrapper:fullscreen iframe {
+  height: 100vh; /* L'iframe prend toute la hauteur de l'écran */
+}
+
+/* Safari support */
+.iframe-wrapper:-webkit-full-screen {
+  border: none;
+  border-radius: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.iframe-wrapper:-webkit-full-screen iframe {
+  height: 100vh;
 }

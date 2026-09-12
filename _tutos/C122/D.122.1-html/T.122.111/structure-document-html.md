@@ -163,16 +163,33 @@ Le résultat final attendu est présenté ci-dessous :
 
 
 
-<div class="iframe-container">
-  <button type="button" class="fullscreen-btn" onclick="toggleFullscreen()">Plein écran ⛶</button>
+<div class="iframe-wrapper" id="tutoWrapper">
+  <!-- Bouton flottant -->
+  <button type="button" class="fullscreen-fab" id="fsToggleBtn" aria-label="Basculer en plein écran" title="Plein écran">
+    
+    <!-- Icône Agrandir -->
+    <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 3 21 3 21 9"></polyline>
+      <polyline points="9 21 3 21 3 15"></polyline>
+      <line x1="21" y1="3" x2="14" y2="10"></line>
+      <line x1="3" y1="21" x2="10" y2="14"></line>
+    </svg>
+
+    <!-- Icône Réduire (Masquée par défaut) -->
+    <svg id="icon-compress" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="4 14 10 14 10 20"></polyline>
+      <polyline points="20 10 14 10 14 4"></polyline>
+      <line x1="14" y1="10" x2="21" y2="3"></line>
+      <line x1="3" y1="21" x2="10" y2="14"></line>
+    </svg>
+    
+  </button>
+
   <iframe
     id="tutoIframe"
     src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
-    width="100%"
-    height="700"
     title="Résultat final de la page détaille d’un article"
-    allowfullscreen="true"
-    allow="fullscreen">
+    allowfullscreen="true">
   </iframe>
 </div>
 
