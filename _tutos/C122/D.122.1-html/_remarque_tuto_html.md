@@ -58,3 +58,29 @@ la partie : Développement progressif doit être présenter aprés la théorie d
 - Partie 3 — Développement de blog
 
 dans l'introduction de tuto il faut ce concentrer sur ce que on va apprednre , et non ce que on va développer dnas le blog, pour commencer le tuto avec un charg congitif minimal
+
+---
+
+
+Il ne faut pas ajouter ```html id="n1h3dq", avec id="..", donner le code seulement avec ``html
+
+Dans ce tuton on va commencer le blog, on doit demdner à l'apprenant de créer le projet blog, puis ajoter la page : détaille-article.html, puis ajouter les données né cessaire pour affiche le résultat, dans chaque tuto, l'apprennt doit appliquer ce qu'il appris pour développer la version et s'approche à la version finale de la page détaille
+
+---
+
+
+le résultat des tuto peut être présenter de la façon suivant : 
+
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/html/tuto-3-html.html' | relative_url}}"
+    height="500"
+    title="Résultat du tutoriel 1 : HTML">
+</iframe>
+
+
+Dans la partie "Partie 3 — Développement de blog", on doit pas donner le détaille de réaliser, il est en format : Exercice, on doit luis donne la question, et luis montrer le résultat, 
+
+
+Donner la partie ## Partie 3 — Développement de blog  : Aprés modification

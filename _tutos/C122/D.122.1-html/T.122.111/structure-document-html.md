@@ -186,8 +186,8 @@ La page affiche une phrase.
 <iframe
     class="auto-wrapper"
     src="{{'//code/html/tuto-1-html.html' | relative_url}}"
-    height="220"
-    title="Résultat du tutoriel 1">
+    height="200"
+    title="Résultat du tutoriel 1 : HTML">
 </iframe>
 
 ## Partie 3 — Développement de blog
@@ -200,7 +200,7 @@ La page finale sera :
 
 <iframe
     class="auto-wrapper"
-    src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
+    src="{{'/code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
     height="700"
     title="Résultat final de la page détaille d’un article">
 </iframe>
@@ -214,115 +214,9 @@ Les six tutoriels sont :
 * **T.122.115 — Liens et chemins relatifs HTML**
 * **T.122.116 — Images et figures HTML**
 
-### 3.2. Créer le site du blog
-
-Créez un dossier pour votre blog.
-
-Dans ce dossier, créez une seule page :
-
-```text
-detaille-article.html
-```
-
-Pour le moment, le blog contient seulement cette page.
-
-### 3.3. Réaliser la première version de la page
-
-Dans `detaille-article.html`, reprenez la structure étudiée dans ce tutoriel.
-
-Ajoutez un titre dans `<head>` :
-
-```html
-<head>
-    <title>Le métier de développeur</title>
-</head>
-```
-
-Ajoutez un seul paragraphe dans `<body>`.
-
-Utilisez une seule phrase de l’article :
-
-```html
-<body>
-    <p>Le développeur crée des applications.</p>
-</body>
-```
-
-La structure de votre page est donc :
-
-```html
-<!DOCTYPE html>
-
-<html lang="fr">
-
-<head>
-    <title>Le métier de développeur</title>
-</head>
-
-<body>
-    <p>Le développeur crée des applications.</p>
-</body>
-
-</html>
-```
-
-### 3.4. Résultat de ce tutoriel
-
-Ouvrez `detaille-article.html` dans le navigateur.
-
-La page contient uniquement :
-
-* le titre de la page dans l’onglet ;
-* une phrase dans la page.
-
-<iframe
-    class="auto-wrapper"
-    src="{{'//code/page-detaille-v1/tuto-1-html.html' | relative_url}}"
-    height="220"
-    title="Résultat du tutoriel 1">
-</iframe>
-
-**À ce stade, ne cherchez pas à reproduire toute la page finale.**
-
-Vous avez seulement construit sa structure de base.
-
-### 3.5. Résultat du blog
-
-La page finale que vous allez construire progressivement est :
-
-<iframe
-    class="auto-wrapper"
-    src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
-    height="700"
-    title="Résultat final de la page détaille d’un article">
-</iframe>
-
-Dans les tutoriels suivants, vous allez enrichir `detaille-article.html` avec les nouvelles notions HTML.
-
-### 3.6. Information complémentaire — HTML et XML
-
-Vous pouvez observer que le document HTML possède une structure en arbre :
-
-```text
-html
-├── head
-└── body
-```
-
-Un document possède un élément racine.
-
-Cette idée existe aussi en XML.
-
-**XML** est un langage utilisé pour structurer des données.
-
-**HTML** est un langage utilisé pour structurer le contenu d’une page Web.
-
-HTML n’est pas un document XML.
-
-Les deux utilisent cependant une organisation en éléments avec un élément racine. Cette notion permet de mieux comprendre la structure d’un document.
 
 ## 4. Bilan
 
 **Vous avez réalisé :** une première page HTML avec sa structure de base, un titre et un paragraphe.
 
-**Vous savez maintenant :** créer un document HTML a
+**Vous savez maintenant :** créer un document HTML

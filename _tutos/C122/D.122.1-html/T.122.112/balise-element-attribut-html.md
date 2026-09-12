@@ -4,35 +4,38 @@ layout: tuto
 slug: "balise-element-attribut-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.112"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 2
 ---
 
+
+
 ## 1. Objectif
 
-Comprendre la balise, l’élément et l’attribut HTML.
+Identifier une balise, un élément, un attribut et une valeur d’attribut dans un document HTML.
 
-À la fin du tutoriel, vous savez ajouter des éléments HTML simples dans la structure de la page.
+À la fin du tutoriel, vous saurez utiliser ces notions pour compléter une page HTML simple.
 
 ## 2. Prérequis
 
-* Avoir créé le fichier `index.html`.
 * Connaître la structure `<html>`, `<head>` et `<body>`.
+* Savoir ouvrir une page HTML dans un navigateur.
 
-# Partie 1 — Théorie
+## Partie 1 — Théorie
 
-## 1.1. La balise HTML
+### 1.1. La balise HTML
 
-Une balise permet de définir un élément HTML.
+Une balise indique le type d’un élément HTML.
 
-Une balise peut avoir une ouverture et une fermeture.
+Certaines balises utilisent une ouverture et une fermeture.
 
-**Exemple :**
+Exemple :
 
 ```html
 <p>
-    Bonjour
+    Bonjour.
 </p>
 ```
 
@@ -40,39 +43,31 @@ Une balise peut avoir une ouverture et une fermeture.
 
 `</p>` est la balise fermante.
 
-## 1.2. L’élément HTML
+### 1.2. L’élément HTML
 
-L’ensemble suivant forme un élément HTML :
+Un élément HTML est une partie complète du document.
+
+Exemple :
 
 ```html
 <p>
-    Bonjour
+    Bonjour.
 </p>
 ```
 
-L’élément contient :
+Ici, l’élément contient :
 
 * une balise ouvrante ;
 * un contenu ;
 * une balise fermante.
 
-**Exemple :**
+### 1.3. L’attribut HTML
 
-```html
-<h1>
-    Le métier de développeur
-</h1>
-```
+Un attribut ajoute une information à un élément.
 
-Ici, l’élément `<h1>` contient le texte `Le métier de développeur`.
+L’attribut est écrit dans la balise ouvrante.
 
-## 1.3. L’attribut et la valeur d’attribut
-
-Un attribut ajoute une information à un élément HTML.
-
-Il est écrit dans la balise ouvrante.
-
-**Exemple :**
+Exemple :
 
 ```html
 <html lang="fr">
@@ -81,122 +76,153 @@ Il est écrit dans la balise ouvrante.
 Ici :
 
 * `lang` est l’attribut ;
-* `"fr"` est sa valeur.
+* `"fr"` est la valeur de l’attribut.
 
 L’attribut `lang` indique la langue du document.
 
-## 1.4. À retenir
+### 1.4. La valeur d’attribut
 
-* Une **balise** définit un élément HTML.
-* Un **élément** peut contenir du texte ou d’autres éléments.
-* Un **attribut** ajoute une information à un élément.
-* Une **valeur d’attribut** indique la valeur de cet attribut.
+Une valeur d’attribut indique l’information donnée à un attribut.
 
-# Partie 2 — Pratique
-
-## 2.1. Ajouter un premier élément
-
-### Étape 1 — Ouvrir `index.html`
-
-Ouvrez le fichier `index.html` créé dans le tutoriel précédent.
-
-Vous devez avoir :
+Exemple :
 
 ```html
-<!DOCTYPE html>
 <html lang="fr">
-<head>
-</head>
-<body>
-</body>
+```
+
+`lang` est l’attribut.
+
+`fr` est sa valeur.
+
+### 1.5. Observer la structure
+
+Dans cet exemple :
+
+```html
+<html lang="fr">
+    <body>
+        <p>Bonjour.</p>
+    </body>
 </html>
 ```
 
-### Étape 2 — Ajouter un titre
+On trouve :
 
-Dans `<body>`, ajoutez :
+* `<html lang="fr">` : balise ouvrante avec un attribut ;
+* `</html>` : balise fermante ;
+* `<body>` et `</body>` : balises du même élément ;
+* `<p>Bonjour.</p>` : un élément HTML.
 
-```html
-<h1>
-    Le métier de développeur et ses principales missions
-</h1>
+### 1.6. À retenir
+
+* Une **balise** indique le type d’un élément.
+* Un **élément** est une partie complète du document.
+* Un **attribut** ajoute une information à un élément.
+* Une **valeur d’attribut** donne la valeur de l’attribut.
+* L’attribut est écrit dans la balise ouvrante.
+
+## Partie 2 — Pratique
+
+### 2.1. Créer le fichier de travail
+
+Dans cette partie, vous allez créer un fichier pour tester les notions du tutoriel.
+
+#### Étape 1 — Créer le fichier
+
+Créez le fichier :
+
+```text
+tuto-2-html.html
 ```
 
-Le titre est maintenant un élément HTML.
+### 2.2. Reproduire la structure
 
-## 2.2. Ajouter des paragraphes
+#### Étape 2 — Ajouter la structure
 
-### Étape 3 — Ajouter le premier paragraphe
-
-Sous le titre, ajoutez :
+Dans `tuto-2-html.html`, ajoutez :
 
 ```html
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+</head>
+
+<body>
+    <p>Le développeur crée des applications.</p>
+</body>
+
+</html>
+```
+
+### 2.3. Observer les balises et les éléments
+
+#### Étape 3 — Identifier les balises
+
+Dans le code, repérez :
+
+```html
+<html>
+</html>
+
+<head>
+</head>
+
+<body>
+</body>
+
 <p>
-    Le développeur crée des applications.
-    Il transforme un besoin en solution informatique.
 </p>
 ```
 
-### Étape 4 — Ajouter un deuxième paragraphe
+Chaque paire forme un élément.
 
-Ajoutez :
+### 2.4. Observer l’attribut
+
+#### Étape 4 — Identifier l’attribut
+
+Observez :
 
 ```html
-<p>
-    Son travail se fait en plusieurs étapes.
-    Il doit bien comprendre le projet.
-</p>
+<html lang="fr">
 ```
 
-## 2.3. Vérifier les éléments
+Identifiez :
 
-### Étape 5 — Ouvrir la page
+```text
+lang → attribut
+fr   → valeur
+```
 
-Enregistrez `index.html`.
+Ne modifiez pas encore cette ligne.
 
-Ouvrez le fichier dans un navigateur.
+### 2.5. Tester le fichier
+
+#### Étape 5 — Ouvrir la page
+
+Enregistrez `tuto-2-html.html`.
+
+Ouvrez le fichier dans le navigateur.
 
 **Résultat attendu :**
 
 La page affiche :
 
-* un titre ;
-* deux paragraphes.
-
-Le code obtenu est :
-
-```html
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-</head>
-<body>
-    <h1>
-        Le métier de développeur et ses principales missions
-    </h1>
-
-    <p>
-        Le développeur crée des applications.
-        Il transforme un besoin en solution informatique.
-    </p>
-
-    <p>
-        Son travail se fait en plusieurs étapes.
-        Il doit bien comprendre le projet.
-    </p>
-</body>
-</html>
+```text
+Le développeur crée des applications.
 ```
 
-# 3. Bilan
 
-**Vous avez réalisé :** les premiers éléments de contenu de la page du Blog personnel.
+## 4. Bilan
 
-**Vous savez maintenant :** utiliser une balise, un élément, un attribut et une valeur d’attribut dans un document HTML.
+**Vous avez réalisé :** une nouvelle version de la page et identifié les balises, les éléments, les attributs et les valeurs d’attribut.
 
-# 4. Glossaire
+**Vous savez maintenant :** distinguer une balise, un élément, un attribut et une valeur d’attribut dans un document HTML.
+
+## 5. Glossaire
 
 * **Balise** : code qui indique le type d’un élément HTML.
-* **Élément** : partie d’une page HTML construite avec une ou plusieurs balises.
+* **Élément** : partie complète d’un document HTML.
 * **Attribut** : information ajoutée dans une balise ouvrante.
 * **Valeur d’attribut** : valeur donnée à un attribut.

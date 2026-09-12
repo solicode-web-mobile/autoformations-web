@@ -272,7 +272,6 @@ a:focus-visible {
 /* L'iframe s'adapte au conteneur */
 .iframe-wrapper iframe {
   width: 100%;
-  height: 700px;
   border: none;
   display: block; /* Supprime l'espace fantôme sous l'iframe */
 }
