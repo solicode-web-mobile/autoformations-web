@@ -4,39 +4,38 @@ layout: tuto
 slug: "conteneurs-listes-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.114"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 4
 ---
 
 
+
 ## 1. Objectif
 
 Organiser le contenu d’une page HTML avec des conteneurs et des listes.
 
-À la fin du tutoriel, la page contient des groupes de contenus et une liste des principales missions du développeur.
+À la fin du tutoriel, vous saurez utiliser `<div>`, `<span>`, `class`, `<ul>` et `<li>`.
 
 ## 2. Prérequis
 
-* Avoir réalisé `T.122.111`, `T.122.112` et `T.122.113`.
-* Connaître `<div>`, `<h1>`, `<h2>`, `<h3>` et `<p>`.
-* Savoir ajouter un attribut à un élément HTML.
+* Connaître `<html>`, `<head>` et `<body>`.
+* Savoir utiliser `<h1>`, `<h2>`, `<h3>` et `<p>`.
+* Savoir utiliser un attribut.
+* Savoir créer et tester une page HTML.
 
-# Partie 1 — Théorie
+## Partie 1 — Théorie
 
-## 1.1. Le conteneur `<div>`
+### 1.1. Le conteneur `<div>`
 
 `<div>` permet de regrouper plusieurs éléments HTML.
 
-Il ne donne pas de sens particulier au contenu.
-
-**Exemple :**
+Exemple :
 
 ```html
 <div>
-    <h2>
-        Le rôle du développeur
-    </h2>
+    <h2>Le rôle du développeur</h2>
 
     <p>
         Le développeur crée des applications.
@@ -44,330 +43,284 @@ Il ne donne pas de sens particulier au contenu.
 </div>
 ```
 
-Ici, le `<div>` regroupe le titre et le paragraphe.
+Ici, `<div>` regroupe le titre et le paragraphe.
 
-## 1.2. L’élément `<span>`
+### 1.2. L’élément `<span>`
 
-`<span>` permet de regrouper une petite partie d’un texte.
+`<span>` permet de regrouper une petite partie d’un contenu.
 
-Il est souvent utilisé pour identifier une partie précise d’un contenu.
-
-**Exemple :**
+Exemple :
 
 ```html
 <p>
     Catégorie :
-    <span>
-        Développement
-    </span>
+    <span>Développement</span>
 </p>
 ```
 
-Ici, `<span>` contient seulement le mot `Développement`.
+Ici, `<span>` contient le mot `Développement`.
 
-## 1.3. L’attribut `class`
+### 1.3. L’attribut `class`
 
 `class` permet de donner un nom à un élément.
 
-Ce nom peut ensuite être utilisé pour identifier ou mettre en forme l’élément.
-
-**Exemple :**
+Exemple :
 
 ```html
 <div class="article-header">
-    ...
+    <h1>Le métier de développeur</h1>
 </div>
 ```
 
-Ici, `article-header` est le nom de la classe.
+`article-header` est la valeur de l’attribut `class`.
 
-Dans une même page, plusieurs éléments peuvent utiliser la même classe.
+La classe permet d’identifier un élément.
 
-**Exemple :**
+### 1.4. Utiliser plusieurs éléments avec une classe
+
+Plusieurs éléments peuvent utiliser la même classe.
+
+Exemple :
 
 ```html
 <div class="article-meta">
-    ...
+    Date de publication
 </div>
 
 <div class="article-meta">
-    ...
+    Temps de lecture
 </div>
 ```
 
-## 1.4. La liste `<ul>`
+Les deux éléments utilisent la classe `article-meta`.
 
-`<ul>` permet de créer une liste non ordonnée.
+### 1.5. La liste `<ul>`
 
-Chaque élément de la liste utilise `<li>`.
+`<ul>` crée une liste non ordonnée.
 
-**Exemple :**
+Exemple :
 
 ```html
 <ul>
-    <li>
-        Analyser le besoin
-    </li>
-    <li>
-        Réaliser l'application
-    </li>
-    <li>
-        Vérifier l'application
-    </li>
+    <li>Analyser le besoin</li>
+    <li>Réaliser l'application</li>
+    <li>Vérifier l'application</li>
 </ul>
 ```
 
 Le navigateur affiche une liste à puces.
 
-## 1.5. L’élément `<li>`
+### 1.6. L’élément `<li>`
 
 `<li>` représente un élément d’une liste.
 
 Il est utilisé à l’intérieur de `<ul>`.
 
-**Exemple :**
+Exemple :
 
 ```html
 <ul>
-    <li>
-        Développer
-    </li>
-    <li>
-        Tester
-    </li>
+    <li>Développer</li>
+    <li>Tester</li>
 </ul>
 ```
 
-## 1.6. À retenir
+Ici, la liste contient deux éléments.
+
+### 1.7. À retenir
 
 * `<div>` regroupe plusieurs éléments.
 * `<span>` regroupe une petite partie d’un contenu.
 * `class` donne un nom à un élément.
+* Plusieurs éléments peuvent utiliser la même classe.
 * `<ul>` crée une liste non ordonnée.
 * `<li>` représente un élément de la liste.
 
-# Partie 2 — Pratique
+## Partie 2 — Pratique
 
-## 2.1. Organiser l’en-tête de l’article
+### 2.1. Créer le fichier de travail
 
-### Étape 1 — Ouvrir `index.html`
+#### Étape 1 — Créer le fichier
 
-Ouvrez le fichier `index.html` réalisé dans le tutoriel précédent.
+Créez :
 
-### Étape 2 — Créer un conteneur pour l’en-tête
+```text
+tuto-4-html.html
+```
 
-Dans `<body>`, autour du titre principal et des premiers contenus, ajoutez un `<div>` :
+#### Étape 2 — Ajouter la structure
+
+Ajoutez :
+
+```html
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        Conteneurs et listes HTML
+    </title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+```
+
+### 2.2. Ajouter un conteneur
+
+#### Étape 3 — Créer un `<div>`
+
+Dans `<body>`, ajoutez :
+
+```html
+<div>
+    <h2>Le rôle du développeur</h2>
+
+    <p>
+        Le développeur crée des applications.
+    </p>
+</div>
+```
+
+Le `<div>` regroupe le titre et le paragraphe.
+
+### 2.3. Ajouter un `<span>`
+
+#### Étape 4 — Ajouter une catégorie
+
+Ajoutez :
+
+```html
+<p>
+    Catégorie :
+    <span>Développement</span>
+</p>
+```
+
+### 2.4. Ajouter une classe
+
+#### Étape 5 — Ajouter une classe
+
+Modifiez le conteneur :
 
 ```html
 <div class="article-header">
+    <h2>Le rôle du développeur</h2>
 
-    <h1>
-        Le métier de développeur et ses principales missions
-    </h1>
-
+    <p>
+        Le développeur crée des applications.
+    </p>
 </div>
 ```
 
-Le titre est maintenant regroupé dans le conteneur `article-header`.
+### 2.5. Ajouter une liste
 
-## 2.2. Ajouter la catégorie
+#### Étape 6 — Créer la liste
 
-### Étape 3 — Ajouter un `<span>`
-
-Dans le conteneur, ajoutez :
+Ajoutez :
 
 ```html
-<div class="article-header">
-
-    <span class="article-category">
-        Développement
-    </span>
-
-    <h1>
-        Le métier de développeur et ses principales missions
-    </h1>
-
-</div>
-```
-
-Le `<span>` contient la catégorie de l’article.
-
-## 2.3. Organiser les informations de l’article
-
-### Étape 4 — Créer un conteneur `article-meta`
-
-Sous le `<h1>`, ajoutez :
-
-```html
-<div class="article-meta">
-
-    <span>
-        Madani Ali
-    </span>
-
-    <span>
-        14 Février 2026
-    </span>
-
-    <span>
-        5 min de lecture
-    </span>
-
-</div>
-```
-
-Les informations de l’article sont maintenant regroupées dans un même conteneur.
-
-## 2.4. Ajouter la liste des missions
-
-### Étape 5 — Créer une liste
-
-Sous les paragraphes de contenu, ajoutez :
-
-```html
-<ul class="article-list">
-
-    <li>
-        Analyser le besoin
-    </li>
-
-    <li>
-        Réaliser l'application
-    </li>
-
-    <li>
-        Vérifier l'application
-    </li>
-
-    <li>
-        Déployer l'application
-    </li>
-
+<ul>
+    <li>Analyser le besoin</li>
+    <li>Réaliser l'application</li>
+    <li>Vérifier l'application</li>
+    <li>Déployer l'application</li>
 </ul>
 ```
 
-### Étape 6 — Ajouter une information dans chaque élément
+### 2.6. Tester la page
 
-Complétez la liste :
+#### Étape 7 — Ouvrir la page
 
-```html
-<ul class="article-list">
+Enregistrez `tuto-4-html.html`.
 
-    <li>
-        <strong>Analyser le besoin</strong> :
-        comprendre le projet et identifier les fonctionnalités.
-    </li>
-
-    <li>
-        <strong>Réaliser l'application</strong> :
-        écrire le code et développer les fonctionnalités.
-    </li>
-
-    <li>
-        <strong>Vérifier l'application</strong> :
-        tester l'application et corriger les erreurs.
-    </li>
-
-    <li>
-        <strong>Déployer l'application</strong> :
-        mettre l'application sur un serveur pour la rendre disponible.
-    </li>
-
-</ul>
-```
-
-`<strong>` est utilisé ici pour mettre une partie du texte en importance.
-
-La notion `<strong>` sera étudiée dans un autre apprentissage. Dans cette étape, vous pouvez conserver cet élément dans le code fourni sans l’étudier.
-
-## 2.5. Vérifier la structure
-
-### Étape 7 — Enregistrer le fichier
-
-Enregistrez `index.html`.
-
-### Étape 8 — Ouvrir la page
-
-Ouvrez la page dans le navigateur.
+Ouvrez le fichier dans le navigateur.
 
 **Résultat attendu :**
 
-La page contient maintenant :
+La page contient :
 
+* un conteneur ;
 * une catégorie ;
-* un titre regroupé dans un conteneur ;
-* des informations regroupées dans un conteneur ;
-* une liste des missions du développeur.
+* une classe ;
+* une liste ;
+* quatre éléments de liste.
 
-Une partie de la structure ressemble maintenant à :
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/html/tuto-4-html.html' | relative_url}}"
+    height="500"
+    title="Résultat du tutoriel 4 : HTML">
+</iframe>
 
-```html
-<div class="article-header">
+## Partie 3 — Développement de blog
 
-    <span class="article-category">
-        Développement
-    </span>
+### 3.1. Exercice
 
-    <h1>
-        Le métier de développeur et ses principales missions
-    </h1>
+Poursuivez la réalisation de la page :
 
-    <div class="article-meta">
-
-        <span>
-            Madani Ali
-        </span>
-
-        <span>
-            14 Février 2026
-        </span>
-
-        <span>
-            5 min de lecture
-        </span>
-
-    </div>
-
-</div>
-
-<ul class="article-list">
-
-    <li>
-        <strong>Analyser le besoin</strong> :
-        comprendre le projet et identifier les fonctionnalités.
-    </li>
-
-    <li>
-        <strong>Réaliser l'application</strong> :
-        écrire le code et développer les fonctionnalités.
-    </li>
-
-    <li>
-        <strong>Vérifier l'application</strong> :
-        tester l'application et corriger les erreurs.
-    </li>
-
-    <li>
-        <strong>Déployer l'application</strong> :
-        mettre l'application sur un serveur pour la rendre disponible.
-    </li>
-
-</ul>
+```text
+detaille-article.html
 ```
 
-**Résultat attendu :**
+Utilisez les notions apprises dans ce tutoriel :
 
-La structure de la page ressemble maintenant davantage à la page finale du Blog personnel.
+* `<div>`
+* `<span>`
+* `class`
+* `<ul>`
+* `<li>`
 
-# 3. Bilan
+Ajoutez ces notions à la version obtenue dans le tutoriel précédent.
 
-**Vous avez réalisé :** les groupes de contenus et la liste des principales missions du développeur.
+Le résultat doit se rapprocher de la structure finale de la page d’article.
+
+### 3.2. Résultat attendu
+
+Après l’application des notions des tutoriels précédents et du T.122.114, votre page doit obtenir la version suivante :
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/blog/page-detaille-v1/page-detaile-html-v1.tuto-4-html.html' | relative_url}}"
+    height="700"
+    title="Résultat attendu après le tutoriel 4">
+</iframe>
+
+**Travail à faire :**
+
+Reproduisez ce résultat dans :
+
+```text
+detaille-article.html
+```
+
+Utilisez uniquement les notions étudiées jusqu’à ce tutoriel.
+
+**Livrable :**
+
+```text
+detaille-article.html
+```
+
+**Critère de réussite :**
+
+La page obtenue correspond au résultat présenté dans l’iframe.
+
+## 4. Bilan
+
+**Vous avez réalisé :** une nouvelle version de la page avec des conteneurs, des classes et une liste.
 
 **Vous savez maintenant :** utiliser `<div>`, `<span>`, `class`, `<ul>` et `<li>` pour organiser le contenu d’une page HTML.
 
-# 4. Glossaire
+## 5. Glossaire
 
 * **Conteneur** : élément qui regroupe plusieurs éléments HTML.
-* **Classe** : nom donné à un ou plusieurs éléments avec l’attribut `class`.
+* **Classe** : nom donné à un élément avec l’attribut `class`.
 * **Liste non ordonnée** : liste créée avec `<ul>`.
-* **Élément de liste** : contenu d’une liste créé avec `<li>`.
+* **Élément de liste** : élément créé avec `<li>`.

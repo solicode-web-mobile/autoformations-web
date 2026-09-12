@@ -15,7 +15,7 @@ Il faut ajouter la classe css : "class="auto-wrapper""
 
 <iframe
     class="auto-wrapper"
-    src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
+    src="{{'//code/blog/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
     height="700"
     title="Résultat final de la page détaille d’un article">
 </iframe>

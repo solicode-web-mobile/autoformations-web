@@ -1,5 +1,5 @@
 ---
-title: "Informations et textes HTML"
+title: "Titres, paragraphes et informations HTML"
 layout: tuto
 slug: "informations-textes-html"
 permalink: /tutos/:slug/
@@ -319,7 +319,7 @@ Ajoutez le contenu nécessaire pour obtenir le résultat présenté ci-dessous.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/page-detaille-v1/page-detaile-html-v1.tuto-3-html.html' | relative_url}}"
+    src="{{'/code/blog/page-detaille-v1/page-detaile-html-v1.tuto-3-html.html' | relative_url}}"
     height="500"
     title="Résultat du tutoriel 3 : HTML">
 </iframe>
