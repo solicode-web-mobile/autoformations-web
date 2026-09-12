@@ -9,3 +9,23 @@
 
 Le code HTML final à créer dans la page finale : 
 
+---
+
+
+même le tuto 1 : developper seulement la strcucture de la page, l'apprenant peut affiche son nom dans la page, pour ne pas voir une page blache.
+
+le nom de l'apprenant à utiliser : Madani Ali
+
+
+
+## Démonstration de code HTML et CSS : en utilisation d'un iframe 
+
+Il faut ajouter la classe css : "class="auto-wrapper"" 
+
+
+<iframe
+    class="auto-wrapper"
+    src="{{'//code/page-detaille-v1/page-detaile-html-v1.html' | relative_url}}"
+    height="700"
+    title="Résultat final de la page détaille d’un article">
+</iframe>

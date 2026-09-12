@@ -311,22 +311,21 @@ a:focus-visible {
 .iframe-wrapper {
   display: flex;
   flex-direction: column;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
   background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  font-family: system-ui, -apple-system, sans-serif;
+  margin-bottom: 20px;
 }
 
 .iframe-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f6f8fa; /* Gris très clair style Github/CodePen */
-  padding: 8px 16px;
-  border-bottom: 1px solid #e1e4e8;
-  color: #24292f;
+  background-color: #f8f9fa;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  font-family: system-ui, sans-serif;
 }
 
 .iframe-title {
@@ -334,36 +333,26 @@ a:focus-visible {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  font-weight: 600;
+  color: #333;
+  font-weight: 500;
 }
 
 .fullscreen-toggle {
   background: transparent;
   border: none;
-  color: #57606a;
   cursor: pointer;
   padding: 6px;
-  border-radius: 6px;
+  border-radius: 4px;
+  color: #555;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
 }
 
 .fullscreen-toggle:hover {
-  background-color: #ebecf0;
-  color: #0969da; /* Devient bleu au survol */
+  background-color: #e9ecef;
+  color: #000;
 }
 
-.iframe-wrapper iframe {
-  width: 100%;
-  height: 700px; /* Hauteur par défaut */
-  border: none;
-  background-color: #ffffff;
-  flex-grow: 1; /* Permet à l'iframe de remplir l'espace restant en plein écran */
-}
-
-/* --- Styles spécifiques au mode Plein Écran --- */
+/* Comportement en mode plein écran */
 .iframe-wrapper:fullscreen {
   width: 100vw;
   height: 100vh;
@@ -371,10 +360,6 @@ a:focus-visible {
   border-radius: 0;
 }
 
-/* Compatibilité Safari */
-.iframe-wrapper:-webkit-full-screen {
-  width: 100vw;
-  height: 100vh;
-  border: none;
-  border-radius: 0;
+.iframe-wrapper:fullscreen iframe {
+  height: 100% !important; /* L'iframe prend tout l'espace restant */
 }
