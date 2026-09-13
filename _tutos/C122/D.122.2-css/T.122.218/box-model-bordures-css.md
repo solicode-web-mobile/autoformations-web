@@ -1,322 +1,432 @@
 ---
-title: "Box Model et bordures CSS"
+title: "Utiliser les espacements et les bordures en CSS"
 layout: tuto
-slug: "box-model-bordures-css"
+slug: "espacements-bordures-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.218"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 8
+
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mon article</title>
+        <link rel="stylesheet" href="tuto-8-css.css">
+    </head>
+    <body>
+        <header class="article-header">
+            <span class="category">Développement web</span>
+
+            <h1>Créer une page web</h1>
+
+            <p class="author">Par Madani Ali</p>
+
+            <p class="description">
+                Découvrez les bases pour créer une page web.
+            </p>
+        </header>
+
+        <main class="content">
+            <img
+                class="cover"
+                src="https://picsum.photos/800/400"
+                alt="Image de couverture">
+
+            <h2>Présentation</h2>
+
+            <p>
+                Voici le contenu de mon article.
+            </p>
+
+            <p>
+                Cette page présente une réalisation simple avec HTML et CSS.
+            </p>
+
+            <blockquote>
+                Apprendre CSS demande de pratiquer régulièrement.
+            </blockquote>
+        </main>
+    </body>
+    </html>
+
+data_css: |
+    .content {
+        width: 800px;
+        max-width: 100%;
+    }
+
+    .cover {
+        width: 400px;
+        height: 200px;
+        max-width: 100%;
+    }
+
+data_js: ""
+
+data_php: ""
 ---
+
+
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Utiliser le Box Model pour contrôler les espaces et les bordures des éléments HTML.
-
-À la fin du tutoriel, vous savez utiliser `margin`, `padding`, `border`, `border-left` et `border-radius` pour organiser les principaux blocs de la page.
+Utiliser `margin`, `padding`, `border` et `border-radius` pour structurer visuellement des blocs.
 
 ## 2. Prérequis
 
-* Avoir réalisé `T.122.211` à `T.122.217`.
-* Connaître les règles CSS et les sélecteurs.
-* Connaître `width`, `height` et `max-width`.
-* Avoir la page HTML de détail de l’article.
+* Savoir utiliser un sélecteur CSS.
+* Savoir utiliser `width`.
+* Savoir utiliser `height`.
+* Savoir utiliser `max-width`.
+* Savoir utiliser `background`.
+* Savoir utiliser `color`.
+* Savoir utiliser `display`.
 
-# Partie 1 — Théorie
+## 3. Données de départ
 
-## 1.1. Le Box Model
+### HTML
 
-En CSS, un élément possède plusieurs zones :
+Utilisez le code HTML suivant :
 
-```text
-Contenu
-   ↓
-Padding
-   ↓
-Border
-   ↓
-Margin
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon article</title>
+    <link rel="stylesheet" href="tuto-8-css.css">
+</head>
+<body>
+
+    <header class="article-header">
+        <span class="category">Développement web</span>
+
+        <h1>Créer une page web</h1>
+
+        <p class="author">Par Madani Ali</p>
+
+        <p class="description">
+            Découvrez les bases pour créer une page web.
+        </p>
+    </header>
+
+    <main class="content">
+
+        <img
+            class="cover"
+            src="https://picsum.photos/800/400"
+            alt="Image de couverture">
+
+        <h2>Présentation</h2>
+
+        <p>
+            Voici le contenu de mon article.
+        </p>
+
+        <p>
+            Cette page présente une réalisation simple avec HTML et CSS.
+        </p>
+
+        <blockquote>
+            Apprendre CSS demande de pratiquer régulièrement.
+        </blockquote>
+
+    </main>
+
+</body>
+</html>
 ```
 
-* **Contenu** : texte, image ou autre élément.
-* **Padding** : espace entre le contenu et la bordure.
-* **Border** : bordure autour de l’élément.
-* **Margin** : espace autour de l’élément.
+### CSS
 
-## 1.2. `padding`
+Utilisez le code CSS suivant :
 
-`padding` ajoute un espace à l’intérieur de l’élément.
+```css
+.content {
+    width: 800px;
+    max-width: 100%;
+}
 
-**Exemple :**
-
-```css id="xg9z4m"
-.article-body {
-    padding: 40px;
+.cover {
+    width: 400px;
+    height: 200px;
+    max-width: 100%;
 }
 ```
 
-Le contenu est éloigné de la bordure de l’élément.
+## Partie 1 — Théorie
 
-## 1.3. `margin`
+### 1.1. La propriété `margin`
 
-`margin` ajoute un espace à l’extérieur de l’élément.
+`margin` crée un espace autour d’un élément.
 
-**Exemple :**
-
-```css id="d29v1k"
-.article-body {
-    margin: 40px auto;
+```css
+.content {
+    margin: 20px;
 }
 ```
 
-L’élément possède un espace autour de lui.
+### 1.2. La propriété `padding`
 
-## 1.4. `border`
+`padding` crée un espace entre le contenu et la bordure d’un élément.
+
+```css
+.content {
+    padding: 20px;
+}
+```
+
+### 1.3. La propriété `border`
 
 `border` ajoute une bordure autour d’un élément.
 
-**Exemple :**
-
-```css id="c2u1ss"
-.article-body {
-    border: 1px solid #f3f4f6;
+```css
+.content {
+    border: 1px solid #cccccc;
 }
 ```
 
-## 1.5. `border-left`
+### 1.4. La propriété `border-radius`
 
-`border-left` permet de définir uniquement la bordure gauche.
+`border-radius` permet d’arrondir les angles d’un élément.
 
-**Exemple :**
-
-```css id="kz0vbn"
-.article-blockquote {
-    border-left: 4px solid #2673e8;
+```css
+.content {
+    border-radius: 8px;
 }
 ```
 
-## 1.6. `border-radius`
+### 1.5. Combiner les propriétés
 
-`border-radius` arrondit les coins d’un élément.
+Ces propriétés peuvent être utilisées ensemble :
 
-**Exemple :**
-
-```css id="5lhggw"
-.article-body {
-    border-radius: 40px;
+```css
+.content {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
 }
 ```
 
-## 1.7. À retenir
+### 1.6. À retenir
 
-* `padding` crée un espace à l’intérieur.
-* `margin` crée un espace à l’extérieur.
+* `margin` crée un espace extérieur.
+* `padding` crée un espace intérieur.
 * `border` ajoute une bordure.
-* `border-left` ajoute une bordure à gauche.
-* `border-radius` arrondit les coins.
-* Ces propriétés font partie du **Box Model**.
+* `border-radius` arrondit les angles.
 
-# Partie 2 — Pratique
+## Partie 2 — Pratique
 
-## 2.1. Créer l’espace autour du contenu
-
-### Étape 1 — Ouvrir `style.css`
+### 2.1. Ajouter une marge
 
 Ouvrez :
 
 ```text
-css/style.css
-```
-
-### Étape 2 — Modifier `.article-main`
-
-La zone principale doit être séparée des autres éléments.
-
-Ajoutez :
-
-```css
-.article-main {
-    max-width: 920px;
-    margin: 0 auto 80px;
-}
-```
-
-`auto` permet de centrer horizontalement la zone.
-
-`80px` ajoute un espace sous la zone.
-
-## 2.2. Créer l’espace intérieur de l’article
-
-### Étape 3 — Modifier `.article-body`
-
-Ajoutez :
-
-```css
-.article-body {
-    padding: 110px 80px;
-}
-```
-
-Le contenu possède maintenant un espace intérieur.
-
-## 2.3. Ajouter une bordure
-
-### Étape 4 — Compléter `.article-body`
-
-Ajoutez :
-
-```css
-.article-body {
-    padding: 110px 80px;
-    border: 1px solid #f3f4f6;
-}
-```
-
-Une bordure légère apparaît autour du contenu.
-
-## 2.4. Arrondir le bloc principal
-
-### Étape 5 — Ajouter `border-radius`
-
-Complétez :
-
-```css
-.article-body {
-    padding: 110px 80px;
-    border: 1px solid #f3f4f6;
-    border-radius: 40px;
-}
-```
-
-Les coins du bloc sont maintenant arrondis.
-
-## 2.5. Espacer les paragraphes
-
-### Étape 6 — Modifier les paragraphes
-
-Ajoutez :
-
-```css
-.article-body p {
-    margin: 0 0 24px;
-}
-```
-
-Un espace de `24px` est ajouté sous chaque paragraphe.
-
-## 2.6. Espacer les titres
-
-### Étape 7 — Modifier les titres
-
-Ajoutez :
-
-```css
-.article-body h2 {
-    margin: 0 0 24px;
-}
-
-.article-body h3 {
-    margin: 48px 0 20px;
-}
-```
-
-Les titres sont maintenant séparés des autres contenus.
-
-## 2.7. Ajouter le style de la citation
-
-### Étape 8 — Modifier le bloc de citation
-
-La page HTML contient :
-
-```html
-<blockquote class="article-blockquote">
+tuto-8-css.css
 ```
 
 Ajoutez :
 
 ```css
-.article-blockquote {
-    margin: 40px 0;
-    padding: 24px 28px;
-    border-left: 4px solid #2673e8;
+.content {
+    width: 800px;
+    max-width: 100%;
+    margin: 20px auto;
 }
 ```
-
-La citation possède maintenant :
-
-* un espace extérieur ;
-* un espace intérieur ;
-* une bordure à gauche.
-
-## 2.8. Vérifier le résultat
-
-### Étape 9 — Enregistrer `style.css`
-
-Enregistrez le fichier.
-
-### Étape 10 — Ouvrir la page
-
-Ouvrez `index.html` dans le navigateur.
-
-Vérifiez :
-
-* l’espace autour de l’article ;
-* l’espace intérieur du bloc principal ;
-* la bordure du bloc ;
-* les coins arrondis ;
-* l’espace entre les paragraphes ;
-* l’espace entre les titres ;
-* la bordure de la citation.
 
 **Résultat attendu :**
 
-Le contenu de l’article est maintenant organisé avec le Box Model.
+Le bloc de contenu possède un espace autour de lui et il est centré.
 
-Le fichier `style.css` contient notamment :
+### 2.2. Ajouter un espace intérieur
+
+Ajoutez :
 
 ```css
-.article-main {
-    max-width: 920px;
-    margin: 0 auto 80px;
-}
-
-.article-body {
-    padding: 110px 80px;
-    border: 1px solid #f3f4f6;
-    border-radius: 40px;
-}
-
-.article-body h2 {
-    margin: 0 0 24px;
-}
-
-.article-body h3 {
-    margin: 48px 0 20px;
-}
-
-.article-body p {
-    margin: 0 0 24px;
-}
-
-.article-blockquote {
-    margin: 40px 0;
-    padding: 24px 28px;
-    border-left: 4px solid #2673e8;
+.content {
+    width: 800px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
 }
 ```
 
-# 3. Bilan
+**Résultat attendu :**
 
-**Vous avez réalisé :** les principaux espaces et bordures de la page avec le Box Model.
+Le contenu ne touche plus directement les bords du bloc.
 
-**Vous savez maintenant :** utiliser `margin`, `padding`, `border`, `border-left` et `border-radius`.
+### 2.3. Ajouter une bordure
 
-Dans le prochain tutoriel, vous allez travailler **l’affichage des éléments avec `display`** pour finaliser la présentation de la page.
+Ajoutez :
 
-# 4. Glossaire
+```css
+.content {
+    width: 800px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #cccccc;
+}
+```
 
-* **Box Model** : modèle qui décrit le contenu, le padding, la bordure et la marge d’un élément.
-* **Padding** : espace intérieur d’un élément.
-* **Margin** : espace extérieur d’un élément.
-* **Border** : bordure autour d’un élément.
-* **Border radius** : arrondi des coins d’un élément.
+**Résultat attendu :**
+
+Une bordure apparaît autour du contenu.
+
+### 2.4. Arrondir les angles
+
+Ajoutez :
+
+```css
+.content {
+    width: 800px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+```
+
+**Résultat attendu :**
+
+Les angles du bloc sont arrondis.
+
+### 2.5. Mettre en forme la citation
+
+Ajoutez :
+
+```css
+blockquote {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+```
+
+**Résultat attendu :**
+
+La citation est séparée du contenu et entourée d’une bordure avec des angles arrondis.
+
+### 2.6. Tester
+
+Ouvrez :
+
+```text
+tuto-8-css.html
+```
+
+Rechargez la page.
+
+**Résultat attendu :**
+
+Le contenu est centré, espacée, bordé et arrondi.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/css/tuto-8-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final du Tuto 8">
+</iframe>
+
+## Partie 3 — Développement progressif
+
+### 3.1. Développer l’itération I3
+
+**Série :** Page détail
+
+**Position :** I3 sur I3
+
+**Déclenchement :** Tuto 8
+
+**Incrément :** Finalisation du contenu
+
+L’itération I3 commence à partir du **résultat final de l’itération I2**.
+
+Conservez :
+
+* l’en-tête de I1 ;
+* la structure principale de I2 ;
+* les images de I2.
+
+Ajoutez maintenant la mise en forme des blocs de contenu avec les notions étudiées :
+
+```text
+margin
+padding
+border
+border-radius
+```
+
+Mettez en forme les blocs de texte et la citation.
+
+### 3.2. Résultat attendu
+
+L’itération I3 commence avec une page de détail structurée et des blocs de contenu mieux organisés.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/blog/page-detail/page-detail-html-v1.tuto-8-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final de l'itération I3">
+</iframe>
+
+### 3.3. Livrable
+
+Une nouvelle version de la page de détail avec :
+
+* le résultat de I2 conservé ;
+* des espaces extérieurs ;
+* des espaces intérieurs ;
+* des bordures ;
+* des angles arrondis ;
+* une mise en forme des blocs de contenu.
+
+### 3.4. Critère de réussite
+
+L’itération I3 :
+
+* conserve le résultat de I2 ;
+* utilise `margin` ;
+* utilise `padding` ;
+* utilise `border` ;
+* utilise `border-radius` ;
+* améliore la séparation visuelle des blocs.
+
+## Bilan
+
+**Vous avez réalisé :**
+
+Une mise en forme des blocs avec `margin`, `padding`, `border` et `border-radius`.
+
+**Vous savez maintenant :**
+
+* créer un espace extérieur ;
+* créer un espace intérieur ;
+* ajouter une bordure ;
+* arrondir les angles d’un élément.
+
+**Vous avez également commencé l’itération I3 du projet.**
+
+## Glossaire
+
+* **`margin`** : espace extérieur autour d’un élément.
+* **`padding`** : espace intérieur entre le contenu et la bordure.
+* **`border`** : bordure autour d’un élément.
+* **`border-radius`** : propriété qui arrondit les angles.
+* **Bloc** : élément qui forme une zone dans la page.

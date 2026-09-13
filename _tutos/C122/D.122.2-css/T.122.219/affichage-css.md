@@ -1,286 +1,518 @@
 ---
-title: "Affichage CSS"
+title: "Utiliser display pour ajuster l’affichage"
 layout: tuto
-slug: "affichage-css"
+slug: "display-ajuster-affichage-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.219"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 9
+
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mon article</title>
+        <link rel="stylesheet" href="tuto-9-css.css">
+    </head>
+    <body>
+        <header class="article-header">
+            <span class="category">Développement web</span>
+
+            <h1>Créer une page web</h1>
+
+            <p class="author">Par Madani Ali</p>
+
+            <p class="description">
+                Découvrez les bases pour créer une page web.
+            </p>
+        </header>
+
+        <main class="content">
+            <img
+                class="cover"
+                src="https://picsum.photos/800/400"
+                alt="Image de couverture">
+
+            <h2>Présentation</h2>
+
+            <p>
+                Voici le contenu de mon article.
+            </p>
+
+            <p>
+                Cette page présente une réalisation simple avec HTML et CSS.
+            </p>
+
+            <h2>Les étapes</h2>
+
+            <ul>
+                <li>Préparer le contenu</li>
+                <li>Créer la page</li>
+                <li>Ajouter les styles</li>
+            </ul>
+
+            <p>
+                <a href="#">Lire la documentation</a>
+            </p>
+
+            <blockquote>
+                Apprendre CSS demande de pratiquer régulièrement.
+            </blockquote>
+
+            <p class="message">
+                Ce texte peut être masqué avec CSS.
+            </p>
+        </main>
+    </body>
+    </html>
+
+data_css: |
+    .article-header {
+        background: #eeeeee;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .category {
+        display: inline-block;
+        color: #ffffff;
+        background: #333333;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .content {
+        width: 800px;
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+    }
+
+    .cover {
+        display: block;
+        width: 400px;
+        height: 200px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    a {
+        display: inline;
+        color: #0066cc;
+    }
+
+    ul {
+        margin: 20px 0;
+        padding-left: 30px;
+    }
+
+    li {
+        display: list-item;
+    }
+
+    .message {
+        display: none;
+    }
+
+data_js: ""
+
+data_php: ""
 ---
+
+
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Apprendre à contrôler l’affichage des éléments avec la propriété `display`.
-
-À la fin du tutoriel, vous savez utiliser `block`, `inline`, `inline-block` et `none` pour contrôler le comportement des éléments de la page.
+Utiliser `display` pour ajuster l’affichage des éléments HTML.
 
 ## 2. Prérequis
 
-* Avoir réalisé `T.122.211` à `T.122.218`.
-* Connaître les règles CSS et les sélecteurs.
-* Connaître `margin`, `padding` et `border`.
-* Avoir la page HTML de détail de l’article.
+* Savoir utiliser un sélecteur CSS.
+* Savoir utiliser `margin`.
+* Savoir utiliser `padding`.
+* Savoir utiliser `border`.
+* Savoir utiliser `border-radius`.
+* Savoir utiliser `width`.
+* Savoir utiliser `height`.
+* Savoir utiliser `max-width`.
+* Savoir utiliser `background`.
 
-# Partie 1 — Théorie
+## 3. Données de départ
 
-## 1.1. `display: block`
+### HTML
 
-`display: block` affiche un élément comme un bloc.
+Utilisez le code HTML suivant :
 
-Un élément de type bloc occupe toute la largeur disponible.
+```html id="b7q2hd"
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon article</title>
+    <link rel="stylesheet" href="tuto-9-css.css">
+</head>
+<body>
 
-**Exemple :**
+    <header class="article-header">
+        <span class="category">Développement web</span>
 
-```css
-.element {
-    display: block;
-}
+        <h1>Créer une page web</h1>
+
+        <p class="author">Par Madani Ali</p>
+
+        <p class="description">
+            Découvrez les bases pour créer une page web.
+        </p>
+    </header>
+
+    <main class="content">
+
+        <img
+            class="cover"
+            src="https://picsum.photos/800/400"
+            alt="Image de couverture">
+
+        <h2>Présentation</h2>
+
+        <p>
+            Voici le contenu de mon article.
+        </p>
+
+        <p>
+            Cette page présente une réalisation simple avec HTML et CSS.
+        </p>
+
+        <h2>Les étapes</h2>
+
+        <ul>
+            <li>Préparer le contenu</li>
+            <li>Créer la page</li>
+            <li>Ajouter les styles</li>
+        </ul>
+
+        <p>
+            <a href="#">Lire la documentation</a>
+        </p>
+
+        <blockquote>
+            Apprendre CSS demande de pratiquer régulièrement.
+        </blockquote>
+
+        <p class="message">
+            Ce texte peut être masqué avec CSS.
+        </p>
+
+    </main>
+
+</body>
+</html>
 ```
 
-## 1.2. `display: inline`
+### CSS
 
-`display: inline` affiche un élément dans la même ligne que les autres éléments.
+Utilisez le code CSS suivant :
 
-**Exemple :**
-
-```css
-.element {
-    display: inline;
+```css id="ms8fh7"
+.article-header {
+    background: #eeeeee;
+    text-align: center;
+    padding: 20px;
 }
-```
 
-L’élément occupe seulement l’espace nécessaire à son contenu.
-
-## 1.3. `display: inline-block`
-
-`display: inline-block` permet de garder l’élément sur la même ligne tout en permettant de définir des dimensions et des espaces.
-
-**Exemple :**
-
-```css
-.element {
+.category {
     display: inline-block;
+    color: #ffffff;
+    background: #333333;
+    font-size: 14px;
+    font-weight: bold;
 }
-```
 
-## 1.4. `display: none`
+.content {
+    width: 800px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
 
-`display: none` retire un élément de l’affichage.
+.cover {
+    width: 400px;
+    height: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
 
-**Exemple :**
+a {
+    color: #0066cc;
+}
 
-```css
-.element {
+ul {
+    margin: 20px 0;
+    padding-left: 30px;
+}
+
+li {
+    color: #333333;
+}
+
+.message {
     display: none;
 }
 ```
 
-L’élément n’apparaît plus dans la page.
+## Partie 1 — Théorie
 
-## 1.5. À retenir
+### 1.1. `display: block`
 
-* `block` affiche un élément comme un bloc.
-* `inline` affiche un élément dans une ligne.
-* `inline-block` permet un comportement en ligne avec des dimensions.
-* `none` masque l’élément.
+`display: block` affiche un élément comme un bloc.
 
-# Partie 2 — Pratique
-
-## 2.1. Afficher la catégorie comme un bloc en ligne
-
-La page HTML contient :
-
-```html
-<span class="article-category">
-    Développement
-</span>
-```
-
-### Étape 1 — Modifier `.article-category`
-
-Dans `style.css`, utilisez :
+Exemple :
 
 ```css
-.article-category {
-    display: inline-block;
-    margin-bottom: 5px;
-    padding: 8px 24px;
-    color: #1c5bba;
-    font-size: 14px;
-    background: white;
-    border: 2px solid #f0f6ff;
-    border-radius: 20px;
-}
-```
-
-La catégorie se comporte maintenant comme un élément en ligne qui accepte les dimensions et les espaces.
-
-## 2.2. Afficher l’image de l’auteur
-
-La page contient :
-
-```html
-<img
-    src="images/author.jpg"
-    alt="Portrait d'un développeur"
->
-```
-
-### Étape 2 — Modifier l’affichage de l’image
-
-Ajoutez :
-
-```css
-.article-author img {
-    display: inline-block;
-    width: 44px;
-    height: 44px;
-}
-```
-
-L’image peut maintenant être affichée sur la même ligne que les informations de l’auteur.
-
-## 2.3. Afficher la citation
-
-La page contient :
-
-```html
-<cite>
-    — Métier de développeur
-</cite>
-```
-
-### Étape 3 — Afficher la citation sur une nouvelle ligne
-
-Ajoutez :
-
-```css
-.article-blockquote cite {
+.cover {
     display: block;
 }
 ```
 
-La citation s’affiche maintenant sur une nouvelle ligne.
+L’élément occupe sa propre ligne.
 
-## 2.4. Vérifier la page
+### 1.2. `display: inline`
 
-### Étape 4 — Enregistrer `style.css`
+`display: inline` affiche un élément sur la même ligne que les autres éléments.
 
-Enregistrez le fichier.
-
-### Étape 5 — Ouvrir la page
-
-Ouvrez `index.html` dans le navigateur.
-
-Vérifiez :
-
-* la catégorie ;
-* l’image de l’auteur ;
-* les informations de l’auteur ;
-* la citation.
-
-**Résultat attendu :**
-
-Les éléments utilisent maintenant un comportement d’affichage adapté à leur rôle.
-
-## 2.5. Vérifier le CSS final
-
-Votre fichier `css/style.css` doit maintenant contenir progressivement les règles nécessaires à la mise en forme de la page.
-
-Il doit notamment contenir :
+Exemple :
 
 ```css
-body {
-    margin: 0;
-    color: #1f2937;
-    background: #f9fafb;
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-.article-category {
-    display: inline-block;
-}
-
-.article-author img {
-    display: inline-block;
-}
-
-.article-blockquote cite {
-    display: block;
+a {
+    display: inline;
 }
 ```
 
-Les autres règles ont été construites dans les tutoriels précédents.
+### 1.3. `display: inline-block`
 
-# 3. Bilan
+`display: inline-block` permet de conserver l’élément sur la ligne tout en lui donnant des caractéristiques de bloc.
 
-**Vous avez réalisé :** la mise en forme complète de la page de détail d’un article avec les bases de CSS.
+Exemple :
 
-**Vous savez maintenant :** utiliser `display: block`, `display: inline`, `display: inline-block` et `display: none`.
+```css
+.category {
+    display: inline-block;
+}
+```
 
-## 3.1. Présenter le résultat final
+### 1.4. `display: none`
 
-### Étape 6 — Enregistrer tous les fichiers
+`display: none` masque complètement l’élément.
 
-Enregistrez :
+Exemple :
+
+```css
+.message {
+    display: none;
+}
+```
+
+L’élément n’est plus visible dans la page.
+
+### 1.5. À retenir
+
+* `display: block` affiche un élément comme un bloc.
+* `display: inline` affiche un élément sur la ligne.
+* `display: inline-block` permet un affichage en ligne avec des caractéristiques de bloc.
+* `display: none` masque un élément.
+
+## Partie 2 — Pratique
+
+### 2.1. Ouvrir le fichier CSS
+
+Ouvrez :
 
 ```text
-index.html
-css/style.css
+tuto-9-css.css
 ```
 
-### Étape 7 — Ouvrir la page finale
+### 2.2. Afficher l’image comme un bloc
 
-Ouvrez `index.html` dans le navigateur.
+Ajoutez :
 
-Vérifiez la page entière.
-
-Elle doit afficher :
-
-* la catégorie ;
-* le titre de l’article ;
-* les informations de l’auteur ;
-* les images ;
-* les titres ;
-* les paragraphes ;
-* la liste des missions ;
-* la figure et sa légende ;
-* la citation ;
-* les différents espacements ;
-* les couleurs ;
-* les bordures ;
-* les formes arrondies.
-
-### Étape 8 — Présenter le résultat
-
-Présentez le résultat final de votre **page de détail d’un article**.
-
-Comparez votre page avec la conception fournie.
+```css
+.cover {
+    display: block;
+    width: 400px;
+    height: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+```
 
 **Résultat attendu :**
 
-Une page de détail d’un article correctement mise en forme avec CSS.
+L’image est affichée comme un bloc.
 
-**Livrable :**
+### 2.3. Mettre le lien en ligne
 
-* `index.html`
-* `css/style.css`
+Ajoutez :
 
-**Critère de réussite :**
+```css
+a {
+    display: inline;
+    color: #0066cc;
+}
+```
 
-La page HTML s’affiche correctement dans le navigateur et la mise en forme CSS correspond à la conception fournie.
+**Résultat attendu :**
 
-# 4. Glossaire
+Le lien reste dans la ligne du texte.
 
-* **`display`** : propriété CSS qui contrôle le mode d’affichage d’un élément.
+### 2.4. Utiliser `inline-block` pour la catégorie
+
+Conservez :
+
+```css
+.category {
+    display: inline-block;
+    color: #ffffff;
+    background: #333333;
+    font-size: 14px;
+    font-weight: bold;
+}
+```
+
+**Résultat attendu :**
+
+La catégorie reste sur sa ligne tout en utilisant un affichage `inline-block`.
+
+### 2.5. Masquer un élément
+
+Ajoutez :
+
+```css
+.message {
+    display: none;
+}
+```
+
+**Résultat attendu :**
+
+Le message n’apparaît plus dans la page.
+
+### 2.6. Tester
+
+Ouvrez :
+
+```text
+tuto-9-css.html
+```
+
+Rechargez la page.
+
+**Résultat attendu :**
+
+La page utilise différents modes d’affichage selon les éléments.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/css/tuto-9-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final du Tuto 9">
+</iframe>
+
+## Partie 3 — Développement progressif
+
+### 3.1. Finaliser l’itération I3
+
+**Série :** Page détail
+
+**Position :** I3 sur I3
+
+**Fin :** Tuto 9
+
+**Incrément :** finitions de l’affichage
+
+L’itération I3 a commencé au Tuto 8.
+
+Conservez le résultat obtenu au Tuto 8.
+
+Utilisez les notions étudiées dans ce tutoriel pour terminer la mise en forme de la page de détail.
+
+Ajoutez les finitions nécessaires avec :
+
+```text
+display: block
+display: inline
+display: inline-block
+display: none
+```
+
+Ajustez l’affichage des :
+
+* images ;
+* liens ;
+* catégories ;
+* listes ;
+* éléments qui doivent être masqués.
+
+### 3.2. Résultat attendu
+
+La page de détail est maintenant terminée.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/autoformations-web/code/blog/page-detail/page-detail-html-v1.tuto-9-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final de l’itération I3">
+</iframe>
+
+### 3.3. Livrable
+
+La version finale de la page de détail.
+
+### 3.4. Critère de réussite
+
+La page :
+
+* conserve le résultat de I2 ;
+* conserve les améliorations de I3 apportées au Tuto 8 ;
+* utilise les modes d’affichage étudiés ;
+* présente correctement les images ;
+* présente correctement les liens et les listes ;
+* masque les éléments prévus ;
+* ne demande aucune notion CSS non étudiée.
+
+## Bilan
+
+**Vous avez réalisé :**
+
+La dernière étape de mise en forme de la page de détail.
+
+**Vous savez maintenant :**
+
+* utiliser `display: block` ;
+* utiliser `display: inline` ;
+* utiliser `display: inline-block` ;
+* utiliser `display: none` ;
+* ajuster l’affichage des éléments HTML.
+
+**La page de détail est maintenant finalisée.**
+
+## Glossaire
+
+* **`display`** : propriété qui définit le mode d’affichage d’un élément.
 * **`block`** : affichage d’un élément comme un bloc.
-* **`inline`** : affichage d’un élément dans une ligne.
-* **`inline-block`** : affichage en ligne avec possibilité de définir des dimensions.
-* **`none`** : élément retiré de l’affichage.
+* **`inline`** : affichage d’un élément sur la même ligne.
+* **`inline-block`** : affichage en ligne avec des caractéristiques de bloc.
+* **`none`** : masque l’élément.

@@ -1,318 +1,354 @@
 ---
-title: "Arrière-plans et images CSS"
+title: "Utiliser les arrière-plans et display en CSS"
 layout: tuto
-slug: "arriere-plans-images-css"
+slug: "arriere-plans-display-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.215"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 5
+
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mon article</title>
+        <link rel="stylesheet" href="tuto-5-css.css">
+    </head>
+    <body>
+        <header class="article-header">
+            <span class="category">Développement web</span>
+            <h1>Créer une page web</h1>
+            <p class="author">Par Madani Ali</p>
+            <p class="description">Découvrez les bases pour créer une page web.</p>
+        </header>
+    </body>
+    </html>
+
+data_css: |
+    p {
+        color: blue;
+    }
+
+data_js: ""
+
+data_php: ""
 ---
+
+
+---
+
+
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Mettre en forme les arrière-plans et les images d’une page avec CSS.
-
-À la fin du tutoriel, vous savez utiliser `background`, `background-color`, `width`, `height`, `max-width` et `display: block` pour mettre en forme les zones et les images de la page.
+Utiliser `background` et `display` pour modifier l’arrière-plan et l’affichage des éléments.
 
 ## 2. Prérequis
 
-* Avoir réalisé `T.122.211` à `T.122.214`.
-* Connaître les règles CSS et les sélecteurs.
-* Connaître les propriétés de texte et de couleur.
-* Avoir les images du projet.
+* Savoir écrire une règle CSS.
+* Savoir utiliser un sélecteur de classe.
+* Savoir utiliser `color`.
+* Savoir utiliser `font-family`.
+* Savoir utiliser `font-size`.
+* Savoir utiliser `font-weight`.
+* Savoir utiliser `font-style`.
+* Savoir utiliser `line-height`.
+* Savoir utiliser `text-align`.
 
-# Partie 1 — Théorie
+## 3. Données de départ
 
-## 1.1. `background-color`
+### HTML
 
-`background-color` définit la couleur de fond d’un élément.
+Utilisez le code HTML suivant :
 
-**Exemple :**
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon article</title>
+    <link rel="stylesheet" href="tuto-5-css.css">
+</head>
+<body>
+
+    <header class="article-header">
+        <span class="category">Développement web</span>
+
+        <h1>Créer une page web</h1>
+
+        <p class="author">Par Madani Ali</p>
+
+        <p class="description">
+            Découvrez les bases pour créer une page web.
+        </p>
+    </header>
+
+</body>
+</html>
+```
+
+### CSS
+
+Utilisez le code CSS suivant :
 
 ```css
 .article-header {
-    background-color: #f9fafb;
+    background: #eeeeee;
+    text-align: center;
+}
+
+.category {
+    display: inline-block;
 }
 ```
 
-## 1.2. `background`
+## Partie 1 — Théorie
 
-`background` permet de définir le fond d’un élément.
+### 1.1. La propriété `background`
 
-On peut utiliser une couleur directement :
+La propriété `background` permet de définir l’arrière-plan d’un élément.
+
+Exemple :
 
 ```css
-body {
-    background: #f9fafb;
+.article-header {
+    background: #eeeeee;
 }
 ```
 
-Dans notre page, `background` et `background-color` permettent de définir les fonds des différentes zones.
+Ici, l’arrière-plan de `.article-header` devient gris clair.
 
-## 1.3. `width`
+### 1.2. Le type `block`
 
-`width` définit la largeur d’un élément.
+Un élément `block` occupe normalement toute la largeur disponible.
 
-**Exemple :**
+Des éléments HTML comme `<h1>` et `<p>` sont généralement des éléments de type `block`.
 
-```css
-.article-cover img {
-    width: 100%;
-}
-```
-
-L’image prend toute la largeur disponible.
-
-## 1.4. `height`
-
-`height` définit la hauteur d’un élément.
-
-**Exemple :**
+Exemple :
 
 ```css
-.article-cover {
-    height: 250px;
-}
-```
-
-La zone de couverture possède une hauteur de `250px`.
-
-## 1.5. `max-width`
-
-`max-width` définit une largeur maximale.
-
-**Exemple :**
-
-```css
-img {
-    max-width: 100%;
-}
-```
-
-L’image ne dépasse pas la largeur disponible.
-
-## 1.6. `display: block`
-
-`display: block` permet de faire afficher un élément comme un bloc.
-
-Pour une image :
-
-```css
-img {
+h1 {
     display: block;
 }
 ```
 
-Cela permet notamment d’éviter certains espaces créés par l’affichage en ligne.
+### 1.3. Le type `inline`
 
-## 1.7. À retenir
+Un élément `inline` reste sur la même ligne que les autres éléments.
 
-* `background-color` définit une couleur de fond.
-* `background` définit le fond d’un élément.
-* `width` définit la largeur.
-* `height` définit la hauteur.
-* `max-width` définit une largeur maximale.
+Exemple :
+
+```css
+.category {
+    display: inline;
+}
+```
+
+### 1.4. Le type `inline-block`
+
+`inline-block` permet à un élément de rester sur la même ligne tout en conservant des caractéristiques d’un bloc.
+
+Exemple :
+
+```css
+.category {
+    display: inline-block;
+}
+```
+
+### 1.5. Comparer les trois valeurs
+
+```css
+display: block;
+display: inline;
+display: inline-block;
+```
+
+Ces valeurs permettent de modifier le comportement d’un élément dans la page.
+
+### 1.6. À retenir
+
+* `background` définit l’arrière-plan.
 * `display: block` affiche un élément comme un bloc.
+* `display: inline` affiche un élément sur la ligne.
+* `display: inline-block` permet un affichage en ligne avec des caractéristiques de bloc.
 
-# Partie 2 — Pratique
+## Partie 2 — Pratique
 
-## 2.1. Mettre en forme le fond de l’en-tête
-
-### Étape 1 — Ouvrir `style.css`
+### 2.1. Ouvrir le fichier CSS
 
 Ouvrez :
 
 ```text
-css/style.css
+tuto-5-css.css
 ```
 
-La page possède déjà les règles des tutoriels précédents.
+### 2.2. Modifier l’arrière-plan
 
-Ajoutez :
+Ajoutez une couleur d’arrière-plan à l’en-tête :
 
 ```css
 .article-header {
-    background: #f9fafb;
+    background: #eeeeee;
+    text-align: center;
 }
 ```
-
-L’en-tête possède maintenant un fond clair.
-
-## 2.2. Préparer les images
-
-### Étape 2 — Cibler toutes les images
-
-Ajoutez :
-
-```css
-img {
-    display: block;
-    max-width: 100%;
-}
-```
-
-Les images sont maintenant affichées comme des blocs et ne dépassent pas leur conteneur.
-
-## 2.3. Mettre en forme la couverture
-
-La page HTML contient :
-
-```html
-<figure class="article-cover">
-    <img
-        src="images/article-cover.png"
-        alt="Écran montrant du code informatique"
-    >
-</figure>
-```
-
-### Étape 3 — Définir la hauteur de la couverture
-
-Ajoutez :
-
-```css
-.article-cover {
-    height: 250px;
-}
-```
-
-La zone de couverture possède maintenant une hauteur définie.
-
-### Étape 4 — Définir la largeur de l’image
-
-Ajoutez :
-
-```css
-.article-cover img {
-    width: 100%;
-    height: 100%;
-}
-```
-
-L’image utilise maintenant toute la largeur et toute la hauteur de la zone.
-
-## 2.4. Mettre en forme l’image de l’article
-
-La page contient :
-
-```html
-<figure class="article-figure">
-    <img
-        src="images/article-example.png"
-        alt="Développeur écrivant du code"
-    >
-    <figcaption>
-        Le développeur écrit le code de l'application.
-    </figcaption>
-</figure>
-```
-
-### Étape 5 — Définir la largeur de l’image
-
-Ajoutez :
-
-```css
-.article-figure img {
-    width: 100%;
-}
-```
-
-L’image utilise toute la largeur de la figure.
-
-## 2.5. Mettre en forme le contenu principal
-
-### Étape 6 — Ajouter le fond du contenu
-
-La page contient :
-
-```html
-<section class="article-body">
-```
-
-Ajoutez :
-
-```css
-.article-body {
-    background: white;
-}
-```
-
-Le contenu principal possède maintenant un fond blanc.
-
-## 2.6. Vérifier le résultat
-
-### Étape 7 — Enregistrer `style.css`
-
-Enregistrez le fichier.
-
-### Étape 8 — Ouvrir la page
-
-Ouvrez `index.html` dans le navigateur.
-
-Vérifiez :
-
-* le fond clair de la page ;
-* le fond de l’en-tête ;
-* l’affichage des images ;
-* la largeur de l’image de couverture ;
-* la hauteur de la couverture ;
-* la largeur de l’image de l’article ;
-* le fond blanc du contenu principal.
 
 **Résultat attendu :**
 
-La page commence à prendre la forme de la conception finale.
+L’en-tête possède un arrière-plan gris clair.
 
-Le fichier `style.css` contient maintenant notamment :
+### 2.3. Modifier l’affichage de la catégorie
+
+Utilisez :
 
 ```css
-body {
-    color: #1f2937;
-    background: #f9fafb;
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-.article-header {
-    background: #f9fafb;
-}
-
-.article-cover {
-    height: 250px;
-}
-
-.article-cover img {
-    width: 100%;
-    height: 100%;
-}
-
-.article-body {
-    background: white;
-}
-
-.article-figure img {
-    width: 100%;
+.category {
+    display: inline-block;
 }
 ```
 
-# 3. Bilan
+**Résultat attendu :**
 
-**Vous avez réalisé :** la mise en forme des arrière-plans et des principales images de la page.
+La catégorie utilise un affichage `inline-block`.
 
-**Vous savez maintenant :** utiliser `background`, `background-color`, `width`, `height`, `max-width` et `display: block`.
+### 2.4. Tester les différents affichages
 
-Dans le prochain tutoriel, vous allez mettre en forme les **liens et les listes** de la page.
+Testez :
 
-# 4. Glossaire
+```css
+.category {
+    display: block;
+}
+```
 
-* **Arrière-plan** : fond visuel d’un élément.
-* **Largeur** : dimension horizontale d’un élément.
-* **Hauteur** : dimension verticale d’un élément.
-* **Largeur maximale** : limite maximale de la largeur d’un élément.
-* **Bloc** : élément qui occupe une zone de la page.
+Puis :
+
+```css
+.category {
+    display: inline;
+}
+```
+
+Puis :
+
+```css
+.category {
+    display: inline-block;
+}
+```
+
+Observez les différences.
+
+### 2.5. Résultat final du tutoriel
+
+Le résultat final du tutoriel utilise :
+
+```css
+.article-header {
+    background: #eeeeee;
+    text-align: center;
+}
+
+.category {
+    display: inline-block;
+}
+```
+
+**Résultat attendu :**
+
+L’en-tête possède un arrière-plan et la catégorie utilise `inline-block`.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/css/tuto-5-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final du Tuto 5">
+</iframe>
+
+## Partie 3 — Développement progressif
+
+### 3.1. Développer l’itération I1
+
+**Série :** Page détail
+
+**Position :** I1 sur I3
+
+**Incrément :** En-tête de l’article
+
+Utilisez les notions étudiées dans ce tutoriel pour construire l’en-tête de la page de détail.
+
+L’en-tête doit présenter :
+
+* un arrière-plan ;
+* une catégorie ;
+* un titre ;
+* un auteur ;
+* une description ;
+* un alignement cohérent ;
+* un affichage `inline-block` pour la catégorie.
+
+Conservez les notions disponibles dans les tutoriels précédents.
+
+Ne pas utiliser les notions des tutoriels suivants.
+
+### 3.2. Résultat attendu
+
+L’en-tête de l’article présente une première version proche du rendu final.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/blog/page-detail-v1/page-detail-html-v1.tuto-5-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final de l'itération I1">
+</iframe>
+
+### 3.3. Livrable
+
+Une première version de l’en-tête de la page de détail.
+
+### 3.4. Critère de réussite
+
+L’en-tête :
+
+* possède un arrière-plan ;
+* contient une catégorie ;
+* contient un titre ;
+* contient un auteur ;
+* contient une description ;
+* présente un alignement cohérent ;
+* utilise `display: inline-block` pour la catégorie.
+
+## Bilan
+
+**Vous avez réalisé :**
+
+Une mise en forme utilisant `background` et `display`.
+
+**Vous savez maintenant :**
+
+* définir un arrière-plan ;
+* utiliser `display: block` ;
+* utiliser `display: inline` ;
+* utiliser `display: inline-block`.
+
+**Vous avez également commencé l’itération I1 de la page de détail.**
+
+## Glossaire
+
+* **`background`** : propriété qui définit l’arrière-plan d’un élément.
+* **`display`** : propriété qui définit le mode d’affichage d’un élément.
+* **`block`** : affichage d’un élément comme un bloc.
+* **`inline`** : affichage d’un élément sur la ligne.
+* **`inline-block`** : affichage en ligne avec des caractéristiques de bloc.

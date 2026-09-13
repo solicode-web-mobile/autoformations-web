@@ -1,336 +1,410 @@
 ---
-title: "Texte et couleurs CSS"
+title: "Mettre en forme les textes et les couleurs"
 layout: tuto
-slug: "texte-couleurs-css"
+slug: "mettre-en-forme-textes-couleurs"
 permalink: /tutos/:slug/
 tuto_id: "T.122.214"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 4
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mon article</title>
+        <link rel="stylesheet" href="tuto-4-css.css">
+    </head>
+    <body>
+        <h1 class="title">Mon article</h1>
+
+        <p class="intro">Bienvenue sur ma page.</p>
+
+        <p class="text">Voici le contenu de mon article.</p>
+
+        <p class="text">Cet article présente les sélecteurs CSS.</p>
+    </body>
+    </html>
+data_css: |
+    p {
+        color: blue;
+    }
+
+data_js: ""
+data_php: ""
 ---
+
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Mettre en forme les textes d’une page avec CSS.
-
-À la fin du tutoriel, vous savez utiliser les principales propriétés de texte et les couleurs CSS pour modifier la présentation des contenus.
+Mettre en forme les textes avec les propriétés CSS de typographie, d’alignement et de couleur.
 
 ## 2. Prérequis
 
-* Avoir réalisé `T.122.211`, `T.122.212` et `T.122.213`.
-* Connaître les règles CSS et les sélecteurs.
-* Connaître les classes utilisées dans la page HTML.
+* Savoir écrire une règle CSS.
+* Savoir utiliser un sélecteur de balise.
+* Savoir utiliser un sélecteur de classe.
+* Savoir relier une page HTML à une feuille CSS.
 
-# Partie 1 — Théorie
+## 3. Données de départ
 
-## 1.1. `font-family`
+### HTML
 
-`font-family` permet de choisir la police du texte.
+Utilisez le code HTML suivant :
 
-**Exemple :**
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon article</title>
+    <link rel="stylesheet" href="tuto-4-css.css">
+</head>
+<body>
 
-```css id="s5h7q1"
-body {
-    font-family: Arial, sans-serif;
+    <h1 class="title">Mon article</h1>
+
+    <p class="intro">Bienvenue sur ma page.</p>
+
+    <p class="text">Voici le contenu de mon article.</p>
+
+    <p class="text">Cet article présente les sélecteurs CSS.</p>
+
+</body>
+</html>
+```
+
+### CSS
+
+Utilisez le CSS suivant :
+
+```css
+p {
+    color: blue;
 }
 ```
 
-Ici, le navigateur utilise `Arial` lorsque cette police est disponible.
+## Partie 1 — Théorie
 
-## 1.2. `font-size`
+### 1.1. La famille de police
 
-`font-size` permet de définir la taille du texte.
+La propriété `font-family` permet de choisir la police du texte.
 
-**Exemple :**
-
-```css id="0w6n2y"
-.article-body {
-    font-size: 16px;
+```css
+p {
+    font-family: Arial;
 }
 ```
 
-## 1.3. `font-weight`
+### 1.2. La taille du texte
 
-`font-weight` permet de définir l’épaisseur du texte.
+La propriété `font-size` permet de définir la taille du texte.
 
-**Exemple :**
-
-```css id="z8a6qc"
-.article-body h2 {
-    font-weight: 900;
+```css
+p {
+    font-size: 18px;
 }
 ```
 
-## 1.4. `font-style`
+### 1.3. L’épaisseur du texte
 
-`font-style` permet de choisir le style du texte.
+La propriété `font-weight` permet de modifier l’épaisseur du texte.
 
-**Exemple :**
+```css
+p {
+    font-weight: bold;
+}
+```
 
-```css id="5a5r4k"
-.article-blockquote p {
+### 1.4. Le style du texte
+
+La propriété `font-style` permet de modifier le style du texte.
+
+```css
+p {
     font-style: italic;
 }
 ```
 
-## 1.5. `text-align`
+### 1.5. La hauteur de ligne
 
-`text-align` permet de définir l’alignement du texte.
+La propriété `line-height` permet de définir l’espace entre les lignes.
 
-**Exemple :**
+```css
+p {
+    line-height: 1.6;
+}
+```
 
-```css id="0jdd3v"
-.article-header {
+### 1.6. L’alignement du texte
+
+La propriété `text-align` permet de définir l’alignement du texte.
+
+```css
+.title {
     text-align: center;
 }
 ```
 
-## 1.6. `line-height`
+Exemples :
 
-`line-height` permet de régler l’espace vertical entre les lignes.
+```css
+text-align: left;
+text-align: center;
+text-align: right;
+```
 
-**Exemple :**
+### 1.7. La couleur du texte
 
-```css id="6dzh1w"
-body {
-    line-height: 1.5;
+La propriété `color` permet de définir la couleur du texte.
+
+```css
+p {
+    color: blue;
 }
 ```
 
-## 1.7. `color`
+### 1.8. Les couleurs hexadécimales
 
-`color` permet de définir la couleur du texte.
+Une couleur peut être écrite avec une valeur hexadécimale.
 
-**Exemple :**
+Exemple :
 
-```css id="mp4m6b"
-body {
-    color: #1f2937;
+```css
+.title {
+    color: #333333;
 }
 ```
-
-## 1.8. Couleurs hexadécimales
 
 Une couleur hexadécimale commence par `#`.
 
-**Exemple :**
+Exemples :
 
-```css id="5f0sr8"
-color: #1f2937;
+```text
+#000000
+#FFFFFF
+#333333
+#FF0000
 ```
 
-Ici, `#1f2937` représente une couleur.
+### 1.9. La couleur d’arrière-plan
 
-## 1.9. `background-color`
+La propriété `background` permet de définir un arrière-plan.
 
-`background-color` permet de définir la couleur de fond.
-
-**Exemple :**
-
-```css id="ps9k4a"
-body {
-    background-color: #f9fafb;
+```css
+.title {
+    background: #eeeeee;
 }
 ```
 
-## 1.10. À retenir
+### 1.10. À retenir
 
-* `font-family` choisit la police.
+* `font-family` définit la police.
 * `font-size` définit la taille.
 * `font-weight` définit l’épaisseur.
 * `font-style` définit le style.
+* `line-height` définit la hauteur des lignes.
 * `text-align` définit l’alignement.
-* `line-height` règle l’espace entre les lignes.
 * `color` définit la couleur du texte.
-* Une couleur hexadécimale utilise une valeur comme `#1f2937`.
-* `background-color` définit la couleur de fond.
+* Une couleur peut être écrite avec une valeur hexadécimale.
+* `background` définit un arrière-plan.
 
-# Partie 2 — Pratique
+## Partie 2 — Pratique
 
-## 2.1. Mettre en forme le document
-
-### Étape 1 — Ouvrir `style.css`
+### 2.1. Ouvrir le fichier CSS
 
 Ouvrez :
 
-```text id="9c8y2m"
-css/style.css
+```text
+tuto-4-css.css
 ```
 
-Vous avez déjà les premières règles CSS.
+Le fichier contient :
 
-Remplacez la règle `body` par :
-
-```css id="f74vau"
-body {
-    color: #1f2937;
-    background: #f9fafb;
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
+```css
+p {
+    color: blue;
 }
 ```
 
-Le texte de la page utilise maintenant Arial et un interligne de `1.5`.
+### 2.2. Modifier la police
 
-## 2.2. Mettre en forme le titre principal
+Ajoutez la propriété `font-family` :
 
-### Étape 2 — Modifier `.article-header h1`
-
-Ajoutez :
-
-```css id="5vcc9d"
-.article-header h1 {
-    color: #111827;
-    font-family: Georgia, serif;
-    font-size: 50px;
-    line-height: 1.15;
+```css
+p {
+    color: blue;
+    font-family: Arial;
 }
 ```
 
-Le titre principal utilise maintenant une autre police, une taille plus grande et un interligne adapté.
-
-## 2.3. Mettre en forme la catégorie
-
-### Étape 3 — Modifier `.article-category`
-
-Complétez la règle :
-
-```css id="zzj3ye"
-.article-category {
-    color: #1c5bba;
-    font-size: 14px;
-    text-align: center;
-}
-```
-
-## 2.4. Mettre en forme les titres du contenu
-
-### Étape 4 — Modifier les titres
-
-Ajoutez :
-
-```css id="jxjssr"
-.article-body h2,
-.article-body h3 {
-    color: #0a2042;
-    font-family: Georgia, serif;
-    font-weight: 900;
-    line-height: 1.3;
-}
-```
-
-Ajoutez ensuite :
-
-```css id="jg7x1o"
-.article-body h2 {
-    font-size: 32px;
-}
-
-.article-body h3 {
-    font-size: 22px;
-}
-```
-
-## 2.5. Mettre en forme les informations de l’auteur
-
-### Étape 5 — Cibler le texte de l’auteur
-
-Ajoutez :
-
-```css id="r7h2kq"
-.article-author span {
-    color: #9ca3af;
-    font-size: 12px;
-}
-```
-
-Le texte `Auteur du blog` devient plus petit et plus clair.
-
-## 2.6. Mettre en forme la citation
-
-### Étape 6 — Cibler le texte de la citation
-
-Ajoutez :
-
-```css id="fv2o0n"
-.article-blockquote {
-    color: #4b5563;
-}
-
-.article-blockquote p {
-    font-style: italic;
-}
-
-.article-blockquote cite {
-    color: #6b7280;
-    font-size: 13px;
-    font-style: normal;
-}
-```
-
-## 2.7. Vérifier le résultat
-
-### Étape 7 — Enregistrer `style.css`
-
-Enregistrez le fichier.
-
-### Étape 8 — Ouvrir la page
-
-Ouvrez `index.html` dans le navigateur.
-
-Vérifiez :
-
-* la police générale ;
-* la taille du titre principal ;
-* la couleur du titre ;
-* les titres de section ;
-* la catégorie ;
-* les informations de l’auteur ;
-* le texte de la citation.
+Rechargez la page.
 
 **Résultat attendu :**
 
-Une partie importante de la page est maintenant mise en forme avec les propriétés de texte et les couleurs CSS.
+Les paragraphes utilisent la police Arial.
 
-Le fichier `style.css` contient notamment :
+### 2.3. Modifier la taille
 
-```css id="6lhrpk"
-body {
-    color: #1f2937;
-    background: #f9fafb;
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-}
+Ajoutez `font-size` :
 
-.article-header h1 {
-    color: #111827;
-    font-family: Georgia, serif;
-    font-size: 50px;
-    line-height: 1.15;
-}
-
-.article-body h2,
-.article-body h3 {
-    color: #0a2042;
-    font-family: Georgia, serif;
-    font-weight: 900;
-    line-height: 1.3;
+```css
+p {
+    color: blue;
+    font-family: Arial;
+    font-size: 18px;
 }
 ```
 
-# 3. Bilan
+**Résultat attendu :**
 
-**Vous avez réalisé :** la mise en forme des principaux textes et couleurs de la page.
+Les paragraphes sont plus grands.
 
-**Vous savez maintenant :** utiliser `font-family`, `font-size`, `font-weight`, `font-style`, `text-align`, `line-height`, `color`, les couleurs hexadécimales et `background-color`.
+### 2.4. Modifier l’épaisseur
 
-Dans le prochain tutoriel, vous allez travailler les **arrière-plans et les images**.
+Ajoutez `font-weight` :
 
-# 4. Glossaire
+```css
+p {
+    color: blue;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+}
+```
 
-* **Police** : forme utilisée pour afficher les caractères.
-* **Taille de police** : dimension des caractères.
-* **Épaisseur** : niveau de graisse du texte.
-* **Alignement** : position du texte sur une ligne.
-* **Interligne** : espace entre les lignes d’un texte.
-* **Couleur hexadécimale** : valeur CSS qui représente une couleur, par exemple `#1f2937`.
+**Résultat attendu :**
+
+Les paragraphes apparaissent en gras.
+
+### 2.5. Modifier le style
+
+Ajoutez :
+
+```css
+p {
+    color: blue;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+}
+```
+
+**Résultat attendu :**
+
+Les paragraphes apparaissent en gras et en italique.
+
+### 2.6. Modifier la hauteur de ligne
+
+Ajoutez :
+
+```css
+p {
+    color: blue;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 1.6;
+}
+```
+
+### 2.7. Mettre en forme le titre
+
+Ajoutez une règle pour la classe `title` :
+
+```css
+.title {
+    color: #333333;
+    text-align: center;
+    background: #eeeeee;
+}
+```
+
+**Résultat attendu :**
+
+Le titre est centré, gris foncé et possède un arrière-plan gris clair.
+
+### 2.8. Mettre en forme le texte d’introduction
+
+Ajoutez :
+
+```css
+.intro {
+    color: #555555;
+}
+```
+
+**Résultat attendu :**
+
+Le texte d’introduction utilise une couleur différente.
+
+### 2.9. Tester le résultat
+
+Ouvrez :
+
+```text
+tuto-4-css.html
+```
+
+Rechargez la page.
+
+**Résultat attendu :**
+
+La page affiche :
+
+* un titre centré ;
+* un titre avec un arrière-plan ;
+* des paragraphes avec une police définie ;
+* des paragraphes plus grands ;
+* des paragraphes en gras et en italique ;
+* des paragraphes avec une hauteur de ligne définie ;
+* des couleurs différentes pour les textes.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/css/tuto-4-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final du Tuto 4">
+</iframe>
+
+## Bilan
+
+**Vous avez réalisé :**
+
+La mise en forme des textes avec les propriétés CSS de typographie, d’alignement et de couleur.
+
+**Vous savez maintenant :**
+
+* choisir une police ;
+* modifier la taille du texte ;
+* modifier son épaisseur ;
+* modifier son style ;
+* modifier la hauteur de ligne ;
+* aligner un texte ;
+* utiliser une couleur ;
+* utiliser une couleur hexadécimale ;
+* définir un arrière-plan.
+
+Ces notions préparent la mise en forme de l’en-tête dans **I1**.
+
+## Glossaire
+
+* **Typographie** : mise en forme visuelle du texte.
+* **`font-family`** : propriété qui définit la police.
+* **`font-size`** : propriété qui définit la taille du texte.
+* **`font-weight`** : propriété qui définit l’épaisseur du texte.
+* **`font-style`** : propriété qui définit le style du texte.
+* **`line-height`** : propriété qui définit la hauteur des lignes.
+* **`text-align`** : propriété qui définit l’alignement du texte.
+* **Couleur hexadécimale** : couleur écrite avec une valeur commençant par `#`.

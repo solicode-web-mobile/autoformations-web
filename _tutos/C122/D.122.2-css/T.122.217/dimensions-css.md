@@ -1,252 +1,336 @@
 ---
-title: "Dimensions CSS"
+title: "Utiliser les dimensions CSS"
 layout: tuto
-slug: "dimensions-css"
+slug: "utiliser-dimensions-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.217"
+type: "developpement-progressif"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 7
+
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mon article</title>
+        <link rel="stylesheet" href="tuto-7-css.css">
+    </head>
+    <body>
+        <h1 class="title">Mon article</h1>
+
+        <div class="content">
+            <img
+                class="cover"
+                src="https://picsum.photos/800/400"
+                alt="Image de couverture">
+
+            <p>
+                Voici le contenu de mon article.
+            </p>
+
+            <p>
+                Cette page permet de tester les dimensions CSS.
+            </p>
+        </div>
+    </body>
+    </html>
+
+data_css: |
+    .cover {
+        width: 400px;
+        height: 200px;
+    }
+
+data_js: ""
+
+data_php: ""
 ---
+
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Contrôler les dimensions des éléments avec CSS.
-
-À la fin du tutoriel, vous savez utiliser `width`, `height`, `max-width`, `px` et `%` pour définir les dimensions des principales zones de la page.
+Utiliser `width`, `height` et `max-width` pour contrôler les dimensions des éléments.
 
 ## 2. Prérequis
 
-* Avoir réalisé `T.122.211` à `T.122.216`.
-* Connaître les règles CSS et les sélecteurs.
-* Connaître les notions de largeur et de hauteur.
-* Avoir la page HTML de détail de l’article.
+* Savoir écrire une règle CSS.
+* Savoir utiliser un sélecteur de classe.
+* Savoir utiliser `color`.
+* Savoir utiliser `background`.
+* Savoir utiliser `display`.
+* Savoir utiliser `margin`.
+* Savoir utiliser `padding`.
 
-# Partie 1 — Théorie
+## 3. Données de départ
 
-## 1.1. `width`
+### HTML
 
-`width` définit la largeur d’un élément.
+Utilisez le code HTML suivant :
 
-**Exemple :**
+```html id="1s7gkr"
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon article</title>
+    <link rel="stylesheet" href="tuto-7-css.css">
+</head>
+<body>
 
-```css
-.article-main {
-    width: 100%;
+    <h1 class="title">Mon article</h1>
+
+    <div class="content">
+
+        <img
+            class="cover"
+            src="https://picsum.photos/800/400"
+            alt="Image de couverture">
+
+        <p>
+            Voici le contenu de mon article.
+        </p>
+
+        <p>
+            Cette page permet de tester les dimensions CSS.
+        </p>
+
+    </div>
+
+</body>
+</html>
+```
+
+### CSS
+
+Utilisez le code CSS suivant :
+
+```css id="e7mw1f"
+.cover {
+    width: 400px;
+    height: 200px;
 }
 ```
 
-L’élément utilise toute la largeur disponible.
+## Partie 1 — Théorie
 
-## 1.2. `height`
+### 1.1. La propriété `width`
 
-`height` définit la hauteur d’un élément.
+`width` permet de définir la largeur d’un élément.
 
-**Exemple :**
-
-```css
-.article-cover {
-    height: 250px;
+```css id="g6x2us"
+.cover {
+    width: 400px;
 }
 ```
 
-La zone possède une hauteur de `250px`.
+### 1.2. La propriété `height`
 
-## 1.3. `max-width`
+`height` permet de définir la hauteur d’un élément.
 
-`max-width` définit la largeur maximale d’un élément.
-
-**Exemple :**
-
-```css
-.article-main {
-    max-width: 920px;
+```css id="j9u4mk"
+.cover {
+    height: 200px;
 }
 ```
 
-La zone ne dépasse pas `920px` de largeur.
+### 1.3. La propriété `max-width`
 
-## 1.4. `px`
+`max-width` définit une largeur maximale.
 
-`px` est une unité de mesure CSS.
-
-**Exemple :**
-
-```css
-.article-main {
-    max-width: 920px;
+```css id="8h6t3v"
+.cover {
+    max-width: 100%;
 }
 ```
 
-`920px` indique une largeur maximale de 920 pixels.
+L’image ne dépasse pas la largeur disponible.
 
-## 1.5. `%`
+### 1.4. Combiner les dimensions
 
-`%` permet de définir une dimension en fonction de l’espace disponible.
+On peut utiliser plusieurs propriétés dans une même règle.
 
-**Exemple :**
-
-```css
-.article-cover img {
-    width: 100%;
+```css id="1k4z8c"
+.cover {
+    width: 400px;
+    height: 200px;
+    max-width: 100%;
 }
 ```
 
-L’image utilise toute la largeur disponible dans son conteneur.
-
-## 1.6. À retenir
+### 1.5. À retenir
 
 * `width` définit la largeur.
 * `height` définit la hauteur.
-* `max-width` limite la largeur maximale.
-* `px` permet de définir une dimension précise.
-* `%` permet de définir une dimension relative au conteneur.
+* `max-width` définit la largeur maximale.
+* Plusieurs propriétés peuvent être utilisées dans une même règle.
 
-# Partie 2 — Pratique
+## Partie 2 — Pratique
 
-## 2.1. Définir la largeur du contenu principal
-
-### Étape 1 — Ouvrir `style.css`
+### 2.1. Ouvrir le fichier CSS
 
 Ouvrez :
 
-```text
-css/style.css
+```text id="r6y2pm"
+tuto-7-css.css
 ```
 
-Vous avez déjà construit les règles précédentes.
-
-### Étape 2 — Cibler `.article-main`
+### 2.2. Définir la largeur de l’image
 
 Ajoutez :
 
-```css
-.article-main {
-    max-width: 920px;
+```css id="s2c8r5"
+.cover {
+    width: 400px;
 }
 ```
-
-Le contenu principal ne dépasse maintenant pas `920px`.
-
-## 2.2. Définir la largeur de la couverture
-
-### Étape 3 — Vérifier la couverture
-
-La page contient :
-
-```html
-<figure class="article-cover">
-    <img
-        src="images/article-cover.png"
-        alt="Écran montrant du code informatique"
-    >
-</figure>
-```
-
-La couverture possède déjà une hauteur définie dans le tutoriel précédent.
-
-Ajoutez maintenant :
-
-```css
-.article-cover img {
-    width: 100%;
-}
-```
-
-L’image utilise toute la largeur de la couverture.
-
-## 2.3. Définir la largeur de l’image de l’article
-
-### Étape 4 — Cibler `.article-figure img`
-
-Ajoutez :
-
-```css
-.article-figure img {
-    width: 100%;
-}
-```
-
-L’image utilise toute la largeur disponible dans sa figure.
-
-## 2.4. Utiliser `max-width` pour les images
-
-### Étape 5 — Vérifier les images
-
-La règle suivante existe déjà :
-
-```css
-img {
-    display: block;
-    max-width: 100%;
-}
-```
-
-`max-width: 100%` empêche une image de dépasser la largeur disponible.
-
-Cette règle est utile pour les différentes images de la page.
-
-## 2.5. Vérifier les dimensions
-
-### Étape 6 — Enregistrer `style.css`
-
-Enregistrez le fichier.
-
-### Étape 7 — Ouvrir la page
-
-Ouvrez `index.html` dans le navigateur.
-
-Vérifiez :
-
-* la largeur maximale du contenu principal ;
-* la largeur de l’image de couverture ;
-* la largeur de l’image de l’article ;
-* la hauteur de la couverture ;
-* le comportement des images dans leur conteneur.
 
 **Résultat attendu :**
 
-La zone principale de l’article possède une largeur limitée et les images utilisent correctement l’espace disponible.
+L’image possède une largeur de `400px`.
 
-Le fichier `style.css` contient maintenant notamment :
+### 2.3. Définir la hauteur
 
-```css
-img {
-    display: block;
-    max-width: 100%;
-}
+Ajoutez :
 
-.article-cover {
-    height: 250px;
-}
-
-.article-cover img {
-    width: 100%;
-    height: 100%;
-}
-
-.article-main {
-    max-width: 920px;
-}
-
-.article-figure img {
-    width: 100%;
+```css id="v5n7ka"
+.cover {
+    width: 400px;
+    height: 200px;
 }
 ```
 
-# 3. Bilan
+**Résultat attendu :**
 
-**Vous avez réalisé :** le réglage des dimensions principales de la page et des images.
+L’image possède une largeur de `400px` et une hauteur de `200px`.
 
-**Vous savez maintenant :** utiliser `width`, `height`, `max-width`, `px` et `%` pour contrôler les dimensions des éléments.
+### 2.4. Limiter la largeur
 
-Dans le prochain tutoriel, vous allez utiliser le **Box Model** pour régler les marges, les espacements internes et les bordures des éléments.
+Ajoutez :
 
-# 4. Glossaire
+```css id="m3j8qv"
+.cover {
+    width: 400px;
+    height: 200px;
+    max-width: 100%;
+}
+```
 
-* **Largeur** : dimension horizontale d’un élément.
-* **Hauteur** : dimension verticale d’un élément.
-* **Largeur maximale** : limite maximale de la largeur d’un élément.
-* **Pixel (`px`)** : unité de mesure CSS.
-* **Pourcentage (`%`)** : unité relative à la dimension du conteneur.
-* **Conteneur** : élément qui contient un autre élément.
+**Résultat attendu :**
+
+L’image ne dépasse pas la largeur disponible.
+
+### 2.5. Tester
+
+Ouvrez :
+
+```text id="x5q0np"
+tuto-7-css.html
+```
+
+Rechargez la page.
+
+**Résultat attendu :**
+
+L’image possède une largeur et une hauteur définies et ne dépasse pas la largeur disponible.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/css/tuto-7-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final du Tuto 7">
+</iframe>
+
+## Partie 3 — Développement progressif
+
+### 3.1. Développer l’itération I2
+
+**Série :** Page détail
+
+**Position :** I2 sur I3
+
+**Incrément :** Structure principale et images
+
+L’itération I2 commence à partir du **résultat final de l’itération I1**.
+
+Utilisez les notions étudiées dans ce tutoriel pour ajouter la structure principale et les images à la page de détail.
+
+Conservez l’en-tête réalisé dans I1.
+
+Ajoutez :
+
+* une image de couverture ;
+* une zone de contenu ;
+* des dimensions pour l’image ;
+* une largeur maximale pour l’image.
+
+Les propriétés étudiées sont :
+
+```text
+width
+height
+max-width
+```
+
+Utilisez également les notions déjà disponibles nécessaires à l’intégration.
+
+### 3.2. Résultat attendu
+
+L’itération I2 conserve l’en-tête de I1 et ajoute la structure principale ainsi que les images.
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/autoformations-web/code/blog/page-detail/page-detail-html-v1.tuto-7-css.html' | relative_url}}"
+    height="700"
+    title="Résultat final de l’itération I2">
+</iframe>
+
+### 3.3. Livrable
+
+Une nouvelle version de la page de détail avec :
+
+* l’en-tête de I1 ;
+* une structure principale ;
+* une image de couverture ;
+* des images correctement dimensionnées.
+
+### 3.4. Critère de réussite
+
+L’itération I2 :
+
+* conserve l’en-tête de I1 ;
+* affiche une image de couverture ;
+* contrôle la largeur et la hauteur de l’image ;
+* empêche l’image de dépasser la largeur disponible.
+
+## Bilan
+
+**Vous avez réalisé :**
+
+Une mise en forme utilisant `width`, `height` et `max-width`.
+
+**Vous savez maintenant :**
+
+* définir la largeur d’un élément ;
+* définir sa hauteur ;
+* définir une largeur maximale ;
+* contrôler les dimensions d’une image.
+
+**Vous avez également développé l’itération I2 du projet.**
+
+## Glossaire
+
+* **`width`** : propriété qui définit la largeur.
+* **`height`** : propriété qui définit la hauteur.
+* **`max-width`** : propriété qui définit la largeur maximale.
+* **Dimension** : taille d’un élément.
+* **Image de couverture** : image principale placée dans une page ou un article.
