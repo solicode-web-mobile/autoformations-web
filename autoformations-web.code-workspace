@@ -28,7 +28,7 @@
 				"color": "foldercolorizer.color_afaf00"
 			},
 			{
-				"folderPath": "autoformations-web\\.agent\\",
+				"folderPath": "autoformations-web\\_agent",
 				"isFolderOnly": true,
 				"color": "foldercolorizer.color_ffaf87"
 			},
