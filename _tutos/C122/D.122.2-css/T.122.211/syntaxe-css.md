@@ -25,18 +25,8 @@ data_html: |
 
   </body>
   </html>
-
-data_css: |
-  h1 {
-      color: blue;
-  }
-
-  p {
-      font-size: 18px;
-  }
-
-data_js: |
-  console.log("Page chargée");
+data_css: ""
+data_js: ""
 ---
 
 
