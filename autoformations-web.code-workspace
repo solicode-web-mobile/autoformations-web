@@ -15,7 +15,28 @@
 			"autoformations-web.code-workspace",
 			".gitignore",
 			"_config.yml",
-			".jekyll-cache"
+			".jekyll-cache",
+			"_site",
+			"_old",
+			".github",
+			".vscode"
+		],
+		"folder-color.pathColors": [
+			{
+				"folderPath": "autoformations-web\\_tutos\\",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_afaf00"
+			},
+			{
+				"folderPath": "autoformations-web\\.agent\\",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_ffaf87"
+			},
+			{
+				"folderPath": "autoformations-web\\_tutos\\C122\\",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_5f5fd7"
+			}
 		]
 	}
 }

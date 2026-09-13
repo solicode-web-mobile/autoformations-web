@@ -14,6 +14,10 @@
         "autoformations-web.code-workspace": true,
         ".gitignore": true,
         "_config.yml": true,
-        ".jekyll-cache": true
+        ".jekyll-cache": true,
+        "_site": true,
+        "_old": true,
+        ".github": true,
+        ".vscode": true
     }
 }
