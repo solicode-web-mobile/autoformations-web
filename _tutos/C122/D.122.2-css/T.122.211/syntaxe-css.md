@@ -16,29 +16,25 @@ data_html: |
       <title>Mon article</title>
   </head>
   <body>
-
       <h1>Mon article</h1>
-
       <p>Bienvenue sur ma page.</p>
-
       <p>Voici le contenu de mon article.</p>
-
   </body>
   </html>
 data_css: ""
 data_js: ""
 ---
 
-
 <script>
-window.pageData = {
+  window.pageData = {
     html: {{ page.data_html | default: "" | jsonify }},
     css: {{ page.data_css | default: "" | jsonify }},
     js: {{ page.data_js | default: "" | jsonify }},
     php: {{ page.data_php | default: "" | jsonify }}
-};
+  };
 </script>
 
+ 
 
 
 ## 1. Objectif
@@ -65,13 +61,9 @@ Utilisez le code suivant :
     <title>Tuto 1 CSS</title>
 </head>
 <body>
-
     <h1>Mon article</h1>
-
     <p>Bienvenue sur ma page.</p>
-
     <p>Voici le contenu de mon article.</p>
-
 </body>
 </html>
 ```

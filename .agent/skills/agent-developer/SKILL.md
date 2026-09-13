@@ -87,6 +87,12 @@ Exemple :
 * Initialiser Highlight.js après le chargement du DOM.
 * Ne pas dupliquer son initialisation dans plusieurs fichiers.
 
+# Syntaxe Jekyll et Liquid
+
+* **Filtre `jsonify` :** Il ajoute automatiquement les guillemets. Ne jamais entourer `{{ variable | jsonify }}` de guillemets manuellement en JavaScript, sous peine de générer une erreur de syntaxe (`""valeur""`).
+* **Valeurs par défaut et `jsonify` :** Ne pas utiliser `default: ""` avant `jsonify` pour gérer les variables vides. Cela produit `"\"\""`. Utiliser uniquement `| jsonify` pour obtenir un `null` natif en JavaScript.
+* **Variables multilignes en JS :** Toujours utiliser `jsonify` (et non `escape` avec guillemets) pour transférer du HTML/CSS/JS multiligne depuis le frontmatter vers une variable JavaScript, car `jsonify` échappe correctement les retours à la ligne.
+
 # Refactorisation
 
 Avant toute modification :

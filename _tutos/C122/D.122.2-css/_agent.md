@@ -12,4 +12,4 @@ https://chatgpt.com/c/6aa67577-3c88-83ea-b5b4-7006ececa349
 
 ## Modification de skill : 
 
-https://chatgpt.com/c/6aa52f43-a8f0-83ea-a711-602c2e6a5487
+https://chatgpt.com/c/6aa69bf2-2ab4-83ea-969f-c3927da93278
