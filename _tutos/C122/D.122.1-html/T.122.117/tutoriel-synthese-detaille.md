@@ -2,10 +2,10 @@
 title: "Tutoriel de Synthèse"
 layout: tuto
 slug: "tutoriel-synthese"
-permalink: /tutos/:slug/
+permalink: /tutos/:slug/detaille
 tuto_id: "T.122.117"
 type: "classique"
-version: "normal"
+version: "detaille"
 ua: "UA.122.11"
 nav_order: 7
 data_html: |
@@ -34,16 +34,16 @@ window.pageData = {
 
 ## 1. Objectif
 
-Réaliser la page complète d'un article de blog en utilisant l'ensemble des balises et concepts HTML étudiés (titres, paragraphes, conteneurs sémantiques, listes et images).
+Mettre en pratique toutes les connaissances acquises lors des précédents tutoriels HTML en construisant la structure complète et rigoureuse d'un article de blog. L'accent sera mis sur l'organisation sémantique du code et l'indentation.
 
 ## 2. Prérequis
 
-* Avoir suivi les tutoriels T.122.111 à T.122.116.
-* Maîtriser l'imbrication des balises et l'indentation.
+* Avoir assimilé les tutoriels T.122.111 à T.122.116.
+* Comprendre le rôle d'un fichier CSS (qui se charge du design, tandis que le HTML gère le fond).
 
 ## 3. Données de départ
 
-Le code de base fourni intègre déjà un lien vers un fichier CSS (qui se chargera de la décoration visuelle). Votre rôle est de fournir la structure HTML correcte.
+Nous utilisons une base classique. Remarquez la balise `<link rel="stylesheet" href="css/style.css">` dans le `<head>`. Elle permet d'attacher un fichier de style. Le design de cette page a déjà été codé pour vous, votre seul objectif est de fournir le bon squelette HTML pour que le CSS puisse s'y accrocher (grâce aux classes).
 
 ```html
 <!DOCTYPE html>
@@ -51,7 +51,6 @@ Le code de base fourni intègre déjà un lien vers un fichier CSS (qui se charg
 <head>
     <meta charset="UTF-8">
     <title>Métier de développeur - Les principales missions</title>
-    <!-- Le fichier CSS gère l'apparence visuelle -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -61,19 +60,20 @@ Le code de base fourni intègre déjà un lien vers un fichier CSS (qui se charg
 
 ## Partie 1 — Pratique
 
-Dans ce tutoriel de synthèse, il n'y a pas de nouvelle théorie. Vous allez appliquer ce que vous avez appris.
-
 ### 1.1. Préparer le fichier
 
-Dans VS Code, créez le fichier `page-detail.html` et collez-y les données de départ.
+Créez le fichier `page-detail.html` dans VS Code et collez-y les données de départ.
 
-### 1.2. Construire l'en-tête de l'article
+### 1.2. Construire l'en-tête (Header)
 
-Dans `<body>`, créez le conteneur principal de l'article et son en-tête. 
+Dans `<body>`, nous ouvrons la balise englobante `<article>`.
+Puis, nous construisons un `<header>` complexe : il contiendra une catégorie (span), le grand titre (h1), et une div `.article-meta` servant à regrouper les informations de l'auteur, la date et le temps de lecture.
 
 ```html
 <body>
     <article>
+        
+        <!-- Le Header -->
         <header class="article-header">
             <span class="article-category">Développement</span>
             <h1>Le métier de développeur et ses principales missions</h1>
@@ -92,23 +92,26 @@ Dans `<body>`, créez le conteneur principal de l'article et son en-tête.
         </header>
 ```
 
-### 1.3. Ajouter l'image de couverture
+### 1.3. L'image de couverture
 
-Sous le `<header>`, ajoutez la figure illustrant l'article :
+Entre le `<header>` et le `<main>`, on place généralement la grande image illustrative du sujet.
 
 ```html
+        <!-- L'image de couverture (Hero image) -->
         <figure class="article-cover">
             <img src="images/article-cover.png" alt="Écran montrant du code informatique">
         </figure>
 ```
 
-### 1.4. Intégrer le contenu principal et la citation
+### 1.4. Le cœur de l'article
 
-Sous l'image, ajoutez le corps de l'article avec une citation :
+Ouvrez la balise `<main>` (la zone principale) puis une `<section>`. Vous y ajouterez les paragraphes, les sous-titres (`<h2>`, `<h3>`), ainsi qu'une figure et une citation (`<blockquote>`).
 
 ```html
+        <!-- Le contenu texte -->
         <main class="article-main">
             <section class="article-body">
+                
                 <h2>Le rôle du développeur</h2>
                 <p>Le développeur crée des applications. Il transforme un besoin en solution informatique.</p>
                 
@@ -124,9 +127,10 @@ Sous l'image, ajoutez le corps de l'article avec une citation :
                 </blockquote>
 ```
 
-### 1.5. Finaliser avec une liste des tâches
+### 1.5. La liste récapitulative et conclusion
 
-Toujours dans la section, terminez avec la liste à puces décrivant les tâches, puis fermez soigneusement toutes vos balises (`</section>`, `</main>`, `</article>`, `</body>`).
+Terminez la section avec une liste à puces (`<ul>`), dont chaque point met en gras le nom de la tâche.
+Fermez ensuite toutes les balises. L'indentation doit vous permettre de vérifier que chaque balise ouverte a bien été refermée.
 
 ```html
                 <ul class="article-list">
@@ -138,19 +142,19 @@ Toujours dans la section, terminez avec la liste à puces décrivant les tâches
 
                 <h3>Travailler en équipe</h3>
                 <p>Le développeur travaille aussi avec une équipe. La collaboration est importante pour réussir le projet.</p>
+                
             </section>
         </main>
+        
     </article>
 </body>
 ```
 
 ### 1.6. Tester la page
 
-Enregistrez `page-detail.html` et ouvrez-le.
+Enregistrez et ouvrez `page-detail.html`. Observez le résultat : le HTML que vous avez écrit, rigoureusement sémantique et parsemé des bonnes `class`, a été capté par le fichier CSS pré-existant pour générer un rendu professionnel.
 
 **Résultat attendu :**
-
-Grâce au fichier CSS lié dans le `<head>`, votre HTML brut prend forme et ressemble à un véritable article de blog professionnel. L'image de couverture est large, les polices sont lisibles, et l'auteur est mis en page correctement.
 
 <iframe
     class="auto-wrapper"
@@ -161,6 +165,6 @@ Grâce au fichier CSS lié dans le `<head>`, votre HTML brut prend forme et ress
 
 ## 2. Bilan
 
-**Vous avez réalisé :** l'intégration de A à Z de la structure HTML d'un article de blog.
+**Vous avez réalisé :** l'intégration complète d'une maquette d'article de blog, étape par étape.
 
-**Vous savez maintenant :** utiliser l'ensemble du vocabulaire HTML (sémantique, multimédia, structuration) pour produire un document web complet et valide.
+**Vous savez maintenant :** utiliser en synergie toutes les notions de base du langage HTML. L'arborescence, la sémantique et les attributs n'ont plus de secret pour vous. Vous êtes prêt pour la suite !

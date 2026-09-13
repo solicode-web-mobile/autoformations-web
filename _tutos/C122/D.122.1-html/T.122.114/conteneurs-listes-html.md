@@ -8,123 +8,42 @@ type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 4
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Conteneurs et listes HTML</title>
+    </head>
+    <body>
+    </body>
+    </html>
+data_css: ""
+data_js: ""
 ---
 
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Organiser le contenu d’une page HTML avec des conteneurs, des balises sémantiques et des listes.
-
-À la fin du tutoriel, vous saurez utiliser `div`, `span`, `header`, `main`, `section`, `article`, `class`, `ul` et `li`.
+Apprendre à regrouper et structurer le contenu d'une page en utilisant des conteneurs (balises de regroupement) et créer des listes à puces.
 
 ## 2. Prérequis
 
-* Connaître `<html>`, `<head>` et `<body>`.
-* Savoir utiliser `<h1>`, `<h2>`, `<h3>` et `<p>`.
-* Savoir utiliser un attribut.
-* Savoir créer et tester une page HTML.
+* Connaître la structure de base du document HTML.
+* Savoir utiliser les titres (`<h1>` à `<h6>`) et les paragraphes (`<p>`).
+* Savoir utiliser des attributs.
 
-## Partie 1 — Théorie
+## 3. Données de départ
 
-### 1.1. Le conteneur générique `<div>`
-
-`<div>` permet de regrouper plusieurs éléments HTML. C'est un conteneur générique.
-
-Exemple :
-
-```html
-<div>
-    <h2>Le rôle du développeur</h2>
-    <p>Le développeur crée des applications.</p>
-</div>
-```
-
-### 1.2. L’élément `<span>`
-
-`<span>` permet de regrouper une petite partie d’un texte ou contenu, à l'intérieur d'une ligne.
-
-Exemple :
-
-```html
-<p>
-    Catégorie : <span>Développement</span>
-</p>
-```
-
-### 1.3. Les conteneurs sémantiques
-
-HTML propose des conteneurs spécifiques qui donnent du sens au contenu, préférables à un simple `<div>` :
-
-* `<main>` : contenu principal de la page.
-* `<article>` : contenu indépendant (un article de blog, une actualité).
-* `<section>` : regroupement thématique de contenu.
-* `<header>` : l'en-tête d'une page, d'un article ou d'une section.
-
-Exemple :
-
-```html
-<article>
-    <header>
-        <h2>Titre de l'article</h2>
-    </header>
-    <main>
-        <section>
-            <p>Contenu de la section.</p>
-        </section>
-    </main>
-</article>
-```
-
-### 1.4. L’attribut `class`
-
-`class` permet de donner un nom à un élément pour l'identifier facilement.
-
-Exemple :
-
-```html
-<header class="article-header">
-    <h2>Le métier de développeur</h2>
-</header>
-```
-
-`article-header` est la valeur de l’attribut `class`. Plusieurs éléments peuvent utiliser la même classe.
-
-### 1.5. La liste `<ul>` et l'élément `<li>`
-
-`<ul>` crée une liste non ordonnée (à puces). `<li>` représente un élément de cette liste.
-
-Exemple :
-
-```html
-<ul class="article-list">
-    <li>Analyser le besoin</li>
-    <li>Réaliser l'application</li>
-</ul>
-```
-
-### 1.6. À retenir
-
-* `<div>` regroupe plusieurs éléments de manière générique.
-* `<span>` regroupe une partie de texte.
-* `<main>`, `<article>`, `<section>`, `<header>` sont des conteneurs sémantiques.
-* `class` donne un nom à un élément.
-* `<ul>` crée une liste non ordonnée et `<li>` définit un élément de la liste.
-
-## Partie 2 — Pratique
-
-### 2.1. Créer le fichier de travail
-
-#### Étape 1 — Créer le fichier
-
-Créez :
-
-```text
-tuto-4-html.html
-```
-
-#### Étape 2 — Ajouter la structure
-
-Ajoutez :
+Nous partons d'un document HTML de base structuré :
 
 ```html
 <!DOCTYPE html>
@@ -134,114 +53,109 @@ Ajoutez :
     <title>Conteneurs et listes HTML</title>
 </head>
 <body>
-
 </body>
 </html>
 ```
 
-### 2.2. Ajouter l'article et son en-tête
+## Partie 1 — Théorie
 
-#### Étape 3 — Créer `<article>` et `<header>`
+### 1.1. Les conteneurs génériques : `<div>` et `<span>`
 
-Dans `<body>`, ajoutez le conteneur de l'article et son en-tête avec une classe :
+Parfois, on a besoin de regrouper plusieurs éléments ensemble, ou d'isoler un mot dans un paragraphe.
+- `<div>` (division) : regroupe un grand bloc de code.
+- `<span>` : encadre un petit bout de texte à l'intérieur d'une ligne.
+
+### 1.2. Les conteneurs sémantiques
+
+Pour aider les moteurs de recherche, le HTML moderne utilise des balises plus précises qu'un simple `<div>` :
+* `<article>` : contient un contenu qui a du sens tout seul (ex: un article de blog).
+* `<header>` : l'en-tête (le haut) de la page ou d'un article.
+* `<main>` : le contenu principal.
+* `<section>` : une section du document.
+
+### 1.3. L’attribut `class`
+
+Pour donner un "nom" ou une étiquette à n'importe quelle balise (pour pouvoir la styliser plus tard en CSS), on utilise l'attribut `class`.
 
 ```html
-    <article>
-        <header class="article-header">
-        </header>
-    </article>
+<header class="article-header">
+```
+Ici, l'en-tête est nommé "article-header".
+
+### 1.4. Les listes à puces
+
+Pour faire une liste :
+* `<ul>` (Unordered List) déclare le début de la liste.
+* `<li>` (List Item) déclare chaque élément à l'intérieur de la liste.
+
+```html
+<ul>
+    <li>Élément 1</li>
+    <li>Élément 2</li>
+</ul>
 ```
 
-#### Étape 4 — Ajouter une catégorie et un titre
+## Partie 2 — Pratique
 
-Dans `<header>`, ajoutez un `<span>` avec une classe pour la catégorie, et le titre `<h2>` :
+### 2.1. Préparer le fichier
+
+Dans VS Code, créez un fichier `tuto-4-html.html` et collez-y les données de départ.
+
+### 2.2. Ajouter le conteneur principal et son en-tête
+
+Dans `<body>`, ajoutez un conteneur `<article>` qui va tout englober, et son en-tête `<header>` :
 
 ```html
-        <header class="article-header">
-            <span class="article-category">
-                Développement
-            </span>
-            <h2>
-                Le rôle du développeur
-            </h2>
-        </header>
+<article>
+    <header class="article-header">
+        <span class="article-category">Développement</span>
+        <h2>Le rôle du développeur</h2>
+    </header>
+</article>
 ```
 
 ### 2.3. Ajouter le contenu principal
 
-#### Étape 5 — Créer `<main>` et `<section>`
-
-Sous le `<header>`, toujours à l'intérieur de `<article>`, ajoutez la zone principale et une section :
+À la suite de l'en-tête (toujours à l'intérieur de `<article>`), ajoutez la balise `<main>` et une `<section>` :
 
 ```html
-        <main>
-            <section class="article-body">
-            </section>
-        </main>
+    <main>
+        <section class="article-body">
+            <p>Le développeur crée des applications.</p>
+        </section>
+    </main>
 ```
 
-#### Étape 6 — Ajouter le paragraphe
+### 2.4. Ajouter une liste à puces
 
-Dans `<section>`, ajoutez :
-
-```html
-                <p>
-                    Le développeur crée des applications.
-                </p>
-```
-
-### 2.4. Ajouter une liste
-
-#### Étape 7 — Créer la liste
-
-Toujours dans `<section>`, sous le paragraphe, ajoutez la liste des rôles :
+À l'intérieur de la `<section>`, juste après le paragraphe, ajoutez la liste des rôles :
 
 ```html
-                <ul class="article-list">
-                    <li>
-                        Analyser le besoin
-                    </li>
-                    <li>
-                        Réaliser l'application
-                    </li>
-                    <li>
-                        Vérifier l'application
-                    </li>
-                    <li>
-                        Déployer l'application
-                    </li>
-                </ul>
+            <ul class="article-list">
+                <li>Analyser le besoin</li>
+                <li>Réaliser l'application</li>
+                <li>Vérifier l'application</li>
+                <li>Déployer l'application</li>
+            </ul>
 ```
 
 ### 2.5. Tester la page
 
-#### Étape 8 — Ouvrir la page
-
-Enregistrez `tuto-4-html.html`.
-
-Ouvrez le fichier dans le navigateur.
+Enregistrez et ouvrez `tuto-4-html.html` dans le navigateur.
 
 **Résultat attendu :**
 
-La page contient un en-tête, un paragraphe et une liste à puces structurés avec des conteneurs sémantiques et des classes.
+La page affiche un titre, une petite balise de catégorie (span), un paragraphe et une liste à puces. L'organisation du code est maintenant propre et prête pour être mise en page plus tard (avec du CSS).
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/html/tuto-4/tuto-4-html.html' | relative_url}}"
     height="500"
-    title="Résultat du tutoriel 4 : HTML">
+    title="Résultat du tutoriel 4">
 </iframe>
 
-## 3. Bilan
+## 4. Bilan
 
-**Vous avez réalisé :** une page organisée avec des conteneurs sémantiques, des classes et une liste.
+**Vous avez réalisé :** une page organisée avec des conteneurs, des classes et une liste à puces.
 
-**Vous savez maintenant :** utiliser `<div>`, `<span>`, `<header>`, `<main>`, `<section>`, `<article>`, `class`, `<ul>` et `<li>` pour structurer le contenu d’une page HTML.
-
-## 4. Glossaire
-
-* **Conteneur** : élément qui regroupe plusieurs éléments HTML.
-* **Sémantique** : balise qui donne du sens au contenu qu'elle encadre (ex: `<article>` pour un article).
-* **Classe** : nom donné à un élément avec l’attribut `class`.
-* **Liste non ordonnée** : liste à puces créée avec `<ul>`.
-* **Élément de liste** : élément de la liste créé avec `<li>`.
+**Vous savez maintenant :** utiliser `<div>` et `<span>`, structurer un document avec `<article>`, `<header>`, `<main>` et `<section>`, identifier des éléments avec l'attribut `class`, et construire des listes avec `<ul>` et `<li>`.

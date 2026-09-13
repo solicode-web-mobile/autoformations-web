@@ -8,243 +8,145 @@ type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 6
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Images et figures HTML</title>
+    </head>
+    <body>
+    </body>
+    </html>
+data_css: ""
+data_js: ""
 ---
 
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Ajouter des images et des figures dans une page HTML.
-
-À la fin du tutoriel, vous saurez utiliser `<img>`, `src`, `alt`, `width`, `height`, `<figure>` et `<figcaption>`.
+Ajouter et structurer du contenu visuel dans une page HTML à l'aide d'images, de figures et de légendes.
 
 ## 2. Prérequis
 
 * Connaître la structure d’un document HTML.
-* Savoir utiliser les balises, les éléments et les attributs HTML.
-* Savoir utiliser `<div>`, `<span>`, `class`, `<ul>` et `<li>`.
-* Savoir utiliser un chemin relatif.
-* Savoir créer et tester une page HTML.
+* Savoir utiliser des balises (comme `<h1>` et `<p>`) et des attributs.
+* Comprendre le fonctionnement des chemins relatifs.
 
-## Partie 1 — Théorie
+## 3. Données de départ
 
-### 1.1. L’image `<img>`
-
-`<img>` permet d’afficher une image.
-
-Exemple :
-
-```html
-<img src="images/author.jpg">
-```
-
-`<img>` utilise notamment l’attribut `src` pour indiquer le fichier de l’image.
-
-### 1.2. L’attribut `src`
-
-`src` indique le chemin de l’image.
-
-Exemple :
-
-```html
-<img src="images/article-cover.png">
-```
-
-Le navigateur cherche l’image dans le dossier `images`.
-
-### 1.3. L’attribut `alt`
-
-`alt` donne une description de l’image.
-
-Exemple :
-
-```html
-<img
-    src="images/author.jpg"
-    alt="Portrait d'un développeur"
->
-```
-
-Le texte de `alt` décrit l’image. Ce texte est utile si l'image ne se charge pas, ou pour les lecteurs d'écran.
-
-### 1.4. Les attributs `width` et `height`
-
-`width` indique la largeur de l’image.
-
-`height` indique la hauteur de l’image.
-
-Exemple :
-
-```html
-<img
-    src="images/author.jpg"
-    alt="Portrait d'un développeur"
-    width="120"
-    height="120"
->
-```
-
-### 1.5. La figure `<figure>`
-
-`<figure>` permet de regrouper une image avec son contenu associé.
-
-Exemple :
-
-```html
-<figure>
-    <img
-        src="images/article-cover.png"
-        alt="Écran montrant du code informatique"
-    >
-</figure>
-```
-
-### 1.6. La légende `<figcaption>`
-
-`<figcaption>` permet d’ajouter une légende à une figure.
-
-Exemple :
-
-```html
-<figure>
-    <img
-        src="images/article-example.600.jpg"
-        alt="Développeur écrivant du code"
-    >
-
-    <figcaption>
-        Le développeur écrit le code de l'application.
-    </figcaption>
-</figure>
-```
-
-### 1.7. À retenir
-
-* `<img>` affiche une image.
-* `src` indique le chemin de l’image.
-* `alt` décrit l’image.
-* `width` indique la largeur.
-* `height` indique la hauteur.
-* `<figure>` regroupe une image et son contenu associé.
-* `<figcaption>` ajoute une légende à une figure.
-
-## Partie 2 — Pratique
-
-### 2.1. Créer le fichier de travail
-
-#### Étape 1 — Créer le fichier
-
-Créez :
-
-```text
-tuto-6-html.html
-```
-
-#### Étape 2 — Ajouter la structure
-
-Ajoutez :
+Nous partons d'un document HTML de base structuré :
 
 ```html
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-
-    <title>
-        Images et figures HTML
-    </title>
+    <title>Images et figures HTML</title>
 </head>
-
 <body>
-
 </body>
-
 </html>
 ```
+*Note : Pour cet exercice, vous aurez besoin de deux images fictives placées dans un sous-dossier `images/` : `author.jpg` et `article-example.jpg`.*
 
-### 2.2. Ajouter un titre et un paragraphe
+## Partie 1 — Théorie
 
-#### Étape 3 — Ajouter le contenu texte initial
+### 1.1. La balise image (`<img>`)
 
-Dans `<body>`, ajoutez le titre de la page et un texte explicatif :
-
-```html
-    <h1>
-        Images et figures HTML
-    </h1>
-
-    <p>
-        Une image permet d'afficher un contenu visuel dans une page HTML.
-    </p>
-```
-
-### 2.3. Ajouter une image avec ses attributs
-
-#### Étape 4 — Ajouter une image
-
-En dessous du paragraphe, ajoutez une image en précisant sa source, son texte alternatif et ses dimensions :
+Pour afficher une image, on utilise la balise `<img>`. C'est une balise **orpheline** (elle n'a pas de balise de fin `</img>`).
+Elle nécessite deux attributs obligatoires : `src` et `alt`.
 
 ```html
-    <img
-        src="images/author.jpg"
-        alt="Portrait d'un développeur"
-        width="120"
-        height="120"
-    >
+<img src="images/author.jpg" alt="Portrait du développeur">
 ```
 
-### 2.4. Créer une figure avec une légende
+### 1.2. Les attributs essentiels de l'image
 
-#### Étape 5 — Ajouter `<figure>` et `<figcaption>`
+* `src` (source) : Indique le chemin relatif vers le fichier de l'image.
+* `alt` (texte alternatif) : Décrit l'image pour les personnes malvoyantes (liseuses d'écran) ou si l'image ne charge pas.
+* `width` et `height` (largeur et hauteur) : Permettent de redimensionner l'image (en pixels) directement en HTML.
 
-Ajoutez maintenant une figure complète contenant une image et une légende :
+### 1.3. La figure (`<figure>`) et sa légende (`<figcaption>`)
+
+Pour regrouper une image avec un texte explicatif (sa légende), HTML5 a introduit deux balises sémantiques très utiles :
+* `<figure>` : Conteneur global de l'image.
+* `<figcaption>` : La légende associée.
+
+```html
+<figure>
+    <img src="logo.png" alt="Logo de l'entreprise">
+    <figcaption>Notre nouveau logo</figcaption>
+</figure>
+```
+
+## Partie 2 — Pratique
+
+### 2.1. Préparer le fichier
+
+Dans VS Code, créez un fichier `tuto-6-html.html` et collez-y les données de départ.
+
+### 2.2. Ajouter le texte introductif
+
+Dans la balise `<body>`, ajoutez un titre de niveau 1 et un paragraphe :
+
+```html
+<body>
+    <h1>Images et figures HTML</h1>
+    <p>Une image permet d'afficher un contenu visuel dans une page HTML.</p>
+```
+
+### 2.3. Ajouter une image simple
+
+Sous le paragraphe, ajoutez une première image (le portrait). Indiquez un redimensionnement avec `width` et `height` :
+
+```html
+    <img src="images/author.jpg" alt="Portrait d'un développeur" width="120" height="120">
+```
+
+### 2.4. Ajouter une image avec sa légende (figure)
+
+Sous la première image, ajoutez l'illustration principale de l'article dans un bloc `<figure>`, avec sa légende :
 
 ```html
     <figure>
-
-        <img
-            src="images/article-example.600.jpg"
-            alt="Développeur écrivant du code"
-        >
-
-        <figcaption>
-            Le développeur écrit le code de l'application.
-        </figcaption>
-
+        <img src="images/article-example.600.jpg" alt="Développeur écrivant du code">
+        <figcaption>Le développeur écrit le code de l'application.</figcaption>
     </figure>
+</body>
 ```
 
-### 2.5. Tester
+### 2.5. Tester la page
 
-#### Étape 6 — Ouvrir la page
-
-Enregistrez `tuto-6-html.html`.
-
-Ouvrez le fichier dans le navigateur.
-
-Vérifiez que les images s’affichent et que la légende apparaît.
+Enregistrez `tuto-6-html.html` et ouvrez-le dans le navigateur.
 
 **Résultat attendu :**
+
+Vous devriez voir les textes, ainsi que les deux images (ou au moins les "icônes d'image cassée" avec leur texte alternatif si vous n'avez pas réellement les fichiers sur votre ordinateur). La deuxième image est naturellement décalée avec sa légende car la balise `<figure>` applique une marge par défaut.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/html/tuto-6/tuto-6-html.html' | relative_url}}"
     height="500"
-    title="Résultat du tutoriel 6 : HTML">
+    title="Résultat du tutoriel 6">
 </iframe>
-
 
 ## 3. Bilan
 
-**Vous avez réalisé :** une page HTML contenant des images, des figures et des légendes.
+**Vous avez réalisé :** une page affichant différents formats visuels.
 
-**Vous savez maintenant :** afficher une image, utiliser un chemin relatif, ajouter un texte alternatif et associer une légende à une image avec les balises `<figure>` et `<figcaption>`.
+**Vous savez maintenant :** utiliser la balise `<img>` avec ses attributs obligatoires (`src` et `alt`), et structurer sémantiquement des illustrations grâce à `<figure>` et `<figcaption>`.
 
 ## 4. Glossaire
 
-* **Image** : contenu visuel affiché dans une page Web à l'aide de la balise `<img>`.
-* **`src`** : attribut qui indique le fichier de l’image.
-* **`alt`** : attribut contenant un texte qui décrit l'image.
-* **Figure** : élément qui regroupe une image et son contenu associé avec la balise `<figure>`.
-* **Légende** : texte qui explique une figure, inséré avec `<figcaption>`.
+* **Source (`src`)** : attribut indiquant le chemin de l'image.
+* **Texte alternatif (`alt`)** : texte qui décrit l'image, affiché en cas de problème de chargement.
+* **Figure** : conteneur sémantique qui associe un média et sa légende.

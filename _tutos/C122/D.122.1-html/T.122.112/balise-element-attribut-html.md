@@ -8,230 +8,137 @@ type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 2
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+    </head>
+    <body>
+        <p>Le développeur crée des applications.</p>
+    </body>
+    </html>
+data_css: ""
+data_js: ""
 ---
 
-
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Identifier une balise, un élément, un attribut et une valeur d’attribut dans un document HTML.
-
-À la fin du tutoriel, vous saurez utiliser ces notions pour compléter une page HTML simple.
+Identifier et différencier clairement ce qu'est une balise, un élément, un attribut et une valeur d’attribut dans un document HTML.
 
 ## 2. Prérequis
 
-* Connaître la structure `<html>`, `<head>` et `<body>`.
-* Savoir ouvrir une page HTML dans un navigateur.
+* Connaître la structure de base `<html>`, `<head>` et `<body>`.
+* Savoir utiliser VS Code et ouvrir une page dans un navigateur.
+
+## 3. Données de départ
+
+Le fichier HTML avec lequel nous allons travailler contient le code suivant :
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+</head>
+<body>
+    <p>Le développeur crée des applications.</p>
+</body>
+</html>
+```
 
 ## Partie 1 — Théorie
 
 ### 1.1. La balise HTML
 
-Une balise indique le type d’un élément HTML.
-
-Certaines balises utilisent une ouverture et une fermeture.
-
-Exemple :
+Une **balise** (ou tag) est un code entouré de chevrons (`<` et `>`) qui indique au navigateur comment interpréter le contenu. 
+La majorité des balises fonctionnent par paires : une **balise ouvrante** et une **balise fermante** (qui possède un `/`).
 
 ```html
 <p>
     Bonjour.
 </p>
 ```
- 
 
-
-`<p>` est la balise ouvrante.
-
-`</p>` est la balise fermante.
+- `<p>` est la balise ouvrante.
+- `</p>` est la balise fermante.
 
 ### 1.2. L’élément HTML
 
-Un élément HTML est une partie complète du document.
-
-Exemple :
+Un **élément** HTML désigne l'ensemble complet : la balise ouvrante, le contenu à l'intérieur, et la balise fermante.
 
 ```html
-<p>
-    Bonjour.
-</p>
+<p>Bonjour.</p>
 ```
 
-Ici, l’élément contient :
+L'élément complet ici est le paragraphe, composé de `<p>`, du texte "Bonjour." et de `</p>`.
 
-* une balise ouvrante ;
-* un contenu ;
-* une balise fermante.
+### 1.3. L’attribut et sa valeur
 
-### 1.3. L’attribut HTML
-
-Un attribut ajoute une information à un élément.
-
-L’attribut est écrit dans la balise ouvrante.
-
-Exemple :
+Un **attribut** s'ajoute *à l'intérieur* de la balise ouvrante pour lui donner une information supplémentaire ou modifier son comportement.
+L'attribut est toujours suivi d'un signe `=` et de sa **valeur** entre guillemets.
 
 ```html
 <html lang="fr">
 ```
 
 Ici :
+* `lang` est l’attribut (pour "language").
+* `"fr"` est la valeur de l’attribut (pour "français").
 
-* `lang` est l’attribut ;
-* `"fr"` est la valeur de l’attribut.
+### 1.4. À retenir
 
-L’attribut `lang` indique la langue du document.
-
-### 1.4. La valeur d’attribut
-
-Une valeur d’attribut indique l’information donnée à un attribut.
-
-Exemple :
-
-```html
-<html lang="fr">
-```
-
-`lang` est l’attribut.
-
-`fr` est sa valeur.
-
-### 1.5. Observer la structure
-
-Dans cet exemple :
-
-```html
-<html lang="fr">
-    <body>
-        <p>Bonjour.</p>
-    </body>
-</html>
-```
-
-On trouve :
-
-* `<html lang="fr">` : balise ouvrante avec un attribut ;
-* `</html>` : balise fermante ;
-* `<body>` et `</body>` : balises du même élément ;
-* `<p>Bonjour.</p>` : un élément HTML.
-
-### 1.6. À retenir
-
-* Une **balise** indique le type d’un élément.
-* Un **élément** est une partie complète du document.
-* Un **attribut** ajoute une information à un élément.
-* Une **valeur d’attribut** donne la valeur de l’attribut.
-* L’attribut est écrit dans la balise ouvrante.
+* **Balise** : mot-clé entre chevrons (`<p>` ou `</p>`).
+* **Élément** : le bloc entier (balises + contenu).
+* **Attribut** : propriété ajoutée dans la balise ouvrante.
+* **Valeur** : donnée affectée à l'attribut (entre guillemets).
 
 ## Partie 2 — Pratique
 
-### 2.1. Créer le fichier de travail
+### 2.1. Créer le fichier
 
-Dans cette partie, vous allez créer un fichier pour tester les notions du tutoriel.
-
-#### Étape 1 — Créer le fichier
-
-Créez le fichier :
+Ouvrez VS Code et créez un fichier nommé :
 
 ```text
 tuto-2-html.html
 ```
 
-### 2.2. Reproduire la structure
+### 2.2. Ajouter le code de départ
 
-#### Étape 2 — Ajouter la structure
+Copiez le code fourni dans les données de départ à l'intérieur de votre fichier.
 
-Dans `tuto-2-html.html`, ajoutez :
+### 2.3. Analyser le code
 
-```html
-<!DOCTYPE html>
+Entraînez-vous à identifier les différentes parties de votre code :
 
-<html lang="fr">
+1. Trouvez l'attribut `lang` dans la balise `<html>`.
+2. Identifiez la balise fermante `</body>`.
+3. Repérez l'élément paragraphe complet : `<p>Le développeur crée des applications.</p>`.
 
-<head>
-</head>
+### 2.4. Tester le fichier
 
-<body>
-    <p>Le développeur crée des applications.</p>
-</body>
-
-</html>
-```
-
-### 2.3. Observer les balises et les éléments
-
-#### Étape 3 — Identifier les balises
-
-Dans le code, repérez :
-
-```html
-<html>
-</html>
-
-<head>
-</head>
-
-<body>
-</body>
-
-<p>
-</p>
-```
-
-Chaque paire forme un élément.
-
-### 2.4. Observer l’attribut
-
-#### Étape 4 — Identifier l’attribut
-
-Observez :
-
-```html
-<html lang="fr">
-```
-
-Identifiez :
-
-```text
-lang → attribut
-fr   → valeur
-```
-
-Ne modifiez pas encore cette ligne.
-
-### 2.5. Tester le fichier
-
-#### Étape 5 — Ouvrir la page
-
-Enregistrez `tuto-2-html.html`.
-
-Ouvrez le fichier dans le navigateur.
+Enregistrez `tuto-2-html.html` et ouvrez-le dans votre navigateur.
 
 **Résultat attendu :**
 
-La page affiche :
-
-```text
-Le développeur crée des applications.
-```
+La page affiche la phrase sans afficher les balises elles-mêmes, ce qui prouve que le navigateur a bien interprété les éléments.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/html/tuto-2/tuto-2-html.html' | relative_url}}"
-    height="200"
-    title="Résultat du tutoriel 2 : HTML">
+    height="100"
+    title="Résultat du tutoriel 2">
 </iframe>
-
 
 ## 4. Bilan
 
-**Vous avez réalisé :** une nouvelle version de la page et identifié les balises, les éléments, les attributs et les valeurs d’attribut.
+**Vous avez réalisé :** une page HTML en analysant son vocabulaire technique.
 
-**Vous savez maintenant :** distinguer une balise, un élément, un attribut et une valeur d’attribut dans un document HTML.
-
-## 5. Glossaire
-
-* **Balise** : code qui indique le type d’un élément HTML.
-* **Élément** : partie complète d’un document HTML.
-* **Attribut** : information ajoutée dans une balise ouvrante.
-* **Valeur d’attribut** : valeur donnée à un attribut.
+**Vous savez maintenant :** utiliser les termes exacts (balise, élément, attribut, valeur) pour décrire et comprendre du code HTML.

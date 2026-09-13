@@ -2,10 +2,10 @@
 title: "Tutoriel de Synthèse"
 layout: tuto
 slug: "tutoriel-synthese"
-permalink: /tutos/:slug/
+permalink: /tutos/:slug/compact
 tuto_id: "T.122.117"
 type: "classique"
-version: "normal"
+version: "compact"
 ua: "UA.122.11"
 nav_order: 7
 data_html: |
@@ -34,42 +34,23 @@ window.pageData = {
 
 ## 1. Objectif
 
-Réaliser la page complète d'un article de blog en utilisant l'ensemble des balises et concepts HTML étudiés (titres, paragraphes, conteneurs sémantiques, listes et images).
+Combiner toutes les notions HTML apprises pour monter une page web complète (structuration, médias, textes).
 
 ## 2. Prérequis
 
-* Avoir suivi les tutoriels T.122.111 à T.122.116.
-* Maîtriser l'imbrication des balises et l'indentation.
+* Avoir suivi les tutoriels précédents du module.
 
-## 3. Données de départ
+## Partie 1 — Pratique (Synthèse)
 
-Le code de base fourni intègre déjà un lien vers un fichier CSS (qui se chargera de la décoration visuelle). Votre rôle est de fournir la structure HTML correcte.
+Il n'y a pas de nouvelle théorie ici. L'objectif est de s'entraîner à construire une arborescence complète.
 
-```html
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Métier de développeur - Les principales missions</title>
-    <!-- Le fichier CSS gère l'apparence visuelle -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-</body>
-</html>
-```
+### 1.1. Créer le fichier
 
-## Partie 1 — Pratique
+Créez `page-detail.html` et collez les données de départ.
 
-Dans ce tutoriel de synthèse, il n'y a pas de nouvelle théorie. Vous allez appliquer ce que vous avez appris.
+### 1.2. Intégrer la totalité du code
 
-### 1.1. Préparer le fichier
-
-Dans VS Code, créez le fichier `page-detail.html` et collez-y les données de départ.
-
-### 1.2. Construire l'en-tête de l'article
-
-Dans `<body>`, créez le conteneur principal de l'article et son en-tête. 
+Copiez ce bloc HTML à l'intérieur de la balise `<body>` :
 
 ```html
 <body>
@@ -77,7 +58,6 @@ Dans `<body>`, créez le conteneur principal de l'article et son en-tête.
         <header class="article-header">
             <span class="article-category">Développement</span>
             <h1>Le métier de développeur et ses principales missions</h1>
-            
             <div class="article-meta">
                 <div class="article-author">
                     <img src="images/author.jpg" alt="Portrait de l'auteur">
@@ -90,23 +70,11 @@ Dans `<body>`, créez le conteneur principal de l'article et son en-tête.
                 <span>5 min de lecture</span>
             </div>
         </header>
-```
 
-### 1.3. Ajouter l'image de couverture
-
-Sous le `<header>`, ajoutez la figure illustrant l'article :
-
-```html
         <figure class="article-cover">
             <img src="images/article-cover.png" alt="Écran montrant du code informatique">
         </figure>
-```
 
-### 1.4. Intégrer le contenu principal et la citation
-
-Sous l'image, ajoutez le corps de l'article avec une citation :
-
-```html
         <main class="article-main">
             <section class="article-body">
                 <h2>Le rôle du développeur</h2>
@@ -122,13 +90,7 @@ Sous l'image, ajoutez le corps de l'article avec une citation :
                     <p>Le développeur réalise l'application à partir du besoin. Il utilise des technologies comme HTML, CSS et JavaScript.</p>
                     <cite>— Métier de développeur</cite>
                 </blockquote>
-```
 
-### 1.5. Finaliser avec une liste des tâches
-
-Toujours dans la section, terminez avec la liste à puces décrivant les tâches, puis fermez soigneusement toutes vos balises (`</section>`, `</main>`, `</article>`, `</body>`).
-
-```html
                 <ul class="article-list">
                     <li><strong>Analyser le besoin</strong> : comprendre le projet.</li>
                     <li><strong>Réaliser l'application</strong> : écrire le code.</li>
@@ -144,13 +106,11 @@ Toujours dans la section, terminez avec la liste à puces décrivant les tâches
 </body>
 ```
 
-### 1.6. Tester la page
+### 1.3. Tester la page
 
-Enregistrez `page-detail.html` et ouvrez-le.
+Enregistrez et ouvrez dans votre navigateur. Le fichier CSS fourni va mettre en forme automatiquement votre structure HTML propre.
 
 **Résultat attendu :**
-
-Grâce au fichier CSS lié dans le `<head>`, votre HTML brut prend forme et ressemble à un véritable article de blog professionnel. L'image de couverture est large, les polices sont lisibles, et l'auteur est mis en page correctement.
 
 <iframe
     class="auto-wrapper"
@@ -161,6 +121,4 @@ Grâce au fichier CSS lié dans le `<head>`, votre HTML brut prend forme et ress
 
 ## 2. Bilan
 
-**Vous avez réalisé :** l'intégration de A à Z de la structure HTML d'un article de blog.
-
-**Vous savez maintenant :** utiliser l'ensemble du vocabulaire HTML (sémantique, multimédia, structuration) pour produire un document web complet et valide.
+**Vous savez maintenant :** utiliser les balises HTML en synergie pour construire un composant complet.

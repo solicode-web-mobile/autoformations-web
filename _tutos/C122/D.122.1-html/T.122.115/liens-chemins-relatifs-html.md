@@ -8,222 +8,142 @@ type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 5
+data_html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liens et chemins relatifs HTML</title>
+    </head>
+    <body>
+    </body>
+    </html>
+data_css: ""
+data_js: ""
 ---
 
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
-Créer des liens HTML et utiliser des chemins relatifs.
-
-À la fin du tutoriel, vous saurez utiliser `<a>`, `href` et les chemins relatifs pour accéder à une autre ressource.
+Créer des liens HTML et comprendre comment utiliser les chemins relatifs pour naviguer entre les différentes pages d'un site web.
 
 ## 2. Prérequis
 
-* Savoir utiliser une structure HTML.
-* Savoir utiliser des éléments HTML.
-* Savoir utiliser l’attribut `class`.
-* Savoir organiser des fichiers dans des dossiers.
+* Savoir utiliser une structure HTML de base.
+* Savoir utiliser un attribut et sa valeur.
+
+## 3. Données de départ
+
+Nous partons d'un document HTML de base structuré :
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liens et chemins relatifs HTML</title>
+</head>
+<body>
+</body>
+</html>
+```
 
 ## Partie 1 — Théorie
 
-### 1.1. Le lien `<a>`
+### 1.1. Le lien `<a>` et l'attribut `href`
 
-`<a>` permet de créer un lien.
-
-Exemple :
-
-```html
-<a href="index.html">
-    Accueil
-</a>
-```
-
-Le texte `Accueil` est affiché dans la page.
-
-### 1.2. L’attribut `href`
-
-`href` indique la destination du lien.
-
-Exemple :
+Pour créer un lien (un texte cliquable), on utilise la balise `<a>` (pour *anchor*).
+Cette balise nécessite un attribut obligatoire : `href` (Hypertext Reference), qui indique la destination du lien.
 
 ```html
-<a href="index.html">
-    Accueil
-</a>
+<a href="index.html">Accueil</a>
 ```
+Ici, le texte cliquable est "Accueil", et un clic amènera l'utilisateur vers le fichier `index.html`.
 
-Ici, `index.html` est la destination.
+### 1.2. Le chemin relatif
 
-### 1.3. Le chemin relatif
+Un **chemin relatif** indique l’emplacement du fichier cible *par rapport* au fichier actuel. C'est comme donner des indications routières ("tourne à gauche, puis va tout droit") plutôt qu'une adresse absolue.
 
-Un chemin relatif indique l’emplacement d’une ressource à partir du fichier courant.
-
-Exemple :
-
+Prenons cette architecture de dossiers :
 ```text
-blog/
-├── detaille-article.html
+mon-site/
+├── tuto-5-html.html (Fichier courant)
 ├── index.html
 └── pages/
     └── articles.html
 ```
 
-Depuis `detaille-article.html`, le fichier `index.html` est accessible avec :
+- Pour pointer vers `index.html` (qui est dans le même dossier), le chemin est direct : `href="index.html"`
+- Pour pointer vers `articles.html` (qui est dans le sous-dossier "pages"), on indique d'abord le dossier : `href="pages/articles.html"`
 
-```text
-index.html
+### 1.3. Remonter dans un dossier parent
+
+Si votre fichier actuel est dans le dossier `pages/` et que vous voulez retourner à `index.html` (qui est un dossier plus haut), on utilise `..` pour remonter.
+
+```html
+<a href="../index.html">Retour à l'accueil</a>
 ```
-
-Le fichier `articles.html` est accessible avec :
-
-```text
-pages/articles.html
-```
-
-### 1.4. Remonter dans un dossier
-
-`..` permet de remonter d’un dossier.
-
-Exemple :
-
-```text
-blog/
-├── detaille-article.html
-└── pages/
-    └── article.html
-```
-
-Depuis `pages/article.html`, pour accéder à `detaille-article.html` :
-
-```text
-../detaille-article.html
-```
-
-### 1.5. À retenir
-
-* `<a>` crée un lien.
-* `href` indique la destination.
-* Un chemin relatif dépend de l’emplacement du fichier courant.
-* `..` permet de remonter d’un dossier.
-* Le chemin doit être adapté à la position du fichier.
 
 ## Partie 2 — Pratique
 
-### 2.1. Créer une structure simple
+### 2.1. Préparer le fichier
 
-#### Étape 1 — Créer le fichier
+Dans VS Code, créez un fichier `tuto-5-html.html` et collez-y les données de départ.
 
-Créez :
+### 2.2. Ajouter le texte principal
 
-```text
-tuto-5-html.html
-```
-
-#### Étape 2 — Ajouter la structure
-
-Ajoutez :
+Dans la balise `<body>`, ajoutez un titre et un paragraphe pour introduire le sujet :
 
 ```html
-<!DOCTYPE html>
-
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-
-    <title>
-        Liens et chemins relatifs HTML
-    </title>
-</head>
-
 <body>
-
+    <h1>Liens et chemins relatifs HTML</h1>
+    <p>Un lien permet d'accéder à une autre page du site.</p>
 </body>
-
-</html>
 ```
 
-### 2.2. Ajouter le contenu principal
+### 2.3. Créer des liens relatifs
 
-#### Étape 3 — Ajouter un titre et un paragraphe
-
-Dans `<body>`, ajoutez :
+Ajoutez un premier lien qui pointe vers un fichier au même niveau, suivi d'un saut de ligne (`<br>`), et d'un lien qui pointe vers un fichier situé dans un sous-dossier :
 
 ```html
-    <h1>
-        Liens et chemins relatifs HTML
-    </h1>
-
-    <p>
-        Un lien permet d'accéder à une autre page.
-    </p>
-```
-
-### 2.3. Ajouter un lien
-
-#### Étape 4 — Ajouter un lien
-
-Toujours dans `<body>`, ajoutez :
-
-```html
-    <a href="index.html">
-        Accueil
-    </a>
-```
-
-Le lien permet d’ouvrir `index.html`.
-
-### 2.4. Utiliser un chemin relatif
-
-#### Étape 5 — Ajouter un autre lien
-
-Ajoutez un saut de ligne et un deuxième lien pointant vers un sous-dossier :
-
-```html
+    <a href="index.html">Accueil</a>
+    
     <br>
 
-    <a href="pages/articles.html">
-        Voir les articles
-    </a>
+    <a href="pages/articles.html">Voir les articles</a>
 ```
 
-Le navigateur cherche :
+### 2.4. Tester la page
 
-```text
-pages/articles.html
-```
-
-à partir du dossier du fichier courant.
-
-### 2.5. Tester
-
-#### Étape 6 — Ouvrir la page
-
-Enregistrez `tuto-5-html.html`.
-
-Ouvrez le fichier dans le navigateur.
+Enregistrez `tuto-5-html.html` et ouvrez-le dans le navigateur.
 
 **Résultat attendu :**
 
-La page contient un titre, un texte et deux liens.
+La page affiche un titre, un texte et deux liens soulignés en bleu. Si vous cliquez dessus, le navigateur cherchera à ouvrir les fichiers cibles (même s'ils n'existent pas réellement sur votre ordinateur pour cet exercice, l'URL dans la barre d'adresse du navigateur changera en respectant vos chemins).
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/html/tuto-5/tuto-5-html.html' | relative_url}}"
     height="300"
-    title="Résultat du tutoriel 5 : HTML">
+    title="Résultat du tutoriel 5">
 </iframe>
-
 
 ## 3. Bilan
 
-**Vous avez réalisé :** une page avec des liens et des chemins relatifs.
+**Vous avez réalisé :** une page permettant la navigation au sein d'une arborescence de fichiers.
 
-**Vous savez maintenant :** utiliser `<a>`, `href` et les chemins relatifs pour accéder à des ressources d’un projet.
+**Vous savez maintenant :** utiliser la balise `<a>` avec l'attribut `href`, et écrire un chemin relatif pour cibler des fichiers dans le même dossier ou dans un sous-dossier.
 
 ## 4. Glossaire
 
-* **Lien** : élément qui permet d’ouvrir une autre ressource.
-* **Destination** : ressource ouverte après un clic sur un lien.
-* **Chemin relatif** : chemin calculé à partir de l’emplacement du fichier courant.
-* **Dossier parent** : dossier situé un niveau au-dessus du dossier courant.
+* **Lien hypertexte** : élément qui permet d’ouvrir une autre ressource au clic.
+* **Chemin relatif** : chemin ciblant un fichier à partir de l’emplacement du fichier actuel.
+* **Dossier parent** : dossier situé un niveau au-dessus (`..`).
