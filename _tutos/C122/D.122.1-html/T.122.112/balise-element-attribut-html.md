@@ -1,10 +1,10 @@
 ---
-title: "Balise, élément et attribut HTML - Débutant"
+title: "Balise, élément et attribut HTML"
 layout: tuto
 slug: "balise-element-attribut-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.112"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 2
@@ -214,6 +214,13 @@ La page affiche :
 ```text
 Le développeur crée des applications.
 ```
+
+<iframe
+    class="auto-wrapper"
+    src="{{'/code/html/tuto-2/tuto-2-html.html' | relative_url}}"
+    height="200"
+    title="Résultat du tutoriel 2 : HTML">
+</iframe>
 
 
 ## 4. Bilan

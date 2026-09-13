@@ -1,10 +1,10 @@
 ---
-title: "Titres, paragraphes et informations HTML"
+title: "Informations et textes HTML"
 layout: tuto
 slug: "informations-textes-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.113"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 3
@@ -13,9 +13,9 @@ nav_order: 3
 
 ## 1. Objectif
 
-Ajouter des informations au document HTML et organiser son contenu avec des titres et des paragraphes.
+Ajouter des informations au document HTML et organiser son contenu textuel et sémantique.
 
-À la fin du tutoriel, vous saurez utiliser `meta charset`, `title`, les titres `h1` à `h6`, `p`, `br` et `hr`.
+À la fin du tutoriel, vous saurez utiliser `meta charset`, `title`, les titres `h1` à `h6`, `p`, `br`, `hr`, `strong`, `time`, `blockquote` et `cite`.
 
 ## 2. Prérequis
 
@@ -63,16 +63,6 @@ Les éléments `<h1>` à `<h6>` permettent d’organiser les titres du contenu.
 
 `<h3>` est un niveau encore inférieur.
 
-Exemple :
-
-```html
-<h1>Le métier de développeur</h1>
-
-<h2>Le rôle du développeur</h2>
-
-<h3>Réaliser l'application</h3>
-```
-
 ### 1.4. Le paragraphe `<p>`
 
 `<p>` permet d’écrire un paragraphe.
@@ -82,53 +72,68 @@ Exemple :
 ```html
 <p>
     Le développeur crée des applications.
-    Il transforme un besoin en solution informatique.
 </p>
 ```
 
-### 1.5. Le saut de ligne `<br>`
+### 1.5. Mettre en évidence avec `<strong>`
 
-`<br>` crée un retour à la ligne.
+`<strong>` indique qu'un texte est très important. Il s'affiche souvent en gras.
 
 Exemple :
 
 ```html
 <p>
-    Le développeur crée des applications.<br>
-    Il transforme un besoin en solution informatique.
+    Le <strong>développeur</strong> crée des applications.
 </p>
 ```
 
-Les deux phrases restent dans le même paragraphe.
+### 1.6. La date et l'heure avec `<time>`
 
-### 1.6. La séparation `<hr>`
-
-`<hr>` crée une séparation dans le contenu.
+`<time>` représente une date ou une heure. L'attribut `datetime` permet de préciser la date au format technique (ex: AAAA-MM-JJ).
 
 Exemple :
 
 ```html
-<p>Première partie.</p>
-
-<hr>
-
-<p>Deuxième partie.</p>
+<p>
+    Publié le <time datetime="2026-02-14">14 Février 2026</time>
+</p>
 ```
 
-### 1.7. À retenir
+### 1.7. Les citations `<blockquote>` et `<cite>`
 
-* `<meta charset="UTF-8">` indique le codage des caractères.
-* `<title>` définit le titre du document.
+`<blockquote>` indique une citation longue. `<cite>` donne le titre de l'œuvre ou la source de la citation.
+
+Exemple :
+
+```html
+<blockquote>
+    <p>Le code est la poésie de la logique.</p>
+    <cite>— Un développeur anonyme</cite>
+</blockquote>
+```
+
+### 1.8. Le saut de ligne `<br>` et la séparation `<hr>`
+
+`<br>` crée un retour à la ligne à l'intérieur d'un paragraphe.
+`<hr>` crée une séparation (une ligne horizontale) dans le contenu.
+
+### 1.9. À retenir
+
+* `<meta charset="UTF-8">` indique le codage.
+* `<title>` définit le titre de l'onglet.
 * `<h1>` à `<h6>` organisent les titres.
 * `<p>` crée un paragraphe.
+* `<strong>` met en évidence un texte important.
+* `<time>` représente une date, souvent avec `datetime`.
+* `<blockquote>` crée une citation et `<cite>` en indique la source.
 * `<br>` crée un retour à la ligne.
 * `<hr>` crée une séparation.
 
 ## Partie 2 — Pratique
 
-### 2.1. Créer un fichier de test
+### 2.1. Créer le fichier de test
 
-Dans cette partie, vous allez tester les nouvelles balises avant de les utiliser dans le blog.
+Dans cette partie, vous allez tester les nouvelles balises.
 
 #### Étape 1 — Créer le fichier
 
@@ -144,117 +149,92 @@ Ajoutez :
 
 ```html
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
 </head>
-
 <body>
 </body>
-
 </html>
 ```
 
 ### 2.2. Ajouter les informations du document
 
-#### Étape 3 — Ajouter `<meta charset>`
+#### Étape 3 — Ajouter `<meta charset>` et `<title>`
 
 Dans `<head>`, ajoutez :
 
 ```html
 <meta charset="UTF-8">
-```
-
-#### Étape 4 — Ajouter `<title>`
-
-Ajoutez :
-
-```html
 <title>Le métier de développeur</title>
-```
-
-Votre `<head>` devient :
-
-```html
-<head>
-    <meta charset="UTF-8">
-    <title>Le métier de développeur</title>
-</head>
 ```
 
 ### 2.3. Ajouter les textes
 
-#### Étape 5 — Ajouter un titre principal
+#### Étape 4 — Ajouter le titre principal et une date
 
-Dans `<body>`, ajoutez :
+Dans `<body>`, ajoutez le titre principal puis la date de publication avec `<time>` :
 
 ```html
 <h1>Le métier de développeur et ses principales missions</h1>
+
+<p>
+    Publié le <time datetime="2026-02-14">14 Février 2026</time>
+</p>
 ```
 
-#### Étape 6 — Ajouter un paragraphe
+#### Étape 5 — Ajouter un paragraphe avec `<strong>`
 
-Sous le titre, ajoutez :
+Sous la date, ajoutez un paragraphe qui met en valeur le mot "développeur" :
 
 ```html
 <p>
-    Le développeur crée des applications.
+    Le <strong>développeur</strong> crée des applications.
     Il transforme un besoin en solution informatique.
 </p>
 ```
 
-#### Étape 7 — Ajouter un titre de section
+#### Étape 6 — Ajouter un titre de section et un paragraphe
 
 Ajoutez :
 
 ```html
 <h2>Le rôle du développeur</h2>
-```
 
-#### Étape 8 — Ajouter un autre paragraphe
-
-Ajoutez :
-
-```html
 <p>
     La première mission est d'analyser le besoin.
     Le développeur cherche les fonctionnalités nécessaires.
 </p>
 ```
 
-#### Étape 9 — Ajouter un sous-titre
+#### Étape 7 — Ajouter un sous-titre et un paragraphe avec `<br>`
 
-Ajoutez :
+Ajoutez le sous-titre `<h3>` et un paragraphe contenant un saut de ligne :
 
 ```html
 <h3>Réaliser l'application</h3>
-```
 
-### 2.4. Ajouter un saut de ligne et une séparation
-
-#### Étape 10 — Ajouter `<br>`
-
-Ajoutez :
-
-```html
 <p>
     Le développeur écrit le code de l'application.<br>
     Il organise son travail et crée les fonctionnalités demandées.
 </p>
 ```
 
-#### Étape 11 — Ajouter `<hr>`
+#### Étape 8 — Ajouter une citation et une séparation
 
-Ajoutez :
+Ajoutez `<blockquote>` avec `<cite>` pour citer une source, puis ajoutez `<hr>` :
 
 ```html
+<blockquote>
+    <p>Le développeur réalise l'application à partir du besoin. Il utilise des technologies comme HTML, CSS et JavaScript.</p>
+    <cite>— Métier de développeur</cite>
+</blockquote>
+
 <hr>
 ```
 
-### 2.5. Tester
+### 2.4. Tester
 
-#### Étape 12 — Ouvrir la page
+#### Étape 9 — Ouvrir la page
 
 Enregistrez `tuto-3-html.html`.
 
@@ -262,93 +242,23 @@ Ouvrez le fichier dans le navigateur.
 
 **Résultat attendu :**
 
-La page affiche :
-
-* un titre dans l’onglet ;
-* un titre principal ;
-* un titre de section ;
-* un sous-titre ;
-* plusieurs paragraphes ;
-* un saut de ligne ;
-* une séparation.
-
+La page affiche l'ensemble des textes formatés selon les balises utilisées.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/html/tuto-3-html.html' | relative_url}}"
-    height="500"
-    title="Résultat du tutoriel 1 : HTML">
-</iframe>
-
-## Partie 3 — Développement de blog
-
-### 3.1. Exercice
-
-Vous allez maintenant utiliser les notions apprises dans ce tutoriel pour commencer la page de l’article du blog.
-
-Créez un projet nommé :
-
-```text
-blog
-```
-
-Dans ce projet, créez une page :
-
-```text
-detaille-article.html
-```
-
-Cette page doit utiliser :
-
-* `<!DOCTYPE html>`
-* `<html lang="fr">`
-* `<head>`
-* `<meta charset="UTF-8">`
-* `<title>`
-* `<body>`
-* `<h1>`
-* `<h2>`
-* `<h3>`
-* `<p>`
-* `<br>`
-* `<hr>`
-
-Ajoutez le contenu nécessaire pour obtenir le résultat présenté ci-dessous.
-
-### 3.2. Résultat attendu
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/blog/page-detaille-v1/page-detail-html-v1.tuto-3-html.html' | relative_url}}"
-    height="500"
+    src="{{'/code/html/tuto-3/tuto-3-html.html' | relative_url}}"
+    height="600"
     title="Résultat du tutoriel 3 : HTML">
 </iframe>
 
-**Travail à faire :**
+## 3. Bilan
 
-Reproduisez ce résultat dans votre fichier `detaille-article.html` en utilisant uniquement les notions étudiées dans ce tutoriel et les tutoriels précédents.
+**Vous avez réalisé :** une page affichant différents textes avec une structure sémantique.
 
-**Livrable :**
+**Vous savez maintenant :** utiliser les balises textuelles (titres, paragraphes, citations, dates, mise en évidence) et organiser l'information.
 
-```text
-detaille-article.html
-```
+## 4. Glossaire
 
-**Critère de réussite :**
-
-La page obtenue correspond au résultat présenté dans l’iframe.
-
-## 4. Bilan
-
-**Vous avez réalisé :** la première version structurée de la page `detaille-article.html`.
-
-**Vous savez maintenant :** ajouter les informations du document et organiser un contenu avec des titres, des paragraphes, un saut de ligne et une séparation.
-
-## 5. Glossaire
-
-* **Codage des caractères** : règle utilisée pour afficher correctement les caractères.
-* **Titre** : texte qui présente une partie du contenu.
-* **Hiérarchie des titres** : organisation des titres par niveaux.
-* **Paragraphe** : bloc de texte créé avec `<p>`.
-* **Saut de ligne** : retour à la ligne créé avec `<br>`.
-* **Séparation** : ligne créée avec `<hr>` pour séparer deux parties.
+* **Codage des caractères** : règle utilisée pour afficher correctement les caractères (ex: UTF-8).
+* **Hiérarchie des titres** : organisation des titres par niveaux (de h1 à h6).
+* **Sémantique** : sens donné au contenu par le choix de la balise HTML (ex: strong indique l'importance).

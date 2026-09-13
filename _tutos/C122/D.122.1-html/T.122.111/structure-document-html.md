@@ -1,10 +1,10 @@
 ---
-title: "Structure d’un document HTML - Débutant"
+title: "Structure d’un document HTML"
 layout: tuto
 slug: "structure-document-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.111"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 1
@@ -185,34 +185,10 @@ La page affiche une phrase.
 
 <iframe
     class="auto-wrapper"
-    src="{{'//code/html/tuto-1-html.html' | relative_url}}"
+    src="{{'/code/html/tuto-1/tuto-1-html.html' | relative_url}}"
     height="200"
     title="Résultat du tutoriel 1 : HTML">
 </iframe>
-
-## Partie 3 — Développement de blog
-
-### 3.1. Travail final
-
-Pendant les 6 tutoriels, vous allez construire progressivement une page détaille d’un article pour un blog.
-
-La page finale sera :
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/blog/page-detaille-v1/page-detail-html-v1.html' | relative_url}}"
-    height="700"
-    title="Résultat final de la page détaille d’un article">
-</iframe>
-
-Les six tutoriels sont :
-
-* **T.122.111 — Structure d’un document HTML**
-* **T.122.112 — Balise, élément et attribut HTML**
-* **T.122.113 — Informations et textes HTML**
-* **T.122.114 — Conteneurs et listes HTML**
-* **T.122.115 — Liens et chemins relatifs HTML**
-* **T.122.116 — Images et figures HTML**
 
 
 ## 4. Bilan

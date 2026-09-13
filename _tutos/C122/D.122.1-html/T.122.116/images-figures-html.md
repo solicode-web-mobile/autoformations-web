@@ -4,7 +4,7 @@ layout: tuto
 slug: "images-figures-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.116"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 6
@@ -64,7 +64,7 @@ Exemple :
 >
 ```
 
-Le texte de `alt` décrit l’image.
+Le texte de `alt` décrit l’image. Ce texte est utile si l'image ne se charge pas, ou pour les lecteurs d'écran.
 
 ### 1.4. Les attributs `width` et `height`
 
@@ -107,7 +107,7 @@ Exemple :
 ```html
 <figure>
     <img
-        src="images/article-example.png"
+        src="images/article-example.600.jpg"
         alt="Développeur écrivant du code"
     >
 
@@ -163,75 +163,61 @@ Ajoutez :
 </html>
 ```
 
-### 2.2. Ajouter une image
+### 2.2. Ajouter un titre et un paragraphe
 
-#### Étape 3 — Ajouter une image
+#### Étape 3 — Ajouter le contenu texte initial
 
-Dans `<body>`, ajoutez :
+Dans `<body>`, ajoutez le titre de la page et un texte explicatif :
 
 ```html
-<img
-    src="images/author.jpg"
-    alt="Portrait d'un développeur"
->
+    <h1>
+        Images et figures HTML
+    </h1>
+
+    <p>
+        Une image permet d'afficher un contenu visuel dans une page HTML.
+    </p>
 ```
 
-### 2.3. Utiliser `width` et `height`
+### 2.3. Ajouter une image avec ses attributs
 
-#### Étape 4 — Définir les dimensions
+#### Étape 4 — Ajouter une image
 
-Modifiez l’image :
-
-```html
-<img
-    src="images/author.jpg"
-    alt="Portrait d'un développeur"
-    width="120"
-    height="120"
->
-```
-
-### 2.4. Créer une figure
-
-#### Étape 5 — Ajouter `<figure>`
-
-Ajoutez :
+En dessous du paragraphe, ajoutez une image en précisant sa source, son texte alternatif et ses dimensions :
 
 ```html
-<figure>
-
     <img
-        src="images/article-example.png"
-        alt="Développeur écrivant du code"
+        src="images/author.jpg"
+        alt="Portrait d'un développeur"
+        width="120"
+        height="120"
     >
-
-</figure>
 ```
 
-### 2.5. Ajouter une légende
+### 2.4. Créer une figure avec une légende
 
-#### Étape 6 — Ajouter `<figcaption>`
+#### Étape 5 — Ajouter `<figure>` et `<figcaption>`
 
-Ajoutez :
+Ajoutez maintenant une figure complète contenant une image et une légende :
 
 ```html
-<figure>
+    <figure>
 
-    <img
-        src="images/article-example.png"
-        alt="Développeur écrivant du code"
-    >
+        <img
+            src="images/article-example.600.jpg"
+            alt="Développeur écrivant du code"
+        >
 
-    <figcaption>
-        Le développeur écrit le code de l'application.
-    </figcaption>
+        <figcaption>
+            Le développeur écrit le code de l'application.
+        </figcaption>
 
-</figure>
+    </figure>
 ```
 
-### 2.6. Tester
+### 2.5. Tester
 
-#### Étape 7 — Ouvrir la page
+#### Étape 6 — Ouvrir la page
 
 Enregistrez `tuto-6-html.html`.
 
@@ -243,91 +229,22 @@ Vérifiez que les images s’affichent et que la légende apparaît.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/html/tuto-6-html.html' | relative_url}}"
+    src="{{'/code/html/tuto-6/tuto-6-html.html' | relative_url}}"
     height="500"
     title="Résultat du tutoriel 6 : HTML">
 </iframe>
 
-## Partie 3 — Développement de blog
 
-### 3.1. Exercice
+## 3. Bilan
 
-Poursuivez la réalisation de :
+**Vous avez réalisé :** une page HTML contenant des images, des figures et des légendes.
 
-```text
-detaille-article.html
-```
+**Vous savez maintenant :** afficher une image, utiliser un chemin relatif, ajouter un texte alternatif et associer une légende à une image avec les balises `<figure>` et `<figcaption>`.
 
-Utilisez les notions étudiées dans ce tutoriel :
+## 4. Glossaire
 
-* `<img>`
-* `src`
-* `alt`
-* `width`
-* `height`
-* `<figure>`
-* `<figcaption>`
-
-Ajoutez les images et les figures nécessaires à la page.
-
-Utilisez les chemins relatifs correspondant aux fichiers du projet.
-
-### 3.2. Résultat attendu
-
-Après l’application des notions des tutoriels précédents et du T.122.116, reproduisez la nouvelle version de la page :
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/blog/page-detail-v1/page-detail-html-v1.html' | relative_url}}"
-    height="700"
-    title="Résultat attendu après le tutoriel 6">
-</iframe>
-
-**Travail à faire :**
-
-Complétez votre fichier :
-
-```text
-detaille-article.html
-```
-
-pour obtenir le résultat présenté dans l’iframe.
-
-Utilisez uniquement les notions étudiées jusqu’à ce tutoriel.
-
-**Livrable :**
-
-```text
-detaille-article.html
-```
-
-**Critère de réussite :**
-
-La page obtenue correspond au résultat présenté dans l’iframe.
-
-### 3.3. Résultat final de la série
-
-Le résultat final de la page détaille est :
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/blog/page-detail-v1/page-detail-html-v1.html' | relative_url}}"
-    height="700"
-    title="Résultat final de la page détaille d’un article">
-</iframe>
-
-La version réalisée dans ce tutoriel doit être l’étape finale de la progression HTML de cette série.
-
-## Bilan
-
-**Vous avez réalisé :** la dernière version HTML de la page détaille avec des images, des figures et des légendes.
-
-**Vous savez maintenant :** afficher une image, utiliser un chemin relatif, ajouter un texte alternatif et associer une légende à une image.
-
-## Glossaire
-
-* **Image** : contenu visuel affiché dans une page Web.
+* **Image** : contenu visuel affiché dans une page Web à l'aide de la balise `<img>`.
 * **`src`** : attribut qui indique le fichier de l’image.
-* **`alt`** : texte qui décrit une image.
-* **Figure** : élément qui regroupe une image et son contenu associé.
-* **Légende** : texte qui explique une figure.
+* **`alt`** : attribut contenant un texte qui décrit l'image.
+* **Figure** : élément qui regroupe une image et son contenu associé avec la balise `<figure>`.
+* **Légende** : texte qui explique une figure, inséré avec `<figcaption>`.

@@ -1,22 +1,21 @@
 ---
-title: "Conteneurs et listes HTML- Débutant"
+title: "Conteneurs et listes HTML"
 layout: tuto
 slug: "conteneurs-listes-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.114"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 4
 ---
 
 
-
 ## 1. Objectif
 
-Organiser le contenu d’une page HTML avec des conteneurs et des listes.
+Organiser le contenu d’une page HTML avec des conteneurs, des balises sémantiques et des listes.
 
-À la fin du tutoriel, vous saurez utiliser `<div>`, `<span>`, `class`, `<ul>` et `<li>`.
+À la fin du tutoriel, vous saurez utiliser `div`, `span`, `header`, `main`, `section`, `article`, `class`, `ul` et `li`.
 
 ## 2. Prérequis
 
@@ -27,114 +26,89 @@ Organiser le contenu d’une page HTML avec des conteneurs et des listes.
 
 ## Partie 1 — Théorie
 
-### 1.1. Le conteneur `<div>`
+### 1.1. Le conteneur générique `<div>`
 
-`<div>` permet de regrouper plusieurs éléments HTML.
+`<div>` permet de regrouper plusieurs éléments HTML. C'est un conteneur générique.
 
 Exemple :
 
 ```html
 <div>
     <h2>Le rôle du développeur</h2>
-
-    <p>
-        Le développeur crée des applications.
-    </p>
+    <p>Le développeur crée des applications.</p>
 </div>
 ```
 
-Ici, `<div>` regroupe le titre et le paragraphe.
-
 ### 1.2. L’élément `<span>`
 
-`<span>` permet de regrouper une petite partie d’un contenu.
+`<span>` permet de regrouper une petite partie d’un texte ou contenu, à l'intérieur d'une ligne.
 
 Exemple :
 
 ```html
 <p>
-    Catégorie :
-    <span>Développement</span>
+    Catégorie : <span>Développement</span>
 </p>
 ```
 
-Ici, `<span>` contient le mot `Développement`.
+### 1.3. Les conteneurs sémantiques
 
-### 1.3. L’attribut `class`
+HTML propose des conteneurs spécifiques qui donnent du sens au contenu, préférables à un simple `<div>` :
 
-`class` permet de donner un nom à un élément.
+* `<main>` : contenu principal de la page.
+* `<article>` : contenu indépendant (un article de blog, une actualité).
+* `<section>` : regroupement thématique de contenu.
+* `<header>` : l'en-tête d'une page, d'un article ou d'une section.
 
 Exemple :
 
 ```html
-<div class="article-header">
-    <h1>Le métier de développeur</h1>
-</div>
+<article>
+    <header>
+        <h2>Titre de l'article</h2>
+    </header>
+    <main>
+        <section>
+            <p>Contenu de la section.</p>
+        </section>
+    </main>
+</article>
 ```
 
-`article-header` est la valeur de l’attribut `class`.
+### 1.4. L’attribut `class`
 
-La classe permet d’identifier un élément.
-
-### 1.4. Utiliser plusieurs éléments avec une classe
-
-Plusieurs éléments peuvent utiliser la même classe.
+`class` permet de donner un nom à un élément pour l'identifier facilement.
 
 Exemple :
 
 ```html
-<div class="article-meta">
-    Date de publication
-</div>
-
-<div class="article-meta">
-    Temps de lecture
-</div>
+<header class="article-header">
+    <h2>Le métier de développeur</h2>
+</header>
 ```
 
-Les deux éléments utilisent la classe `article-meta`.
+`article-header` est la valeur de l’attribut `class`. Plusieurs éléments peuvent utiliser la même classe.
 
-### 1.5. La liste `<ul>`
+### 1.5. La liste `<ul>` et l'élément `<li>`
 
-`<ul>` crée une liste non ordonnée.
+`<ul>` crée une liste non ordonnée (à puces). `<li>` représente un élément de cette liste.
 
 Exemple :
 
 ```html
-<ul>
+<ul class="article-list">
     <li>Analyser le besoin</li>
     <li>Réaliser l'application</li>
-    <li>Vérifier l'application</li>
 </ul>
 ```
 
-Le navigateur affiche une liste à puces.
+### 1.6. À retenir
 
-### 1.6. L’élément `<li>`
-
-`<li>` représente un élément d’une liste.
-
-Il est utilisé à l’intérieur de `<ul>`.
-
-Exemple :
-
-```html
-<ul>
-    <li>Développer</li>
-    <li>Tester</li>
-</ul>
-```
-
-Ici, la liste contient deux éléments.
-
-### 1.7. À retenir
-
-* `<div>` regroupe plusieurs éléments.
-* `<span>` regroupe une petite partie d’un contenu.
+* `<div>` regroupe plusieurs éléments de manière générique.
+* `<span>` regroupe une partie de texte.
+* `<main>`, `<article>`, `<section>`, `<header>` sont des conteneurs sémantiques.
 * `class` donne un nom à un élément.
-* Plusieurs éléments peuvent utiliser la même classe.
-* `<ul>` crée une liste non ordonnée.
-* `<li>` représente un élément de la liste.
+* `<ul>` crée une liste non ordonnée et `<li>` définit un élément de la liste.
 
 ## Partie 2 — Pratique
 
@@ -154,89 +128,94 @@ Ajoutez :
 
 ```html
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-
-    <title>
-        Conteneurs et listes HTML
-    </title>
+    <title>Conteneurs et listes HTML</title>
 </head>
-
 <body>
 
 </body>
-
 </html>
 ```
 
-### 2.2. Ajouter un conteneur
+### 2.2. Ajouter l'article et son en-tête
 
-#### Étape 3 — Créer un `<div>`
+#### Étape 3 — Créer `<article>` et `<header>`
 
-Dans `<body>`, ajoutez :
-
-```html
-<div>
-    <h2>Le rôle du développeur</h2>
-
-    <p>
-        Le développeur crée des applications.
-    </p>
-</div>
-```
-
-Le `<div>` regroupe le titre et le paragraphe.
-
-### 2.3. Ajouter un `<span>`
-
-#### Étape 4 — Ajouter une catégorie
-
-Ajoutez :
+Dans `<body>`, ajoutez le conteneur de l'article et son en-tête avec une classe :
 
 ```html
-<p>
-    Catégorie :
-    <span>Développement</span>
-</p>
+    <article>
+        <header class="article-header">
+        </header>
+    </article>
 ```
 
-### 2.4. Ajouter une classe
+#### Étape 4 — Ajouter une catégorie et un titre
 
-#### Étape 5 — Ajouter une classe
-
-Modifiez le conteneur :
+Dans `<header>`, ajoutez un `<span>` avec une classe pour la catégorie, et le titre `<h2>` :
 
 ```html
-<div class="article-header">
-    <h2>Le rôle du développeur</h2>
-
-    <p>
-        Le développeur crée des applications.
-    </p>
-</div>
+        <header class="article-header">
+            <span class="article-category">
+                Développement
+            </span>
+            <h2>
+                Le rôle du développeur
+            </h2>
+        </header>
 ```
 
-### 2.5. Ajouter une liste
+### 2.3. Ajouter le contenu principal
 
-#### Étape 6 — Créer la liste
+#### Étape 5 — Créer `<main>` et `<section>`
 
-Ajoutez :
+Sous le `<header>`, toujours à l'intérieur de `<article>`, ajoutez la zone principale et une section :
 
 ```html
-<ul>
-    <li>Analyser le besoin</li>
-    <li>Réaliser l'application</li>
-    <li>Vérifier l'application</li>
-    <li>Déployer l'application</li>
-</ul>
+        <main>
+            <section class="article-body">
+            </section>
+        </main>
 ```
 
-### 2.6. Tester la page
+#### Étape 6 — Ajouter le paragraphe
 
-#### Étape 7 — Ouvrir la page
+Dans `<section>`, ajoutez :
+
+```html
+                <p>
+                    Le développeur crée des applications.
+                </p>
+```
+
+### 2.4. Ajouter une liste
+
+#### Étape 7 — Créer la liste
+
+Toujours dans `<section>`, sous le paragraphe, ajoutez la liste des rôles :
+
+```html
+                <ul class="article-list">
+                    <li>
+                        Analyser le besoin
+                    </li>
+                    <li>
+                        Réaliser l'application
+                    </li>
+                    <li>
+                        Vérifier l'application
+                    </li>
+                    <li>
+                        Déployer l'application
+                    </li>
+                </ul>
+```
+
+### 2.5. Tester la page
+
+#### Étape 8 — Ouvrir la page
 
 Enregistrez `tuto-4-html.html`.
 
@@ -244,83 +223,25 @@ Ouvrez le fichier dans le navigateur.
 
 **Résultat attendu :**
 
-La page contient :
-
-* un conteneur ;
-* une catégorie ;
-* une classe ;
-* une liste ;
-* quatre éléments de liste.
+La page contient un en-tête, un paragraphe et une liste à puces structurés avec des conteneurs sémantiques et des classes.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/html/tuto-4-html.html' | relative_url}}"
+    src="{{'/code/html/tuto-4/tuto-4-html.html' | relative_url}}"
     height="500"
     title="Résultat du tutoriel 4 : HTML">
 </iframe>
 
-## Partie 3 — Développement de blog
+## 3. Bilan
 
-### 3.1. Exercice
+**Vous avez réalisé :** une page organisée avec des conteneurs sémantiques, des classes et une liste.
 
-Poursuivez la réalisation de la page :
+**Vous savez maintenant :** utiliser `<div>`, `<span>`, `<header>`, `<main>`, `<section>`, `<article>`, `class`, `<ul>` et `<li>` pour structurer le contenu d’une page HTML.
 
-```text
-detaille-article.html
-```
-
-Utilisez les notions apprises dans ce tutoriel :
-
-* `<div>`
-* `<span>`
-* `class`
-* `<ul>`
-* `<li>`
-
-Ajoutez ces notions à la version obtenue dans le tutoriel précédent.
-
-Le résultat doit se rapprocher de la structure finale de la page d’article.
-
-### 3.2. Résultat attendu
-
-Après l’application des notions des tutoriels précédents et du T.122.114, votre page doit obtenir la version suivante :
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/blog/page-detaille-v1/page-detail-html-v1.tuto-4-html.html' | relative_url}}"
-    height="700"
-    title="Résultat attendu après le tutoriel 4">
-</iframe>
-
-**Travail à faire :**
-
-Reproduisez ce résultat dans :
-
-```text
-detaille-article.html
-```
-
-Utilisez uniquement les notions étudiées jusqu’à ce tutoriel.
-
-**Livrable :**
-
-```text
-detaille-article.html
-```
-
-**Critère de réussite :**
-
-La page obtenue correspond au résultat présenté dans l’iframe.
-
-## 4. Bilan
-
-**Vous avez réalisé :** une nouvelle version de la page avec des conteneurs, des classes et une liste.
-
-**Vous savez maintenant :** utiliser `<div>`, `<span>`, `class`, `<ul>` et `<li>` pour organiser le contenu d’une page HTML.
-
-## 5. Glossaire
+## 4. Glossaire
 
 * **Conteneur** : élément qui regroupe plusieurs éléments HTML.
+* **Sémantique** : balise qui donne du sens au contenu qu'elle encadre (ex: `<article>` pour un article).
 * **Classe** : nom donné à un élément avec l’attribut `class`.
-* **Liste non ordonnée** : liste créée avec `<ul>`.
-* **Élément de liste** : élément créé avec `<li>`.
+* **Liste non ordonnée** : liste à puces créée avec `<ul>`.
+* **Élément de liste** : élément de la liste créé avec `<li>`.

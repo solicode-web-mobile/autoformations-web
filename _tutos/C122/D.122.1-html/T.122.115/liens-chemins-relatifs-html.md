@@ -4,7 +4,7 @@ layout: tuto
 slug: "liens-chemins-relatifs-html"
 permalink: /tutos/:slug/
 tuto_id: "T.122.115"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 5
@@ -132,7 +132,7 @@ Ajoutez :
     <meta charset="UTF-8">
 
     <title>
-        Liens et chemins relatifs
+        Liens et chemins relatifs HTML
     </title>
 </head>
 
@@ -143,30 +143,48 @@ Ajoutez :
 </html>
 ```
 
-### 2.2. Ajouter un lien
+### 2.2. Ajouter le contenu principal
 
-#### Étape 3 — Ajouter un lien
+#### Étape 3 — Ajouter un titre et un paragraphe
 
 Dans `<body>`, ajoutez :
 
 ```html
-<a href="index.html">
-    Accueil
-</a>
+    <h1>
+        Liens et chemins relatifs HTML
+    </h1>
+
+    <p>
+        Un lien permet d'accéder à une autre page.
+    </p>
+```
+
+### 2.3. Ajouter un lien
+
+#### Étape 4 — Ajouter un lien
+
+Toujours dans `<body>`, ajoutez :
+
+```html
+    <a href="index.html">
+        Accueil
+    </a>
 ```
 
 Le lien permet d’ouvrir `index.html`.
 
-### 2.3. Utiliser un chemin relatif
+### 2.4. Utiliser un chemin relatif
 
-#### Étape 4 — Ajouter un autre lien
+#### Étape 5 — Ajouter un autre lien
 
-Ajoutez un deuxième lien :
+Ajoutez un saut de ligne et un deuxième lien pointant vers un sous-dossier :
 
 ```html
-<a href="pages/articles.html">
-    Voir les articles
-</a>
+    <br>
+
+    <a href="pages/articles.html">
+        Voir les articles
+    </a>
 ```
 
 Le navigateur cherche :
@@ -177,9 +195,9 @@ pages/articles.html
 
 à partir du dossier du fichier courant.
 
-### 2.4. Tester
+### 2.5. Tester
 
-#### Étape 5 — Ouvrir la page
+#### Étape 6 — Ouvrir la page
 
 Enregistrez `tuto-5-html.html`.
 
@@ -187,23 +205,23 @@ Ouvrez le fichier dans le navigateur.
 
 **Résultat attendu :**
 
-La page contient deux liens.
+La page contient un titre, un texte et deux liens.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/html/tuto-5-html.html' | relative_url}}"
+    src="{{'/code/html/tuto-5/tuto-5-html.html' | relative_url}}"
     height="300"
     title="Résultat du tutoriel 5 : HTML">
 </iframe>
 
 
-## Bilan
+## 3. Bilan
 
-**Vous avez réalisé :** une nouvelle version de la page avec des liens et des chemins relatifs.
+**Vous avez réalisé :** une page avec des liens et des chemins relatifs.
 
 **Vous savez maintenant :** utiliser `<a>`, `href` et les chemins relatifs pour accéder à des ressources d’un projet.
 
-## Glossaire
+## 4. Glossaire
 
 * **Lien** : élément qui permet d’ouvrir une autre ressource.
 * **Destination** : ressource ouverte après un clic sur un lien.
