@@ -11,6 +11,7 @@ if (hasAnyParam) {
     if (urlParams.has('js')) window.exerciseData.js = urlParams.get('js');
     if (urlParams.has('php')) window.exerciseData.php = urlParams.get('php');
     if (urlParams.has('index.php')) window.exerciseData['index.php'] = urlParams.get('index.php');
+    if (urlParams.has('activeTab')) window.exerciseData.activeTab = urlParams.get('activeTab');
 } else {
     // Valeurs par défaut si aucun paramètre
     window.exerciseData = {
@@ -29,7 +30,14 @@ window.initialExerciseData = Object.assign({}, window.exerciseData);
 
 // Variable globale pour stocker l'instance de Monaco
 let monacoEditorInstance = null;
-let currentTabId = Object.keys(window.exerciseData)[0] || 'html';
+
+// --- Sprint 12 : Sélection Dynamique de l'Onglet Actif ---
+let requestedTab = window.exerciseData.activeTab;
+// On s'assure que l'onglet demandé existe vraiment dans les données de l'exercice
+let currentTabId = requestedTab && (requestedTab in window.exerciseData)
+    ? requestedTab 
+    : Object.keys(window.exerciseData).find(key => key !== 'activeTab') || 'html';
+
 window.currentTabId = currentTabId;
 
 // Mapping des IDs d'onglets vers les langages reconnus par Monaco

@@ -116,3 +116,16 @@ Le développement est découpé en 5 sprints itératifs pour assurer une validat
 - [x] Analyser le code HTML pour extraire le contenu de la balise `<title>`, ou intercepter le titre directement depuis l'iframe de rendu.
 - [x] Créer une petite barre d'adresse/titre au-dessus de l'iframe de l'Aperçu en Direct.
 - [x] Mettre à jour dynamiquement cette barre avec le titre récupéré (et prévoir un titre par défaut comme "Sans titre" si la balise est absente).
+
+### Sprint 12 : Sélection Dynamique de l'Onglet Actif
+**Objectif :** Permettre au créateur de l'exercice de forcer l'ouverture d'un onglet spécifique au chargement (ex: ouvrir directement l'onglet CSS si l'exercice porte sur le style).
+- [x] Ajouter le support d'un paramètre `activeTab` (dans `window.exerciseData` et/ou via l'URL).
+- [x] Modifier la logique d'initialisation (`tabs.js` ou `editor-init.js`) pour basculer automatiquement sur cet onglet au démarrage.
+- [x] Assurer un fallback intelligent (si l'onglet demandé est vide ou invalide, sélectionner le premier onglet disponible).
+
+### Sprint 13 : Script de Déploiement Automatisé (PowerShell)
+**Objectif :** Faciliter la mise à jour et le déploiement du code de l'éditeur vers le projet d'intégration (LMS ou backend externe) via un script automatisé.
+- [x] Créer un script `deploy.ps1` (PowerShell) à la racine du projet.
+- [x] Le script doit nettoyer le répertoire de destination (suppression des anciens fichiers de l'éditeur).
+- [x] Le script doit copier la dernière version du code source depuis Git vers la destination.
+- [x] Le script doit exclure formellement les dossiers de développement internes (comme `.git`, `.agent`, etc.) pour garder une intégration légère et propre.
