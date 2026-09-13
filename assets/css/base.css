@@ -8,12 +8,7 @@
    1. STRUCTURE GÉNÉRALE
    ========================================================= */
 
-.session-page,
-.mission-page,
-.competence-page,
-.domaine-page,
-.ua-page,
-.tuto-page {
+.layout-page {
   width: 100%;
   font-size: 17px;
 }
@@ -23,21 +18,11 @@
    2. EN-TÊTES
    ========================================================= */
 
-.session-header,
-.mission-header,
-.competence-header,
-.domaine-header,
-.ua-header,
-.tuto-header {
+.layout-header {
   margin-bottom: 2rem;
 }
 
-.session-header h1,
-.mission-header h1,
-.competence-header h1,
-.domaine-header h1,
-.ua-header h1,
-.tuto-header h1 {
+.layout-header h1 {
   margin-bottom: 1rem;
 }
 
@@ -46,11 +31,7 @@
    3. SECTIONS
    ========================================================= */
 
-.session-section,
-.mission-section,
-.competence-section,
-.domaine-section,
-.ua-section {
+.layout-section {
   margin-top: 2rem;
 }
 
@@ -59,15 +40,7 @@
    4. RÉFÉRENCES
    ========================================================= */
 
-.session-reference,
-.mission-code,
-.mission-level,
-.competence-code,
-.competence-level,
-.competence-mission,
-.domaine-reference,
-.ua-reference,
-.tuto-reference {
+.layout-reference {
   margin: 0.25rem 0;
 }
 
@@ -76,10 +49,7 @@
    5. OBJECTIFS
    ========================================================= */
 
-.session-objective,
-.competence-objective,
-.ua-objective,
-.ua-card-objective {
+.layout-objective {
   margin-bottom: 1rem;
 }
 
@@ -100,19 +70,30 @@
 
 
 /* =========================================================
-   7. JUST THE DOCS — SIDEBAR
+   7. JUST THE DOCS — SIDEBAR & MAIN CONTENT
    ========================================================= */
+
+/* Fixer la largeur du menu aside pour tout média */
+.side-bar {
+  width: 350px !important;
+}
 
 @media (min-width: 50rem) {
 
-  .side-bar {
-    width: 350px !important;
-    min-width: 350px !important;
+  /* Ajuster la marge pour correspondre à la largeur de la sidebar (350px) 
+     Surcharge de la fonction Max() de Just the Docs sur les très grands écrans
+     pour permettre au contenu d'occuper tout l'espace sans marge vide au milieu */
+  .main,
+  .side-bar + .main {
+    margin-left: 350px !important;
+    max-width: none !important;
   }
 
-
- 
-
+  /* Retirer les limites de largeur par défaut du thème sur le contenu */
+  .main-content-wrap,
+  .main-content {
+    max-width: none !important;
+  }
 
   .site-nav {
     width: 100%;
@@ -179,6 +160,7 @@ a:focus-visible {
     width: 100%;
     min-width: 0;
   }
+
 
   .site-nav a,
   .site-nav .nav-list-link {
@@ -249,189 +231,3 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-
-/* =========================================================
-   10. iframe-container
-   ========================================================= */
-
-
- 
-
-/* Conteneur principal */
-.iframe-wrapper {
-  position: relative;
-  width: 100%;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff; /* Évite le fond noir en plein écran */
-  transition: all 0.3s ease;
-}
-
-/* L'iframe s'adapte au conteneur */
-.iframe-wrapper iframe {
-  width: 100%;
-  border: none;
-  display: block; /* Supprime l'espace fantôme sous l'iframe */
-}
-
-/* Bouton d'action flottant (FAB) */
-.fullscreen-fab {
-  position: absolute;
-  bottom: 20px; /* Placé en bas à droite pour moins gêner la lecture */
-  right: 20px;
-  z-index: 10;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  color: #334155;
-  border: 1px solid #cbd5e1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.6; /* Semi-transparent par défaut */
-  transition: transform 0.2s ease, opacity 0.3s ease, box-shadow 0.2s ease;
-}
-
-/* Apparition complète au survol du conteneur ou du bouton */
-.iframe-wrapper:hover .fullscreen-fab {
-  opacity: 1;
-}
-
-.fullscreen-fab:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-  color: #0f172a;
-}
-
-/* =========================================
-   Styles lors du passage en plein écran 
-   ========================================= */
-
-   
-.iframe-wrapper {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #ffffff;
-  margin-bottom: 20px;
-}
-
-
-.iframe-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8f9fa;
-  padding: 8px 12px;
-  border-bottom: 1px solid #ddd;
-  font-family: system-ui, sans-serif;
-}
-
-
-.iframe-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: #333;
-  font-weight: 500;
-}
-
-
-.iframe-actions {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-
-.iframe-actions button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 4px;
-  color: #555;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* Effet au survol */
-
-.iframe-actions button:hover {
-  background-color: #e9ecef;
-  color: #000;
-}
-
-
-.external-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* =========================================
-   Bouton plein écran
-   ========================================= */
-
-.fullscreen-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* =========================================
-   Comportement en mode plein écran
-   ========================================= */
-
-.iframe-wrapper:fullscreen {
-  width: 100vw;
-  height: 100vh;
-  border: none;
-  border-radius: 0;
-}
-
-
-/* L'iframe prend tout l'espace restant */
-
-.iframe-wrapper:fullscreen iframe {
-  height: 100% !important;
-}
-
-
-/* Le boutton pour affiche l'editeur de code */
-
-
-.code-editor-action {
-    margin: 10px 0 20px;
-}
-
-.open-editor-btn {
-    padding: 8px 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: #fff;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.open-editor-btn:hover {
-    background: #f5f5f5;
-}
-
-.code-editor-modal {
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-}
