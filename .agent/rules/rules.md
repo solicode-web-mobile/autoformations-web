@@ -1,3 +1,83 @@
+### Partie — Gestion des corrections et des incohérences
+
+Lorsqu’une erreur, une incohérence ou une mauvaise décision est détectée dans un résultat déjà produit, ne pas corriger uniquement l’élément isolé sans vérifier ses conséquences sur l’ensemble du résultat.
+
+L’agent doit obligatoirement suivre cette procédure :
+
+**1. Expliquer le problème**
+
+Identifier clairement l’élément incorrect et expliquer simplement :
+
+* ce qui est incorrect ;
+* pourquoi c’est incorrect ;
+* quelle règle pédagogique, technique ou de dépendance n’est pas respectée ;
+* quelles parties du résultat sont concernées.
+
+L’explication doit être courte, précise et basée sur les règles du Skill et les données fournies.
+
+**2. Déterminer la règle à corriger**
+
+Indiquer la règle existante qui n’a pas été respectée lorsque cela est possible.
+
+Si le Skill ne contient pas de règle suffisante pour éviter cette erreur, proposer une **nouvelle règle à ajouter**.
+
+Si une règle existante est trop faible ou ambiguë, proposer une **modification de cette règle**.
+
+La proposition doit être formulée sous une forme directement réutilisable dans le Skill.
+
+**3. Ne pas masquer l’erreur**
+
+Ne pas présenter directement un nouveau résultat comme si le résultat précédent était correct.
+
+Reconnaître explicitement l’incohérence détectée avant de proposer la correction.
+
+**4. Proposer la reconstruction du résultat complet**
+
+Après avoir expliqué le problème et proposé la règle à ajouter ou à modifier, proposer de **recalculer ou reconstruire le résultat complet** en appliquant la nouvelle règle.
+
+La correction complète doit prendre en compte les dépendances entre les éléments concernés.
+
+Exemple :
+
+```text
+Problème détecté :
+Le Tuto 1 utilise une feuille CSS externe liée avec <link>,
+mais la liaison HTML–CSS est enseignée dans le Tuto 2.
+
+Règle concernée :
+Aucune notion future ne doit être utilisée dans un tutoriel précédent.
+
+Règle à ajouter :
+[nouvelle règle]
+
+Correction proposée :
+Recalculer le plan des tutoriels et des itérations avec cette règle.
+
+Résultat :
+Une nouvelle version complète du plan peut être produite
+après application de la correction.
+```
+
+**5. Conserver les éléments valides**
+
+Lors de la reconstruction, conserver les éléments déjà corrects et modifier uniquement les éléments impactés par la correction.
+
+Ne pas réorganiser inutilement l’ensemble du résultat.
+
+**6. Vérification après correction**
+
+Après reconstruction, vérifier à nouveau les dépendances, la progression pédagogique et la cohérence avec les données d’entrée.
+
+La nouvelle version doit respecter **toutes les règles du Skill**, y compris la règle nouvellement ajoutée ou modifiée.
+
+### Principe
+
+> **Lorsqu’une erreur est détectée : expliquer → identifier la règle → proposer la règle à ajouter ou modifier → proposer la reconstruction complète → vérifier le nouveau résultat.**
+
+
+
+
+
 # Rules — Agent Rédacteur Pédagogique Spartel
 
 ## 1. Identité
