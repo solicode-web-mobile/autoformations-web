@@ -31,10 +31,11 @@ Le projet se divise en **3 itérations majeures**, dont la réalisation s'appuie
 | --- | --- | --- | --- | --- |
 | **1** | Syntaxe CSS | Règle, sélecteur, propriété, valeur, déclaration | Écrire et lire une règle CSS | *Préparation* |
 | **2** | Liaison HTML–CSS | CSS inline/interne/externe, `<link>` | Relier une feuille CSS externe | *Préparation* |
-| **3** | Sélecteurs | Balise, classe, sélecteurs multiples | Cibler les éléments HTML | *Préparation* |
+| **3** | Sélecteurs | Balise, classe, sélecteurs groupés et descendants | Cibler les éléments HTML | *Préparation* |
 | **4** | Texte & Couleurs | Typographie, alignement, code hexa, couleurs | Définir le style des textes | *Préparation* |
-| **5** | Arrière-plans & Affichage | `background`, `display` (block, inline, inline-block) | Contrôler les fonds et l'affichage | **I1** (En-tête structuré) |
-| **6** | Liens & Listes | `a`, `ul`, `li`, `margin`, `padding-left` | Mettre en forme liens et listes | **I3** (Enrichissement) |
-| **7** | Dimensions | `width`, `height`, `max-width` | Contrôler la taille des éléments | **I2** (Structure / images) |
-| **8** | Espacements & Bordures | `margin`, `padding`, `border`, `border-radius` | Structurer visuellement les blocs | **I3** (Contenu finalisé) |
-| **9** | Affichage CSS | `display` (`block`, `inline`, `inline-block`, `none`) | Ajuster l’affichage final | **I3** (Projet achevé) |
+| **5** | Arrière-plans & Affichage | `background`, `display` (block, inline, inline-block) | Contrôler les fonds et l'affichage | *Préparation* |
+| **6** | Liens & Listes | `a`, `ul`, `li`, `margin`, `padding-left` | Mettre en forme liens et listes | *Préparation* |
+| **7** | Dimensions | `width`, `height`, `max-width`, `object-fit` | Contrôler la taille des éléments | *Préparation* |
+| **8** | Espacements & Bordures | `margin` (`auto`, négatif), `padding`, `border`, `border-radius` | Structurer visuellement les blocs | *Préparation* |
+| **9** | Affichage CSS | `display` (`block`, `inline`, `inline-block`, `none`) | Ajuster l’affichage final | *Préparation* |
+| **10** | Tutoriel de Synthèse CSS | **Toutes les notions** | Projet final de synthèse de bout en bout | **Projet Final** |

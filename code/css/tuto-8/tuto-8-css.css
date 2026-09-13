@@ -1,0 +1,20 @@
+body {
+    /* Pour bien voir l'effet de la marge négative, on ajoute de l'espace au-dessus */
+    padding-top: 100px; 
+}
+
+.carte {
+    max-width: 600px;
+    margin: auto; /* Centrage horizontal */
+    margin-top: -50px; /* Superposition (marge négative) */
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.citation {
+    margin: 20px 0;
+    padding: 15px 20px;
+    border-left: 5px solid blue;
+    border-radius: 0 10px 10px 0;
+}
