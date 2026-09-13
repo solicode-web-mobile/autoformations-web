@@ -53,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (content) params.set(lang, content);
             });
 
+            params.set("activeTab", language);
+
             iframe.src = editorUrl + "?" + params.toString();
             iframe.style.display = "block";
             iframe.style.width = "100%";

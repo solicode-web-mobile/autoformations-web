@@ -215,21 +215,13 @@ color: blue;   → déclaration
 
 ### 2.4. Tester
 
-Enregistrez le fichier puis ouvrez :
-
-```text
-/autoformations-web/code/css/tuto-1-css.html
-```
-
-Rechargez la page.
-
 **Résultat attendu :**
 
 Les paragraphes apparaissent en bleu.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/autoformations-web/code/css/tuto-1-css.html' | relative_url}}"
+    src="{{'/code/css/tuto-1-css.html' | relative_url}}"
     height="700"
     title="Résultat final du Tuto 1">
 </iframe>
