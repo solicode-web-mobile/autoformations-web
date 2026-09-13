@@ -19,5 +19,6 @@
         "_old": true,
         ".github": true,
         ".vscode": true
-    }
+    },
+    "hide-files.files": []
 }
