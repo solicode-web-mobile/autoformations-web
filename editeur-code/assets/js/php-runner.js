@@ -4,8 +4,11 @@ document.addEventListener('alpine:init', () => {
         isLoading: true,
         buttonText: 'Chargement WASM...',
         php: null,
+        hasPhp: window.hasPhpCode,
         
         async init() {
+            if (!this.hasPhp) return; // Sprint 7 : Ne pas charger WASM si inutile
+
             try {
                 // Chargement de PHP-WASM depuis l'URL fournie (qui fonctionne localement sans bundler)
                 const { PhpWeb } = await import('https://cdn.jsdelivr.net/npm/php-wasm/PhpWeb.mjs');

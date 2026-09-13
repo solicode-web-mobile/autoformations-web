@@ -1,22 +1,36 @@
 // Récupération des paramètres d'URL (ex: ?html=...&css=...)
 const urlParams = new URLSearchParams(window.location.search);
 
-// Données initiales des exercices (Priorité à l'URL, sinon valeurs par défaut)
-window.exerciseData = {
-    html: urlParams.has('html') ? urlParams.get('html') : `<div class="container">\n  <h1>Bonjour le monde !</h1>\n  <p>Ceci est un test en direct.</p>\n</div>`,
-    css: urlParams.has('css') ? urlParams.get('css') : `.container {\n  padding: 20px;\n  text-align: center;\n}\n\nh1 {\n  color: #F97316;\n}`,
-    js: urlParams.has('js') ? urlParams.get('js') : `console.log("Prêt pour l'action !");`,
-    php: urlParams.has('php') ? urlParams.get('php') : `<?php\n// Écrivez votre code PHP ici\necho "Bienvenue dans l'éditeur PHP !";\n?>`,
-    'index.php': urlParams.has('index.php') ? urlParams.get('index.php') : `<?php\n  $titre = "Site Dynamique PHP";\n?>\n<h1><?= $titre ?></h1>`
-};
+// Déterminer s'il y a des paramètres
+const hasAnyParam = Array.from(urlParams.keys()).length > 0;
+window.exerciseData = {};
+
+if (hasAnyParam) {
+    if (urlParams.has('html')) window.exerciseData.html = urlParams.get('html');
+    if (urlParams.has('css')) window.exerciseData.css = urlParams.get('css');
+    if (urlParams.has('js')) window.exerciseData.js = urlParams.get('js');
+    if (urlParams.has('php')) window.exerciseData.php = urlParams.get('php');
+    if (urlParams.has('index.php')) window.exerciseData['index.php'] = urlParams.get('index.php');
+} else {
+    // Valeurs par défaut si aucun paramètre
+    window.exerciseData = {
+        html: `<div class="container">\n  <h1>Bonjour le monde !</h1>\n  <p>Ceci est un test en direct.</p>\n</div>`,
+        css: `.container {\n  padding: 20px;\n  text-align: center;\n}\n\nh1 {\n  color: #F97316;\n}`,
+        js: `console.log("Prêt pour l'action !");`,
+        php: `<?php\n// Écrivez votre code PHP ici\necho "Bienvenue dans l'éditeur PHP !";\n?>`,
+        'index.php': `<?php\n  $titre = "Site Dynamique PHP";\n?>\n<h1><?= $titre ?></h1>`
+    };
+}
+
+window.hasPhpCode = ('php' in window.exerciseData || 'index.php' in window.exerciseData);
 
 // Sauvegarde de l'état initial pour le bouton Réinitialiser
 window.initialExerciseData = Object.assign({}, window.exerciseData);
 
 // Variable globale pour stocker l'instance de Monaco
 let monacoEditorInstance = null;
-let currentTabId = 'html';
-window.currentTabId = 'html';
+let currentTabId = Object.keys(window.exerciseData)[0] || 'html';
+window.currentTabId = currentTabId;
 
 // Mapping des IDs d'onglets vers les langages reconnus par Monaco
 const monacoLanguages = {
@@ -106,6 +120,40 @@ function initMonacoEditor() {
                 }
             }));
         });
+
+        // --- Sprint 6 : Ajustement Dynamique de la Hauteur sur Mobile ---
+        const updateEditorHeight = () => {
+            const section = container.closest('section');
+            if (window.innerWidth < 768) { // Point de rupture "md" de Tailwind
+                const contentHeight = monacoEditorInstance.getContentHeight();
+                // ~2 lignes de sécurité (font 15px + interligne) = ~40px
+                const securityMargin = 40; 
+                // Hauteur des onglets
+                const tabsHeight = section.querySelector('.flex.bg-gray-900').offsetHeight || 40;
+                
+                const totalHeight = contentHeight + securityMargin + tabsHeight;
+                const maxHeight = window.innerHeight * 0.6; // Max 60% de l'écran
+                
+                section.style.flex = 'none';
+                section.style.height = `${Math.min(totalHeight, maxHeight)}px`;
+            } else {
+                // Rétablir le comportement normal sur grand écran
+                section.style.flex = '';
+                section.style.height = '';
+            }
+            // Forcer Monaco à recalculer son layout immédiatement
+            monacoEditorInstance.layout();
+        };
+
+        monacoEditorInstance.onDidContentSizeChange((e) => {
+            if (e.contentHeightChanged) {
+                updateEditorHeight();
+            }
+        });
+        
+        window.addEventListener('resize', updateEditorHeight);
+        // Ajustement initial après le chargement
+        setTimeout(updateEditorHeight, 50);
     });
 }
 

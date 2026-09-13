@@ -1,14 +1,14 @@
 // Logique du composant des onglets (Tabs)
 function tabsComponentLogic() {
     return {
-        activeTab: 'html',
+        activeTab: window.currentTabId || 'html',
         tabs: [
             { id: 'html', label: 'HTML' },
             { id: 'css', label: 'CSS' },
             { id: 'js', label: 'JavaScript' },
             { id: 'php', label: 'PHP' },
             { id: 'index.php', label: 'index.php' }
-        ],
+        ].filter(tab => window.exerciseData && tab.id in window.exerciseData),
         init() {
             // On observe les changements d'onglets pour prévenir Monaco Editor plus tard
             this.$watch('activeTab', (value) => {

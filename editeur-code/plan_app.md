@@ -77,3 +77,42 @@ Le développement est découpé en 5 sprints itératifs pour assurer une validat
 - [ ] Gérer les erreurs explicites (ex: erreur de syntaxe PHP).
 - [ ] Effectuer des tests de bout en bout (chargement, édition, exécution web, exécution PHP, responsive).
 - [ ] Documenter les instructions d'intégration (comment l'embarquer dans un LMS ou Jekyll avec du code injecté).
+
+
+### Sprint 6 : Amélioration de l'UI et Responsive Design
+**Objectif :** Optimiser l'affichage pour les petits espaces et les mobiles, et maximiser l'espace d'édition.
+- [x] Rendre l'interface responsive (iframe avec espace minimal, affichage mobile).
+- [x] Supprimer le titre statique de l'exercice (ex: "Exercice : Découverte des Variables").
+- [x] Déplacer et réduire l'affichage de la version PHP (ex: "PHP 8.2 & Web" dans une zone secondaire).
+- [x] Réduire la zone des boutons ("Réinitialiser", "Exécuter PHP") à son strict minimum pour maximiser l'espace alloué au code.
+
+### Sprint 7 : Gestion Dynamique de l'Environnement et des Onglets
+**Objectif :** Adapter l'interface et les ressources chargées selon les fichiers réellement fournis.
+- [x] Masquer les onglets (HTML, CSS, JS, PHP) dont le code n'a pas été fourni.
+- [x] Conditionner le chargement et l'initialisation de `@php-wasm/web` à la présence de code PHP (optimisation des performances).
+
+### Sprint 8 : Environnement de Test d'Intégration
+**Objectif :** Créer une page de test simulant l'intégration de l'éditeur via URL.
+- [x] Créer une page `index.iframe.html`.
+- [x] Permettre le passage des arguments de test (code source, onglets actifs) directement via l'URL.
+- [x] Tester le comportement dynamique de l'éditeur avec différentes combinaisons d'arguments.
+
+### Sprint 9 : Console Javascript Virtuelle
+**Objectif :** Permettre la visualisation des sorties `console.log()` du code JS directement dans l'interface.
+- [x] Créer un espace "Console JS" dans la zone d'affichage (soit sous l'iframe, soit dans un onglet dédié côté rendu).
+- [x] Injecter un script dans l'iframe pour intercepter les appels natifs (`console.log`, `console.warn`, `console.error`).
+- [x] Relayer ces messages vers l'interface parente et les afficher proprement dans la console virtuelle.
+
+### Sprint 10 : Support des Documents HTML Complets (Smart Wrapping)
+**Objectif :** Gérer les exercices avancés (apprentissage du `<head>`, du `<doctype>`) sans casser le rendu et sans surcharger l'interface avec de nouveaux onglets.
+- [x] Analyser le contenu de l'onglet HTML pour détecter la présence de balises structurelles (`<html`, `<body`, `<head`).
+- [x] **Comportement intelligent (Smart Wrapping) dans `live-preview.js` :**
+  - *Cas 1 (Débutant / Fragments)* : Si le code ne contient pas de `<body>`, l'éditeur l'enveloppe automatiquement dans un template standard (comme actuellement).
+  - *Cas 2 (Avancé / Page complète)* : Si le code est une page complète, l'éditeur ne l'enveloppe pas. Il se contente d'injecter dynamiquement le CSS et le JS proxy juste avant la fermeture des balises `</head>` et `</body>`.
+- *Avantage UX (Ligne Claire)* : On garde un seul onglet "HTML". L'éditeur s'adapte magiquement au niveau de l'exercice, évitant toute confusion pour l'apprenant.
+
+### Sprint 11 : Extraction et Affichage du Titre de la Page
+**Objectif :** Simuler le comportement d'un véritable navigateur en récupérant et affichant le titre (balise `<title>`) défini dans le code HTML de l'apprenant.
+- [x] Analyser le code HTML pour extraire le contenu de la balise `<title>`, ou intercepter le titre directement depuis l'iframe de rendu.
+- [x] Créer une petite barre d'adresse/titre au-dessus de l'iframe de l'Aperçu en Direct.
+- [x] Mettre à jour dynamiquement cette barre avec le titre récupéré (et prévoir un titre par défaut comme "Sans titre" si la balise est absente).
