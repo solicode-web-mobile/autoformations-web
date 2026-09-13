@@ -2,10 +2,10 @@
 title: "Projet de Synthèse CSS"
 layout: tuto
 slug: "tutoriel-synthese-css"
-permalink: /tutos/:slug/
+permalink: /tutos/:slug/detaille
 tuto_id: "T.122.21.10"
 type: "classique"
-version: "normal"
+version: "detaille"
 ua: "UA.122.21"
 nav_order: 10
 data_html: |
@@ -83,69 +83,69 @@ window.pageData = {
 
 ## 1. Objectif
 
-Combiner toutes les compétences CSS acquises (sélecteurs, couleurs, typographie, affichage, espacements) pour construire de zéro la feuille de style d'une véritable page d'article de blog.
+Ce projet est la validation de l'ensemble du module CSS. L'objectif est de structurer un fichier `style.css` complet pour un document HTML complexe et très sémantique, en respectant une méthodologie "Top-Down" (du plus global au plus précis).
 
 ## 2. Prérequis
 
-* Avoir assimilé les tutoriels CSS précédents.
+* Maîtrise des tutoriels 1 à 9 (Sélecteurs, Typographie, Box Model, Background, Display).
 
 ## 3. Données de départ
 
-Le fichier HTML complet vous est fourni. Il représente la structure sémantique parfaite d'un article de blog.
+**Code HTML de départ :** *(Fourni dans le cadre du tutoriel, voir `page-detail-v1.html`).*
 
-**Code HTML de départ :** *(Voir le code HTML dans votre fichier `page-detail-v1.html`)*
-
-Votre mission est de créer le fichier `css/style.css` pour donner vie à cette page.
-
-## Partie 1 — Pratique de Synthèse
+## Partie 1 — Pratique de Synthèse Guidée
 
 ### 1.1. Préparation
 
-Créez le fichier `page-detail-v1.html` avec le code fourni.
-Créez un dossier `css` contenant un fichier `style.css`.
-*(Assurez-vous d'avoir les images dans un dossier `images` si vous travaillez en local, sinon le design s'appliquera aux textes alternatifs).*
+Créez `page-detail-v1.html` et un dossier `css` contenant `style.css`.
+Analysez le HTML : il utilise des balises sémantiques très précises (`<article>`, `<header>`, `<main>`, `<figure>`, `<blockquote>`). Nous allons cibler des classes spécifiques.
 
-### 1.2. Réinitialisation et base de la page
+### 1.2. Architecture : Les styles globaux
 
-On commence toujours par définir le fond de la page et la typographie globale.
-Dans `css/style.css` :
+La première règle d'une bonne feuille de style est de définir les fondations.
 
 ```css
+/* =========================================================
+   1. GLOBAL & RESET
+========================================================= */
 body {
-    margin: 0;
+    margin: 0; /* Enlève la marge blanche par défaut du navigateur */
     color: #1f2937;
-    background: #f9fafb; /* Fond gris très clair */
+    background: #f9fafb;
     font-family: Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.5; /* Interligne confortable pour la lecture */
 }
 
-/* On force les images à ne jamais déborder de l'écran */
+/* Image fluide : empèche les grandes images de casser le design */
 img {
     display: block;
     max-width: 100%;
 }
 ```
 
-### 1.3. L'en-tête (Header) de l'article
+### 1.3. L'en-tête (Header)
 
-L'en-tête doit être centré. On donne au titre principal une police à empattements (serif) pour le côté "journal". Le petit badge de catégorie est converti en bloc-en-ligne.
+L'en-tête englobe le titre, la catégorie et les infos de l'auteur.
 
 ```css
+/* =========================================================
+   2. HEADER
+========================================================= */
 .article-header {
-    padding: 96px 24px 64px;
+    padding: 96px 24px 64px; /* Grand espace en haut (96), petit sur les côtés (24), moyen en bas (64) */
     background: #f9fafb;
     text-align: center;
 }
 
 .article-category {
-    display: inline-block;
+    display: inline-block; /* Pour pouvoir appliquer padding et margin tout en restant compact */
     margin-bottom: 5px;
     padding: 8px 24px;
     color: #1c5bba;
     font-size: 14px;
     background: white;
     border: 2px solid #f0f6ff;
-    border-radius: 20px; /* Badge en forme de pilule */
+    border-radius: 20px;
 }
 
 .article-header h1 {
@@ -155,51 +155,52 @@ L'en-tête doit être centré. On donne au titre principal une police à empatte
     font-size: 50px;
     line-height: 1.15;
 }
-```
 
-### 1.4. L'auteur et l'image de couverture
-
-Transformons la photo de l'auteur en cercle parfait (`border-radius: 50%`).
-Pour l'image de couverture, on crée une bannière (`cover`) de 250px de haut.
-
-```css
+/* Avatar de l'auteur */
 .article-author img {
     display: inline-block;
     width: 44px;
     height: 44px;
     border: 2px solid white;
-    border-radius: 50%;
+    border-radius: 50%; /* Arrondi parfait = cercle */
 }
 
 .article-author span {
     color: #9ca3af;
     font-size: 12px;
 }
+```
 
-/* Bannière de l'article */
+### 1.4. L'image de couverture (Hero Image)
+
+```css
+/* =========================================================
+   3. BANNIÈRE
+========================================================= */
 .article-cover {
-    height: 250px;
+    height: 250px; /* Force la hauteur */
     margin: 0;
 }
 
 .article-cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Pas de déformation ! */
+    object-fit: cover; /* Recadrage intelligent sans déformation */
 }
 ```
 
-### 1.5. Le "Card" principal et la marge négative
+### 1.5. Layout du contenu principal
 
-C'est ici qu'on crée l'effet magique : le corps de l'article sera un bloc blanc qui va remonter par-dessus l'image de couverture.
+Nous allons utiliser la technique de la marge négative pour faire "chevaucher" le texte sur l'image de couverture.
 
 ```css
+/* =========================================================
+   4. LAYOUT PRINCIPAL
+========================================================= */
 .article-main {
     max-width: 920px;
-    margin: auto; /* Centrage */
-    margin-top: -100px; /* Remonte sur l'image de couverture */
-    margin-bottom: 80px;
-    padding: 0 24px;
+    margin: -100px auto 80px; /* -100px en haut, auto sur les côtés (centrage), 80px en bas */
+    padding: 0 24px; /* Sécurité pour les écrans de téléphone */
 }
 
 .article-body {
@@ -207,20 +208,23 @@ C'est ici qu'on crée l'effet magique : le corps de l'article sera un bloc blanc
     color: #1f2937;
     background: white;
     border: 1px solid #f3f4f6;
-    border-radius: 40px; /* Bords très arrondis */
+    border-radius: 40px; /* Bords de la carte adoucis */
     font-size: 16px;
 }
 ```
 
-### 1.6. Mise en forme typographique interne
+### 1.6. Mise en forme du corps de texte (Rich Text)
 
-Aérons les titres, paragraphes et listes à l'intérieur de notre bloc principal.
+Il s'agit de styliser tous les éléments qui seront rédigés par l'auteur (h2, p, ul).
 
 ```css
+/* =========================================================
+   5. CONTENU RÉDACTIONNEL
+========================================================= */
 .article-body h2,
 .article-body h3 {
     color: #0a2042;
-    font-family: Georgia, serif;
+    font-family: Georgia, serif; /* Le serif apporte un côté éditorial */
     font-weight: 900;
     line-height: 1.3;
 }
@@ -235,47 +239,23 @@ Aérons les titres, paragraphes et listes à l'intérieur de notre bloc principa
     font-size: 22px;
 }
 
-.article-body p {
-    margin: 0 0 24px;
-}
+.article-body p { margin: 0 0 24px; }
+.article-body ul { margin: 0 0 24px; padding-left: 24px; }
+.article-body li { margin-bottom: 12px; }
+.article-body strong { color: #111827; }
 
-.article-body ul {
-    margin: 0 0 24px;
-    padding-left: 24px;
-}
+/* Image dans le texte */
+.article-figure { margin: 32px 0; }
+.article-figure img { width: 100%; border-radius: 16px; }
+.article-figure figcaption { margin-top: 10px; color: #6b7280; font-size: 13px; text-align: center; }
 
-.article-body li {
-    margin-bottom: 12px;
-}
-```
-
-### 1.7. Les éléments visuels (Figures et Citations)
-
-Pour finir, on stylise l'image illustrative du texte, et on transforme la citation `<blockquote>` en un bel encart bleu. Le `<cite>` qui est inline par défaut est forcé en bloc.
-
-```css
-.article-figure {
-    margin: 32px 0;
-}
-
-.article-figure img {
-    width: 100%;
-    border-radius: 16px;
-}
-
-.article-figure figcaption {
-    margin-top: 10px;
-    color: #6b7280;
-    font-size: 13px;
-    text-align: center;
-}
-
+/* Citation en exergue */
 .article-blockquote {
     margin: 40px 0;
     padding: 24px 28px;
     color: #4b5563;
     background: #f0f6ff;
-    border-left: 4px solid #2673e8;
+    border-left: 4px solid #2673e8; /* Ligne bleue d'emphase */
     border-radius: 0 12px 12px 0;
 }
 
@@ -285,7 +265,7 @@ Pour finir, on stylise l'image illustrative du texte, et on transforme la citati
 }
 
 .article-blockquote cite {
-    display: block; /* Oblige le nom de l'auteur à passer à la ligne */
+    display: block; /* Passage à la ligne forcé */
     margin-top: 12px;
     color: #6b7280;
     font-size: 13px;
@@ -293,12 +273,12 @@ Pour finir, on stylise l'image illustrative du texte, et on transforme la citati
 }
 ```
 
-### 1.8. Tester la page
+### 1.7. Validation Finale
 
-Enregistrez le fichier CSS. Ouvrez le fichier HTML dans le navigateur.
+Vérifiez que toutes les accolades sont fermées, sauvegardez `style.css` et ouvrez le fichier HTML.
 
 **Résultat attendu :**
-Vous obtenez une magnifique page d'article. L'en-tête est clair, l'image de couverture prend toute la largeur, et le texte se lit parfaitement sur une "carte" blanche aux coins très arrondis qui flotte par-dessus l'image de fond. 
+L'intégration est parfaite. L'enchaînement logique des sections (`header` > `cover` > `main` > `body`) se reflète visuellement grâce à l'application des concepts fondamentaux de positionnement et de typographie.
 
 <iframe
     class="auto-wrapper"
@@ -307,10 +287,6 @@ Vous obtenez une magnifique page d'article. L'en-tête est clair, l'image de cou
     title="Résultat de la Synthèse CSS">
 </iframe>
 
-## 4. Bilan
+## 4. Bilan Professionnel
 
-**Félicitations ! Vous avez réalisé :** une page web complète digne d'un projet professionnel en combinant toutes les briques du CSS.
-
-**Vous savez maintenant :** 
-- Structurer une feuille de style complète de haut en bas (du `body` jusqu'aux éléments enfants).
-- Créer des compositions complexes en alliant le Box Model (marges, paddings) et la Typographie.
+La maîtrise du CSS permet de transformer une simple structure textuelle (le HTML) en une interface graphique percutante, tout en respectant une logique de flux (Flow) naturel. Vous avez maintenant toutes les armes pour designer des composants statiques d'interface web !

@@ -9,87 +9,70 @@ version: "normal"
 ua: "UA.122.21"
 nav_order: 1
 data_html: |
-  <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Tuto 1 CSS - Syntaxe CSS</title>
-  </head>
-  <body>
-  
-      <h1>Mon article</h1>
-  
-      <p>Bienvenue sur ma page.</p>
-  
-      <p>Voici le contenu de mon article.</p>
-  
-  </body>
-  </html>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Syntaxe CSS</title>
+    </head>
+    <body>
+        <h1>Mon article</h1>
+        <p>Bienvenue sur ma page.</p>
+        <p>Voici le contenu de mon article.</p>
+    </body>
+    </html>
 data_css: ""
 data_js: ""
 ---
 
 <script>
-  window.pageData = {
+window.pageData = {
     html: {{ page.data_html | default: "" | jsonify }},
     css: {{ page.data_css | default: "" | jsonify }},
     js: {{ page.data_js | default: "" | jsonify }},
     php: {{ page.data_php | default: "" | jsonify }}
-  };
+};
 </script>
-
- 
-
 
 ## 1. Objectif
 
-Comprendre la structure d’une règle CSS et écrire une règle CSS simple.
-
-À la fin du tutoriel, vous saurez identifier et écrire un sélecteur, une propriété et une valeur CSS.
+Comprendre la structure d’une règle CSS et écrire une première règle simple pour modifier l'apparence d'une page HTML.
 
 ## 2. Prérequis
 
-* Savoir créer un fichier HTML.
-* Savoir ouvrir une page HTML dans un navigateur.
-* Savoir utiliser VS Code.
+* Savoir créer un fichier HTML de base.
+* Savoir ce qu'est une balise HTML.
 
 ## 3. Données de départ
 
-Code HTML de départ
-
-Utilisez le code suivant :
+Voici notre fichier HTML de base. Il contient un titre et deux paragraphes :
 
 ```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuto 1 CSS - Syntaxe CSS</title>
+    <title>Syntaxe CSS</title>
 </head>
 <body>
-
     <h1>Mon article</h1>
-
     <p>Bienvenue sur ma page.</p>
-
     <p>Voici le contenu de mon article.</p>
-
 </body>
 </html>
 ```
 
-Ce code est la **base de départ** du tutoriel.
-Toutes les règles CSS étudiées dans ce tutoriel sont testées sur cette page.
-
 ## Partie 1 — Théorie
 
-### 1.1. Une règle CSS
+### 1.1. À quoi sert le CSS ?
 
-Une règle CSS permet de définir une mise en forme pour un élément HTML.
+Le **HTML** sert à structurer le contenu (le fond). Le **CSS** (Cascading Style Sheets) sert à le mettre en forme (la forme : couleurs, tailles, positions).
 
-Elle contient un sélecteur et un bloc de déclarations.
+### 1.2. L'anatomie d'une règle CSS
+
+Le code CSS est constitué de **règles**. Une règle explique au navigateur comment afficher un élément précis.
+
+Voici la structure type d'une règle CSS :
 
 ```css
 selecteur {
@@ -97,147 +80,66 @@ selecteur {
 }
 ```
 
-**Exemple :**
+- **Le sélecteur** : indique "quel élément" on veut modifier dans la page (ex: `p` pour cibler tous les paragraphes).
+- **Les accolades `{ }`** : elles encadrent les modifications que l'on veut appliquer.
+- **La propriété** : ce que l'on veut changer (ex: `color` pour la couleur du texte, `background` pour l'arrière-plan).
+- **La valeur** : le réglage appliqué (ex: `blue`, `red`).
+- **Le point-virgule `;`** : très important, il marque la fin d'une consigne (on appelle le duo *propriété: valeur* une **déclaration**).
 
+Exemple concret :
 ```css
 p {
     color: blue;
 }
 ```
-
-### 1.2. Le sélecteur
-
-Le sélecteur indique l’élément HTML concerné par la règle.
-
-Dans :
-
-```css
-p {
-    color: blue;
-}
-```
-
-`p` est le sélecteur.
-
-### 1.3. La propriété
-
-La propriété indique ce que l’on veut modifier.
-
-Dans :
-
-```css
-p {
-    color: blue;
-}
-```
-
-`color` est la propriété.
-
-### 1.4. La valeur
-
-La valeur indique le réglage appliqué à la propriété.
-
-Dans :
-
-```css
-p {
-    color: blue;
-}
-```
-
-`blue` est la valeur.
-
-### 1.5. La déclaration
-
-Une déclaration associe une propriété et une valeur.
-
-```css
-color: blue;
-```
-
-### 1.6. Les accolades
-
-Les accolades délimitent les déclarations :
-
-```css
-p {
-    color: blue;
-}
-```
-
-### 1.7. À retenir
-
-* Le sélecteur indique ce que l’on cible.
-* La propriété indique ce que l’on modifie.
-* La valeur indique le réglage choisi.
-* Une déclaration contient une propriété et une valeur.
-* Une règle CSS contient un sélecteur et des déclarations.
+*Traduction littérale : "Pour tous les éléments `<p>`, définis la couleur du texte à bleu."*
 
 ## Partie 2 — Pratique
 
-### 2.1. Ouvrir la page de test
+### 2.1. Préparer le fichier
 
-#### Étape 1 — Créer le fichier HTML
+Créez le fichier `tuto-1-css.html` dans VS Code et collez-y les données de départ.
 
-Créez le fichier `tuto-1-css.html` et ajoutez-y le code de départ fourni.
+### 2.2. Ajouter du CSS dans le HTML
 
-### 2.2. Ajouter une règle CSS
+Pour l'instant, nous allons écrire notre CSS directement dans le fichier HTML, à l'intérieur de la balise `<head>`.
+Pour cela, nous utilisons la balise spéciale `<style>`.
 
-#### Étape 2 — Ajouter la balise style
-
-Dans la page HTML, ajoutez une balise `<style>` dans `<head>` contenant la règle CSS :
+Ajoutez ce bloc dans le `<head>` de votre page :
 
 ```html
+<head>
+    <meta charset="UTF-8">
+    <title>Syntaxe CSS</title>
+    
     <style>
         p {
             color: blue;
         }
     </style>
+</head>
 ```
 
-La règle CSS cible tous les paragraphes et les colore en bleu.
+### 2.3. Tester la page
 
-### 2.3. Lire la règle
-
-#### Étape 3 — Analyser la règle
-
-Identifiez les éléments de votre code :
-
-```text
-p              → sélecteur
-color          → propriété
-blue           → valeur
-color: blue;   → déclaration
-```
-
-### 2.4. Tester
-
-#### Étape 4 — Vérifier le rendu
-
-Enregistrez `tuto-1-css.html` et ouvrez-le dans le navigateur.
+Enregistrez le fichier `tuto-1-css.html` et ouvrez-le dans votre navigateur.
 
 **Résultat attendu :**
 
-Les paragraphes apparaissent en bleu.
+Vous devriez voir que le titre reste noir (car il est dans une balise `<h1>`), mais que les deux paragraphes sont devenus bleus. La règle CSS s'est appliquée automatiquement à tous les sélecteurs correspondants.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/css/tuto-1/tuto-1-css.html' | relative_url}}"
     height="300"
-    title="Résultat final du Tuto 1">
+    title="Résultat du tutoriel 1">
 </iframe>
 
-## 3. Bilan
+## 4. Bilan
 
-**Vous avez réalisé :** une première règle CSS appliquée à une page HTML.
+**Vous avez réalisé :** votre première mise en forme CSS.
 
-**Vous savez maintenant :** lire une règle CSS, identifier un sélecteur, identifier une propriété, identifier une valeur et écrire une déclaration CSS.
-
-## 4. Glossaire
-
-* **CSS** : langage utilisé pour mettre en forme une page HTML.
-* **Règle CSS** : ensemble formé par un sélecteur et des déclarations.
-* **Sélecteur** : élément qui indique ce que la règle cible.
-* **Propriété** : élément qui indique ce que l’on veut modifier.
-* **Valeur** : réglage donné à une propriété.
-* **Déclaration** : association d’une propriété et d’une valeur.
+**Vous savez maintenant :** 
+- Que le CSS sert à la présentation visuelle.
+- Composer une règle CSS valide avec un **sélecteur**, une **propriété** et une **valeur**.
+- Placer du CSS dans la balise `<style>` du document HTML.

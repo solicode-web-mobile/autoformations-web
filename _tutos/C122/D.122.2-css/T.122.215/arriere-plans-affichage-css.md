@@ -29,7 +29,6 @@ data_js: ""
 data_php: ""
 ---
 
-
 <script>
 window.pageData = {
     html: {{ page.data_html | default: "" | jsonify }},
@@ -41,22 +40,16 @@ window.pageData = {
 
 ## 1. Objectif
 
-Utiliser les propriétés `background` et `display` pour modifier l’arrière-plan et l’affichage des éléments.
-
-À la fin du tutoriel, vous saurez appliquer une couleur de fond et comprendre la différence entre les affichages en bloc (`block`), en ligne (`inline`) et mixte (`inline-block`).
+Personnaliser les éléments avec des couleurs de fond et comprendre le comportement d'affichage (`display`) des balises.
 
 ## 2. Prérequis
 
-* Savoir écrire une règle CSS.
-* Savoir utiliser un sélecteur de classe.
-* Savoir utiliser les propriétés de texte et de couleur (`color`, `text-align`).
+* Connaître la syntaxe CSS et les sélecteurs de classe.
+* Comprendre l'usage des couleurs hexadécimales.
 
 ## 3. Données de départ
 
-### HTML
-
-Utilisez le code HTML suivant, qui définit un en-tête contenant deux badges (étiquettes) et un titre :
-
+**Code HTML de départ :**
 ```html
 <!DOCTYPE html>
 <html lang="fr">
@@ -75,76 +68,50 @@ Utilisez le code HTML suivant, qui définit un en-tête contenant deux badges (�
 </html>
 ```
 
-Ces données constituent la base de travail du tutoriel.
-
 ## Partie 1 — Théorie
 
-### 1.1. La propriété `background`
+### 1.1. L'arrière-plan (`background`)
 
-La propriété `background` permet de définir l’arrière-plan d’un élément.
-
-Exemple :
-
+Pour définir la couleur de fond d'un élément (comme une `div` ou le `body` entier), on utilise la propriété `background` (ou `background-color`).
 ```css
-.header {
-    background: #f0f6ff;
+.ma-boite {
+    background: #f0f6ff; /* Bleu très clair */
 }
 ```
 
-Ici, l’arrière-plan de `.header` devient bleu très clair.
+### 1.2. La propriété `display` (L'affichage)
 
-### 1.2. Le type `block`
+C'est une des notions les plus importantes du CSS. Toutes les balises HTML ont un comportement d'affichage par défaut. Il y a trois grandes familles :
 
-Un élément `block` (bloc) occupe normalement toute la largeur disponible sur la ligne et commence sur une nouvelle ligne.
-Des éléments HTML comme `<h1>`, `<div>` et `<p>` sont par défaut des éléments de type `block`.
+#### display: block
+L'élément se comporte comme une brique. Il prend **toute la largeur disponible** (100%) et force les éléments suivants à aller à la ligne.
+*Exemples : `<div>`, `<h1>`, `<p>`, `<section>`...*
 
-### 1.3. Le type `inline`
+#### display: inline
+L'élément s'intègre dans le texte (en ligne). Il ne prend que la largeur de son contenu. Il est impossible de lui donner une largeur, une hauteur ou des marges verticales.
+*Exemples : `<span>`, `<a>`, `<strong>`, `<em>`...*
 
-Un élément `inline` (en ligne) reste sur la même ligne que le texte et les éléments adjacents, et ne prend que la largeur nécessaire à son contenu. Les éléments `<span>` et `<a>` sont par défaut de type `inline`.
+#### display: inline-block
+C'est le meilleur des deux mondes. L'élément reste sur la même ligne (comme l'`inline`), mais on peut lui donner une largeur, une hauteur et des marges (comme le `block`). C'est idéal pour créer des boutons ou des badges (étiquettes).
 
-### 1.4. Le type `inline-block`
+### 1.3. L'espacement interne (`padding`)
 
-La valeur `inline-block` permet à un élément de rester sur la même ligne (comme `inline`), tout en permettant de modifier ses dimensions et espacements (comme `block`). C'est très utile pour créer des boutons ou des badges.
-
-Exemple :
-
+Pour que le texte ne colle pas aux bords de son conteneur (surtout quand on met une couleur de fond), on ajoute de l'espace à l'intérieur avec la propriété `padding`.
 ```css
-.badge {
-    display: inline-block;
+.ma-boite {
+    padding: 40px; /* 40 pixels d'espace à l'intérieur */
 }
 ```
-
-### 1.5. L'espacement interne : `padding`
-
-La propriété `padding` permet d'ajouter de l'espace à l'intérieur d'un élément, entre son contenu et ses bords.
-
-```css
-.header {
-    padding: 40px;
-}
-```
-
-### 1.6. À retenir
-
-* `background` définit l’arrière-plan d'un élément.
-* `display: block` affiche un élément comme un bloc (prend toute la ligne).
-* `display: inline` affiche un élément sur la ligne du texte.
-* `display: inline-block` permet un affichage en ligne tout en conservant les caractéristiques d’un bloc.
-* `padding` crée un espacement interne.
 
 ## Partie 2 — Pratique
 
-### 2.1. Préparer les fichiers
+### 2.1. Les fichiers
 
-#### Étape 1 — Fichier HTML
+Créez `tuto-5-css.html` (collez le HTML de départ) et `tuto-5-css.css` (vide) dans le même dossier.
 
-Créez le fichier `tuto-5-css.html` avec le code de départ fourni.
+### 2.2. Créer l'en-tête (Header)
 
-### 2.2. Modifier l’arrière-plan
-
-#### Étape 2 — Fichier CSS
-
-Créez `tuto-5-css.css` et ajoutez une règle pour l'en-tête `.header` :
+Dans votre fichier CSS, ciblez la `div` de classe `.header`. Nous allons lui donner un fond bleu clair, la centrer, et ajouter beaucoup d'espace à l'intérieur pour l'aérer :
 
 ```css
 .header {
@@ -154,15 +121,12 @@ Créez `tuto-5-css.css` et ajoutez une règle pour l'en-tête `.header` :
 }
 ```
 
-**Résultat attendu :** L’en-tête possède un arrière-plan bleu clair, un grand espacement interne et son texte est centré.
+### 2.3. Transformer les balises `<span>` en badges
 
-### 2.3. Modifier l’affichage des badges
+Par défaut, les deux `<span>` ("CSS" et "Niveau 1") sont de type `inline`. Ils se collent sans espace. 
+Nous allons les transformer en `.badge` en changeant leur comportement d'affichage vers `inline-block`. Cela va nous permettre de leur donner un fond, une couleur et de l'espacement.
 
-#### Étape 3 — Règle des badges
-
-Les balises `<span>` sont `inline` par défaut. Pour en faire de véritables étiquettes avec de l'espacement et un arrière-plan propre, nous allons les passer en `inline-block`.
-
-Ajoutez la règle :
+Ajoutez cette règle :
 
 ```css
 .badge {
@@ -172,37 +136,28 @@ Ajoutez la règle :
     padding: 5px 15px;
 }
 ```
+*Note : `padding: 5px 15px;` est un raccourci qui signifie "5px d'espace en haut et en bas, 15px à gauche et à droite".*
 
-**Résultat attendu :** Les badges restent sur la même ligne mais possèdent un fond blanc, une couleur de texte bleue, et un espacement interne qui les fait ressembler à de petites étiquettes.
+### 2.4. Tester le rendu
 
-### 2.4. Tester
-
-#### Étape 4 — Vérifier le résultat
-
-Ouvrez `tuto-5-css.html` dans le navigateur.
+Enregistrez les deux fichiers et ouvrez la page dans le navigateur.
 
 **Résultat attendu :**
-
-L’en-tête possède un arrière-plan coloré et les badges utilisent `inline-block` pour s'afficher correctement côte à côte avec leur propre mise en forme.
+L'en-tête prend toute la largeur avec un fond bleuté. À l'intérieur, les deux petits badges blancs se tiennent sagement côte à côte sur la même ligne (grâce au `inline-block`), ce qui aurait été impossible s'ils avaient été des `div` (type `block`).
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/css/tuto-5/tuto-5-css.html' | relative_url}}"
     height="350"
-    title="Résultat final du Tuto 5">
+    title="Résultat du tutoriel 5">
 </iframe>
 
-## 3. Bilan
+## 4. Bilan
 
-**Vous avez réalisé :** une mise en forme combinant les arrière-plans, les espacements et les types d'affichage.
+**Vous avez réalisé :** une bannière d'en-tête stylisée avec des étiquettes (badges).
 
-**Vous savez maintenant :** définir un arrière-plan avec `background`, comprendre les différences entre `block`, `inline`, et utiliser `display: inline-block` pour créer des éléments autonomes alignés.
-
-## 4. Glossaire
-
-* **`background`** : propriété qui définit l’arrière-plan d’un élément.
-* **`display`** : propriété qui définit le comportement d’affichage d’un élément.
-* **`block`** : affichage en tant que bloc, prenant toute la largeur disponible.
-* **`inline`** : affichage en ligne, dans le flux du texte.
-* **`inline-block`** : affichage en ligne qui permet de définir des dimensions et des marges.
-* **`padding`** : espace vide à l'intérieur d'un élément, entre le contenu et la bordure.
+**Vous savez maintenant :** 
+- Définir une couleur d'arrière-plan avec `background`.
+- Aérer l'intérieur d'un élément avec `padding`.
+- Distinguer les éléments `block` (prennent toute la largeur) et `inline` (suivent le texte).
+- Forcer un élément à se comporter de manière hybride grâce à `display: inline-block;`.

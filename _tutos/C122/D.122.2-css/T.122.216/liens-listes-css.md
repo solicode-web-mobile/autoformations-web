@@ -40,22 +40,16 @@ window.pageData = {
 
 ## 1. Objectif
 
-Mettre en forme les liens et les listes avec CSS en utilisant les espaces extérieurs (`margin`) et intérieurs (`padding`).
-
-À la fin du tutoriel, vous saurez modifier l'apparence des listes et espacer les éléments de liste et les liens.
+Créer un menu de navigation basique en modifiant l'apparence par défaut d'une liste et des liens qu'elle contient.
 
 ## 2. Prérequis
 
-* Savoir écrire une règle CSS.
-* Savoir utiliser les sélecteurs descendants (`.parent enfant`).
-* Savoir définir une couleur (`color`).
+* Maîtriser le ciblage descendant (`.parent enfant`).
+* Comprendre la différence entre `padding` (intérieur) et `margin` (extérieur).
 
 ## 3. Données de départ
 
-### HTML
-
-Le fichier de départ `tuto-6-css.html` contient une liste de liens avec la classe `liste-liens` :
-
+**Code HTML de départ :**
 ```html
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,63 +68,48 @@ Le fichier de départ `tuto-6-css.html` contient une liste de liens avec la clas
 </html>
 ```
 
-Ces données constituent la base de travail du tutoriel.
-
 ## Partie 1 — Théorie
 
-### 1.1. Les sélecteurs pour les liens et les listes
+### 1.1. Cibler les éléments imbriqués
 
-Dans une page Web, on rencontre souvent plusieurs listes ou plusieurs liens avec des rôles différents. C'est pourquoi on utilise les sélecteurs descendants pour cibler très précisément une liste particulière.
-
-Exemples :
+Pour construire un menu, on utilise une liste `<ul>` contenant des puces `<li>`, qui contiennent des liens `<a>`.
+Pour modifier les liens **uniquement** dans ce menu (sans toucher aux autres liens du site), on utilise un **sélecteur descendant** :
 
 ```css
-.liste-liens { ... }    /* Cible la liste entière <ul> */
-.liste-liens li { ... } /* Cible les éléments <li> dans cette liste */
-.liste-liens a { ... }  /* Cible les liens <a> dans cette liste */
+.liste-liens a { ... }
 ```
+*Se lit : Les balises `<a>` situées à l'intérieur de `.liste-liens`.*
 
-### 1.2. La propriété `margin` (et `margin-bottom`)
+### 1.2. Marge extérieure : `margin`
 
-`margin` permet de créer un espace vide **à l'extérieur** d'un élément (pour repousser les éléments voisins). On peut cibler un côté spécifique, par exemple le bas avec `margin-bottom`.
-
-Exemple :
+Contrairement au `padding` qui aère l'intérieur, la `margin` repousse les éléments **à l'extérieur**.
+On peut spécifier un côté précis : `margin-top`, `margin-bottom`, `margin-left`, `margin-right`.
 
 ```css
 .liste-liens li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Ajoute 10px de vide sous chaque ligne */
 }
 ```
 
-Cela crée un espace de 10 pixels sous chaque élément de la liste.
+### 1.3. Ajuster le comportement par défaut
 
-### 1.3. La propriété `padding-left`
-
-`padding-left` permet de créer un espace **à l'intérieur** d'un élément, sur son côté gauche. Dans le cas d'une liste `<ul>`, cela permet d'éloigner les puces ou le texte de la bordure gauche.
-
-Exemple :
+Le navigateur applique par défaut un retrait (un `padding-left`) très grand à la balise `<ul>` pour laisser la place aux puces. Nous pouvons le réduire pour que notre menu s'aligne mieux.
 
 ```css
 .liste-liens {
     padding-left: 20px;
 }
 ```
-
-### 1.4. À retenir
-
-* Les sélecteurs descendants permettent de cibler précisément des `li` ou `a` situés dans une classe parent.
-* `margin-bottom` crée un espace extérieur vers le bas.
-* `padding-left` crée un espace intérieur à gauche de l’élément.
 
 ## Partie 2 — Pratique
 
-### 2.1. Préparer les fichiers
+### 2.1. Les fichiers
 
-Créez le fichier HTML et ajoutez le code HTML de départ. Créez également le fichier `tuto-6-css.css`.
+Créez `tuto-6-css.html` (collez le HTML) et `tuto-6-css.css` (vide).
 
-### 2.2. Modifier l’espace intérieur de la liste
+### 2.2. Ajuster la liste (`ul`)
 
-Dans votre fichier CSS, ciblez la classe de la liste et réduisez son retrait gauche par défaut en utilisant `padding-left` :
+Dans le fichier CSS, réduisons le décalage par défaut de la liste à 20px :
 
 ```css
 .liste-liens {
@@ -138,11 +117,9 @@ Dans votre fichier CSS, ciblez la classe de la liste et réduisez son retrait ga
 }
 ```
 
-**Résultat attendu :** La liste est légèrement moins décalée vers la droite par rapport au comportement par défaut du navigateur.
+### 2.3. Espacer les lignes (`li`)
 
-### 2.3. Espacer les éléments de la liste
-
-Pour aérer le menu, ciblez les balises `<li>` se trouvant à l'intérieur de `.liste-liens` pour leur ajouter une marge inférieure :
+Pour éviter que les liens ne soient trop serrés, on cible les balises `<li>` de la liste et on ajoute une marge en bas :
 
 ```css
 .liste-liens li {
@@ -150,50 +127,35 @@ Pour aérer le menu, ciblez les balises `<li>` se trouvant à l'intérieur de `.
 }
 ```
 
-**Résultat attendu :** Un espacement vertical de 10 pixels apparaît entre chaque puce de la liste.
+### 2.4. Changer la couleur des liens (`a`)
 
-### 2.4. Mettre en forme les liens
-
-Enfin, ciblez les balises `<a>` situées dans `.liste-liens` pour modifier leur couleur :
+Les liens `<a>` ont une couleur bleue très standard par défaut, et sont soulignés. Nous allons changer leur couleur. On utilise le ciblage descendant pour ne pas affecter de futurs autres liens sur la page :
 
 ```css
 .liste-liens a {
-    color: #2673e8;
+    color: #2673e8; /* Un bleu plus moderne */
 }
 ```
 
-**Résultat attendu :** Les liens prennent une couleur bleue spécifique.
+### 2.5. Vérifier le rendu
 
-### 2.5. Tester le résultat
-
-Ouvrez :
-
-```text
-tuto-6-css.html
-```
-
-Rechargez la page.
+Enregistrez et ouvrez la page.
 
 **Résultat attendu :**
-
-La page contient une liste avec un retrait ajusté, dont chaque ligne est espacée, et contenant des liens de couleur bleue.
+La liste est un peu moins décalée vers la droite qu'une liste classique. L'espacement vertical entre "Accueil", "Articles" et "Contact" rend la navigation plus claire. La couleur du lien a changé.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/css/tuto-6/tuto-6-css.html' | relative_url}}"
     height="300"
-    title="Résultat final du Tuto 6">
+    title="Résultat du tutoriel 6">
 </iframe>
 
-## 3. Bilan
+## 4. Bilan
 
-**Vous avez réalisé :** la mise en forme d'un menu de liens sous forme de liste.
+**Vous avez réalisé :** les prémices d'un menu de navigation vertical.
 
-**Vous savez maintenant :** utiliser des sélecteurs descendants pour cibler précisément des éléments imbriqués (`ul`, `li`, `a`), et manipuler les espaces extérieurs et intérieurs partiels (`margin-bottom`, `padding-left`).
-
-## 4. Glossaire
-
-* **Lien (`<a>`)** : élément HTML qui permet d’accéder à une autre ressource.
-* **Liste non ordonnée (`<ul>`)** : liste HTML à puces contenant des éléments `<li>`.
-* **`margin`** : espace extérieur autour d’un élément.
-* **`padding`** : espace intérieur d'un élément, entre son contenu et son bord.
+**Vous savez maintenant :** 
+- Cibler en profondeur dans l'arborescence HTML (`.classe parent enfant`).
+- Ajuster les espacements par défaut imposés par le navigateur sur la balise `<ul>`.
+- Séparer visuellement des blocs avec `margin`.

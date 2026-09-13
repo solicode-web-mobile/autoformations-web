@@ -49,21 +49,16 @@ window.pageData = {
 
 ## 1. Objectif
 
-Maîtriser les marges internes (`padding`), les marges externes (`margin`), et les bordures (`border`, `border-radius`).
-
-À la fin du tutoriel, vous saurez centrer un élément, créer un effet de superposition avec une marge négative, définir des marges multiples et utiliser des bordures arrondies.
+Créer une "carte" (Card) design en utilisant les marges automatiques (pour centrer), les bordures et les coins arrondis.
 
 ## 2. Prérequis
 
-* Connaître la différence entre `padding` (intérieur) et `margin` (extérieur).
+* Comprendre la différence entre l'espace extérieur (`margin`) et intérieur (`padding`).
 * Savoir utiliser `max-width`.
 
 ## 3. Données de départ
 
-### HTML
-
-Le fichier `tuto-8-css.html` contient une "carte" qui englobe une citation :
-
+**Code HTML de départ :**
 ```html
 <!DOCTYPE html>
 <html lang="fr">
@@ -84,10 +79,7 @@ Le fichier `tuto-8-css.html` contient une "carte" qui englobe une citation :
 </html>
 ```
 
-### CSS
-
-Le fichier de départ `tuto-8-css.css` contient :
-
+**Code CSS de départ :**
 ```css
 body {
     /* Pour bien voir l'effet de la marge négative, on ajoute de l'espace au-dessus */
@@ -101,115 +93,100 @@ body {
 
 ## Partie 1 — Théorie
 
-### 1.1. Centrer un bloc horizontalement
+### 1.1. Centrer une boîte (`margin: auto`)
 
-Pour centrer un élément de type `block` (comme une `div`), il doit avoir une largeur définie (`width` ou `max-width`), et on utilise la valeur automatique pour ses marges gauche et droite.
-
+Si une boîte a une largeur maximale (ex: `max-width: 600px;`), elle restera collée à gauche de l'écran par défaut.
+Pour la centrer parfaitement, on demande au navigateur de calculer automatiquement les marges de chaque côté :
 ```css
 margin: auto;
 ```
 
-### 1.2. Les valeurs multiples (Raccourcis)
+### 1.2. Les valeurs raccourcies
 
-On peut définir les espaces pour tous les côtés en une seule ligne :
-
-* **4 valeurs** (Haut, Droite, Bas, Gauche) : `padding: 10px 15px 10px 5px;`
-* **2 valeurs** (Haut/Bas, Droite/Gauche) : `margin: 20px 0;` (20px en haut et bas, 0 à gauche et droite).
-* **1 valeur** (Tous les côtés) : `padding: 30px;`
-
-### 1.3. Les marges négatives
-
-Il est possible d'utiliser des valeurs négatives pour `margin` (mais pas pour `padding`). Cela permet de tirer un élément hors de sa position normale, créant des effets de superposition très utiles.
-
+Souvent, on veut espacer un élément en haut et en bas, mais pas sur les côtés. Au lieu d'écrire deux lignes (`margin-top` et `margin-bottom`), on utilise un raccourci :
 ```css
-margin-top: -50px;
+margin: 20px 0; /* 20px en haut et en bas. 0 à gauche et à droite. */
 ```
-*(Tire l'élément vers le haut de 50px)*
+*Astuce mnémotechnique pour 4 valeurs : l'ordre est le sens des aiguilles d'une montre (Haut, Droite, Bas, Gauche).*
 
-### 1.4. Les bordures et les arrondis
+### 1.3. La marge négative
 
-La propriété `border` ajoute une bordure autour d'un élément. On peut aussi cibler un seul côté avec `border-left`, `border-top`, etc.
-
+Il est interdit de mettre un padding négatif. En revanche, une `margin` peut être négative !
+Cela permet de "tirer" un élément vers l'extérieur de sa position normale, souvent pour le superposer à un autre élément.
 ```css
-border: 1px solid #ccc;
-border-left: 5px solid blue;
+margin-top: -50px; /* Tire la boîte de 50px vers le haut */
 ```
 
-La propriété `border-radius` permet d'arrondir les coins de la bordure (ou de l'arrière-plan). Comme les marges, on peut spécifier chaque coin (Haut-Gauche, Haut-Droit, Bas-Droit, Bas-Gauche).
+### 1.4. Dessiner des bordures (`border`, `border-radius`)
 
+On peut dessiner un trait autour d'une boîte. Cela requiert 3 informations : l'épaisseur, le style (ex: `solid` pour un trait continu) et la couleur.
 ```css
-border-radius: 20px; /* Tous les coins */
-border-radius: 0 10px 10px 0; /* Coins droits arrondis, coins gauches carrés */
+border: 1px solid #ccc; /* Un trait gris fin tout autour */
+border-left: 5px solid blue; /* Un trait bleu épais uniquement à gauche */
 ```
 
-### 1.5. À retenir
-
-* `margin: auto;` centre horizontalement un bloc s'il possède une largeur.
-* Les raccourcis comme `margin: 20px 0;` appliquent 20px en haut/bas et 0 à gauche/droite.
-* Les marges négatives (`margin-top: -50px`) permettent de superposer des éléments.
-* `border` et `border-left` dessinent des traits sur les contours.
-* `border-radius` arrondit les angles du contour.
+Pour adoucir les angles, on utilise le rayon de bordure :
+```css
+border-radius: 20px;
+```
 
 ## Partie 2 — Pratique
 
 ### 2.1. Préparer les fichiers
 
-Créez le fichier HTML et le fichier CSS en y ajoutant les données de départ.
+Dans VS Code, créez `tuto-8-css.html` et `tuto-8-css.css`. Collez les données de départ.
 
-### 2.2. Mettre en forme la carte principale
+### 2.2. Centrer et designer la carte
 
-Dans `tuto-8-css.css`, complétez la règle `.carte` pour centrer le bloc, le décaler vers le haut (marge négative), ajouter de l'espace à l'intérieur, et lui dessiner une bordure grise arrondie :
+Dans le fichier CSS, complétons la règle de `.carte`. Nous allons la centrer (`margin: auto`), la tirer un peu vers le haut, lui donner de l'espace intérieur, et une jolie bordure arrondie :
 
 ```css
 .carte {
     max-width: 600px;
-    margin: auto; /* Centrage horizontal */
-    margin-top: -50px; /* Superposition (marge négative) */
+    margin: auto;
+    margin-top: -50px;
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 20px;
+    background: white; /* Important si la page avait une couleur de fond */
 }
 ```
 
-### 2.3. Mettre en forme la citation
+### 2.3. Habiller la citation
 
-Ajoutez une règle pour la classe `.citation` en utilisant des valeurs multiples pour les marges et les espacements intérieurs, et une bordure uniquement à gauche.
+La balise `<blockquote>` (classe `.citation`) sert à citer du texte. Nous allons la séparer du texte au-dessus (`margin`), l'écarter de son propre texte (`padding`), et lui mettre une grosse barre bleue à gauche, avec des coins droits arrondis :
 
 ```css
 .citation {
     margin: 20px 0;
     padding: 15px 20px;
+    background: #f8f9fa;
     border-left: 5px solid blue;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 10px 10px 0; /* Haut-gauche: 0, Haut-droit: 10px, Bas-droit: 10px, Bas-gauche: 0 */
 }
 ```
+*Note : Si on mettait un `border-radius: 10px` simple, les coins de gauche seraient arrondis, ce qui casserait l'effet de la barre droite verticale.*
 
-*Ici, `border-radius` arrondit les coins de droite à `10px`, mais laisse les coins de gauche carrés (`0`) pour suivre la bordure bleue bien droite.*
+### 2.4. Tester la page
 
-### 2.4. Tester le résultat
-
-Enregistrez vos fichiers et ouvrez `tuto-8-css.html` dans le navigateur.
+Enregistrez et ouvrez votre page HTML.
 
 **Résultat attendu :**
-
-La page contient une carte centrée, remontée vers le haut, avec des bordures arrondies. À l'intérieur, la citation est espacée du reste et possède une ligne bleue épaisse sur la gauche avec ses coins droits arrondis.
+La carte est bien centrée au milieu de l'écran. La citation ressemble à un encart professionnel avec sa barre de couleur sur le côté gauche.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/css/tuto-8/tuto-8-css.html' | relative_url}}"
     height="350"
-    title="Résultat final du Tuto 8">
+    title="Résultat du tutoriel 8">
 </iframe>
 
-## 3. Bilan
+## 4. Bilan
 
-**Vous avez réalisé :** une interface avancée avec des bordures personnalisées et des espacements précis.
+**Vous avez réalisé :** une "Card" UI (Interface Utilisateur) moderne avec une citation stylisée.
 
-**Vous savez maintenant :** utiliser `margin: auto` pour centrer un élément, déclarer des marges multiples (`margin: 20px 0`), créer des marges négatives, ajouter des bordures spécifiques (`border-left`), et arrondir les coins selon vos besoins avec `border-radius`.
-
-## 4. Glossaire
-
-* **Marge automatique (`margin: auto`)** : valeur permettant au navigateur de calculer automatiquement les espaces gauche/droite pour centrer un élément de type bloc.
-* **Marge négative** : valeur de marge inférieure à zéro permettant de tirer un élément dans la direction opposée (utile pour les chevauchements).
-* **`border`** : propriété qui dessine une ligne autour de l'élément (nécessite une épaisseur, un style comme `solid`, et une couleur).
-* **`border-radius`** : propriété qui arrondit les coins d'un élément.
+**Vous savez maintenant :** 
+- Centrer horizontalement un bloc avec `margin: auto`.
+- Tirer un bloc vers le haut en utilisant une marge négative.
+- Dessiner des bordures complètes ou partielles (ex: `border-left`).
+- Arrondir les angles de manière sélective avec `border-radius`.

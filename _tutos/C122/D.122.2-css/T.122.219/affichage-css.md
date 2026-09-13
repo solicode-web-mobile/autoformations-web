@@ -40,22 +40,15 @@ window.pageData = {
 
 ## 1. Objectif
 
-Utiliser les valeurs avancées de la propriété `display` pour masquer des éléments ou forcer un comportement d'affichage différent de celui par défaut.
-
-À la fin du tutoriel, vous saurez masquer un élément avec `display: none` et forcer un élément en ligne à se comporter comme un bloc.
+Apprendre à manipuler l'affichage des éléments (`display`) pour masquer du contenu ou forcer un élément en ligne (`inline`) à se comporter comme un bloc (`block`).
 
 ## 2. Prérequis
 
-* Savoir écrire une règle CSS.
-* Savoir utiliser un sélecteur de classe.
-* Comprendre la différence par défaut entre un élément `block` et `inline`.
+* Comprendre la différence entre un élément de type bloc et un élément en ligne.
 
 ## 3. Données de départ
 
-### HTML
-
-Le fichier `tuto-9-css.html` contient un texte avec un élément `<span>` et une citation `<cite>`.
-
+**Code HTML de départ :**
 ```html
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,97 +67,78 @@ Le fichier `tuto-9-css.html` contient un texte avec un élément `<span>` et une
 </html>
 ```
 
-Ces balises `<cite>` et `<span>` sont par défaut des éléments de type `inline` : elles restent sur la ligne.
-
 ## Partie 1 — Théorie
 
-### 1.1. Masquer un élément avec `display: none`
+### 1.1. Faire disparaître un élément (`display: none`)
 
-La propriété `display` peut prendre la valeur `none`. Cela permet de faire disparaître complètement un élément de la page, comme s'il n'existait pas dans le code HTML.
-
+Parfois, on souhaite cacher un élément HTML sans le supprimer du code (par exemple, un menu déroulant fermé, ou un message d'erreur qui ne doit s'afficher que s'il y a un problème).
+La valeur `none` de la propriété `display` permet de masquer totalement un élément.
 ```css
-.cache {
+.mon-element {
     display: none;
 }
 ```
+Attention : l'élément disparaît visuellement **et** l'espace qu'il occupait disparaît également. C'est comme s'il n'existait pas sur la page.
 
-Contrairement à rendre un élément transparent ou invisible, `display: none` libère également l'espace que l'élément occupait.
+### 1.2. Modifier la nature d'une balise
 
-### 1.2. Modifier le comportement par défaut
-
-Certains éléments HTML ont un comportement par défaut. Par exemple, un `<span>`, un `<a>` ou un `<cite>` sont `inline`. On ne peut donc pas leur donner de marge verticale ou de largeur facilement.
-Il est très courant en CSS de forcer ces éléments à devenir des blocs avec `display: block` pour pouvoir les manipuler comme des `<div>`.
-
+Le navigateur impose un comportement par défaut. Par exemple, `<span>` ou `<cite>` sont `inline` (ils restent sur la même ligne et on ne peut pas leur donner de marge ou de hauteur).
+En CSS, vous êtes le maître. Vous pouvez forcer un élément `inline` à devenir un `block` !
 ```css
-.citation-bloc {
-    display: block;
+span {
+    display: block; /* Le span va maintenant sauter à la ligne et prendre toute la largeur */
 }
 ```
-
-Une fois devenu un `block`, l'élément va automatiquement passer à la ligne et occuper toute la largeur disponible. On pourra alors lui donner des dimensions et des marges.
-
-### 1.3. À retenir
-
-* `display: none` masque un élément et retire son espace de la page.
-* `display: block` force un élément (même s'il est `inline` par défaut) à se comporter comme un bloc et à sauter à la ligne.
 
 ## Partie 2 — Pratique
 
 ### 2.1. Préparer les fichiers
 
-Créez le fichier HTML avec le code de départ fourni, et créez le fichier `tuto-9-css.css`.
-
-Si vous regardez le rendu actuel, la citation s'affiche juste en dessous ou à la suite (selon la largeur de l'écran) et le mot "caché" est visible.
+Créez `tuto-9-css.html` (collez le HTML de départ) et `tuto-9-css.css` (vide) dans le même dossier.
+Si vous ouvrez le HTML sans CSS, vous verrez la phrase avec le mot "caché", et la citation se mettra à la suite ou juste en dessous.
 
 ### 2.2. Masquer un élément
 
-Dans `tuto-9-css.css`, ajoutez une règle pour masquer totalement le texte "caché" contenu dans la balise `<span>` de la classe `.cache`.
+Dans le fichier CSS, nous allons cibler le `<span>` qui a la classe `.cache`, et nous allons le faire disparaître du rendu de la page :
 
 ```css
 .cache {
     display: none;
 }
 ```
+*Le mot "caché" disparaît. La phrase devient "Ce texte contient un élément qui ne s'affiche pas."*
 
-**Résultat attendu :** Le mot "caché" disparaît de la phrase, et l'espace qu'il occupait se referme.
+### 2.3. Transformer un élément "inline" en "block"
 
-### 2.3. Transformer un élément en bloc
-
-Ciblez la classe `.citation-bloc`. Par défaut, la balise `<cite>` est un élément en ligne. Nous voulons la transformer en bloc pour qu'elle passe clairement à la ligne et puisse recevoir une marge en haut.
+La balise `<cite>` est `inline` par défaut. Nous voulons qu'elle s'affiche clairement en dessous du texte, comme un vrai paragraphe, et lui donner une marge.
+Nous allons la cibler via sa classe `.citation-bloc` et forcer son comportement :
 
 ```css
 .citation-bloc {
-    display: block;
-    margin-top: 20px;
+    display: block;      /* On force le passage à la ligne */
+    margin-top: 20px;    /* Maintenant qu'elle est block, on peut lui donner une marge ! */
     color: gray;
 }
 ```
 
-**Résultat attendu :** La citation se comporte maintenant comme un paragraphe ou une `div`. Elle saute à la ligne et la marge supérieure de `20px` est bien prise en compte.
+### 2.4. Tester la page
 
-### 2.4. Tester le résultat
-
-Enregistrez vos fichiers et ouvrez `tuto-9-css.html` dans le navigateur.
+Enregistrez et ouvrez votre page HTML.
 
 **Résultat attendu :**
-
-La phrase ne montre plus le mot "caché", et la citation se positionne clairement en dessous comme un bloc de texte gris.
+Le mot "caché" est totalement invisible et l'espace s'est refermé. La balise `<cite>` s'affiche comme un gros bloc gris, avec une séparation par rapport au texte au-dessus.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/css/tuto-9/tuto-9-css.html' | relative_url}}"
     height="250"
-    title="Résultat final du Tuto 9">
+    title="Résultat du tutoriel 9">
 </iframe>
 
-## 3. Bilan
+## 4. Bilan
 
-**Vous avez réalisé :** une modification du comportement d'affichage par défaut d'éléments HTML.
+**Vous avez réalisé :** une modification comportementale de l'affichage HTML via le CSS.
 
-**Vous savez maintenant :** utiliser `display: none` pour masquer entièrement un élément, et utiliser `display: block` pour forcer un élément en ligne à se comporter comme un bloc de contenu.
-
-## 4. Glossaire
-
-* **`display: none`** : valeur retirant complètement l'élément de l'affichage et du flux de la page.
-* **Élément `inline` par défaut** : balise HTML (comme `<span>` ou `<cite>`) conçue pour s'insérer dans le texte sans créer de saut de ligne.
-* **Forçage en bloc** : action d'appliquer `display: block` à un élément `inline` pour pouvoir le dimensionner et l'espacer plus librement.
+**Vous savez maintenant :** 
+- Masquer n'importe quel élément de la page avec `display: none`.
+- Écraser la nature "inline" d'une balise pour en faire un "block" manipulable à l'aide de `display: block`.

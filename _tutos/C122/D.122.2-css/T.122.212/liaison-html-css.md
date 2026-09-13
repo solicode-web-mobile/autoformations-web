@@ -13,17 +13,12 @@ data_html: |
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tuto 2 CSS</title>
+        <title>Liaison HTML-CSS</title>
     </head>
     <body>
-    
         <h1>Mon article</h1>
-    
         <p>Bienvenue sur ma page.</p>
-    
         <p>Voici le contenu de mon article.</p>
-    
     </body>
     </html>
 data_css: |
@@ -42,219 +37,115 @@ window.pageData = {
 };
 </script>
 
-
 ## 1. Objectif
 
-Comprendre comment relier une page HTML à une feuille CSS externe.
-
-À la fin du tutoriel, vous saurez créer un fichier CSS et le lier à une page HTML à l'aide de la balise `<link>`.
+Comprendre comment externaliser son code CSS dans un fichier dédié, et relier ce fichier à la page HTML.
 
 ## 2. Prérequis
 
-* Savoir créer une page HTML.
-* Connaître la structure d’une règle CSS.
-* Savoir modifier un fichier dans VS Code.
+* Connaître la structure de base d'une page HTML.
+* Savoir écrire une règle CSS simple.
 
 ## 3. Données de départ
 
-### HTML
+Nous utiliserons deux fichiers distincts pour ce tutoriel : un fichier HTML et un fichier CSS.
 
-Le HTML de départ contient :
-
+**Code HTML de départ :**
 ```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuto 2 CSS</title>
+    <title>Liaison HTML-CSS</title>
 </head>
 <body>
-
     <h1>Mon article</h1>
-
     <p>Bienvenue sur ma page.</p>
-
     <p>Voici le contenu de mon article.</p>
-
 </body>
 </html>
 ```
 
-### CSS
-
-Le CSS de départ contient :
-
+**Code CSS de départ :**
 ```css
 p {
     color: blue;
 }
 ```
-
-Ces données constituent la base de travail du tutoriel.
-Le HTML et le CSS seront utilisés pour tester la liaison entre les deux fichiers.
 
 ## Partie 1 — Théorie
 
-### 1.1. Le CSS inline
+### 1.1. Pourquoi séparer le HTML et le CSS ?
 
-Le CSS peut être écrit directement dans une balise HTML.
+Dans le tutoriel précédent, nous avons écrit le CSS dans la balise `<style>` à l'intérieur du HTML.
+C'est pratique pour des tests, mais sur un vrai site web, vous aurez souvent des dizaines de pages (Accueil, Contact, À propos...). Si le style est "bloqué" dans la page Accueil, il faudra le copier-coller dans toutes les autres pages. 
 
-```html
-<p style="color: blue;">
-    Bienvenue sur ma page.
-</p>
-```
+La bonne pratique est d'écrire le CSS dans un fichier `.css` séparé, puis de "relier" toutes les pages HTML à ce fichier unique.
 
-Le style est placé dans l’attribut `style`.
+### 1.2. La balise de liaison `<link>`
 
-### 1.2. Le CSS interne
-
-Le CSS peut être placé dans une balise `<style>`.
+Pour relier une feuille de style externe à une page HTML, on utilise la balise orpheline `<link>` (lien en anglais).
+Cette balise doit **toujours** être placée dans la zone `<head>` du fichier HTML.
 
 ```html
-<head>
-    <style>
-        p {
-            color: blue;
-        }
-    </style>
-</head>
+<link rel="stylesheet" href="style.css">
 ```
 
-Le CSS reste dans le fichier HTML.
-
-### 1.3. Le CSS externe
-
-Le CSS peut être placé dans un fichier séparé.
-
-Exemple :
-
-```text
-tuto-2-css.css
-```
-
-La page HTML utilise ensuite :
-
-```html
-<link rel="stylesheet" href="tuto-2-css.css">
-```
-
-La balise `<link>` crée la liaison entre HTML et CSS.
-
-### 1.4. Les attributs de `link`
-
-Dans :
-
-```html
-<link rel="stylesheet" href="tuto-2-css.css">
-```
-
-* `link` crée une liaison ;
-* `rel="stylesheet"` indique une feuille CSS ;
-* `href` indique le fichier CSS.
-
-### 1.5. À retenir
-
-* Le CSS inline est écrit dans une balise HTML.
-* Le CSS interne est écrit dans `<style>`.
-* Le CSS externe est placé dans un fichier CSS.
-* `<link>` permet de relier HTML et CSS.
-* `href` indique le fichier CSS.
+- **`rel="stylesheet"`** : Indique la "relation". On prévient le navigateur que le fichier que l'on va charger est une "feuille de style" (stylesheet).
+- **`href="style.css"`** : Indique le chemin relatif vers le fichier CSS.
 
 ## Partie 2 — Pratique
 
-### 2.1. Ouvrir le fichier HTML
+### 2.1. Créer le fichier HTML
 
-#### Étape 1 — Préparer la page HTML
+Dans VS Code, créez un fichier nommé `tuto-2-css.html` et collez-y les données de départ (le code HTML).
 
-Créez le fichier `tuto-2-css.html` et ajoutez-y le code HTML de départ du tutoriel.
+### 2.2. Créer le fichier CSS
 
-### 2.2. Observer le CSS
-
-#### Étape 2 — Analyser la règle de style
-
-Le CSS de départ est :
+Dans le **même dossier** que votre fichier HTML, créez un nouveau fichier nommé `tuto-2-css.css` (attention à l'extension `.css`). 
+Collez-y la règle de style prévue dans les données de départ :
 
 ```css
 p {
     color: blue;
 }
 ```
+*Note: Un fichier `.css` ne contient que des règles CSS. N'y ajoutez aucune balise HTML (pas de `<style>`, ni de `<head>`).*
 
-Cette règle cible les paragraphes.
+### 2.3. Créer la liaison
 
-### 2.3. Créer la feuille CSS
-
-#### Étape 3 — Créer le fichier externe
-
-Dans le même dossier que votre fichier HTML, créez le fichier :
-
-```text
-tuto-2-css.css
-```
-
-Ajoutez-y la règle CSS :
-
-```css
-p {
-    color: blue;
-}
-```
-
-### 2.4. Créer la liaison HTML–CSS
-
-#### Étape 4 — Ajouter la balise `<link>`
-
-Dans la partie `<head>` du document HTML, ajoutez la balise `<link>` pour relier le fichier externe :
-
-```html
-    <link rel="stylesheet" href="tuto-2-css.css">
-```
-
-Le haut de la page devient :
+Maintenant, nous devons indiquer à notre fichier HTML d'utiliser ce fichier CSS.
+Dans `tuto-2-css.html`, ajoutez la balise `<link>` dans la section `<head>` :
 
 ```html
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Tuto 2 CSS</title>
-
+    <title>Liaison HTML-CSS</title>
+    
+    <!-- Ligne ajoutée pour lier le CSS -->
     <link rel="stylesheet" href="tuto-2-css.css">
 </head>
 ```
 
-Le fichier HTML utilise maintenant cette feuille CSS externe.
+### 2.4. Tester le résultat
 
-### 2.5. Tester
-
-#### Étape 5 — Vérifier le rendu
-
-Ouvrez `tuto-2-css.html` et rechargez la page dans le navigateur.
+Enregistrez vos **deux** fichiers (`.html` et `.css`).
+Ouvrez `tuto-2-css.html` dans votre navigateur.
 
 **Résultat attendu :**
-
-Les deux paragraphes apparaissent en bleu, prouvant que la liaison fonctionne correctement.
+Le navigateur lit le code HTML, arrive sur la balise `<link>`, télécharge instantanément le fichier `.css` et applique la règle : les paragraphes apparaissent en bleu.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/css/tuto-2/tuto-2-css.html' | relative_url}}"
     height="300"
-    title="Résultat final du Tuto 2">
+    title="Résultat du tutoriel 2">
 </iframe>
 
-## 3. Bilan
+## 4. Bilan
 
-**Vous avez réalisé :** une liaison entre une page HTML et une feuille CSS externe.
+**Vous avez réalisé :** la séparation propre du contenu (HTML) et de la mise en forme (CSS).
 
-**Vous savez maintenant :** distinguer CSS inline, interne et externe, créer une feuille CSS externe, utiliser `<link>`, utiliser `rel="stylesheet"`, et utiliser `href` pour indiquer le fichier CSS.
-
-## 4. Glossaire
-
-* **CSS inline** : CSS écrit directement dans une balise HTML.
-* **CSS interne** : CSS écrit dans une balise `<style>`.
-* **CSS externe** : CSS écrit dans un fichier séparé.
-* **`link`** : balise HTML qui crée une liaison avec une ressource externe.
-* **`stylesheet`** : indique que la ressource liée est une feuille CSS.
-* **`href`** : indique l’emplacement du fichier lié.
+**Vous savez maintenant :** 
+- Créer un fichier `.css` externe.
+- Utiliser la balise `<link>` avec ses attributs `rel` et `href` pour connecter la feuille de style à un document HTML.
