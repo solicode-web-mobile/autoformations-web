@@ -1,55 +1,31 @@
 ---
-title: "Mettre en forme les liens et les listes en CSS"
+title: "Liens & Listes"
 layout: tuto
 slug: "liens-listes-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.216"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 6
-
 data_html: |
     <!DOCTYPE html>
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Mon article</title>
+        <title>Liens et Listes</title>
         <link rel="stylesheet" href="tuto-6-css.css">
     </head>
     <body>
-        <h1>Mon article</h1>
-
-        <p>Bienvenue sur ma page.</p>
-
-        <p>
-            Consultez
-            <a href="#">notre documentation</a>
-            pour en savoir plus.
-        </p>
-
-        <h2>Les étapes</h2>
-
-        <ul>
-            <li>Préparer le contenu</li>
-            <li>Créer la page</li>
-            <li>Ajouter les styles</li>
+        <ul class="liste-liens">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
     </body>
     </html>
-
-data_css: |
-    a {
-        color: blue;
-    }
-
-    ul {
-        margin: 20px;
-        padding-left: 30px;
-    }
-
+data_css: ""
 data_js: ""
-
 data_php: ""
 ---
 
@@ -64,211 +40,131 @@ window.pageData = {
 
 ## 1. Objectif
 
-Mettre en forme les liens et les listes avec CSS.
+Mettre en forme les liens et les listes avec CSS en utilisant les espaces extérieurs (`margin`) et intérieurs (`padding`).
+
+À la fin du tutoriel, vous saurez modifier l'apparence des listes et espacer les éléments de liste et les liens.
 
 ## 2. Prérequis
 
 * Savoir écrire une règle CSS.
-* Savoir utiliser un sélecteur de balise.
-* Savoir utiliser `color`.
-* Savoir utiliser `margin`.
-* Connaître la structure d’une page HTML.
+* Savoir utiliser les sélecteurs descendants (`.parent enfant`).
+* Savoir définir une couleur (`color`).
 
 ## 3. Données de départ
 
 ### HTML
 
-Utilisez le code HTML suivant :
+Le fichier de départ `tuto-6-css.html` contient une liste de liens avec la classe `liste-liens` :
 
-```html id="n4a8q6"
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon article</title>
+    <title>Liens et Listes</title>
     <link rel="stylesheet" href="tuto-6-css.css">
 </head>
 <body>
-
-    <h1>Mon article</h1>
-
-    <p>Bienvenue sur ma page.</p>
-
-    <p>
-        Consultez
-        <a href="#">notre documentation</a>
-        pour en savoir plus.
-    </p>
-
-    <h2>Les étapes</h2>
-
-    <ul>
-        <li>Préparer le contenu</li>
-        <li>Créer la page</li>
-        <li>Ajouter les styles</li>
+    <ul class="liste-liens">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Articles</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
-
 </body>
 </html>
 ```
 
-### CSS
-
-Utilisez le code CSS suivant :
-
-```css id="o5a1c3"
-a {
-    color: blue;
-}
-
-ul {
-    margin: 20px;
-    padding-left: 30px;
-}
-```
+Ces données constituent la base de travail du tutoriel.
 
 ## Partie 1 — Théorie
 
-### 1.1. Le sélecteur `a`
+### 1.1. Les sélecteurs pour les liens et les listes
 
-Le sélecteur `a` cible les liens HTML.
+Dans une page Web, on rencontre souvent plusieurs listes ou plusieurs liens avec des rôles différents. C'est pourquoi on utilise les sélecteurs descendants pour cibler très précisément une liste particulière.
+
+Exemples :
+
+```css
+.liste-liens { ... }    /* Cible la liste entière <ul> */
+.liste-liens li { ... } /* Cible les éléments <li> dans cette liste */
+.liste-liens a { ... }  /* Cible les liens <a> dans cette liste */
+```
+
+### 1.2. La propriété `margin` (et `margin-bottom`)
+
+`margin` permet de créer un espace vide **à l'extérieur** d'un élément (pour repousser les éléments voisins). On peut cibler un côté spécifique, par exemple le bas avec `margin-bottom`.
 
 Exemple :
 
-```css id="z6nq7k"
-a {
-    color: blue;
+```css
+.liste-liens li {
+    margin-bottom: 10px;
 }
 ```
 
-Il cible les éléments :
+Cela crée un espace de 10 pixels sous chaque élément de la liste.
 
-```html id="3b9v7s"
-<a href="#">notre documentation</a>
-```
+### 1.3. La propriété `padding-left`
 
-### 1.2. Le sélecteur `ul`
-
-Le sélecteur `ul` cible une liste non ordonnée.
-
-```css id="f0smr4"
-ul {
-    margin: 20px;
-}
-```
-
-### 1.3. Le sélecteur `li`
-
-Le sélecteur `li` cible les éléments d’une liste.
+`padding-left` permet de créer un espace **à l'intérieur** d'un élément, sur son côté gauche. Dans le cas d'une liste `<ul>`, cela permet d'éloigner les puces ou le texte de la bordure gauche.
 
 Exemple :
 
-```css id="4v49cq"
-li {
-    color: #333333;
+```css
+.liste-liens {
+    padding-left: 20px;
 }
 ```
 
-### 1.4. La propriété `margin`
+### 1.4. À retenir
 
-`margin` permet de créer un espace autour d’un élément.
-
-Exemple :
-
-```css id="q8r5j2"
-ul {
-    margin: 20px;
-}
-```
-
-### 1.5. La propriété `padding-left`
-
-`padding-left` permet de créer un espace à gauche à l’intérieur d’un élément.
-
-Exemple :
-
-```css id="x9w7ke"
-ul {
-    padding-left: 30px;
-}
-```
-
-### 1.6. À retenir
-
-* `a` cible les liens.
-* `ul` cible une liste.
-* `li` cible un élément de liste.
-* `margin` crée un espace autour d’un élément.
-* `padding-left` crée un espace à gauche à l’intérieur d’un élément.
+* Les sélecteurs descendants permettent de cibler précisément des `li` ou `a` situés dans une classe parent.
+* `margin-bottom` crée un espace extérieur vers le bas.
+* `padding-left` crée un espace intérieur à gauche de l’élément.
 
 ## Partie 2 — Pratique
 
-### 2.1. Ouvrir le fichier CSS
+### 2.1. Préparer les fichiers
 
-Ouvrez :
+Créez le fichier HTML et ajoutez le code HTML de départ. Créez également le fichier `tuto-6-css.css`.
 
-```text
-tuto-6-css.css
-```
+### 2.2. Modifier l’espace intérieur de la liste
 
-### 2.2. Mettre en forme le lien
+Dans votre fichier CSS, ciblez la classe de la liste et réduisez son retrait gauche par défaut en utilisant `padding-left` :
 
-Ajoutez :
-
-```css id="5h3z1b"
-a {
-    color: #0066cc;
+```css
+.liste-liens {
+    padding-left: 20px;
 }
 ```
 
-**Résultat attendu :**
+**Résultat attendu :** La liste est légèrement moins décalée vers la droite par rapport au comportement par défaut du navigateur.
 
-Le lien apparaît avec la couleur choisie.
+### 2.3. Espacer les éléments de la liste
 
-### 2.3. Ajouter un espace autour de la liste
+Pour aérer le menu, ciblez les balises `<li>` se trouvant à l'intérieur de `.liste-liens` pour leur ajouter une marge inférieure :
 
-Ajoutez :
-
-```css id="h7k2q9"
-ul {
-    margin: 20px;
+```css
+.liste-liens li {
+    margin-bottom: 10px;
 }
 ```
 
-**Résultat attendu :**
+**Résultat attendu :** Un espacement vertical de 10 pixels apparaît entre chaque puce de la liste.
 
-Un espace apparaît autour de la liste.
+### 2.4. Mettre en forme les liens
 
-### 2.4. Modifier l’espace intérieur
+Enfin, ciblez les balises `<a>` situées dans `.liste-liens` pour modifier leur couleur :
 
-Ajoutez :
-
-```css id="b9x4st"
-ul {
-    margin: 20px;
-    padding-left: 30px;
+```css
+.liste-liens a {
+    color: #2673e8;
 }
 ```
 
-**Résultat attendu :**
+**Résultat attendu :** Les liens prennent une couleur bleue spécifique.
 
-Le contenu de la liste est décalé vers la droite.
-
-### 2.5. Mettre en forme les éléments de la liste
-
-Ajoutez :
-
-```css id="p6d8wm"
-li {
-    color: #333333;
-}
-```
-
-**Résultat attendu :**
-
-Les éléments de la liste utilisent la couleur définie.
-
-### 2.6. Tester
+### 2.5. Tester le résultat
 
 Ouvrez :
 
@@ -280,40 +176,24 @@ Rechargez la page.
 
 **Résultat attendu :**
 
-La page contient :
-
-* un lien mis en forme ;
-* une liste avec une marge ;
-* un espace intérieur à gauche ;
-* des éléments de liste mis en forme.
+La page contient une liste avec un retrait ajusté, dont chaque ligne est espacée, et contenant des liens de couleur bleue.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/css/tuto-6-css.html' | relative_url}}"
-    height="700"
+    src="{{'/code/css/tuto-6/tuto-6-css.html' | relative_url}}"
+    height="300"
     title="Résultat final du Tuto 6">
 </iframe>
 
-## Bilan
+## 3. Bilan
 
-**Vous avez réalisé :**
+**Vous avez réalisé :** la mise en forme d'un menu de liens sous forme de liste.
 
-La mise en forme de liens et de listes avec CSS.
+**Vous savez maintenant :** utiliser des sélecteurs descendants pour cibler précisément des éléments imbriqués (`ul`, `li`, `a`), et manipuler les espaces extérieurs et intérieurs partiels (`margin-bottom`, `padding-left`).
 
-**Vous savez maintenant :**
+## 4. Glossaire
 
-* cibler un lien avec `a` ;
-* cibler une liste avec `ul` ;
-* cibler un élément de liste avec `li` ;
-* utiliser `margin` ;
-* utiliser `padding-left`.
-
-Ces notions préparent la mise en forme du contenu de la page dans **I3**.
-
-## Glossaire
-
-* **Lien** : élément HTML qui permet d’accéder à une autre page ou ressource.
-* **Liste non ordonnée** : liste créée avec `<ul>`.
-* **Élément de liste** : élément créé avec `<li>`.
+* **Lien (`<a>`)** : élément HTML qui permet d’accéder à une autre ressource.
+* **Liste non ordonnée (`<ul>`)** : liste HTML à puces contenant des éléments `<li>`.
 * **`margin`** : espace extérieur autour d’un élément.
-* **`padding-left`** : espace intérieur situé à gauche d’un élément.
+* **`padding`** : espace intérieur d'un élément, entre son contenu et son bord.

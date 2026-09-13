@@ -1,129 +1,33 @@
 ---
-title: "Utiliser display pour ajuster l’affichage"
+title: "Affichage CSS"
 layout: tuto
-slug: "display-ajuster-affichage-css"
+slug: "affichage-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.219"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 9
-
 data_html: |
     <!DOCTYPE html>
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Mon article</title>
+        <title>Affichage CSS avancé</title>
         <link rel="stylesheet" href="tuto-9-css.css">
     </head>
     <body>
-        <header class="article-header">
-            <span class="category">Développement web</span>
-
-            <h1>Créer une page web</h1>
-
-            <p class="author">Par Madani Ali</p>
-
-            <p class="description">
-                Découvrez les bases pour créer une page web.
-            </p>
-        </header>
-
-        <main class="content">
-            <img
-                class="cover"
-                src="https://picsum.photos/800/400"
-                alt="Image de couverture">
-
-            <h2>Présentation</h2>
-
-            <p>
-                Voici le contenu de mon article.
-            </p>
-
-            <p>
-                Cette page présente une réalisation simple avec HTML et CSS.
-            </p>
-
-            <h2>Les étapes</h2>
-
-            <ul>
-                <li>Préparer le contenu</li>
-                <li>Créer la page</li>
-                <li>Ajouter les styles</li>
-            </ul>
-
-            <p>
-                <a href="#">Lire la documentation</a>
-            </p>
-
-            <blockquote>
-                Apprendre CSS demande de pratiquer régulièrement.
-            </blockquote>
-
-            <p class="message">
-                Ce texte peut être masqué avec CSS.
-            </p>
-        </main>
+        <p>Ce texte contient un élément <span class="cache">caché</span> qui ne s'affiche pas.</p>
+        
+        <cite class="citation-bloc">
+            Cette balise inline est forcée à s'afficher comme un bloc pour sauter à la ligne.
+        </cite>
     </body>
     </html>
-
-data_css: |
-    .article-header {
-        background: #eeeeee;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .category {
-        display: inline-block;
-        color: #ffffff;
-        background: #333333;
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    .content {
-        width: 800px;
-        max-width: 100%;
-        margin: 20px auto;
-        padding: 20px;
-        border: 1px solid #cccccc;
-        border-radius: 8px;
-    }
-
-    .cover {
-        display: block;
-        width: 400px;
-        height: 200px;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
-    a {
-        display: inline;
-        color: #0066cc;
-    }
-
-    ul {
-        margin: 20px 0;
-        padding-left: 30px;
-    }
-
-    li {
-        display: list-item;
-    }
-
-    .message {
-        display: none;
-    }
-
+data_css: ""
 data_js: ""
-
 data_php: ""
 ---
-
 
 <script>
 window.pageData = {
@@ -136,383 +40,131 @@ window.pageData = {
 
 ## 1. Objectif
 
-Utiliser `display` pour ajuster l’affichage des éléments HTML.
+Utiliser les valeurs avancées de la propriété `display` pour masquer des éléments ou forcer un comportement d'affichage différent de celui par défaut.
+
+À la fin du tutoriel, vous saurez masquer un élément avec `display: none` et forcer un élément en ligne à se comporter comme un bloc.
 
 ## 2. Prérequis
 
-* Savoir utiliser un sélecteur CSS.
-* Savoir utiliser `margin`.
-* Savoir utiliser `padding`.
-* Savoir utiliser `border`.
-* Savoir utiliser `border-radius`.
-* Savoir utiliser `width`.
-* Savoir utiliser `height`.
-* Savoir utiliser `max-width`.
-* Savoir utiliser `background`.
+* Savoir écrire une règle CSS.
+* Savoir utiliser un sélecteur de classe.
+* Comprendre la différence par défaut entre un élément `block` et `inline`.
 
 ## 3. Données de départ
 
 ### HTML
 
-Utilisez le code HTML suivant :
+Le fichier `tuto-9-css.html` contient un texte avec un élément `<span>` et une citation `<cite>`.
 
-```html id="b7q2hd"
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon article</title>
+    <title>Affichage CSS avancé</title>
     <link rel="stylesheet" href="tuto-9-css.css">
 </head>
 <body>
-
-    <header class="article-header">
-        <span class="category">Développement web</span>
-
-        <h1>Créer une page web</h1>
-
-        <p class="author">Par Madani Ali</p>
-
-        <p class="description">
-            Découvrez les bases pour créer une page web.
-        </p>
-    </header>
-
-    <main class="content">
-
-        <img
-            class="cover"
-            src="https://picsum.photos/800/400"
-            alt="Image de couverture">
-
-        <h2>Présentation</h2>
-
-        <p>
-            Voici le contenu de mon article.
-        </p>
-
-        <p>
-            Cette page présente une réalisation simple avec HTML et CSS.
-        </p>
-
-        <h2>Les étapes</h2>
-
-        <ul>
-            <li>Préparer le contenu</li>
-            <li>Créer la page</li>
-            <li>Ajouter les styles</li>
-        </ul>
-
-        <p>
-            <a href="#">Lire la documentation</a>
-        </p>
-
-        <blockquote>
-            Apprendre CSS demande de pratiquer régulièrement.
-        </blockquote>
-
-        <p class="message">
-            Ce texte peut être masqué avec CSS.
-        </p>
-
-    </main>
-
+    <p>Ce texte contient un élément <span class="cache">caché</span> qui ne s'affiche pas.</p>
+    
+    <cite class="citation-bloc">
+        Cette balise inline est forcée à s'afficher comme un bloc pour sauter à la ligne.
+    </cite>
 </body>
 </html>
 ```
 
-### CSS
-
-Utilisez le code CSS suivant :
-
-```css id="ms8fh7"
-.article-header {
-    background: #eeeeee;
-    text-align: center;
-    padding: 20px;
-}
-
-.category {
-    display: inline-block;
-    color: #ffffff;
-    background: #333333;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.content {
-    width: 800px;
-    max-width: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-}
-
-.cover {
-    width: 400px;
-    height: 200px;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-a {
-    color: #0066cc;
-}
-
-ul {
-    margin: 20px 0;
-    padding-left: 30px;
-}
-
-li {
-    color: #333333;
-}
-
-.message {
-    display: none;
-}
-```
+Ces balises `<cite>` et `<span>` sont par défaut des éléments de type `inline` : elles restent sur la ligne.
 
 ## Partie 1 — Théorie
 
-### 1.1. `display: block`
+### 1.1. Masquer un élément avec `display: none`
 
-`display: block` affiche un élément comme un bloc.
-
-Exemple :
+La propriété `display` peut prendre la valeur `none`. Cela permet de faire disparaître complètement un élément de la page, comme s'il n'existait pas dans le code HTML.
 
 ```css
-.cover {
-    display: block;
-}
-```
-
-L’élément occupe sa propre ligne.
-
-### 1.2. `display: inline`
-
-`display: inline` affiche un élément sur la même ligne que les autres éléments.
-
-Exemple :
-
-```css
-a {
-    display: inline;
-}
-```
-
-### 1.3. `display: inline-block`
-
-`display: inline-block` permet de conserver l’élément sur la ligne tout en lui donnant des caractéristiques de bloc.
-
-Exemple :
-
-```css
-.category {
-    display: inline-block;
-}
-```
-
-### 1.4. `display: none`
-
-`display: none` masque complètement l’élément.
-
-Exemple :
-
-```css
-.message {
+.cache {
     display: none;
 }
 ```
 
-L’élément n’est plus visible dans la page.
+Contrairement à rendre un élément transparent ou invisible, `display: none` libère également l'espace que l'élément occupait.
 
-### 1.5. À retenir
+### 1.2. Modifier le comportement par défaut
 
-* `display: block` affiche un élément comme un bloc.
-* `display: inline` affiche un élément sur la ligne.
-* `display: inline-block` permet un affichage en ligne avec des caractéristiques de bloc.
-* `display: none` masque un élément.
+Certains éléments HTML ont un comportement par défaut. Par exemple, un `<span>`, un `<a>` ou un `<cite>` sont `inline`. On ne peut donc pas leur donner de marge verticale ou de largeur facilement.
+Il est très courant en CSS de forcer ces éléments à devenir des blocs avec `display: block` pour pouvoir les manipuler comme des `<div>`.
+
+```css
+.citation-bloc {
+    display: block;
+}
+```
+
+Une fois devenu un `block`, l'élément va automatiquement passer à la ligne et occuper toute la largeur disponible. On pourra alors lui donner des dimensions et des marges.
+
+### 1.3. À retenir
+
+* `display: none` masque un élément et retire son espace de la page.
+* `display: block` force un élément (même s'il est `inline` par défaut) à se comporter comme un bloc et à sauter à la ligne.
 
 ## Partie 2 — Pratique
 
-### 2.1. Ouvrir le fichier CSS
+### 2.1. Préparer les fichiers
 
-Ouvrez :
+Créez le fichier HTML avec le code de départ fourni, et créez le fichier `tuto-9-css.css`.
 
-```text
-tuto-9-css.css
-```
+Si vous regardez le rendu actuel, la citation s'affiche juste en dessous ou à la suite (selon la largeur de l'écran) et le mot "caché" est visible.
 
-### 2.2. Afficher l’image comme un bloc
+### 2.2. Masquer un élément
 
-Ajoutez :
+Dans `tuto-9-css.css`, ajoutez une règle pour masquer totalement le texte "caché" contenu dans la balise `<span>` de la classe `.cache`.
 
 ```css
-.cover {
-    display: block;
-    width: 400px;
-    height: 200px;
-    max-width: 100%;
-    margin: 0 auto;
-}
-```
-
-**Résultat attendu :**
-
-L’image est affichée comme un bloc.
-
-### 2.3. Mettre le lien en ligne
-
-Ajoutez :
-
-```css
-a {
-    display: inline;
-    color: #0066cc;
-}
-```
-
-**Résultat attendu :**
-
-Le lien reste dans la ligne du texte.
-
-### 2.4. Utiliser `inline-block` pour la catégorie
-
-Conservez :
-
-```css
-.category {
-    display: inline-block;
-    color: #ffffff;
-    background: #333333;
-    font-size: 14px;
-    font-weight: bold;
-}
-```
-
-**Résultat attendu :**
-
-La catégorie reste sur sa ligne tout en utilisant un affichage `inline-block`.
-
-### 2.5. Masquer un élément
-
-Ajoutez :
-
-```css
-.message {
+.cache {
     display: none;
 }
 ```
 
-**Résultat attendu :**
+**Résultat attendu :** Le mot "caché" disparaît de la phrase, et l'espace qu'il occupait se referme.
 
-Le message n’apparaît plus dans la page.
+### 2.3. Transformer un élément en bloc
 
-### 2.6. Tester
+Ciblez la classe `.citation-bloc`. Par défaut, la balise `<cite>` est un élément en ligne. Nous voulons la transformer en bloc pour qu'elle passe clairement à la ligne et puisse recevoir une marge en haut.
 
-Ouvrez :
-
-```text
-tuto-9-css.html
+```css
+.citation-bloc {
+    display: block;
+    margin-top: 20px;
+    color: gray;
+}
 ```
 
-Rechargez la page.
+**Résultat attendu :** La citation se comporte maintenant comme un paragraphe ou une `div`. Elle saute à la ligne et la marge supérieure de `20px` est bien prise en compte.
+
+### 2.4. Tester le résultat
+
+Enregistrez vos fichiers et ouvrez `tuto-9-css.html` dans le navigateur.
 
 **Résultat attendu :**
 
-La page utilise différents modes d’affichage selon les éléments.
+La phrase ne montre plus le mot "caché", et la citation se positionne clairement en dessous comme un bloc de texte gris.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/css/tuto-9-css.html' | relative_url}}"
-    height="700"
+    src="{{'/code/css/tuto-9/tuto-9-css.html' | relative_url}}"
+    height="250"
     title="Résultat final du Tuto 9">
 </iframe>
 
-## Partie 3 — Développement progressif
+## 3. Bilan
 
-### 3.1. Finaliser l’itération I3
+**Vous avez réalisé :** une modification du comportement d'affichage par défaut d'éléments HTML.
 
-**Série :** Page détail
+**Vous savez maintenant :** utiliser `display: none` pour masquer entièrement un élément, et utiliser `display: block` pour forcer un élément en ligne à se comporter comme un bloc de contenu.
 
-**Position :** I3 sur I3
+## 4. Glossaire
 
-**Fin :** Tuto 9
-
-**Incrément :** finitions de l’affichage
-
-L’itération I3 a commencé au Tuto 8.
-
-Conservez le résultat obtenu au Tuto 8.
-
-Utilisez les notions étudiées dans ce tutoriel pour terminer la mise en forme de la page de détail.
-
-Ajoutez les finitions nécessaires avec :
-
-```text
-display: block
-display: inline
-display: inline-block
-display: none
-```
-
-Ajustez l’affichage des :
-
-* images ;
-* liens ;
-* catégories ;
-* listes ;
-* éléments qui doivent être masqués.
-
-### 3.2. Résultat attendu
-
-La page de détail est maintenant terminée.
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/autoformations-web/code/blog/page-detail/page-detail-html-v1.tuto-9-css.html' | relative_url}}"
-    height="700"
-    title="Résultat final de l’itération I3">
-</iframe>
-
-### 3.3. Livrable
-
-La version finale de la page de détail.
-
-### 3.4. Critère de réussite
-
-La page :
-
-* conserve le résultat de I2 ;
-* conserve les améliorations de I3 apportées au Tuto 8 ;
-* utilise les modes d’affichage étudiés ;
-* présente correctement les images ;
-* présente correctement les liens et les listes ;
-* masque les éléments prévus ;
-* ne demande aucune notion CSS non étudiée.
-
-## Bilan
-
-**Vous avez réalisé :**
-
-La dernière étape de mise en forme de la page de détail.
-
-**Vous savez maintenant :**
-
-* utiliser `display: block` ;
-* utiliser `display: inline` ;
-* utiliser `display: inline-block` ;
-* utiliser `display: none` ;
-* ajuster l’affichage des éléments HTML.
-
-**La page de détail est maintenant finalisée.**
-
-## Glossaire
-
-* **`display`** : propriété qui définit le mode d’affichage d’un élément.
-* **`block`** : affichage d’un élément comme un bloc.
-* **`inline`** : affichage d’un élément sur la même ligne.
-* **`inline-block`** : affichage en ligne avec des caractéristiques de bloc.
-* **`none`** : masque l’élément.
+* **`display: none`** : valeur retirant complètement l'élément de l'affichage et du flux de la page.
+* **Élément `inline` par défaut** : balise HTML (comme `<span>` ou `<cite>`) conçue pour s'insérer dans le texte sans créer de saut de ligne.
+* **Forçage en bloc** : action d'appliquer `display: block` à un élément `inline` pour pouvoir le dimensionner et l'espacer plus librement.

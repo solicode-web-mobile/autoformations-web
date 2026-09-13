@@ -1,10 +1,10 @@
 ---
-title: "Utiliser les sélecteurs CSS"
+title: "Sélecteurs"
 layout: tuto
-slug: "utiliser-selecteurs-css"
+slug: "selecteurs"
 permalink: /tutos/:slug/
 tuto_id: "T.122.213"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 3
@@ -13,25 +13,28 @@ data_html: |
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Mon article</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sélecteurs Multiples et Descendants</title>
         <link rel="stylesheet" href="tuto-3-css.css">
     </head>
     <body>
-        <h1 class="title">Mon article</h1>
-
-        <p class="intro">Bienvenue sur ma page.</p>
-
-        <p class="text">Voici le contenu de mon article.</p>
-
-        <p class="text">Cet article présente les sélecteurs CSS.</p>
+    
+        <h1 class="title">Les Sélecteurs</h1>
+    
+        <div class="article-body">
+            <h2>Titre de section</h2>
+            <p>Un paragraphe dans le corps de l'article.</p>
+            <h3>Sous-titre</h3>
+            <p>Un autre paragraphe.</p>
+        </div>
+    
+        <h2>Titre hors article</h2>
+        <p>Ce paragraphe n'est pas dans l'article.</p>
+    
     </body>
     </html>
-data_css: |
-    p {
-        color: blue;
-    }
+data_css: ""
 data_js: ""
-data_php: ""
 ---
 
 <script>
@@ -45,7 +48,9 @@ window.pageData = {
 
 ## 1. Objectif
 
-Utiliser les sélecteurs CSS pour cibler des éléments HTML.
+Utiliser les différents types de sélecteurs CSS (classe, multiples et descendants) pour cibler précisément des éléments HTML.
+
+À la fin du tutoriel, vous saurez appliquer un style à une classe spécifique, à plusieurs éléments en même temps, et à des éléments situés à l'intérieur d'un conteneur.
 
 ## 2. Prérequis
 
@@ -54,8 +59,6 @@ Utiliser les sélecteurs CSS pour cibler des éléments HTML.
 * Savoir utiliser VS Code.
 
 ## 3. Données de départ
-
-Les données de départ
 
 ### HTML
 
@@ -66,54 +69,35 @@ Le fichier de départ contient :
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon article</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sélecteurs Multiples et Descendants</title>
     <link rel="stylesheet" href="tuto-3-css.css">
 </head>
 <body>
 
-    <h1 class="title">Mon article</h1>
+    <h1 class="title">Les Sélecteurs</h1>
 
-    <p class="intro">Bienvenue sur ma page.</p>
+    <div class="article-body">
+        <h2>Titre de section</h2>
+        <p>Un paragraphe dans le corps de l'article.</p>
+        <h3>Sous-titre</h3>
+        <p>Un autre paragraphe.</p>
+    </div>
 
-    <p class="text">Voici le contenu de mon article.</p>
-
-    <p class="text">Cet article présente les sélecteurs CSS.</p>
+    <h2>Titre hors article</h2>
+    <p>Ce paragraphe n'est pas dans l'article.</p>
 
 </body>
 </html>
 ```
 
-### CSS
-
-Le CSS de départ contient :
-
-```css
-p {
-    color: blue;
-}
-```
-
-Ces données constituent la base de travail du tutoriel.
+Ce code constitue la base de travail du tutoriel.
 
 ## Partie 1 — Théorie
 
-### 1.1. Le sélecteur de balise
+### 1.1. Le sélecteur de classe simple
 
-Un sélecteur de balise utilise le nom d’un élément HTML.
-
-Exemple :
-
-```css
-p {
-    color: blue;
-}
-```
-
-Le sélecteur `p` cible tous les éléments `<p>`.
-
-### 1.2. Le sélecteur de classe
-
-Un sélecteur de classe commence par `.`.
+Un sélecteur de classe commence par `.` (un point).
 
 Exemple :
 
@@ -123,172 +107,119 @@ Exemple :
 }
 ```
 
-Ce sélecteur cible les éléments qui possèdent :
+Ce sélecteur cible l'élément (ou les éléments) qui possède(nt) l'attribut `class="title"`.
 
-```html
-class="title"
-```
+### 1.2. Les sélecteurs groupés (multiples)
 
-Exemple :
-
-```html
-<h1 class="title">Mon article</h1>
-```
-
-Le sélecteur `.title` cible cet élément.
-
-### 1.3. Utiliser plusieurs sélecteurs
-
-Plusieurs sélecteurs peuvent être regroupés avec une virgule.
+Plusieurs sélecteurs peuvent être regroupés en les séparant par une virgule. Cela permet d'appliquer la même règle à plusieurs éléments sans répéter le code.
 
 Exemple :
 
 ```css
-h1,
-p {
-    color: blue;
+h2, h3 {
+    color: darkblue;
+    font-family: Georgia, serif;
 }
 ```
 
-La même règle est appliquée aux `<h1>` et aux `<p>`.
+La même règle (couleur et police) est appliquée à tous les `<h2>` et à tous les `<h3>`.
+
+### 1.3. Le sélecteur descendant
+
+Le sélecteur descendant cible un élément contenu à l'intérieur d'un autre élément parent. On sépare les deux sélecteurs par un espace.
+
+Exemple :
+
+```css
+.article-body p {
+    color: darkgreen;
+}
+```
+
+Ce sélecteur cible uniquement les balises `<p>` qui se trouvent à l'intérieur d'un élément ayant la classe `article-body`. Les autres balises `<p>` de la page ne sont pas modifiées.
 
 ### 1.4. À retenir
 
-* `p` cible les balises `<p>`.
 * `.title` cible la classe `title`.
-* Une classe commence par `.` en CSS.
-* Plusieurs sélecteurs peuvent être séparés par une virgule.
+* `h2, h3` cible les éléments `<h2>` et `<h3>`.
+* `.parent .enfant` cible les éléments `.enfant` situés dans `.parent`.
 
 ## Partie 2 — Pratique
 
 ### 2.1. Ouvrir le fichier HTML
 
-Ouvrez :
+#### Étape 1 — Préparer la page HTML
 
-```text
-tuto-3-css.html
-```
+Créez le fichier `tuto-3-css.html` et copiez le code HTML de départ. Ce fichier fait déjà le lien vers `tuto-3-css.css`.
 
-Utilisez les données de départ du tutoriel.
+### 2.2. Utiliser un sélecteur de classe
 
-### 2.2. Tester le sélecteur de balise
+#### Étape 2 — Cibler le titre principal
 
-Le CSS de départ contient :
+Créez le fichier `tuto-3-css.css` et ajoutez une règle pour cibler le titre qui possède la classe `title` :
 
 ```css
-p {
-    color: blue;
-}
-```
-
-Tous les paragraphes sont donc ciblés.
-
-Rechargez la page.
-
-**Résultat attendu :**
-
-Les trois paragraphes sont bleus.
-
-### 2.3. Cibler une classe
-
-Ajoutez une nouvelle règle dans :
-
-```text
-tuto-3-css.css
-```
-
-Écrivez :
-
-```css
+/* Sélecteur de classe simple */
 .title {
     color: red;
 }
 ```
 
-Rechargez la page.
+### 2.3. Utiliser les sélecteurs groupés
 
-**Résultat attendu :**
+#### Étape 3 — Mettre en forme les sous-titres
 
-Le titre devient rouge.
-
-Les paragraphes restent bleus.
-
-### 2.4. Cibler une autre classe
-
-Ajoutez :
+Ajoutez une règle pour cibler tous les titres de niveau 2 et 3 en même temps :
 
 ```css
-.intro {
-    color: green;
+/* Sélecteurs groupés (multiple) */
+h2, h3 {
+    color: darkblue;
+    font-family: Georgia, serif;
 }
 ```
 
-Rechargez la page.
+### 2.4. Utiliser un sélecteur descendant
 
-**Résultat attendu :**
+#### Étape 4 — Cibler les paragraphes du corps de l'article
 
-Le premier paragraphe devient vert.
-
-Les deux autres paragraphes restent bleus.
-
-### 2.5. Utiliser plusieurs sélecteurs
-
-Ajoutez une règle pour cibler le titre et les paragraphes :
+Ajoutez une règle pour cibler uniquement les paragraphes situés dans la `div` qui a la classe `article-body` :
 
 ```css
-h1,
-p {
-    font-family: Arial;
+/* Sélecteur descendant (.parent .enfant) */
+.article-body p {
+    color: darkgreen;
 }
 ```
 
-La même propriété est appliquée aux deux types d’éléments.
+### 2.5. Tester
 
-### 2.6. Tester
+#### Étape 5 — Vérifier le résultat
 
-Ouvrez :
-
-```text
-tuto-3-css.html
-```
-
-Rechargez la page.
+Enregistrez `tuto-3-css.html` et `tuto-3-css.css`, puis ouvrez la page dans votre navigateur.
 
 **Résultat attendu :**
 
-Le résultat final doit montrer :
-
-* un titre rouge ;
-* un premier paragraphe vert ;
-* les autres paragraphes bleus ;
-* une même police utilisée pour le titre et les paragraphes.
+* Le titre `<h1>` est rouge.
+* Les titres `<h2>` et `<h3>` sont bleu foncé avec une nouvelle police.
+* Les paragraphes à l'intérieur de `.article-body` sont vert foncé.
+* Le paragraphe en dehors de `.article-body` (à la fin de la page) reste noir (couleur par défaut).
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/css/tuto-3-css.html' | relative_url}}"
-    height="700"
+    src="{{'/code/css/tuto-3/tuto-3-css.html' | relative_url}}"
+    height="350"
     title="Résultat final du Tuto 3">
 </iframe>
 
-## Bilan
+## 3. Bilan
 
-**Vous avez réalisé :**
+**Vous avez réalisé :** une mise en forme ciblant des éléments précis en utilisant différentes méthodes de sélection CSS.
 
-Une mise en forme avec des sélecteurs de balise, de classe et plusieurs sélecteurs.
+**Vous savez maintenant :** utiliser un sélecteur de classe, regrouper des sélecteurs (sélecteurs multiples), et cibler un élément spécifique à l'intérieur d'un parent (sélecteur descendant).
 
-**Vous savez maintenant :**
+## 4. Glossaire
 
-* cibler une balise HTML ;
-* cibler une classe ;
-* écrire un sélecteur de classe ;
-* utiliser plusieurs sélecteurs dans une même règle CSS.
-
-Ces notions seront utilisées dans les prochaines étapes pour mettre en forme la page de détail.
-
-## Glossaire
-
-* **Sélecteur** : élément CSS qui indique ce que l’on veut cibler.
-* **Sélecteur de balise** : sélecteur qui utilise le nom d’une balise HTML.
-* **Classe** : nom ajouté à un élément HTML pour pouvoir le cibler.
-* **Sélecteur de classe** : sélecteur CSS qui commence par `.`.
-* **Sélecteurs multiples** : plusieurs sélecteurs regroupés dans une même règle CSS.
+* **Sélecteur de classe** : sélecteur CSS qui commence par `.` (ex: `.title`).
+* **Sélecteurs multiples** : plusieurs sélecteurs séparés par une virgule pour appliquer une règle commune.
+* **Sélecteur descendant** : sélecteur composé de plusieurs éléments séparés par un espace, ciblant un enfant spécifique dans un élément parent.

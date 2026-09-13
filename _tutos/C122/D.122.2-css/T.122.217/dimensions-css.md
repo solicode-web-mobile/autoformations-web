@@ -1,50 +1,29 @@
 ---
-title: "Utiliser les dimensions CSS"
+title: "Dimensions"
 layout: tuto
-slug: "utiliser-dimensions-css"
+slug: "dimensions-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.217"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 7
-
 data_html: |
     <!DOCTYPE html>
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Mon article</title>
+        <title>Dimensions et Images</title>
         <link rel="stylesheet" href="tuto-7-css.css">
     </head>
     <body>
-        <h1 class="title">Mon article</h1>
-
-        <div class="content">
-            <img
-                class="cover"
-                src="https://picsum.photos/800/400"
-                alt="Image de couverture">
-
-            <p>
-                Voici le contenu de mon article.
-            </p>
-
-            <p>
-                Cette page permet de tester les dimensions CSS.
-            </p>
+        <div class="conteneur">
+            <img src="https://via.placeholder.com/1200x600" alt="Exemple d'image" class="image-couverture">
         </div>
     </body>
     </html>
-
-data_css: |
-    .cover {
-        width: 400px;
-        height: 200px;
-    }
-
+data_css: ""
 data_js: ""
-
 data_php: ""
 ---
 
@@ -59,278 +38,151 @@ window.pageData = {
 
 ## 1. Objectif
 
-Utiliser `width`, `height` et `max-width` pour contrôler les dimensions des éléments.
+Utiliser `width`, `height` et `max-width` pour contrôler les dimensions des éléments, et adapter les images avec `object-fit`.
+
+À la fin du tutoriel, vous saurez limiter la largeur d'un conteneur et formater correctement une image de couverture sans la déformer.
 
 ## 2. Prérequis
 
 * Savoir écrire une règle CSS.
 * Savoir utiliser un sélecteur de classe.
-* Savoir utiliser `color`.
-* Savoir utiliser `background`.
-* Savoir utiliser `display`.
-* Savoir utiliser `margin`.
-* Savoir utiliser `padding`.
+* Connaître la propriété `display`.
 
 ## 3. Données de départ
 
 ### HTML
 
-Utilisez le code HTML suivant :
+Le fichier `tuto-7-css.html` contient une `div` qui englobe une grande image de couverture :
 
-```html id="1s7gkr"
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon article</title>
+    <title>Dimensions et Images</title>
     <link rel="stylesheet" href="tuto-7-css.css">
 </head>
 <body>
-
-    <h1 class="title">Mon article</h1>
-
-    <div class="content">
-
-        <img
-            class="cover"
-            src="https://picsum.photos/800/400"
-            alt="Image de couverture">
-
-        <p>
-            Voici le contenu de mon article.
-        </p>
-
-        <p>
-            Cette page permet de tester les dimensions CSS.
-        </p>
-
+    <div class="conteneur">
+        <!-- Utilisation d'une image générique pour l'exercice de dimensionnement -->
+        <img src="https://via.placeholder.com/1200x600" alt="Exemple d'image" class="image-couverture">
     </div>
-
 </body>
 </html>
 ```
 
-### CSS
-
-Utilisez le code CSS suivant :
-
-```css id="e7mw1f"
-.cover {
-    width: 400px;
-    height: 200px;
-}
-```
+Ces données constituent la base de travail du tutoriel.
 
 ## Partie 1 — Théorie
 
-### 1.1. La propriété `width`
+### 1.1. La largeur maximale : `max-width`
 
-`width` permet de définir la largeur d’un élément.
+La propriété `max-width` empêche un élément de dépasser une certaine largeur. Si l'écran est plus petit, l'élément s'adaptera, mais il ne dépassera jamais la valeur définie.
 
-```css id="g6x2us"
-.cover {
-    width: 400px;
+```css
+.conteneur {
+    max-width: 800px;
 }
 ```
 
-### 1.2. La propriété `height`
+### 1.2. La largeur : `width`
 
-`height` permet de définir la hauteur d’un élément.
+La propriété `width` permet de définir la largeur d’un élément. Utiliser un pourcentage comme `100%` permet à l'élément d'occuper tout l'espace de son parent.
 
-```css id="j9u4mk"
-.cover {
-    height: 200px;
+```css
+.image-couverture {
+    width: 100%;
 }
 ```
 
-### 1.3. La propriété `max-width`
+### 1.3. La hauteur : `height`
 
-`max-width` définit une largeur maximale.
+La propriété `height` permet de définir une hauteur fixe.
 
-```css id="8h6t3v"
-.cover {
-    max-width: 100%;
+```css
+.image-couverture {
+    height: 300px;
 }
 ```
 
-L’image ne dépasse pas la largeur disponible.
+### 1.4. L'ajustement de l'image : `object-fit`
 
-### 1.4. Combiner les dimensions
+Lorsqu'on force une image à avoir une largeur de `100%` et une hauteur fixe de `300px`, elle risque de se déformer. La propriété `object-fit: cover;` permet de recadrer l'image proprement pour qu'elle remplisse l'espace sans être étirée.
 
-On peut utiliser plusieurs propriétés dans une même règle.
-
-```css id="1k4z8c"
-.cover {
-    width: 400px;
-    height: 200px;
-    max-width: 100%;
+```css
+.image-couverture {
+    object-fit: cover;
 }
 ```
 
 ### 1.5. À retenir
 
-* `width` définit la largeur.
-* `height` définit la hauteur.
-* `max-width` définit la largeur maximale.
-* Plusieurs propriétés peuvent être utilisées dans une même règle.
+* `max-width` définit une largeur limite.
+* `width` définit la largeur (ex: `100%` occupe tout l'espace disponible).
+* `height` définit la hauteur fixe.
+* `object-fit: cover;` empêche une image de se déformer lorsqu'on force ses dimensions.
 
 ## Partie 2 — Pratique
 
-### 2.1. Ouvrir le fichier CSS
+### 2.1. Préparer les fichiers
 
-Ouvrez :
+Créez le fichier HTML avec le code de départ fourni. Créez également `tuto-7-css.css`.
 
-```text id="r6y2pm"
-tuto-7-css.css
-```
+### 2.2. Limiter la largeur du conteneur
 
-### 2.2. Définir la largeur de l’image
+L'image de base fait 1200 pixels de large. Nous voulons que notre contenu ne dépasse jamais `800px`. Ajoutez la règle :
 
-Ajoutez :
-
-```css id="s2c8r5"
-.cover {
-    width: 400px;
+```css
+.conteneur {
+    max-width: 800px;
 }
 ```
 
-**Résultat attendu :**
+**Résultat attendu :** Le bloc contenant l'image est limité en largeur. Cependant, l'image peut encore déborder si elle n'est pas adaptée.
 
-L’image possède une largeur de `400px`.
+### 2.3. Formater l'image de couverture
 
-### 2.3. Définir la hauteur
+Pour transformer l'image en vraie image de couverture, nous devons :
+1. L'afficher sous forme de bloc (`display: block`).
+2. Lui donner la largeur totale du conteneur (`width: 100%`).
+3. Fixer sa hauteur (`height: 300px`).
+4. Empêcher la déformation (`object-fit: cover`).
 
-Ajoutez :
+Ajoutez la règle :
 
-```css id="v5n7ka"
-.cover {
-    width: 400px;
-    height: 200px;
+```css
+.image-couverture {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 ```
 
-**Résultat attendu :**
+### 2.4. Tester le résultat
 
-L’image possède une largeur de `400px` et une hauteur de `200px`.
-
-### 2.4. Limiter la largeur
-
-Ajoutez :
-
-```css id="m3j8qv"
-.cover {
-    width: 400px;
-    height: 200px;
-    max-width: 100%;
-}
-```
+Enregistrez les deux fichiers et ouvrez `tuto-7-css.html` dans le navigateur. Redimensionnez la fenêtre pour observer le comportement du `max-width`.
 
 **Résultat attendu :**
 
-L’image ne dépasse pas la largeur disponible.
-
-### 2.5. Tester
-
-Ouvrez :
-
-```text id="x5q0np"
-tuto-7-css.html
-```
-
-Rechargez la page.
-
-**Résultat attendu :**
-
-L’image possède une largeur et une hauteur définies et ne dépasse pas la largeur disponible.
+L’image fait `300px` de hauteur, ne dépasse pas les `800px` de largeur et est recadrée (et non étirée) proprement.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/css/tuto-7-css.html' | relative_url}}"
-    height="700"
+    src="{{'/code/css/tuto-7/tuto-7-css.html' | relative_url}}"
+    height="400"
     title="Résultat final du Tuto 7">
 </iframe>
 
-## Partie 3 — Développement progressif
+## 3. Bilan
 
-### 3.1. Développer l’itération I2
+**Vous avez réalisé :** la mise en forme des dimensions d'un conteneur et le recadrage propre d'une image de couverture.
 
-**Série :** Page détail
+**Vous savez maintenant :** utiliser `max-width` pour limiter la taille d'une page, définir `width` et `height`, et empêcher la déformation d'une image avec `object-fit: cover`.
 
-**Position :** I2 sur I3
+## 4. Glossaire
 
-**Incrément :** Structure principale et images
-
-L’itération I2 commence à partir du **résultat final de l’itération I1**.
-
-Utilisez les notions étudiées dans ce tutoriel pour ajouter la structure principale et les images à la page de détail.
-
-Conservez l’en-tête réalisé dans I1.
-
-Ajoutez :
-
-* une image de couverture ;
-* une zone de contenu ;
-* des dimensions pour l’image ;
-* une largeur maximale pour l’image.
-
-Les propriétés étudiées sont :
-
-```text
-width
-height
-max-width
-```
-
-Utilisez également les notions déjà disponibles nécessaires à l’intégration.
-
-### 3.2. Résultat attendu
-
-L’itération I2 conserve l’en-tête de I1 et ajoute la structure principale ainsi que les images.
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/autoformations-web/code/blog/page-detail/page-detail-html-v1.tuto-7-css.html' | relative_url}}"
-    height="700"
-    title="Résultat final de l’itération I2">
-</iframe>
-
-### 3.3. Livrable
-
-Une nouvelle version de la page de détail avec :
-
-* l’en-tête de I1 ;
-* une structure principale ;
-* une image de couverture ;
-* des images correctement dimensionnées.
-
-### 3.4. Critère de réussite
-
-L’itération I2 :
-
-* conserve l’en-tête de I1 ;
-* affiche une image de couverture ;
-* contrôle la largeur et la hauteur de l’image ;
-* empêche l’image de dépasser la largeur disponible.
-
-## Bilan
-
-**Vous avez réalisé :**
-
-Une mise en forme utilisant `width`, `height` et `max-width`.
-
-**Vous savez maintenant :**
-
-* définir la largeur d’un élément ;
-* définir sa hauteur ;
-* définir une largeur maximale ;
-* contrôler les dimensions d’une image.
-
-**Vous avez également développé l’itération I2 du projet.**
-
-## Glossaire
-
+* **`max-width`** : propriété qui définit la largeur maximale d'un élément.
 * **`width`** : propriété qui définit la largeur.
 * **`height`** : propriété qui définit la hauteur.
-* **`max-width`** : propriété qui définit la largeur maximale.
-* **Dimension** : taille d’un élément.
-* **Image de couverture** : image principale placée dans une page ou un article.
+* **`object-fit: cover`** : propriété qui remplit un espace défini avec une image tout en conservant ses proportions et en recadrant l'excédent.

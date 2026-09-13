@@ -1,10 +1,10 @@
 ---
-title: "Comprendre la syntaxe CSS"
+title: "Syntaxe CSS"
 layout: tuto
-slug: "comprendre-syntaxe-css"
+slug: "syntaxe-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.211"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 1
@@ -13,12 +13,17 @@ data_html: |
   <html lang="fr">
   <head>
       <meta charset="UTF-8">
-      <title>Mon article</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tuto 1 CSS - Syntaxe CSS</title>
   </head>
   <body>
+  
       <h1>Mon article</h1>
+  
       <p>Bienvenue sur ma page.</p>
+  
       <p>Voici le contenu de mon article.</p>
+  
   </body>
   </html>
 data_css: ""
@@ -41,6 +46,8 @@ data_js: ""
 
 Comprendre la structure d’une règle CSS et écrire une règle CSS simple.
 
+À la fin du tutoriel, vous saurez identifier et écrire un sélecteur, une propriété et une valeur CSS.
+
 ## 2. Prérequis
 
 * Savoir créer un fichier HTML.
@@ -58,18 +65,22 @@ Utilisez le code suivant :
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Tuto 1 CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuto 1 CSS - Syntaxe CSS</title>
 </head>
 <body>
+
     <h1>Mon article</h1>
+
     <p>Bienvenue sur ma page.</p>
+
     <p>Voici le contenu de mon article.</p>
+
 </body>
 </html>
 ```
 
 Ce code est la **base de départ** du tutoriel.
-
 Toutes les règles CSS étudiées dans ce tutoriel sont testées sur cette page.
 
 ## Partie 1 — Théorie
@@ -166,37 +177,31 @@ p {
 
 ### 2.1. Ouvrir la page de test
 
-Ouvrez :
+#### Étape 1 — Créer le fichier HTML
 
-```text
-/autoformations-web/code/css/tuto-1-css.html
-```
-
-Utilisez cette page pour tester les règles CSS.
+Créez le fichier `tuto-1-css.html` et ajoutez-y le code de départ fourni.
 
 ### 2.2. Ajouter une règle CSS
 
-Dans la page HTML, ajoutez une balise `<style>` dans `<head>` :
+#### Étape 2 — Ajouter la balise style
+
+Dans la page HTML, ajoutez une balise `<style>` dans `<head>` contenant la règle CSS :
 
 ```html
-<style>
-    p {
-        color: blue;
-    }
-</style>
+    <style>
+        p {
+            color: blue;
+        }
+    </style>
 ```
 
-La règle CSS cible tous les paragraphes.
+La règle CSS cible tous les paragraphes et les colore en bleu.
 
 ### 2.3. Lire la règle
 
-```css
-p {
-    color: blue;
-}
-```
+#### Étape 3 — Analyser la règle
 
-Identifiez :
+Identifiez les éléments de votre code :
 
 ```text
 p              → sélecteur
@@ -207,34 +212,28 @@ color: blue;   → déclaration
 
 ### 2.4. Tester
 
+#### Étape 4 — Vérifier le rendu
+
+Enregistrez `tuto-1-css.html` et ouvrez-le dans le navigateur.
+
 **Résultat attendu :**
 
 Les paragraphes apparaissent en bleu.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/css/tuto-1-css.html' | relative_url}}"
-    height="700"
+    src="{{'/code/css/tuto-1/tuto-1-css.html' | relative_url}}"
+    height="300"
     title="Résultat final du Tuto 1">
 </iframe>
 
-## Bilan
+## 3. Bilan
 
-**Vous avez réalisé :**
+**Vous avez réalisé :** une première règle CSS appliquée à une page HTML.
 
-Une première règle CSS appliquée à une page HTML.
+**Vous savez maintenant :** lire une règle CSS, identifier un sélecteur, identifier une propriété, identifier une valeur et écrire une déclaration CSS.
 
-**Vous savez maintenant :**
-
-* lire une règle CSS ;
-* identifier un sélecteur ;
-* identifier une propriété ;
-* identifier une valeur ;
-* écrire une déclaration CSS.
-
-Ce tutoriel prépare les tutoriels suivants et ne produit pas encore d’itération du projet.
-
-## Glossaire
+## 4. Glossaire
 
 * **CSS** : langage utilisé pour mettre en forme une page HTML.
 * **Règle CSS** : ensemble formé par un sélecteur et des déclarations.

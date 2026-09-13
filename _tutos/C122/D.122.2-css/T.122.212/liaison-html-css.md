@@ -1,10 +1,10 @@
 ---
-title: "Relier une page HTML à une feuille CSS"
+title: "Liaison HTML–CSS"
 layout: tuto
-slug: "relier-html-css"
+slug: "liaison-html-css"
 permalink: /tutos/:slug/
 tuto_id: "T.122.212"
-type: "developpement-progressif"
+type: "classique"
 version: "normal"
 ua: "UA.122.21"
 nav_order: 2
@@ -13,18 +13,24 @@ data_html: |
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Mon article</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tuto 2 CSS</title>
     </head>
     <body>
-
+    
         <h1>Mon article</h1>
-
+    
         <p>Bienvenue sur ma page.</p>
-
+    
         <p>Voici le contenu de mon article.</p>
-
+    
     </body>
     </html>
+data_css: |
+    p {
+        color: blue;
+    }
+data_js: ""
 ---
 
 <script>
@@ -36,9 +42,12 @@ window.pageData = {
 };
 </script>
 
+
 ## 1. Objectif
 
 Comprendre comment relier une page HTML à une feuille CSS externe.
+
+À la fin du tutoriel, vous saurez créer un fichier CSS et le lier à une page HTML à l'aide de la balise `<link>`.
 
 ## 2. Prérequis
 
@@ -47,7 +56,6 @@ Comprendre comment relier une page HTML à une feuille CSS externe.
 * Savoir modifier un fichier dans VS Code.
 
 ## 3. Données de départ
-
 
 ### HTML
 
@@ -58,7 +66,8 @@ Le HTML de départ contient :
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon article</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuto 2 CSS</title>
 </head>
 <body>
 
@@ -83,7 +92,6 @@ p {
 ```
 
 Ces données constituent la base de travail du tutoriel.
-
 Le HTML et le CSS seront utilisés pour tester la liaison entre les deux fichiers.
 
 ## Partie 1 — Théorie
@@ -158,15 +166,13 @@ Dans :
 
 ### 2.1. Ouvrir le fichier HTML
 
-Ouvrez :
+#### Étape 1 — Préparer la page HTML
 
-```text
-tuto-2-css.html
-```
-
-Utilisez les données de départ du tutoriel.
+Créez le fichier `tuto-2-css.html` et ajoutez-y le code HTML de départ du tutoriel.
 
 ### 2.2. Observer le CSS
+
+#### Étape 2 — Analyser la règle de style
 
 Le CSS de départ est :
 
@@ -178,34 +184,17 @@ p {
 
 Cette règle cible les paragraphes.
 
-### 2.3. Créer la liaison HTML–CSS
+### 2.3. Créer la feuille CSS
 
-Dans la partie `<head>` du document HTML, ajoutez :
+#### Étape 3 — Créer le fichier externe
 
-```html
-<link rel="stylesheet" href="tuto-2-css.css">
-```
-
-La page devient :
-
-```html
-<head>
-    <meta charset="UTF-8">
-    <title>Mon article</title>
-
-    <link rel="stylesheet" href="tuto-2-css.css">
-</head>
-```
-
-### 2.4. Créer la feuille CSS
-
-Créez le fichier :
+Dans le même dossier que votre fichier HTML, créez le fichier :
 
 ```text
 tuto-2-css.css
 ```
 
-Ajoutez :
+Ajoutez-y la règle CSS :
 
 ```css
 p {
@@ -213,46 +202,55 @@ p {
 }
 ```
 
+### 2.4. Créer la liaison HTML–CSS
+
+#### Étape 4 — Ajouter la balise `<link>`
+
+Dans la partie `<head>` du document HTML, ajoutez la balise `<link>` pour relier le fichier externe :
+
+```html
+    <link rel="stylesheet" href="tuto-2-css.css">
+```
+
+Le haut de la page devient :
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tuto 2 CSS</title>
+
+    <link rel="stylesheet" href="tuto-2-css.css">
+</head>
+```
+
 Le fichier HTML utilise maintenant cette feuille CSS externe.
 
 ### 2.5. Tester
 
-Ouvrez :
+#### Étape 5 — Vérifier le rendu
 
-```text
-tuto-2-css.html
-```
-
-Rechargez la page.
+Ouvrez `tuto-2-css.html` et rechargez la page dans le navigateur.
 
 **Résultat attendu :**
 
-Les deux paragraphes apparaissent en bleu.
+Les deux paragraphes apparaissent en bleu, prouvant que la liaison fonctionne correctement.
 
 <iframe
     class="auto-wrapper"
-    src="{{'/code/css/tuto-2-css.html' | relative_url}}"
-    height="700"
+    src="{{'/code/css/tuto-2/tuto-2-css.html' | relative_url}}"
+    height="300"
     title="Résultat final du Tuto 2">
 </iframe>
 
-## Bilan
+## 3. Bilan
 
-**Vous avez réalisé :**
+**Vous avez réalisé :** une liaison entre une page HTML et une feuille CSS externe.
 
-Une liaison entre une page HTML et une feuille CSS externe.
+**Vous savez maintenant :** distinguer CSS inline, interne et externe, créer une feuille CSS externe, utiliser `<link>`, utiliser `rel="stylesheet"`, et utiliser `href` pour indiquer le fichier CSS.
 
-**Vous savez maintenant :**
-
-* distinguer CSS inline, interne et externe ;
-* créer une feuille CSS externe ;
-* utiliser `<link>` ;
-* utiliser `rel="stylesheet"` ;
-* utiliser `href` pour indiquer le fichier CSS.
-
-Ce tutoriel prépare l’utilisation des sélecteurs CSS dans le tutoriel suivant.
-
-## Glossaire
+## 4. Glossaire
 
 * **CSS inline** : CSS écrit directement dans une balise HTML.
 * **CSS interne** : CSS écrit dans une balise `<style>`.
