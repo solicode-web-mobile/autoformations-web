@@ -8,6 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.151.11"
 nav_order: 2
+
 data_html: ""
 data_css: ""
 data_js: ""
@@ -15,47 +16,133 @@ data_js: ""
 
 ## 1. Objectif
 
-Comprendre de manière simple et visuelle la différence entre votre outil de travail local (Git) et le serveur distant sur Internet (GitHub).
+Comprendre la différence entre **Git**, utilisé sur l'ordinateur, et **GitHub**, utilisé sur Internet.
+
+À la fin du tutoriel, vous saurez expliquer où se trouve votre travail avec Git et avec GitHub.
 
 ## 2. Prérequis
 
-* Aucun prérequis technique, ce tutoriel est 100 % théorique.
+Aucun prérequis technique.
 
-## Partie 1 — Théorie : Git vs GitHub
+Vous devez seulement connaître :
 
-### 1.1. L'appareil photo et l'album en ligne
+* un ordinateur ;
+* les notions de fichier et de projet.
 
-Pour bien comprendre la séparation entre Git et GitHub, utilisons une comparaison très simple :
+## Partie 1 — Théorie : Git et GitHub
 
-* **Git**, c'est **l'appareil photo**. Il est installé sur votre ordinateur. Vous l'utilisez pour prendre des clichés (des sauvegardes) de votre code à des moments précis. Tout reste privé et stocké sur votre ordinateur.
-* **GitHub**, c'est **l'album photo en ligne**. C'est un site web (un serveur distant) où vous publiez les clichés que vous avez pris avec votre appareil photo (Git). Cela permet de les mettre en sécurité sur Internet et de les partager avec votre formateur ou d'autres développeurs.
+### 1.1. Git sur l'ordinateur
 
-### 1.2. Travailler en local vs Travailler en distant
+**Git** est un outil installé sur votre ordinateur.
 
-**Le travail en Local (Git) :**
-Lorsque vous travaillez sur votre ordinateur, même sans connexion Internet, vous pouvez utiliser Git pour sauvegarder vos avancées. Ces sauvegardes constituent votre historique local.
+Il permet de suivre les changements d'un projet et d'enregistrer différents états du projet dans un historique.
 
-**Le travail en Distant (GitHub) :**
-Lorsque vous avez terminé une étape importante, vous envoyez votre historique local vers GitHub. C'est ce qu'on appelle la synchronisation avec le dépôt distant.
+Ces informations sont enregistrées dans le dépôt Git local.
 
-### 1.3. À retenir
+Vous pouvez utiliser Git même sans connexion Internet.
 
-- **Git** = L'outil local (sur votre ordinateur) pour créer des sauvegardes de votre code.
-- **GitHub** = Le site web (sur Internet) pour héberger et partager ces sauvegardes.
+### 1.2. GitHub sur Internet
+
+**GitHub** est une plateforme en ligne.
+
+Elle permet d'héberger des dépôts Git sur Internet.
+
+Vous pouvez utiliser GitHub pour :
+
+* conserver une copie du dépôt sur Internet ;
+* partager un projet ;
+* travailler avec d'autres développeurs ;
+* permettre à un formateur ou à une équipe d'accéder au projet.
+
+GitHub n'est donc pas Git.
+
+Git est l'outil utilisé sur votre ordinateur.
+
+GitHub est le service en ligne qui peut héberger votre dépôt Git.
+
+### 1.3. Local et distant
+
+#### Le dépôt local
+
+Le dépôt local se trouve sur votre ordinateur.
+
+Vous pouvez y :
+
+* modifier les fichiers ;
+* enregistrer des commits ;
+* consulter l'historique.
+
+#### Le dépôt distant
+
+Le dépôt distant peut être hébergé sur GitHub.
+
+Il se trouve sur Internet.
+
+Vous pouvez envoyer les commits de votre dépôt local vers le dépôt distant.
+
+Vous pouvez aussi récupérer les changements présents sur le dépôt distant.
+
+### 1.4. Git et GitHub travaillent ensemble
+
+Le fonctionnement peut être représenté simplement :
+
+```text
+Votre ordinateur
+       │
+       │ Git
+       ▼
+Dépôt local
+       │
+       │ Synchronisation
+       ▼
+GitHub
+       │
+       ▼
+Dépôt distant
+```
+
+Git permet de gérer l'historique local.
+
+GitHub permet notamment d'héberger et de partager le dépôt à distance.
+
+### 1.5. À retenir
+
+* **Git** est un outil installé sur votre ordinateur.
+* **Git** gère l'historique de votre projet.
+* **GitHub** est une plateforme en ligne.
+* **GitHub** peut héberger un dépôt Git distant.
+* Le dépôt local et le dépôt distant peuvent être synchronisés.
 
 **Résultat attendu :**
 
-Ce schéma résume la différence fondamentale entre les deux outils :
+Le schéma suivant présente la relation entre Git, le dépôt local, GitHub et le dépôt distant.
 
 <iframe
     class="auto-wrapper"
     src="{{'/code/git/tuto-2-git.html' | relative_url}}"
     height="200"
-    title="Résultat du tutoriel 2">
+    title="Git et GitHub">
 </iframe>
 
 ## Bilan
 
-**Vous avez réalisé :** L'assimilation du modèle mental qui sépare l'outil Git de la plateforme GitHub.
+**Vous avez réalisé :**
 
-**Vous savez maintenant :** Que vos sauvegardes Git restent sur votre ordinateur jusqu'à ce que vous décidiez volontairement de les publier sur Internet via GitHub.
+La compréhension de la différence entre Git sur l'ordinateur et GitHub sur Internet.
+
+**Vous savez maintenant :**
+
+* distinguer Git et GitHub ;
+* distinguer un dépôt local et un dépôt distant ;
+* comprendre que Git travaille localement ;
+* comprendre que GitHub peut héberger le dépôt distant ;
+* comprendre pourquoi Git et GitHub peuvent être utilisés ensemble.
+
+## Glossaire
+
+* **Git** : outil de gestion de versions utilisé notamment sur l'ordinateur.
+* **GitHub** : plateforme en ligne qui permet notamment d'héberger des dépôts Git.
+* **Dépôt local** : dépôt Git enregistré sur l'ordinateur.
+* **Dépôt distant** : dépôt Git hébergé sur un serveur distant.
+* **Commit** : enregistrement d'un état du projet dans l'historique Git.
+* **Synchronisation** : opération permettant d'échanger des changements entre un dépôt local et un dépôt distant.
