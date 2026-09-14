@@ -1,7 +1,7 @@
 ---
 layout: console
 title: "Résultat Tuto 1 Git"
-
+nav_exclude: true
 ---
 
 <span class="comment"># 1. Vérifier que Git est bien installé</span><br>

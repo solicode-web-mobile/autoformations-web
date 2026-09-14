@@ -1,6 +1,7 @@
 ---
 layout: console
 title: "Résultat Tuto 10 Git"
+nav_exclude: true
 ---
 
 <span class="prompt">$</span> <span class="command">git log --oneline</span><br>

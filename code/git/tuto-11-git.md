@@ -1,6 +1,7 @@
 ---
 layout: console
 title: "Résultat Tuto 11 Git"
+nav_exclude: true
 ---
 
 <span class="prompt">$</span> <span class="command">git status</span><br>

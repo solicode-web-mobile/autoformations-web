@@ -1,6 +1,7 @@
 ---
 layout: console
 title: "Résultat Tuto 8 Git"
+nav_exclude: true
 ---
 
 <span class="comment"># 1. Contenu du fichier .gitignore :</span><br>
