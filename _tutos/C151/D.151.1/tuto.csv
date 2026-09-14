@@ -1,0 +1,12 @@
+code,titre,code UA
+Tuto 1,Installer et configurer Git sur son ordinateur,UA.115.11
+Tuto 2,Comprendre les concepts de base : Git et GitHub,UA.115.11
+Tuto 3,Sauvegarder son code en un clic avec VS Code,UA.115.11
+Tuto 4,Les 3 zones de Git expliquées simplement,UA.115.12
+Tuto 5,La routine locale du développeur (Terminal),UA.115.12
+Tuto 6,Partager son travail sur Internet avec git push,UA.115.13
+Tuto 7,Mettre à jour son ordinateur avec git pull,UA.115.13
+Tuto 8,Créer et configurer un fichier .gitignore,UA.115.14
+Tuto 9,Les règles de sécurité avant de valider un commit,UA.115.14
+Tuto 10,Lire l'historique du projet avec git log,UA.115.15
+Tuto 11,Réparer une erreur avant la sauvegarde avec git restore,UA.115.15

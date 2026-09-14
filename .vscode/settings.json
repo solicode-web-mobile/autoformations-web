@@ -20,5 +20,6 @@
         ".github": true,
         ".vscode": true
     },
-    "hide-files.files": []
+    "hide-files.files": [],
+    "folder-color.pathColors": []
 }
