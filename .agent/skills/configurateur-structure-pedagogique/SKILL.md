@@ -76,9 +76,3 @@ En plus des Domaines et UAs, tu as la capacité de créer les fichiers de tutori
      - La section `## 1. Objectif` contenant l'objectif directement extrait de la fiche de conception.
      - Le reste du tutoriel sera rédigé plus tard, tu laisses donc le fichier vide après l'objectif ou avec des sections vides.
 
-# Intégration des fichiers de réalisation
-Pour chaque fichier de réalisation (`realisation-T.XXX.XXX.md`) présent dans le dossier de conception du tutoriel, tu dois générer son résultat final dans le dossier `code/` :
-1. **Emplacement :** `code/<mini-code-domaine>/` (par exemple : `code/analyse/`).
-2. **Format :** Fichier Markdown nommé logiquement (ex: `tuto-X-<mini-code-domaine>.md`).
-3. **Mise en page (Layout) :** Le fichier doit inclure un front matter avec le layout propre au domaine (ex: `layout: analyse`) et `nav_exclude: true`.
-4. **Contenu :** Tu copies/formates le contenu du fichier de réalisation pour qu'il s'affiche correctement (ex: dans un iframe) sans nécessiter de retouches.
