@@ -28,6 +28,8 @@ Vous allez réutiliser :
 - Tutoriel T.111.131 terminé (les actions brutes de l'Administrateur sont listées).
 - Tutoriel T.111.122 terminé (la règle de nommage est connue).
 
+**Maquette du Blog :** <a href="https://solicode-web-mobile.github.io/maquette-blog/index.html" target="_blank">Ouvrir la maquette</a>
+
 ## Partie 1 — Théorie
 
 ### 1.1. Rappel de la règle de nommage

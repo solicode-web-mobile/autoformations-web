@@ -23,6 +23,8 @@ Vous allez repérer toutes les **actions possibles** dans l'espace d'administrat
 
 - Tutoriel T.111.122 terminé (la méthodologie est acquise sur le Visiteur).
 
+**Maquette du Blog :** <a href="https://solicode-web-mobile.github.io/maquette-blog/index.html" target="_blank">Ouvrir la maquette</a>
+
 ## Partie 1 — Théorie
 
 ### 1.1. Qu'est-ce que le CRUD ?

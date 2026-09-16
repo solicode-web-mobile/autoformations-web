@@ -23,6 +23,8 @@ Vous allez apprendre à reconnaître les **acteurs** et leur **rôle**.
 
 - Tutoriel T.111.111 terminé (les 3 espaces du Blog sont identifiés).
 
+**Maquette du Blog :** <a href="https://solicode-web-mobile.github.io/maquette-blog/index.html" target="_blank">Ouvrir la maquette</a>
+
 ## Partie 1 — Théorie
 
 ### 1.1. Qu'est-ce qu'un acteur ?

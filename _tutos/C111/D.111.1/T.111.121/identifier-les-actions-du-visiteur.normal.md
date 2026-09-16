@@ -23,6 +23,8 @@ Vous allez repérer toutes les **actions possibles** : liens, boutons et formula
 
 - Tutoriel T.111.112 terminé (les acteurs Visiteur et Administrateur sont identifiés).
 
+**Maquette du Blog :** <a href="https://solicode-web-mobile.github.io/maquette-blog/index.html" target="_blank">Ouvrir la maquette</a>
+
 ## Partie 1 — Théorie
 
 ### 1.1. Qu'est-ce qu'une action utilisateur ?
