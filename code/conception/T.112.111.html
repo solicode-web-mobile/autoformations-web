@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat T.112.111 — Données identifiées</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Maquette simplifiée de la page Détail d'un article --- */
+        .maquette {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .maquette-header {
+            background: #1e3a5f;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .article-page {
+            padding: 1.5rem;
+        }
+        /* Catégorie */
+        .cat-badge {
+            display: inline-block;
+            background: #e0edff;
+            color: #1c5bba;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+        /* Titre */
+        .article-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        /* Meta auteur */
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+        }
+        .author-block {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2673e8, #60a5fa);
+            display: flex; align-items: center; justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .author-name { font-weight: 700; font-size: 0.875rem; color: #1e293b; }
+        .author-role { font-size: 0.7rem; color: #94a3b8; }
+        .meta-item {
+            display: flex; align-items: center; gap: 0.3rem;
+            font-size: 0.8rem; color: #64748b;
+        }
+        .article-image {
+            width: 100%; height: 180px;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            color: #93c5fd;
+            font-size: 0.8rem;
+        }
+        .article-body { font-size: 0.875rem; color: #334155; line-height: 1.7; }
+        .article-body p { margin-bottom: 0.75rem; }
+
+        /* --- Tableau des données identifiées --- */
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px; height: 18px;
+            background: #2673e8;
+            border-radius: 2px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        thead {
+            background: #1e3a5f;
+            color: white;
+        }
+        thead th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        tbody tr { border-bottom: 1px solid #f1f5f9; }
+        tbody tr:hover { background: #f0f6ff; }
+        tbody td { padding: 0.7rem 1rem; color: #334155; }
+        td code {
+            background: #e0edff;
+            color: #1c5bba;
+            font-size: 0.78rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+        }
+        .visible { background: #dcfce7; color: #166534; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+        .saisie { background: #fef9c3; color: #854d0e; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <h1>T.112.111 — Observer et identifier les données</h1>
+    <p class="subtitle">Résultat : données identifiées dans la page Détail d'un article</p>
+
+    <!-- Maquette simplifiée -->
+    <div class="maquette">
+        <div class="maquette-header">🖥️ Maquette observée — Page Détail d'un article</div>
+        <div class="article-page">
+            <span class="cat-badge">Développement</span>
+            <div class="article-title">
+                Comment structurer ses composants UI avec Atomic Design ?
+            </div>
+            <div class="meta">
+                <div class="author-block">
+                    <div class="avatar">MA</div>
+                    <div>
+                        <div class="author-name">Madani Ali</div>
+                        <div class="author-role">Auteur du blog</div>
+                    </div>
+                </div>
+                <div class="meta-item">📅 14 Février 2026</div>
+                <div class="meta-item">⏱ 5 min de lecture</div>
+            </div>
+            <div class="article-image">[ Image de couverture de l'article ]</div>
+            <div class="article-body">
+                <p>Le développement web est un domaine passionnant. Ce blog a pour vocation de partager des expériences concrètes, des tutoriels pas à pas et des réflexions sur les bonnes pratiques.</p>
+                <p>Dans cette approche, nous séparons la conception visuelle du développement backend pour assurer une fondation solide et maintenable.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tableau des données -->
+    <div class="section-title">Données identifiées</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Donnée</th>
+                <th>Valeur observée</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>titre_article</code></td>
+                <td>Comment structurer ses composants UI avec Atomic Design ?</td>
+                <td><span class="visible">Visible</span></td>
+            </tr>
+            <tr>
+                <td><code>nom_auteur</code></td>
+                <td>Madani Ali</td>
+                <td><span class="visible">Visible</span></td>
+            </tr>
+            <tr>
+                <td><code>date_publication</code></td>
+                <td>14 Février 2026</td>
+                <td><span class="visible">Visible</span></td>
+            </tr>
+            <tr>
+                <td><code>nom_categorie</code></td>
+                <td>Développement</td>
+                <td><span class="visible">Visible</span></td>
+            </tr>
+            <tr>
+                <td><code>contenu_article</code></td>
+                <td>Le développement web est un domaine passionnant…</td>
+                <td><span class="visible">Visible</span></td>
+            </tr>
+            <tr>
+                <td><code>image_article</code></td>
+                <td>(image de couverture)</td>
+                <td><span class="visible">Visible</span></td>
+            </tr>
+            <tr>
+                <td><code>duree_lecture</code></td>
+                <td>5 min</td>
+                <td><span class="visible">Visible</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

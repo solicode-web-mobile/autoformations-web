@@ -1,0 +1,11 @@
+Donnée : titre_article
+Valeur : Mon premier article
+
+Donnée : contenu_article
+Valeur : Voici le texte de mon article...
+
+Donnée : nom_auteur
+Valeur : Sara
+
+Donnée : nom_categorie
+Valeur : Technologie
