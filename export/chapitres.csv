@@ -3,7 +3,7 @@ layout: null
 permalink: /export/chapitres.csv
 ---
 "ordre","code","nom","unite_apprentissage_reference","duree_en_heure","isOfficiel","lien","description","formateur_reference","reference","is_imitation_ua"
-{% assign tutos = site.tutos | sort: "nav_order" -%}
+{% assign tutos = site.tutos | where: "version", "normal" | sort: "nav_order" -%}
 {%- for p in tutos -%}
   {%- assign _ordre = p.nav_order -%}
   {%- assign _code = p.tuto_id | append: "" | strip -%}
