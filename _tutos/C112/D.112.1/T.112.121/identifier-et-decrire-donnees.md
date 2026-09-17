@@ -24,7 +24,8 @@ Pour chaque donnée identifiée, apprendre à préciser :
 * sa **description** ;
 * un **exemple de valeur** ;
 * son **type** ;
-* son caractère **obligatoire ou facultatif**.
+* son caractère **obligatoire ou facultatif** ;
+* si elle est **calculée ou non**.
 
 À la fin du tutoriel, vous devez être capable de passer de :
 
@@ -41,7 +42,7 @@ Données décrites
 ## Prérequis
 
 * Savoir distinguer une donnée de sa valeur (T.112.111).
-* Comprendre les rôles possibles d'une donnée (T.112.112).
+* Comprendre le filtre des données : stockée, calculée, temporaire (T.112.112).
 
 ## Données de départ
 
@@ -63,24 +64,23 @@ Une maquette représente visuellement un écran d'une application.
 
 Elle permet d'observer les informations présentées à l'utilisateur.
 
-Dans cette UA, vous apprenez à transformer ce que vous voyez dans la maquette en **données**.
+Dans ce tutoriel, vous apprenez à transformer ce que vous voyez dans la maquette en **données à modéliser**.
 
 La démarche est :
 
 ```text
-Je regarde
+Je regarde la maquette
     ↓
 J'observe un élément
     ↓
-Je me demande :
-« Est-ce une donnée ? »
+Je filtre : « Est-ce une donnée stockée ou calculée ? » (J'ignore le temporaire)
     ↓
 Je lui donne un nom
 ```
 
 **Exemple :**
 
-Sur une page d'article, vous pouvez voir :
+Sur la **page Détail d'un article**, vous pouvez voir :
 
 ```text
 Mon premier article
@@ -195,7 +195,7 @@ Ils servent à décrire la nature de la donnée avant de parler de son stockage 
 
 ### 1.6. Déterminer si une donnée est obligatoire
 
-Une donnée est **obligatoire** lorsqu'elle doit avoir une valeur.
+Une donnée est **obligatoire** lorsqu'elle doit absolument avoir une valeur.
 
 Une donnée est **facultative** lorsqu'elle peut ne pas avoir de valeur.
 
@@ -211,15 +211,24 @@ Pour décider, posez-vous la question :
 > L'application peut-elle fonctionner avec cette donnée vide ?
 
 Pour une maquette, attention à ne pas inventer une règle qui n'est pas visible.
-
 Lorsque la maquette ne permet pas de savoir si une donnée est obligatoire, il faut le signaler plutôt que l'inventer.
 
-### 1.7. La démarche complète
+### 1.7. Préciser si une donnée est calculée
+
+Dans un dictionnaire de données, il faut indiquer si la donnée est **calculée** ou non.
+Une donnée calculée ne sera généralement pas stockée dans la base de données.
+
+* **Oui** : La donnée est calculée (ex: `duree_lecture`).
+* **Non** : La donnée est stockée (ex: `titre_article`).
+
+Il est utile de préciser la règle de calcul dans la description lorsqu'on choisit "Oui".
+
+### 1.8. La démarche complète
 
 Pour chaque élément observé dans une maquette, utilisez cette démarche :
 
 ```text
-1. Observer
+1. Observer (et ignorer les données temporaires de l'interface)
       ↓
 2. Identifier la donnée
       ↓
@@ -232,19 +241,21 @@ Pour chaque élément observé dans une maquette, utilisez cette démarche :
 6. Choisir son type
       ↓
 7. Déterminer si elle est obligatoire
+      ↓
+8. Préciser si elle est calculée
 ```
 
-### 1.8. À retenir
+### 1.9. À retenir
 
 Une donnée identifiée dans une maquette peut être décrite avec plusieurs informations :
 
-| Donnée          | Description        | Exemple     | Type  | Obligatoire |
-| --------------- | ------------------ | ----------- | ----- | ----------- |
-| `titre_article` | Titre de l'article | Mon article | Texte | Oui         |
+| Donnée          | Description        | Exemple     | Type  | Obligatoire | Calculée |
+| --------------- | ------------------ | ----------- | ----- | ----------- | -------- |
+| `titre_article` | Titre de l'article | Mon article | Texte | Oui         | Non      |
 
-Le dictionnaire de données sera construit dans le tutoriel suivant.
+Le dictionnaire de données final sera construit dans le tutoriel suivant.
 
-Ici, vous apprenez d'abord à **identifier et décrire les données d'une maquette**.
+Ici, vous apprenez d'abord à **identifier et décrire les données d'une seule maquette**.
 
 ## Partie 2 — Pratique
 
@@ -256,13 +267,11 @@ Allez sur la **Page Détail d'un article**.
 
 Observez attentivement la page.
 
-Ne cherchez pas encore à construire le dictionnaire complet.
-
 Votre première tâche consiste simplement à repérer ce que la page présente comme données.
 
 ### Étape 1 — Repérer les éléments
 
-Parcourez la page et notez les éléments qui correspondent à des données.
+Parcourez la page et notez les éléments qui correspondent à des données à conserver.
 
 Par exemple, vous pouvez observer :
 
@@ -272,6 +281,7 @@ un nom
 une date
 une catégorie
 un contenu
+une durée de lecture
 une image
 ```
 
@@ -281,47 +291,15 @@ Ne recopiez pas encore les noms du dictionnaire.
 
 ### Étape 2 — Transformer ce que vous voyez en données
 
-Pour chaque élément observé, donnez un nom de donnée.
-
-**Exemple :**
-
-```text
-Ce que je vois :
-Le titre « Mon premier article »
-
-Donnée :
-titre_article
-```
-
-Continuez avec les autres éléments de la page.
+Pour chaque élément observé, donnez un nom de donnée clair (ex: `titre_article`).
 
 ### Étape 3 — Donner une valeur
 
-Pour chaque donnée, notez la valeur réellement observée dans la maquette.
-
-Exemple :
-
-```text
-Donnée :
-titre_article
-
-Valeur observée :
-Mon premier article
-```
+Pour chaque donnée, notez la valeur réellement observée dans la maquette (ex: `Mon premier article`).
 
 ### Étape 4 — Décrire les données
 
-Pour chaque donnée identifiée, écrivez une description courte.
-
-Exemple :
-
-```text
-Donnée :
-titre_article
-
-Description :
-Titre de l'article
-```
+Pour chaque donnée identifiée, écrivez une description courte (ex: `Titre de l'article`).
 
 ### Étape 5 — Choisir le type
 
@@ -335,27 +313,15 @@ Date
 Booléen
 ```
 
-Posez-vous la question :
-
-> Quel type de contenu cette donnée représente-t-elle ?
-
 ### Étape 6 — Déterminer le caractère obligatoire
 
-Pour chaque donnée, indiquez :
+Pour chaque donnée, indiquez si elle est obligatoire : `Oui` ou `Non`.
 
-```text
-Oui
-ou
-Non
-```
+Si la maquette ne permet pas de le savoir, notez `À déterminer`.
 
-Lorsque la maquette ne permet pas de déterminer cette information, notez :
+### Étape 7 — Préciser si elle est calculée
 
-```text
-À déterminer
-```
-
-Ne faites pas d'hypothèse uniquement parce qu'une donnée est visible.
+Indiquez `Oui` si la donnée provient d'un calcul, ou `Non` si elle doit être stockée telle quelle.
 
 ### 2.2. Travail à faire
 
@@ -363,35 +329,33 @@ Construisez votre premier tableau de description à partir de la maquette.
 
 Votre tableau doit contenir au minimum :
 
-| Donnée | Description | Exemple de valeur | Type | Obligatoire |
-| ------ | ----------- | ----------------- | ---- | ----------- |
-|        |             |                   |      |             |
-|        |             |                   |      |             |
-|        |             |                   |      |             |
-|        |             |                   |      |             |
-|        |             |                   |      |             |
-|        |             |                   |      |             |
+| Donnée | Description | Exemple de valeur | Type | Obligatoire | Calculée |
+| ------ | ----------- | ----------------- | ---- | ----------- | -------- |
+|        |             |                   |      |             |          |
+|        |             |                   |      |             |          |
+|        |             |                   |      |             |          |
+|        |             |                   |      |             |          |
+|        |             |                   |      |             |          |
+|        |             |                   |      |             |          |
 
 Vous devez identifier **au moins 6 données** présentes dans la page.
 
 ### 2.3. Vérification
 
-Avant de terminer, vérifiez chaque ligne de votre tableau.
-
-Pour chaque donnée, posez-vous ces questions :
+Avant de terminer, posez-vous ces questions pour chaque ligne :
 
 ```text
 Ai-je réellement vu cette donnée dans la maquette ?
         ↓
 Le nom est-il clair ?
         ↓
-La description explique-t-elle ce qu'elle représente ?
+La description est-elle précise ?
         ↓
 La valeur correspond-elle à la maquette ?
         ↓
 Le type est-il cohérent ?
         ↓
-Ai-je une justification pour « obligatoire » ?
+Ai-je bien fait attention à la colonne "Calculée" ?
 ```
 
 ### Livrable
@@ -410,12 +374,14 @@ Description
 Exemple de valeur
 Type
 Obligatoire
+Calculée
 ```
 
 ### Résultat attendu
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{ '/code/conception/T.112.121/' | relative_url }}"
     height="600"
     title="Résultat attendu — Identifier et décrire les données d'une maquette">
@@ -426,28 +392,25 @@ Obligatoire
 Le travail est réussi lorsque :
 
 * au moins 6 données ont été identifiées à partir de la maquette ;
-* chaque donnée possède un nom clair ;
-* chaque donnée possède une description courte ;
-* chaque donnée possède un exemple de valeur ;
+* chaque donnée possède un nom clair, une description, et un exemple de valeur ;
 * le type choisi est cohérent ;
-* le caractère obligatoire est renseigné ou signalé comme à déterminer lorsque la maquette ne permet pas de le savoir.
+* le caractère obligatoire est renseigné ;
+* l'information "Calculée" est correctement indiquée pour chaque donnée.
 
 ## Bilan
 
 **Vous avez réalisé :**
 
-L'identification et la description des données présentes dans une maquette.
+L'identification et la description structurée des données présentes dans une maquette.
 
 **Vous savez maintenant :**
 
-* observer une maquette ;
+* observer une maquette avec le bon filtre mental ;
 * repérer les données qu'elle présente ;
 * donner un nom clair à une donnée ;
-* décrire une donnée ;
-* donner un exemple de valeur ;
 * choisir un type conceptuel ;
 * distinguer une donnée obligatoire d'une donnée facultative ;
-* signaler une information qui ne peut pas être déduite de la maquette.
+* distinguer une donnée stockée d'une donnée calculée.
 
 Vous avez maintenant obtenu une première liste de données décrites.
 
@@ -461,7 +424,6 @@ Dans le prochain tutoriel, vous apprendrez à **regrouper et organiser les donn�
 * **Valeur** : contenu concret d'une donnée.
 * **Type conceptuel** : nature du contenu d'une donnée.
 * **Donnée obligatoire** : donnée qui doit avoir une valeur.
-* **Donnée facultative** : donnée qui peut ne pas avoir de valeur.
+* **Donnée calculée** : donnée déduite d'autres informations plutôt que stockée directement.
 * **Maquette** : représentation visuelle d'un écran de l'application.
 * **Dictionnaire de données** : document qui regroupe et décrit les données de l'application.
-
