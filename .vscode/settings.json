@@ -21,5 +21,10 @@
         ".vscode": true
     },
     "hide-files.files": [],
-    "folder-color.pathColors": []
+    "folder-color.pathColors": [
+        {
+            "folderPath": "autoformations-web\\.agent\\",
+            "color": "foldercolorizer.color_d7af5f"
+        }
+    ]
 }
