@@ -15,4 +15,4 @@ permalink: /export/microCompetences.csv
   {%- assign _desc    = (p.capacite_finale | append: "") | strip | replace: '"','""' | replace: '\n',' ' | replace: '\r',' ' -%}
   {%- assign _ref     = comp.filiere | append: "-" | append: _code -%}
 "{{ _ordre }}","{{ _code }}","{{ _titre }}","{{ _soustitre }}","{{ _compref }}","{{ _lien }}","{{ _desc }}","{{ _ref }}"
-{%- endfor -%}
+{% endfor %}
