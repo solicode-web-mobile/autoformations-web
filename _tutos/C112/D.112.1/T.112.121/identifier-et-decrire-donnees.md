@@ -360,10 +360,12 @@ Ai-je bien fait attention à la colonne "Calculée" ?
 
 ### Livrable
 
-Créez un fichier :
+Créez un fichier de tableur (CSV ou Excel) :
 
 ```text
 dictionnaire-donnees-t112121.csv
+ou
+dictionnaire-donnees-t112121.xlsx
 ```
 
 Le fichier doit contenir les colonnes :
