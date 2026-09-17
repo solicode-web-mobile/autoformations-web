@@ -2,6 +2,7 @@
 title: "Découvrir le métier de développeur"
 layout: ua
 code: "UA.161.14"
+ordre: 5
 competence: "C.161"
 domaine: "D.161.1"
 duree: 1

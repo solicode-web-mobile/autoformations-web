@@ -2,6 +2,7 @@
 title: "Apprendre à Solicode"
 layout: ua
 code: "UA.162.11"
+ordre: 1
 competence: "C.162"
 domaine: "D.162.1"
 duree: 1

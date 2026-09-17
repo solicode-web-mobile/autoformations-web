@@ -2,6 +2,7 @@
 title: "Découvrir Web et Internet"
 layout: ua
 code: "UA.161.12"
+ordre: 3
 competence: "C.161"
 domaine: "D.161.1"
 duree: 1

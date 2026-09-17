@@ -2,6 +2,7 @@
 title: "Manipuler les variables et les entrées-sorties"
 layout: ua
 code: "UA.121.11"
+ordre: 11
 competence: "C.121"
 domaine: "D.121.1"
 duree: 1

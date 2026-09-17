@@ -2,6 +2,7 @@
 title: "Comprendre le rôle des données"
 layout: ua
 code: "UA.112.11"
+ordre: 14
 competence: "C.112"
 domaine: "D.112.1"
 duree: 2
