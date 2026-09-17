@@ -28,7 +28,7 @@ Pour chaque donnée identifiée, apprendre à préciser :
 
 À la fin du tutoriel, vous devez être capable de passer de :
 
-```text id="78d6fq"
+```text
 Maquette
     ↓
 Données observées
@@ -67,7 +67,7 @@ Dans cette UA, vous apprenez à transformer ce que vous voyez dans la maquette e
 
 La démarche est :
 
-```text id="k06hvp"
+```text
 Je regarde
     ↓
 J'observe un élément
@@ -82,19 +82,19 @@ Je lui donne un nom
 
 Sur une page d'article, vous pouvez voir :
 
-```text id="edm1q7"
+```text
 Mon premier article
 ```
 
 Vous pouvez identifier une donnée :
 
-```text id="f7u1go"
+```text
 titre_article
 ```
 
 Sa valeur observée est :
 
-```text id="8byz7s"
+```text
 Mon premier article
 ```
 
@@ -120,7 +120,7 @@ Pour ce domaine, utilisez une convention simple :
 
 Évitez les noms peu clairs :
 
-```text id="4m8nxb"
+```text
 titre
 data1
 champ2
@@ -129,7 +129,7 @@ information
 
 Préférez :
 
-```text id="rfj7cq"
+```text
 titre_article
 nom_auteur
 date_publication
@@ -167,7 +167,7 @@ L'**exemple de valeur** permet de montrer concrètement ce que la donnée peut c
 
 Attention :
 
-```text id="c1w6ed"
+```text
 Donnée :
 titre_article
 
@@ -201,7 +201,7 @@ Une donnée est **facultative** lorsqu'elle peut ne pas avoir de valeur.
 
 **Exemple :**
 
-```text id="yv9i5m"
+```text
 titre_article → obligatoire
 image_article → facultative
 ```
@@ -218,7 +218,7 @@ Lorsque la maquette ne permet pas de savoir si une donnée est obligatoire, il f
 
 Pour chaque élément observé dans une maquette, utilisez cette démarche :
 
-```text id="gr09i8"
+```text
 1. Observer
       ↓
 2. Identifier la donnée
@@ -266,7 +266,7 @@ Parcourez la page et notez les éléments qui correspondent à des données.
 
 Par exemple, vous pouvez observer :
 
-```text id="q1z2rq"
+```text
 un titre
 un nom
 une date
@@ -285,7 +285,7 @@ Pour chaque élément observé, donnez un nom de donnée.
 
 **Exemple :**
 
-```text id="7c6g8g"
+```text
 Ce que je vois :
 Le titre « Mon premier article »
 
@@ -301,7 +301,7 @@ Pour chaque donnée, notez la valeur réellement observée dans la maquette.
 
 Exemple :
 
-```text id="z9w7i9"
+```text
 Donnée :
 titre_article
 
@@ -315,7 +315,7 @@ Pour chaque donnée identifiée, écrivez une description courte.
 
 Exemple :
 
-```text id="28q5t2"
+```text
 Donnée :
 titre_article
 
@@ -327,7 +327,7 @@ Titre de l'article
 
 Pour chaque donnée, choisissez son type conceptuel :
 
-```text id="7e6tzn"
+```text
 Texte
 Entier
 Nombre décimal
@@ -343,7 +343,7 @@ Posez-vous la question :
 
 Pour chaque donnée, indiquez :
 
-```text id="yl2l0k"
+```text
 Oui
 ou
 Non
@@ -351,7 +351,7 @@ Non
 
 Lorsque la maquette ne permet pas de déterminer cette information, notez :
 
-```text id="cnf2nq"
+```text
 À déterminer
 ```
 
@@ -380,7 +380,7 @@ Avant de terminer, vérifiez chaque ligne de votre tableau.
 
 Pour chaque donnée, posez-vous ces questions :
 
-```text id="6g8jgt"
+```text
 Ai-je réellement vu cette donnée dans la maquette ?
         ↓
 Le nom est-il clair ?
@@ -398,13 +398,13 @@ Ai-je une justification pour « obligatoire » ?
 
 Créez un fichier :
 
-```text id="6i0m7k"
+```text
 dictionnaire-donnees-t112121.csv
 ```
 
 Le fichier doit contenir les colonnes :
 
-```text id="n1yrx2"
+```text
 Donnée
 Description
 Exemple de valeur
@@ -464,3 +464,4 @@ Dans le prochain tutoriel, vous apprendrez à **regrouper et organiser les donn�
 * **Donnée facultative** : donnée qui peut ne pas avoir de valeur.
 * **Maquette** : représentation visuelle d'un écran de l'application.
 * **Dictionnaire de données** : document qui regroupe et décrit les données de l'application.
+

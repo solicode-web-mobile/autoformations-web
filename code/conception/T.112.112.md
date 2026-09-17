@@ -1,6 +1,6 @@
 ---
 layout: conception
-title: "Résultat attendu — Rôle d'une donnée"
+title: "Résultat attendu — Données à conserver"
 tuto_id: "T.112.112"
 permalink: /code/conception/T.112.112/
 nav_exclude: true
@@ -10,11 +10,10 @@ nav_exclude: true
 
 Voici la correction de l'exercice :
 
-| Donnée          | Situation dans l'application                 | Rôle(s) de la donnée |
-| :--- | :--- | :--- |
-| `nom_auteur`    | L'utilisateur tape son nom dans le champ     | **Saisie** |
-| `nom_auteur`    | Le nom apparaît en haut de l'article publié  | **Affichée** |
-| `titre_article` | L'article est enregistré dans la base        | **Stockée** (et persistante) |
-| `titre_article` | L'application retrouve le titre 2 mois plus tard | **Persistante** |
+| Donnée          | Situation dans l'application                 | État de la donnée |
+| :-------------- | :------------------------------------------- | :---------------- |
+| `titre_article` | L'article est publié et enregistré dans la base | **Stockée** |
+| `mot_cle`       | L'utilisateur tape "Tutoriel" dans la barre de recherche | **Temporaire** |
 | `duree_lecture` | L'application compte les mots et déduit « 5 min » | **Calculée** |
-| `texte_brouillon`| L'utilisateur ferme la page sans sauvegarder | **Temporaire** (et saisie) |
+| `date_publication`| L'application mémorise le jour où l'article a été posté | **Stockée** |
+| `message_erreur`| Un texte rouge "Mot de passe incorrect" apparaît à l'écran | **Temporaire** |

@@ -67,7 +67,7 @@
 <body>
     <div class="container">
         <label>📝 Contenu de l'article (Donnée saisie)</label>
-        <textarea id="contenu" placeholder="Tapez votre texte ici... Chaque groupe de 5 mots ajoutera 1 minute de lecture pour l'exemple."></textarea>
+        <textarea id="contenu" placeholder="Tapez votre texte ici... Chaque mot ajoutera 1 seconde de lecture pour l'exemple."></textarea>
         
         <div class="result-box">
             <span class="result-label">⏱️ Durée de lecture (Donnée calculée)</span>
@@ -82,9 +82,17 @@
         textarea.addEventListener('input', () => {
             const text = textarea.value.trim();
             const words = text === '' ? 0 : text.split(/\s+/).length;
-            // Fake calculation for demonstration: 1 minute per 5 words
-            const minutes = Math.ceil(words / 5);
-            badge.textContent = `${minutes} min`;
+            
+            // Calcul fictif pour la démo : 1 mot = 1 seconde
+            const totalSeconds = words;
+            
+            if (totalSeconds < 60) {
+                badge.textContent = `${totalSeconds} sec`;
+            } else {
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                badge.textContent = `${minutes} min ${seconds} sec`;
+            }
         });
     </script>
 </body>

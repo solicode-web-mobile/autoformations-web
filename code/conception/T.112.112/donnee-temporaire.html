@@ -23,80 +23,78 @@
             max-width: 400px;
             border: 1px solid #cbd5e1;
         }
-        .header {
+        .search-wrapper {
+            position: relative;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e2e8f0;
         }
-        .title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #334155;
-        }
-        .close-btn {
-            color: #ef4444;
-            background: none;
-            border: none;
-            font-size: 12px;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-        .close-btn:hover {
-            background-color: #fef2f2;
-        }
-        textarea {
+        input[type="text"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
+            padding: 10px 35px 10px 10px;
+            border: 1px solid #94a3b8;
             border-radius: 6px;
             font-size: 14px;
             box-sizing: border-box;
-            resize: vertical;
-            min-height: 80px;
-            margin-bottom: 15px;
+        }
+        .clear-btn {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
         }
         .info-box {
-            background-color: #fef3c7;
-            border: 1px solid #fde68a;
-            color: #92400e;
-            padding: 10px;
-            border-radius: 6px;
+            background-color: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            color: #334155;
+            padding: 12px;
+            border-radius: 4px;
             font-size: 13px;
-            display: none;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2563eb;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <span class="title">Nouvel Article (Brouillon)</span>
-            <button class="close-btn" id="btn-close">Fermer sans sauvegarder ✖</button>
+        <label style="display:block; margin-bottom:8px; font-size:14px; font-weight:600; color:#334155;">Rechercher un article :</label>
+        
+        <div class="search-wrapper">
+            <input type="text" id="recherche" placeholder="Ex: Tutoriel CSS...">
+            <button class="clear-btn" id="btn-clear" title="Effacer la recherche">✖</button>
         </div>
         
-        <textarea id="texte" placeholder="Commencez à rédiger votre article..."></textarea>
-        
         <div class="info-box" id="info">
-            ⚠️ La donnée temporaire a été perdue, car elle n'a pas été sauvegardée avant la fermeture.
+            Le texte <span class="highlight">""</span> est une donnée temporaire. Dès que vous effacez ou quittez la page, l'application l'oublie, car elle n'a pas besoin d'être conservée dans la base de données.
         </div>
     </div>
 
     <script>
-        const btnClose = document.getElementById('btn-close');
-        const texte = document.getElementById('texte');
+        const inputRecherche = document.getElementById('recherche');
+        const btnClear = document.getElementById('btn-clear');
         const info = document.getElementById('info');
 
-        btnClose.addEventListener('click', () => {
-            if (texte.value.trim() !== '') {
-                texte.value = '';
-                info.style.display = 'block';
-                setTimeout(() => {
-                    info.style.display = 'none';
-                }, 3000);
+        inputRecherche.addEventListener('input', () => {
+            const val = inputRecherche.value;
+            if (val.trim() !== '') {
+                btnClear.style.display = 'block';
+                info.innerHTML = `Le texte <span class="highlight">"${val}"</span> est une donnée temporaire. Dès que vous effacez ou quittez la page, l'application l'oublie, car elle n'a pas besoin d'être conservée dans la base de données.`;
+            } else {
+                btnClear.style.display = 'none';
+                info.innerHTML = `Le texte <span class="highlight">""</span> est une donnée temporaire. Dès que vous effacez ou quittez la page, l'application l'oublie, car elle n'a pas besoin d'être conservée dans la base de données.`;
             }
+        });
+
+        btnClear.addEventListener('click', () => {
+            inputRecherche.value = '';
+            btnClear.style.display = 'none';
+            info.innerHTML = `Le texte <span class="highlight">""</span> est une donnée temporaire. Dès que vous effacez ou quittez la page, l'application l'oublie, car elle n'a pas besoin d'être conservée dans la base de données.`;
         });
     </script>
 </body>
