@@ -27,6 +27,7 @@ Maintenir, optimiser et faire évoluer un site d’autoformation construit avec 
 * Un fichier CSS ou JS doit avoir une responsabilité claire.
 * Ne pas mélanger dans un même fichier des responsabilités indépendantes.
 * Les styles communs vont dans `base.css`.
+* **Composants partagés** : Les styles des composants utilisés dans plusieurs layouts (ex: inclus via `_includes/` comme les listes de tutoriels ou cartes) doivent obligatoirement être placés dans `base.css` afin d'éviter toute duplication dans les CSS spécifiques.
 * Les styles spécifiques vont dans un fichier correspondant au layout.
 * Les scripts communs vont dans les fichiers JS dédiés.
 * Charger les assets uniquement lorsqu’ils sont nécessaires.
