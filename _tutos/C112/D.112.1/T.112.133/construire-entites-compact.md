@@ -29,22 +29,22 @@ Vous allez apprendre à :
 
 ## Données de départ
 
-Voici le dictionnaire de données d'un Blog que nous devons modéliser :
+Voici un extrait du dictionnaire de données d'un Blog, que nous utiliserons comme **exemple** pour la partie théorique :
 
-| Donnée             | Description                      |
-| ------------------ | -------------------------------- |
-| `id_article`       | Identifiant d'un article         |
-| `titre_article`    | Titre de l'article               |
-| `contenu_article`  | Contenu de l'article             |
-| `date_publication` | Date de publication              |
-| `statut_article`   | Statut de l'article              |
-| `image_article`    | Image associée à l'article       |
-| `id_auteur`        | Identifiant d'un auteur          |
-| `nom_auteur`       | Nom de l'auteur                  |
-| `prenom_auteur`    | Prénom de l'auteur               |
-| `email_auteur`     | Email de l'auteur                |
-| `nom_ville`        | Nom de la ville de l'auteur      |
-| `nom_categorie`    | Nom de la catégorie de l'article |
+| Donnée                  | Description                      |
+| ----------------------- | -------------------------------- |
+| `id_article`            | Identifiant d'un article         |
+| `titre_article`         | Titre de l'article               |
+| `contenu_article`       | Contenu de l'article             |
+| `date_publication`      | Date de publication              |
+| `statut_article`        | Statut de l'article              |
+| `image_article`         | Image associée à l'article       |
+| `id_auteur`             | Identifiant d'un auteur          |
+| `nom_auteur`            | Nom de l'auteur                  |
+| `prenom_auteur`         | Prénom de l'auteur               |
+| `email_auteur`          | Email de l'auteur                |
+| `nom_ville`             | Nom de la ville de l'auteur      |
+| `nom_categorie`         | Nom de la catégorie de l'article |
 | `description_categorie` | Description de la catégorie      |
 
 *Note : La donnée `duree_lecture` a été exclue car c'est une donnée calculable.*
@@ -87,14 +87,14 @@ Une entité est valide si elle respecte deux règles strictes :
 
 ### Exercice
 
-À partir du dictionnaire de données fourni dans les "Données de départ", appliquez la méthode complète pour construire les entités finales du Blog.
+À partir du dictionnaire de données **complet** de votre Blog (réalisé lors du tutoriel T.112.123), appliquez la méthode pour construire l'ensemble des entités finales du projet.
 
 **Travail à faire :**
-1. Regroupez les données autour des identifiants principaux (`id_article`, `id_auteur`).
-2. Repérez les données qui cachent d'autres réalités (répétitions).
+1. Regroupez toutes les données de votre dictionnaire autour de leurs identifiants principaux.
+2. Cherchez toutes les données susceptibles de provoquer des répétitions et qui cachent d'autres réalités.
 3. Créez les nouvelles entités nécessaires et leurs identifiants.
 4. Remplacez ces données par les nouveaux identifiants dans les entités d'origine.
-5. Dressez la liste complète et définitive des entités.
+5. Dressez la liste complète et définitive de **toutes** les entités de l'application Blog.
 
 Présentez vos entités finales sous ce format :
 
@@ -116,14 +116,14 @@ Nom conseillé : `entites-blog.md`
 
 ## Résultat attendu
 
-Vous devez obtenir **4 entités** distinctes (Article, Auteur, Ville, Catégorie), chacune contenant son identifiant et ses données propres (ou les clés étrangères correspondantes notées comme de simples identifiants).
+Vous devez obtenir la liste **complète** des entités nécessaires au fonctionnement du Blog. Chacune doit contenir son identifiant et ses données propres.
 
 ## Critères de réussite
 
-* Les 4 entités ont été correctement identifiées.
+* Toutes les données du dictionnaire complet ont été classées dans une entité.
 * Chaque entité possède un identifiant valide.
-* Les données textuelles répétitives (`nom_ville`, `nom_categorie`, `description_categorie`) ont bien été isolées et remplacées par `id_ville` et `id_categorie` dans les bonnes entités.
-* Il n'y a plus aucune donnée mal placée ou en doublon.
+* Toutes les données textuelles générant des répétitions ont bien été isolées dans de nouvelles entités et remplacées par des identifiants (clés étrangères).
+* Il n'y a plus aucune donnée mal placée ou en doublon dans le modèle final.
 
 ---
 
