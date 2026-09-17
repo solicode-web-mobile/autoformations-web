@@ -3,6 +3,7 @@ layout: conception
 title: "Les 4 entités du Blog"
 tuto_id: "T.112.133"
 permalink: /code/conception/T.112.133/
+nav_exclude: true
 ---
 
 ## Entités construites

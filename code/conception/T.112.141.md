@@ -3,6 +3,7 @@ layout: conception
 title: "Relations et cardinalités — Blog"
 tuto_id: "T.112.141"
 permalink: /code/conception/T.112.141/
+nav_exclude: true
 ---
 
 ## Relations identifiées

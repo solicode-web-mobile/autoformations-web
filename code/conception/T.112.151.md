@@ -3,6 +3,7 @@ layout: conception
 title: "Tables relationnelles — Blog"
 tuto_id: "T.112.151"
 permalink: /code/conception/T.112.151/
+nav_exclude: true
 ---
 
 ## Tables et clés primaires

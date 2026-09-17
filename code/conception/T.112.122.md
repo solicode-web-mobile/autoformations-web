@@ -3,6 +3,7 @@ layout: conception
 title: "Dictionnaire de données — Blog"
 tuto_id: "T.112.122"
 permalink: /code/conception/T.112.122/
+nav_exclude: true
 ---
 
 ## Dictionnaire de données

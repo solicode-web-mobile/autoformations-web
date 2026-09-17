@@ -3,6 +3,7 @@ layout: conception
 title: "Entités et dépendances — Blog"
 tuto_id: "T.112.132"
 permalink: /code/conception/T.112.132/
+nav_exclude: true
 ---
 
 ## Entités découvertes

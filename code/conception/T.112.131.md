@@ -3,6 +3,7 @@ layout: conception
 title: "Répétitions identifiées — Données du Blog"
 tuto_id: "T.112.131"
 permalink: /code/conception/T.112.131/
+nav_exclude: true
 ---
 
 ## Tableau observé

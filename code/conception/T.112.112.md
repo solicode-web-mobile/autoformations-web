@@ -3,6 +3,7 @@ layout: conception
 title: "Rôle des données — Blog"
 tuto_id: "T.112.112"
 permalink: /code/conception/T.112.112/
+nav_exclude: true
 ---
 
 ## Données identifiées et leur rôle

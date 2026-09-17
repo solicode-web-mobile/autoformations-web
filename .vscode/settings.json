@@ -25,6 +25,10 @@
         {
             "folderPath": "autoformations-web\\.agent\\",
             "color": "foldercolorizer.color_d7af5f"
+        },
+        {
+            "folderPath": "autoformations-web\\_tutos\\",
+            "color": "foldercolorizer.color_008787"
         }
     ]
 }

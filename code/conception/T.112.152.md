@@ -3,6 +3,7 @@ layout: conception
 title: "Clés étrangères — Blog"
 tuto_id: "T.112.152"
 permalink: /code/conception/T.112.152/
+nav_exclude: true
 ---
 
 ## Tables avec clés étrangères (FK)

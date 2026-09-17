@@ -3,6 +3,7 @@ layout: conception
 title: "MLD complet — Blog"
 tuto_id: "T.112.153"
 permalink: /code/conception/T.112.153/
+nav_exclude: true
 ---
 
 ## Modèle Logique de Données (MLD)

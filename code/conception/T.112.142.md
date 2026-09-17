@@ -3,6 +3,7 @@ layout: conception
 title: "MCD complet — Blog"
 tuto_id: "T.112.142"
 permalink: /code/conception/T.112.142/
+nav_exclude: true
 ---
 
 ## Entités

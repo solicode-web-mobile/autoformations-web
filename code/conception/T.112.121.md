@@ -3,6 +3,7 @@ layout: conception
 title: "Description des données — Page Détail d'un article"
 tuto_id: "T.112.121"
 permalink: /code/conception/T.112.121/
+nav_exclude: true
 ---
 
 ## Données décrites
