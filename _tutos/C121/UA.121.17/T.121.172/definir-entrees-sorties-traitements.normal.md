@@ -1,7 +1,7 @@
 ---
-title: "Construire et chaîner les traitements"
+title: "Définir les entrées et sorties des traitements"
 layout: tuto
-slug: "construire-chainer"
+slug: "definir-entrees-sorties-traitements"
 permalink: /tutos/:slug/
 tuto_id: "T.121.172"
 version: "normal"

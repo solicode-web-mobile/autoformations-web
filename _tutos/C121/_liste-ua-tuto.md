@@ -9,15 +9,17 @@
 
 ## 1. Objectif général du domaine
 
-À partir d’un problème simple, l’apprenant est capable de construire un traitement logique en utilisant les **variables, les entrées-sorties, les conditions, les boucles, les tableaux et les fonctions**, puis de réutiliser des traitements élémentaires pour résoudre un problème plus complexe par **décomposition et chaînage**.
+À partir d’un problème simple, l’apprenant est capable de construire un traitement logique en utilisant progressivement les **variables, les entrées-sorties, les conditions, les boucles, les tableaux et les fonctions**, puis de réutiliser et de combiner des traitements élémentaires pour résoudre des problèmes plus complexes par **décomposition et chaînage**.
 
 L’apprentissage de JavaScript reste au service de l’algorithmique :
 
 > **Comprendre le problème → construire le traitement → l’exécuter avec Node.js → observer et vérifier le résultat.**
 
+Le domaine vise donc moins la mémorisation des commandes JavaScript que la construction progressive d’un **répertoire de traitements élémentaires réutilisables**.
+
 ---
 
-# 2. Progression générale du domaine
+## 2. Progression générale du domaine
 
 ```text
 Variables
@@ -45,22 +47,53 @@ Chaînage
 Traitement complet
 ```
 
-Les quatre ordres fondamentaux constituent le socle :
+La progression part des traitements les plus simples vers des traitements de plus en plus structurés.
 
 ```text
-1. Variables
-2. Entrées / Sorties
-3. Conditions
-4. Boucles
+Valeur simple
+↓
+Traitement simple
+↓
+Plusieurs valeurs
+↓
+Traitement réutilisable
+↓
+Combinaison de traitements
+↓
+Résolution d'un problème
+↓
+Décomposition
+↓
+Chaînage
+↓
+Traitement complet
 ```
 
-Les tableaux et les fonctions permettent ensuite de construire des **algorithmes élémentaires réutilisables**.
+Les structures fondamentales utilisées au niveau N1 sont :
 
-Enfin, la décomposition et le chaînage permettent de passer de l’algorithme élémentaire à la **conception d’un traitement complet**.
+```text
+Séquence
+↓
+Condition
+↓
+Répétition
+```
+
+Les variables et les entrées-sorties permettent de construire les premières séquences de traitement.
+
+Les conditions et les boucles permettent ensuite de contrôler l’exécution.
+
+Les tableaux permettent de traiter plusieurs valeurs.
+
+Les fonctions permettent d’isoler et de réutiliser les traitements.
+
+Les algorithmes élémentaires permettent de construire un premier répertoire de solutions.
+
+Enfin, la décomposition et le chaînage permettent d’organiser plusieurs traitements pour construire une solution complète.
 
 ---
 
-# 3. Programme des Unités d’Apprentissage
+# 3. Programme des unités d’apprentissage
 
 ## UA.121.11 — Manipuler les variables et les entrées-sorties
 
@@ -70,7 +103,7 @@ Construire un traitement JavaScript simple capable de stocker des données, de r
 
 ### Objectif de l’UA
 
-L’apprenant doit être capable de construire un traitement simple suivant le principe :
+L’apprenant construit ses premiers traitements selon le principe :
 
 ```text
 Entrée → Traitement → Sortie
@@ -84,7 +117,9 @@ Entrée → Traitement → Sortie
 * constante ;
 * affectation ;
 * modification d’une variable ;
-* types `number`, `string`, `boolean` ;
+* `number` ;
+* `string` ;
+* `boolean` ;
 * opérateurs arithmétiques ;
 * entrée ;
 * sortie ;
@@ -96,57 +131,59 @@ Entrée → Traitement → Sortie
 
 #### T.121.111 — Afficher son nom avec JavaScript
 
-**Objectif :** Découvrir JavaScript et Node.js, puis créer et exécuter un programme qui affiche votre nom dans la console.
+**Objectif :** découvrir JavaScript et Node.js, puis créer et exécuter un premier programme qui affiche son nom dans la console.
 
 #### T.121.112 — Manipuler les variables
 
-**Objectif :** Comprendre ce qu’est une variable et l’utiliser pour stocker et afficher des valeurs en JavaScript.
+**Objectif :** comprendre ce qu’est une variable, stocker une valeur, modifier sa valeur et afficher le résultat.
 
 #### T.121.113 — Effectuer des opérations
 
-**Objectif :** Utiliser les opérations arithmétiques en JavaScript pour calculer un résultat avec des variables.
+**Objectif :** utiliser les opérations arithmétiques pour produire un résultat à partir de plusieurs variables.
 
 #### T.121.114 — Recevoir des données
 
-**Objectif :** Recevoir une valeur saisie par l’utilisateur avec `prompt-sync`, la stocker dans une variable et l’afficher avec `console.log()`.
+**Objectif :** recevoir une valeur saisie par l’utilisateur avec `prompt-sync`, la convertir si nécessaire et l’utiliser dans un traitement.
 
 #### T.121.115 — Exercice : gérer un article
 
-**Objectif :** Réutiliser les variables, `prompt-sync`, les opérations et `console.log()` dans un même programme JavaScript.
+**Objectif :** réutiliser les variables, les entrées, les opérations et les sorties dans un même programme.
 
 #### T.121.116 — Échanger deux variables
 
-**Objectif :** Découvrir une première technique algorithmique en JavaScript : échanger les valeurs de deux variables sans les perdre.
+**Objectif :** découvrir un premier algorithme élémentaire permettant d’échanger les valeurs de deux variables sans les perdre.
 
 ### Résultat attendu
 
-L’apprenant sait construire et exécuter un traitement simple utilisant des variables et des entrées-sorties.
+L’apprenant sait construire et exécuter un traitement simple utilisant des variables, des entrées et des sorties.
 
 ---
 
-# UA.121.12 — Contrôler l’exécution avec les conditions et les boucles
+## UA.121.12 — Contrôler l’exécution avec les conditions et les boucles
 
 ### Description
 
-Construire un traitement JavaScript capable de prendre des décisions et de répéter des opérations selon des règles définies.
+Construire un traitement capable de prendre des décisions et de répéter des opérations selon des règles définies.
 
 ### Objectif de l’UA
 
-Maîtriser les deux ordres fondamentaux permettant de contrôler le déroulement d’un traitement :
+L’apprenant maîtrise les deux mécanismes fondamentaux de contrôle de l’exécution :
 
 ```text
 Condition
+↓
 Répétition
 ```
 
 ### Notions clés
 
+* valeur vraie / fausse ;
 * comparaison ;
-* expression logique ;
+* expression booléenne ;
 * condition ;
 * `if` ;
 * `else` ;
-* conditions multiples ;
+* `else if` ;
 * opérateurs logiques ;
 * répétition ;
 * compteur ;
@@ -157,62 +194,77 @@ Répétition
 
 ### Tutoriels
 
-#### T.121.121 — Bases du contrôle de l’exécution
+#### T.121.121 — Comprendre les expressions booléennes
 
-L’apprenant découvre :
+**Objectif :** comprendre les valeurs `true` et `false`, les comparaisons et les opérateurs logiques avant d’utiliser les structures de contrôle.
 
-* condition ;
-* comparaison ;
-* valeur vraie / fausse ;
-* répétition ;
-* condition d’arrêt.
+#### T.121.122 — Construire des conditions
 
-#### T.121.122 — Utiliser les conditions et les boucles
+**Objectif :** utiliser `if`, `else`, `else if`, ainsi que plusieurs conditions pour faire un choix dans un traitement.
 
-L’apprenant met en pratique :
+#### T.121.123 — Construire des boucles
 
-* `if / else` ;
-* plusieurs conditions ;
-* `for` ;
-* `while` ;
-* compteur ;
-* accumulateur.
+**Objectif :** utiliser `for` et `while` pour répéter un traitement avec un compteur ou une condition d’arrêt.
 
-#### T.121.123 — Exercices sur les conditions et les boucles
+#### T.121.124 — Exercices sur les conditions
 
-Exercices :
+**Objectif :** résoudre des petits problèmes utilisant uniquement les conditions.
 
-* déterminer si une valeur est positive ;
-* déterminer le maximum de deux valeurs ;
-* afficher une série de nombres ;
+Exemples :
+
+* positif / négatif ;
+* pair / impair ;
+* maximum de deux valeurs ;
+* validation d’une note ;
+* accès autorisé ou refusé ;
+* prix selon une règle.
+
+#### T.121.125 — Exercices sur les boucles
+
+**Objectif :** résoudre des problèmes utilisant les répétitions.
+
+Exemples :
+
+* afficher `1` à `10` ;
+* afficher les nombres dans l’ordre inverse ;
 * afficher les nombres pairs ;
 * calculer une somme ;
-* compter des valeurs selon une règle.
+* compter selon une règle ;
+* produire une table de multiplication.
 
-#### T.121.124 — Algorithmes élémentaires avec conditions et boucles
+#### T.121.126 — Algorithme élémentaire : construire une pyramide d’étoiles
 
-Algorithmes :
+**Objectif :** construire progressivement un algorithme utilisant plusieurs boucles afin de produire une pyramide d’étoiles.
 
-* maximum de deux valeurs ;
-* somme d’une série ;
-* comptage conditionnel ;
-* factoriel.
+Progression :
+
+```text
+Une étoile
+↓
+Plusieurs étoiles
+↓
+Plusieurs lignes
+↓
+Espaces + étoiles
+↓
+Pyramide
+```
 
 ### Résultat attendu
 
-L’apprenant sait contrôler l’exécution d’un traitement en utilisant des décisions et des répétitions.
+L’apprenant sait contrôler l’exécution d’un traitement avec des conditions et des répétitions.
 
 ---
 
-# UA.121.13 — Manipuler les tableaux et collections
+## UA.121.13 — Manipuler les tableaux et les collections
 
 ### Description
 
-Construire des traitements JavaScript permettant de stocker, parcourir et analyser une collection de valeurs.
+Construire des traitements permettant de stocker, parcourir et analyser plusieurs valeurs regroupées dans une collection.
 
 ### Objectif de l’UA
 
-Passer du traitement d’une valeur à celui de **plusieurs valeurs organisées dans un tableau**.
+Passer du traitement d’une valeur au traitement de **plusieurs valeurs organisées dans un tableau**.
 
 ### Notions clés
 
@@ -220,72 +272,101 @@ Passer du traitement d’une valeur à celui de **plusieurs valeurs organisées 
 * collection ;
 * élément ;
 * index ;
+* premier élément ;
+* dernier élément ;
 * longueur ;
-* accès à un élément ;
+* lecture ;
 * modification ;
 * parcours ;
+* compteur ;
+* accumulateur ;
 * recherche ;
-* position ;
-* comptage.
+* position.
 
 ### Tutoriels
 
-#### T.121.131 — Bases des tableaux
+#### T.121.131 — Comprendre les tableaux
 
-L’apprenant découvre :
+**Objectif :** découvrir la structure d’un tableau, ses éléments, ses index et sa longueur.
 
-* création d’un tableau ;
-* élément ;
-* index ;
-* `length` ;
-* lecture ;
-* modification.
+#### T.121.132 — Accéder et modifier les éléments d’un tableau
 
-#### T.121.132 — Parcourir et traiter un tableau
+**Objectif :** lire un élément à partir de son index, accéder au premier et au dernier élément et modifier une valeur.
 
-L’apprenant apprend à :
+#### T.121.133 — Parcourir et traiter un tableau
 
-* parcourir avec une boucle ;
-* accéder successivement aux éléments ;
-* utiliser un compteur ;
-* utiliser un accumulateur ;
-* combiner tableau, condition et boucle.
+**Objectif :** parcourir une collection avec une boucle et traiter successivement ses éléments.
 
-#### T.121.133 — Exercices sur les tableaux
-
-Exercices :
+Exemples :
 
 * afficher les éléments ;
-* calculer la somme ;
-* calculer la moyenne ;
 * compter les éléments ;
-* compter les valeurs répondant à une condition ;
-* rechercher une valeur.
+* calculer une somme ;
+* sélectionner selon une condition ;
+* calculer une moyenne.
 
-#### T.121.134 — Algorithmes classiques de recherche
+#### T.121.134 — Exercices sur les tableaux
+
+**Objectif :** consolider la manipulation des tableaux par des exercices progressifs.
+
+Exemples :
+
+* afficher les valeurs ;
+* afficher index + valeur ;
+* calculer une somme ;
+* calculer une moyenne ;
+* compter les valeurs ;
+* compter les valeurs selon une règle ;
+* calculer la somme des valeurs répondant à une condition.
+
+#### T.121.135 — Construire des algorithmes élémentaires sur un tableau
+
+**Objectif :** construire des traitements classiques sur une collection.
 
 Algorithmes :
 
-* recherche linéaire ;
-* recherche du maximum ;
-* recherche du minimum ;
-* recherche de la position d’une valeur.
+* rechercher une valeur ;
+* retourner une position ;
+* trouver le maximum ;
+* trouver le minimum ;
+* trouver la position du maximum ;
+* trouver la position du minimum.
+
+#### T.121.136 — Algorithme de synthèse : analyser une collection
+
+**Objectif :** combiner plusieurs traitements élémentaires pour analyser une collection de notes.
+
+L’apprenant construit notamment :
+
+```text
+Compter
+↓
+Sommer
+↓
+Calculer la moyenne
+↓
+Trouver le maximum
+↓
+Trouver le minimum
+↓
+Compter les valeurs selon une règle
+```
 
 ### Résultat attendu
 
-L’apprenant sait parcourir et analyser une collection en utilisant les conditions et les boucles.
+L’apprenant sait parcourir et analyser une collection en utilisant les conditions, les boucles et les traitements élémentaires de recherche.
 
 ---
 
-# UA.121.14 — Créer et utiliser des fonctions
+## UA.121.14 — Créer et utiliser des fonctions
 
 ### Description
 
-Construire et utiliser des fonctions JavaScript simples afin d’isoler, réutiliser et combiner des traitements.
+Construire et utiliser des fonctions JavaScript afin d’isoler, réutiliser et combiner des traitements.
 
 ### Objectif de l’UA
 
-Transformer les traitements déjà appris en **unités de traitement réutilisables**.
+Transformer les traitements déjà construits en **unités de traitement réutilisables**.
 
 ### Notions clés
 
@@ -297,154 +378,196 @@ Transformer les traitements déjà appris en **unités de traitement réutilisab
 * résultat ;
 * `return` ;
 * réutilisation ;
-* traitement local ;
 * fonction de calcul ;
-* fonction de recherche.
+* fonction de recherche ;
+* fonction de comptage ;
+* combinaison de fonctions.
 
 ### Tutoriels
 
-#### T.121.141 — Bases des fonctions
+#### T.121.141 — Comprendre les fonctions
 
-L’apprenant découvre :
+**Objectif :** comprendre le rôle d’une fonction, sa déclaration, son appel et la réutilisation d’un même traitement.
 
-* rôle d’une fonction ;
-* déclaration ;
-* appel ;
-* paramètres ;
-* arguments ;
-* valeur de retour.
+#### T.121.142 — Créer et appeler une fonction
 
-#### T.121.142 — Construire une fonction avec entrée et sortie
+**Objectif :** créer des fonctions simples, les appeler plusieurs fois et organiser plusieurs fonctions dans un programme.
 
-L’apprenant pratique :
+#### T.121.143 — Utiliser les paramètres et le retour
+
+**Objectif :** transmettre des données à une fonction avec des paramètres et récupérer son résultat avec `return`.
+
+Progression :
 
 ```text
-Entrée
+Fonction
+↓
+Paramètre
 ↓
 Traitement
 ↓
-Retour
+return
+↓
+Réutilisation du résultat
 ```
 
-avec :
+#### T.121.144 — Exercices sur les fonctions
 
-* paramètres ;
-* traitement ;
-* `return`.
+**Objectif :** réutiliser les fonctions dans des problèmes simples.
 
-#### T.121.143 — Exercices sur les fonctions
+Exemples :
 
-Exercices :
+* addition ;
+* multiplication ;
+* maximum ;
+* minimum ;
+* nombre pair ;
+* note validée ;
+* total ;
+* moyenne ;
+* recherche.
 
-* fonction de somme ;
-* fonction de maximum ;
-* fonction de moyenne ;
-* fonction de recherche ;
-* fonction de comptage.
+#### T.121.145 — Transformer les algorithmes élémentaires en fonctions
 
-#### T.121.144 — Transformer les algorithmes élémentaires en fonctions
+**Objectif :** transformer les traitements déjà construits sur les tableaux en fonctions réutilisables.
 
-L’apprenant transforme en fonctions les traitements précédents :
+Exemples :
 
 ```text
 calculerSomme()
 calculerMoyenne()
-trouverMaximum()
 rechercher()
+trouverMaximum()
+trouverMinimum()
 compter()
 ```
 
+#### T.121.146 — Combiner plusieurs fonctions
+
+**Objectif :** utiliser plusieurs fonctions dans un même traitement et transmettre le résultat d’une fonction à une autre.
+
 ### Résultat attendu
 
-L’apprenant sait construire des fonctions simples et utiliser leurs résultats dans d’autres traitements.
+L’apprenant sait construire des fonctions simples, réutiliser leurs résultats et combiner plusieurs fonctions.
 
 ---
 
-# UA.121.15 — Résoudre des problèmes algorithmiques simples
+## UA.121.15 — Résoudre des problèmes algorithmiques simples
 
 ### Description
 
-Construire des traitements JavaScript combinant plusieurs notions déjà maîtrisées afin de résoudre un problème algorithmique simple.
+Construire une solution à partir d’un problème concret en choisissant et en combinant des traitements déjà appris.
 
 ### Objectif de l’UA
 
 Passer de :
 
-> « Je sais utiliser une notion »
+> **« Je sais utiliser une notion. »**
 
 à :
 
-> « Je sais choisir et combiner plusieurs notions pour résoudre un problème. »
+> **« Je sais choisir et combiner plusieurs traitements pour résoudre un problème. »**
+
+### Méthode de résolution
+
+```text
+Comprendre
+↓
+Identifier
+↓
+Choisir
+↓
+Construire
+↓
+Tester
+↓
+Vérifier
+```
 
 ### Notions clés
 
-* compréhension du problème ;
+* problème ;
+* objectif ;
 * données d’entrée ;
 * résultat attendu ;
-* règles de traitement ;
-* choix des structures ;
-* combinaison des traitements ;
-* vérification du résultat.
+* règle ;
+* traitement ;
+* choix d’un traitement ;
+* combinaison ;
+* test ;
+* vérification.
 
 ### Tutoriels
 
 #### T.121.151 — Comprendre un problème algorithmique
 
-L’apprenant apprend à identifier :
+**Objectif :** identifier l’objectif, les données d’entrée, les règles, les traitements et les sorties d’un problème.
 
-* le problème ;
-* les données disponibles ;
-* les entrées ;
-* les sorties ;
-* le résultat attendu ;
-* les opérations nécessaires.
+#### T.121.152 — Identifier les données et les règles
 
-#### T.121.152 — Construire une solution à partir des ordres de base
+**Objectif :** analyser plus précisément les données disponibles, les règles à respecter et les résultats intermédiaires nécessaires.
 
-L’apprenant choisit et combine :
+#### T.121.153 — Construire une solution simple
 
-* variables ;
-* entrées-sorties ;
-* conditions ;
-* boucles ;
-* tableaux ;
-* fonctions.
+**Objectif :** passer de l’analyse à une première solution en réutilisant les variables, conditions, boucles, tableaux et fonctions déjà appris.
 
-#### T.121.153 — Exercices de résolution algorithmique
+#### T.121.154 — Exercices de résolution algorithmique
 
-Exercices progressifs :
+**Objectif :** résoudre plusieurs problèmes simples en choisissant les traitements adaptés.
+
+Exemples :
 
 * analyser une série de nombres ;
-* calculer des statistiques ;
 * rechercher une valeur ;
+* calculer une moyenne ;
 * compter selon une règle ;
 * analyser une liste de notes.
 
-#### T.121.154 — Algorithme de synthèse : analyser une collection
+#### T.121.155 — Construire une solution avec plusieurs traitements
+
+**Objectif :** combiner plusieurs traitements connus pour résoudre un même problème.
 
 Exemple :
 
 ```text
-notes
+Tableau de notes
 ↓
-calculer la somme
+Somme
 ↓
-calculer la moyenne
+Moyenne
 ↓
-chercher le minimum
+Maximum
 ↓
-chercher le maximum
+Minimum
 ↓
-compter les valeurs selon une règle
+Validation
+```
+
+#### T.121.156 — Algorithme de synthèse : analyser une collection
+
+**Objectif :** construire une solution complète à partir d’un problème d’analyse de notes.
+
+Résultats attendus sur un exemple :
+
+```text
+Nombre de notes
+Somme
+Moyenne
+Maximum
+Minimum
+Nombre de notes validées
+Somme des notes validées
+Moyenne des notes validées
+Résultat final
 ```
 
 ### Résultat attendu
 
-L’apprenant sait construire une solution simple en combinant plusieurs traitements déjà appris.
+L’apprenant sait construire une solution algorithmique simple en choisissant et en combinant plusieurs traitements déjà maîtrisés.
 
 ---
 
-# UA.121.16 — Trier une collection
+## UA.121.16 — Trier une collection
 
 ### Description
 
@@ -452,70 +575,80 @@ Construire un traitement permettant d’ordonner les éléments d’une collecti
 
 ### Objectif de l’UA
 
-Découvrir et construire un algorithme classique nécessitant la combinaison de plusieurs traitements élémentaires.
+Découvrir et construire un **algorithme classique de tri** à partir de traitements élémentaires déjà maîtrisés.
+
+Le tri est construit par l’apprenant.
+
+L’utilisation directe de `Array.sort()` est exclue dans les tutoriels de construction de l’algorithme.
 
 ### Notions clés
 
+* ordre ;
 * ordre croissant ;
 * ordre décroissant ;
 * comparaison ;
 * position ;
-* partie triée ;
-* partie non triée ;
 * minimum ;
 * permutation ;
-* boucles imbriquées ;
-* réutilisation de l’algorithme d’échange.
+* partie triée ;
+* partie non triée ;
+* boucle imbriquée ;
+* tri par sélection.
 
 ### Tutoriels
 
-#### T.121.161 — Bases du classement et du tri
+#### T.121.161 — Comprendre l’ordre et le tri
 
-L’apprenant découvre :
-
-* notion d’ordre ;
-* comparaison ;
-* position ;
-* élément à déplacer ;
-* partie triée / non triée.
+**Objectif :** comprendre la notion d’ordre, distinguer ordre croissant et décroissant et observer la différence entre collection triée et non triée.
 
 #### T.121.162 — Construire les opérations nécessaires au tri
 
-L’apprenant pratique :
+**Objectif :** construire les opérations utilisées par le tri :
 
 * rechercher un minimum ;
 * mémoriser sa position ;
 * échanger deux éléments ;
-* répéter le traitement.
+* déplacer un élément à la bonne position.
 
-#### T.121.163 — Exercices de tri
+#### T.121.163 — Exercices sur l’ordre et le tri
 
-Exercices :
+**Objectif :** effectuer manuellement les étapes d’un tri sur de petites collections et expliquer chaque déplacement.
 
-* trier manuellement une petite collection ;
-* déterminer l’élément à déplacer ;
-* effectuer les permutations ;
-* expliquer les étapes.
+#### T.121.164 — Construire le tri par sélection
 
-#### T.121.164 — Algorithme classique : tri par sélection
+**Objectif :** construire progressivement l’algorithme du tri par sélection.
 
-Construction du tri :
+Principe :
 
 ```text
 Pour chaque position
     rechercher le minimum restant
+    mémoriser sa position
     échanger avec la position courante
 ```
 
-Puis réalisation en JavaScript et vérification avec Node.js.
+#### T.121.165 — Tester et adapter un algorithme de tri
+
+**Objectif :** tester l’algorithme sur plusieurs collections et l’adapter à l’ordre décroissant.
+
+Tests :
+
+* collection déjà triée ;
+* collection inversée ;
+* collection désordonnée ;
+* valeurs répétées.
+
+#### T.121.166 — Algorithme de synthèse : trier une collection
+
+**Objectif :** construire et vérifier un traitement complet de tri par sélection sur différentes collections.
 
 ### Résultat attendu
 
-L’apprenant sait construire un algorithme classique de tri et expliquer son fonctionnement.
+L’apprenant sait construire, expliquer, tester et adapter un algorithme classique de tri.
 
 ---
 
-# UA.121.17 — Combiner plusieurs traitements
+## UA.121.17 — Combiner plusieurs traitements
 
 ### Description
 
@@ -523,14 +656,24 @@ Construire un traitement complet en décomposant un problème en plusieurs trait
 
 ### Objectif de l’UA
 
-Introduire une véritable **méthode de conception algorithmique** :
+Introduire une première méthode de conception algorithmique :
 
 ```text
 Comprendre
-→ Décomposer
-→ Construire
-→ Chaîner
-→ Tester
+↓
+Décomposer
+↓
+Définir les entrées et les sorties
+↓
+Construire les traitements
+↓
+Identifier les dépendances
+↓
+Chaîner
+↓
+Tester
+↓
+Vérifier
 ```
 
 ### Notions clés
@@ -538,28 +681,22 @@ Comprendre
 * problème global ;
 * sous-problème ;
 * décomposition ;
+* responsabilité ;
 * entrée ;
 * sortie ;
-* responsabilité d’un traitement ;
 * dépendance ;
+* résultat intermédiaire ;
 * ordre d’exécution ;
 * chaînage ;
-* résultat intermédiaire ;
 * composition ;
 * test individuel ;
 * test global.
 
 ### Tutoriels
 
-#### T.121.171 — Bases de la décomposition d’un problème
+#### T.121.171 — Comprendre la décomposition d’un problème
 
-L’apprenant apprend à :
-
-* comprendre l’objectif global ;
-* identifier les entrées ;
-* identifier les sorties ;
-* repérer les sous-problèmes ;
-* diviser un traitement complexe en traitements plus simples.
+**Objectif :** repérer les sous-problèmes d’un problème global et comprendre qu’un traitement complexe peut être divisé en traitements plus simples.
 
 Principe :
 
@@ -571,156 +708,237 @@ Sous-problème 2
 Sous-problème 3
 ```
 
-#### T.121.172 — Construire et chaîner les traitements
+#### T.121.172 — Définir les entrées et sorties des traitements
 
-L’apprenant apprend à définir :
+**Objectif :** définir pour chaque sous-traitement :
 
 ```text
 Entrées
+↓
 Traitement
+↓
 Sorties
 ```
 
-pour chaque sous-traitement, puis à construire :
+L’apprenant identifie également les résultats nécessaires aux traitements suivants.
+
+#### T.121.173 — Construire les sous-traitements
+
+**Objectif :** construire chaque traitement séparément, avec une responsabilité claire, puis vérifier son fonctionnement avant de l’intégrer au traitement global.
+
+#### T.121.174 — Exercices de décomposition
+
+**Objectif :** analyser plusieurs problèmes et identifier :
+
+* les sous-problèmes ;
+* les traitements nécessaires ;
+* les entrées ;
+* les sorties ;
+* les dépendances ;
+* l’ordre des traitements.
+
+#### T.121.175 — Construire et chaîner plusieurs traitements
+
+**Objectif :** organiser plusieurs traitements afin que le résultat d’un traitement puisse devenir l’entrée d’un autre lorsque cela est nécessaire.
+
+Exemple :
 
 ```text
-A
+notes
 ↓
-Résultat A
+calculerMoyenne()
 ↓
-B
+moyenne
 ↓
-Résultat B
+determinerAppreciation()
 ↓
-C
+résultat
 ```
 
-La sortie d’un traitement devient l’entrée du suivant lorsque cela est nécessaire.
+D’autres traitements peuvent être exécutés en parallèle :
 
-#### T.121.173 — Exercice de conception par décomposition et chaînage
+```text
+notes ──→ trouverMaximum()
+      └─→ trouverMinimum()
+```
 
-À partir d’un problème donné, l’apprenant doit :
+#### T.121.176 — Algorithme de synthèse : construire un traitement complet
 
-* comprendre le problème ;
-* identifier les données ;
-* identifier le résultat attendu ;
-* découper le traitement ;
-* identifier les algorithmes élémentaires nécessaires ;
-* définir les fonctions ;
-* représenter le chaînage.
-
-Le travail de conception est réalisé **avant le codage**.
-
-#### T.121.174 — Algorithme de synthèse : construire un traitement complet
+**Objectif :** construire une solution complète à partir d’un problème global en utilisant la décomposition, les fonctions, les traitements élémentaires et le chaînage.
 
 Exemple :
 
 ```text
 Liste de notes
-      ↓
-calculerSomme()
-      ↓
-somme
-      ↓
-calculerMoyenne()
-      ↓
-moyenne
-      ↓
-determinerAppreciation()
-      ↓
-résultat final
+        │
+        ├──→ calculerSomme()
+        │
+        ├──→ calculerMoyenne()
+        │          │
+        │          └──→ determinerAppreciation()
+        │
+        ├──→ trouverMaximum()
+        │
+        ├──→ trouverMinimum()
+        │
+        └──→ compterValidees()
 ```
 
-En parallèle :
-
-```text
-Liste de notes
-      ↓
-trouverMaximum()
-      ↓
-meilleure note
-```
-
-L’apprenant assemble ensuite les résultats pour produire le traitement complet.
+Les résultats sont ensuite assemblés pour produire le résultat final.
 
 ### Résultat attendu
 
-L’apprenant sait passer d’un problème global à plusieurs algorithmes élémentaires, puis les organiser et les chaîner pour construire une solution complète.
+L’apprenant sait passer d’un problème global à plusieurs traitements élémentaires, définir leurs entrées et sorties, identifier leurs dépendances et les chaîner pour construire une solution complète.
 
 ---
 
 # 4. Vue synthétique du programme
 
-| UA            | Objectif principal           | Progression interne                     | Algorithme principal                  |
-| ------------- | ---------------------------- | --------------------------------------- | ------------------------------------- |
-| **UA.121.11** | Variables et entrées-sorties | Bases → ordre de traitement → exercices | Échange de deux variables             |
-| **UA.121.12** | Contrôle de l’exécution      | Bases → conditions/boucles → exercices  | Maximum, somme, factoriel             |
-| **UA.121.13** | Collections                  | Bases → parcours → exercices            | Recherche / maximum                   |
-| **UA.121.14** | Fonctions                    | Bases → paramètres/retour → exercices   | Fonctions de traitements élémentaires |
-| **UA.121.15** | Résolution                   | Bases → combinaison → exercices         | Analyse d’une collection              |
-| **UA.121.16** | Tri                          | Bases → mécanisme → exercices           | Tri par sélection                     |
-| **UA.121.17** | Conception                   | Décomposition → chaînage → exercice     | Traitement complet chaîné             |
+| UA            | Objectif principal           | Progression interne                                                          | Production principale                  |
+| ------------- | ---------------------------- | ---------------------------------------------------------------------------- | -------------------------------------- |
+| **UA.121.11** | Variables et entrées-sorties | Bases → manipulations → exercices → premier algorithme                       | Échange de deux variables              |
+| **UA.121.12** | Contrôle de l’exécution      | Booléens → conditions → boucles → exercices → algorithme                     | Pyramide d’étoiles                     |
+| **UA.121.13** | Tableaux et collections      | Bases → accès → parcours → exercices → recherche → synthèse                  | Analyse d’une collection               |
+| **UA.121.14** | Fonctions                    | Bases → appel → paramètres/retour → exercices → transformation → combinaison | Fonctions de traitements élémentaires  |
+| **UA.121.15** | Résolution de problèmes      | Comprendre → identifier → construire → exercices → combinaison → synthèse    | Analyse algorithmique d’une collection |
+| **UA.121.16** | Tri                          | Comprendre → opérations → exercices → tri par sélection → tests → synthèse   | Tri par sélection                      |
+| **UA.121.17** | Décomposition et chaînage    | Décomposer → définir E/S → construire → exercices → chaîner → synthèse       | Traitement complet                     |
 
 ---
 
 # 5. Logique pédagogique générale
 
-Le parcours respecte la progression suivante :
+Le parcours suit la logique suivante :
 
 ```text
-                 CONSTRUIRE LE TRAITEMENT LOGIQUE
+               CONSTRUIRE LE TRAITEMENT LOGIQUE
                               │
           ┌───────────────────┴───────────────────┐
           │                                       │
-     ORDRES DE BASE                        ALGORITHMES
+      BASES DU TRAITEMENT                  ALGORITHMES
           │                                       │
- Variables / E-S                          Échange
- Conditions                              Maximum
- Boucles                                 Recherche
+   Variables / E-S                        Échange
+   Conditions                             Recherche
+   Boucles                                Maximum / Minimum
           │                               Tri
-          └───────────────────┬───────────────────┘
+          └───────────────────┬───────────────┘
                               │
+                         TABLEAUX
+                              │
+                              ▼
                          FONCTIONS
                               │
                               ▼
-                    RÉSOLUTION DE PROBLÈMES
+                  RÉSOLUTION DE PROBLÈMES
                               │
                               ▼
-                         DÉCOMPOSITION
+                       DÉCOMPOSITION
                               │
                               ▼
-                           CHAÎNAGE
+                          CHAÎNAGE
                               │
                               ▼
                     TRAITEMENT COMPLET
 ```
 
-La règle pédagogique fondamentale devient :
-
-> **Chaque nouvelle UA réutilise les notions et les algorithmes des UA précédentes.**
-
-Ainsi, l’apprenant ne mémorise pas une succession de commandes JavaScript. Il construit progressivement un **répertoire de traitements élémentaires**, puis apprend à les **réutiliser, les combiner et les chaîner** pour résoudre des problèmes.
-
-# 6. Structure standard d’un tutoriel
-
-Pour conserver une cohérence avec la pédagogie de Spartel Dev Academy, chaque tutoriel peut suivre cette organisation :
+La progression pédagogique fondamentale est :
 
 ```text
-1. Situation / problème
-2. Théorie nécessaire
-3. Démonstration
-4. Réalisation avec JavaScript / Node.js
-5. Test du résultat
-6. Exercice ou réinvestissement
-7. Critère de réussite
+Comprendre
+↓
+Reproduire
+↓
+Expérimenter
+↓
+Réaliser
+↓
+Réutiliser
 ```
 
-Pour les tutoriels d’algorithmes, la progression peut être :
+Pour le niveau N1 :
+
+```text
+Je vois
+↓
+Je comprends
+↓
+Je reproduis
+↓
+Je vérifie
+↓
+Je réutilise
+```
+
+Chaque nouvelle UA réutilise les notions et les traitements appris précédemment.
+
+Ainsi :
+
+```text
+Variables
+↓
+Conditions / Boucles
+↓
+Tableaux
+↓
+Recherche
+↓
+Fonctions
+↓
+Résolution
+↓
+Tri
+↓
+Décomposition
+↓
+Chaînage
+```
+
+L’apprenant construit progressivement un **répertoire de traitements élémentaires**.
+
+Il apprend ensuite à :
+
+```text
+réutiliser
+↓
+combiner
+↓
+décomposer
+↓
+enchaîner
+↓
+construire
+```
+
+un traitement plus complet.
+
+---
+
+# 6. Structure pédagogique des tutoriels
+
+Chaque tutoriel conserve une structure cohérente :
+
+```text
+Situation / problème
+↓
+Théorie nécessaire
+↓
+Démonstration
+↓
+Réalisation
+↓
+Test
+↓
+Exercice
+↓
+Critère de réussite
+```
+
+Pour les tutoriels d’algorithmes :
 
 ```text
 Comprendre le problème
 ↓
-Observer l'algorithme
+Observer l’algorithme
 ↓
 Reproduire
 ↓
@@ -731,14 +949,28 @@ Modifier
 Réutiliser
 ```
 
-Pour **UA.121.17**, on ajoute explicitement :
+Pour les tutoriels de synthèse :
+
+```text
+Comprendre
+↓
+Construire
+↓
+Tester
+↓
+Vérifier
+↓
+Réutiliser
+```
+
+Pour l’UA.121.17 :
 
 ```text
 Comprendre
 ↓
 Décomposer
 ↓
-Définir les entrées/sorties
+Définir les entrées et sorties
 ↓
 Construire les traitements élémentaires
 ↓
@@ -751,4 +983,88 @@ Tester chaque traitement
 Tester le traitement complet
 ```
 
-Le domaine compte ainsi **28 tutoriels structurés en 7 UA × 4 tutoriels**, avec une fonction claire pour chaque tutoriel : **bases, ordre/mécanisme, exercices, algorithme élémentaire ou classique**.
+---
+
+# 7. Répartition des types de tutoriels
+
+Les tutoriels ne doivent pas tous avoir la même fonction.
+
+La progression générale utilise plusieurs catégories :
+
+```text
+Tutoriel de base
+↓
+Tutoriel de mécanisme
+↓
+Tutoriel d'exercice
+↓
+Tutoriel d'algorithme élémentaire
+↓
+Tutoriel d'algorithme classique
+↓
+Tutoriel de synthèse
+```
+
+Toutes les UA n’utilisent pas nécessairement toutes les catégories de la même manière.
+
+Le choix dépend de la notion et de la difficulté.
+
+---
+
+# 8. Règle pédagogique fondamentale
+
+> **Chaque nouvelle UA réutilise les notions, les structures et les algorithmes construits dans les UA précédentes.**
+
+L’apprenant ne mémorise donc pas une succession de commandes JavaScript.
+
+Il construit progressivement un **répertoire de traitements élémentaires**, puis apprend à les **réutiliser, les combiner, les décomposer et les chaîner** pour résoudre des problèmes.
+
+Le rôle de JavaScript et de Node.js est de permettre l’exécution, l’observation et la vérification des traitements algorithmiques.
+
+---
+
+# 9. Volume global du domaine
+
+Le domaine contient :
+
+```text
+7 UA
+×
+6 tutoriels
+=
+42 tutoriels
+```
+
+Répartition :
+
+```text
+UA.121.11 → 6 tutoriels
+UA.121.12 → 6 tutoriels
+UA.121.13 → 6 tutoriels
+UA.121.14 → 6 tutoriels
+UA.121.15 → 6 tutoriels
+UA.121.16 → 6 tutoriels
+UA.121.17 → 6 tutoriels
+```
+
+Le domaine se termine par une compétence de niveau N1 clairement identifiable :
+
+```text
+Comprendre un problème
+↓
+Choisir les traitements nécessaires
+↓
+Construire les traitements
+↓
+Les organiser
+↓
+Les réutiliser
+↓
+Les chaîner
+↓
+Vérifier le résultat
+```
+
+### Compétence finale visée
+
+À la fin du domaine, l’apprenant est capable de construire un **traitement logique complet en JavaScript**, à partir d’un problème simple, en utilisant des traitements élémentaires déjà appris et en les organisant par **décomposition, réutilisation et chaînage**.

@@ -1,7 +1,7 @@
 ---
-title: "Bases de la décomposition d'un problème"
+title: "Comprendre la décomposition d'un problème"
 layout: tuto
-slug: "bases-decomposition"
+slug: "comprendre-decomposition-probleme"
 permalink: /tutos/:slug/
 tuto_id: "T.121.171"
 version: "normal"

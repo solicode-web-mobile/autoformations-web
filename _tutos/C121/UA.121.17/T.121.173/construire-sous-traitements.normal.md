@@ -1,7 +1,7 @@
 ---
-title: "Exercice de conception par décomposition et chaînage"
+title: "Construire les sous-traitements"
 layout: tuto
-slug: "exercice-decomposition-chainage"
+slug: "construire-sous-traitements"
 permalink: /tutos/:slug/
 tuto_id: "T.121.173"
 version: "normal"
