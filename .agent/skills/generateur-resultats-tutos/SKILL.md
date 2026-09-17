@@ -18,11 +18,12 @@ Ces fichiers servent à afficher le rendu final attendu ou l'état de la console
 
 ## Layouts Jekyll par Domaine
 
-Pour chaque domaine de tutoriel, un layout Jekyll spécifique doit être utilisé dans le Front Matter du fichier Markdown.
+Pour chaque domaine de tutoriel, un layout Jekyll spécifique doit être utilisé dans le Front Matter du fichier Markdown de résultat.
 
-* **Git / CLI** : Utiliser `layout: console`
-* **HTML / CSS / JS** : Utiliser un layout correspondant, ou créer un fichier HTML brut sans Front Matter si le résultat est directement affiché dans un iframe pur.
-* **Si le layout du domaine n'existe pas**, vous devez le créer dans le dossier `_layouts/` du projet (ex: `_layouts/<domaine>.html`).
+**Règle absolue :** Le nom du `layout` DOIT correspondre exactement au nom du "mini-code-domaine" (c'est-à-dire le nom du dossier thématique dans lequel le résultat est placé).
+* Par exemple, si le résultat est placé dans le dossier `code/conception/...`, le front matter doit contenir `layout: conception`.
+* Si le résultat est placé dans `code/html/...`, utiliser `layout: html`.
+* **Si le layout du domaine n'existe pas encore**, vous devez le créer dans le dossier `_layouts/` du projet (ex: `_layouts/conception.html`).
 
 ## Structure du Fichier Résultat (Exemple Markdown)
 
@@ -30,7 +31,7 @@ Si le résultat est un fichier Markdown utilisant un layout :
 
 ```markdown
 ---
-layout: console
+layout: conception
 title: "Résultat Tuto 11 Git"
 nav_exclude: true
 ---
@@ -45,3 +46,15 @@ nav_exclude: true
 2. **Déterminer le format et le layout** : Choisir si le résultat doit être un `.md` (avec Front Matter et layout Jekyll) ou un `.html` brut. 
 3. **Créer le fichier** : Générer le fichier dans `code/<domaine>/tuto-<id>-<domaine>.<ext>`.
 4. **Rédiger le contenu** : Insérer le code, la simulation de terminal ou le rendu HTML/CSS représentant exactement la fin du tutoriel.
+5. **Intégrer le résultat dans le tutoriel** : Après la création du fichier dans `code/`, vous DEVEZ modifier le fichier Markdown du tutoriel d'origine pour y insérer ce bloc HTML (sous la section `Résultat attendu`) :
+
+```html
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/<chemin-du-resultat>/' | relative_url }}"
+    height="320"
+    title="Résultat attendu">
+</iframe>
+```
+*(Adaptez le chemin `src`, la hauteur `height` et le `title` en fonction du résultat généré).*

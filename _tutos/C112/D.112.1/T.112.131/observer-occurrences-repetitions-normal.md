@@ -110,7 +110,18 @@ Si une information répétée (comme "Tanger") doit être corrigée (suite à un
 Créez un document **Markdown** ou un **Google Doc** contenant vos réponses aux 3 questions ci-dessus.
 Nom conseillé : `observation-occurrences-repetitions.md`
 
+## Résultat attendu
+
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.131/observation-occurrences-repetitions.html' | relative_url }}"
+    height="320"
+    title="Résultat attendu — Observation des occurrences">
+</iframe>
+
 ## Critères de réussite
+
 
 * Les occurrences et les valeurs répétées sont correctement identifiées.
 * La différence entre "donnée" (contenant) et "valeur" (contenu) est bien comprise et respectée dans les réponses.

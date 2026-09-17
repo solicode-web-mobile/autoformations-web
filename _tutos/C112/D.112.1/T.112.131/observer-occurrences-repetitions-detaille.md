@@ -112,8 +112,18 @@ Imaginez la situation suivante : si une information répétée (comme le nom de 
 
 ## Livrable
 
-Créez un document **Markdown** ou un **Google Doc** contenant vos réponses détaillées aux 3 questions posées ci-dessus. Veillez à structurer vos réponses de manière lisible.
+Créez un document **Markdown** ou un **Google Doc** bien structuré contenant l'intégralité de vos réponses aux 3 questions ci-dessus.
 Nom conseillé pour votre fichier : `observation-occurrences-repetitions.md`
+
+## Résultat attendu
+
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.131/observation-occurrences-repetitions.html' | relative_url }}"
+    height="320"
+    title="Résultat attendu — Observation des occurrences">
+</iframe>
 
 ## Critères de réussite
 
