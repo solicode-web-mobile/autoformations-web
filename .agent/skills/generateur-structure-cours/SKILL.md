@@ -1,5 +1,5 @@
 ---
-name: configurateur-structure-pedagogique
+name: generateur-structure-cours
 description: Expert en création et configuration des Domaines, UAs et structure des tutoriels.
 ---
 

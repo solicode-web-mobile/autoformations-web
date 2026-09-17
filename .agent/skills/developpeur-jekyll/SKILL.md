@@ -1,6 +1,6 @@
 ---
-name: agent-developer
-description: Expert en développement et maintenance de sites Jekyll avec Just the Docs.
+name: developpeur-jekyll
+description: Expert en développement, optimisation et maintenance de la plateforme d'autoformation avec Jekyll et Just the Docs.
 ---
 
 # Role 
