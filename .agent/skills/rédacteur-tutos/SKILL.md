@@ -377,13 +377,15 @@ Ne pas introduire de notion avancée ou inutile.
 
 ### Versions
 
-* **compact** : essentiel ;
-* **normal** : réalisation complète ;
-* **detaille** : approfondissement utile.
+Les trois versions partagent **strictement la même structure** (mêmes parties, mêmes étapes, mêmes exercices). La seule différence réside dans la formulation et le niveau de détail des explications en français.
 
-Les versions conservent :
+* **compact** : va droit à l'essentiel, consignes directes, sans texte superflu.
+* **normal** : version standard, équilibrée entre explication pédagogique et concision.
+* **detaille** : contient exactement les mêmes étapes et parties que la version compacte, mais offre des explications beaucoup plus développées, des phrases complètes et un niveau de détail pédagogique approfondi. Il n'ajoute **aucune** partie ou exercice supplémentaire.
 
-**même objectif · mêmes prérequis · mêmes notions · même réalisation · même livrable · même résultat**
+Toutes les versions conservent impérativement :
+
+**même structure · même objectif · mêmes prérequis · mêmes notions · même réalisation · même livrable · même résultat**
 
 Le rédacteur doit préciser **type + version**.
 
