@@ -35,9 +35,7 @@ Savoir distinguer :
 
 * une information ;
 * une donnée ;
-* une valeur ;
-* une donnée saisie ;
-* une donnée visible.
+* une valeur.
 
 Voir **T.112.111 — Distinguer information, donnée et valeur**.
 
@@ -77,63 +75,25 @@ Son rôle dépend de ce que fait l'application avec elle.
 
 ### 1.2. Donnée saisie
 
-Une **donnée saisie** est une donnée dont la valeur est fournie par l'utilisateur.
+Une **donnée saisie** est une donnée dont la valeur est fournie par l'utilisateur (par exemple, via un formulaire).
 
-**Exemple :**
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.112/formulaire-donnee-saisie.html' | relative_url }}"
+    height="400"
+    title="Exemple — Formulaire et données saisies">
+</iframe>
 
-Un utilisateur saisit :
+### 1.3. Donnée affichée (ou visible)
 
-```text
-Madani
-```
+Une **donnée affichée** est une donnée dont la valeur est présentée à l'utilisateur sur l'interface.
 
-dans un champ « Nom ».
-
-On peut représenter la situation ainsi :
-
-```text
-nom_auteur
-    ↓
-Madani
-```
-
-La donnée `nom_auteur` reçoit la valeur `Madani`.
-
-### 1.3. Donnée affichée
-
-Une **donnée affichée** est une donnée dont la valeur est présentée à l'utilisateur.
-
-**Exemple :**
-
-L'application affiche :
-
-```text
-Madani
-```
-
-On peut représenter :
-
-```text
-nom_auteur
-    ↓
-Madani
-    ↓
-affiché à l'écran
-```
-
-Une même donnée peut donc être :
-
-```text
-saisie
-```
-
-à un moment, puis :
-
-```text
-affichée
-```
-
-plus tard.
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.112/donnee-visible.html' | relative_url }}"
+    height="400"
+    title="Exemple — Donnée visible">
+</iframe>
 
 ### 1.4. Donnée calculée
 
@@ -169,6 +129,13 @@ duree_lecture
 
 est une donnée calculée.
 
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.112/donnee-calculee.html' | relative_url }}"
+    height="320"
+    title="Exemple — Donnée calculée">
+</iframe>
+
 ### 1.5. Donnée stockée
 
 Une **donnée stockée** est une donnée enregistrée afin de pouvoir être retrouvée plus tard.
@@ -192,6 +159,13 @@ titre_article
     ↓
 Mon premier article
 ```
+
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.112/donnee-stockee.html' | relative_url }}"
+    height="350"
+    title="Exemple — Donnée stockée">
+</iframe>
 
 ### 1.6. Donnée persistante
 
@@ -225,6 +199,13 @@ réouverture
 donnée toujours disponible
 ```
 
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.112/donnee-persistante.html' | relative_url }}"
+    height="300"
+    title="Exemple — Donnée persistante">
+</iframe>
+
 ### 1.7. Donnée temporaire
 
 Une **donnée temporaire** est utilisée pendant une période limitée et n'a pas nécessairement besoin d'être conservée.
@@ -252,6 +233,13 @@ fermeture sans enregistrement
    ↓
 donnée perdue
 ```
+
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.112/donnee-temporaire.html' | relative_url }}"
+    height="280"
+    title="Exemple — Donnée temporaire">
+</iframe>
 
 ### 1.8. Stockage et base de données
 
@@ -333,125 +321,28 @@ affichée
 
 ## Partie 2 — Pratique
 
-### 2.1. Comprendre le parcours d'une donnée
+### 2.1. Travail à faire
 
-Lisez la situation suivante.
+Pour chaque situation décrite dans le tableau ci-dessous, vous devez indiquer le **rôle** ou l'état de la donnée.
 
-Madani utilise une application de Blog.
+Choisissez parmi les rôles suivants : `saisie`, `affichée`, `calculée`, `stockée`, `persistante`, `temporaire`.
 
-Il saisit son nom :
+*(Note : Une même donnée peut avoir plusieurs rôles en même temps, mais concentrez-vous sur l'action décrite).*
 
-```text
-Madani
-```
+**Recopiez et complétez le tableau suivant :**
 
-L'application reçoit la valeur :
+| Donnée          | Situation dans l'application                 | Rôle(s) de la donnée |
+| --------------- | -------------------------------------------- | -------------------- |
+| `nom_auteur`    | L'utilisateur tape son nom dans le champ     |                      |
+| `nom_auteur`    | Le nom apparaît en haut de l'article publié  |                      |
+| `titre_article` | L'article est enregistré dans la base        |                      |
+| `titre_article` | L'application retrouve le titre 2 mois plus tard |                  |
+| `duree_lecture` | L'application compte les mots et déduit « 5 min » |                 |
+| `texte_brouillon`| L'utilisateur ferme la page sans sauvegarder |                  |
 
-```text
-nom_auteur → Madani
-```
+### 2.2. Livrable
 
-L'application enregistre ensuite cette valeur.
-
-Plus tard, lorsqu'un article est affiché, l'application présente :
-
-```text
-Madani
-```
-
-Complétez le parcours :
-
-```text
-nom_auteur
-    ↓
-____________
-    ↓
-____________
-    ↓
-____________
-```
-
-### 2.2. Identifier le rôle d'une donnée
-
-Pour chaque situation, indiquez le rôle de la donnée.
-
-| Situation                                                    | Rôle |
-| ------------------------------------------------------------ | ---- |
-| L'utilisateur entre son nom dans un formulaire               |      |
-| L'application affiche le nom de l'auteur                     |      |
-| L'application enregistre le nom de l'auteur                  |      |
-| L'application calcule une durée de lecture                   |      |
-| Une valeur est utilisée uniquement pendant la saisie         |      |
-| Une donnée reste disponible après fermeture de l'application |      |
-
-Utilisez les termes :
-
-```text
-saisie
-affichée
-calculée
-stockée
-temporaire
-persistante
-```
-
-### 2.3. Reconnaître les données calculées
-
-Observez les situations suivantes.
-
-**Situation A**
-
-```text
-contenu_article
-      ↓
-calcul
-      ↓
-duree_lecture
-```
-
-**Situation B**
-
-```text
-nom_auteur
-      ↓
-saisie par l'utilisateur
-```
-
-**Situation C**
-
-```text
-titre_article
-      ↓
-enregistré
-      ↓
-réutilisé plus tard
-```
-
-Pour chaque situation, indiquez si la donnée est :
-
-* saisie ;
-* calculée ;
-* stockée ;
-* persistante.
-
-Une même donnée peut avoir plusieurs rôles.
-
-### 2.4. Travail à faire
-
-Complétez le tableau suivant.
-
-| Donnée          | Situation                                    | Rôle |
-| --------------- | -------------------------------------------- | ---- |
-| `nom_auteur`    | L'utilisateur saisit son nom                 |      |
-| `nom_auteur`    | L'application affiche son nom                |      |
-| `titre_article` | L'article est enregistré                     |      |
-| `titre_article` | Le titre est retrouvé plus tard              |      |
-| `duree_lecture` | L'application calcule « 5 min »              |      |
-| `texte_saisi`   | L'utilisateur ferme la page sans enregistrer |      |
-
-### Livrable
-
-Créez un document contenant vos réponses.
+Créez un document Markdown (ou un Google Doc) contenant votre tableau complété.
 
 ```text
 t112112-role-donnees.md
@@ -459,10 +350,11 @@ t112112-role-donnees.md
 
 ### Résultat attendu
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{ '/code/conception/T.112.112/' | relative_url }}"
-    height="650"
+    height="400"
     title="Résultat attendu — Rôle d'une donnée">
 </iframe>
 

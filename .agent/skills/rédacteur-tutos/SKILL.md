@@ -615,8 +615,9 @@ data_js: ""
 
 **Résultat attendu :**
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-1-css.html' | relative_url}}"
     height="700"
     title="Résultat attendu">
@@ -638,8 +639,9 @@ data_js: ""
 
 **Résultat attendu :**
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-1-css.html' | relative_url}}"
     height="700"
     title="Résultat attendu">
@@ -839,8 +841,9 @@ Lorsque le tutoriel produit une réalisation HTML/CSS, le résultat doit être a
 Exemple :
 
 ```html
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-1-css.html' | relative_url}}"
     height="700"
     title="Résultat attendu">
@@ -871,8 +874,9 @@ Ne pas afficher une réalisation plus avancée que celle enseignée dans le tuto
 Pour une démonstration HTML/CSS :
 
 ```html
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-1-css.html' | relative_url}}"
     height="700"
     title="Résultat attendu">
@@ -998,8 +1002,9 @@ Le **Résultat attendu** de cette partie doit présenter la version finale de l'
 Exemple :
 
 ```html
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{'/code/blog/page-detaille-v1/page-detail-html-v1.tuto-3-html.html' | relative_url}}"
     height="700"
     title="Résultat attendu">
@@ -1037,8 +1042,9 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses.
 
 **Résultat attendu :**
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-1-css.html' | relative_url}}"
     height="700"
     title="Résultat attendu">

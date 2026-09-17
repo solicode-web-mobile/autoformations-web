@@ -24,9 +24,7 @@ Savoir distinguer :
 
 * une information ;
 * une donnée ;
-* la valeur d'une donnée ;
-* une donnée saisie ;
-* une donnée visible.
+* la valeur d'une donnée.
 
 Comprendre la différence entre une **donnée** et sa **valeur**.
 
@@ -164,31 +162,7 @@ Youssef
 >
 > **La valeur est le contenu concret de cette donnée.**
 
-### 1.5. Une donnée saisie
-
-Une **donnée saisie** est une donnée dont la valeur est fournie par l'utilisateur.
-
-<iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.111/formulaire-donnee-saisie.html' | relative_url }}"
-    height="400"
-    title="Exemple — Formulaire et données saisies">
-</iframe>
-
-### 1.6. Une donnée visible
-
-Une **donnée visible** est une donnée dont la valeur est affichée à l'utilisateur.
-
-<iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.111/donnee-visible.html' | relative_url }}"
-    height="400"
-    title="Exemple — Donnée visible">
-</iframe>
-
-L'objectif ici est simplement de comprendre qu'une même donnée peut avoir différents rôles (saisie, stockée, affichée).
-
-### 1.7. Exemple complet
+### 1.5. Exemple complet
 
 Considérons les données suivantes :
 
@@ -223,7 +197,7 @@ Ali
 Mon premier article
 ```
 
-### 1.8. À retenir
+### 1.6. À retenir
 
 Retenez les éléments suivants :
 
@@ -231,8 +205,6 @@ Retenez les éléments suivants :
 * Une **donnée** est un élément précis manipulé par l'application.
 * Une donnée possède un nom.
 * Une **valeur** est le contenu concret d'une donnée.
-* Une **donnée saisie** reçoit une valeur fournie par l'utilisateur.
-* Une **donnée visible** est affichée à l'utilisateur.
 * La donnée peut rester la même alors que sa valeur change.
 
 **Exemple :**
@@ -279,16 +251,15 @@ Analysez les situations décrites dans le tableau ci-dessous en vous basant sur 
 Pour chaque situation, vous devez :
 1. Identifier le nom de la **donnée** concernée (ex: `nom_auteur`, `titre_article`, etc.).
 2. Identifier sa **valeur**.
-3. Indiquer s'il s'agit d'une **donnée saisie** ou d'une **donnée visible**.
 
 **Recopiez et complétez le tableau suivant :**
 
-| Situation                                                             | Donnée | Valeur | Saisie ou visible — |
-| --------------------------------------------------------------------- | ------ | ------ | ------------------- |
-| L'utilisateur saisit son prénom dans le formulaire d'inscription      |        |        |                     |
-| L'application affiche l'email de l'auteur sur son profil              |        |        |                     |
-| L'utilisateur saisit le titre de l'article lors de sa création        |        |        |                     |
-| L'application affiche la date de publication en haut de l'article     |        |        |                     |
+| Situation dans l'interface                                            | Donnée | Valeur |
+| --------------------------------------------------------------------- | ------ | ------ |
+| Le prénom « Ali » est inscrit dans le formulaire d'inscription        |        |        |
+| L'email « madani@mail.com » figure sur le profil de l'auteur          |        |        |
+| Le titre « Mon premier article » est entré lors de la création        |        |        |
+| La date « 16/09/2026 » apparaît en haut de l'article                  |        |        |
 
 ### 2.3. Livrable
 
@@ -314,9 +285,7 @@ Vous avez correctement :
 
 * distingué une information d'une donnée ;
 * distingué une donnée de sa valeur ;
-* identifié les valeurs correspondantes ;
-* reconnu une donnée saisie ;
-* reconnu une donnée visible.
+* identifié les valeurs correspondantes.
 
 ## Bilan
 
@@ -325,9 +294,7 @@ Vous avez correctement :
 * distinguer une information d'une donnée ;
 * identifier une donnée ;
 * identifier la valeur d'une donnée ;
-* expliquer la différence entre donnée et valeur ;
-* reconnaître une donnée saisie ;
-* reconnaître une donnée visible.
+* expliquer la différence entre donnée et valeur.
 
 **Vous savez maintenant :**
 
@@ -360,6 +327,4 @@ La prochaine étape consiste à apprendre à **repérer les données dans une ma
 * **Information** : renseignement utile permettant de comprendre quelque chose.
 * **Donnée** : élément précis manipulé par une application.
 * **Valeur** : contenu concret d'une donnée dans un cas précis.
-* **Donnée saisie** : donnée dont la valeur est fournie par l'utilisateur.
-* **Donnée visible** : donnée dont la valeur est affichée à l'utilisateur.
 * **Maquette** : représentation visuelle d'un écran de l'application.

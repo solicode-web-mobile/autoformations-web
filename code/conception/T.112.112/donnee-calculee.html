@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donnée Calculée</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #475569;
+            font-weight: 500;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 80px;
+            margin-bottom: 15px;
+        }
+        .result-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .result-label {
+            color: #166534;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .badge {
+            background-color: #22c55e;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label>📝 Contenu de l'article (Donnée saisie)</label>
+        <textarea id="contenu" placeholder="Tapez votre texte ici... Chaque groupe de 5 mots ajoutera 1 minute de lecture pour l'exemple."></textarea>
+        
+        <div class="result-box">
+            <span class="result-label">⏱️ Durée de lecture (Donnée calculée)</span>
+            <span class="badge" id="duree">0 min</span>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('contenu');
+        const badge = document.getElementById('duree');
+
+        textarea.addEventListener('input', () => {
+            const text = textarea.value.trim();
+            const words = text === '' ? 0 : text.split(/\s+/).length;
+            // Fake calculation for demonstration: 1 minute per 5 words
+            const minutes = Math.ceil(words / 5);
+            badge.textContent = `${minutes} min`;
+        });
+    </script>
+</body>
+</html>

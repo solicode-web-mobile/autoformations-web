@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donnée Temporaire</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #cbd5e1;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+        }
+        .close-btn {
+            color: #ef4444;
+            background: none;
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .close-btn:hover {
+            background-color: #fef2f2;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 80px;
+            margin-bottom: 15px;
+        }
+        .info-box {
+            background-color: #fef3c7;
+            border: 1px solid #fde68a;
+            color: #92400e;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="title">Nouvel Article (Brouillon)</span>
+            <button class="close-btn" id="btn-close">Fermer sans sauvegarder ✖</button>
+        </div>
+        
+        <textarea id="texte" placeholder="Commencez à rédiger votre article..."></textarea>
+        
+        <div class="info-box" id="info">
+            ⚠️ La donnée temporaire a été perdue, car elle n'a pas été sauvegardée avant la fermeture.
+        </div>
+    </div>
+
+    <script>
+        const btnClose = document.getElementById('btn-close');
+        const texte = document.getElementById('texte');
+        const info = document.getElementById('info');
+
+        btnClose.addEventListener('click', () => {
+            if (texte.value.trim() !== '') {
+                texte.value = '';
+                info.style.display = 'block';
+                setTimeout(() => {
+                    info.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

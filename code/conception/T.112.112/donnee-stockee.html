@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donnée Stockée</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #475569;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        .database {
+            background-color: #f1f5f9;
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .db-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .db-item {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #8b5cf6;
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 8px;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <label>Titre de l'article (Donnée saisie)</label>
+            <input type="text" id="titre" placeholder="Mon premier article" value="Mon premier article">
+            <button id="btn-save">Enregistrer</button>
+        </div>
+
+        <div class="database">
+            <div class="db-header">🗄️ Base de données (Données stockées)</div>
+            <div class="db-item" id="stored-data"></div>
+        </div>
+    </div>
+
+    <script>
+        const btnSave = document.getElementById('btn-save');
+        const inputTitre = document.getElementById('titre');
+        const storedData = document.getElementById('stored-data');
+
+        btnSave.addEventListener('click', () => {
+            const val = inputTitre.value.trim();
+            if (val) {
+                storedData.textContent = `Titre : ${val}`;
+                storedData.style.display = 'block';
+                btnSave.textContent = "✅ Enregistré";
+                btnSave.style.backgroundColor = "#22c55e";
+                setTimeout(() => {
+                    btnSave.textContent = "Enregistrer";
+                    btnSave.style.backgroundColor = "#3b82f6";
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

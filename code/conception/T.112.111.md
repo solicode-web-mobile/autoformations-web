@@ -10,9 +10,9 @@ nav_exclude: true
 
 Voici la correction de l'exercice basé sur les informations de l'article :
 
-| Situation | Donnée | Valeur | Saisie ou visible ? |
-| :--- | :--- | :--- | :--- |
-| L'utilisateur saisit son prénom dans le formulaire d'inscription | `prenom_auteur` | Ali | Saisie |
-| L'application affiche l'email de l'auteur sur son profil | `email_auteur` | madani@mail.com | Visible |
-| L'utilisateur saisit le titre de l'article lors de sa création | `titre_article` | Mon premier article | Saisie |
-| L'application affiche la date de publication en haut de l'article | `date_publication` | 16/09/2026 | Visible |
+| Situation dans l'interface | Donnée | Valeur |
+| :--- | :--- | :--- |
+| Le prénom « Ali » est inscrit dans le formulaire d'inscription | `prenom_auteur` | Ali |
+| L'email « madani@mail.com » figure sur le profil de l'auteur | `email_auteur` | madani@mail.com |
+| Le titre « Mon premier article » est entré lors de la création | `titre_article` | Mon premier article |
+| La date « 16/09/2026 » apparaît en haut de l'article | `date_publication` | 16/09/2026 |

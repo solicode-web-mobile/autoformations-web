@@ -15,6 +15,18 @@ laissez l'apprenant résoudre la pratique,
 fixer le résultat de tuto dans /code
 
 ---
+
+il faut indiquzer dans le skill tuto commet on a ajouter le button 
+
+"Affiche le résulat 
+
+
+
+
+
+
+
+---
 agent  : developer-jekyll
 je veux que le menu et le code tuto oit être dans le même ligne : 
 
