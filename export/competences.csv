@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: /metadata.csv
+---
 "code","mini_code","nom","module_reference","description","reference"
 "C.162","","Pédagogie active","DWB-M105","","DWB-M105-C.162"
 "C.122","","Construire l’interface","DWB-M108","Interpréter une conception structurer avec HTML appliquer une présentation CSS afficher les informations nécessaires sélectionner et manipuler les éléments réagir aux actions utilisateur modifier dynamiquement l’interface observer corriger et vérifier.","DWB-M108-C.122"
