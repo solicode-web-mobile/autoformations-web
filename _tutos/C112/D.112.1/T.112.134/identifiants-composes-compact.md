@@ -102,6 +102,14 @@ Nom conseillé : `entites-ecommerce.md`
 
 Vous devez obtenir **4 entités** distinctes : Client, Commande, Produit, et Ligne_Commande.
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.134/entites-ecommerce.html' | relative_url }}"
+    height="450"
+    title="Résultat attendu — Modéliser une liaison complexe">
+</iframe>
+
 ## Critères de réussite
 
 * L'entité `Commande` contient bien la clé étrangère `id_client` (car la commande appartient à un client).
