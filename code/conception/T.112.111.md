@@ -1,20 +1,18 @@
 ---
 layout: conception
-title: "Données identifiées — Page Détail d'un article"
+title: "Résultat attendu — Information, donnée et valeur"
 tuto_id: "T.112.111"
 permalink: /code/conception/T.112.111/
 nav_exclude: true
 ---
 
-## Données identifiées
+## Tableau complété
 
-| Donnée              | Valeur observée                                           | Type    |
-| ------------------- | --------------------------------------------------------- | ------- |
-| `titre_article`     | Comment structurer ses composants UI avec Atomic Design ? | Visible |
-| `nom_auteur`        | Madani                                                    | Visible |
-| `prenom_auteur`     | Ali                                                       | Visible |
-| `date_publication`  | 14 Février 2026                                           | Visible |
-| `nom_categorie`     | Développement                                             | Visible |
-| `contenu_article`   | Le développement web est un domaine passionnant…          | Visible |
-| `image_article`     | (image de couverture)                                     | Visible |
-| `duree_lecture`     | 5 min                                                     | Visible |
+Voici la correction de l'exercice basé sur les informations de l'article :
+
+| Situation | Donnée | Valeur | Saisie ou visible ? |
+| :--- | :--- | :--- | :--- |
+| L'utilisateur saisit son prénom dans le formulaire d'inscription | `prenom_auteur` | Ali | Saisie |
+| L'application affiche l'email de l'auteur sur son profil | `email_auteur` | madani@mail.com | Visible |
+| L'utilisateur saisit le titre de l'article lors de sa création | `titre_article` | Mon premier article | Saisie |
+| L'application affiche la date de publication en haut de l'article | `date_publication` | 16/09/2026 | Visible |

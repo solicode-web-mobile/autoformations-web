@@ -1006,9 +1006,23 @@ Exemple :
 </iframe>
 ```
 
-## Partie 12 — Livrable et bilan
+## Partie 12 — Livrable, Exercices et Bilan
+
+### Exercices de la Partie 2 (Pratique)
+
+L'exercice doit laisser l'apprenant réfléchir. Ne jamais prémâcher le travail en donnant les "Réponses attendues" ou de longs exemples résolus avant l'exercice. 
+Lors de la création d'un exercice :
+1. Poser un **contexte clair** (ex: tableau de données, situation de départ).
+2. Fournir un **tableau vide** ou une question directe.
+3. Utiliser un **vocabulaire non ambigu** (ex: demander directement "Saisie ou visible ?" plutôt que le terme vague "Rôle").
+4. Laisser l'apprenant produire seul son livrable.
+
+### Le Livrable
 
 Le livrable doit être concret et vérifiable.
+
+**Format du Livrable :** Le livrable doit toujours proposer à l'apprenant le choix entre le format Markdown et le format Google Doc :
+> Créez un document Markdown (ou un Google Doc) contenant vos réponses.
 
 Lorsque nécessaire :
 
@@ -1019,7 +1033,7 @@ Lorsque nécessaire :
 
 **Livrable :**
 
-[Production.]
+Créez un document Markdown (ou un Google Doc) contenant vos réponses.
 
 **Résultat attendu :**
 

@@ -1,11 +1,11 @@
 /* =========================================================
-   FORMATION WEB — BASE
+   FORMATION WEB â€” BASE
    Styles communs aux layouts
    ========================================================= */
 
 
 /* =========================================================
-   1. STRUCTURE GÉNÉRALE
+   1. STRUCTURE GÃ‰NÃ‰RALE
    ========================================================= */
 
 .layout-page {
@@ -15,7 +15,7 @@
 
 
 /* =========================================================
-   2. EN-TÊTES
+   2. EN-TÃŠTES
    ========================================================= */
 
 .layout-header {
@@ -37,7 +37,7 @@
 
 
 /* =========================================================
-   4. RÉFÉRENCES
+   4. RÃ‰FÃ‰RENCES
    ========================================================= */
 
 .layout-reference {
@@ -70,18 +70,18 @@
 
 
 /* =========================================================
-   7. JUST THE DOCS — SIDEBAR & MAIN CONTENT
+   7. JUST THE DOCS â€” SIDEBAR & MAIN CONTENT
    ========================================================= */
 
-/* Fixer la largeur du menu aside pour tout média */
+/* Fixer la largeur du menu aside pour tout mÃ©dia */
 .side-bar {
   width: 350px !important;
 }
 
 @media (min-width: 50rem) {
 
-  /* Ajuster la marge pour correspondre à la largeur de la sidebar (350px) 
-     Surcharge de la fonction Max() de Just the Docs sur les très grands écrans
+  /* Ajuster la marge pour correspondre Ã  la largeur de la sidebar (350px) 
+     Surcharge de la fonction Max() de Just the Docs sur les trÃ¨s grands Ã©crans
      pour permettre au contenu d'occuper tout l'espace sans marge vide au milieu */
   .main,
   .side-bar + .main {
@@ -89,7 +89,7 @@
     max-width: none !important;
   }
 
-  /* Retirer les limites de largeur par défaut du thème sur le contenu */
+  /* Retirer les limites de largeur par dÃ©faut du thÃ¨me sur le contenu */
   .main-content-wrap,
   .main-content {
     max-width: none !important;
@@ -123,7 +123,7 @@
 
 
 /* =========================================================
-   8. ACCESSIBILITÉ
+   8. ACCESSIBILITÃ‰
    ========================================================= */
 
 button:focus-visible,
@@ -134,7 +134,7 @@ a:focus-visible {
 
 
 /* =========================================================
-   9. ANIMATIONS RÉDUITES
+   9. ANIMATIONS RÃ‰DUITES
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -192,7 +192,7 @@ a:focus-visible {
 
 
 /* =========================================================
-   9. CONTR�LE DE TAILLE DU TEXTE
+   9. CONTRÔLE DE TAILLE DU TEXTE
    ========================================================= */
 
 .text-size-control {
@@ -385,6 +385,33 @@ a:focus-visible {
   color: #7253ed;
   text-decoration: none;
   transform: translateX(2px);
+}
+
+.tuto-card-active {
+  background: #f3f0ff;
+  border-color: #7253ed;
+  color: #7253ed;
+  font-weight: 600;
+}
+
+.tuto-card-active:hover {
+  background: #f3f0ff;
+  border-color: #7253ed;
+  transform: none; /* Already active, no hover movement */
+}
+
+.tuto-card-number {
+  flex-shrink: 0;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-align: right;
+}
+
+.tuto-card-active .tuto-card-number {
+  color: #7253ed;
 }
 
 .tuto-card-title {

@@ -14,6 +14,8 @@ data_js: ""
 ---
 
 
+
+
 ## Objectif
 
 Comprendre ce qu'est une **information**, une **donnée** et une **valeur**.
@@ -44,7 +46,7 @@ L'objectif est d'abord de **comprendre les concepts** avant d'apprendre à ident
 
 ## Partie 1 — Théorie
 
-### 1.1. Qu'est-ce qu'une information ?
+### 1.1. Qu'est-ce qu'une information —
 
 Une **information** est un renseignement qui permet de comprendre quelque chose.
 
@@ -64,7 +66,7 @@ un article
 
 Ces éléments peuvent être représentés par différentes données dans une application.
 
-### 1.2. Qu'est-ce qu'une donnée ?
+### 1.2. Qu'est-ce qu'une donnée —
 
 Une **donnée** est un élément précis qu'une application peut utiliser, afficher, enregistrer ou modifier.
 
@@ -94,7 +96,7 @@ prenom_auteur
 date_publication
 ```
 
-### 1.3. Qu'est-ce qu'une valeur ?
+### 1.3. Qu'est-ce qu'une valeur —
 
 Une **valeur** est le contenu concret d'une donnée à un moment donné.
 
@@ -166,49 +168,10 @@ Youssef
 
 Une **donnée saisie** est une donnée dont la valeur est fournie par l'utilisateur.
 
-**Exemple :**
-
-Un utilisateur remplit un formulaire :
-
-```text
-Nom :
-Madani
-
-Prénom :
-Ali
-
-Email :
-madani@mail.com
-```
-
-On peut représenter cette situation ainsi :
-
-```text
-nom_auteur
-    ↓
-Madani
-```
-
-```text
-prenom_auteur
-    ↓
-Ali
-```
-
-```text
-email_auteur
-    ↓
-madani@mail.com
-```
-
-L'utilisateur a fourni les valeurs.
-
-La donnée existait comme élément à saisir, puis elle reçoit une valeur.
-
 <iframe
     class="auto-wrapper"
     src="{{ '/code/conception/T.112.111/formulaire-donnee-saisie.html' | relative_url }}"
-    height="480"
+    height="400"
     title="Exemple — Formulaire et données saisies">
 </iframe>
 
@@ -216,40 +179,14 @@ La donnée existait comme élément à saisir, puis elle reçoit une valeur.
 
 Une **donnée visible** est une donnée dont la valeur est affichée à l'utilisateur.
 
-**Exemple :**
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.111/donnee-visible.html' | relative_url }}"
+    height="400"
+    title="Exemple — Donnée visible">
+</iframe>
 
-L'application affiche :
-
-```text
-Madani Ali
-```
-
-L'utilisateur peut voir la valeur associée aux données :
-
-```text
-nom_auteur → Madani
-prenom_auteur → Ali
-```
-
-Une donnée peut donc être :
-
-```text
-saisie
-```
-
-puis :
-
-```text
-stockée
-```
-
-puis :
-
-```text
-affichée
-```
-
-L'objectif ici est simplement de comprendre qu'une même donnée peut avoir différents rôles dans l'application.
+L'objectif ici est simplement de comprendre qu'une même donnée peut avoir différents rôles (saisie, stockée, affichée).
 
 ### 1.7. Exemple complet
 
@@ -324,90 +261,38 @@ La valeur change.
 
 ## Partie 2 — Pratique
 
-### 2.1. Identifier les données et leurs valeurs
+### 2.1. Contexte
 
-Lisez les informations suivantes :
+Considérez les informations suivantes concernant un article :
 
 ```text
-Madani Ali
-madani@mail.com
-Mon premier article
-16/09/2026
+Auteur : Madani Ali
+Email : madani@mail.com
+Titre de l'article : Mon premier article
+Date de publication : 16/09/2026
 ```
-
-Les données associées sont :
-
-| Donnée             | Valeur                                    |
-| ------------------ | ----------------------------------------- |
-| `nom_auteur`       | Madani                                    |
-| `prenom_auteur`    | Ali                                       |
-| `email_auteur`     | [madani@mail.com](mailto:madani@mail.com) |
-| `titre_article`    | Mon premier article                       |
-| `date_publication` | 16/09/2026                                |
 
 ### 2.2. Travail à faire
 
-Pour chaque exemple, indiquez :
+Analysez les situations décrites dans le tableau ci-dessous en vous basant sur le contexte fourni.
 
-1. La donnée.
-2. Sa valeur.
-3. S'il s'agit d'une donnée saisie ou visible.
+Pour chaque situation, vous devez :
+1. Identifier le nom de la **donnée** concernée (ex: `nom_auteur`, `titre_article`, etc.).
+2. Identifier sa **valeur**.
+3. Indiquer s'il s'agit d'une **donnée saisie** ou d'une **donnée visible**.
 
-**Exemple :**
+**Recopiez et complétez le tableau suivant :**
 
-```text
-Madani
-```
+| Situation                                                             | Donnée | Valeur | Saisie ou visible — |
+| --------------------------------------------------------------------- | ------ | ------ | ------------------- |
+| L'utilisateur saisit son prénom dans le formulaire d'inscription      |        |        |                     |
+| L'application affiche l'email de l'auteur sur son profil              |        |        |                     |
+| L'utilisateur saisit le titre de l'article lors de sa création        |        |        |                     |
+| L'application affiche la date de publication en haut de l'article     |        |        |                     |
 
-Réponse attendue :
+### 2.3. Livrable
 
-```text
-Donnée : nom_auteur
-Valeur : Madani
-```
-
-Puis :
-
-```text
-L'utilisateur saisit son nom dans un formulaire.
-```
-
-Réponse :
-
-```text
-Donnée : nom_auteur
-Valeur : Madani
-Rôle : donnée saisie
-```
-
-Puis :
-
-```text
-L'application affiche Madani sur la page.
-```
-
-Réponse :
-
-```text
-Donnée : nom_auteur
-Valeur : Madani
-Rôle : donnée visible
-```
-
-### 2.3. Exercice
-
-Complétez le tableau suivant :
-
-| Situation                                  | Donnée | Valeur | Rôle |
-| ------------------------------------------ | ------ | ------ | ---- |
-| L'utilisateur saisit son nom               |        |        |      |
-| L'application affiche son nom              |        |        |      |
-| L'utilisateur saisit le titre d'un article |        |        |      |
-| L'application affiche le titre             |        |        |      |
-
-### Livrable
-
-Créez un document contenant vos réponses.
+Créez un document Markdown (ou un Google Doc) contenant votre tableau complété.
 
 ```text
 t112111-information-donnee-valeur.md
@@ -415,8 +300,9 @@ t112111-information-donnee-valeur.md
 
 ### Résultat attendu
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
+    class="auto-wrapper tuto-resultat"
     src="{{ '/code/conception/T.112.111/' | relative_url }}"
     height="700"
     title="Résultat attendu — Information, donnée et valeur">

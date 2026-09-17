@@ -14,7 +14,8 @@ layout: default
 
       {% if page.tuto_id %}
       <span class="tuto-code">
-        {{ page.tuto_id }}
+        {{ page.tuto_id }} : 
+         {% include tuto-domain-menu.html %}
       </span>
       {% endif %}
 
@@ -139,11 +140,7 @@ layout: default
   </div>
 
 
-  <!-- ==================================================
-       MENU CONTEXTUEL
-       ================================================== -->
 
-  {% include tuto-domain-menu.html %}
 
 
   <!-- ==================================================
@@ -195,3 +192,4 @@ layout: default
 
 </script>
 
+<script src="{{ '/assets/js/tuto.js' | relative_url }}"></script>

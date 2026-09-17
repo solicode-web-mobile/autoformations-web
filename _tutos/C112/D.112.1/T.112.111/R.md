@@ -1,9 +1,24 @@
 
-Dans la partie : 1.5. Une donnée saisie
-
-ajouter un iframe qui affiche un exemple : de formulaire pour comprendre 
+Partie 2 — Pratique : 
 
 
+c'est quoi : rôle ?
 
-Tous les exemple doit être en enregistrer dans /code/conception
 
+Il faut donner un pratique ans le résoudre dans ce tuto, 
+
+laissez l'apprenant résoudre la pratique, 
+
+----
+
+
+fixer le résultat de tuto dans /code
+
+---
+agent  : developer-jekyll
+je veux que le menu et le code tuto oit être dans le même ligne : 
+
+ <span class="tuto-code">
+        {{ page.tuto_id }} : 
+         {% include tuto-domain-menu.html %}
+      </span>

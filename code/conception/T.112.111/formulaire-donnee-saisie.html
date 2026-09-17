@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemple — Formulaire et données saisies</title>
+    <title>Exemple — Donnée saisie</title>
     <style>
         * {
             box-sizing: border-box;
@@ -15,348 +15,141 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: #f8fafc;
             color: #1e293b;
-            padding: 1.5rem;
-            font-size: 14px;
-            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
         }
 
         .container {
-            max-width: 860px;
-            margin: 0 auto;
-        }
-
-        .header {
-            margin-bottom: 1.25rem;
-        }
-
-        .badge-info {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            background: #e0edff;
-            color: #1c5bba;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.65rem;
-            border-radius: 999px;
-            margin-bottom: 0.5rem;
-        }
-
-        h2 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
-        }
-
-        .subtitle {
-            font-size: 0.82rem;
-            color: #64748b;
-        }
-
-        /* ── Grid Layout ── */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-        }
-
-        @media (max-width: 680px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ── Carte Formulaire ── */
-        .card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 0.75rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            text-align: center;
         }
 
-        .card-header {
-            background: #1e3a5f;
-            color: #ffffff;
-            padding: 0.75rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card-body {
-            padding: 1.25rem;
-            flex: 1;
+        .instruction {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
         }
 
-        .form-group:last-child {
-            margin-bottom: 0;
-        }
-
-        .label-row {
+        .label-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.35rem;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
         }
 
         label {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: #334155;
         }
 
-        .data-tag {
+        .donnee-tag {
             font-family: 'Courier New', monospace;
-            font-size: 0.72rem;
             background: #e0edff;
             color: #1c5bba;
-            padding: 0.15rem 0.45rem;
-            border-radius: 0.25rem;
+            font-size: 0.75rem;
             font-weight: 700;
-        }
-
-        input[type="text"],
-        input[type="email"] {
-            width: 100%;
-            padding: 0.55rem 0.75rem;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 0.5rem;
-            font-size: 0.85rem;
-            color: #0f172a;
-            background: #fdfefe;
-            transition: all 0.2s ease;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            outline: none;
-            border-color: #2673e8;
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(38, 115, 232, 0.15);
-        }
-
-        .btn-submit {
-            display: inline-block;
-            width: 100%;
-            background: #2673e8;
-            color: #ffffff;
-            border: none;
-            padding: 0.6rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            margin-top: 0.75rem;
-            transition: background 0.2s;
-        }
-
-        .btn-submit:hover {
-            background: #1c5bba;
-        }
-
-        /* ── Carte Explication / Données correspondantes ── */
-        .live-preview-title {
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #475569;
-            margin-bottom: 0.75rem;
-        }
-
-        .mapping-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .mapping-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            padding: 0.75rem 0.9rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .mapping-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.8rem;
-        }
-
-        .mapping-arrow {
-            color: #94a3b8;
-            font-weight: 700;
-        }
-
-        .val-badge {
-            background: #dcfce7;
-            color: #166534;
-            padding: 0.15rem 0.5rem;
+            padding: 0.2rem 0.5rem;
             border-radius: 0.35rem;
-            font-weight: 600;
-            font-size: 0.8rem;
-            word-break: break-all;
         }
 
-        .val-empty {
-            background: #f1f5f9;
+        input {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            font-size: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 0.5rem;
+            color: #0f172a;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #2673e8;
+        }
+
+        .result-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .result-text {
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+
+        .valeur-output {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #166534;
+            min-height: 1.8rem;
+            word-break: break-word;
+        }
+        
+        .valeur-empty {
             color: #94a3b8;
             font-style: italic;
+            font-weight: 400;
+            font-size: 1rem;
         }
 
-        .role-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            background: #fef9c3;
-            color: #854d0e;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.1rem 0.45rem;
-            border-radius: 999px;
-            width: fit-content;
-        }
-
-        .note-box {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            background: #eff6ff;
-            border-left: 3px solid #2673e8;
-            border-radius: 0.35rem;
-            font-size: 0.78rem;
-            color: #1e3a5f;
-            line-height: 1.45;
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="header">
-            <span class="badge-info">💡 Exemple interactif</span>
-            <h2>Comment une donnée reçoit une valeur saisie</h2>
-            <p class="subtitle">Le champ du formulaire représente la <strong>donnée</strong>. Le texte saisi par l'utilisateur devient sa <strong>valeur</strong>.</p>
+        
+        <p class="instruction">Modifiez le champ ci-dessous pour voir la différence entre la <strong>donnée</strong> et sa <strong>valeur</strong>.</p>
+
+        <div class="form-group">
+            <div class="label-container">
+                <label for="nom_auteur">Champ du formulaire</label>
+                <span class="donnee-tag">Donnée : nom_auteur</span>
+            </div>
+            <input type="text" id="nom_auteur" value="Madani" oninput="updateValue()">
         </div>
 
-        <div class="grid">
-            <!-- Formulaire -->
-            <div class="card">
-                <div class="card-header">
-                    <span>📝 Formulaire rempli par l'utilisateur</span>
-                </div>
-                <div class="card-body">
-                    <form onsubmit="event.preventDefault();">
-                        <div class="form-group">
-                            <div class="label-row">
-                                <label for="nom_auteur">Nom de l'auteur</label>
-                                <span class="data-tag">nom_auteur</span>
-                            </div>
-                            <input type="text" id="nom_auteur" value="Madani" placeholder="Ex: Madani" oninput="updateMapping()">
-                        </div>
-
-                        <div class="form-group">
-                            <div class="label-row">
-                                <label for="prenom_auteur">Prénom de l'auteur</label>
-                                <span class="data-tag">prenom_auteur</span>
-                            </div>
-                            <input type="text" id="prenom_auteur" value="Ali" placeholder="Ex: Ali" oninput="updateMapping()">
-                        </div>
-
-                        <div class="form-group">
-                            <div class="label-row">
-                                <label for="email_auteur">Adresse e-mail</label>
-                                <span class="data-tag">email_auteur</span>
-                            </div>
-                            <input type="email" id="email_auteur" value="madani@mail.com" placeholder="Ex: madani@mail.com" oninput="updateMapping()">
-                        </div>
-
-                        <button type="button" class="btn-submit">Enregistrer</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Correspondance Donnée / Valeur -->
-            <div class="card">
-                <div class="card-header">
-                    <span>🔍 Analyse des données saisies</span>
-                </div>
-                <div class="card-body">
-                    <div class="live-preview-title">Association Donnée ➔ Valeur</div>
-                    
-                    <div class="mapping-list">
-                        <div class="mapping-item">
-                            <div class="mapping-row">
-                                <span>Donnée : <code class="data-tag">nom_auteur</code></span>
-                                <span class="mapping-arrow">➔</span>
-                                <span class="val-badge" id="val_nom">Madani</span>
-                            </div>
-                            <span class="role-badge">✏️ Donnée saisie</span>
-                        </div>
-
-                        <div class="mapping-item">
-                            <div class="mapping-row">
-                                <span>Donnée : <code class="data-tag">prenom_auteur</code></span>
-                                <span class="mapping-arrow">➔</span>
-                                <span class="val-badge" id="val_prenom">Ali</span>
-                            </div>
-                            <span class="role-badge">✏️ Donnée saisie</span>
-                        </div>
-
-                        <div class="mapping-item">
-                            <div class="mapping-row">
-                                <span>Donnée : <code class="data-tag">email_auteur</code></span>
-                                <span class="mapping-arrow">➔</span>
-                                <span class="val-badge" id="val_email">madani@mail.com</span>
-                            </div>
-                            <span class="role-badge">✏️ Donnée saisie</span>
-                        </div>
-                    </div>
-
-                    <div class="note-box">
-                        <strong>À retenir :</strong> La donnée (ex. <code>nom_auteur</code>) est l'élément prévu par l'application. La valeur (ex. <code>Madani</code>) est fournie par l'utilisateur lors de la saisie.
-                    </div>
-                </div>
-            </div>
+        <div class="result-box">
+            <div class="result-text">La <strong>valeur saisie</strong> par l'utilisateur est :</div>
+            <div id="valeur_display" class="valeur-output">Madani</div>
         </div>
+
     </div>
 
     <script>
-        function updateMapping() {
-            const nom = document.getElementById('nom_auteur').value.trim();
-            const prenom = document.getElementById('prenom_auteur').value.trim();
-            const email = document.getElementById('email_auteur').value.trim();
-
-            updateBadge('val_nom', nom);
-            updateBadge('val_prenom', prenom);
-            updateBadge('val_email', email);
-        }
-
-        function updateBadge(id, value) {
-            const el = document.getElementById(id);
-            if (value) {
-                el.textContent = value;
-                el.classList.remove('val-empty');
+        function updateValue() {
+            const input = document.getElementById('nom_auteur').value.trim();
+            const display = document.getElementById('valeur_display');
+            
+            if (input) {
+                display.textContent = input;
+                display.className = 'valeur-output';
             } else {
-                el.textContent = '(vide)';
-                el.classList.add('val-empty');
+                display.textContent = '(aucune valeur saisie)';
+                display.className = 'valeur-output valeur-empty';
             }
         }
+        
+        // Initialiser l'affichage au chargement (au cas où on modifie la valeur par défaut)
+        updateValue();
     </script>
 </body>
 </html>
