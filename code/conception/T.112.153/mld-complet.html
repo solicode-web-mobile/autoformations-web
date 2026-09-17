@@ -1,0 +1,184 @@
+---
+layout: null
+nav_exclude: true
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLD Complet du Blog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .row {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .table-box {
+            background-color: white;
+            border: 2px solid #0f172a;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            width: 260px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            background-color: #0f172a;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .table-body {
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pk {
+            font-weight: bold;
+            color: #b91c1c;
+        }
+        
+        .pk::after {
+            content: ' (PK)';
+            font-size: 0.8em;
+            color: #b91c1c;
+        }
+
+        .fk {
+            font-weight: bold;
+            color: #047857;
+            background-color: #ecfdf5;
+            padding: 2px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 2px;
+            width: calc(100% - 8px);
+        }
+        
+        .fk::after {
+            content: ' (FK)';
+            font-size: 0.8em;
+            color: #047857;
+            float: right;
+        }
+
+        .pk-fk {
+            font-weight: bold;
+            color: #6d28d9;
+            background-color: #f5f3ff;
+            padding: 2px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 2px;
+            width: calc(100% - 8px);
+        }
+
+        .pk-fk::after {
+            content: ' (PK, FK)';
+            font-size: 0.8em;
+            color: #6d28d9;
+            float: right;
+        }
+
+        .table-box.associative {
+            border-color: #6d28d9;
+        }
+        
+        .table-box.associative .table-header {
+            background-color: #6d28d9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="row">
+        <!-- Table VILLE -->
+        <div class="table-box">
+            <div class="table-header">VILLE</div>
+            <div class="table-body">
+                <div class="pk">id_ville</div>
+                <div>nom_ville</div>
+            </div>
+        </div>
+
+        <!-- Table AUTEUR -->
+        <div class="table-box">
+            <div class="table-header">AUTEUR</div>
+            <div class="table-body">
+                <div class="pk">id_auteur</div>
+                <div>nom_auteur</div>
+                <div>prenom_auteur</div>
+                <div>email_auteur</div>
+                <div class="fk">id_ville</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Table CATEGORIE -->
+        <div class="table-box">
+            <div class="table-header">CATEGORIE</div>
+            <div class="table-body">
+                <div class="pk">id_categorie</div>
+                <div>nom_categorie</div>
+            </div>
+        </div>
+
+        <!-- Table ARTICLE -->
+        <div class="table-box">
+            <div class="table-header">ARTICLE</div>
+            <div class="table-body">
+                <div class="pk">id_article</div>
+                <div>titre_article</div>
+                <div>contenu_article</div>
+                <div>date_publication</div>
+                <div>statut_article</div>
+                <div>image_article</div>
+                <div class="fk">id_auteur</div>
+                <div class="fk">id_categorie</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Table de liaison ARTICLE_TAG -->
+        <div class="table-box associative">
+            <div class="table-header">ARTICLE_TAG</div>
+            <div class="table-body">
+                <div class="pk-fk">id_article</div>
+                <div class="pk-fk">id_tag</div>
+            </div>
+        </div>
+
+        <!-- Table TAG -->
+        <div class="table-box">
+            <div class="table-header">TAG</div>
+            <div class="table-body">
+                <div class="pk">id_tag</div>
+                <div>nom_tag</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

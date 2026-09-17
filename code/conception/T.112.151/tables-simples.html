@@ -1,0 +1,107 @@
+---
+layout: null
+nav_exclude: true
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables Simples</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .table-box {
+            background-color: white;
+            border: 2px solid #0f172a;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            width: 250px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .table-header {
+            background-color: #0f172a;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .table-body {
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pk {
+            font-weight: bold;
+            color: #b91c1c;
+        }
+        
+        .pk::after {
+            content: ' (PK)';
+            font-size: 0.8em;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Table VILLE -->
+    <div class="table-box">
+        <div class="table-header">VILLE</div>
+        <div class="table-body">
+            <div class="pk">id_ville</div>
+            <div>nom_ville</div>
+        </div>
+    </div>
+
+    <!-- Table AUTEUR -->
+    <div class="table-box">
+        <div class="table-header">AUTEUR</div>
+        <div class="table-body">
+            <div class="pk">id_auteur</div>
+            <div>nom_auteur</div>
+            <div>prenom_auteur</div>
+            <div>email_auteur</div>
+        </div>
+    </div>
+
+    <!-- Table CATEGORIE -->
+    <div class="table-box">
+        <div class="table-header">CATEGORIE</div>
+        <div class="table-body">
+            <div class="pk">id_categorie</div>
+            <div>nom_categorie</div>
+        </div>
+    </div>
+
+    <!-- Table ARTICLE -->
+    <div class="table-box">
+        <div class="table-header">ARTICLE</div>
+        <div class="table-body">
+            <div class="pk">id_article</div>
+            <div>titre_article</div>
+            <div>contenu_article</div>
+            <div>date_publication</div>
+            <div>statut_article</div>
+            <div>image_article</div>
+        </div>
+    </div>
+
+</body>
+</html>
