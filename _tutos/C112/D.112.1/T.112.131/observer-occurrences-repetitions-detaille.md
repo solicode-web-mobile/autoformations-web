@@ -2,10 +2,10 @@
 title: "Observer les occurrences et repérer les répétitions"
 layout: tuto
 slug: "observer-occurrences-reperer-repetitions"
-permalink: /tutos/:slug/
+permalink: /tutos/:slug/detaille
 tuto_id: "T.112.131"
 type: "classique"
-version: "normal"
+version: "detaille"
 ua: "UA.112.13"
 nav_order: 5
 data_html: ""
@@ -845,3 +845,4 @@ La prochaine étape sera de chercher **ce que représentent réellement les donn
 * **Donnée répétée** : donnée dont les valeurs peuvent apparaître plusieurs fois.
 * **Modification** : changement d'une information existante.
 * **Observation** : action de regarder et comparer les données pour comprendre leur comportement.
+
