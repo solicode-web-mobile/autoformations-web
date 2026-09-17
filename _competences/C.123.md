@@ -2,6 +2,8 @@
 title: "Réaliser le traitement serveur"
 layout: competences
 code: "C.123"
+module_reference: "DWB-M109"
+reference: "DWB-M109-C.123"
 niveau: "N1"
 mission: "M2"
 objectif: >

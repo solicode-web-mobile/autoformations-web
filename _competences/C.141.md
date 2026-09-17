@@ -2,6 +2,8 @@
 title: "Mettre une application en service localement"
 layout: competences
 code: "C.141"
+module_reference: "DWB-M112"
+reference: "DWB-M112-C.141"
 niveau: "N1"
 mission: "M4"
 objectif: >

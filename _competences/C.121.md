@@ -2,6 +2,8 @@
 title: "Construire le traitement logique"
 layout: competences
 code: "C.121"
+module_reference: "DWB-M105"
+reference: "DWB-M105-C.121"
 niveau: "N1"
 mission: "M2"
 objectif: >

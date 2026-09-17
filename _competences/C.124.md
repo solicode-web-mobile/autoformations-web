@@ -2,6 +2,8 @@
 title: "Exploiter les données"
 layout: competences
 code: "C.124"
+module_reference: "DWB-M109"
+reference: "DWB-M109-C.124"
 niveau: "N1"
 mission: "M2"
 objectif: >

@@ -2,6 +2,8 @@
 title: "Construire l’interface"
 layout: competences
 code: "C.122"
+module_reference: "DWB-M108"
+reference: "DWB-M108-C.122"
 niveau: "N1"
 mission: "M2"
 objectif: >

@@ -2,6 +2,8 @@
 title: "Structurer et déboguer une solution"
 layout: competences
 code: "C.125"
+module_reference: "DWB-M108"
+reference: "DWB-M108-C.125"
 niveau: "N1"
 mission: "M2"
 objectif: >

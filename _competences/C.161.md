@@ -2,6 +2,8 @@
 title: "Veille technologique"
 layout: competences
 code: "C.161"
+module_reference: "DWB-M111"
+reference: "DWB-M111-C.161"
 niveau: "N1"
 mission: "M6"
 objectif: >
