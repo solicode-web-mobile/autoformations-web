@@ -125,7 +125,15 @@ Nom conseillé pour votre fichier : `entites-blog.md`
 
 ## Résultat attendu
 
-Si vous avez correctement appliqué la méthode, vous devez obtenir **exactement 4 entités** distinctes : l'Article, l'Auteur, la Ville et la Catégorie. Chacune de ces 4 entités doit contenir son propre identifiant principal ainsi que ses données propres. Les clés étrangères (les identifiants issus des autres entités) doivent y figurer comme de simples identifiants.
+Vous devez obtenir la liste **complète** des entités nécessaires au fonctionnement du Blog (généralement : Article, Auteur, Catégorie, etc., selon la richesse du dictionnaire que vous avez produit en amont). Chacune doit contenir son identifiant et ses données propres de façon exclusive.
+
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.133/entites-blog.html' | relative_url }}"
+    height="450"
+    title="Résultat attendu — Construire les entités">
+</iframe>
 
 ## Critères de réussite
 

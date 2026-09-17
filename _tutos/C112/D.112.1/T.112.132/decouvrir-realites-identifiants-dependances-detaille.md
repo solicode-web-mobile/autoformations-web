@@ -175,6 +175,14 @@ Votre tableau final doit démontrer de manière limpide la logique de votre réf
 `Donnée -> Observation de Répétition -> Déduction de la Réalité -> Création du Nouvel ID -> Écriture de la Dépendance`. 
 Il doit être clair et facile à lire.
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.132/decouvrir-realites.html' | relative_url }}"
+    height="450"
+    title="Résultat attendu — Découvrir les réalités">
+</iframe>
+
 ## Critères de réussite
 
 Votre formateur évaluera votre travail selon les points stricts suivants :

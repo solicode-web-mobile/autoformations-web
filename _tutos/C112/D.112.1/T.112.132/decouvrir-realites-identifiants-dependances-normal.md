@@ -144,6 +144,14 @@ Nom conseillé : `decouvrir-realites.md`
 
 Le tableau doit démontrer clairement le cheminement logique suivant : `Donnée -> Observation de Répétition -> Déduction de Réalité -> Création de l'ID -> Dépendance`.
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.132/decouvrir-realites.html' | relative_url }}"
+    height="450"
+    title="Résultat attendu — Découvrir les réalités">
+</iframe>
+
 ## Critères de réussite
 
 * L'identifiant observé et les répétitions sont correctement repérés.

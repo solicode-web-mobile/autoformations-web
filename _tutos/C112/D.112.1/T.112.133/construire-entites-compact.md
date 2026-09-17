@@ -116,7 +116,15 @@ Nom conseillé : `entites-blog.md`
 
 ## Résultat attendu
 
-Vous devez obtenir la liste **complète** des entités nécessaires au fonctionnement du Blog. Chacune doit contenir son identifiant et ses données propres.
+Vous devez obtenir la liste **complète** des entités nécessaires au fonctionnement du Blog.
+
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.133/entites-blog.html' | relative_url }}"
+    height="450"
+    title="Résultat attendu — Construire les entités">
+</iframe>
 
 ## Critères de réussite
 
