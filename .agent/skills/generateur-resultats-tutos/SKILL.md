@@ -20,10 +20,12 @@ Ces fichiers servent à afficher le rendu final attendu ou l'état de la console
 
 Pour chaque domaine de tutoriel, un layout Jekyll spécifique doit être utilisé dans le Front Matter du fichier Markdown de résultat.
 
-**Règle absolue :** Le nom du `layout` DOIT correspondre exactement au nom du "mini-code-domaine" (c'est-à-dire le nom du dossier thématique dans lequel le résultat est placé).
+**Règle absolue pour le Layout :** Le nom du `layout` DOIT correspondre exactement au nom du "mini-code-domaine" (c'est-à-dire le nom du dossier thématique dans lequel le résultat est placé).
 * Par exemple, si le résultat est placé dans le dossier `code/conception/...`, le front matter doit contenir `layout: conception`.
 * Si le résultat est placé dans `code/html/...`, utiliser `layout: html`.
 * **Si le layout du domaine n'existe pas encore**, vous devez le créer dans le dossier `_layouts/` du projet (ex: `_layouts/conception.html`).
+
+**Règle absolue pour la navigation :** Tous les fichiers de résultat au format Markdown DOIVENT obligatoirement inclure `nav_exclude: true` dans leur Front Matter pour éviter qu'ils n'apparaissent dans le menu de navigation latéral de Just the Docs.
 
 ## Structure du Fichier Résultat (Exemple Markdown)
 

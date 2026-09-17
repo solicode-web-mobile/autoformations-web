@@ -1,6 +1,7 @@
 ---
 layout: conception
 title: "Résultat - Modéliser une liaison complexe"
+nav_exclude: true
 ---
 
 # Résultat attendu : Modéliser une liaison complexe
@@ -34,3 +35,4 @@ quantite_commandee
 * L'entité **Commande** possède la clé étrangère `id_client` car chaque commande est rattachée à un seul client.
 * L'entité **Ligne_Commande** permet de relier les commandes et les produits. Son identifiant est composé des identifiants des deux autres entités (`id_commande, id_produit`).
 * La donnée `quantite_commandee` est placée logiquement dans **Ligne_Commande** car elle dépend à la fois de la commande et du produit.
+

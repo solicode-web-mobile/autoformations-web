@@ -1,6 +1,7 @@
 ---
 layout: conception
 title: "Résultat - Relations et cardinalités"
+nav_exclude: true
 ---
 
 # Résultat attendu : Relations et cardinalités
@@ -17,3 +18,4 @@ Voici le tableau regroupant l'analyse des trois relations étudiées :
 1. **ARTICLE — CATEGORIE** : Relation **1-N**
 2. **AUTEUR — ARTICLE** : Relation **1-N**
 3. **ARTICLE — TAG** : Relation **N-N**
+

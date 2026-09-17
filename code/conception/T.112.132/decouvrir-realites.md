@@ -1,6 +1,7 @@
 ---
 layout: conception
 title: "Résultat - Découvrir réalités et identifiants"
+nav_exclude: true
 ---
 
 # Résultat attendu : Découvrir réalités, identifiants et dépendances
@@ -19,3 +20,4 @@ Voici le tableau complété suite à l'observation des répétitions dans le jeu
 3. **Déduction de Réalité :** Cette répétition nous indique que la ville existe par elle-même indépendamment de l'auteur. C'est une **entité** distincte (Ville).
 4. **Création de l'ID :** Pour identifier cette nouvelle entité de manière unique, on lui crée un identifiant technique (`id_ville`).
 5. **Dépendance :** Désormais, le nom de la ville dépend de ce nouvel identifiant. Si l'identifiant est le "2", le nom sera "Tanger" (`id_ville -> nom_ville`).
+

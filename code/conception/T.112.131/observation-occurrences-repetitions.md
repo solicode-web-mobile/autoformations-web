@@ -1,6 +1,7 @@
 ---
 layout: conception
 title: "Résultat - Observation occurrences"
+nav_exclude: true
 ---
 
 # Résultat attendu : Observation des occurrences et répétitions
@@ -25,3 +26,4 @@ title: "Résultat - Observation occurrences"
 
 **Le problème lors d'une modification :** 
 Si l'on devait modifier le nom de la ville "Tanger" (par exemple pour corriger une faute de frappe en "Tangier"), il faudrait rechercher et modifier cette information manuellement sur les 3 lignes différentes du tableau. Si le fichier contenait des milliers de lignes, il y aurait un très fort risque d'oublier de modifier une occurrence, ce qui créerait des erreurs et des incohérences dans les données.
+
