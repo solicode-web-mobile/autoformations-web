@@ -410,9 +410,10 @@ Le document doit présenter le MCD complet et sa vérification de cohérence.
 
 **Résultat attendu :**
 
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.142/' | relative_url }}"
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/conception/T.112.142/mcd-blog.html' | relative_url }}"
     height="650"
     title="Résultat attendu — MCD complet du Blog">
 </iframe>

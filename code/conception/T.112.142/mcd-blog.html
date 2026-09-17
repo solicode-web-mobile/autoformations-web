@@ -1,0 +1,186 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCD complet du Blog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mcd-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding-bottom: 20px;
+        }
+
+        .entity {
+            background-color: white;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            width: 250px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .entity-header {
+            background-color: #3b82f6;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .entity-body {
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pk {
+            text-decoration: underline;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .relation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 80px;
+            position: relative;
+            width: 100%;
+        }
+
+        .line {
+            width: 2px;
+            background-color: #94a3b8;
+            flex-grow: 1;
+        }
+
+        .relation {
+            background-color: #fef08a;
+            border: 2px solid #eab308;
+            border-radius: 20px;
+            padding: 5px 16px;
+            font-size: 0.9rem;
+            font-style: italic;
+            font-weight: bold;
+            color: #854d0e;
+            z-index: 10;
+            margin: -2px 0;
+        }
+
+        .cardinality {
+            position: absolute;
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            left: calc(50% + 15px);
+        }
+
+        .cardinality.top {
+            top: 5px;
+        }
+
+        .cardinality.bottom {
+            bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mcd-container">
+        
+        <!-- Entité VILLE -->
+        <div class="entity">
+            <div class="entity-header">VILLE</div>
+            <div class="entity-body">
+                <div class="pk">id_ville</div>
+                <div>nom_ville</div>
+            </div>
+        </div>
+
+        <!-- Relation HABITE -->
+        <div class="relation-container">
+            <div class="cardinality top">0,N</div>
+            <div class="line"></div>
+            <div class="relation">habite</div>
+            <div class="line"></div>
+            <div class="cardinality bottom">1,1</div>
+        </div>
+
+        <!-- Entité AUTEUR -->
+        <div class="entity">
+            <div class="entity-header">AUTEUR</div>
+            <div class="entity-body">
+                <div class="pk">id_auteur</div>
+                <div>nom_auteur</div>
+                <div>prenom_auteur</div>
+                <div>email_auteur</div>
+            </div>
+        </div>
+
+        <!-- Relation REDIGE -->
+        <div class="relation-container">
+            <div class="cardinality top">0,N</div>
+            <div class="line"></div>
+            <div class="relation">rédige</div>
+            <div class="line"></div>
+            <div class="cardinality bottom">1,1</div>
+        </div>
+
+        <!-- Entité ARTICLE -->
+        <div class="entity">
+            <div class="entity-header">ARTICLE</div>
+            <div class="entity-body">
+                <div class="pk">id_article</div>
+                <div>titre_article</div>
+                <div>contenu_article</div>
+                <div>date_publication</div>
+                <div>statut_article</div>
+                <div>image_article</div>
+            </div>
+        </div>
+
+        <!-- Relation REGROUPE -->
+        <div class="relation-container">
+            <div class="cardinality top">1,1</div>
+            <div class="line"></div>
+            <div class="relation">regroupe</div>
+            <div class="line"></div>
+            <div class="cardinality bottom">0,N</div>
+        </div>
+
+        <!-- Entité CATEGORIE -->
+        <div class="entity">
+            <div class="entity-header">CATEGORIE</div>
+            <div class="entity-body">
+                <div class="pk">id_categorie</div>
+                <div>nom_categorie</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
