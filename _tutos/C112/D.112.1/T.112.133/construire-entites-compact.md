@@ -45,6 +45,7 @@ Voici le dictionnaire de données d'un Blog que nous devons modéliser :
 | `email_auteur`     | Email de l'auteur                |
 | `nom_ville`        | Nom de la ville de l'auteur      |
 | `nom_categorie`    | Nom de la catégorie de l'article |
+| `description_categorie` | Description de la catégorie      |
 
 *Note : La donnée `duree_lecture` a été exclue car c'est une donnée calculable.*
 
@@ -59,8 +60,8 @@ Exemple : `titre_article`, `contenu_article`, `date_publication` dépendent dire
 
 ### 1.2. Remplacer les répétitions par des identifiants
 
-Si une donnée engendre des répétitions (ex: `nom_ville` pour un auteur, `nom_categorie` pour un article), il faut isoler cette réalité dans une nouvelle entité.
-Dans l'entité d'origine, on remplace la donnée textuelle répétée par l'identifiant de la nouvelle entité (`id_ville`, `id_categorie`).
+Si des données engendrent des répétitions (ex: `nom_ville` pour un auteur, `nom_categorie` et `description_categorie` pour un article), il faut isoler cette réalité dans une nouvelle entité.
+Dans l'entité d'origine, on remplace toutes les données textuelles liées à cette répétition par l'identifiant de la nouvelle entité (ex: `nom_categorie` et `description_categorie` sont remplacés par un unique `id_categorie`).
 
 ### 1.3. La méthode de construction
 
@@ -75,6 +76,10 @@ Dans l'entité d'origine, on remplace la donnée textuelle répétée par l'iden
 Une entité est valide si elle respecte deux règles strictes :
 1. **Unicité :** Il possède un et un seul identifiant qui détermine toutes les autres données.
 2. **Aucune répétition anormale :** Aucune donnée textuelle représentant une autre réalité ne s'y répète.
+
+### 1.5. Pour aller plus loin : les identifiants composés
+
+*Remarque : Dans certains cas complexes (comme une ligne de commande ou une facture), une entité peut avoir besoin de la combinaison de **DEUX** identifiants (ex: `id_commande` + `id_produit`) pour être unique. C'est ce qu'on appelle un **identifiant composé**, une notion que vous découvrirez dans le tutoriel suivant.*
 
 ---
 
@@ -117,7 +122,7 @@ Vous devez obtenir **4 entités** distinctes (Article, Auteur, Ville, Catégorie
 
 * Les 4 entités ont été correctement identifiées.
 * Chaque entité possède un identifiant valide.
-* Les données textuelles répétitives (`nom_ville`, `nom_categorie`) ont bien été isolées et remplacées par `id_ville` et `id_categorie` dans les bonnes entités.
+* Les données textuelles répétitives (`nom_ville`, `nom_categorie`, `description_categorie`) ont bien été isolées et remplacées par `id_ville` et `id_categorie` dans les bonnes entités.
 * Il n'y a plus aucune donnée mal placée ou en doublon.
 
 ---
