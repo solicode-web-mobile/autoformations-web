@@ -246,6 +246,7 @@ a:focus-visible {
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
   background: #fff;
+  margin-top: 10px;
 }
 
 .ua-card-header {
