@@ -3,7 +3,7 @@ layout: null
 permalink: /export/competences.csv
 ---
 code,mini_code,nom,module_reference,description,reference
-{%- assign competences = site.competences | sort: "code" -%}
+{% assign competences = site.competences | sort: "code" -%}
 {%- for p in competences -%}
 {%- assign _title   = (p.title            | append: "" ) | strip | replace: '"','""' | replace: '\n',' ' | replace: '\r',' ' -%}
 {%- assign _code    = (p.code             | append: "" ) | strip | replace: '"','""' | replace: '\n',' ' | replace: '\r',' ' -%}

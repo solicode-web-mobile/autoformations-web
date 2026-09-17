@@ -3,7 +3,7 @@ layout: null
 permalink: /export/microCompetences.csv
 ---
 "ordre","code","titre","sous_titre","competence_reference","lien","description","reference"
-{%- assign domaines = site.domaines | sort: "ordre" -%}
+{% assign domaines = site.domaines | sort: "ordre" -%}
 {%- for p in domaines -%}
   {%- assign comp = site.competences | where: "code", p.competence | first -%}
   {%- assign _ordre   = p.ordre -%}
