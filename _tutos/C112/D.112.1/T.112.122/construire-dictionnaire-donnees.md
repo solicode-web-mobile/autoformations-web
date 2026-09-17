@@ -15,121 +15,216 @@ data_js: ""
 
 ## 1. Objectif
 
-Regrouper et structurer les données observées dans les maquettes du Blog pour construire un **dictionnaire de données** complet et cohérent.
+Regrouper et structurer les données identifiées dans plusieurs maquettes du Blog pour construire un **dictionnaire de données** cohérent.
+
+Vous allez apprendre à :
+
+* regrouper les mêmes données ;
+* harmoniser leurs noms ;
+* compléter leurs descriptions ;
+* préciser leur type ;
+* indiquer si elles sont obligatoires ;
+* distinguer les données stockées des données calculées.
 
 ## 2. Prérequis
 
-- Savoir identifier et décrire une donnée (T.112.121).
-- Connaître les types conceptuels : Texte, Entier, Date, Booléen.
-- Savoir distinguer donnée obligatoire et facultative.
+* Savoir identifier et décrire une donnée dans une maquette (T.112.121).
+* Connaître les types conceptuels : Texte, Entier, Nombre décimal, Date, Booléen.
+* Savoir distinguer une donnée obligatoire d'une donnée facultative.
 
 ## Données de départ
 
-Ce tutoriel utilise les maquettes du **Blog**.
+Ce tutoriel utilise plusieurs maquettes du **Blog**.
 
-Pages observées :
+Les maquettes utilisées sont :
 
-- **Page Détail d'un article**
-- **Page de création d'un article**
-- **Page de gestion des articles**
+* **Page de création d'un article**
+* **Page de liste des articles**
+* **Page détail d'un article**
 
 👉 [Ouvrir la maquette du Blog](https://solicode-web-mobile.github.io/maquette-blog/index.html)
 
-Ouvrez la maquette dans votre navigateur avant de commencer.
+Ouvrez les maquettes dans votre navigateur avant de commencer.
+
+Les données identifiées dans T.112.121 servent de point de départ.
+
+---
 
 ## Partie 1 — Théorie
 
 ### 1.1. Qu'est-ce qu'un dictionnaire de données ?
 
-Un **dictionnaire de données** est un tableau qui liste et décrit toutes les données d'une application.
+Un **dictionnaire de données** est un tableau qui liste et décrit les données utilisées par une application.
 
-Il regroupe en un seul document :
+Il permet de regrouper les informations importantes sur chaque donnée :
 
-- le nom de chaque donnée,
-- sa description,
-- son exemple de valeur,
-- son type,
-- son caractère obligatoire ou facultatif,
-- son rôle (stockée ou calculée).
+* son nom ;
+* sa description ;
+* un exemple de valeur ;
+* son type ;
+* son caractère obligatoire ou facultatif ;
+* son mode de gestion : stockée ou calculée.
 
-Il sert de **référence commune** entre tous les membres d'un projet.
+Le dictionnaire sert de référence commune pour la suite de la conception.
 
-### 1.2. Structure du dictionnaire
+### 1.2. Regrouper les données
 
-Le dictionnaire suit une structure fixe :
+Une même donnée peut apparaître dans plusieurs maquettes.
 
-| Donnée | Description | Exemple | Type | Obligatoire | Stockée |
-|--------|-------------|---------|------|:-----------:|:-------:|
-| `nom_donnee` | Ce que représente la donnée | valeur concrète | Texte / Date / Entier / Booléen | Oui / Non | Oui / Non |
-
-### 1.3. Cohérence des noms
-
-Tous les noms de données doivent respecter la même convention :
-
-- Minuscules uniquement.
-- Mots séparés par `_`.
-- Pas d'accents ni de caractères spéciaux.
-- Nom descriptif et précis.
-
-**Exemples de noms cohérents :**
-
-```text
-titre_article
-date_publication
-nom_categorie
-```
-
-**Exemples à éviter :**
-
-```text
-Titre   ← majuscule
-date pub ← espace
-nomCat  ← camelCase
-```
-
-### 1.4. Cohérence des types
-
-Tous les enregistrements d'une même donnée doivent avoir le même type.
-
-Si `date_publication` est de type **Date**, toutes ses valeurs doivent être des dates.
-
-On ne peut pas avoir des valeurs de types différents pour une même donnée.
-
-### 1.5. Donnée stockée / calculée
-
-- **Donnée stockée** : enregistrée dans la base de données (elle doit figurer dans le dictionnaire).
-- **Donnée calculée** : produite automatiquement — elle peut figurer dans le dictionnaire, mais la colonne "Stockée" indique **Non**.
+Elle ne doit pas être créée plusieurs fois dans le dictionnaire.
 
 **Exemple :**
 
-`duree_lecture` est calculée à partir de la longueur de `contenu_article`. Elle n'est pas stockée.
+```text
+Page création :
+titre_article
 
-### 1.6. Différence entre dictionnaire de données et entité
+Page liste :
+titre_article
 
-Le dictionnaire liste **toutes les données** sans les regrouper par réalité.
+Page détail :
+titre_article
+```
 
-L'entité regroupe les données qui décrivent une même réalité (un auteur, un article, une catégorie).
+Ces trois observations correspondent à une seule donnée :
 
-> Le dictionnaire de données est une étape **avant** la construction des entités.
+```text
+titre_article
+```
 
-### 1.7. À retenir
+### 1.3. Harmoniser les noms
 
-- Le dictionnaire regroupe toutes les données en un seul tableau structuré.
-- Chaque donnée a un nom cohérent, un type, un exemple et un caractère obligatoire.
-- Les données calculées sont signalées dans la colonne "Stockée".
-- Le dictionnaire ne regroupe pas encore les données par entité.
+Les noms doivent utiliser une même convention.
+
+Utiliser :
+
+* des minuscules ;
+* `_` pour séparer les mots ;
+* des noms descriptifs ;
+* aucun accent ;
+* aucun espace.
+
+**Exemples :**
+
+```text
+titre_article
+date_publication
+nom_categorie
+nom_auteur
+```
+
+Éviter :
+
+```text
+TitreArticle
+date publication
+NomCatégorie
+titreArticle
+```
+
+### 1.4. Décrire une donnée
+
+Chaque donnée doit être accompagnée d'une description simple.
+
+**Exemple :**
+
+```text
+titre_article
+```
+
+Description :
+
+```text
+Titre de l'article.
+```
+
+La description doit expliquer clairement ce que représente la donnée.
+
+### 1.5. Définir le type
+
+Chaque donnée possède un type conceptuel.
+
+Exemples :
+
+```text
+titre_article       → Texte
+nombre_articles     → Entier
+prix_article        → Nombre décimal
+date_publication    → Date
+article_publie      → Booléen
+```
+
+Une même donnée doit conserver le même type dans le dictionnaire.
+
+### 1.6. Définir si la donnée est obligatoire
+
+Une donnée peut être :
+
+* **obligatoire** : elle doit être renseignée ;
+* **facultative** : elle peut rester vide.
+
+**Exemple :**
+
+```text
+titre_article → Oui
+image_article → Non
+```
+
+### 1.7. Distinguer donnée stockée et donnée calculée
+
+Une **donnée stockée** est enregistrée dans l'application.
+
+Une **donnée calculée** est produite à partir d'autres données.
+
+**Exemple :**
+
+```text
+contenu_article → Stockée
+duree_lecture   → Calculée
+```
+
+Le dictionnaire doit permettre de distinguer ces deux cas.
+
+### 1.8. Dictionnaire de données et entité
+
+Le dictionnaire contient toutes les données identifiées.
+
+À ce stade, les données ne sont pas encore organisées en entités.
+
+**Exemple :**
+
+```text
+titre_article
+nom_auteur
+email_auteur
+nom_categorie
+```
+
+Le dictionnaire décrit ces données.
+
+L'organisation en **ARTICLE**, **AUTEUR** et **CATEGORIE** sera étudiée dans l'UA suivante.
+
+### 1.9. À retenir
+
+* Une même donnée observée plusieurs fois apparaît une seule fois dans le dictionnaire.
+* Les noms doivent être cohérents.
+* Chaque donnée possède une description.
+* Chaque donnée possède un type.
+* Chaque donnée est indiquée comme obligatoire ou facultative.
+* Une donnée peut être stockée ou calculée.
+* Le dictionnaire décrit les données sans encore construire les entités.
+
+---
 
 ## Partie 2 — Pratique
 
-### 2.1. Collecter toutes les données
+### 2.1. Reprendre les données des maquettes
 
-Ouvrez les trois pages de la maquette du Blog.
+Reprenez les données identifiées dans les différentes maquettes du Blog.
 
-Pour chaque page, relevez toutes les données que vous observez (données saisies ou affichées).
+Exemple :
 
-#### Page de création d'un article
-
-Données saisies dans le formulaire :
+**Page de création d'un article**
 
 ```text
 titre_article
@@ -139,9 +234,7 @@ statut_article
 image_article
 ```
 
-#### Page de gestion des articles
-
-Données affichées dans le tableau :
+**Page de liste des articles**
 
 ```text
 titre_article
@@ -151,9 +244,7 @@ nom_auteur
 prenom_auteur
 ```
 
-#### Page Détail d'un article
-
-Données affichées pour le visiteur :
+**Page détail d'un article**
 
 ```text
 titre_article
@@ -166,11 +257,13 @@ image_article
 duree_lecture
 ```
 
-### 2.2. Éliminer les doublons
+### 2.2. Regrouper les mêmes données
 
-Une donnée qui apparaît dans plusieurs pages ne doit être listée **qu'une seule fois**.
+Comparez les données provenant des différentes maquettes.
 
-Après regroupement, la liste unifiée est :
+Une même donnée doit apparaître une seule fois.
+
+Après regroupement :
 
 ```text
 titre_article
@@ -184,9 +277,70 @@ image_article
 duree_lecture
 ```
 
-### 2.3. Compléter le dictionnaire
+### 2.3. Harmoniser les noms
 
-Pour chaque donnée, renseignez toutes les colonnes.
+Vérifiez chaque nom.
+
+Respectez la convention :
+
+```text
+mot_mot
+```
+
+Exemples :
+
+```text
+titre_article
+date_publication
+nom_categorie
+```
+
+Corrigez les noms qui ne respectent pas cette convention.
+
+### 2.4. Compléter les descriptions
+
+Pour chaque donnée, indiquez ce qu'elle représente.
+
+Exemple :
+
+| Donnée             | Description                      |
+| ------------------ | -------------------------------- |
+| `titre_article`    | Titre de l'article               |
+| `contenu_article`  | Contenu de l'article             |
+| `nom_auteur`       | Nom de l'auteur                  |
+| `date_publication` | Date de publication de l'article |
+
+### 2.5. Compléter les autres informations
+
+Ajoutez pour chaque donnée :
+
+* un exemple de valeur ;
+* le type ;
+* le caractère obligatoire ou facultatif ;
+* l'indication stockée ou calculée.
+
+Exemple :
+
+| Donnée             | Description              | Exemple             | Type   | Obligatoire | Stockée |
+| ------------------ | ------------------------ | ------------------- | ------ | :---------: | :-----: |
+| `titre_article`    | Titre de l'article       | Mon premier article | Texte  |     Oui     |   Oui   |
+| `date_publication` | Date de publication      | 16/09/2026          | Date   |     Oui     |   Oui   |
+| `duree_lecture`    | Durée estimée de lecture | 5                   | Entier |     Non     |   Non   |
+
+### 2.6. Construire le dictionnaire complet
+
+Regroupez toutes les données dans un seul tableau.
+
+Le dictionnaire final doit contenir au minimum :
+
+```text
+Donnée
+Description
+Exemple
+Type
+Obligatoire
+Stockée
+```
 
 **Résultat attendu :**
 
@@ -197,41 +351,59 @@ Pour chaque donnée, renseignez toutes les colonnes.
     title="Résultat attendu — Dictionnaire de données">
 </iframe>
 
----
-
-### 2.4. Travail à faire
+### 2.7. Travail à faire
 
 **Consigne :**
 
-Construisez le dictionnaire complet du Blog à partir de vos observations des trois pages.
+Construisez le dictionnaire de données du Blog à partir des données observées dans les différentes maquettes.
+
+Regroupez les mêmes données.
+
+Harmonisez leurs noms.
+
+Complétez leurs descriptions, exemples, types, contraintes et mode de gestion.
 
 **Livrable :**
 
 ```text
-dictionnaire-donnees.md
+dictionnaire-donnees.csv
 ```
 
-Tableau avec au moins 8 données, complètement décrites.
+Le fichier doit contenir toutes les données retenues dans les maquettes, sans doublons.
 
 **Critère de réussite :**
 
-Chaque donnée a un nom correct, un type valide, un exemple réaliste, un caractère obligatoire et une indication Stockée Oui/Non.
+Le dictionnaire est complet et cohérent :
+
+* aucune même donnée n'est répétée ;
+* les noms respectent la convention ;
+* les descriptions sont claires ;
+* les types sont cohérents ;
+* le caractère obligatoire ou facultatif est indiqué ;
+* les données stockées et calculées sont distinguées.
 
 ## Bilan
 
-**Vous avez réalisé :** Le dictionnaire de données complet du Blog à partir de trois maquettes.
+**Vous avez réalisé :**
+
+Le dictionnaire de données du Blog à partir de plusieurs maquettes.
 
 **Vous savez maintenant :**
 
-- Collecter les données de plusieurs maquettes et éliminer les doublons.
-- Structurer un dictionnaire de données complet.
-- Appliquer la convention de nommage.
-- Distinguer donnée stockée et donnée calculée dans le dictionnaire.
+* regrouper des données provenant de plusieurs maquettes ;
+* éliminer les doublons ;
+* harmoniser les noms ;
+* décrire les données ;
+* définir leur type ;
+* indiquer leur caractère obligatoire ou facultatif ;
+* distinguer une donnée stockée d'une donnée calculée.
 
 ## Glossaire
 
-- **Dictionnaire de données** : Tableau qui liste et décrit toutes les données d'une application.
-- **Cohérence des noms** : Tous les noms respectent la même convention d'écriture.
-- **Cohérence des types** : Toutes les valeurs d'une donnée sont du même type.
-- **Donnée stockée** : Donnée enregistrée dans la base de données.
-- **Donnée calculée** : Donnée produite automatiquement, non saisie par l'utilisateur.
+* **Dictionnaire de données** : tableau qui liste et décrit les données utilisées par une application.
+* **Donnée** : élément identifié et manipulé par l'application.
+* **Type** : catégorie qui indique la nature d'une donnée.
+* **Donnée obligatoire** : donnée qui doit être renseignée.
+* **Donnée facultative** : donnée qui peut rester vide.
+* **Donnée stockée** : donnée enregistrée dans l'application.
+* **Donnée calculée** : donnée produite à partir d'autres données.

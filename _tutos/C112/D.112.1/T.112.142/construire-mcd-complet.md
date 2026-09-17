@@ -13,126 +13,291 @@ data_css: ""
 data_js: ""
 ---
 
+
 ## 1. Objectif
 
-Rassembler les entités, relations et cardinalités pour construire le **MCD complet** du Blog.
+Assembler les entités, les relations et les cardinalités produites dans les tutoriels précédents pour construire le **MCD complet du Blog**.
 
-Vérifier la cohérence du modèle.
+Vous allez apprendre à :
+
+* rassembler les éléments d'un modèle ;
+* représenter les entités et leurs attributs ;
+* placer les relations entre les entités ;
+* conserver les cardinalités déjà déterminées ;
+* vérifier la cohérence du MCD.
 
 ## 2. Prérequis
 
-- Avoir construit les entités du Blog (T.112.133).
-- Avoir déterminé les relations et cardinalités (T.112.141).
+* Savoir construire les entités du Blog (T.112.133).
+* Savoir déterminer les relations et les cardinalités (T.112.141).
+* Connaître les notions d'entité, attribut, identifiant, relation et cardinalité.
 
 ## Données de départ
 
-- Les 4 entités : `ARTICLE`, `AUTEUR`, `VILLE`, `CATEGORIE`
-- Les relations et cardinalités déterminées en T.112.141
+Les résultats précédents sont les données de départ du tutoriel.
 
-👉 [Ouvrir la maquette du Blog](https://solicode-web-mobile.github.io/maquette-blog/index.html)
+### Entités
+
+Les entités construites dans T.112.133 sont :
+
+```text id="6n4y4o"
+ARTICLE
+AUTEUR
+VILLE
+CATEGORIE
+```
+
+### Relations et cardinalités
+
+Les relations déterminées dans T.112.141 sont :
+
+```text id="4uc8l9"
+VILLE (0,N) ─── habite ─── (1,1) AUTEUR
+
+AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE
+
+CATEGORIE (0,N) ─── regroupe ─── (1,1) ARTICLE
+```
+
+Ces résultats sont déjà validés.
+
+Le travail du présent tutoriel consiste à les **assembler**, et non à les redéterminer.
+
+---
 
 ## Partie 1 — Théorie
 
 ### 1.1. Qu'est-ce qu'un MCD ?
 
-Un **MCD** (Modèle Conceptuel de Données) est une représentation graphique et textuelle de toutes les entités d'une application et de leurs relations.
+Un **MCD**, ou **Modèle Conceptuel de Données**, représente les réalités, leurs données et les liens entre elles.
 
-Il décrit **ce qui doit être modélisé**, sans s'occuper encore de comment le stocker techniquement.
+Il rassemble :
 
-### 1.2. Composants d'un MCD
+* les entités ;
+* les identifiants ;
+* les attributs ;
+* les relations ;
+* les cardinalités.
 
-| Composant    | Rôle                                          |
-| ------------ | --------------------------------------------- |
-| Entité       | Représente une réalité métier                 |
-| Attribut     | Propriété d'une entité                        |
-| Identifiant  | Attribut unique d'une entité                  |
-| Association  | Lien entre deux entités avec un verbe         |
-| Cardinalité  | Nombre min/max de liens pour chaque entité    |
+Le MCD décrit la structure des données au niveau conceptuel.
 
-### 1.3. Comment lire un MCD ?
+Il ne décrit pas encore les tables de la base de données.
 
-Pour lire une relation dans le MCD :
+### 1.2. Les composants du MCD
 
-```text
-ENTITE_A (cardinalité_A) ─── VERBE ─── (cardinalité_B) ENTITE_B
+| Composant   | Rôle                                      |
+| ----------- | ----------------------------------------- |
+| Entité      | Représente une réalité                    |
+| Identifiant | Distingue les occurrences                 |
+| Attribut    | Décrit une entité                         |
+| Relation    | Relie des entités                         |
+| Cardinalité | Indique le minimum et le maximum de liens |
+
+### 1.3. Construire le MCD à partir des résultats précédents
+
+Pour construire le MCD :
+
+```text id="j1m2x8"
+Entités
+   ↓
+Relations
+   ↓
+Cardinalités
+   ↓
+MCD complet
 ```
 
-**Lecture :**
+Il ne faut pas créer de nouvelles entités ou de nouvelles relations à cette étape.
 
-> Une ENTITE_A peut être liée à [cardinalité_A] ENTITE_B.
+### 1.4. Lire une relation dans un MCD
 
-**Exemple :**
+Une relation peut être représentée ainsi :
 
-```text
-AUTEUR (1,N) ─── rédige ─── (1,1) ARTICLE
+```text id="4qio6z"
+ENTITE_A (minimum,maximum)
+      ─── verbe ───
+ENTITE_B (minimum,maximum)
 ```
 
-> Un auteur peut rédiger une ou plusieurs articles.
+Exemple :
+
+```text id="efzw7m"
+AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE
+```
+
+Lecture :
+
+> Un auteur peut rédiger zéro, un ou plusieurs articles.
+
 > Un article est rédigé par exactement un auteur.
 
-### 1.4. Cohérence d'un MCD
+### 1.5. Vérifier les cardinalités
 
-Un MCD est cohérent si :
+Dans ce tutoriel, les cardinalités ont déjà été déterminées dans T.112.141.
 
-- Chaque entité a un identifiant unique.
-- Les cardinalités reflètent les règles de gestion réelles.
-- Aucun attribut n'est dupliqué entre les entités.
-- Les données calculées ne sont pas dans les entités.
+Il ne faut donc pas les modifier pendant l'assemblage.
 
-### 1.5. À retenir
+La vérification consiste à contrôler que le MCD reprend bien les résultats précédents.
 
-- Le MCD représente toutes les entités et leurs relations.
-- Il se lit de gauche à droite avec les cardinalités des deux côtés.
-- Il doit être cohérent avec les règles de gestion de l'application.
+### 1.6. Vérifier les attributs
+
+Chaque attribut doit rester dans l'entité déterminée précédemment.
+
+Exemple :
+
+```text id="4uqvgt"
+nom_auteur
+prenom_auteur
+email_auteur
+```
+
+restent dans :
+
+```text id="3iw3om"
+AUTEUR
+```
+
+`nom_ville` reste dans :
+
+```text id="0vwf56"
+VILLE
+```
+
+### 1.7. Vérifier les données calculées
+
+Une donnée calculée non stockée ne doit pas être ajoutée comme attribut de l'entité.
+
+Dans le dictionnaire :
+
+```text id="4z8x50"
+duree_lecture
+Stockée = Non
+```
+
+Elle n'apparaît donc pas dans le MCD final.
+
+### 1.8. À retenir
+
+* Le MCD rassemble les résultats des étapes précédentes.
+* Une entité contient son identifiant et ses attributs.
+* Une relation relie deux entités.
+* Une cardinalité possède un minimum et un maximum.
+* Les cardinalités de T.112.141 sont reprises sans modification.
+* Une donnée calculée non stockée ne doit pas être ajoutée au MCD.
+* Le MCD est encore un modèle conceptuel ; les tables seront étudiées dans l'UA suivante.
+
+---
 
 ## Partie 2 — Pratique
 
-### 2.1. Assembler le MCD du Blog
+### 2.1. Reprendre les entités
 
-#### Entités
+Commencez par reprendre les quatre entités construites dans T.112.133.
 
-```text
-VILLE             AUTEUR            ARTICLE           CATEGORIE
------             ------            -------           ---------
-id_ville          id_auteur         id_article        id_categorie
-nom_ville         nom_auteur        titre_article     nom_categorie
-                  prenom_auteur     contenu_article
-                  email_auteur      date_publication
-                                    statut_article
-                                    image_article
+### ARTICLE
+
+```text id="6s1xkd"
+ARTICLE
+-------
+
+id_article
+titre_article
+contenu_article
+date_publication
+statut_article
+image_article
 ```
 
-#### Relations et cardinalités
+### AUTEUR
 
-```text
-VILLE (1,N) ─── habite ─── (1,1) AUTEUR
+```text id="9owqbf"
+AUTEUR
+------
 
-AUTEUR (1,N) ─── rédige ─── (1,1) ARTICLE
-
-CATEGORIE (1,N) ─── regroupe ─── (1,1) ARTICLE
+id_auteur
+nom_auteur
+prenom_auteur
+email_auteur
 ```
 
-#### MCD textuel complet
+### VILLE
 
-```text
+```text id="jk4xkq"
 VILLE
 -----
+
+id_ville
+nom_ville
+```
+
+### CATEGORIE
+
+```text id="kb7lkz"
+CATEGORIE
+---------
+
+id_categorie
+nom_categorie
+```
+
+### 2.2. Reprendre les relations
+
+Ajoutez ensuite les trois relations validées dans T.112.141.
+
+**Relation 1 :**
+
+```text id="z5zjuc"
+VILLE (0,N) ─── habite ─── (1,1) AUTEUR
+```
+
+**Relation 2 :**
+
+```text id="h7n9c3"
+AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE
+```
+
+**Relation 3 :**
+
+```text id="qjmy0g"
+CATEGORIE (0,N) ─── regroupe ─── (1,1) ARTICLE
+```
+
+### 2.3. Assembler le MCD
+
+Regroupez maintenant les entités et les relations.
+
+Une représentation textuelle simplifiée peut être :
+
+```text id="luqz6y"
+VILLE
+-----
+
 id_ville
 nom_ville
 
-    (1,N) habite (1,1)
+        (0,N)
+          |
+       habite
+          |
+        (1,1)
 
 AUTEUR
 ------
+
 id_auteur
 nom_auteur
 prenom_auteur
 email_auteur
 
-    (1,N) rédige (1,1)
+        (0,N)
+          |
+       rédige
+          |
+        (1,1)
 
 ARTICLE
 -------
+
 id_article
 titre_article
 contenu_article
@@ -140,40 +305,108 @@ date_publication
 statut_article
 image_article
 
-    (1,1) appartient (1,N)
+        (1,1)
+          |
+       regroupe
+          |
+        (0,N)
 
 CATEGORIE
 ---------
+
 id_categorie
 nom_categorie
 ```
 
-### 2.2. Vérifier la cohérence
+Pour faciliter la lecture, la relation `CATEGORIE — ARTICLE` peut également être présentée dans le même sens que les résultats de T.112.141 :
 
-Posez ces questions sur votre MCD :
+```text id="37ed84"
+CATEGORIE (0,N) ─── regroupe ─── (1,1) ARTICLE
+```
 
-| Question de vérification                              | Réponse attendue |
-| ----------------------------------------------------- | ---------------- |
-| Chaque entité a-t-elle un identifiant ?               | Oui              |
-| Les cardinalités reflètent-elles les règles métier ?  | Oui              |
-| Des attributs sont-ils dupliqués entre entités ?      | Non              |
-| `duree_lecture` est-elle dans une entité ?            | Non (calculée)   |
+### 2.4. Vérifier la cohérence du MCD
 
----
+Vérifiez le résultat avec les questions suivantes :
 
-### 2.3. Travail à faire
+| Question                                          | Résultat attendu |
+| ------------------------------------------------- | ---------------- |
+| Les 4 entités sont-elles présentes ?              | Oui              |
+| Chaque entité possède-t-elle un identifiant ?     | Oui              |
+| Chaque attribut est-il dans la bonne entité ?     | Oui              |
+| Les 3 relations sont-elles présentes ?            | Oui              |
+| Les cardinalités sont-elles celles de T.112.141 ? | Oui              |
+| `duree_lecture` est-elle absente du MCD stocké ?  | Oui              |
+| Une nouvelle entité a-t-elle été ajoutée ?        | Non              |
+| Une nouvelle relation a-t-elle été ajoutée ?      | Non              |
 
-**Consigne :**
+### 2.5. Lire le MCD complet
 
-Construisez le MCD complet du Blog en vous basant sur vos résultats des tutoriels précédents.
+À partir du MCD, vérifiez que vous pouvez lire chaque relation.
 
-Rédigez-le en format textuel puis vérifiez sa cohérence.
+**AUTEUR — ARTICLE**
+
+```text id="smyb2l"
+AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE
+```
+
+Lecture :
+
+> Un auteur peut rédiger plusieurs articles.
+
+> Un article est rédigé par un seul auteur.
+
+**VILLE — AUTEUR**
+
+```text id="an3azd"
+VILLE (0,N) ─── habite ─── (1,1) AUTEUR
+```
+
+Lecture :
+
+> Une ville peut être associée à plusieurs auteurs.
+
+> Un auteur habite dans une seule ville.
+
+**CATEGORIE — ARTICLE**
+
+```text id="6v5i2t"
+CATEGORIE (0,N) ─── regroupe ─── (1,1) ARTICLE
+```
+
+Lecture :
+
+> Une catégorie peut regrouper plusieurs articles.
+
+> Un article appartient à une seule catégorie.
+
+### 2.6. Travail à faire
+
+Construisez le **MCD complet du Blog** à partir des résultats de :
+
+* T.112.133 — Entités ;
+* T.112.141 — Relations et cardinalités.
+
+Votre MCD doit contenir :
+
+* les 4 entités ;
+* leurs identifiants ;
+* leurs attributs ;
+* les 3 relations ;
+* les cardinalités des deux côtés.
+
+Ne créez pas de nouvelles relations.
+
+Ne modifiez pas les cardinalités déjà déterminées.
+
+Ne transformez pas encore le MCD en tables.
 
 **Livrable :**
 
-```text
+```text id="8hf7ag"
 mcd-blog.md
 ```
+
+Le document doit présenter le MCD complet et sa vérification de cohérence.
 
 **Résultat attendu :**
 
@@ -186,22 +419,38 @@ mcd-blog.md
 
 **Critère de réussite :**
 
-Le MCD contient les 4 entités avec leurs attributs, les 3 relations avec leurs cardinalités correctes.
+Le MCD :
+
+* contient les 4 entités attendues ;
+* contient les bons identifiants et attributs ;
+* contient les 3 relations attendues ;
+* conserve exactement les cardinalités déterminées dans T.112.141 ;
+* n'ajoute aucune relation ou entité non prévue ;
+* exclut les données calculées non stockées ;
+* est lisible et cohérent.
 
 ## Bilan
 
-**Vous avez réalisé :** Le MCD complet du Blog, avec entités, attributs, identifiants, relations et cardinalités.
+**Vous avez réalisé :**
+
+Le MCD complet du Blog à partir des entités, relations et cardinalités produites dans les tutoriels précédents.
 
 **Vous savez maintenant :**
 
-- Assembler un MCD à partir des entités et relations.
-- Lire un MCD correctement.
-- Vérifier la cohérence d'un MCD.
+* assembler un MCD ;
+* représenter les entités et leurs attributs ;
+* intégrer les relations et cardinalités ;
+* lire un MCD ;
+* vérifier sa cohérence.
+
+Dans le prochain tutoriel, vous apprendrez à **transformer les entités du MCD en tables relationnelles**.
 
 ## Glossaire
 
-- **MCD** : Modèle Conceptuel de Données — représentation de toutes les entités et leurs relations.
-- **Association** : Lien entre deux entités représenté par un verbe.
-- **Cardinalité** : Nombre min/max de liens pour chaque entité dans une relation.
-- **Cohérence d'un MCD** : Chaque entité a un identifiant, pas d'attribut dupliqué, cardinalités correctes.
-- **Lecture d'un MCD** : Lire de gauche à droite avec les cardinalités des deux côtés.
+* **MCD** : Modèle Conceptuel de Données représentant les entités et leurs relations.
+* **Entité** : représentation d'une réalité dans le modèle.
+* **Attribut** : donnée qui décrit une entité.
+* **Identifiant** : donnée qui permet de distinguer les occurrences d'une entité.
+* **Relation** : lien entre deux entités.
+* **Cardinalité** : minimum et maximum de liens entre deux entités.
+* **Cohérence** : correspondance entre les entités, attributs, relations et cardinalités du modèle.

@@ -15,150 +15,275 @@ data_js: ""
 
 ## 1. Objectif
 
-Apprendre à transformer chaque entité du MCD en **table relationnelle** dans le MLD.
+Transformer les entités du MCD en **tables relationnelles** dans le MLD.
 
-Identifier la **clé primaire** de chaque table.
+Vous allez apprendre à :
+
+* transformer une entité en table ;
+* transformer un attribut en colonne ;
+* transformer un identifiant en clé primaire ;
+* vérifier les colonnes de chaque table.
 
 ## 2. Prérequis
 
-- Avoir construit le MCD complet du Blog (T.112.142).
-- Comprendre les notions d'entité, attribut et identifiant.
+* Savoir construire le MCD complet du Blog (T.112.142).
+* Connaître les notions d'entité, d'attribut et d'identifiant.
 
 ## Données de départ
 
-Les entités du MCD du Blog :
+Le point de départ est le **MCD du Blog** construit dans T.112.142.
 
-```text
-VILLE        AUTEUR        ARTICLE        CATEGORIE
+Les entités sont :
+
+```text id="3k3q5m"
+VILLE
+AUTEUR
+ARTICLE
+CATEGORIE
 ```
 
-👉 [Ouvrir la maquette du Blog](https://solicode-web-mobile.github.io/maquette-blog/index.html)
+Les entités contiennent leurs identifiants et leurs attributs.
+
+Dans ce tutoriel, on transforme uniquement les **entités**.
+
+Les relations et les cardinalités ne sont pas encore transformées en clés étrangères.
+
+---
 
 ## Partie 1 — Théorie
 
 ### 1.1. Qu'est-ce qu'un MLD ?
 
-Un **MLD** (Modèle Logique de Données) est la traduction du MCD en tables relationnelles.
+Le **MLD** est la traduction logique du MCD sous forme de tables relationnelles.
 
-Il décrit concrètement comment les données seront organisées dans la base de données.
+Il permet de représenter :
 
-### 1.2. Table, colonne, ligne
+* les tables ;
+* les colonnes ;
+* les clés primaires.
 
-| Concept MCD  | Concept MLD         |
-| ------------ | ------------------- |
-| Entité       | Table               |
-| Attribut     | Colonne             |
-| Occurrence   | Ligne / enregistrement |
-| Identifiant  | Clé primaire (PK)   |
+À cette étape, on ne transforme pas encore les relations en clés étrangères.
 
-### 1.3. Clé primaire (PK)
+### 1.2. Correspondance MCD → MLD
 
-Une **clé primaire** (Primary Key) est la colonne qui identifie de manière unique chaque ligne d'une table.
+La transformation de base est :
 
-Elle correspond à l'identifiant de l'entité dans le MCD.
-
-**Notation dans le MLD :**
-
-```text
-TABLE
------
-id_table   PK
-colonne_1
-colonne_2
+```text id="4ibj21"
+Entité      → Table
+Attribut    → Colonne
+Identifiant → Clé primaire
 ```
 
-### 1.4. Règle de transformation : Entité → Table
+Exemple :
 
-La règle est simple et directe :
+```text id="lvs76i"
+MCD
 
-```text
-Entité  →  Table
-Attribut  →  Colonne
-Identifiant  →  Clé primaire (PK)
-```
-
-**Exemple :**
-
-Entité dans le MCD :
-
-```text
 VILLE
 -----
+
 id_ville
 nom_ville
 ```
 
-Table dans le MLD :
+devient :
 
-```text
+```text id="q6fs0s"
+MLD
+
 VILLE
 -----
-id_ville   PK
+
+id_ville PK
 nom_ville
 ```
 
-### 1.5. À retenir
+### 1.3. Qu'est-ce qu'une table ?
 
-- Chaque entité devient une table.
-- Chaque attribut devient une colonne.
-- L'identifiant devient la clé primaire (PK).
-- La transformation est directe et mécanique.
+Une **table** est une structure qui regroupe des données de même nature.
+
+Chaque table correspond ici à une entité du MCD.
+
+Exemple :
+
+```text id="bgrf1j"
+AUTEUR
+```
+
+devient :
+
+```text id="t8cx7w"
+AUTEUR
+```
+
+dans le MLD.
+
+### 1.4. Qu'est-ce qu'une colonne ?
+
+Une **colonne** représente une donnée stockée dans une table.
+
+Elle correspond à un attribut de l'entité.
+
+Exemple :
+
+```text id="s3x1eo"
+Entité AUTEUR
+
+nom_auteur
+prenom_auteur
+email_auteur
+```
+
+devient :
+
+```text id="g3m08u"
+Table AUTEUR
+
+nom_auteur
+prenom_auteur
+email_auteur
+```
+
+### 1.5. Qu'est-ce qu'une clé primaire ?
+
+Une **clé primaire**, ou **PK**, identifie de manière unique chaque ligne d'une table.
+
+Elle correspond à l'identifiant de l'entité.
+
+Exemple :
+
+```text id="5jq4vo"
+id_auteur
+```
+
+devient :
+
+```text id="q4mr7v"
+id_auteur PK
+```
+
+### 1.6. Règle de transformation
+
+Pour chaque entité :
+
+**Étape 1**
+
+Créer une table portant le nom de l'entité.
+
+**Étape 2**
+
+Copier les attributs comme colonnes.
+
+**Étape 3**
+
+Identifier la colonne correspondant à l'identifiant.
+
+**Étape 4**
+
+Marquer cette colonne comme **PK**.
+
+Exemple :
+
+```text id="z4i5v6"
+ARTICLE
+-------
+
+id_article
+titre_article
+contenu_article
+```
+
+devient :
+
+```text id="p5ydnq"
+ARTICLE
+-------
+
+id_article PK
+titre_article
+contenu_article
+```
+
+### 1.7. Ce qui n'est pas encore fait
+
+Dans ce tutoriel, on ne transforme pas encore :
+
+* les relations ;
+* les cardinalités ;
+* les clés étrangères ;
+* les relations N–N ;
+* les tables de liaison.
+
+Ces transformations seront étudiées dans les tutoriels suivants.
+
+### 1.8. À retenir
+
+* Une entité devient une table.
+* Un attribut devient une colonne.
+* Un identifiant devient une clé primaire.
+* La transformation est directe.
+* Les relations seront transformées dans l'étape suivante.
+
+---
 
 ## Partie 2 — Pratique
 
-### 2.1. Transformer les entités
+### 2.1. Transformer l'entité VILLE
 
-#### Entité VILLE → Table VILLE
+Entité du MCD :
 
-MCD :
-
-```text
+```text id="9u2qkz"
 VILLE
 -----
+
 id_ville
 nom_ville
 ```
 
-MLD :
+Transformation :
 
-```text
+```text id="g7yop5"
 VILLE
 -----
-id_ville   PK
+
+id_ville PK
 nom_ville
 ```
 
-#### Entité AUTEUR → Table AUTEUR
+### 2.2. Transformer l'entité AUTEUR
 
-MCD :
+Entité du MCD :
 
-```text
+```text id="bqds9e"
 AUTEUR
 ------
+
 id_auteur
 nom_auteur
 prenom_auteur
 email_auteur
 ```
 
-MLD :
+Transformation :
 
-```text
+```text id="3gk1sz"
 AUTEUR
 ------
-id_auteur    PK
+
+id_auteur PK
 nom_auteur
 prenom_auteur
 email_auteur
 ```
 
-#### Entité ARTICLE → Table ARTICLE
+### 2.3. Transformer l'entité ARTICLE
 
-MCD :
+Entité du MCD :
 
-```text
+```text id="8a4m8j"
 ARTICLE
 -------
+
 id_article
 titre_article
 contenu_article
@@ -167,12 +292,13 @@ statut_article
 image_article
 ```
 
-MLD :
+Transformation :
 
-```text
+```text id="zt4gxk"
 ARTICLE
 -------
-id_article       PK
+
+id_article PK
 titre_article
 contenu_article
 date_publication
@@ -180,67 +306,112 @@ statut_article
 image_article
 ```
 
-#### Entité CATEGORIE → Table CATEGORIE
+### 2.4. Transformer l'entité CATEGORIE
 
-MCD :
+Entité du MCD :
 
-```text
+```text id="x2u4xq"
 CATEGORIE
 ---------
+
 id_categorie
 nom_categorie
 ```
 
-MLD :
+Transformation :
 
-```text
+```text id="w01f1i"
 CATEGORIE
 ---------
-id_categorie   PK
+
+id_categorie PK
 nom_categorie
 ```
 
----
+### 2.5. Vérifier les tables
 
-### 2.2. Travail à faire
+Comparez les entités du MCD avec les tables du MLD.
 
-**Consigne :**
+| Entité MCD  | Table MLD   | Identifiant → PK    |
+| ----------- | ----------- | ------------------- |
+| `VILLE`     | `VILLE`     | `id_ville` → PK     |
+| `AUTEUR`    | `AUTEUR`    | `id_auteur` → PK    |
+| `ARTICLE`   | `ARTICLE`   | `id_article` → PK   |
+| `CATEGORIE` | `CATEGORIE` | `id_categorie` → PK |
 
-À partir du MCD du Blog, transformez chaque entité en table relationnelle.
+Vérifiez également :
 
-Indiquez la clé primaire de chaque table.
+* aucun attribut n'a été oublié ;
+* aucun attribut n'a été ajouté ;
+* chaque table possède sa clé primaire.
+
+### 2.6. Travail à faire
+
+À partir du MCD complet du Blog :
+
+1. transformez chaque entité en table ;
+2. transformez chaque attribut en colonne ;
+3. identifiez la clé primaire de chaque table ;
+4. vérifiez que toutes les colonnes du MCD sont présentes.
+
+Les quatre tables attendues sont :
+
+```text id="oqg7cp"
+VILLE
+AUTEUR
+ARTICLE
+CATEGORIE
+```
+
+Ne transformez pas encore les relations en clés étrangères.
 
 **Livrable :**
 
-Un document listant les 4 tables avec leurs colonnes et clés primaires.
+```text id="mld-entites.md"
+```
+
+Le document doit contenir les quatre tables avec leurs colonnes et leurs clés primaires.
 
 **Résultat attendu :**
 
 <iframe
     class="auto-wrapper"
     src="{{ '/code/conception/T.112.151/' | relative_url }}"
-    height="500"
+    height="550"
     title="Résultat attendu — Tables et clés primaires">
 </iframe>
 
 **Critère de réussite :**
 
-Les 4 tables sont créées avec toutes les colonnes et chaque clé primaire est correctement identifiée.
+Les quatre tables sont correctement produites :
+
+* chaque entité devient une table ;
+* chaque attribut devient une colonne ;
+* chaque identifiant devient une PK ;
+* aucune colonne du MCD n'est oubliée ;
+* aucune relation ou clé étrangère n'est ajoutée à cette étape.
 
 ## Bilan
 
-**Vous avez réalisé :** La transformation des 4 entités du MCD en tables relationnelles dans le MLD.
+**Vous avez réalisé :**
+
+La transformation des quatre entités du MCD en tables relationnelles.
 
 **Vous savez maintenant :**
 
-- Transformer une entité en table.
-- Transformer un attribut en colonne.
-- Identifier la clé primaire (PK) d'une table.
+* transformer une entité en table ;
+* transformer un attribut en colonne ;
+* transformer un identifiant en clé primaire ;
+* vérifier la correspondance entre le MCD et les tables du MLD.
+
+Dans le prochain tutoriel, vous apprendrez à **transformer les relations 1–N en clés étrangères**.
 
 ## Glossaire
 
-- **MLD** : Modèle Logique de Données — traduction du MCD en tables relationnelles.
-- **Table** : Structure qui stocke les données d'une entité. Correspond à une entité du MCD.
-- **Colonne** : Champ d'une table correspondant à un attribut d'entité.
-- **Ligne / enregistrement** : Une occurrence concrète dans une table.
-- **Clé primaire (PK)** : Colonne qui identifie de manière unique chaque ligne d'une table.
+* **MLD** : Modèle Logique de Données représentant les données sous forme de tables relationnelles.
+* **Table** : structure qui représente une entité dans le modèle relationnel.
+* **Colonne** : donnée stockée dans une table ; elle correspond à un attribut.
+* **Ligne / enregistrement** : occurrence concrète d'une table.
+* **Clé primaire (PK)** : colonne qui identifie de manière unique chaque ligne d'une table.
+* **Entité** : représentation d'une réalité dans le MCD.
+* **Attribut** : donnée qui décrit une entité.

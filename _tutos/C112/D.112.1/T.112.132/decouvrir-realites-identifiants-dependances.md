@@ -15,200 +15,405 @@ data_js: ""
 
 ## 1. Objectif
 
-Analyser ce que chaque donnée décrit réellement.
+Analyser plusieurs occurrences pour comprendre ce que les données représentent réellement.
 
-Découvrir les **réalités métier**, les **identifiants** et les **dépendances fonctionnelles**.
+Vous allez apprendre à :
+
+* reconnaître une réalité décrite par plusieurs données ;
+* rechercher un identifiant ;
+* distinguer un identifiant d'un simple attribut ;
+* observer quelles données dépendent d'un identifiant ;
+* exprimer une dépendance fonctionnelle simple.
 
 ## 2. Prérequis
 
-- Avoir construit le dictionnaire de données (T.112.122).
-- Savoir repérer les répétitions dans un tableau d'occurrences (T.112.131).
+* Savoir identifier et décrire une donnée (T.112.121).
+* Savoir construire un dictionnaire de données (T.112.122).
+* Savoir observer des occurrences et repérer les répétitions (T.112.131).
 
 ## Données de départ
 
-Ce tutoriel part de trois données observées dans les auteurs du Blog :
+Ce tutoriel utilise le dictionnaire de données et plusieurs occurrences du Blog.
+
+Observez les données suivantes :
+
+| `nom_auteur` | `email_auteur`                              | `nom_ville` |
+| ------------ | ------------------------------------------- | ----------- |
+| Madani       | [madani@mail.com](mailto:madani@mail.com)   | Tanger      |
+| Sara         | [sara@mail.com](mailto:sara@mail.com)       | Tanger      |
+| Youssef      | [youssef@mail.com](mailto:youssef@mail.com) | Rabat       |
+| Amine        | [amine@mail.com](mailto:amine@mail.com)     | Tanger      |
+
+Ces données ont déjà été observées dans le tutoriel précédent.
+
+Dans ce tutoriel, on cherche maintenant à comprendre :
 
 ```text
-nom_auteur
-email_auteur
-nom_ville
+Que représentent réellement ces données ?
 ```
 
-👉 [Ouvrir la maquette du Blog](https://solicode-web-mobile.github.io/maquette-blog/index.html)
+---
 
 ## Partie 1 — Théorie
 
-### 1.1. Qu'est-ce qu'une réalité métier ?
+### 1.1. Observer ce que les données représentent
 
-Une **réalité métier** est une chose concrète du domaine de l'application qui existe de manière indépendante.
+Une donnée décrit une information sur une réalité.
 
-Elle peut être identifiée, décrite et gérée séparément.
-
-**Exemples dans le Blog :**
-
-- Un **auteur** est une réalité métier : il existe indépendamment de ses articles.
-- Une **catégorie** est une réalité métier : elle existe indépendamment des articles qu'elle regroupe.
-- Un **article** est une réalité métier : il a son propre contenu, sa propre date.
-
-### 1.2. Propriété et attribut
-
-Une **propriété** (ou **attribut**) est une donnée qui décrit une réalité métier.
-
-**Exemple :**
-
-La réalité "auteur" a ces propriétés :
+Exemple :
 
 ```text
 nom_auteur
 email_auteur
 ```
 
-Ces données décrivent l'auteur. Ce sont ses attributs.
-
-### 1.3. Qu'est-ce qu'une entité ?
-
-Une **entité** est la représentation formelle d'une réalité métier dans le modèle de données.
-
-Elle regroupe les attributs qui décrivent cette réalité.
-
-**Exemple :**
+Ces deux données décrivent la même réalité :
 
 ```text
 AUTEUR
-------
-nom_auteur
-email_auteur
 ```
 
-### 1.4. Qu'est-ce qu'un identifiant ?
+La donnée :
 
-Un **identifiant** est un attribut (ou un groupe d'attributs) qui permet de distinguer chaque occurrence de manière unique.
+```text
+nom_ville
+```
 
-- Un **identifiant existant** est déjà présent dans les données (ex : `email_auteur` — chaque auteur a un email unique).
-- Un **identifiant à créer** est un numéro technique ajouté pour identifier chaque occurrence (ex : `id_auteur`).
+décrit une autre réalité :
 
-**Exemple :**
+```text
+VILLE
+```
+
+On passe donc de :
+
+```text
+données
+   ↓
+ce qu'elles décrivent
+   ↓
+réalités
+```
+
+### 1.2. Qu'est-ce qu'une réalité ?
+
+Une **réalité** est une chose que les données permettent de décrire dans l'application.
+
+Exemples :
 
 ```text
 AUTEUR
-------
-id_auteur   ← identifiant (à créer)
+VILLE
+ARTICLE
+CATEGORIE
+```
+
+Plusieurs données peuvent décrire une même réalité.
+
+Exemple :
+
+```text
+AUTEUR
+
 nom_auteur
 email_auteur
 ```
 
-### 1.5. Donnée déterminante et donnée dépendante
+À ce stade, on cherche surtout à répondre à la question :
 
-- Une **donnée déterminante** est l'identifiant : elle détermine de manière unique une occurrence.
-- Une **donnée dépendante** est un attribut qui dépend de l'identifiant.
+> Qu'est-ce que ces données décrivent ?
 
-**Exemple :**
+### 1.3. Rechercher un identifiant
+
+Un **identifiant** permet de distinguer une occurrence d'une autre.
+
+Pour rechercher un identifiant, on vérifie si une donnée possède une valeur permettant de distinguer les occurrences.
+
+Exemple :
+
+| `nom_auteur` | `email_auteur`                              |
+| ------------ | ------------------------------------------- |
+| Madani       | [madani@mail.com](mailto:madani@mail.com)   |
+| Sara         | [sara@mail.com](mailto:sara@mail.com)       |
+| Youssef      | [youssef@mail.com](mailto:youssef@mail.com) |
+| Amine        | [amine@mail.com](mailto:amine@mail.com)     |
+
+Dans cet exemple, les emails sont tous différents.
+
+On peut donc considérer :
 
 ```text
-id_auteur → nom_auteur, email_auteur
+email_auteur
 ```
 
-On lit : "À partir de `id_auteur`, on connaît `nom_auteur` et `email_auteur`."
+comme un **identifiant possible** des auteurs.
 
-### 1.6. Dépendance fonctionnelle simple
+Mais cette conclusion doit être basée sur l'observation des données.
 
-Une **dépendance fonctionnelle simple** (DF) est une relation entre un identifiant et ses attributs.
+On ne considère pas automatiquement qu'un email est toujours un identifiant.
 
-Notation :
+### 1.4. Identifiant existant et identifiant à créer
+
+Un **identifiant existant** est déjà présent dans les données.
+
+Exemple :
+
+```text
+email_auteur
+```
+
+peut être utilisé comme identifiant si les valeurs sont uniques.
+
+Un **identifiant à créer** est ajouté lorsque les données disponibles ne permettent pas d'identifier simplement les occurrences.
+
+Exemple :
+
+```text
+id_auteur
+```
+
+Dans ce cas :
+
+```text
+id_auteur
+```
+
+sert à distinguer les auteurs.
+
+### 1.5. Attribut et identifiant
+
+Un **attribut** décrit une réalité.
+
+Un **identifiant** permet de distinguer ses occurrences.
+
+Exemple :
+
+```text
+AUTEUR
+
+identifiant :
+email_auteur
+
+attribut :
+nom_auteur
+```
+
+L'identifiant et les autres données ont donc des rôles différents.
+
+### 1.6. Dépendance entre les données
+
+Une donnée peut déterminer une autre donnée.
+
+Exemple :
+
+```text
+email_auteur → nom_auteur
+```
+
+Cela signifie :
+
+> Pour un email donné, on connaît le nom de l'auteur correspondant.
+
+L'email est alors une donnée **déterminante**.
+
+Le nom est une donnée **dépendante**.
+
+### 1.7. Dépendance fonctionnelle simple
+
+Une **dépendance fonctionnelle** s'écrit :
 
 ```text
 X → Y
 ```
 
-Cela signifie : "La valeur de X détermine de manière unique la valeur de Y."
+Elle signifie :
 
-**Exemple :**
+> La valeur de X détermine une seule valeur de Y.
+
+Exemple :
+
+```text
+email_auteur → nom_auteur
+```
+
+Si l'email permet d'identifier un auteur, il détermine son nom.
+
+### 1.8. Une réalité peut avoir plusieurs identifiants possibles
+
+Une réalité peut parfois être identifiée par plusieurs données.
+
+Exemple :
+
+```text
+AUTEUR
+
+email_auteur
+id_auteur
+```
+
+`email_auteur` peut être un identifiant existant si les valeurs sont uniques.
+
+`id_auteur` peut être un identifiant créé.
+
+À ce stade, l'objectif est de **repérer les possibilités**, pas encore de choisir toute la structure finale du modèle.
+
+### 1.9. À retenir
+
+* Plusieurs données peuvent décrire une même réalité.
+* Une réalité peut être identifiée à partir des données observées.
+* Un identifiant permet de distinguer les occurrences.
+* Un identifiant peut déjà exister ou être ajouté.
+* Une donnée peut en déterminer une autre.
+* Une dépendance fonctionnelle s'écrit `X → Y`.
+* La construction complète des entités sera réalisée dans le tutoriel suivant.
+
+---
+
+## Partie 2 — Pratique
+
+### 2.1. Observer les données
+
+Reprenez le tableau :
+
+| `nom_auteur` | `email_auteur`                              | `nom_ville` |
+| ------------ | ------------------------------------------- | ----------- |
+| Madani       | [madani@mail.com](mailto:madani@mail.com)   | Tanger      |
+| Sara         | [sara@mail.com](mailto:sara@mail.com)       | Tanger      |
+| Youssef      | [youssef@mail.com](mailto:youssef@mail.com) | Rabat       |
+| Amine        | [amine@mail.com](mailto:amine@mail.com)     | Tanger      |
+
+### Étape 1 — Chercher ce que décrivent les données
+
+Pour chaque donnée, posez-vous la question :
+
+> Qu'est-ce que cette donnée décrit ?
+
+Complétez :
+
+| Donnée         | Réalité décrite |
+| -------------- | --------------- |
+| `nom_auteur`   | Auteur          |
+| `email_auteur` | Auteur          |
+| `nom_ville`    | Ville           |
+
+On observe donc deux réalités :
+
+```text
+AUTEUR
+VILLE
+```
+
+### Étape 2 — Chercher un identifiant possible
+
+Observez les valeurs de :
+
+```text
+nom_auteur
+```
+
+Puis :
+
+```text
+email_auteur
+```
+
+Posez-vous la question :
+
+> Quelle donnée permet de distinguer les auteurs ?
+
+Dans cet exemple :
+
+```text
+Madani
+Sara
+Youssef
+Amine
+```
+
+sont tous différents.
+
+Les emails sont également tous différents :
+
+```text
+madani@mail.com
+sara@mail.com
+youssef@mail.com
+amine@mail.com
+```
+
+On peut donc retenir :
+
+```text
+email_auteur
+```
+
+comme identifiant existant possible.
+
+### Étape 3 — Chercher les données dépendantes
+
+Une fois l'identifiant trouvé, recherchez les données qu'il détermine.
+
+Exemple :
+
+```text
+email_auteur → nom_auteur
+```
+
+On peut aussi avoir :
 
 ```text
 id_auteur → nom_auteur
 id_auteur → email_auteur
-id_ville  → nom_ville
 ```
 
-### 1.7. À retenir
+si un identifiant `id_auteur` est ajouté.
 
-- Une réalité métier est une chose concrète qui existe de manière indépendante.
-- Une entité représente formellement une réalité métier.
-- Un identifiant distingue chaque occurrence de manière unique.
-- Une dépendance fonctionnelle relie l'identifiant à ses attributs.
+### Étape 4 — Observer la ville
 
-## Partie 2 — Pratique
-
-### 2.1. Analyser les données
-
-Voici trois données à analyser :
-
-```text
-nom_auteur
-email_auteur
-nom_ville
-```
-
-#### Étape 1 — Que décrit chaque donnée ?
-
-Posez-vous cette question pour chaque donnée :
-
-> Quelle réalité cette donnée décrit-elle ?
-
-| Donnée         | Réalité décrite |
-| -------------- | --------------- |
-| `nom_auteur`   | L'auteur        |
-| `email_auteur` | L'auteur        |
-| `nom_ville`    | La ville        |
-
-#### Étape 2 — Regrouper par réalité
-
-Deux réalités distinctes apparaissent :
-
-**Réalité 1 : l'auteur**
-
-```text
-nom_auteur
-email_auteur
-```
-
-**Réalité 2 : la ville**
+Observez :
 
 ```text
 nom_ville
+
+Tanger
+Tanger
+Rabat
+Tanger
 ```
 
-#### Étape 3 — Ajouter un identifiant
+Plusieurs auteurs peuvent avoir la même ville.
 
-Chaque entité a besoin d'un identifiant pour distinguer ses occurrences.
+La répétition observée dans T.112.131 permet maintenant de poser une nouvelle question :
+
+> Ces valeurs décrivent-elles la même réalité que l'auteur ?
+
+La réponse est non.
 
 ```text
 AUTEUR
-------
-id_auteur
-nom_auteur
-email_auteur
-
+   ≠
 VILLE
------
-id_ville
-nom_ville
 ```
 
-#### Étape 4 — Exprimer les dépendances fonctionnelles
+On découvre donc une seconde réalité.
+
+### Étape 5 — Exprimer les dépendances
+
+Pour l'auteur, exprimez les dépendances observées :
 
 ```text
-id_auteur → nom_auteur, email_auteur
-id_ville  → nom_ville
+email_auteur → nom_auteur
 ```
 
----
+Pour la ville, si un identifiant `id_ville` est ajouté :
+
+```text
+id_ville → nom_ville
+```
 
 ### 2.2. Travail à faire
 
-**Consigne :**
-
-Analysez les données suivantes et découvrez les réalités métier, les identifiants et les dépendances.
+Analysez les données suivantes :
 
 ```text
 titre_article
@@ -219,11 +424,34 @@ email_auteur
 nom_categorie
 ```
 
-Pour chaque groupe de données, posez-vous : « Quelle réalité décrivent-elles ? »
+Utilisez plusieurs occurrences du Blog pour rechercher :
+
+1. ce que chaque groupe de données décrit ;
+2. les réalités différentes ;
+3. un identifiant possible pour chaque réalité ;
+4. les données qui dépendent de cet identifiant ;
+5. les dépendances fonctionnelles simples.
+
+Présentez votre analyse sous une forme simple :
+
+| Réalité | Données observées | Identifiant possible | Données dépendantes |
+| ------- | ----------------- | -------------------- | ------------------- |
+| ...     | ...               | ...                  | ...                 |
+
+Puis écrivez les dépendances sous la forme :
+
+```text
+X → Y
+```
 
 **Livrable :**
 
-Un document listant les entités découvertes avec leurs attributs, identifiants et dépendances fonctionnelles.
+Une fiche d'analyse présentant :
+
+* les réalités découvertes ;
+* les identifiants possibles ;
+* les données dépendantes ;
+* les dépendances fonctionnelles observées.
 
 **Résultat attendu :**
 
@@ -231,31 +459,43 @@ Un document listant les entités découvertes avec leurs attributs, identifiants
     class="auto-wrapper"
     src="{{ '/code/conception/T.112.132/' | relative_url }}"
     height="600"
-    title="Résultat attendu — Entités et dépendances">
+    title="Résultat attendu — Réalités, identifiants et dépendances">
 </iframe>
 
 **Critère de réussite :**
 
-Vous avez découvert au moins 3 entités distinctes avec leurs attributs et identifiants corrects.
+L'analyse :
+
+* distingue correctement les différentes réalités ;
+* propose des identifiants justifiés par les données ;
+* distingue identifiant et attribut ;
+* exprime correctement les dépendances fonctionnelles simples ;
+* ne construit pas encore le MCD.
 
 ## Bilan
 
-**Vous avez réalisé :** La découverte des réalités métier, identifiants et dépendances à partir d'un groupe de données.
+**Vous avez réalisé :**
+
+L'analyse des données pour découvrir les réalités qu'elles représentent, rechercher des identifiants et exprimer des dépendances fonctionnelles.
 
 **Vous savez maintenant :**
 
-- Identifier une réalité métier à partir d'un groupe de données.
-- Construire une entité avec ses attributs et son identifiant.
-- Exprimer une dépendance fonctionnelle simple.
+* regrouper des données selon la réalité qu'elles décrivent ;
+* rechercher un identifiant à partir des occurrences ;
+* distinguer un identifiant d'un attribut ;
+* reconnaître une donnée déterminante et une donnée dépendante ;
+* écrire une dépendance fonctionnelle simple.
+
+Dans le prochain tutoriel, vous utiliserez cette analyse pour **construire les entités**.
 
 ## Glossaire
 
-- **Réalité métier** : Chose concrète du domaine de l'application qui existe de manière indépendante.
-- **Entité** : Représentation formelle d'une réalité métier dans le modèle de données.
-- **Attribut** : Donnée qui décrit une entité.
-- **Identifiant** : Attribut qui distingue chaque occurrence de manière unique.
-- **Identifiant existant** : Attribut déjà présent qui est unique par nature (ex : email).
-- **Identifiant à créer** : Numéro technique ajouté pour identifier chaque occurrence.
-- **Donnée déterminante** : Identifiant — détermine une occurrence de manière unique.
-- **Donnée dépendante** : Attribut qui dépend de l'identifiant.
-- **Dépendance fonctionnelle** : Relation X → Y signifiant que X détermine Y de manière unique.
+* **Réalité** : élément du domaine que les données permettent de décrire.
+* **Entité** : représentation d'une réalité dans un modèle de données.
+* **Attribut** : donnée qui décrit une réalité.
+* **Identifiant** : donnée qui permet de distinguer les occurrences d'une réalité.
+* **Identifiant existant** : identifiant déjà présent dans les données.
+* **Identifiant à créer** : identifiant ajouté pour distinguer les occurrences.
+* **Donnée déterminante** : donnée qui permet de déterminer une autre donnée.
+* **Donnée dépendante** : donnée déterminée par une autre donnée.
+* **Dépendance fonctionnelle** : relation `X → Y` indiquant que X détermine Y.

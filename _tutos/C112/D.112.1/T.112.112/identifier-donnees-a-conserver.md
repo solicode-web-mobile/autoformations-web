@@ -1,7 +1,7 @@
 ---
-title: "Identifier les données à conserver"
+title: "Comprendre ce que devient une donnée"
 layout: tuto
-slug: "identifier-donnees-a-conserver"
+slug: "comprendre-ce-que-devient-une-donnee"
 permalink: /tutos/:slug/
 tuto_id: "T.112.112"
 type: "classique"
@@ -13,214 +13,513 @@ data_css: ""
 data_js: ""
 ---
 
-## 1. Objectif
 
-Observer trois pages du Blog et comprendre le **rôle** de chaque donnée.
+## Objectif
 
-Déterminer quelles données doivent être **conservées** par l'application.
+Comprendre qu'une donnée peut avoir différents rôles dans une application.
 
-## 2. Prérequis
+Reconnaître une donnée :
 
-- Savoir identifier une donnée et sa valeur (T.112.111).
+* saisie ;
+* affichée ;
+* calculée ;
+* stockée ;
+* persistante ;
+* temporaire.
+
+Comprendre pourquoi certaines données sont conservées et pourquoi d'autres peuvent être utilisées seulement temporairement.
+
+## Prérequis
+
+Savoir distinguer :
+
+* une information ;
+* une donnée ;
+* une valeur ;
+* une donnée saisie ;
+* une donnée visible.
+
+Voir **T.112.111 — Distinguer information, donnée et valeur**.
 
 ## Données de départ
 
-Ce tutoriel utilise les maquettes du **Blog**.
+Dans ce tutoriel, vous travaillez avec des **situations simples d'utilisation d'une application**.
 
-Pages observées :
+Vous n'avez pas besoin d'observer une maquette.
 
-- **Page de création d'un article** — l'administrateur saisit les données.
-- **Page de gestion des articles** — l'administrateur consulte la liste.
-- **Page Détail d'un article** — le visiteur consulte l'article complet.
-
-👉 [Ouvrir la maquette du Blog](https://solicode-web-mobile.github.io/maquette-blog/index.html)
-
-Ouvrez la maquette dans votre navigateur avant de commencer.
+L'objectif est de comprendre **le rôle d'une donnée dans l'application** avant d'apprendre à rechercher les données dans une maquette.
 
 ## Partie 1 — Théorie
 
-### 1.1. Le rôle d'une donnée
+### 1.1. Une donnée peut avoir plusieurs rôles
 
-Une donnée ne joue pas toujours le même rôle dans une application.
+Une même donnée peut avoir plusieurs rôles au cours de son utilisation.
 
-Selon la page, une même donnée peut être :
+Par exemple :
 
-- **saisie** par l'utilisateur,
-- **affichée** à l'écran,
-- **calculée** automatiquement par l'application,
-- **stockée** dans une base de données pour être réutilisée.
+```text
+nom_auteur
+    ↓
+saisie par l'utilisateur
+    ↓
+stockée par l'application
+    ↓
+affichée plus tard
+```
+
+La donnée reste la même :
+
+```text
+nom_auteur
+```
+
+Son rôle dépend de ce que fait l'application avec elle.
 
 ### 1.2. Donnée saisie
 
-Une **donnée saisie** est entrée par l'utilisateur dans un formulaire.
+Une **donnée saisie** est une donnée dont la valeur est fournie par l'utilisateur.
 
 **Exemple :**
 
-Dans la page de création d'un article, l'administrateur remplit le champ "Titre de l'article".
+Un utilisateur saisit :
 
-`titre_article` est une donnée saisie.
+```text
+Madani
+```
+
+dans un champ « Nom ».
+
+On peut représenter la situation ainsi :
+
+```text
+nom_auteur
+    ↓
+Madani
+```
+
+La donnée `nom_auteur` reçoit la valeur `Madani`.
 
 ### 1.3. Donnée affichée
 
-Une **donnée affichée** est présentée à l'écran pour l'utilisateur.
-
-Elle provient d'une information déjà enregistrée.
+Une **donnée affichée** est une donnée dont la valeur est présentée à l'utilisateur.
 
 **Exemple :**
 
-Dans la page Détail d'un article, le titre est affiché pour le visiteur.
+L'application affiche :
 
-`titre_article` est aussi une donnée affichée.
+```text
+Madani
+```
 
-> La même donnée peut être saisie dans un écran et affichée dans un autre.
+On peut représenter :
+
+```text
+nom_auteur
+    ↓
+Madani
+    ↓
+affiché à l'écran
+```
+
+Une même donnée peut donc être :
+
+```text
+saisie
+```
+
+à un moment, puis :
+
+```text
+affichée
+```
+
+plus tard.
 
 ### 1.4. Donnée calculée
 
 Une **donnée calculée** est produite automatiquement par l'application à partir d'autres données.
 
-L'utilisateur ne la saisit pas directement.
+L'utilisateur ne fournit pas directement cette valeur.
 
 **Exemple :**
 
-La durée de lecture (`duree_lecture`) est calculée à partir de la longueur du contenu de l'article.
+L'application connaît :
 
-L'administrateur ne la saisit pas. L'application la calcule.
+```text
+contenu_article
+```
+
+Elle peut calculer une durée de lecture :
+
+```text
+contenu_article
+      ↓
+calcul
+      ↓
+duree_lecture
+      ↓
+5 min
+```
+
+Ici :
+
+```text
+duree_lecture
+```
+
+est une donnée calculée.
 
 ### 1.5. Donnée stockée
 
-Une **donnée stockée** est enregistrée dans la base de données de l'application.
-
-Elle peut être relue et réaffichée à chaque fois que nécessaire.
+Une **donnée stockée** est une donnée enregistrée afin de pouvoir être retrouvée plus tard.
 
 **Exemple :**
 
-Quand l'administrateur enregistre un article, `titre_article` et `contenu_article` sont stockés.
+Madani saisit :
 
-Quand un visiteur ouvre la page Détail d'un article, ces données sont relues et affichées.
+```text
+titre_article
+    ↓
+Mon premier article
+```
 
-### 1.6. Donnée persistante et donnée temporaire
+Lorsque l'article est enregistré, l'application conserve cette donnée.
 
-- Une **donnée persistante** est stockée durablement. Elle reste disponible même après fermeture de l'application.
-- Une **donnée temporaire** est utilisée pendant une session, puis perdue.
+Plus tard, l'application peut retrouver :
+
+```text
+titre_article
+    ↓
+Mon premier article
+```
+
+### 1.6. Donnée persistante
+
+Une **donnée persistante** est une donnée conservée dans le temps.
+
+Elle reste disponible après la fin de l'utilisation actuelle de l'application.
 
 **Exemple :**
 
-`titre_article` est une donnée persistante : elle est enregistrée et disponible à tout moment.
+Un article enregistré dans une application doit pouvoir être retrouvé plus tard.
 
-Le texte saisi dans un champ de formulaire avant validation est temporaire : si l'utilisateur ferme la page sans enregistrer, il est perdu.
+```text
+titre_article
+contenu_article
+date_publication
+```
 
-### 1.7. Stockage et base de données
+Ces données peuvent être persistantes.
 
-Le **stockage** est le mécanisme qui permet de conserver les données durablement.
+On peut représenter :
 
-Une **base de données** est le système qui organise et conserve les données de l'application.
+```text
+saisie
+   ↓
+stockage
+   ↓
+fermeture de l'application
+   ↓
+réouverture
+   ↓
+donnée toujours disponible
+```
 
-> L'objectif de ce domaine est de modéliser ces données : identifier ce qui doit être stocké, comment l'organiser.
+### 1.7. Donnée temporaire
 
-### 1.8. À retenir
+Une **donnée temporaire** est utilisée pendant une période limitée et n'a pas nécessairement besoin d'être conservée.
 
-- Une donnée peut être **saisie**, **affichée**, **calculée** ou **stockée**.
-- La même donnée peut jouer plusieurs rôles selon les pages.
-- Seules les données **persistantes** doivent être stockées dans la base de données.
-- Une donnée calculée n'a pas besoin d'être stockée si elle peut être recalculée.
+**Exemple :**
+
+Un utilisateur commence à écrire :
+
+```text
+Mon nouvel article...
+```
+
+mais ferme la page sans enregistrer.
+
+La valeur saisie peut être perdue.
+
+On peut représenter :
+
+```text
+saisie
+   ↓
+utilisation temporaire
+   ↓
+fermeture sans enregistrement
+   ↓
+donnée perdue
+```
+
+### 1.8. Stockage et base de données
+
+Le **stockage** permet de conserver des données afin de pouvoir les retrouver plus tard.
+
+Une **base de données** est un système utilisé par l'application pour organiser et conserver les données.
+
+Exemple :
+
+```text
+Article
+-------
+titre
+contenu
+date_publication
+```
+
+L'application peut conserver ces données dans une base de données.
+
+À ce niveau, il faut surtout comprendre l'idée suivante :
+
+> Une donnée qui doit être retrouvée plus tard doit être conservée quelque part.
+
+### 1.9. Une donnée peut avoir plusieurs rôles
+
+Une même donnée peut passer par plusieurs rôles.
+
+**Exemple :**
+
+```text
+nom_auteur
+    ↓
+saisie
+    ↓
+stockée
+    ↓
+réutilisée
+    ↓
+affichée
+```
+
+Une autre donnée peut être calculée :
+
+```text
+contenu_article
+    ↓
+calcul
+    ↓
+duree_lecture
+    ↓
+affichée
+```
+
+Il ne faut donc pas penser qu'une donnée possède un seul rôle.
+
+### 1.10. À retenir
+
+Retenez les points suivants :
+
+* Une donnée peut être **saisie** par l'utilisateur.
+* Une donnée peut être **affichée** par l'application.
+* Une donnée peut être **calculée** automatiquement.
+* Une donnée peut être **stockée** pour être réutilisée.
+* Une donnée **persistante** reste disponible dans le temps.
+* Une donnée **temporaire** peut être utilisée sans être conservée durablement.
+* Une même donnée peut avoir plusieurs rôles.
+
+Exemple :
+
+```text
+nom_auteur
+    ↓
+saisie
+    ↓
+stockée
+    ↓
+affichée
+```
 
 ## Partie 2 — Pratique
 
-### 2.1. Observer les trois pages
+### 2.1. Comprendre le parcours d'une donnée
 
-Ouvrez la maquette du Blog et naviguez entre les trois pages.
+Lisez la situation suivante.
 
-#### Étape 1 — Page de création d'un article
+Madani utilise une application de Blog.
 
-Observez les champs du formulaire.
+Il saisit son nom :
 
-Repérez les données que l'administrateur **saisit** :
+```text
+Madani
+```
 
-| Ce que je vois              | Donnée              | Rôle    |
-| --------------------------- | ------------------- | ------- |
-| Champ "Titre"               | `titre_article`     | Saisie  |
-| Champ "Contenu"             | `contenu_article`   | Saisie  |
-| Liste "Catégorie"           | `nom_categorie`     | Saisie  |
-| Liste "Statut"              | `statut_article`    | Saisie  |
-| Zone "Image de couverture"  | `image_article`     | Saisie  |
+L'application reçoit la valeur :
 
-#### Étape 2 — Page de gestion des articles
+```text
+nom_auteur → Madani
+```
 
-Observez le tableau de la liste.
+L'application enregistre ensuite cette valeur.
 
-Repérez les données **affichées** dans chaque ligne :
+Plus tard, lorsqu'un article est affiché, l'application présente :
 
-| Ce que je vois      | Donnée              | Rôle     |
-| ------------------- | ------------------- | -------- |
-| Titre de l'article  | `titre_article`     | Affichée |
-| Date de publication | `date_publication`  | Affichée |
-| Catégorie           | `nom_categorie`     | Affichée |
-| Nom de l'auteur     | `nom_auteur`        | Affichée |
+```text
+Madani
+```
 
-#### Étape 3 — Page Détail d'un article
+Complétez le parcours :
 
-Observez ce que le visiteur voit.
+```text
+nom_auteur
+    ↓
+____________
+    ↓
+____________
+    ↓
+____________
+```
 
-Repérez les données affichées et cherchez si certaines sont calculées :
+### 2.2. Identifier le rôle d'une donnée
 
-| Ce que je vois          | Donnée              | Rôle      |
-| ----------------------- | ------------------- | --------- |
-| Titre de l'article      | `titre_article`     | Affichée  |
-| Contenu complet         | `contenu_article`   | Affichée  |
-| Nom de l'auteur         | `nom_auteur`        | Affichée  |
-| Prénom de l'auteur      | `prenom_auteur`     | Affichée  |
-| Date de publication     | `date_publication`  | Affichée  |
-| Catégorie               | `nom_categorie`     | Affichée  |
-| 5 min de lecture        | `duree_lecture`     | Calculée  |
+Pour chaque situation, indiquez le rôle de la donnée.
 
----
+| Situation                                                    | Rôle |
+| ------------------------------------------------------------ | ---- |
+| L'utilisateur entre son nom dans un formulaire               |      |
+| L'application affiche le nom de l'auteur                     |      |
+| L'application enregistre le nom de l'auteur                  |      |
+| L'application calcule une durée de lecture                   |      |
+| Une valeur est utilisée uniquement pendant la saisie         |      |
+| Une donnée reste disponible après fermeture de l'application |      |
 
-### 2.2. Travail à faire
+Utilisez les termes :
 
-**Consigne :**
+```text
+saisie
+affichée
+calculée
+stockée
+temporaire
+persistante
+```
 
-À partir de vos observations, complétez le tableau suivant pour chaque donnée.
+### 2.3. Reconnaître les données calculées
 
-Pour chaque donnée, indiquez son rôle : **Saisie**, **Affichée**, **Calculée** ou **Stockée**.
+Observez les situations suivantes.
 
-Une donnée peut avoir plusieurs rôles.
+**Situation A**
 
-Indiquez aussi si elle doit être **conservée** dans la base de données : **Oui** ou **Non**.
+```text
+contenu_article
+      ↓
+calcul
+      ↓
+duree_lecture
+```
 
-**Livrable :**
+**Situation B**
 
-Un tableau complété avec au moins 6 données.
+```text
+nom_auteur
+      ↓
+saisie par l'utilisateur
+```
 
-**Résultat attendu :**
+**Situation C**
+
+```text
+titre_article
+      ↓
+enregistré
+      ↓
+réutilisé plus tard
+```
+
+Pour chaque situation, indiquez si la donnée est :
+
+* saisie ;
+* calculée ;
+* stockée ;
+* persistante.
+
+Une même donnée peut avoir plusieurs rôles.
+
+### 2.4. Travail à faire
+
+Complétez le tableau suivant.
+
+| Donnée          | Situation                                    | Rôle |
+| --------------- | -------------------------------------------- | ---- |
+| `nom_auteur`    | L'utilisateur saisit son nom                 |      |
+| `nom_auteur`    | L'application affiche son nom                |      |
+| `titre_article` | L'article est enregistré                     |      |
+| `titre_article` | Le titre est retrouvé plus tard              |      |
+| `duree_lecture` | L'application calcule « 5 min »              |      |
+| `texte_saisi`   | L'utilisateur ferme la page sans enregistrer |      |
+
+### Livrable
+
+Créez un document contenant vos réponses.
+
+```text
+t112112-role-donnees.md
+```
+
+### Résultat attendu
 
 <iframe
     class="auto-wrapper"
     src="{{ '/code/conception/T.112.112/' | relative_url }}"
-    height="600"
-    title="Résultat attendu — Rôle des données">
+    height="650"
+    title="Résultat attendu — Rôle d'une donnée">
 </iframe>
 
-**Critère de réussite :**
+### Critère de réussite
 
-Vous avez identifié correctement le rôle de chaque donnée et déterminé lesquelles doivent être conservées.
+Vous avez correctement :
+
+* reconnu une donnée saisie ;
+* reconnu une donnée affichée ;
+* reconnu une donnée calculée ;
+* reconnu une donnée stockée ;
+* distingué une donnée persistante d'une donnée temporaire ;
+* compris qu'une même donnée peut avoir plusieurs rôles.
 
 ## Bilan
 
-**Vous avez réalisé :** L'analyse du rôle des données du Blog à partir de trois pages.
+**Vous avez appris à :**
 
-**Vous savez maintenant :**
+* reconnaître les principaux rôles d'une donnée ;
+* comprendre qu'une donnée peut être saisie puis affichée ;
+* comprendre qu'une donnée peut être calculée ;
+* comprendre qu'une donnée peut être stockée ;
+* distinguer une donnée persistante d'une donnée temporaire.
 
-- Distinguer une donnée saisie d'une donnée affichée.
-- Reconnaître une donnée calculée.
-- Identifier les données qui doivent être stockées dans la base de données.
+**Vous savez maintenant représenter un parcours simple :**
+
+```text
+Saisie
+   ↓
+Stockage
+   ↓
+Réutilisation
+   ↓
+Affichage
+```
+
+ou :
+
+```text
+Données existantes
+   ↓
+Calcul
+   ↓
+Nouvelle valeur
+   ↓
+Affichage
+```
+
+La prochaine étape consiste à apprendre à **observer une maquette pour identifier et décrire les données qu'elle contient**.
 
 ## Glossaire
 
-- **Donnée saisie** : Donnée entrée par l'utilisateur dans un formulaire.
-- **Donnée affichée** : Donnée présentée à l'écran pour l'utilisateur.
-- **Donnée calculée** : Donnée produite automatiquement par l'application.
-- **Donnée stockée** : Donnée enregistrée dans la base de données.
-- **Donnée persistante** : Donnée conservée durablement, même après fermeture de l'application.
-- **Donnée temporaire** : Donnée utilisée momentanément, non conservée.
-- **Stockage** : Mécanisme de conservation durable des données.
-- **Base de données** : Système qui organise et conserve les données de l'application.
+* **Donnée saisie** : donnée dont la valeur est fournie par l'utilisateur.
+* **Donnée affichée** : donnée dont la valeur est présentée à l'utilisateur.
+* **Donnée calculée** : donnée produite automatiquement à partir d'autres données.
+* **Donnée stockée** : donnée enregistrée pour pouvoir être retrouvée plus tard.
+* **Donnée persistante** : donnée conservée dans le temps.
+* **Donnée temporaire** : donnée utilisée momentanément et qui peut être perdue sans enregistrement.
+* **Stockage** : mécanisme permettant de conserver des données.
+* **Base de données** : système utilisé pour organiser et conserver les données d'une application.
