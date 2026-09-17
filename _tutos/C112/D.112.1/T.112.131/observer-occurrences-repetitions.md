@@ -1,7 +1,7 @@
 ---
 title: "Observer les occurrences et repérer les répétitions"
 layout: tuto
-slug: "observer-occurrences-repetitions"
+slug: "observer-occurrences-reperer-repetitions"
 permalink: /tutos/:slug/
 tuto_id: "T.112.131"
 type: "classique"
@@ -15,35 +15,55 @@ data_js: ""
 
 ## 1. Objectif
 
-Observer plusieurs occurrences d'un même ensemble de données et repérer les valeurs qui se répètent.
+Dans ce tutoriel, vous allez apprendre à **observer plusieurs occurrences d'une même donnée**.
 
 Vous allez apprendre à :
 
 * reconnaître une occurrence ;
-* distinguer une donnée d'une occurrence ;
-* comparer plusieurs occurrences ;
-* repérer une valeur répétée.
+* distinguer une donnée d'une valeur ;
+* comparer plusieurs valeurs ;
+* repérer une valeur qui se répète ;
+* signaler une donnée qui contient des répétitions ;
+* expliquer pourquoi une répétition mérite d'être observée.
+
+À la fin du tutoriel, vous saurez observer les données avant de chercher les entités.
 
 ## 2. Prérequis
 
-* Savoir identifier et décrire une donnée (T.112.121).
-* Savoir construire un dictionnaire de données (T.112.122).
-* Connaître la différence entre une donnée et sa valeur.
+Avant de commencer, vous devez savoir :
+
+* ce qu'est une donnée ;
+* ce qu'est une valeur ;
+* faire la différence entre une donnée et sa valeur ;
+* lire un dictionnaire de données simple.
+
+Vous avez appris ces notions dans :
+
+```text
+T.112.111 — Distinguer information, donnée et valeur
+T.112.112 — Comprendre ce que devient une donnée
+T.112.121 — Identifier et décrire les données d'une maquette
+T.112.122 — Construire le dictionnaire de données
+```
 
 ## Données de départ
 
-Ce tutoriel utilise des données issues du dictionnaire de données du Blog.
+Nous allons travailler avec des données d'auteurs.
 
-Voici plusieurs occurrences d'auteurs :
+Voici un ensemble de plusieurs occurrences :
 
-| `nom_auteur` | `email_auteur`                              | `nom_ville` |
-| ------------ | ------------------------------------------- | ----------- |
-| Madani       | [madani@mail.com](mailto:madani@mail.com)   | Tanger      |
-| Sara         | [sara@mail.com](mailto:sara@mail.com)       | Tanger      |
-| Youssef      | [youssef@mail.com](mailto:youssef@mail.com) | Rabat       |
-| Amine        | [amine@mail.com](mailto:amine@mail.com)     | Tanger      |
+| nom_auteur | prenom_auteur | email_auteur                                | nom_ville |
+| ---------- | ------------- | ------------------------------------------- | --------- |
+| Ali        | Madani        | [madani@mail.com](mailto:madani@mail.com)   | Tanger    |
+| Sara       | Amrani        | [sara@mail.com](mailto:sara@mail.com)       | Tanger    |
+| Youssef    | Karim         | [youssef@mail.com](mailto:youssef@mail.com) | Rabat     |
+| Amine      | Idrissi       | [amine@mail.com](mailto:amine@mail.com)     | Tanger    |
 
-Chaque ligne contient les valeurs d'une même occurrence.
+Ces données représentent plusieurs auteurs.
+
+Pour le moment, nous ne cherchons pas encore les entités.
+
+Nous allons seulement **observer les données**.
 
 ---
 
@@ -51,39 +71,144 @@ Chaque ligne contient les valeurs d'une même occurrence.
 
 ### 1.1. Qu'est-ce qu'une occurrence ?
 
-Une **occurrence** est un ensemble concret de valeurs correspondant à un cas précis.
+Une **occurrence** est un exemple concret d'un ensemble de données.
 
-Dans le tableau :
-
-```text
-Madani | madani@mail.com | Tanger
-```
-
-représente une occurrence.
-
-Le tableau contient donc **4 occurrences**.
-
-### 1.2. Donnée et occurrence
-
-Une **donnée** indique ce que l'on observe.
-
-Une **occurrence** contient les valeurs concrètes de ces données.
-
-| Concept    | Exemple                             |
-| ---------- | ----------------------------------- |
-| Donnée     | `nom_auteur`                        |
-| Valeur     | `Madani`                            |
-| Occurrence | `Madani / madani@mail.com / Tanger` |
-
-La donnée décrit le champ.
-
-La valeur correspond au contenu de ce champ pour une occurrence.
-
-### 1.3. Observer les valeurs
-
-Pour observer les répétitions, on regarde les valeurs d'une même donnée sur plusieurs occurrences.
+Dans notre tableau, chaque ligne représente une occurrence.
 
 Exemple :
+
+```text
+Ali
+Madani
+madani@mail.com
+Tanger
+```
+
+Cette ligne représente une occurrence.
+
+Une autre ligne représente une autre occurrence :
+
+```text
+Sara
+Amrani
+sara@mail.com
+Tanger
+```
+
+Nous avons donc plusieurs occurrences.
+
+```text
+Occurrence 1 → Madani Ali
+Occurrence 2 → Sara Amrani
+Occurrence 3 → Youssef Karim
+Occurrence 4 → Amine Idrissi
+```
+
+### À retenir
+
+> Une occurrence est un exemple concret d'un ensemble de données.
+
+---
+
+### 1.2. Une donnée peut avoir plusieurs valeurs
+
+Une donnée décrit une information.
+
+Par exemple :
+
+```text
+nom_auteur
+```
+
+est une donnée.
+
+Cette donnée peut avoir plusieurs valeurs :
+
+```text
+Madani
+Amrani
+Karim
+Idrissi
+```
+
+Autre exemple :
+
+```text
+nom_ville
+```
+
+est une donnée.
+
+Elle possède ici plusieurs valeurs :
+
+```text
+Tanger
+Tanger
+Rabat
+Tanger
+```
+
+Il est important de distinguer :
+
+```text
+nom_ville → donnée
+
+Tanger → valeur
+```
+
+### À retenir
+
+> Une donnée peut avoir une valeur différente pour chaque occurrence.
+
+---
+
+### 1.3. Observer plusieurs occurrences
+
+Une seule occurrence ne permet pas toujours de comprendre le comportement d'une donnée.
+
+Exemple :
+
+```text
+Madani → Tanger
+```
+
+Nous savons seulement que Madani habite à Tanger.
+
+Mais si nous observons plusieurs occurrences :
+
+```text
+Madani   → Tanger
+Sara     → Tanger
+Youssef  → Rabat
+Amine    → Tanger
+```
+
+nous pouvons comparer les valeurs.
+
+Nous remarquons alors :
+
+```text
+Tanger
+Tanger
+Rabat
+Tanger
+```
+
+La valeur `Tanger` apparaît plusieurs fois.
+
+Cette observation n'était pas possible avec une seule occurrence.
+
+### À retenir
+
+> Pour étudier les données, il est utile de comparer plusieurs occurrences.
+
+---
+
+### 1.4. Qu'est-ce qu'une répétition ?
+
+Une répétition apparaît lorsqu'une même valeur apparaît plusieurs fois.
+
+Dans notre tableau :
 
 ```text
 nom_ville
@@ -94,7 +219,52 @@ Rabat
 Tanger
 ```
 
-On compare les valeurs :
+La valeur :
+
+```text
+Tanger
+```
+
+est répétée.
+
+La valeur :
+
+```text
+Rabat
+```
+
+n'est pas répétée dans cet exemple.
+
+On peut donc écrire :
+
+```text
+Tanger → valeur répétée
+Rabat  → valeur non répétée
+```
+
+### À retenir
+
+> Une répétition signifie qu'une même valeur apparaît plusieurs fois.
+
+---
+
+### 1.5. Comment repérer une répétition ?
+
+Pour repérer une répétition, on peut suivre une méthode simple.
+
+```text
+1. Choisir une donnée.
+
+2. Lire ses valeurs.
+
+3. Comparer les valeurs.
+
+4. Chercher les valeurs identiques.
+
+5. Noter les valeurs répétées.
+```
+
+Exemple avec `nom_ville` :
 
 ```text
 Tanger
@@ -103,163 +273,583 @@ Rabat
 Tanger
 ```
 
-### 1.4. Qu'est-ce qu'une répétition ?
-
-Une **répétition** existe lorsque la même valeur apparaît plusieurs fois pour une même donnée.
-
-Dans :
+Comparaison :
 
 ```text
+Tanger = Tanger
+Tanger ≠ Rabat
+Rabat ≠ Tanger
+```
+
+Résultat :
+
+```text
+Tanger est répétée.
+```
+
+---
+
+### 1.6. Une répétition est un signal d'observation
+
+Une répétition n'est pas automatiquement une erreur.
+
+Par exemple :
+
+```text
+Madani → Tanger
+Sara → Tanger
+Amine → Tanger
+```
+
+Il est normal que plusieurs personnes habitent dans la même ville.
+
+La répétition devient intéressante lorsque nous voulons comprendre **pourquoi la même information apparaît plusieurs fois**.
+
+Nous devons donc poser une question :
+
+> Pourquoi la même valeur est-elle enregistrée plusieurs fois ?
+
+Dans notre exemple :
+
+```text
+Tanger
+Tanger
+Tanger
+```
+
+Nous devons simplement signaler :
+
+```text
+La valeur "Tanger" est répétée.
+```
+
+Nous n'allons pas encore chercher la solution.
+
+La recherche de la solution sera faite dans le tutoriel suivant.
+
+### À retenir
+
+> Une répétition est un signal qui nous pousse à observer davantage les données.
+
+---
+
+### 1.7. Pourquoi observer les répétitions ?
+
+Une information répétée peut poser un problème plus tard.
+
+Prenons cet exemple :
+
+| Auteur        | Ville  |
+| ------------- | ------ |
+| Madani Ali    | Tanger |
+| Sara Amrani   | Tanger |
+| Amine Idrissi | Tanger |
+
+Supposons que le nom de la ville doive être corrigé.
+
+La valeur `Tanger` apparaît dans plusieurs lignes.
+
+Nous devrions donc retrouver toutes les occurrences contenant cette valeur.
+
+Cela peut entraîner :
+
+```text
+Même information
+↓
+répétée plusieurs fois
+↓
+plusieurs lignes à modifier
+↓
+risque d'oublier une ligne
+```
+
+Pour le moment, vous devez seulement retenir :
+
+> Une répétition peut créer un problème de modification.
+
+Nous chercherons une solution dans le prochain tutoriel.
+
+---
+
+### 1.8. Une donnée peut contenir des valeurs répétées
+
+Il faut bien distinguer :
+
+```text
+La donnée
+```
+
+et :
+
+```text
+la valeur répétée
+```
+
+Dans notre exemple :
+
+```text
+nom_ville
+```
+
+est la donnée.
+
+```text
+Tanger
+```
+
+est une valeur.
+
+Nous avons :
+
+```text
+nom_ville
+    ↓
 Tanger
 Tanger
 Rabat
 Tanger
 ```
 
-la valeur `Tanger` apparaît **3 fois**.
+La donnée qui contient une répétition est donc :
 
-Il y a donc une répétition de la valeur `Tanger`.
+```text
+nom_ville
+```
 
-### 1.5. Répétition dans plusieurs colonnes
+La valeur répétée est :
 
-Toutes les données ne présentent pas forcément une répétition.
+```text
+Tanger
+```
 
-Exemple :
+### À retenir
 
-| Donnée         | Valeurs observées             | Répétition |
-| -------------- | ----------------------------- | ---------- |
-| `nom_auteur`   | Madani, Sara, Youssef, Amine  | Non        |
-| `email_auteur` | 4 valeurs différentes         | Non        |
-| `nom_ville`    | Tanger, Tanger, Rabat, Tanger | Oui        |
-
-La répétition doit être observée **pour chaque donnée**.
-
-### 1.6. À retenir
-
-* Une **donnée** indique ce que l'on observe.
-* Une **valeur** est le contenu concret d'une donnée.
-* Une **occurrence** correspond à un ensemble concret de valeurs.
-* Une **répétition** existe lorsqu'une même valeur apparaît plusieurs fois.
-* À ce stade, on observe les répétitions sans encore construire les entités.
+> On repère d'abord la donnée, puis la valeur qui se répète.
 
 ---
 
 ## Partie 2 — Pratique
 
-### 2.1. Observer les occurrences
+### 2.1. Observer un premier tableau
 
-Observez les quatre occurrences fournies dans les données de départ.
+Observez le tableau suivant :
 
-### Étape 1 — Observer chaque colonne
+| nom_auteur | prenom_auteur | email_auteur                                | nom_ville |
+| ---------- | ------------- | ------------------------------------------- | --------- |
+| Ali        | Madani        | [madani@mail.com](mailto:madani@mail.com)   | Tanger    |
+| Sara       | Amrani        | [sara@mail.com](mailto:sara@mail.com)       | Tanger    |
+| Youssef    | Karim         | [youssef@mail.com](mailto:youssef@mail.com) | Rabat     |
+| Amine      | Idrissi       | [amine@mail.com](mailto:amine@mail.com)     | Tanger    |
 
-Commencez par `nom_auteur`.
+Commencez par lire les données.
+
+Vous avez :
 
 ```text
-Madani
-Sara
-Youssef
-Amine
+nom_auteur
+prenom_auteur
+email_auteur
+nom_ville
 ```
 
-Puis `email_auteur`.
+### 2.2. Identifier les occurrences
+
+Chaque ligne est une occurrence.
+
+Complétez :
+
+| Occurrence | nom_auteur | prenom_auteur | email_auteur | nom_ville |
+| ---------- | ---------- | ------------- | ------------ | --------- |
+| 1          |            |               |              |           |
+| 2          |            |               |              |           |
+| 3          |            |               |              |           |
+| 4          |            |               |              |           |
+
+### À faire
+
+Indiquez le nombre total d'occurrences.
 
 ```text
-madani@mail.com
-sara@mail.com
-youssef@mail.com
-amine@mail.com
+Nombre d'occurrences : ______
 ```
 
-Puis `nom_ville`.
+---
+
+### 2.3. Observer les valeurs d'une donnée
+
+Choisissez la donnée :
 
 ```text
+nom_ville
+```
+
+Écrivez toutes ses valeurs :
+
+```text
+________________
+________________
+________________
+________________
+```
+
+Puis comparez-les.
+
+### Question
+
+Quelle valeur apparaît plusieurs fois ?
+
+```text
+________________________________
+```
+
+---
+
+### 2.4. Repérer les répétitions
+
+Complétez le tableau :
+
+| Donnée        | Valeurs observées                                                                                                                                                      | Valeur répétée ? |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| nom_auteur    | Madani, Amrani, Karim, Idrissi                                                                                                                                         |                  |
+| prenom_auteur | Ali, Sara, Youssef, Amine                                                                                                                                              |                  |
+| email_auteur  | [madani@mail.com](mailto:madani@mail.com), [sara@mail.com](mailto:sara@mail.com), [youssef@mail.com](mailto:youssef@mail.com), [amine@mail.com](mailto:amine@mail.com) |                  |
+| nom_ville     | Tanger, Tanger, Rabat, Tanger                                                                                                                                          |                  |
+
+Pour chaque donnée, indiquez :
+
+```text
+Oui
+```
+
+ou :
+
+```text
+Non
+```
+
+---
+
+### 2.5. Observer une autre situation
+
+Voici un autre ensemble de données :
+
+| nom_auteur | email_auteur                                | nom_ville | nom_categorie |
+| ---------- | ------------------------------------------- | --------- | ------------- |
+| Madani     | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+| Sara       | [sara@mail.com](mailto:sara@mail.com)       | Tanger    | Développement |
+| Youssef    | [youssef@mail.com](mailto:youssef@mail.com) | Rabat     | Actualité     |
+| Amine      | [amine@mail.com](mailto:amine@mail.com)     | Tanger    | Développement |
+
+Observez les colonnes :
+
+```text
+nom_auteur
+email_auteur
+nom_ville
+nom_categorie
+```
+
+### Travail à faire
+
+Pour chaque donnée, recherchez les valeurs répétées.
+
+Complétez :
+
+| Donnée        | Valeurs répétées |
+| ------------- | ---------------- |
+| nom_auteur    |                  |
+| email_auteur  |                  |
+| nom_ville     |                  |
+| nom_categorie |                  |
+
+---
+
+### 2.6. Comparer deux données
+
+Observez :
+
+```text
+nom_ville
+
 Tanger
 Tanger
 Rabat
 Tanger
 ```
 
-### Étape 2 — Comparer les valeurs
-
-Pour chaque donnée, comparez les valeurs entre les différentes occurrences.
-
-Posez-vous la question :
-
-> Une même valeur apparaît-elle plusieurs fois ?
-
-### Étape 3 — Repérer les répétitions
-
-Complétez le tableau :
-
-| Donnée         | Répétition ? | Valeur répétée | Nombre |
-| -------------- | :----------: | -------------- | -----: |
-| `nom_auteur`   |      Non     | —              |      0 |
-| `email_auteur` |      Non     | —              |      0 |
-| `nom_ville`    |      Oui     | Tanger         |      3 |
-
-### 2.2. Travail à faire
-
-Observez le tableau suivant :
-
-| `titre_article`                     | `nom_auteur` | `nom_categorie` |
-| ----------------------------------- | ------------ | --------------- |
-| Débuter avec Tailwind CSS           | Madani       | Développement   |
-| L'importance des micro-interactions | Sara         | Design UI/UX    |
-| Optimiser ses requêtes SQL          | Madani       | Développement   |
-| Gérer son temps avec Notion         | Youssef      | Productivité    |
-| CSS Grid en 10 minutes              | Sara         | Développement   |
-
-Pour chaque colonne :
-
-1. observez les valeurs ;
-2. repérez les valeurs qui se répètent ;
-3. indiquez le nombre de répétitions.
-
-**Livrable :**
+Puis :
 
 ```text
-occurrences-repetitions.md
+nom_auteur
+
+Madani
+Amrani
+Karim
+Idrissi
 ```
 
-Le livrable doit contenir un tableau indiquant, pour chaque donnée :
+### Questions
 
-* s'il existe une répétition ;
-* la valeur répétée ;
-* le nombre d'apparitions.
+Quelle donnée contient une répétition ?
 
-**Résultat attendu :**
+```text
+________________________________
+```
 
-<iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.131/' | relative_url }}"
-    height="500"
-    title="Résultat attendu — Occurrences et répétitions">
-</iframe>
+Quelle valeur est répétée ?
 
-**Critère de réussite :**
+```text
+________________________________
+```
 
-Les répétitions sont correctement identifiées pour chaque donnée.
+La donnée `nom_auteur` contient-elle une répétition dans cet exemple ?
 
-Aucune conclusion sur les entités, les identifiants ou les dépendances n'est demandée dans ce tutoriel.
+```text
+________________________________
+```
+
+---
+
+### 2.7. Observer le problème
+
+Reprenons :
+
+| nom_auteur    | nom_ville |
+| ------------- | --------- |
+| Madani Ali    | Tanger    |
+| Sara Amrani   | Tanger    |
+| Amine Idrissi | Tanger    |
+
+La valeur :
+
+```text
+Tanger
+```
+
+apparaît trois fois.
+
+### Question
+
+Supposons que le nom de cette ville doive être modifié.
+
+Combien de lignes contiennent cette information ?
+
+```text
+________________________________
+```
+
+### Question
+
+Pourquoi cette répétition peut-elle poser un problème ?
+
+Écrivez votre réponse avec une phrase simple.
+
+```text
+________________________________
+________________________________
+```
+
+---
+
+### 2.8. Faire la différence entre observation et solution
+
+À ce stade, vous devez seulement observer.
+
+Vous avez découvert :
+
+```text
+nom_ville
+    ↓
+Tanger
+Tanger
+Rabat
+Tanger
+```
+
+Vous avez constaté :
+
+```text
+Tanger est répétée.
+```
+
+Vous pouvez aussi constater :
+
+```text
+La répétition peut rendre une modification plus difficile.
+```
+
+Mais vous ne devez pas encore :
+
+```text
+créer une table Ville
+```
+
+ou :
+
+```text
+créer id_ville
+```
+
+ou :
+
+```text
+construire un MCD
+```
+
+Ces étapes seront étudiées plus tard.
+
+### À retenir
+
+```text
+T.112.131
+        ↓
+Observer
+        ↓
+Comparer
+        ↓
+Repérer
+        ↓
+Signaler les répétitions
+```
+
+---
+
+### 2.9. Exercice individuel
+
+À partir du tableau suivant :
+
+| nom_auteur | prenom_auteur | email_auteur                                | nom_ville | nom_categorie |
+| ---------- | ------------- | ------------------------------------------- | --------- | ------------- |
+| Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+| Sara       | Amrani        | [sara@mail.com](mailto:sara@mail.com)       | Tanger    | Développement |
+| Youssef    | Karim         | [youssef@mail.com](mailto:youssef@mail.com) | Rabat     | Actualité     |
+| Amine      | Idrissi       | [amine@mail.com](mailto:amine@mail.com)     | Tanger    | Développement |
+| Nadia      | Alaoui        | [nadia@mail.com](mailto:nadia@mail.com)     | Rabat     | Actualité     |
+
+### Travail à faire
+
+Pour chaque donnée :
+
+1. listez les valeurs observées ;
+2. recherchez les valeurs répétées ;
+3. indiquez les données qui contiennent au moins une répétition ;
+4. choisissez une répétition et expliquez pourquoi elle mérite une observation.
+
+Complétez ce tableau :
+
+| Donnée        | Valeurs observées | Valeur(s) répétée(s) | Observation |
+| ------------- | ----------------- | -------------------- | ----------- |
+| nom_auteur    |                   |                      |             |
+| prenom_auteur |                   |                      |             |
+| email_auteur  |                   |                      |             |
+| nom_ville     |                   |                      |             |
+| nom_categorie |                   |                      |             |
+
+Ne cherchez pas encore les entités.
+
+Ne créez pas encore de nouveaux identifiants.
+
+---
+
+## Travail à faire
+
+À partir des données fournies dans le tutoriel, produisez une observation des occurrences et des répétitions.
+
+Votre travail doit contenir :
+
+```text
+1. Les occurrences observées.
+
+2. Les données étudiées.
+
+3. Les valeurs répétées.
+
+4. Les données qui contiennent des répétitions.
+
+5. Une explication simple d'un problème possible lié à une répétition.
+```
+
+## Livrable
+
+Créez un document **Markdown** ou un **Google Doc** contenant vos réponses.
+
+Nom conseillé :
+
+```text
+observation-occurrences-repetitions.md
+```
+
+## Résultat attendu
+
+À la fin du travail, votre document doit permettre de voir clairement :
+
+```text
+Donnée
+   ↓
+Valeurs observées
+   ↓
+Valeurs répétées
+   ↓
+Problème possible
+```
+
+Vous devez être capable de montrer, par exemple :
+
+```text
+nom_ville
+    ↓
+Tanger
+Tanger
+Rabat
+Tanger
+    ↓
+Tanger est répétée.
+    ↓
+Cette répétition mérite une observation.
+```
+
+## Critère de réussite
+
+Le travail est réussi si :
+
+* toutes les données demandées sont observées ;
+* les occurrences sont correctement identifiées ;
+* les valeurs répétées sont correctement repérées ;
+* la différence entre donnée et valeur est respectée ;
+* le problème lié à une répétition est expliqué simplement ;
+* aucune entité n'est créée à ce stade ;
+* aucun identifiant n'est inventé à ce stade.
+
+---
 
 ## Bilan
 
-**Vous avez réalisé :**
+### Vous avez appris
 
-L'observation de plusieurs occurrences et l'identification des valeurs répétées.
-
-**Vous savez maintenant :**
+Vous savez maintenant :
 
 * reconnaître une occurrence ;
-* distinguer une donnée, une valeur et une occurrence ;
-* comparer les valeurs de plusieurs occurrences ;
+* distinguer une donnée d'une valeur ;
+* observer plusieurs occurrences ;
+* comparer les valeurs ;
 * repérer une valeur répétée ;
-* compter les répétitions.
+* identifier une donnée qui contient des répétitions ;
+* comprendre qu'une répétition peut créer un problème de modification.
+
+### Vous avez réalisé
+
+Vous avez observé un ensemble de données et identifié les répétitions.
+
+La prochaine étape sera de chercher **ce que représentent réellement les données** et de découvrir progressivement les **identifiants et les dépendances**.
+
+---
 
 ## Glossaire
 
-* **Occurrence** : ensemble concret de valeurs correspondant à un cas précis.
-* **Valeur** : contenu concret d'une donnée pour une occurrence.
-* **Ensemble d'occurrences** : groupe de plusieurs occurrences observées ensemble.
-* **Répétition** : même valeur apparaissant plusieurs fois pour une même donnée.
-* **Donnée répétée** : donnée pour laquelle une même valeur apparaît dans plusieurs occurrences.
+* **Occurrence** : exemple concret d'un ensemble de données.
+* **Donnée** : information que l'application doit connaître ou utiliser.
+* **Valeur** : contenu réel d'une donnée.
+* **Répétition** : même valeur présente plusieurs fois.
+* **Donnée répétée** : donnée dont les valeurs peuvent apparaître plusieurs fois.
+* **Modification** : changement d'une information existante.
+* **Observation** : action de regarder et comparer les données pour comprendre leur comportement.

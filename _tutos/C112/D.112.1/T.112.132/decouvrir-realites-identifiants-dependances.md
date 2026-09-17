@@ -1,7 +1,7 @@
 ---
-title: "Découvrir les réalités, les identifiants et les dépendances"
+title: "Découvrir une entité à partir d'un identifiant ou d'une répétition"
 layout: tuto
-slug: "decouvrir-realites-identifiants-dependances"
+slug: "decouvrir-entite-identifiant-repetition"
 permalink: /tutos/:slug/
 tuto_id: "T.112.132"
 type: "classique"
@@ -15,360 +15,845 @@ data_js: ""
 
 ## 1. Objectif
 
-Analyser plusieurs occurrences pour comprendre ce que les données représentent réellement.
+Dans ce tutoriel, vous allez apprendre une méthode pour **faire apparaître une entité à partir des données**.
 
 Vous allez apprendre à :
 
-* reconnaître une réalité décrite par plusieurs données ;
 * rechercher un identifiant ;
-* distinguer un identifiant d'un simple attribut ;
-* observer quelles données dépendent d'un identifiant ;
-* exprimer une dépendance fonctionnelle simple.
+* comprendre ce que l'identifiant permet d'identifier ;
+* rechercher les données qui dépendent de cet identifiant ;
+* observer une donnée qui se répète ;
+* comprendre pourquoi une répétition doit être étudiée ;
+* rechercher la réalité représentée par cette répétition ;
+* créer un nouvel identifiant pour cette réalité ;
+* écrire une dépendance fonctionnelle simple ;
+* remplacer progressivement une donnée répétée par son identifiant.
+
+À la fin du tutoriel, vous saurez commencer à transformer :
+
+```text
+Données
+   ↓
+Identifiant
+   ↓
+Dépendances
+   ↓
+Réalité
+   ↓
+Entité
+```
+
+ou :
+
+```text
+Donnée répétée
+   ↓
+Observation
+   ↓
+Réalité indépendante
+   ↓
+Nouvel identifiant
+   ↓
+Entité
+```
+
+Vous ne construisez pas encore le MCD.
+
+---
 
 ## 2. Prérequis
 
-* Savoir identifier et décrire une donnée (T.112.121).
-* Savoir construire un dictionnaire de données (T.112.122).
-* Savoir observer des occurrences et repérer les répétitions (T.112.131).
+Avant de commencer, vous devez savoir :
 
-## Données de départ
+* distinguer une donnée d'une valeur ;
+* reconnaître une occurrence ;
+* repérer une valeur répétée ;
+* comprendre qu'une répétition peut poser un problème de modification ;
+* lire un dictionnaire de données simple.
 
-Ce tutoriel utilise le dictionnaire de données et plusieurs occurrences du Blog.
-
-Observez les données suivantes :
-
-| `nom_auteur` | `email_auteur`                              | `nom_ville` |
-| ------------ | ------------------------------------------- | ----------- |
-| Madani       | [madani@mail.com](mailto:madani@mail.com)   | Tanger      |
-| Sara         | [sara@mail.com](mailto:sara@mail.com)       | Tanger      |
-| Youssef      | [youssef@mail.com](mailto:youssef@mail.com) | Rabat       |
-| Amine        | [amine@mail.com](mailto:amine@mail.com)     | Tanger      |
-
-Ces données ont déjà été observées dans le tutoriel précédent.
-
-Dans ce tutoriel, on cherche maintenant à comprendre :
+Vous avez appris ces notions dans :
 
 ```text
-Que représentent réellement ces données ?
+T.112.111 — Distinguer information, donnée et valeur
+T.112.112 — Comprendre ce que devient une donnée
+T.112.121 — Identifier et décrire les données d'une maquette
+T.112.122 — Construire le dictionnaire de données
+T.112.131 — Observer les occurrences et repérer les répétitions
 ```
 
 ---
 
-## Partie 1 — Théorie
+## Données de départ
 
-### 1.1. Observer ce que les données représentent
+Nous allons travailler sur un Blog.
 
-Une donnée décrit une information sur une réalité.
+Voici plusieurs occurrences d'articles :
+
+| id_article | titre_article             | nom_auteur | prenom_auteur | email_auteur                                | nom_ville | nom_categorie |
+| ---------: | ------------------------- | ---------- | ------------- | ------------------------------------------- | --------- | ------------- |
+|        101 | Débuter avec HTML         | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+|        102 | Créer une page Web        | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+|        103 | Actualité du Web          | Sara       | Amrani        | [sara@mail.com](mailto:sara@mail.com)       | Rabat     | Actualité     |
+|        104 | Organiser son projet      | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+|        105 | Les outils du développeur | Youssef    | Karim         | [youssef@mail.com](mailto:youssef@mail.com) | Rabat     | Actualité     |
+
+Nous allons observer ces données pour découvrir progressivement les réalités qu'elles représentent.
+
+---
+
+# Partie 1 — Théorie
+
+## 1.1. Qu'est-ce qu'un identifiant ?
+
+Un **identifiant** permet de reconnaître une seule occurrence.
+
+Dans notre tableau :
+
+```text
+id_article
+```
+
+possède les valeurs :
+
+```text
+101
+102
+103
+104
+105
+```
+
+Chaque valeur est différente.
+
+Nous pouvons donc utiliser :
+
+```text
+id_article
+```
+
+pour identifier un article précis.
 
 Exemple :
 
 ```text
-nom_auteur
-email_auteur
+id_article = 101
 ```
 
-Ces deux données décrivent la même réalité :
+permet de retrouver un seul article.
+
+### À retenir
+
+> Un identifiant permet de reconnaître une seule occurrence.
+
+---
+
+## 1.2. L'identifiant permet de déterminer des données
+
+Lorsque nous connaissons :
 
 ```text
-AUTEUR
+id_article = 101
 ```
 
-La donnée :
+nous pouvons retrouver les informations de cet article.
+
+Par exemple :
 
 ```text
-nom_ville
-```
-
-décrit une autre réalité :
-
-```text
-VILLE
-```
-
-On passe donc de :
-
-```text
-données
-   ↓
-ce qu'elles décrivent
-   ↓
-réalités
-```
-
-### 1.2. Qu'est-ce qu'une réalité ?
-
-Une **réalité** est une chose que les données permettent de décrire dans l'application.
-
-Exemples :
-
-```text
-AUTEUR
-VILLE
-ARTICLE
-CATEGORIE
-```
-
-Plusieurs données peuvent décrire une même réalité.
-
-Exemple :
-
-```text
-AUTEUR
-
-nom_auteur
-email_auteur
-```
-
-À ce stade, on cherche surtout à répondre à la question :
-
-> Qu'est-ce que ces données décrivent ?
-
-### 1.3. Rechercher un identifiant
-
-Un **identifiant** permet de distinguer une occurrence d'une autre.
-
-Pour rechercher un identifiant, on vérifie si une donnée possède une valeur permettant de distinguer les occurrences.
-
-Exemple :
-
-| `nom_auteur` | `email_auteur`                              |
-| ------------ | ------------------------------------------- |
-| Madani       | [madani@mail.com](mailto:madani@mail.com)   |
-| Sara         | [sara@mail.com](mailto:sara@mail.com)       |
-| Youssef      | [youssef@mail.com](mailto:youssef@mail.com) |
-| Amine        | [amine@mail.com](mailto:amine@mail.com)     |
-
-Dans cet exemple, les emails sont tous différents.
-
-On peut donc considérer :
-
-```text
-email_auteur
-```
-
-comme un **identifiant possible** des auteurs.
-
-Mais cette conclusion doit être basée sur l'observation des données.
-
-On ne considère pas automatiquement qu'un email est toujours un identifiant.
-
-### 1.4. Identifiant existant et identifiant à créer
-
-Un **identifiant existant** est déjà présent dans les données.
-
-Exemple :
-
-```text
-email_auteur
-```
-
-peut être utilisé comme identifiant si les valeurs sont uniques.
-
-Un **identifiant à créer** est ajouté lorsque les données disponibles ne permettent pas d'identifier simplement les occurrences.
-
-Exemple :
-
-```text
-id_auteur
-```
-
-Dans ce cas :
-
-```text
-id_auteur
-```
-
-sert à distinguer les auteurs.
-
-### 1.5. Attribut et identifiant
-
-Un **attribut** décrit une réalité.
-
-Un **identifiant** permet de distinguer ses occurrences.
-
-Exemple :
-
-```text
-AUTEUR
-
-identifiant :
-email_auteur
-
-attribut :
-nom_auteur
-```
-
-L'identifiant et les autres données ont donc des rôles différents.
-
-### 1.6. Dépendance entre les données
-
-Une donnée peut déterminer une autre donnée.
-
-Exemple :
-
-```text
-email_auteur → nom_auteur
+id_article → titre_article
 ```
 
 Cela signifie :
 
-> Pour un email donné, on connaît le nom de l'auteur correspondant.
+> L'identifiant `id_article` permet de déterminer le titre de l'article.
 
-L'email est alors une donnée **déterminante**.
-
-Le nom est une donnée **dépendante**.
-
-### 1.7. Dépendance fonctionnelle simple
-
-Une **dépendance fonctionnelle** s'écrit :
+Nous pouvons aussi écrire :
 
 ```text
-X → Y
+id_article → nom_auteur
 ```
 
-Elle signifie :
+car, dans une ligne donnée, connaître l'article permet de connaître l'auteur indiqué sur cette ligne.
 
-> La valeur de X détermine une seule valeur de Y.
+Une écriture de ce type s'appelle une **dépendance fonctionnelle**.
 
-Exemple :
+On l'écrit :
 
 ```text
-email_auteur → nom_auteur
+A → B
 ```
 
-Si l'email permet d'identifier un auteur, il détermine son nom.
+et on lit :
 
-### 1.8. Une réalité peut avoir plusieurs identifiants possibles
-
-Une réalité peut parfois être identifiée par plusieurs données.
-
-Exemple :
-
-```text
-AUTEUR
-
-email_auteur
-id_auteur
-```
-
-`email_auteur` peut être un identifiant existant si les valeurs sont uniques.
-
-`id_auteur` peut être un identifiant créé.
-
-À ce stade, l'objectif est de **repérer les possibilités**, pas encore de choisir toute la structure finale du modèle.
-
-### 1.9. À retenir
-
-* Plusieurs données peuvent décrire une même réalité.
-* Une réalité peut être identifiée à partir des données observées.
-* Un identifiant permet de distinguer les occurrences.
-* Un identifiant peut déjà exister ou être ajouté.
-* Une donnée peut en déterminer une autre.
-* Une dépendance fonctionnelle s'écrit `X → Y`.
-* La construction complète des entités sera réalisée dans le tutoriel suivant.
+> A détermine B.
 
 ---
 
-## Partie 2 — Pratique
+## 1.3. Une dépendance fonctionnelle simple
 
-### 2.1. Observer les données
-
-Reprenez le tableau :
-
-| `nom_auteur` | `email_auteur`                              | `nom_ville` |
-| ------------ | ------------------------------------------- | ----------- |
-| Madani       | [madani@mail.com](mailto:madani@mail.com)   | Tanger      |
-| Sara         | [sara@mail.com](mailto:sara@mail.com)       | Tanger      |
-| Youssef      | [youssef@mail.com](mailto:youssef@mail.com) | Rabat       |
-| Amine        | [amine@mail.com](mailto:amine@mail.com)     | Tanger      |
-
-### Étape 1 — Chercher ce que décrivent les données
-
-Pour chaque donnée, posez-vous la question :
-
-> Qu'est-ce que cette donnée décrit ?
-
-Complétez :
-
-| Donnée         | Réalité décrite |
-| -------------- | --------------- |
-| `nom_auteur`   | Auteur          |
-| `email_auteur` | Auteur          |
-| `nom_ville`    | Ville           |
-
-On observe donc deux réalités :
+Prenons :
 
 ```text
-AUTEUR
-VILLE
+id_article → titre_article
 ```
 
-### Étape 2 — Chercher un identifiant possible
-
-Observez les valeurs de :
+Cela signifie :
 
 ```text
-nom_auteur
+Un id_article
+        ↓
+un seul titre_article
+```
+
+Exemple :
+
+```text
+101 → Débuter avec HTML
+102 → Créer une page Web
+103 → Actualité du Web
+```
+
+Nous avons donc :
+
+```text
+id_article → titre_article
+```
+
+Nous pouvons aussi avoir :
+
+```text
+id_article → nom_auteur
+id_article → nom_ville
+id_article → nom_categorie
+```
+
+Mais attention :
+
+> Une donnée qui dépend d'un identifiant n'est pas automatiquement une donnée propre à cette entité.
+
+Nous devons encore observer les répétitions.
+
+C'est un point important.
+
+---
+
+## 1.4. Pourquoi une dépendance ne suffit pas ?
+
+Regardons :
+
+```text
+id_article → nom_auteur
+```
+
+Cette dépendance est possible.
+
+Mais observons les données :
+
+```text
+101 → Madani
+102 → Madani
+104 → Madani
+```
+
+Le même auteur apparaît dans plusieurs articles.
+
+Cela nous indique que :
+
+```text
+Madani
+```
+
+ne représente pas un auteur créé spécialement pour l'article 101.
+
+Il représente une réalité indépendante :
+
+```text
+Auteur
+```
+
+Nous devons donc continuer notre observation.
+
+### À retenir
+
+> Une dépendance nous aide à regrouper les données, mais les répétitions nous aident à découvrir les réalités indépendantes.
+
+---
+
+## 1.5. Première façon de découvrir une entité : partir d'un identifiant
+
+Lorsque nous avons un identifiant clair, nous pouvons commencer par lui.
+
+Exemple :
+
+```text
+id_article
+```
+
+Nous cherchons les données qui décrivent l'article :
+
+```text
+id_article
+titre_article
 ```
 
 Puis :
 
 ```text
-email_auteur
+contenu_article
+date_publication
+statut_article
+image_article
 ```
 
-Posez-vous la question :
-
-> Quelle donnée permet de distinguer les auteurs ?
-
-Dans cet exemple :
+Nous obtenons progressivement :
 
 ```text
-Madani
-Sara
-Youssef
-Amine
+ARTICLE
+-------
+id_article
+titre_article
+contenu_article
+date_publication
+statut_article
+image_article
 ```
 
-sont tous différents.
-
-Les emails sont également tous différents :
+Nous avons commencé à découvrir une entité :
 
 ```text
-madani@mail.com
-sara@mail.com
-youssef@mail.com
-amine@mail.com
+ARTICLE
 ```
 
-On peut donc retenir :
+La logique est :
 
 ```text
-email_auteur
+id_article
+    ↓
+données qui décrivent l'article
+    ↓
+ARTICLE
 ```
 
-comme identifiant existant possible.
+---
 
-### Étape 3 — Chercher les données dépendantes
+## 1.6. Deuxième façon de découvrir une entité : partir d'une répétition
 
-Une fois l'identifiant trouvé, recherchez les données qu'il détermine.
+Toutes les entités ne sont pas visibles directement.
+
+Parfois, nous avons seulement :
+
+```text
+nom_ville
+```
+
+et aucune donnée :
+
+```text
+id_ville
+```
+
+Nous devons alors observer les occurrences.
+
+Dans notre exemple :
+
+```text
+Tanger
+Tanger
+Rabat
+Tanger
+Rabat
+```
+
+Nous constatons :
+
+```text
+Tanger → répétée
+Rabat  → répétée
+```
+
+Nous devons alors poser une question :
+
+> Que représente `Tanger` ?
+
+Réponse :
+
+```text
+Une ville.
+```
+
+Nous commençons donc à découvrir une réalité indépendante :
+
+```text
+VILLE
+```
+
+Mais nous avons encore un problème :
+
+> Comment identifier une ville ?
+
+---
+
+## 1.7. Créer un identifiant pour une nouvelle réalité
+
+Pour identifier une ville, nous créons :
+
+```text
+id_ville
+```
+
+Nous pouvons maintenant associer :
+
+```text
+id_ville → nom_ville
+```
+
+Par exemple :
+
+```text
+id_ville | nom_ville
+---------|----------
+1        | Tanger
+2        | Rabat
+```
+
+Nous avons maintenant :
+
+```text
+VILLE
+-----
+id_ville
+nom_ville
+```
+
+La nouvelle entité est apparue grâce à la répétition.
+
+La chaîne de raisonnement est :
+
+```text
+nom_ville
+   ↓
+valeurs répétées
+   ↓
+problème de répétition
+   ↓
+réalité indépendante : Ville
+   ↓
+création de id_ville
+   ↓
+id_ville → nom_ville
+   ↓
+VILLE
+```
+
+### À retenir
+
+> Lorsqu'une valeur répétée représente une réalité indépendante, nous pouvons créer un identifiant pour cette réalité et construire une nouvelle entité.
+
+---
+
+## 1.8. Une dépendance dans l'entité Ville
+
+Nous avons :
+
+```text
+id_ville → nom_ville
+```
+
+Pourquoi ?
+
+Parce qu'une valeur de `id_ville` correspond à une seule valeur de `nom_ville`.
 
 Exemple :
 
 ```text
-email_auteur → nom_auteur
+1 → Tanger
+2 → Rabat
 ```
 
-On peut aussi avoir :
+Mais nous ne pouvons pas écrire automatiquement :
 
 ```text
-id_auteur → nom_auteur
-id_auteur → email_auteur
+nom_ville → id_ville
 ```
 
-si un identifiant `id_auteur` est ajouté.
+Pourquoi ?
 
-### Étape 4 — Observer la ville
+Parce qu'un nom de ville ne garantit pas toujours une identification unique.
+
+Pour notre méthode N1, retenez simplement :
+
+> L'identifiant détermine la donnée qui décrit la réalité.
+
+---
+
+## 1.9. Remplacer la valeur répétée par l'identifiant
+
+Avant la séparation :
+
+```text
+AUTEUR
+------
+nom_auteur
+prenom_auteur
+email_auteur
+nom_ville
+```
+
+Après la découverte de `Ville` :
+
+```text
+AUTEUR
+------
+nom_auteur
+prenom_auteur
+email_auteur
+id_ville
+```
+
+Et nous avons :
+
+```text
+VILLE
+-----
+id_ville
+nom_ville
+```
+
+La valeur :
+
+```text
+Tanger
+```
+
+n'est donc plus répétée dans chaque occurrence d'auteur.
+
+Nous conservons :
+
+```text
+id_ville
+```
+
+qui permet de retrouver :
+
+```text
+nom_ville
+```
+
+### À retenir
+
+> Lorsqu'une réalité devient indépendante, les autres données utilisent son identifiant au lieu de répéter sa valeur descriptive.
+
+---
+
+## 1.10. La méthode complète
+
+Vous pouvez maintenant retenir les deux chemins.
+
+### Chemin A — L'identifiant est visible
+
+```text
+Identifiant
+    ↓
+Données dépendantes
+    ↓
+Réalité identifiée
+    ↓
+Entité
+```
+
+Exemple :
+
+```text
+id_article
+    ↓
+titre_article
+contenu_article
+date_publication
+    ↓
+ARTICLE
+```
+
+### Chemin B — L'identifiant n'est pas visible
+
+```text
+Valeur répétée
+    ↓
+Observation
+    ↓
+Problème de répétition
+    ↓
+Réalité indépendante
+    ↓
+Créer un identifiant
+    ↓
+Dépendance fonctionnelle
+    ↓
+Entité
+```
+
+Exemple :
+
+```text
+Tanger
+    ↓
+valeur répétée
+    ↓
+Ville
+    ↓
+id_ville
+    ↓
+id_ville → nom_ville
+    ↓
+VILLE
+```
+
+---
+
+## 1.11. La méthode ne s'arrête pas à la première entité
+
+Après avoir découvert une entité, nous devons recommencer l'observation.
+
+Exemple :
+
+```text
+ARTICLE
+-------
+id_article
+titre_article
+contenu_article
+id_auteur
+id_categorie
+```
+
+```text
+AUTEUR
+------
+id_auteur
+nom_auteur
+prenom_auteur
+email_auteur
+id_ville
+```
+
+```text
+VILLE
+-----
+id_ville
+nom_ville
+```
+
+Il faut ensuite observer les données restantes.
+
+Par exemple :
+
+```text
+nom_categorie
+
+Développement
+Développement
+Actualité
+Développement
+Actualité
+```
+
+La répétition nous donne un nouveau signal.
+
+Nous pouvons alors recommencer :
+
+```text
+Répétition
+    ↓
+Réalité représentée
+    ↓
+Catégorie
+    ↓
+id_categorie
+    ↓
+id_categorie → nom_categorie
+```
+
+Cette répétition de la méthode sera étudiée plus complètement dans le tutoriel suivant.
+
+---
+
+## 1.12. À retenir
+
+```text
+1. Chercher un identifiant.
+
+2. Chercher les données qu'il détermine.
+
+3. Observer les répétitions.
+
+4. Lorsqu'une valeur se répète, chercher ce qu'elle représente.
+
+5. Si elle représente une réalité indépendante,
+   créer un identifiant.
+
+6. Écrire la dépendance fonctionnelle.
+
+7. Regrouper les données de cette réalité.
+
+8. Remplacer la valeur répétée par son identifiant.
+
+9. Recommencer.
+```
+
+La méthode est donc :
+
+```text
+Observer
+   ↓
+Identifier
+   ↓
+Chercher les dépendances
+   ↓
+Repérer les répétitions
+   ↓
+Découvrir une réalité
+   ↓
+Créer un identifiant
+   ↓
+Séparer
+   ↓
+Recommencer
+```
+
+---
+
+# Partie 2 — Pratique
+
+## 2.1. Étape 1 — Chercher l'identifiant
+
+Observez le tableau :
+
+| id_article | titre_article             | nom_auteur | prenom_auteur | email_auteur                                | nom_ville |
+| ---------: | ------------------------- | ---------- | ------------- | ------------------------------------------- | --------- |
+|        101 | Débuter avec HTML         | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    |
+|        102 | Créer une page Web        | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    |
+|        103 | Actualité du Web          | Sara       | Amrani        | [sara@mail.com](mailto:sara@mail.com)       | Rabat     |
+|        104 | Organiser son projet      | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    |
+|        105 | Les outils du développeur | Youssef    | Karim         | [youssef@mail.com](mailto:youssef@mail.com) | Rabat     |
+
+### Question
+
+Quelle donnée peut identifier une seule occurrence d'article ?
+
+```text
+________________________________
+```
+
+### Question
+
+Donnez deux exemples de valeurs de cet identifiant.
+
+```text
+________________________________
+________________________________
+```
+
+---
+
+## 2.2. Étape 2 — Rechercher les données dépendantes
+
+On part de :
+
+```text
+id_article
+```
+
+Cherchez les données qui permettent de décrire l'article.
+
+Complétez :
+
+```text
+id_article →
+    ______________________
+    ______________________
+    ______________________
+```
+
+Ne cherchez pas encore les autres entités.
+
+Le but est uniquement de comprendre ce que l'identifiant `id_article` permet de retrouver.
+
+---
+
+## 2.3. Étape 3 — Observer une donnée qui se répète
+
+Observez :
+
+```text
+nom_auteur
+
+Madani
+Madani
+Sara
+Madani
+Youssef
+```
+
+### Question
+
+Quelle valeur est répétée ?
+
+```text
+________________________________
+```
+
+### Question
+
+Combien de fois apparaît-elle ?
+
+```text
+________________________________
+```
+
+### Question
+
+Cette répétition indique-t-elle qu'il existe probablement plusieurs articles pour le même auteur ?
+
+```text
+________________________________
+```
+
+---
+
+## 2.4. Étape 4 — Chercher ce que représente la valeur répétée
+
+Nous avons trouvé :
+
+```text
+Madani
+Madani
+Madani
+```
+
+Ne cherchez plus seulement la valeur.
+
+Posez-vous la question :
+
+> « Que représente Madani dans l'application ? »
+
+Réponse attendue sous forme de réalité :
+
+```text
+________________________________
+```
+
+Puis complétez :
+
+```text
+Cette réalité possède ses propres informations :
+
+________________________________
+________________________________
+________________________________
+```
+
+---
+
+## 2.5. Étape 5 — Observer une deuxième répétition
 
 Observez :
 
@@ -379,123 +864,361 @@ Tanger
 Tanger
 Rabat
 Tanger
+Rabat
 ```
 
-Plusieurs auteurs peuvent avoir la même ville.
+### Questions
 
-La répétition observée dans T.112.131 permet maintenant de poser une nouvelle question :
-
-> Ces valeurs décrivent-elles la même réalité que l'auteur ?
-
-La réponse est non.
+Quelle valeur est répétée ?
 
 ```text
-AUTEUR
-   ≠
+________________________________
+```
+
+Qu'est-ce que cette valeur représente ?
+
+```text
+________________________________
+```
+
+Pourquoi cette réalité peut-elle être gérée séparément ?
+
+```text
+________________________________
+________________________________
+```
+
+---
+
+## 2.6. Étape 6 — Créer l'identifiant de la nouvelle réalité
+
+Nous avons découvert :
+
+```text
 VILLE
 ```
 
-On découvre donc une seconde réalité.
+Mais nous devons pouvoir identifier chaque ville.
 
-### Étape 5 — Exprimer les dépendances
-
-Pour l'auteur, exprimez les dépendances observées :
+Proposez un nom d'identifiant :
 
 ```text
-email_auteur → nom_auteur
+________________________________
 ```
 
-Pour la ville, si un identifiant `id_ville` est ajouté :
+Puis écrivez la dépendance :
 
 ```text
-id_ville → nom_ville
+________________ → ________________
 ```
 
-### 2.2. Travail à faire
+---
 
-Analysez les données suivantes :
+## 2.7. Étape 7 — Construire le groupe de données de la nouvelle entité
+
+Complétez :
 
 ```text
-titre_article
-contenu_article
-date_publication
+VILLE
+-----
+________________
+________________
+```
+
+Puis écrivez une phrase simple :
+
+> `id_ville` permet de déterminer __________________.
+
+---
+
+## 2.8. Étape 8 — Remplacer la donnée répétée
+
+Avant :
+
+```text
+AUTEUR
+------
 nom_auteur
+prenom_auteur
 email_auteur
-nom_categorie
+nom_ville
 ```
 
-Utilisez plusieurs occurrences du Blog pour rechercher :
-
-1. ce que chaque groupe de données décrit ;
-2. les réalités différentes ;
-3. un identifiant possible pour chaque réalité ;
-4. les données qui dépendent de cet identifiant ;
-5. les dépendances fonctionnelles simples.
-
-Présentez votre analyse sous une forme simple :
-
-| Réalité | Données observées | Identifiant possible | Données dépendantes |
-| ------- | ----------------- | -------------------- | ------------------- |
-| ...     | ...               | ...                  | ...                 |
-
-Puis écrivez les dépendances sous la forme :
+Après la découverte de `Ville`, complétez :
 
 ```text
-X → Y
+AUTEUR
+------
+nom_auteur
+prenom_auteur
+email_auteur
+________________
 ```
 
-**Livrable :**
+Puis :
 
-Une fiche d'analyse présentant :
+```text
+VILLE
+-----
+id_ville
+nom_ville
+```
 
-* les réalités découvertes ;
-* les identifiants possibles ;
-* les données dépendantes ;
-* les dépendances fonctionnelles observées.
+---
 
-**Résultat attendu :**
+## 2.9. Étape 9 — Recommencer l'observation
 
-<iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.132/' | relative_url }}"
-    height="600"
-    title="Résultat attendu — Réalités, identifiants et dépendances">
-</iframe>
+Après la découverte de `Ville`, observez maintenant :
 
-**Critère de réussite :**
+```text
+nom_categorie
 
-L'analyse :
+Développement
+Développement
+Actualité
+Développement
+Actualité
+```
 
-* distingue correctement les différentes réalités ;
-* propose des identifiants justifiés par les données ;
-* distingue identifiant et attribut ;
-* exprime correctement les dépendances fonctionnelles simples ;
-* ne construit pas encore le MCD.
+### Question
+
+Quelle valeur est répétée ?
+
+```text
+________________________________
+```
+
+### Question
+
+Que représente cette valeur ?
+
+```text
+________________________________
+```
+
+### Question
+
+À votre avis, quelle nouvelle réalité semble apparaître ?
+
+```text
+________________________________
+```
+
+Dans cet exercice, vous ne devez pas encore construire complètement cette nouvelle entité.
+
+L'objectif est de reconnaître que **la même méthode peut être réutilisée**.
+
+---
+
+## 2.10. Exercice individuel — Découvrir les réalités
+
+Observez le jeu de données suivant :
+
+| id_article | titre_article        | nom_auteur | prenom_auteur | email_auteur                                | nom_ville | nom_categorie |
+| ---------: | -------------------- | ---------- | ------------- | ------------------------------------------- | --------- | ------------- |
+|        201 | HTML pour débutant   | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+|        202 | Les formulaires HTML | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+|        203 | Actualité Web        | Sara       | Amrani        | [sara@mail.com](mailto:sara@mail.com)       | Rabat     | Actualité     |
+|        204 | Organiser un projet  | Youssef    | Karim         | [youssef@mail.com](mailto:youssef@mail.com) | Rabat     | Développement |
+|        205 | Développement Web    | Madani     | Ali           | [madani@mail.com](mailto:madani@mail.com)   | Tanger    | Développement |
+
+### Travail à faire
+
+Pour chaque donnée importante :
+
+1. recherchez l'identifiant visible ;
+2. recherchez les valeurs répétées ;
+3. indiquez ce que représente une valeur répétée ;
+4. proposez un identifiant pour la nouvelle réalité ;
+5. écrivez une dépendance fonctionnelle simple.
+
+Complétez ce tableau :
+
+| Donnée observée | Valeur répétée | Réalité représentée | Identifiant proposé | Dépendance |
+| --------------- | -------------- | ------------------- | ------------------- | ---------- |
+| nom_auteur      |                |                     |                     |            |
+| nom_ville       |                |                     |                     |            |
+| nom_categorie   |                |                     |                     |            |
+
+Ne construisez pas encore les relations entre les entités.
+
+Ne construisez pas encore le MCD.
+
+---
+
+## Travail à faire
+
+À partir du jeu de données fourni, appliquez la méthode de découverte.
+
+Votre travail doit montrer :
+
+```text
+1. L'identifiant observé.
+
+2. Les données qui dépendent de cet identifiant.
+
+3. Les valeurs répétées.
+
+4. La réalité représentée par une répétition.
+
+5. L'identifiant créé pour cette réalité.
+
+6. Une dépendance fonctionnelle simple.
+
+7. Le remplacement de la donnée répétée par l'identifiant.
+```
+
+Vous devez montrer votre raisonnement.
+
+Exemple de structure :
+
+```text
+Donnée observée
+    ↓
+Valeur répétée
+    ↓
+Réalité représentée
+    ↓
+Identifiant
+    ↓
+Dépendance fonctionnelle
+```
+
+## Livrable
+
+Créez un document **Markdown** ou un **Google Doc** contenant vos réponses.
+
+Nom conseillé :
+
+```text
+decouverte-entites.md
+```
+
+## Résultat attendu
+
+Votre document doit montrer qu'une entité peut être découverte de deux façons :
+
+```text
+Identifiant connu
+    ↓
+Données dépendantes
+    ↓
+Réalité
+    ↓
+Entité
+```
+
+et :
+
+```text
+Valeur répétée
+    ↓
+Observation
+    ↓
+Réalité indépendante
+    ↓
+Nouvel identifiant
+    ↓
+Dépendance
+    ↓
+Entité
+```
+
+Vous devez être capable de produire au minimum un raisonnement de ce type :
+
+```text
+nom_ville
+    ↓
+Tanger est répétée
+    ↓
+La valeur représente une ville
+    ↓
+Création de id_ville
+    ↓
+id_ville → nom_ville
+    ↓
+VILLE
+```
+
+## Critère de réussite
+
+Le travail est réussi si :
+
+* l'identifiant `id_article` est correctement identifié ;
+* les données dépendantes de `id_article` sont correctement repérées ;
+* les valeurs répétées sont correctement observées ;
+* la réalité représentée par une répétition est correctement identifiée ;
+* un identifiant adapté est proposé ;
+* la dépendance fonctionnelle est correctement écrite ;
+* la donnée répétée peut être remplacée par l'identifiant correspondant ;
+* le raisonnement est expliqué dans le bon ordre ;
+* aucune relation ou cardinalité n'est encore construite ;
+* aucun MCD n'est encore produit.
+
+---
 
 ## Bilan
 
-**Vous avez réalisé :**
+### Vous avez appris
 
-L'analyse des données pour découvrir les réalités qu'elles représentent, rechercher des identifiants et exprimer des dépendances fonctionnelles.
+Vous savez maintenant :
 
-**Vous savez maintenant :**
+* rechercher un identifiant ;
+* comprendre qu'un identifiant permet de déterminer des données ;
+* écrire une dépendance fonctionnelle simple ;
+* observer les répétitions ;
+* rechercher ce que représente une valeur répétée ;
+* découvrir une nouvelle réalité ;
+* créer un identifiant pour cette réalité ;
+* regrouper ses données ;
+* remplacer progressivement une valeur répétée par son identifiant.
 
-* regrouper des données selon la réalité qu'elles décrivent ;
-* rechercher un identifiant à partir des occurrences ;
-* distinguer un identifiant d'un attribut ;
-* reconnaître une donnée déterminante et une donnée dépendante ;
-* écrire une dépendance fonctionnelle simple.
+### Vous avez réalisé
 
-Dans le prochain tutoriel, vous utiliserez cette analyse pour **construire les entités**.
+Vous avez appliqué une première méthode pour faire apparaître les entités à partir des données.
+
+Vous avez commencé avec :
+
+```text
+Données
+```
+
+puis vous avez utilisé :
+
+```text
+Identifiant
+```
+
+et :
+
+```text
+Répétition
+```
+
+pour découvrir :
+
+```text
+Réalité
+```
+
+puis :
+
+```text
+Entité
+```
+
+La prochaine étape consiste à appliquer cette méthode sur un ensemble complet de données afin de **construire plusieurs entités de manière autonome**.
+
+---
 
 ## Glossaire
 
-* **Réalité** : élément du domaine que les données permettent de décrire.
-* **Entité** : représentation d'une réalité dans un modèle de données.
-* **Attribut** : donnée qui décrit une réalité.
-* **Identifiant** : donnée qui permet de distinguer les occurrences d'une réalité.
-* **Identifiant existant** : identifiant déjà présent dans les données.
-* **Identifiant à créer** : identifiant ajouté pour distinguer les occurrences.
-* **Donnée déterminante** : donnée qui permet de déterminer une autre donnée.
+* **Identifiant** : donnée qui permet de reconnaître une seule occurrence.
+* **Dépendance fonctionnelle** : relation dans laquelle une donnée permet de déterminer une autre donnée.
+* **Donnée déterminante** : donnée située à gauche d'une dépendance fonctionnelle.
 * **Donnée dépendante** : donnée déterminée par une autre donnée.
-* **Dépendance fonctionnelle** : relation `X → Y` indiquant que X détermine Y.
+* **Réalité** : chose que les données permettent de représenter et de gérer.
+* **Entité** : réalité que l'application peut identifier et gérer.
+* **Répétition** : même valeur présente plusieurs fois.
+* **Séparer** : retirer une réalité indépendante d'un autre groupe de données pour la gérer séparément.
+* **Identifiant créé** : identifiant ajouté pour pouvoir identifier une nouvelle réalité.
