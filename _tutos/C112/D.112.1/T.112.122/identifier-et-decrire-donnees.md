@@ -3,7 +3,7 @@ title: "Identifier et décrire les données d'une maquette"
 layout: tuto
 slug: "identifier-decrire-donnees-maquette"
 permalink: /tutos/:slug/
-tuto_id: "T.112.121"
+tuto_id: "T.112.122"
 type: "classique"
 version: "normal"
 ua: "UA.112.12"

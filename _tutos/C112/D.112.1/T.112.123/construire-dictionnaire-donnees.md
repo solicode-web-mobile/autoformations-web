@@ -3,7 +3,7 @@ title: "Construire le dictionnaire de données"
 layout: tuto
 slug: "construire-dictionnaire-donnees"
 permalink: /tutos/:slug/
-tuto_id: "T.112.122"
+tuto_id: "T.112.123"
 type: "classique"
 version: "normal"
 ua: "UA.112.12"

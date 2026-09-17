@@ -387,6 +387,19 @@ Toutes les versions conservent impérativement :
 
 **même structure · même objectif · mêmes prérequis · mêmes notions · même réalisation · même livrable · même résultat**
 
+#### Création d'une version spécifique depuis un tutoriel existant
+
+Lors de la déclinaison d'un tutoriel vers une version `compact`, `normal` ou `detaille`, appliquer strictement ces règles :
+1. **Interdiction de modifier la structure** : Vous ne devez **jamais** ajouter, supprimer ou fusionner des étapes (que ce soit dans la théorie ou la pratique). L'intégralité des titres, sous-titres, exercices guidés et exercices individuels de la version d'origine doit être conservée à l'identique. Une modification de la structure ou des étapes n'est autorisée **que si le concepteur le demande explicitement** (ex: "modifier le tuto pour retirer l'exercice guidé").
+2. **Compression ou Expansion textuelle** : 
+   - Vers `compact` : Réduire les paragraphes en phrases très courtes ou tirets (sans supprimer l'étape). Transformer les consignes en listes directes.
+   - Vers `detaille` : Développer les phrases en paragraphes très didactiques pour débutants, sans ajouter de nouveaux concepts ou de nouvelles étapes.
+3. **Maintien des données** : Les tableaux de données, le code de départ, le livrable et les critères de réussite restent absolument identiques.
+4. **Front Matter et nom de fichier** : 
+   - Mettre à jour `version` avec la bonne valeur (`compact`, `normal`, ou `detaille`).
+   - Mettre à jour le `permalink` (ex: `/tutos/:slug/compact`).
+   - Sauvegarder dans un fichier avec le suffixe correspondant (ex: `-compact.md`).
+
 Le rédacteur doit préciser **type + version**.
 
 Si l’un des deux manque, **demander l’information avant de rédiger**.
