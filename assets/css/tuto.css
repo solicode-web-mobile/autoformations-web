@@ -352,7 +352,75 @@
 
 
 /* =========================================================
-   11. MOBILE
+   11. MENU CONTEXTUEL DOMAINE
+   ========================================================= */
+
+.tuto-domain-menu {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.tuto-domain-menu-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: #f8f9fa;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.95rem;
+  list-style: none; /* Hide default marker on standard browsers */
+}
+
+.tuto-domain-menu-summary::-webkit-details-marker {
+  display: none; /* Hide default marker on webkit */
+}
+
+.tuto-domain-menu[open] .tuto-domain-menu-summary {
+  border-bottom: 1px solid #e5e7eb;
+  background: #f1f3f5;
+}
+
+.tuto-domain-menu[open] .tuto-domain-menu-icon {
+  transform: rotate(180deg);
+}
+
+.tuto-domain-menu-icon {
+  font-size: 0.8rem;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.tuto-domain-menu-content {
+  padding: 1.25rem;
+}
+
+.tuto-domain-ua-group {
+  margin-bottom: 1.5rem;
+}
+
+.tuto-domain-ua-group:last-child {
+  margin-bottom: 0;
+}
+
+.tuto-domain-ua-group h5 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #4b5563;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   12. MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {

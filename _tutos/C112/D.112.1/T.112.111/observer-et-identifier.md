@@ -174,6 +174,9 @@ Un utilisateur remplit un formulaire :
 Nom :
 Madani
 
+Prénom :
+Ali
+
 Email :
 madani@mail.com
 ```
@@ -187,6 +190,12 @@ Madani
 ```
 
 ```text
+prenom_auteur
+    ↓
+Ali
+```
+
+```text
 email_auteur
     ↓
 madani@mail.com
@@ -195,6 +204,13 @@ madani@mail.com
 L'utilisateur a fourni les valeurs.
 
 La donnée existait comme élément à saisir, puis elle reçoit une valeur.
+
+<iframe
+    class="auto-wrapper"
+    src="{{ '/code/conception/T.112.111/formulaire-donnee-saisie.html' | relative_url }}"
+    height="480"
+    title="Exemple — Formulaire et données saisies">
+</iframe>
 
 ### 1.6. Une donnée visible
 
