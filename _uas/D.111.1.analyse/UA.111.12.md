@@ -2,6 +2,7 @@
 title: "Définir les fonctionnalités de la partie publique"
 layout: ua
 code: "UA.111.12"
+ordre: 15
 competence: "C.111"
 domaine: "D.111.1"
 duree: 1

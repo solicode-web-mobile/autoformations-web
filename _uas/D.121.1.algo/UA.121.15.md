@@ -2,6 +2,7 @@
 title: "Résoudre des problèmes algorithmiques simples"
 layout: ua
 code: "UA.121.15"
+ordre: 24
 competence: "C.121"
 domaine: "D.121.1"
 duree: 1

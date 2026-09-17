@@ -2,6 +2,7 @@
 title: "Trier une collection"
 layout: ua
 code: "UA.121.16"
+ordre: 25
 competence: "C.121"
 domaine: "D.121.1"
 duree: 1

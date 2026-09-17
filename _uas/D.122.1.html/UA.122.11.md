@@ -2,6 +2,7 @@
 title: "Construire la structure de base d’une page HTML"
 layout: ua
 code: "UA.122.11"
+ordre: 27
 competence: "C.122"
 domaine: "D.122.1"
 duree: 1

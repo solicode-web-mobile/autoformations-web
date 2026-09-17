@@ -2,6 +2,7 @@
 title: "Définir les fonctionnalités de l'administration"
 layout: ua
 code: "UA.111.13"
+ordre: 16
 competence: "C.111"
 domaine: "D.111.1"
 duree: 1

@@ -2,6 +2,7 @@
 title: "Préparer l'environnement et déposer son premier travail avec VS Code"
 layout: ua
 code: "UA.151.11"
+ordre: 33
 competence: "C.151"
 domaine: "D.151.1"
 duree: 1

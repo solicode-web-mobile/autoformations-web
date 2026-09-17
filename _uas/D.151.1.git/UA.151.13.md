@@ -2,6 +2,7 @@
 title: "Synchroniser son travail avec GitHub"
 layout: ua
 code: "UA.151.13"
+ordre: 35
 competence: "C.151"
 domaine: "D.151.1"
 duree: 1

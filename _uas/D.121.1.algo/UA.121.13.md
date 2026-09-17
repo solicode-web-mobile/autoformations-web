@@ -2,6 +2,7 @@
 title: "Manipuler les tableaux et collections"
 layout: ua
 code: "UA.121.13"
+ordre: 22
 competence: "C.121"
 domaine: "D.121.1"
 duree: 1

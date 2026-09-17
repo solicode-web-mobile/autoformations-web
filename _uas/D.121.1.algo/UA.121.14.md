@@ -2,6 +2,7 @@
 title: "Créer et utiliser des fonctions"
 layout: ua
 code: "UA.121.14"
+ordre: 23
 competence: "C.121"
 domaine: "D.121.1"
 duree: 1

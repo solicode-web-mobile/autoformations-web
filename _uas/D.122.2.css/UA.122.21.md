@@ -2,6 +2,7 @@
 title: "Comprendre et appliquer les bases de CSS"
 layout: ua
 code: "UA.122.21"
+ordre: 30
 competence: "C.122"
 domaine: "D.122.2"
 duree: 1

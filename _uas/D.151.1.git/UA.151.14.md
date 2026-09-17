@@ -2,6 +2,7 @@
 title: "Sécuriser son projet et ignorer l'inutile"
 layout: ua
 code: "UA.151.14"
+ordre: 36
 competence: "C.151"
 domaine: "D.151.1"
 duree: 1

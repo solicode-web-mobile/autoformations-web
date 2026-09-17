@@ -2,6 +2,7 @@
 title: "Construire le MLD"
 layout: ua
 code: "UA.112.15"
+ordre: 20
 competence: "C.112"
 domaine: "D.112.1"
 duree: 2

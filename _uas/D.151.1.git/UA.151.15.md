@@ -2,6 +2,7 @@
 title: "Explorer l'historique et annuler des erreurs simples"
 layout: ua
 code: "UA.151.15"
+ordre: 37
 competence: "C.151"
 domaine: "D.151.1"
 duree: 1

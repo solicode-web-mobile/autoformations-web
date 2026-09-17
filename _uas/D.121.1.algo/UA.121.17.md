@@ -2,6 +2,7 @@
 title: "Combiner plusieurs traitements"
 layout: ua
 code: "UA.121.17"
+ordre: 26
 competence: "C.121"
 domaine: "D.121.1"
 duree: 1

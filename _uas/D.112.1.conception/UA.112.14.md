@@ -2,6 +2,7 @@
 title: "Déterminer les relations et construire le MCD"
 layout: ua
 code: "UA.112.14"
+ordre: 19
 competence: "C.112"
 domaine: "D.112.1"
 duree: 3

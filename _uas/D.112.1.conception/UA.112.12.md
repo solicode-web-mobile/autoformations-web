@@ -2,6 +2,7 @@
 title: "Construire le dictionnaire de données"
 layout: ua
 code: "UA.112.12"
+ordre: 17
 competence: "C.112"
 domaine: "D.112.1"
 duree: 2

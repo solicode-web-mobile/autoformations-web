@@ -2,6 +2,7 @@
 title: "Structurer une interface avec HTML"
 layout: domaines
 code: "D.122.1"
+ordre: 28
 competence: "C.122"
 capacite_finale: >
   Construire une interface HTML correctement structurée à partir d’une conception 

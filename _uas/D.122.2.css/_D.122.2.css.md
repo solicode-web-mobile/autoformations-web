@@ -2,6 +2,7 @@
 title: "Mettre en forme une interface avec CSS"
 layout: domaines
 code: "D.122.2"
+ordre: 31
 competence: "C.122"
 capacite_finale: >
   Construire une interface Web correctement mise en forme à partir d’une conception 
