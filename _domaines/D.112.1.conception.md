@@ -3,6 +3,7 @@ title: "Modéliser les données"
 layout: domaines
 code: "D.112.1"
 competence: "C.112"
+ordre: 4
 capacite_finale: >
   Structurer les données nécessaires au fonctionnement d’une application en les 
   identifiant, en les décrivant et en déterminant leurs dépendances, puis en les 

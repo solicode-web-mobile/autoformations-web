@@ -4,6 +4,7 @@ layout: competences
 code: "C.112"
 module_reference: "DWB-M106"
 reference: "DWB-M106-C.112"
+filiere: "DWB"
 niveau: "N1"
 mission: "M1"
 objectif: >

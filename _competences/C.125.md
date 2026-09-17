@@ -4,6 +4,7 @@ layout: competences
 code: "C.125"
 module_reference: "DWB-M108"
 reference: "DWB-M108-C.125"
+filiere: "DWB"
 niveau: "N1"
 mission: "M2"
 objectif: >

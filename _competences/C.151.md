@@ -4,6 +4,7 @@ layout: competences
 code: "C.151"
 module_reference: "DWB-M107"
 reference: "DWB-M107-C.151"
+filiere: "DWB"
 niveau: "N1"
 mission: "M5"
 objectif: >

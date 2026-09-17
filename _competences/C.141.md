@@ -4,6 +4,7 @@ layout: competences
 code: "C.141"
 module_reference: "DWB-M112"
 reference: "DWB-M112-C.141"
+filiere: "DWB"
 niveau: "N1"
 mission: "M4"
 objectif: >

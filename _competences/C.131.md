@@ -4,6 +4,7 @@ layout: competences
 code: "C.131"
 module_reference: "DWB-M109"
 reference: "DWB-M109-C.131"
+filiere: "DWB"
 niveau: "N1"
 mission: "M3"
 objectif: >
