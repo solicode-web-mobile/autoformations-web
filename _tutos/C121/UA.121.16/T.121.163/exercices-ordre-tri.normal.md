@@ -1,7 +1,7 @@
 ---
-title: "Exercices de tri"
+title: "Exercices sur l'ordre et le tri"
 layout: tuto
-slug: "exercices-tri"
+slug: "exercices-ordre-tri"
 permalink: /tutos/:slug/
 tuto_id: "T.121.163"
 version: "normal"

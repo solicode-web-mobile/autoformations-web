@@ -1,7 +1,7 @@
 ---
-title: "Bases du classement et du tri"
+title: "Comprendre l'ordre et le tri"
 layout: tuto
-slug: "bases-classement-tri"
+slug: "comprendre-ordre-tri"
 permalink: /tutos/:slug/
 tuto_id: "T.121.161"
 version: "normal"

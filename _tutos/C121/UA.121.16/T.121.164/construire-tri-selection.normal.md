@@ -1,7 +1,7 @@
 ---
-title: "Algorithme classique : tri par sélection"
+title: "Construire le tri par sélection"
 layout: tuto
-slug: "tri-selection"
+slug: "construire-tri-selection"
 permalink: /tutos/:slug/
 tuto_id: "T.121.164"
 version: "normal"

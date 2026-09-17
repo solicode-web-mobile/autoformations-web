@@ -1,7 +1,7 @@
 ---
 title: "Construire les opérations nécessaires au tri"
 layout: tuto
-slug: "operations-tri"
+slug: "construire-operations-necessaires-tri"
 permalink: /tutos/:slug/
 tuto_id: "T.121.162"
 version: "normal"
