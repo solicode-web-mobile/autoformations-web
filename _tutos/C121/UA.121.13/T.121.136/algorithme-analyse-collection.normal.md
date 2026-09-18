@@ -1,7 +1,7 @@
 ---
 title: "Algorithme de synthèse : analyser une collection"
 layout: tuto
-slug: "algorithme-synthese-analyser-collection"
+slug: "algorithme-analyser-collection"
 permalink: /tutos/:slug/
 tuto_id: "T.121.136"
 type: "algorithme"
