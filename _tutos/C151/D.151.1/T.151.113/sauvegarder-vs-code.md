@@ -8,202 +8,93 @@ type: "classique"
 version: "normal"
 ua: "UA.151.11"
 nav_order: 3
-data_html: ""
-data_css: ""
-data_js: ""
+simplified: true
 ---
 
 ## 1. Objectif
 
-Utiliser l'interface Git de VS Code pour :
-
-* cloner un dépôt GitHub ;
-* préparer une modification ;
-* créer un commit ;
-* envoyer les changements vers GitHub.
+Utiliser l'interface de VS Code pour réaliser le cycle de sauvegarde complet : **Cloner, Préparer (+), Valider (Commit) et Synchroniser (Push)**.
 
 ## 2. Prérequis
 
-Vous devez :
-
-* avoir installé Git ;
-* avoir configuré votre nom et votre adresse email dans Git ;
-* disposer d'un dépôt GitHub ;
-* avoir installé VS Code ;
-* avoir VS Code ouvert.
+* Git installé et configuré (nom, email).
+* VS Code installé.
+* Un dépôt GitHub existant.
 
 ## Partie 1 — Théorie
 
-### 1.1. Git dans VS Code
+### 1.1. Le cycle de travail dans VS Code
 
-VS Code intègre une interface pour utiliser Git.
+VS Code intègre un onglet **Contrôle de code source** qui permet d'utiliser Git via une interface graphique, sans taper de commandes complexes dans le terminal.
 
-Cette interface se trouve dans le panneau **Contrôle de code source**.
 
-Elle permet d'effectuer plusieurs opérations Git sans saisir directement les commandes dans le terminal.
 
-### 1.2. Le cycle de travail
+**Les actions clés :**
+* **Créer (0)** : Initier un nouveau dépôt vide directement sur le site GitHub.
+* **Cloner** : Télécharger le projet depuis GitHub vers l'ordinateur.
+* **Préparer (+)** : Indiquer à Git quels fichiers modifiés doivent être sauvegardés.
+* **Valider (Commit)** : Enregistrer ces modifications dans l'historique local avec un court message descriptif.
+* **Synchroniser (Push)** : Envoyer l'historique local vers GitHub pour le sauvegarder en ligne.
 
-Avec VS Code, le cycle de base est :
+### 1.2. Explication en vidéo
 
-```text
-Dépôt GitHub
-     ↓
-   Cloner
-     ↓
-Ordinateur
-     ↓
-Modifier les fichiers
-     ↓
-Préparer les modifications
-     ↓
-   Commit
-     ↓
-Dépôt local
-     ↓
-   Push
-     ↓
-Dépôt GitHub
-```
+Pour mieux visualiser ce cycle de travail dans l'interface de VS Code, voici une explication pas-à-pas :
 
-Chaque opération a un rôle différent :
-
-* **Cloner** : récupérer un dépôt distant sur l'ordinateur.
-* **Préparer** : sélectionner les modifications à inclure dans le commit.
-* **Commit** : enregistrer un état du projet dans l'historique local.
-* **Push** : envoyer les commits locaux vers le dépôt distant.
-
-### 1.3. À retenir
-
-* VS Code fournit une interface graphique pour Git.
-* Un **commit** enregistre une modification dans l'historique local.
-* Un **push** envoie les commits vers le dépôt distant.
-* Le commit et le push sont deux opérations différentes.
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://www.youtube.com/embed/1gDkpZ0AjlQ" title="Sauvegarder son code en un clic avec VS Code" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ## Partie 2 — Pratique
 
-### 2.1. Cloner un dépôt
+### Étape 0 — Créer le dépôt sur GitHub
 
-#### Étape 1 — Ouvrir le contrôle de code source
+1. Connectez-vous sur [GitHub](https://github.com) et créez un nouveau dépôt (bouton **New**).
+2. Copiez l'URL de ce nouveau dépôt.
 
-Dans VS Code, cliquez sur l'icône **Contrôle de code source** dans la barre latérale.
+### Étape 1 — Cloner et ouvrir le projet
 
-#### Étape 2 — Cloner le dépôt
+1. Dans VS Code, ouvrez l'onglet **Contrôle de code source** (icône de branche dans la barre latérale gauche).
+2. Cliquez sur **Cloner le dépôt**.
+3. Collez l'URL du dépôt copié à l'étape précédente et choisissez un dossier sur votre ordinateur.
+4. Une fois le clonage terminé, cliquez sur **Ouvrir**.
 
-Cliquez sur **Cloner le dépôt**.
+### Étape 2 — Modifier et préparer
 
-VS Code vous demande l'URL du dépôt GitHub.
+1. Ouvrez un fichier (ex: `index.html`), ajoutez du texte et sauvegardez (`Ctrl+S` / `Cmd+S`).
+2. Retournez dans l'onglet **Contrôle de code source**. Votre fichier modifié apparaît dans la liste.
+3. Survolez le fichier et cliquez sur le bouton **+ (Préparer la modification)**.
 
-Collez l'URL du dépôt.
+### Étape 3 — Valider et synchroniser
 
-Choisissez ensuite le dossier dans lequel le projet doit être enregistré.
-
-#### Étape 3 — Ouvrir le projet
-
-Après le clonage, VS Code propose d'ouvrir le projet.
-
-Cliquez sur **Ouvrir**.
-
-Le dépôt Git est maintenant disponible sur votre ordinateur.
-
-### 2.2. Préparer une modification
-
-#### Étape 4 — Modifier un fichier
-
-Ouvrez un fichier du projet.
-
-Faites une petite modification.
-
-Par exemple, ajoutez un texte dans un fichier HTML.
-
-Enregistrez le fichier.
-
-#### Étape 5 — Ouvrir le contrôle de code source
-
-Retournez dans **Contrôle de code source**.
-
-VS Code affiche les fichiers qui ont été modifiés.
-
-#### Étape 6 — Préparer la modification
-
-Cliquez sur le bouton **+** à côté du fichier modifié.
-
-La modification est maintenant préparée pour le commit.
-
-### 2.3. Créer un commit
-
-#### Étape 7 — Écrire le message du commit
-
-Dans la zone de message, écrivez un message court qui décrit la modification.
-
-Exemple :
-
-```text
-Ajout du titre de la page
-```
-
-#### Étape 8 — Valider la modification
-
-Cliquez sur **Valider (Commit)**.
-
-Le commit est maintenant enregistré dans l'historique local du dépôt.
-
-### 2.4. Envoyer le commit vers GitHub
-
-#### Étape 9 — Synchroniser
-
-Utilisez **Synchroniser les modifications** ou l'action permettant d'envoyer les commits vers le dépôt distant.
-
-VS Code envoie alors les commits locaux vers GitHub.
-
-Le dépôt GitHub contient maintenant la nouvelle version du projet.
+1. Dans le champ de texte situé au-dessus de la liste des fichiers, saisissez un message clair (ex: `Ajout du titre principal`).
+2. Cliquez sur le bouton bleu **Valider (Commit)**.
+3. Cliquez enfin sur le bouton **Synchroniser les modifications** (ou l'icône de nuage en bas à gauche) pour envoyer votre travail sur GitHub.
 
 ### Résultat attendu
 
-Le cycle complet est réalisé :
-
-```text
-Cloner
-   ↓
-Modifier
-   ↓
-Préparer
-   ↓
-Commit
-   ↓
-Push
-   ↓
-GitHub
-```
-
-La page de démonstration suivante présente le résultat attendu dans VS Code :
+Bien que vous ayez utilisé l'interface de VS Code, voici ce que Git a discrètement exécuté en arrière-plan pour vous :
 
 <iframe
-    class="auto-wrapper"
-    src="{{'/code/git/tuto-3-git.html' | relative_url}}"
-    height="250"
-    title="Résultat du tutoriel Git avec VS Code">
+    class="auto-wrapper tuto-resultat"
+    src="{{'/code/git/T.151.113.html' | relative_url}}"
+    height="330"
+    title="Résultat des actions VS Code dans Git">
 </iframe>
+
+### Critère de réussite
+
+Vos modifications sont visibles directement sur la page de votre dépôt sur le site GitHub.
 
 ## Bilan
 
-**Vous avez réalisé :**
-
-Le cycle de travail Git avec VS Code : clonage d'un dépôt, modification d'un fichier, création d'un commit et envoi vers GitHub.
-
 **Vous savez maintenant :**
-
-* cloner un dépôt GitHub ;
-* afficher les modifications dans VS Code ;
-* préparer une modification ;
-* créer un commit ;
-* envoyer les commits vers GitHub.
+* Cloner un dépôt directement depuis VS Code.
+* Préparer (`+`) et valider (`Commit`) vos modifications avec un message.
+* Envoyer le tout sur GitHub via le bouton **Synchroniser**.
 
 ## Glossaire
 
-* **VS Code** : éditeur de code qui intègre une interface pour utiliser Git.
-* **Cloner** : récupérer un dépôt distant sur son ordinateur.
-* **Commit** : enregistrer un état du projet dans l'historique Git.
-* **Push** : envoyer les commits locaux vers un dépôt distant.
-* **Dépôt local** : dépôt Git enregistré sur l'ordinateur.
-* **Dépôt distant** : dépôt Git hébergé sur un serveur, par exemple GitHub.
+* **Contrôle de code source** : L'onglet de VS Code dédié à Git.
+* **Cloner** : Copier un dépôt distant sur son ordinateur.
+* **Préparer (Stage)** : Sélectionner les modifications à inclure dans le prochain commit.
+* **Synchroniser (Sync)** : Action de VS Code qui envoie vos commits locaux vers le dépôt distant GitHub.

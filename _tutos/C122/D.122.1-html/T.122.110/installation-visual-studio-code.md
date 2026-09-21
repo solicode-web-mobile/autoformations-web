@@ -8,91 +8,51 @@ type: "classique"
 version: "normal"
 ua: "UA.122.11"
 nav_order: 0
-data_html: ""
-data_css: ""
-data_js: ""
+simplified: true
 ---
 
 ## 1. Objectif
 
-Installer Visual Studio Code (VS Code) sur votre ordinateur et vérifier qu’il fonctionne en créant votre premier fichier web.
+Installer l'éditeur Visual Studio Code (VS Code) sur votre ordinateur et créer votre premier fichier web.
 
 ## 2. Prérequis
 
-* Un ordinateur sous Windows.
+* Un ordinateur (sous Windows).
 * Une connexion Internet.
 
 ## Partie 1 — Théorie
 
-### 1.1. Visual Studio Code
-
-**Visual Studio Code**, ou **VS Code**, est un éditeur de code. C'est un logiciel spécialement conçu pour aider les développeurs à écrire et à organiser leur code informatique.
-
-Contrairement à un simple bloc-notes, VS Code offre des outils intégrés (comme la coloration du texte) pour vous faciliter la lecture du code.
-
-**À retenir :**
-
-VS Code est l’outil de base indispensable pour créer vos pages web.
+Visual Studio Code (ou **VS Code**) est un **éditeur de code**. 
+C'est le logiciel de base indispensable qui va colorer, organiser et faciliter l'écriture de votre code, contrairement à un simple bloc-notes.
 
 ## Partie 2 — Pratique
 
-### 2.1. Télécharger VS Code
+### Étape 1 — Télécharger et installer
 
-#### Étape 1 — Ouvrir le site officiel
+1. Allez sur le site officiel : [code.visualstudio.com](https://code.visualstudio.com/).
+2. Cliquez sur le bouton bleu **Download for Windows**.
+3. Ouvrez le fichier téléchargé et suivez l'installation en conservant toutes les options par défaut.
+4. À la fin, cliquez sur **Terminer** pour lancer l'application.
 
-Ouvrez votre navigateur web et allez sur :
+### Étape 2 — Créer un fichier de test
 
-```text
-https://code.visualstudio.com/
-```
+1. Dans VS Code, allez dans le menu **File** (Fichier) > **New Text File** (Nouveau fichier texte).
+2. Sauvegardez-le immédiatement en appuyant sur `Ctrl + S`.
+3. Nommez-le exactement `test.html` et enregistrez-le sur votre bureau.
 
-#### Étape 2 — Télécharger le fichier
+### Résultat attendu
 
-Sur la page d'accueil, cliquez sur le bouton bleu **Download for Windows**.
-Le fichier d'installation va se télécharger sur votre ordinateur.
+Le fichier est bien créé sur votre bureau ! 
 
-### 2.2. Installer VS Code
-
-#### Étape 3 — Lancer l’installation
-
-Une fois le téléchargement terminé, ouvrez le fichier téléchargé.
-
-1. Lisez et acceptez les conditions d'utilisation.
-2. Suivez les étapes de l'installateur en conservant les options recommandées par défaut.
-3. Cliquez sur **Installer**.
-
-#### Étape 4 — Ouvrir l'application
-
-À la fin de l’installation, laissez la case pour exécuter le programme cochée et cliquez sur **Terminer**. 
-**Visual Studio Code** s'ouvre alors devant vous.
-
-### 2.3. Vérifier l’installation
-
-#### Étape 5 — Créer un fichier de test
-
-Pour s'assurer que vous pouvez bien écrire du code, nous allons créer un fichier.
-
-1. Dans le menu en haut à gauche de VS Code, cliquez sur **File** (Fichier).
-2. Cliquez sur **New Text File** (Nouveau fichier texte).
-3. Sauvegardez-le tout de suite en appuyant sur `Ctrl + S`.
-4. Enregistrez le fichier sur votre bureau en l'appelant exactement :
-
-```text
-test.html
-```
-
-**Résultat attendu :**
-
-VS Code est installé correctement et le fichier `test.html` est créé. Son icône a changé pour indiquer que c'est un fichier web (HTML).
+Dans VS Code, vous remarquerez que l'icône à côté du nom de fichier (`test.html`) a changé pour devenir le logo HTML (`<>` ou un bouclier orange). L'éditeur a compris que vous alliez faire du web.
 
 ## Bilan
 
-**Vous avez réalisé :** l’installation et la configuration de Visual Studio Code.
-
-**Vous savez maintenant :** où télécharger VS Code, comment l'installer, et comment y créer et enregistrer un fichier de code.
+**Vous savez maintenant :**
+* Télécharger et installer l'éditeur de référence VS Code.
+* Créer un fichier avec la bonne extension (`.html`).
 
 ## Glossaire
 
-* **VS Code** : éditeur de code gratuit utilisé pour écrire des programmes informatiques.
-* **Éditeur de code** : logiciel qui simplifie la création et la modification de code grâce à des aides visuelles.
-* **Fichier** : document informatique enregistré sur l’ordinateur.
+* **VS Code** : Éditeur de code gratuit créé par Microsoft.
+* **Éditeur de code** : Logiciel conçu pour faciliter l'écriture de code informatique grâce à des aides visuelles.

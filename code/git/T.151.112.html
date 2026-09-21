@@ -4,35 +4,26 @@ title: "Résultat — Concepts de base Git & GitHub"
 nav_exclude: true
 ---
 
-<p class="section-title">💻 1. Flux de travail Git ➔ GitHub</p>
+<p class="section-title">📖 Résumé : Git vs GitHub</p>
 
-<p class="cmd-line"><span class="prompt">$</span> <span class="command">git commit -m "Premier commit"</span></p>
-<p class="out-line"><span class="output">[main a1b2c3d] Premier commit</span> <span class="badge-ok">✓ Git (Local)</span></p>
+<div style="padding-left: 10px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <p style="color: #58a6ff; font-weight: bold; margin-top: 15px; font-size: 15px;">Git (L'outil local)</p>
+    <ul style="list-style-type: none; padding-left: 10px; color: #e6edf3; font-size: 14px; line-height: 1.8;">
+        <li><strong style="color: #8b949e;">• Quoi :</strong> Un outil de gestion de versions.</li>
+        <li><strong style="color: #8b949e;">• Où :</strong> Installé localement sur votre ordinateur.</li>
+        <li><strong style="color: #8b949e;">• Rôle :</strong> Enregistrer l'historique du projet.</li>
+        <li><strong style="color: #8b949e;">• Internet :</strong> ❌ Non requis.</li>
+    </ul>
 
-<p class="cmd-line"><span class="prompt">$</span> <span class="command">git push origin main</span></p>
-<p class="out-line"><span class="output">To https://github.com/utilisateur/mon-projet.git</span> <span class="badge-ok">✓ GitHub (Distant)</span></p>
+    <p style="color: #28c840; font-weight: bold; margin-top: 20px; font-size: 15px;">GitHub (Le service en ligne)</p>
+    <ul style="list-style-type: none; padding-left: 10px; color: #e6edf3; font-size: 14px; line-height: 1.8;">
+        <li><strong style="color: #8b949e;">• Quoi :</strong> Une plateforme d'hébergement.</li>
+        <li><strong style="color: #8b949e;">• Où :</strong> Sur Internet (Cloud).</li>
+        <li><strong style="color: #8b949e;">• Rôle :</strong> Héberger, partager le dépôt et collaborer.</li>
+        <li><strong style="color: #8b949e;">• Internet :</strong> ✅ Requis.</li>
+    </ul>
 
-<p class="section-title">📋 2. Solution de l'exercice</p>
-
-<table style="width:100%; font-size:12px; border-collapse:collapse; margin-top:4px;">
-  <tr style="border-bottom: 1px solid #30363d; text-align:left; color:#8b949e;">
-    <th style="padding:4px;">Action</th>
-    <th style="padding:4px; text-align:center;">Outil</th>
-  </tr>
-  <tr style="border-bottom: 1px solid #21262d;">
-    <td style="padding:4px;">Enregistrer un commit sur votre ordinateur</td>
-    <td style="padding:4px; text-align:center;"><span class="badge-ok">Git</span></td>
-  </tr>
-  <tr style="border-bottom: 1px solid #21262d;">
-    <td style="padding:4px;">Consulter un dépôt d'un collègue sur Internet</td>
-    <td style="padding:4px; text-align:center;"><span class="badge-ok" style="background:#1f6feb; color:#58a6ff;">GitHub</span></td>
-  </tr>
-  <tr style="border-bottom: 1px solid #21262d;">
-    <td style="padding:4px;">Créer l'historique d'un projet sans connexion</td>
-    <td style="padding:4px; text-align:center;"><span class="badge-ok">Git</span></td>
-  </tr>
-  <tr>
-    <td style="padding:4px;">Envoyer votre code pour le partager en ligne</td>
-    <td style="padding:4px; text-align:center;"><span class="badge-ok" style="background:#1f6feb; color:#58a6ff;">GitHub</span></td>
-  </tr>
-</table>
+    <p style="margin-top: 25px; padding: 12px; border-left: 4px solid #58a6ff; background: rgba(88, 166, 255, 0.1); color: #f0f6fc; font-size: 14px;">
+        <strong>Règle d'or :</strong> Git n'est pas GitHub. Git est l'outil sur votre machine, tandis que GitHub est un service en ligne qui héberge vos projets Git.
+    </p>
+</div>
