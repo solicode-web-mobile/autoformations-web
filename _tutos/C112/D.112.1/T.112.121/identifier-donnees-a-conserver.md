@@ -11,192 +11,80 @@ nav_order: 2
 data_html: ""
 data_css: ""
 data_js: ""
+simplified: true
 ---
 
 ## Objectif
 
-Comprendre quelles données une application doit conserver pour fonctionner.
-
-Reconnaître une donnée :
-
-* calculée ;
-* stockée (persistante) ;
-* temporaire.
-
-Comprendre pourquoi il faut ignorer les éléments d'interface (données temporaires) et les calculs lors de la conception d'une base de données.
+Apprendre à filtrer les données d'une application pour distinguer ce qui doit être stocké en base de données, ce qui peut être calculé, et ce qui est purement temporaire.
 
 ## Prérequis
 
-Savoir distinguer :
-
-* une information ;
-* une donnée ;
-* une valeur.
-
-Voir **T.112.111 — Distinguer information, donnée et valeur**.
-
-## Données de départ
-
-Dans ce tutoriel, vous travaillez avec des **situations simples d'utilisation d'une application**.
-
-Vous n'avez pas besoin d'observer une maquette.
-
-L'objectif est de comprendre **quelles données sont utiles à conserver** avant d'apprendre à rechercher les données dans une maquette.
+- Tutoriel T.112.111 terminé (distinguer information, donnée et valeur).
 
 ## Partie 1 — Théorie
 
-### 1.1. Toutes les données ne se valent pas
+### 1.1. Le filtre de conception
 
-Dans une application, l'utilisateur voit beaucoup d'informations : des formulaires, des résultats de recherche, des statistiques, des listes d'articles, etc.
+Lorsque vous analysez une application, vous faites face à une multitude de données. Pourtant, **toutes ne doivent pas être enregistrées** dans la base de données. La question clé à se poser pour chaque donnée est :
 
-Mais **toutes ces données ne sont pas enregistrées dans la base de données**.
+> **"Cette donnée doit-elle être retrouvée demain par l'application ?"**
 
-Pour préparer la conception d'une base de données, il est indispensable de savoir filtrer :
-- ce qui doit être conservé ;
-- ce qui peut être calculé ;
-- ce qui est purement temporaire.
+Ce filtre de conception vous oriente vers l'un des trois états possibles :
 
-### 1.2. Donnée calculée
-
-Une **donnée calculée** est produite automatiquement par l'application à partir d'autres données.
-
-La règle d'or en conception de base de données est qu'il est **inutile de stocker une donnée calculable**, puisqu'on peut la déduire à tout moment.
-
-**Exemple :**
-
-L'application connaît le `contenu_article`. Elle peut calculer automatiquement une durée de lecture en comptant les mots :
-
-```text
-contenu_article
-      ↓
-calcul
-      ↓
-duree_lecture (5 min)
+```mermaid
+flowchart TD
+    A[Une donnée est repérée] --> B{Est-elle utilisée uniquement\n par l'interface au moment même ?}
+    B -- Oui --> C[🔴 Temporaire\nEx: barre de recherche\nmessage d'erreur\nFiltres d'affichage]
+    B -- Non --> D{Peut-on la calculer\nautomatiquement\nà partir d'autres données ?}
+    D -- Oui --> E[🟡 Calculée\nEx: duree_lecture\nnombre_articles\nmoyenne_notes]
+    D -- Non --> F[🟢 Stockée - Persistante\nEx: titre_article\nnom_auteur\ndate_publication]
 ```
 
-Ici, `duree_lecture` est une donnée calculée. On ne la stockera pas dans la base de données.
-
-<iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.112/donnee-calculee.html' | relative_url }}"
-    height="320"
-    title="Exemple — Donnée calculée">
-</iframe>
-
-### 1.3. Donnée stockée (Persistante)
-
-Une **donnée stockée** (ou persistante) est une donnée qui doit être conservée dans le temps, même après la fermeture de l'application.
-
-C'est uniquement ce type de donnée que l'on conservera pour construire la base de données.
-
-**Exemple :**
-
-Madani saisit le titre de son article :
-
-```text
-titre_article
-    ↓
-Mon premier article
-```
-
-L'application doit conserver cette donnée pour pouvoir afficher l'article demain, ou dans un mois.
-
-<iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.112/donnee-persistante.html' | relative_url }}"
-    height="300"
-    title="Exemple — Donnée persistante">
-</iframe>
-
-### 1.4. Donnée temporaire
-
-Une **donnée temporaire** est utilisée pendant une courte période (souvent liée à l'interface) et n'a pas besoin d'être conservée dans la base de données.
-
-**Exemples classiques :**
-- Le texte tapé dans une barre de recherche.
-- Un message d'erreur affiché à l'écran ("Mot de passe incorrect").
-- Un filtre appliqué sur une liste (ex: "Afficher uniquement les articles récents").
-
-<iframe
-    class="auto-wrapper"
-    src="{{ '/code/conception/T.112.112/donnee-temporaire.html' | relative_url }}"
-    height="280"
-    title="Exemple — Donnée temporaire">
-</iframe>
-
-### 1.5. Le filtre de conception
-
-Lorsque vous analysez une application, vous devez appliquer ce filtre mental :
-
-> **Cette donnée doit-elle être retrouvée demain par l'application ?**
-> - **Oui** ➔ Donnée stockée (On la garde pour la base de données).
-> - **Non, c'est juste une interaction de l'interface** ➔ Donnée temporaire (On l'ignore).
-> - **Non, on peut la deviner grâce à un calcul** ➔ Donnée calculée (On la note comme règle de calcul, on ne la stocke pas).
-
-### 1.6. À retenir
-
-Retenez les points suivants pour la conception de données :
-
-* **Donnée stockée (persistante)** : donnée indispensable à conserver dans le temps (ex: titre d'un article). **À modéliser.**
-* **Donnée calculée** : donnée déduite d'autres informations (ex: durée de lecture). **À ne pas stocker.**
-* **Donnée temporaire** : donnée d'interface éphémère (ex: barre de recherche). **À ignorer.**
+**Seules les données 🟢 Stockées seront conservées pour modéliser la base de données.**
 
 ## Partie 2 — Pratique
 
-### 2.1. Travail à faire
+### 2.1. Classifier des données
 
-Pour chaque situation décrite dans le tableau ci-dessous, vous devez indiquer l'état de la donnée.
+Pour chaque donnée présentée dans le tableau ci-dessous, appliquez le filtre de conception et indiquez son état.
 
-Choisissez parmi les états suivants : `stockée`, `calculée`, `temporaire`.
+Choisissez parmi : `stockée`, `calculée`, `temporaire`.
 
-**Recopiez et complétez le tableau suivant :**
+| Donnée | Situation dans l'application | État de la donnée |
+| :--- | :--- | :---: |
+| `titre_article` | L'article est publié et enregistré en base | |
+| `mot_cle` | L'utilisateur tape "Tutoriel" dans la barre de recherche | |
+| `duree_lecture` | L'application compte les mots et déduit « 5 min » | |
+| `date_publication` | L'application mémorise le jour où l'article a été posté | |
+| `message_erreur` | Un texte rouge "Mot de passe incorrect" apparaît à l'écran | |
 
-| Donnée          | Situation dans l'application                 | État de la donnée |
-| --------------- | -------------------------------------------- | ----------------- |
-| `titre_article` | L'article est publié et enregistré dans la base |                  |
-| `mot_cle`       | L'utilisateur tape "Tutoriel" dans la barre de recherche |                  |
-| `duree_lecture` | L'application compte les mots et déduit « 5 min » |                 |
-| `date_publication`| L'application mémorise le jour où l'article a été posté |                  |
-| `message_erreur`| Un texte rouge "Mot de passe incorrect" apparaît à l'écran |                  |
+### Livrable attendu
 
-### 2.2. Livrable
+Préparez un document Markdown contenant votre tableau complété.
 
-Créez un document Markdown (ou un Google Doc) contenant votre tableau complété.
-
-```text
-t112112-donnees-a-conserver.md
-```
-
-### Résultat attendu
+**Résultat attendu :**
 
 <button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
     class="auto-wrapper tuto-resultat"
-    src="{{ '/code/conception/T.112.112/' | relative_url }}"
+    src="{{ '/code/conception/T.112.121/' | relative_url }}"
     height="320"
     title="Résultat attendu — Données à conserver">
 </iframe>
 
 ### Critère de réussite
 
-Vous avez correctement :
-
-* distingué une donnée stockée (persistante) d'une donnée temporaire ;
-* reconnu une donnée calculée ;
-* écarté les éléments purement liés à l'interface.
+Vous avez correctement distingué les 3 types de données : la donnée stockée (qui persiste dans le temps), la donnée calculée (déductible automatiquement), et la donnée temporaire (liée à l'interface).
 
 ## Bilan
 
-**Vous avez appris à :**
-
-* filtrer les informations utiles pour une base de données ;
-* ignorer les éléments d'interface (données temporaires) ;
-* identifier les données calculées qui ne nécessitent pas de stockage.
-
-La prochaine étape consiste à apprendre à **observer une maquette pour extraire ces données persistantes**.
+**Vous savez maintenant :**
+- Appliquer le filtre de conception (Temporaire → Calculée → Stockée) à toute donnée observée.
+- Ignorer les éléments d'interface et les données déductibles lors de la conception d'une base de données.
 
 ## Glossaire
 
-* **Donnée stockée (persistante)** : donnée conservée dans le temps, essentielle au fonctionnement de l'application.
-* **Donnée calculée** : donnée produite automatiquement à partir d'autres données existantes.
-* **Donnée temporaire** : donnée utilisée momentanément (souvent pour l'interface) et qui n'a pas vocation à être enregistrée.
+- **Donnée stockée (persistante)** : donnée essentielle à conserver dans le temps.
+- **Donnée calculée** : donnée produite automatiquement à partir d'autres données.
+- **Donnée temporaire** : donnée d'interface éphémère, à ignorer lors de la conception.
