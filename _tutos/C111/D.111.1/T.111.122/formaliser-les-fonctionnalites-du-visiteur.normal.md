@@ -11,105 +11,76 @@ nav_order: 2
 data_html: ""
 data_css: ""
 data_js: ""
+simplified: true
 ---
 
 ## 1. Objectif
 
-Vous allez transformer les actions brutes du Visiteur en **fonctionnalités** formalisées.
-
-Vous allez apprendre :
-
-- la **règle de nommage** (Acteur + Action + Élément) ;
-- la notion de **parcours fonctionnel** ;
-- la production d'une **synthèse fonctionnelle**.
+Vous allez transformer les actions brutes du **Visiteur** identifiées précédemment en **fonctionnalités** formalisées. L'objectif est d'apprendre à parler le langage de l'analyste fonctionnel pour décrire clairement ce qu'une application doit faire.
 
 ## 2. Prérequis
 
 - Tutoriel T.111.121 terminé (les actions brutes du Visiteur sont listées).
 
-**Maquette du Blog :** <a href="https://solicode-web-mobile.github.io/maquette-blog/index.html" target="_blank">Ouvrir la maquette</a>
+**Cas d'étude — Maquette du Blog :** <a href="https://solicode-web-mobile.github.io/maquette-blog/index.html" target="_blank">Ouvrir la maquette</a>
 
 ## Partie 1 — Théorie
 
-### 1.1. Qu'est-ce qu'une fonctionnalité ?
+### 1.1. De l'action à la fonctionnalité
 
-Une **fonctionnalité** est une action métier formulée de manière standard.
+Une **fonctionnalité** est la description métier d'un besoin. Contrairement à une action brute qui se concentre sur l'interface (ex: "cliquer sur un bouton"), la fonctionnalité se concentre sur l'intention (ex: "s'authentifier").
 
-Elle décrit **qui** fait **quoi** sur **quel élément**.
+Pour l'écrire, on utilise une règle de nommage stricte : **Acteur + Action + Élément**.
 
-**Exemple :** « Le Visiteur consulte le détail d'un article. »
+| Élément | Définition | Exemple |
+| :--- | :--- | :--- |
+| **Acteur** | Qui réalise l'action ? | Le Visiteur |
+| **Action** | Que fait-il ? (Verbe à l'infinitif ou conjugué) | consulte |
+| **Élément** | Sur quel objet métier ? | le détail d'un article |
 
-### 1.2. La règle de nommage
+**Exemple de fonctionnalité :** « Le Visiteur consulte le détail d'un article. »
 
-Pour écrire une fonctionnalité, on utilise la règle :
+### 1.2. Le Parcours Fonctionnel
 
-> **Acteur + Action + Élément**
+Une fonctionnalité isolée ne suffit pas toujours aux développeurs. Ils ont besoin de comprendre tout le cheminement de l'utilisateur : c'est le **parcours fonctionnel**.
 
-| Partie | Exemple |
-|---|---|
-| **Acteur** | Le Visiteur |
-| **Action** | consulte |
-| **Élément** | le détail d'un article |
+Il modélise les étapes de la fonctionnalité sous la forme : **Écran de départ → Action → Résultat**.
 
-Cette règle permet de transformer « cliquer sur Lire la suite » en une formulation professionnelle.
-
-### 1.3. Qu'est-ce qu'un parcours fonctionnel ?
-
-Un **parcours fonctionnel** décrit les étapes d'une fonctionnalité :
-
-> **Acteur → Écran de départ → Action → Résultat**
-
-**Exemple :**
-
-> Visiteur → Page d'accueil → Clique sur « Lire la suite » → Affichage de la page de détail de l'article.
-
-### 1.4. À retenir
-
-- Une fonctionnalité suit la règle : **Acteur + Action + Élément**.
-- Un parcours fonctionnel décrit le chemin complet d'une action.
-- La synthèse regroupe toutes les fonctionnalités d'un acteur.
+```mermaid
+flowchart LR
+    A[Page d'accueil] -->|Action : Clique sur 'Lire la suite'| B(Résultat : Affichage du détail de l'article)
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+```
 
 ## Partie 2 — Pratique
 
-### 2.1. Appliquer la règle de nommage
+### 2.1. Élaborer la synthèse fonctionnelle du Blog
 
-#### Étape 1 — Reprendre les actions brutes
+En tant qu'analyste, vous devez fournir une vue globale de ce que le Visiteur peut faire sur le Blog.
 
-Reprenez la liste des actions brutes du Visiteur (tutoriel précédent).
+**Votre mission :** 
+1. Reprenez le tableau des actions brutes du Visiteur que vous avez construit au tutoriel précédent.
+2. Pour chaque groupe d'actions logiques, définissez la **fonctionnalité** correspondante en appliquant la règle de nommage (Acteur + Action + Élément).
+3. Pour chaque fonctionnalité, décrivez son **parcours fonctionnel complet**.
 
-#### Étape 2 — Formuler les fonctionnalités
+### 2.2. Travail à faire (Livrable)
 
-Appliquez la règle **Acteur + Action + Élément** à chaque action :
+Construisez un tableau de **Synthèse fonctionnelle** pour l'acteur Visiteur. Ce document regroupera la totalité de son périmètre sur l'application. Utilisez le format de tableau suivant (à remplir dans un fichier texte ou Markdown) :
 
-- Le Visiteur consulte la liste des articles.
-- Le Visiteur consulte les articles d'une catégorie.
-- Le Visiteur consulte le détail d'un article.
-- Le Visiteur s'authentifie (se connecte).
+| Acteur | Fonctionnalité | Parcours fonctionnel (Départ -> Action -> Résultat) |
+| :--- | :--- | :--- |
+| Visiteur | Consulter la liste globale des articles | Accueil -> Navigation -> Affichage des articles récents |
+| Visiteur | ... | ... |
 
-### 2.2. Décrire un parcours fonctionnel
+*Continuez ce tableau pour couvrir les autres fonctionnalités (consultation par catégorie, consultation du détail d'un article, et authentification).*
 
-#### Étape 1 — Choisir une fonctionnalité
+### Livrable attendu
 
-Prenez la fonctionnalité : « Le Visiteur consulte le détail d'un article. »
+Préparez un document structuré (Markdown ou texte) contenant votre tableau de synthèse fonctionnelle complet.
 
-#### Étape 2 — Décrire le parcours
+### Critère de réussite
 
-Suivez le modèle **Acteur → Écran de départ → Action → Résultat** :
-
-> **Acteur :** Visiteur
-> **Écran de départ :** Page d'accueil
-> **Action :** Clique sur le bouton « Lire la suite »
-> **Résultat :** Affichage de la Page de détail de l'article
-
-### 2.3. Produire la synthèse fonctionnelle
-
-#### Étape 1 — Regrouper les fonctionnalités
-
-Regroupez toutes les fonctionnalités du Visiteur dans un tableau :
-
-| Acteur | Fonctionnalités |
-|---|---|
-| **Visiteur** | - Consulter la liste des articles<br>- Consulter les articles d'une catégorie<br>- Consulter le détail d'un article<br>- S'authentifier (se connecter) |
+Toutes les fonctionnalités du Visiteur doivent être présentes et formulées correctement (Acteur + Action). Les parcours doivent clairement indiquer l'écran de départ et le résultat attendu pour chaque ligne.
 
 **Résultat attendu :**
 
@@ -122,17 +93,13 @@ Regroupez toutes les fonctionnalités du Visiteur dans un tableau :
 
 ## Bilan
 
-**Vous avez réalisé :** la formalisation complète des fonctionnalités du Visiteur avec la règle de nommage, un parcours fonctionnel et la synthèse finale.
-
 **Vous savez maintenant :**
-
-- transformer une action brute en fonctionnalité avec la règle **Acteur + Action + Élément** ;
-- décrire un parcours fonctionnel ;
-- produire une synthèse fonctionnelle pour un acteur.
+- Élever une action de l'interface vers une intention métier (la **fonctionnalité**).
+- Appliquer la règle de nommage standardisée pour que tout le monde (client et développeurs) comprenne le besoin.
+- Décrire le cheminement de l'utilisateur grâce au **parcours fonctionnel**.
 
 ## Glossaire
 
-- **Fonctionnalité** : action métier formulée selon la règle Acteur + Action + Élément.
-- **Règle de nommage** : méthode standard pour écrire une fonctionnalité (Acteur + Action + Élément).
-- **Parcours fonctionnel** : description étape par étape d'une fonctionnalité (Acteur → Écran → Action → Résultat).
-- **Synthèse fonctionnelle** : tableau regroupant toutes les fonctionnalités d'un acteur.
+- **Fonctionnalité** : Intention métier formalisée selon la règle Acteur + Action + Élément.
+- **Parcours fonctionnel** : Modélisation des étapes d'une fonctionnalité (Écran → Action → Résultat).
+- **Synthèse fonctionnelle** : Document ou tableau qui récapitule l'ensemble des fonctionnalités du système.

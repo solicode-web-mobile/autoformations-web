@@ -6,18 +6,15 @@ nav_exclude: true
 
 # Réalisation : Actions brutes du Visiteur
 
-**Liste des actions repérées :**
+Voici le tableau récapitulatif des actions repérées sur la maquette pour l'acteur Visiteur :
 
-*Sur la page d'accueil et les listes d'articles :*
-- Cliquer sur les liens du menu (Accueil, Catégories, À propos).
-- Cliquer sur un badge de catégorie.
-- Cliquer sur "Lire la suite" d'un article.
-
-*Sur la page de détail d'un article :*
-- Lire/Consulter le titre, la date, l'auteur et le texte de l'article.
-- Revenir à l'accueil via le logo.
-
-*Sur la page de connexion :*
-- Saisir l'adresse email.
-- Saisir le mot de passe.
-- Cliquer sur le bouton "Se connecter".
+| Page | Élément cliqué / rempli | Action du visiteur |
+| :--- | :--- | :--- |
+| Accueil / Catégories | Liens du menu principal (Accueil, etc.) | Naviguer vers une autre section |
+| Accueil / Catégories | Badge de catégorie | Filtrer les articles selon la catégorie |
+| Accueil / Catégories | Lien "Lire la suite" | Accéder au détail de l'article complet |
+| Détail d'un article | Texte du contenu (titre, date, auteur) | Consulter / Lire le contenu |
+| Détail d'un article | Logo du site | Revenir à la page d'accueil |
+| Connexion | Champ texte "Adresse email" | Saisir son email |
+| Connexion | Champ texte "Mot de passe" | Saisir son mot de passe |
+| Connexion | Bouton "Se connecter" | Soumettre le formulaire de connexion |

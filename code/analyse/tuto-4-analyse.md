@@ -4,23 +4,13 @@ title: "Résultat Tuto 4 Analyse"
 nav_exclude: true
 ---
 
-# Réalisation : Formaliser les fonctionnalités du Visiteur
+# Réalisation : Synthèse fonctionnelle du Visiteur
 
-**1. Règle de nommage (Acteur + Action + Élément) :**
-- Le Visiteur consulte la liste des articles.
-- Le Visiteur consulte les articles d'une catégorie.
-- Le Visiteur consulte le détail d'un article.
-- Le Visiteur s'authentifie (se connecte).
+Voici le tableau de synthèse fonctionnelle complété pour l'acteur Visiteur, décrivant toutes ses intentions métier (fonctionnalités) et son parcours.
 
-**2. Exemples de parcours fonctionnels :**
-
-> **Acteur :** Visiteur
-> **Écran de départ :** Page d'accueil
-> **Action :** Clique sur le bouton "Lire la suite"
-> **Résultat :** Affichage de la Page de détail de l'article
-
-**3. Synthèse fonctionnelle de la partie publique :**
-
-| Acteur | Fonctionnalités |
-|---|---|
-| **Visiteur** | - Consulter la liste des articles<br>- Consulter les articles d'une catégorie<br>- Consulter le détail d'un article<br>- S'authentifier (se connecter) |
+| Acteur | Fonctionnalité | Parcours fonctionnel (Départ -> Action -> Résultat) |
+| :--- | :--- | :--- |
+| Visiteur | Consulter la liste globale des articles | Page d'accueil -> Navigue -> Affichage des articles récents |
+| Visiteur | Consulter les articles d'une catégorie | Menu -> Clique sur un badge de catégorie -> Affichage de la liste filtrée |
+| Visiteur | Consulter le détail d'un article | Liste d'articles -> Clique sur "Lire la suite" -> Affichage de l'article complet |
+| Visiteur | S'authentifier (se connecter) | Page de connexion -> Saisit identifiants et valide -> Affichage du tableau de bord (Espace Admin) |

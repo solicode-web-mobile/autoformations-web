@@ -33,7 +33,14 @@ Utilise systématiquement des blocs visuels (notamment avec Mermaid) pour montre
 - Supprime les distinctions purement académiques si elles ne sont pas utiles pour l'exercice (ex: distinction entre acteur principal et secondaire).
 - **Le Glossaire** : Ne garde que les mots stricts et essentiels qui sont effectivement manipulés dans le tutoriel.
 
+### 5. Marquer la simplification
+- Ajoute toujours la variable `simplified: true` dans le Front Matter (en haut du fichier Markdown) pour indiquer que ce tutoriel a été optimisé par tes soins.
+
+### 6. Mettre à jour le résultat attendu
+- Si le tutoriel contient un "Résultat attendu" pointant vers un fichier (généralement via une `iframe` vers le dossier `/code/...`), il est impératif de modifier également ce fichier cible pour que le résultat présenté corresponde au nouveau livrable demandé dans le tutoriel.
+
 ## Procédure d'exécution
 1. **Analyse** : Dresse un constat rapide des redondances du fichier d'origine.
 2. **Proposition** : Si l'utilisateur le demande, propose un plan de fusion des concepts (sans modifier le code tout de suite).
-3. **Application** : Réécris intégralement le fichier `.normal.md` (ou autre) en appliquant les règles d'or, tout en conservant scrupuleusement la structure canonique (Objectif, Prérequis, Cas d'étude, Théorie, Pratique, Bilan, Glossaire).
+3. **Application** : Réécris intégralement le fichier `.normal.md` (ou autre) en appliquant les règles d'or, tout en conservant scrupuleusement la structure canonique (Objectif, Prérequis, Cas d'étude, Théorie, Pratique, Bilan, Glossaire). N'oublie pas d'ajouter la variable `simplified: true` dans le Front Matter.
+4. **Mise à jour du livrable** : Vérifie la section "Résultat attendu". Si un fichier de résultat existe (ex: `code/analyse/tuto-X.md`), modifie-le pour qu'il reflète exactement les nouvelles consignes pratiques.
