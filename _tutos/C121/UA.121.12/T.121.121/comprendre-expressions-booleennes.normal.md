@@ -9,272 +9,147 @@ version: "normal"
 ua: "UA.121.12"
 nav_order: 1
 data_js: ""
+simplified: true
 ---
 
 ## 1. Objectif
 
-Apprendre à manipuler une **expression booléenne**.
-
-Vous allez acquérir les compétences suivantes :
-* Reconnaître une valeur booléenne (`true` ou `false`).
-* Comparer deux valeurs entre elles.
-* Construire une expression booléenne simple.
-* Stocker le résultat d'une expression dans une variable.
-
-À la fin de ce tutoriel, vous devez comprendre qu'une expression booléenne donne toujours un résultat strictement vrai ou faux.
+Apprendre à construire et évaluer des **expressions booléennes** : des expressions que l'ordinateur évalue toujours en `true` ou `false`. C'est la brique fondamentale de toute logique conditionnelle.
 
 ## 2. Prérequis
 
-Avant de commencer, vous devez savoir :
-* Créer un fichier JavaScript et l'exécuter avec Node.js.
-* Déclarer une variable et utiliser `console.log()`.
-* Utiliser des nombres et des chaînes de caractères.
+- Savoir déclarer une variable et utiliser `console.log()`.
 
-Exemple de rappel :
-
-```javascript
-let age = 20;
-console.log(age);
-```
 
 ## Partie 1 — Théorie
 
-### 1.1. Une valeur booléenne
+### 1.1. La valeur booléenne et les opérateurs de comparaison
 
-Contrairement aux nombres ou au texte, une valeur booléenne ne peut prendre que deux formes strictes :
-* `true` (vrai)
-* `false` (faux)
+Une **valeur booléenne** ne peut prendre que deux formes : `true` (vrai) ou `false` (faux).
 
-Voici comment déclarer des variables contenant ces valeurs :
-```javascript
-let disponible = true;
-let termine = false;
-```
+Une **expression booléenne** est une instruction que l'ordinateur évalue et dont le résultat est toujours `true` ou `false`. On la construit en **comparant deux valeurs** grâce à un opérateur de comparaison.
 
-### 1.2. Une expression booléenne
+| Opérateur | Signification | Exemple exécutable |
+| :---: | :--- | :--- |
+| `===` | Est égal à | `console.log(10 === 10); // true` |
+| `!==` | Est différent de | `console.log(10 !== 5);  // true` |
+| `>` | Est supérieur à | `console.log(10 > 5);    // true` |
+| `<` | Est inférieur à | `console.log(3 < 8);     // true` |
+| `>=` | Est supérieur ou égal à | `console.log(18 >= 18);  // true` |
+| `<=` | Est inférieur ou égal à | `console.log(15 <= 20);  // true` |
 
-Une expression booléenne est une instruction évaluée par l'ordinateur, qui donnera obligatoirement `true` ou `false` comme résultat.
+### 1.2. Stocker le résultat d'une expression
 
-Exemples :
-* `10 > 5` donnera le résultat `true`.
-* `10 < 5` donnera le résultat `false`.
-
-### 1.3. Comparer deux valeurs
-
-En JavaScript, vous pouvez comparer deux valeurs en utilisant différents opérateurs.
-
-#### Égalité
-Pour vérifier si deux valeurs sont identiques, utilisez `===`.
-Exemple : `10 === 10` → `true`.
-
-#### Différence
-Pour vérifier si deux valeurs sont différentes, utilisez `!==`.
-Exemple : `10 !== 5` → `true`.
-
-#### Supérieur
-Pour vérifier si la première valeur est plus grande que la deuxième, utilisez `>`.
-Exemple : `10 > 5` → `true`.
-
-#### Inférieur
-Pour vérifier si la première valeur est plus petite, utilisez `<`.
-Exemple : `3 < 8` → `true`.
-
-#### Supérieur ou égal
-Pour vérifier si la valeur est plus grande ou égale, utilisez `>=`.
-Exemple : `18 >= 18` → `true`.
-
-#### Inférieur ou égal
-Pour vérifier si la valeur est plus petite ou égale, utilisez `<=`.
-Exemple : `15 <= 20` → `true`.
-
-### 1.4. Les opérateurs de comparaison
-
-Voici le résumé des opérateurs à retenir :
-
-| Opérateur | Signification           |
-| --------- | ----------------------- |
-| `===`     | est égal à              |
-| `!==`     | est différent de        |
-| `>`       | est supérieur à         |
-| `<`       | est inférieur à         |
-| `>=`      | est supérieur ou égal à |
-| `<=`      | est inférieur ou égal à |
-
-### 1.5. Une expression peut utiliser une variable
-
-Vous pouvez comparer une variable à une autre valeur. L'ordinateur remplacera la variable par son contenu avant d'évaluer l'expression.
-
-```javascript
-let age = 20;
-console.log(age >= 18); // Affiche true
-```
-
-### 1.6. Une expression booléenne peut être stockée
-
-Il est souvent utile de conserver le résultat d'une comparaison. Vous pouvez le stocker dans une variable.
+Une expression booléenne peut être directement **stockée dans une variable**. L'ordinateur évalue l'expression et range son résultat (`true` ou `false`) dans la variable.
 
 ```javascript
 let age = 20;
 let estMajeur = age >= 18;
-console.log(estMajeur); // Affiche true
+console.log(estMajeur); // Affiche : true
+
+let age2 = 15;
+let estMajeur2 = age2 >= 18;
+console.log(estMajeur2); // Affiche : false
 ```
-Ici, la variable `estMajeur` contient la valeur booléenne `true`.
 
-### 1.7. Combiner deux expressions booléennes
+### 1.3. Combiner des expressions (`&&`, `||`, `!`)
 
-Vous pouvez combiner plusieurs conditions en utilisant des opérateurs logiques.
+Pour exprimer des règles plus complexes, on combine plusieurs expressions avec des **opérateurs logiques** :
 
-#### ET — `&&`
-L'opérateur `&&` exige que les deux expressions soient `true` pour que le résultat global soit `true`.
-
-#### OU — `||`
-L'opérateur `||` exige qu'au moins l'une des expressions soit `true` pour que le résultat global soit `true`.
-
-#### NON — `!`
-L'opérateur `!` inverse le résultat : il transforme un `true` en `false`, et inversement.
-
-### 1.8. Comprendre une expression composée
-
-Voici un exemple combinant plusieurs règles :
+| Opérateur | Nom | Règle | Exemple |
+| :---: | :--- | :--- | :--- |
+| `&&` | ET | Vrai seulement si **les deux** sont vrais | `age >= 18 && inscrit === true` |
+| `\|\|` | OU | Vrai si **au moins un** est vrai | `membre === true \|\| invitation === true` |
+| `!` | NON | **Inverse** le résultat | `!disponible` |
 
 ```javascript
 let age = 20;
 let autorisation = true;
-let acces = age >= 18 && autorisation === true; // Résultat : true
+let membre = false;
+let invitation = true;
+
+// ET : les deux doivent être vrais
+let acces = age >= 18 && autorisation === true;
+console.log(acces); // true
+
+// OU : l'un ou l'autre suffit
+let entree = membre === true || invitation === true;
+console.log(entree); // true
+
+// NON : inversion
+let disponible = true;
+console.log(!disponible); // false
 ```
-L'accès est accordé car l'âge est correct **et** l'autorisation est vraie.
-
-### 1.9. À retenir
-
-* **Booléen** : Valeur limitée à `true` ou `false`.
-* **Opérateurs de comparaison** : `===`, `!==`, `>`, `<`, `>=`, `<=`.
-* **Opérateurs logiques** : `&&` (ET), `||` (OU), `!` (NON).
-* Le résultat d'une expression peut être stocké dans une variable.
 
 ## Partie 2 — Pratique
 
-### 2.1. Vérifier une comparaison
+### 2.1. Construire votre fichier `booleen.js`
 
-Créez un fichier `booleen.js`. Testez ce code simple :
+Dans votre fichier `booleen.js`, saisissez le code suivant et exécutez-le. Observez chaque résultat dans la console, puis modifiez les valeurs des variables pour vérifier votre compréhension.
+
 ```javascript
-console.log(10 > 5); // Affiche true
+// --- Opérateurs de comparaison ---
+let score = 14;
+let seuil = 10;
+console.log(score > seuil);   // Changez score à 8 et relancez
+console.log(score === seuil);
+console.log(score !== seuil);
+
+// --- Stocker un résultat ---
+let estValide = score >= seuil;
+console.log(estValide); // Changez score à 8 et relancez
+
+// --- Opérateurs logiques ---
+let inscrit = true;
+let paiement = false;
+let acces = score >= seuil && inscrit === true;
+console.log(acces); // Changez inscrit à false et relancez
+
+let entree = inscrit === true || paiement === true;
+console.log(entree); // Changez les deux à false et relancez
 ```
-Modifiez le code pour écrire `console.log(10 < 5);` et observez le résultat.
 
-### 2.2. Tester plusieurs comparaisons
-
-Testez le code suivant et observez attentivement chaque résultat :
-```javascript
-console.log(10 === 10);
-console.log(10 !== 5);
-console.log(10 > 5);
-console.log(3 < 8);
-console.log(18 >= 18);
-console.log(15 <= 20);
-```
-
-### 2.3. Utiliser une variable
-
-Testez cette comparaison en utilisant une variable :
-```javascript
-let age = 20;
-console.log(age >= 18);
-```
-Changez ensuite la valeur de la variable `age` à `15`. Relancez le programme et analysez la différence.
-
-### 2.4. Stocker le résultat
-
-Stockons le résultat de la comparaison dans une nouvelle variable :
-```javascript
-let age = 20;
-let estMajeur = age >= 18;
-console.log(estMajeur);
-```
-Testez ce programme avec `age = 15` et vérifiez que `estMajeur` prend bien la valeur `false`.
-
-### 2.5. Utiliser `&&`
-
-Testez l'opérateur ET :
-```javascript
-let age = 20;
-let autorisation = true;
-let acces = age >= 18 && autorisation === true;
-console.log(acces);
-```
-Passez la variable `autorisation` à `false` et exécutez à nouveau le programme. Que remarquez-vous ?
-
-### 2.6. Utiliser `||`
-
-Testez l'opérateur OU :
-```javascript
-let membre = false;
-let invitation = true;
-let entree = membre === true || invitation === true;
-console.log(entree);
-```
-Changez `invitation` à `false` et relancez le test pour voir le résultat.
-
-### 2.7. Utiliser `!`
-
-Testez l'opérateur d'inversion :
-```javascript
-let disponible = true;
-console.log(!disponible);
-```
-Passez `disponible` à `false` et constatez l'inversion.
-
-### 2.8. Exercice — Prévoir le résultat
-
-Indiquez mentalement le résultat attendu de chaque ligne, puis vérifiez avec un `console.log()` :
-
-| Expression      | Résultat |
-| --------------- | -------- |
-| `5 > 2`         |          |
-| `5 < 2`         |          |
-| `10 === 10`     |          |
-| `10 !== 10`     |          |
-| `8 >= 8`        |          |
-| `3 <= 2`        |          |
-| `true && true`  |          |
-| `true && false` |          |
-| `false          |          | true` |
-| `!false`        |          |
-
-### 2.9. Exercice — Analyser des variables
+### 2.2. Exercice — Prévoir et vérifier
 
 Voici des données de départ :
+
 ```javascript
 let age = 22;
 let inscrit = true;
 let paiement = false;
 ```
-Écrivez l'expression booléenne JavaScript correspondant à chaque question :
-1. L'âge est-il supérieur ou égal à 18 ?
-2. La personne est-elle inscrite ?
-3. Le paiement est-il effectué ?
-4. L'âge est-il supérieur ou égal à 18 **ET** la personne est-elle inscrite ?
-5. La personne est-elle inscrite **OU** le paiement est-il effectué ?
 
-### Résultat attendu
+**Sans exécuter**, prévoyez le résultat (`true` ou `false`) de chaque expression dans le tableau, puis vérifiez avec `console.log()` :
 
-Vous devez savoir évaluer et écrire des expressions booléennes de ce type pour préparer les traitements conditionnels :
-```javascript
-let age = 20;
-let estMajeur = age >= 18;
-console.log(estMajeur); // Affiche true
-```
+| Expression | Résultat prévu | Résultat réel |
+| :--- | :---: | :---: |
+| `age >= 18` | | |
+| `inscrit === true` | | |
+| `paiement === true` | | |
+| `age >= 18 && inscrit === true` | | |
+| `inscrit === true \|\| paiement === true` | | |
+| `!paiement` | | |
+
+### Livrable
+
+Préparez un document (Markdown ou Google Doc) contenant :
+1. Votre fichier `booleen.js` final (exercice 2.1).
+2. Votre tableau complété (exercice 2.2).
+
+### Critère de réussite
+
+Toutes les prévisions du tableau correspondent aux résultats affichés dans la console, sans avoir modifié les données de départ.
 
 ## Bilan
 
-**Vous avez appris :**
-* À utiliser les valeurs booléennes.
-* À manipuler les opérateurs de comparaison et les opérateurs logiques.
-
 **Vous savez maintenant :**
-* Construire et vérifier une expression booléenne, ce qui sera indispensable pour utiliser les conditions (`if`).
+- Reconnaître et écrire une expression booléenne (`true` / `false`).
+- Utiliser les 6 opérateurs de comparaison (`===`, `!==`, `>`, `<`, `>=`, `<=`).
+- Combiner des expressions avec `&&`, `||`, et `!`.
+- Stocker un résultat booléen dans une variable pour le réutiliser.
 
 ## Glossaire
 
-* **Booléen** : Type de donnée qui ne peut valoir que `true` ou `false`.
-* **Comparaison** : Relation entre des valeurs (`>`, `<`, `===`, etc.).
-* **Opérateurs logiques** : Opérateurs servant à combiner des règles (`&&`, `||`, `!`).
+- **Booléen** : Type de donnée ne pouvant valoir que `true` ou `false`.
+- **Opérateur de comparaison** : Symbole évaluant la relation entre deux valeurs (`>`, `<`, `===`…).
+- **Opérateur logique** : Symbole combinant plusieurs expressions booléennes (`&&`, `||`, `!`).
