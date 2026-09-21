@@ -37,7 +37,8 @@ Utilise systématiquement des blocs visuels (notamment avec Mermaid) pour montre
 - Ajoute toujours la variable `simplified: true` dans le Front Matter (en haut du fichier Markdown) pour indiquer que ce tutoriel a été optimisé par tes soins.
 
 ### 6. Mettre à jour le résultat attendu
-- Si le tutoriel contient un "Résultat attendu" pointant vers un fichier (généralement via une `iframe` vers le dossier `/code/...`), il est impératif de modifier également ce fichier cible pour que le résultat présenté corresponde au nouveau livrable demandé dans le tutoriel.
+- Si le tutoriel contient un "Résultat attendu" pointant vers un fichier (généralement via une `iframe` vers le dossier `/code/...`), il est impératif de modifier également ce fichier cible.
+- Pour créer ou modifier ce fichier, **lisez et appliquez le skill `generateur-resultats-tutos`** : il définit le layout à utiliser selon le domaine (ex: `layout: git` pour les tutos C.151), les classes CSS disponibles, et la structure attendue du fichier résultat.
 
 ### 7. Respecter la règle des "Données de départ"
 La section **"Données de départ"** ne doit être incluse dans le tutoriel réécrit **que si** au moins l'un des champs suivants du Front Matter est **non vide** : `data_js`, `data_html`, `data_css`.
@@ -49,6 +50,7 @@ La section **"Données de départ"** ne doit être incluse dans le tutoriel ré�
    - Tutoriel du domaine algo (C.121, UA.121.xx) → lire et appliquer le skill `domaine-algo`.
    - Tutoriel du domaine analyse (C.111, UA.111.xx) → lire et appliquer le skill `domaine-analyse`.
    - Tutoriel du domaine conception (C.112, UA.112.xx) → lire et appliquer le skill `domaine-conception`.
+   - Tutoriel du domaine git (C.151, UA.151.xx) → lire et appliquer le skill `domaine-git`.
 1. **Analyse** : Dresse un constat rapide des redondances du fichier d'origine.
 2. **Proposition** : Si l'utilisateur le demande, propose un plan de fusion des concepts (sans modifier le code tout de suite).
 3. **Application** : Réécris intégralement le fichier `.normal.md` (ou autre) en appliquant les règles d'or, tout en conservant scrupuleusement la structure canonique (Objectif, Prérequis, Cas d'étude, Théorie, Pratique, Bilan, Glossaire). N'oublie pas d'ajouter `simplified: true` dans le Front Matter. **Vérifie aussi si les champs `data_js`/`data_html`/`data_css` sont non vides pour décider d'inclure ou non la section "Données de départ" (règle 7).**

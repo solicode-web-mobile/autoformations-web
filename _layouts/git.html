@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title | default: "Résultat Git" }}</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #0d1117;
+            color: #e6edf3;
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .terminal-window {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .terminal-bar {
+            background: #21262d;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red   { background: #ff5f57; }
+        .dot-yellow{ background: #febc2e; }
+        .dot-green { background: #28c840; }
+        .terminal-title {
+            margin-left: auto;
+            color: #8b949e;
+            font-size: 12px;
+        }
+        .terminal-body { padding: 16px; }
+
+        /* Classes utilitaires */
+        .prompt  { color: #58a6ff; font-weight: bold; }   /* $ ou > */
+        .command { color: #7ee787; }                       /* commande tapée */
+        .output  { color: #e6edf3; }                       /* sortie standard */
+        .error   { color: #f85149; }                       /* erreur / warning */
+        .muted   { color: #8b949e; }                       /* commentaire */
+        .badge-ok  { display: inline-block; background: #238636; color: #7ee787; border-radius: 4px; padding: 1px 8px; font-size: 11px; margin-left: 6px; }
+        .badge-err { display: inline-block; background: #6e1a1a; color: #f85149; border-radius: 4px; padding: 1px 8px; font-size: 11px; margin-left: 6px; }
+        .section-title { color: #58a6ff; margin: 16px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #21262d; padding-bottom: 4px; }
+        .cmd-line { margin: 6px 0 2px; }
+        .out-line { margin: 0 0 8px 16px; }
+    </style>
+</head>
+<body>
+<div class="terminal-window">
+    <div class="terminal-bar">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="terminal-title">Git Bash — {{ page.title | default: "Terminal" }}</span>
+    </div>
+    <div class="terminal-body">
+        {{ content }}
+    </div>
+</div>
+</body>
+</html>

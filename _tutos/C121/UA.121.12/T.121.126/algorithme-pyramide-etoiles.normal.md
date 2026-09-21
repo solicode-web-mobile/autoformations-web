@@ -9,13 +9,13 @@ version: "normal"
 ua: "UA.121.12"
 nav_order: 6
 data_js: ""
+simplified: true
 ---
 
 ## 1. Objectif
 
-Construire un **algorithme élémentaire** complet combinant variables, conditions et boucles imbriquées.
+Construire un **algorithme complet** combinant variables, boucles imbriquées et conditions pour afficher une pyramide d'étoiles symétrique.
 
-L'objectif est d'afficher une pyramide d'étoiles symétrique dans le terminal :
 ```text
     *
    ***
@@ -26,146 +26,142 @@ L'objectif est d'afficher une pyramide d'étoiles symétrique dans le terminal :
 
 ## 2. Prérequis
 
-Pour réussir cet exercice de synthèse, vous devez maîtriser :
-* La création de variables et `console.log()`.
-* La création de conditions `if`.
-* L'utilisation de boucles `for`.
-* L'**imbrication de boucles** (placer une boucle dans une autre).
-
-## Données de départ
-
-### JavaScript
-
-Créez le fichier `pyramide.js` et préparez cette variable initiale :
-
-```javascript
-let hauteur = 5;
-console.log("Hauteur :", hauteur);
-```
+* Boucles `for` et imbrication de boucles.
+* Condition `if / else`.
+* Concaténation de chaînes : `ligneTexte = ligneTexte + "*"`.
 
 ## Partie 1 — Théorie
 
-### 1.1. Observer la pyramide
+### 1.1. Décortiquer une ligne de la pyramide
 
-La pyramide est générée ligne par ligne, de haut en bas, par le terminal. Le programme doit donc construire chaque niveau avant de passer au suivant.
+Chaque ligne contient **des espaces** (pour centrer) suivis **d'étoiles**. Pour une pyramide de hauteur 5 :
 
-### 1.2. Une ligne contient des espaces et des étoiles
+| Ligne | Espaces (`hauteur - ligne`) | Étoiles (`2 × ligne - 1`) |
+|-------|-----------------------------|--------------------------|
+| 1 | 4 | 1 (`*`) |
+| 2 | 3 | 3 (`***`) |
+| 3 | 2 | 5 (`*****`) |
+| 4 | 1 | 7 (`*******`) |
+| 5 | 0 | 9 (`*********`) |
 
-Chaque ligne commence par des espaces (pour centrer) suivis d'étoiles :
-* Ligne 1 : 4 espaces, 1 étoile.
-* Ligne 2 : 3 espaces, 3 étoiles.
-Il faut donc générer les espaces d'abord, puis les étoiles ensuite.
+> Les deux formules sont la clé de tout l'algorithme.
 
-### 1.3. Trouver la règle des espaces
+### 1.2. La structure de l'algorithme
 
-La règle mathématique pour les espaces est : `espaces = hauteur - ligne`.
-Exemple : Pour la ligne 3 (sur une hauteur de 5), il faut 2 espaces (`5 - 3`).
+L'algorithme utilise 3 boucles imbriquées et une condition de sécurité :
 
-### 1.4. Trouver la règle des étoiles
-
-La règle mathématique pour les étoiles est : `étoiles = 2 × ligne - 1`.
-Exemple : Pour la ligne 3, il faut 5 étoiles (`2 × 3 - 1`).
-
-### 1.5. Construire une ligne
-
-L'ordre d'action pour une ligne est le suivant :
-1. Ajouter les espaces (règle 1).
-2. Ajouter les étoiles (règle 2).
-3. Afficher la ligne.
-
-### 1.6. Répéter pour toutes les lignes
-
-Une boucle principale va gérer les étages :
-```javascript
-for (let ligne = 1; ligne <= hauteur; ligne++)
+```mermaid
+flowchart TD
+    A[Départ : hauteur = 5] --> B{hauteur > 0 ?}
+    B -- Non --> C[Afficher : Hauteur invalide]
+    B -- Oui --> D["Boucle ligne (1 → hauteur)"]
+    D --> E["Boucle espaces (hauteur - ligne fois)"]
+    E --> F["Boucle étoiles (2×ligne-1 fois)"]
+    F --> G[Afficher la ligne]
+    G --> D
 ```
-À chaque tour, la variable `ligne` indiquera l'étage en cours.
 
-### 1.7. Répéter les espaces
+### 1.3. La technique de construction d'une ligne
 
-À l'intérieur de la boucle principale, une première boucle imbriquée tournera `hauteur - ligne` fois pour ajouter les espaces.
+On construit la ligne comme une chaîne de caractères, puis on l'affiche d'un coup :
 
-### 1.8. Répéter les étoiles
-
-À la suite, une deuxième boucle imbriquée tournera `2 × ligne - 1` fois pour ajouter les étoiles.
-
-### 1.9. Ajouter une condition
-
-Il faut protéger le programme avec un test de sécurité `if (hauteur > 0)` au tout début. Si la hauteur demandée est 0 ou négative, le programme affichera une erreur.
-
-### 1.10. L'algorithme complet
-
-Voici la structure de votre programme :
-* **Si** `hauteur > 0` :
-    * **Boucle** sur les lignes (`ligne = 1` jusqu'à `hauteur`) :
-        * **Boucle** pour générer les espaces.
-        * **Boucle** pour générer les étoiles.
-        * Afficher la ligne finie.
-* **Sinon** :
-    * Afficher un message d'erreur.
-
-### 1.11. À retenir
-
-L'imbrication de boucles permet de gérer deux dimensions : la boucle principale s'occupe de la hauteur (les lignes) tandis que les sous-boucles gèrent la largeur (les caractères de la ligne).
+```javascript
+let ligneTexte = ""; // Réinitialisé à chaque ligne !
+ligneTexte = ligneTexte + " "; // Ajouter un espace
+ligneTexte = ligneTexte + "*"; // Ajouter une étoile
+console.log(ligneTexte);       // Afficher la ligne complète
+```
 
 ## Partie 2 — Pratique
 
-### 2.1. Étape 1 — Afficher une étoile
+Construisez le programme en 4 étapes progressives dans un fichier `pyramide.js`.
 
-Affichez simplement une étoile `*` avec un `console.log`.
+### Étape 1 — Construire une ligne avec une boucle
 
-### 2.2. Étape 2 — Afficher plusieurs étoiles
+Écrivez une boucle qui ajoute 5 étoiles dans `ligneTexte` et affiche le résultat.
 
-Créez une variable `let ligneTexte = "";`. Ajoutez-lui une étoile (`ligneTexte = ligneTexte + "*";`) à plusieurs reprises, puis affichez-la.
+```javascript
+let ligneTexte = "";
+for (let e = 1; e <= 5; e++) {
+    ligneTexte = ligneTexte + "*";
+}
+console.log(ligneTexte); // Affiche : *****
+```
 
-### 2.3. Étape 3 — Utiliser une boucle pour les étoiles
+---
 
-Remplacez l'ajout manuel par une boucle `for` qui tourne 5 fois pour remplir la variable `ligneTexte`.
+### Étape 2 — Générer un triangle simple (boucles imbriquées)
 
-### 2.4. Étape 4 — Construire un triangle
+Ajoutez une boucle principale pour les lignes. Faites varier le nombre d'étoiles selon la ligne.
 
-Entourez le code précédent par une boucle principale (pour les lignes). Modifiez la limite de la boucle d'étoiles pour qu'elle tourne `ligne` fois. Vous obtiendrez un triangle rectangle.
+```javascript
+for (let ligne = 1; ligne <= 5; ligne++) {
+    let ligneTexte = "";
+    for (let e = 1; e <= ligne; e++) {   // "ligne" étoiles
+        ligneTexte = ligneTexte + "*";
+    }
+    console.log(ligneTexte);
+}
+```
 
-### 2.5. Étape 5 — Construire le nombre d'espaces
+---
 
-Ajoutez une boucle pour les espaces juste avant celle des étoiles. Cette boucle doit tourner `hauteur - ligne` fois et ajouter des caractères `" "`.
+### Étape 3 — Ajouter les espaces (pyramide centrée)
 
-### 2.6. Étape 6 — Ajouter les étoiles
+Ajoutez une boucle pour les espaces **avant** la boucle des étoiles. Appliquez les deux formules mathématiques.
 
-Modifiez la boucle des étoiles pour qu'elle respecte la règle mathématique : `(2 * ligne) - 1`.
+```javascript
+for (let ligne = 1; ligne <= 5; ligne++) {
+    let ligneTexte = "";
+    // Espaces
+    for (let s = 1; s <= 5 - ligne; s++) {
+        ligneTexte = ligneTexte + " ";
+    }
+    // Étoiles
+    for (let e = 1; e <= (2 * ligne) - 1; e++) {
+        ligneTexte = ligneTexte + "*";
+    }
+    console.log(ligneTexte);
+}
+```
 
-### 2.7. Étape 7 — Construire une ligne complète
+---
 
-Assurez-vous de bien réinitialiser `let ligneTexte = "";` au début de chaque itération de la boucle principale. Affichez la ligne une fois les espaces et étoiles ajoutés.
+### Étape 4 — Finaliser avec une variable et une condition ← Livrable
 
-### 2.8. Étape 8 — Construire la pyramide complète
+Remplacez `5` par une variable `hauteur` et ajoutez une condition de sécurité. Testez avec `hauteur = 7`, `3`, et `0`.
 
-Placez l'ensemble de cet algorithme à l'intérieur d'une condition `if (hauteur > 0)`.
+```javascript
+let hauteur = 5;
 
-### 2.9. Étape 9 — Tester différentes hauteurs
-
-Testez votre code avec les hauteurs 1, 3, et 5. Testez également 0 pour vérifier que le programme est bien sécurisé et ne plante pas.
-
-### 2.10. Étape 10 — Comprendre le traitement
-
-Assurez-vous de comprendre le rôle de chaque boucle (principale, espaces, étoiles) et la logique des formules utilisées pour les limites.
-
-### 2.11. Travail à faire
-
-Rédigez le code complet de la pyramide et configurez-le pour `let hauteur = 7`. Le résultat doit être symétrique.
-
-### Livrable
-
-Préparez un document qui présente :
-* Les règles mathématiques utilisées.
-* Le code source final en JavaScript.
-* Les résultats affichés pour les hauteurs de 3, 5, et 7.
+if (hauteur > 0) {
+    for (let ligne = 1; ligne <= hauteur; ligne++) {
+        let ligneTexte = "";
+        for (let s = 1; s <= hauteur - ligne; s++) {
+            ligneTexte = ligneTexte + " ";
+        }
+        for (let e = 1; e <= (2 * ligne) - 1; e++) {
+            ligneTexte = ligneTexte + "*";
+        }
+        console.log(ligneTexte);
+    }
+} else {
+    console.log("Hauteur invalide.");
+}
+```
 
 ### Critère de réussite
 
-La pyramide est parfaitement alignée, et le programme gère correctement les hauteurs négatives ou nulles.
+La pyramide est parfaitement centrée et symétrique. Le programme affiche "Hauteur invalide." pour `hauteur = 0` ou une valeur négative.
 
 ### Résultat attendu
+
+Pour `hauteur = 3` :
+```text
+  *
+ ***
+*****
+```
 
 Pour `hauteur = 5` :
 ```text
@@ -176,25 +172,15 @@ Pour `hauteur = 5` :
 *********
 ```
 
-Pour `hauteur = 3` :
-```text
-  *
- ***
-*****
-```
-
 ## Bilan
 
-**Vous avez appris :**
-* À analyser un motif et en déduire des règles mathématiques.
-* À imbriquer des boucles pour générer un affichage en deux dimensions.
-* À structurer un algorithme complet en liant variables, conditions et boucles.
-
 **Vous savez maintenant :**
-* Écrire une solution algorithmique complète, une compétence indispensable pour la résolution de problèmes avancés.
+* Analyser un motif visuel et en déduire des règles mathématiques (`hauteur - ligne`, `2 × ligne - 1`).
+* Imbriquer des boucles pour gérer deux dimensions (hauteur et largeur).
+* Structurer un algorithme complet en liant variables, conditions et boucles imbriquées.
 
 ## Glossaire
 
 * **Algorithme** : Suite d'instructions logiques permettant de résoudre un problème.
-* **Boucle imbriquée** : Une boucle qui est contenue et exécutée à l'intérieur d'une autre boucle.
-* **Pyramide** : Exercice fondamental d'algorithmique permettant de pratiquer la logique conditionnelle et répétitive.
+* **Boucle imbriquée** : Une boucle contenue à l'intérieur d'une autre boucle.
+* **Concaténation** : Assemblage de chaînes de caractères avec `+`.
