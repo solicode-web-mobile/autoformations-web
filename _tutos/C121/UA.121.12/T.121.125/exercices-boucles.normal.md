@@ -9,167 +9,123 @@ version: "normal"
 ua: "UA.121.12"
 nav_order: 5
 data_js: ""
+simplified: true
 ---
 
 ## 1. Objectif
 
-S'entraîner à utiliser les **boucles** pour résoudre divers problèmes.
-
-Vous allez consolider vos acquis sur les notions suivantes :
-* L'utilisation de `for` et `while`.
-* Le rôle du **compteur** et de l'**accumulateur**.
-* La gestion de la **condition d'arrêt**.
-* L'imbrication de **conditions** (`if`) à l'intérieur d'une boucle pour sélectionner des données.
+Consolider l'utilisation des **boucles** en résolvant des problèmes concrets : filtrer, compter et accumuler des valeurs.
 
 ## 2. Prérequis
 
-Pour cet entraînement, vous devez être capable de :
-* Déclarer des variables et utiliser `console.log()` et des blocs `if`.
-* Écrire la structure de base d'une boucle `for` et d'une boucle `while`.
-* Utiliser les opérateurs d'incrémentation (ex: `++`).
+* Structures `for` et `while`, opérateur `++` / `--`.
+* Condition `if` dans une boucle.
 
-## Données de départ
+## Méthode de résolution
 
-### JavaScript
-
-Créez le fichier `exercices-boucles.js` et insérez le code de base ci-dessous :
-
-```javascript
-let debut = 1;
-let fin = 10;
-console.log(debut);
-console.log(fin);
+```mermaid
+flowchart LR
+    A["1. Identifier ce qui se répète"] --> B["2. Choisir for ou while"]
+    B --> C["3. Définir le compteur et la condition d'arrêt"]
+    C --> D["4. Prévoir un accumulateur si nécessaire"]
+    D --> E["5. Coder et tester"]
 ```
 
-## Partie 1 — Théorie
+> 💡 **L'accumulateur** est une variable qui grandit à chaque tour de boucle (ex: `somme = somme + nombre`). Il doit être initialisé **avant** la boucle.
 
-### 1.1. Une boucle répète une action
+## Partie — Pratique
 
-Une boucle sert à exécuter plusieurs fois un traitement sans avoir à le réécrire. C'est l'ordinateur qui se charge de la répétition.
+### Exercice 1 — Filtrer avec une boucle (`for` + `if`)
 
-### 1.2. Le compteur contrôle la répétition
+**Contexte :** Parcourez les nombres de 1 à 20 et affichez uniquement les **nombres pairs**.
 
-Le compteur évolue (ex: `1`, `2`, `3`...) à chaque tour. Il peut servir à afficher une valeur, à compter, à faire un calcul, ou à tester une condition précise à l'intérieur de la boucle.
+**Travail :**
+1. Écrivez une boucle `for` de 1 à 20.
+2. À l'intérieur, ajoutez un `if` pour ne garder que les nombres pairs (`nombre % 2 === 0`).
+3. Testez — vous devez voir apparaître 2, 4, 6… 20.
 
-### 1.3. L'accumulateur
+```javascript
+// Squelette de départ
+for (let nombre = 1; nombre <= 20; nombre++) {
+    // Votre condition ici...
+}
+```
 
-L'accumulateur est une variable qui conserve et fait grandir progressivement un résultat à chaque itération.
-Exemple : `somme = somme + nombre;`
-Il doit toujours être initialisé *avant* le début de la boucle.
+**Résultat attendu :**
+```text
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+```
 
-### 1.4. Une boucle peut sélectionner certaines valeurs
+---
 
-En ajoutant un `if` à l'intérieur de la boucle, vous pouvez parcourir un ensemble de valeurs, mais n'exécuter l'action que sur celles qui valident la condition (ex: `if (nombre % 2 === 0)` pour ne traiter que les nombres pairs).
+### Exercice 2 — Calculer une somme (accumulateur)
 
-### 1.5. Méthode pour résoudre un exercice
+**Contexte :** Calculez la somme de tous les nombres de 1 à 10.
 
-Suivez ce plan pour vos exercices :
-1. Lisez le problème.
-2. Identifiez ce qui doit être répété.
-3. Définissez le compteur et la condition d'arrêt.
-4. Prévoyez un accumulateur si le problème nécessite un calcul global.
-5. Codez et testez.
+**Travail :**
+1. Déclarez un accumulateur `let somme = 0;` **avant** la boucle.
+2. À chaque tour, ajoutez la valeur du compteur à `somme`.
+3. Après la boucle, affichez le résultat.
 
-## Partie 2 — Pratique
+```javascript
+let somme = 0;
+for (let i = 1; i <= 10; i++) {
+    // Votre code ici...
+}
+console.log(somme);
+```
 
-### 2.1. Exercice 1 — Afficher les nombres de 1 à 10
+**Résultat attendu :** `55`
 
-**Travail** : Écrivez une boucle `for` affichant tous les nombres de 1 à 10.
-**Test** : Modifiez la condition d'arrêt pour afficher les nombres jusqu'à 20.
+> ❓ Que se passerait-il si vous mettiez `let somme = 0;` **à l'intérieur** de la boucle ?
 
-### 2.2. Exercice 2 — Afficher les nombres de 10 à 1
+---
 
-**Travail** : Modifiez votre boucle pour faire un compte à rebours de 10 à 1.
-**Question** : Quelle instruction permet de diminuer la valeur du compteur au lieu de l'augmenter ?
+### Exercice 3 — Synthèse : compter ET sommer ← Livrable
 
-### 2.3. Exercice 3 — Afficher un message plusieurs fois
+**Contexte :** Parcourez les nombres de 1 à 20. En une seule boucle, trouvez **à la fois** le nombre de chiffres pairs et leur somme totale.
 
-**Travail** : Utilisez une boucle pour afficher exactement 5 fois le message "Bonjour Madani Ali". Modifiez ensuite pour l'afficher 10 fois.
+**Travail :**
+1. Déclarez `let compteur = 0;` et `let somme = 0;` avant la boucle.
+2. À chaque tour, si le nombre est pair : incrémentez `compteur` de 1 et ajoutez-le à `somme`.
+3. Affichez les deux résultats après la boucle.
 
-### 2.4. Exercice 4 — Utiliser `while`
+```javascript
+let compteur = 0;
+let somme = 0;
+// Votre boucle ici...
+console.log("Nombre de pairs : " + compteur);
+console.log("Somme des pairs : " + somme);
+```
 
-**Travail** : Affichez les nombres de 1 à 5, mais en utilisant obligatoirement une boucle `while`. N'oubliez pas d'incrémenter le compteur.
-
-### 2.5. Exercice 5 — Afficher les nombres pairs
-
-**Travail** : Parcourez les nombres de 1 à 20. À l'intérieur de la boucle, utilisez un `if` pour n'afficher que les nombres pairs.
-
-### 2.6. Exercice 6 — Afficher les nombres impairs
-
-**Travail** : Reprenez l'exercice précédent et modifiez la condition pour n'afficher que les nombres impairs.
-
-### 2.7. Exercice 7 — Calculer une somme
-
-**Travail** : Calculez `1 + 2 + 3 + 4 + 5`. Déclarez un accumulateur à `0` avant la boucle, puis ajoutez-y chaque valeur.
-**Résultat attendu** : 15.
-
-### 2.8. Exercice 8 — Calculer la somme de 1 à 10
-
-**Travail** : Calculez la somme de 1 à 10 de la même manière.
-**Résultat attendu** : 55.
-**Question** : Pourquoi l'accumulateur doit-il absolument être initialisé *avant* la boucle ?
-
-### 2.9. Exercice 9 — Calculer la somme des nombres pairs
-
-**Travail** : Parcourez de 1 à 20. Ajoutez à l'accumulateur uniquement les nombres pairs.
-**Résultat attendu** : 110.
-
-### 2.10. Exercice 10 — Compter les nombres pairs
-
-**Travail** : Parcourez de 1 à 20. Ne calculez pas la somme, mais comptez (ajoutez +1) à chaque fois que vous rencontrez un nombre pair.
-**Résultat attendu** : 10.
-
-### 2.11. Exercice 11 — Compter les nombres supérieurs à une valeur
-
-**Travail** : Parcourez de 1 à 20. Comptez combien de nombres sont strictement supérieurs à `12`.
-**Résultat attendu** : 8.
-
-### 2.12. Exercice 12 — Calculer un produit
-
-**Travail** : Calculez `1 × 2 × 3 × 4 × 5` en utilisant un accumulateur.
-**Attention** : La valeur de départ pour une multiplication ne peut pas être `0` !
-**Résultat attendu** : 120.
-
-### 2.13. Exercice 13 — Afficher une table de multiplication
-
-**Donnée** : `let nombre = 5;`
-**Travail** : Utilisez une boucle pour afficher la table de multiplication : `5 x 1 = 5`, jusqu'à `5 x 10 = 50`.
-
-### 2.14. Exercice 14 — Analyser une série de valeurs
-
-**Donnée** : `let maximum = 20;`
-**Travail** : Parcourez les nombres de 1 à `maximum`. Comptez le nombre de chiffres pairs ET calculez leur somme.
-**Résultat attendu** : Le programme doit afficher "Nombre : 10" et "Somme : 110".
-
-### 2.15. Travail à faire
-
-Choisissez **trois exercices** parmi les numéros 7 à 14.
-Pour chaque exercice, définissez clairement le compteur, la condition d'arrêt, et l'accumulateur (si nécessaire).
-Construisez le programme et testez. (Utilisez `while` au moins une fois).
-
-### Livrable
-
-Préparez un document incluant, pour chaque exercice : l'énoncé du problème, votre code source, et le résultat du test.
+**Résultat attendu :**
+```text
+Nombre de pairs : 10
+Somme des pairs : 110
+```
 
 ### Critère de réussite
 
-Les boucles s'arrêtent correctement (pas de boucle infinie), et les accumulateurs sont bien utilisés et placés hors de la boucle.
-
-### Résultat attendu
-
-Vous devez être capable de manipuler les compteurs, les accumulateurs et de filtrer les données avec un `if` au sein d'une boucle.
+Les boucles s'arrêtent correctement, les accumulateurs sont placés hors de la boucle, et les bonnes valeurs s'affichent.
 
 ## Bilan
 
-**Vous avez appris :**
-* À répéter un traitement avec `for` ou `while`.
-* À utiliser les compteurs et les accumulateurs.
-* À compter, additionner, multiplier, et filtrer des valeurs itératives.
-
 **Vous savez maintenant :**
-* Analyser et résoudre un problème répétitif grâce aux boucles.
+* Filtrer les valeurs d'une boucle avec un `if` intégré.
+* Utiliser un **accumulateur** pour construire un résultat progressif (somme, comptage).
+* Combiner filtre et accumulation dans une même boucle.
 
 ## Glossaire
 
-* **Accumulateur** : Variable conservant progressivement un résultat global (ex: une somme).
-* **Sélection** : Action de cibler des valeurs spécifiques à l'aide d'une condition au sein d'une boucle.
+* **Accumulateur** : Variable initialisée avant la boucle, mise à jour à chaque itération pour conserver un résultat global.
+* **Itération** : Un tour complet à l'intérieur de la boucle.
+* **Filtrage** : Sélection de certaines valeurs uniquement via un `if` dans la boucle.
