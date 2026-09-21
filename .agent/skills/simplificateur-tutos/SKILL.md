@@ -45,6 +45,10 @@ La section **"Données de départ"** ne doit être incluse dans le tutoriel ré�
 **Si ces trois champs sont vides (`""`), la section "Données de départ" doit être omise du tutoriel.**
 
 ## Procédure d'exécution
+0. **Identifier le domaine** : Avant toute action, lisez le Front Matter du tutoriel pour identifier son domaine (via le champ `ua`, `tuto_id`, ou le chemin du fichier). Ensuite, **activez et appliquez le skill de domaine correspondant** en plus des règles du présent skill :
+   - Tutoriel du domaine algo (C.121, UA.121.xx) → lire et appliquer le skill `domaine-algo`.
+   - Tutoriel du domaine analyse (C.111, UA.111.xx) → lire et appliquer le skill `domaine-analyse`.
+   - Tutoriel du domaine conception (C.112, UA.112.xx) → lire et appliquer le skill `domaine-conception`.
 1. **Analyse** : Dresse un constat rapide des redondances du fichier d'origine.
 2. **Proposition** : Si l'utilisateur le demande, propose un plan de fusion des concepts (sans modifier le code tout de suite).
 3. **Application** : Réécris intégralement le fichier `.normal.md` (ou autre) en appliquant les règles d'or, tout en conservant scrupuleusement la structure canonique (Objectif, Prérequis, Cas d'étude, Théorie, Pratique, Bilan, Glossaire). N'oublie pas d'ajouter `simplified: true` dans le Front Matter. **Vérifie aussi si les champs `data_js`/`data_html`/`data_css` sont non vides pour décider d'inclure ou non la section "Données de départ" (règle 7).**

@@ -9,14 +9,30 @@ description: >-
 
 Ce skill définit les règles spécifiques à appliquer lors de la rédaction ou de la modification de tutoriels appartenant au domaine de l'algorithmique (comme les tutoriels liés au domaine D.121.1).
 
-## 1. Exemples Exécutables (Règle d'or)
+## 1. Exemples Exécutables (Règle d'or absolue)
 
-Notre plateforme web intègre un éditeur de code interactif avec un moteur d'exécution en direct. Par conséquent :
+Notre plateforme web intègre un éditeur de code interactif. **Chaque bloc de code dans un tutoriel doit pouvoir être copié-collé et exécuté directement sans aucune modification.**
 
-*   **Tous les exemples de code fournis dans les tutoriels doivent être complets et exécutables de manière autonome.**
-*   Ne fournissez pas de snippets (bouts de code) partiels qui causeraient une erreur de syntaxe ou de référence (par exemple, utiliser une variable non déclarée au préalable).
-*   Incluez toujours des variables d'initialisation (données de départ) pour définir le contexte.
-*   Terminez les exemples par des instructions de sortie (ex: `console.log(...)`) pour que l'apprenant puisse voir un résultat concret et immédiat en cliquant sur "Exécuter" dans son éditeur.
+Pour cela, chaque exemple doit obligatoirement :
+
+*   **Déclarer toutes ses variables** : ne jamais utiliser une variable sans la déclarer avec `let` ou `const` dans le même bloc.
+*   **Inclure une instruction de sortie** : terminer le bloc par au moins un `console.log(...)` pour que l'apprenant voie un résultat dans la console.
+*   **Être autonome** : le bloc ne doit pas dépendre d'un code d'une autre section ou d'une variable définie ailleurs.
+
+**Exemple incorrect (non exécutable) :**
+```javascript
+if (age >= 18) {
+    console.log("Accès autorisé"); // ❌ age n'est pas déclaré !
+}
+```
+
+**Exemple correct (exécutable) :**
+```javascript
+let age = 20; // ✅ variable déclarée
+if (age >= 18) {
+    console.log("Accès autorisé"); // ✅ sortie console présente
+}
+```
 
 ## 2. Démarche Pédagogique Algorithmique
 

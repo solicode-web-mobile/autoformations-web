@@ -9,6 +9,7 @@ version: "normal"
 ua: "UA.121.12"
 nav_order: 2
 data_js: ""
+simplified: true
 ---
 
 ## 1. Objectif
@@ -20,17 +21,6 @@ Apprendre à utiliser les **conditions** pour contrôler le comportement de votr
 * Utilisation de variables et de `console.log()`.
 * Maîtrise des opérateurs de comparaison (`===`, `>`, `<`, etc.).
 
-## Données de départ
-
-### JavaScript
-
-Créez un fichier `conditions.js` et ajoutez ce code pour préparer vos tests :
-
-```javascript
-let age = 20;
-let note = 14;
-```
-
 ## Partie 1 — Théorie
 
 ### 1.1. Agir sous condition (`if` / `else`)
@@ -38,6 +28,7 @@ let note = 14;
 Une condition demande à l'ordinateur de vérifier une règle. Si la règle est vraie (`true`), il exécute un bloc de code. Sinon, il peut exécuter un bloc alternatif grâce à `else`.
 
 ```javascript
+let age = 20;
 if (age >= 18) {
     console.log("Accès autorisé"); // Exécuté si vrai
 } else {
@@ -60,6 +51,7 @@ Lorsqu'il y a plus de deux issues possibles, on enchaîne avec `else if`.
 L'ordinateur lit de haut en bas et **s'arrête dès qu'une condition est vraie**. Il faut donc toujours écrire de la règle la plus spécifique à la plus générale.
 
 ```javascript
+let note = 14;
 if (note >= 16) {
     console.log("Très bien");
 } else if (note >= 10) {
@@ -76,10 +68,16 @@ Plutôt que d'écrire plusieurs `if` imbriqués, on regroupe les règles avec de
 * **Le OU logique (`||`)** : **Au moins une** des conditions doit être vraie.
 
 ```javascript
+let age = 20;
+let inscrit = true;
+
 // Les deux doivent être vrais
 if (age >= 18 && inscrit === true) {
     console.log("Accès membre");
 }
+
+let membre = false;
+let invitation = true;
 
 // L'un des deux suffit
 if (membre === true || invitation === true) {
