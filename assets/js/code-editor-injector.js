@@ -31,13 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
         pre.insertAdjacentElement("afterend", buttonWrapper);
 
         button.addEventListener("click", function () {
-            let iframe = buttonWrapper.nextElementSibling;
-            if (iframe && iframe.matches("iframe.auto-wrapper")) {
-                iframe.style.display = "block";
+            let nextEl = buttonWrapper.nextElementSibling;
+            
+            // Si l'élément suivant est l'iframe ou son conteneur (généré par iframe-controls.js)
+            if (nextEl && (nextEl.matches("iframe.auto-wrapper") || (nextEl.matches("div.iframe-wrapper") && nextEl.querySelector("iframe.auto-wrapper")))) {
+                nextEl.style.display = nextEl.style.display === "none" ? "block" : "none";
                 return;
             }
 
-            iframe = document.createElement("iframe");
+            let iframe = document.createElement("iframe");
             iframe.className = "auto-wrapper";
             iframe.height = "500";
             iframe.title = "Résultat du code " + language.toUpperCase();
@@ -49,7 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const languages = ["html", "css", "js", "php"];
             
             languages.forEach(lang => {
-                const content = (language === lang) ? exampleCode : (pageData[lang] || "");
+                let content = (language === lang) ? exampleCode : (pageData[lang] || "");
+                // Si le contenu est un chemin local (/code/...), le transformer en URL HTTP complète
+                // pour que l'éditeur puisse le charger via fetch(), en tenant compte du baseurl Jekyll
+                if (content && content.startsWith("/code/")) {
+                    const baseUrl = (typeof window.__jekyll_baseurl !== "undefined") ? window.__jekyll_baseurl : "";
+                    content = window.location.origin + baseUrl + content;
+                }
                 if (content) params.set(lang, content);
             });
 

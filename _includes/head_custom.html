@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}">
 
 {% case page.layout %}
@@ -24,7 +23,6 @@
 
 <link rel="stylesheet" href="{{ '/assets/css/editor.css' | relative_url }}">
 
-
 <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/vs2015.min.css"
@@ -35,15 +33,11 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-
         document
             .querySelectorAll("pre code")
             .forEach(function (codeBlock) {
-
                 hljs.highlightElement(codeBlock);
-
             });
-
     });
 </script>
 
@@ -53,6 +47,9 @@
 
 <script>
     window.editeurCodeUrl = "{{ '/editeur-code' | relative_url }}";
+    window.__jekyll_baseurl = "{{ site.baseurl }}";
 </script>
 
 <script defer src="{{ '/assets/js/code-editor-injector.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/fullscreen-block.js' | relative_url }}"></script>
+
