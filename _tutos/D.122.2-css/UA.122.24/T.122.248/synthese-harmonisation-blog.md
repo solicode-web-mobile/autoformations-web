@@ -7,7 +7,7 @@ tuto_id: "T.122.24.8"
 type: "classique"
 version: "normal"
 ua: "UA.122.24"
-nav_order: 10
+nav_order: 8
 data_html: ""
 data_css: ""
 data_js: ""
