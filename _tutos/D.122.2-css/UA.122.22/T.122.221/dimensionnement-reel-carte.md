@@ -43,6 +43,15 @@ data_css: |
 data_js: ""
 ---
 
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
+
 ## 1. Objectif
 
 Comprendre comment `padding` et `border` influencent la taille réelle d’une carte.

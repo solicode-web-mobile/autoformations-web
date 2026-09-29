@@ -1,19 +1,4 @@
 ---
-title: "Répartir l'espace entre les cartes"
-layout: tuto
-slug: "repartir-espace-cartes"
-permalink: /tutos/repartir-espace-cartes/
-tuto_id: "T.122.237"
-type: "classique"
-version: "normal"
-ua: "UA.122.23"
-nav_order: 7
-data_html: ""
-data_css: ""
-data_js: ""
----
-
----
 title: "Répartir l’espace entre les cartes"
 
 layout: tuto
@@ -67,8 +52,16 @@ data_html: |
 data_css: ""
 
 data_js: ""
-
 ---
+
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
 
 ## 1. Objectif
 
