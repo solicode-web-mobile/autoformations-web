@@ -25,7 +25,8 @@
     "folder-color.pathColors": [
         {
             "folderPath": "autoformations-web\\.agent\\",
-            "color": "foldercolorizer.color_d7af5f"
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_d787af"
         }
     ]
 }
