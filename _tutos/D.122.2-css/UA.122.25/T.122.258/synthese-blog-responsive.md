@@ -3,7 +3,7 @@ title: "Projet de synthèse — Blog responsive"
 layout: tuto
 slug: "synthese-blog-responsive"
 permalink: /tutos/synthese-blog-responsive/
-tuto_id: "T.122.25.10"
+tuto_id: "T.122.258"
 type: "classique"
 version: "normal"
 ua: "UA.122.25"

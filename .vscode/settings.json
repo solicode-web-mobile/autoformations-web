@@ -27,6 +27,10 @@
             "folderPath": "autoformations-web\\.agent\\",
             "isFolderOnly": true,
             "color": "foldercolorizer.color_d787af"
+        },
+        {
+            "filePath": "autoformations-web\\_tutos\\D.122.2-css\\_notions-et-uas.md",
+            "color": "foldercolorizer.color_008080"
         }
     ]
 }

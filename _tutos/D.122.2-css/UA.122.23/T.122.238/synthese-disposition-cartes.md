@@ -3,7 +3,7 @@ title: "Projet de synthèse — Disposition des cartes"
 layout: tuto
 slug: "synthese-disposition-cartes"
 permalink: /tutos/synthese-disposition-cartes/
-tuto_id: "T.122.23.10"
+tuto_id: "T.122.238"
 type: "classique"
 version: "normal"
 ua: "UA.122.23"
