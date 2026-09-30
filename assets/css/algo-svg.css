@@ -15,39 +15,44 @@
 
 .algo-svg-idx {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 16px;
-  font-weight: bold;
-  fill: #7253ed;
+  font-size: 14px;
+  font-weight: 600;
+  fill: #6b7280;
   text-anchor: middle;
 }
 
 .algo-svg-box {
-  fill: #f3f0ff;
+  fill: #ffffff;
+  stroke: #e5e7eb;
+  stroke-width: 1.5px;
+  rx: 6px;
+  transition: all 0.2s ease;
+}
+
+.algo-svg-box:hover {
   stroke: #c4b5fd;
-  stroke-width: 2px;
-  rx: 8px;
+  fill: #f9f5ff;
 }
 
 .algo-svg-val {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 20px;
-  font-weight: bold;
-  fill: #374151;
+  font-size: 18px;
+  font-weight: 700;
+  fill: #1f2937;
   text-anchor: middle;
 }
 
 .algo-svg-arrow {
-  stroke: #9ca3af;
-  stroke-width: 2px;
-  stroke-dasharray: 4;
-  marker-end: url(#arrowhead);
+  stroke: #d1d5db;
+  stroke-width: 1.5px;
 }
 
 .algo-svg-label {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 14px;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 12px;
   font-weight: 600;
-  fill: #6b7280;
+  fill: #9ca3af;
+  letter-spacing: 0.05em;
 }
 
 .algo-svg-label-center {
@@ -63,10 +68,16 @@
   stroke: #7253ed;
 }
 
+.algo-svg-hl-box:hover {
+  fill: #6042d3;
+  stroke: #6042d3;
+}
+
 .algo-svg-hl-text {
   fill: #ffffff;
 }
 
 .algo-svg-hl-idx {
-  fill: #111827;
+  fill: #7253ed;
+  font-weight: 700;
 }

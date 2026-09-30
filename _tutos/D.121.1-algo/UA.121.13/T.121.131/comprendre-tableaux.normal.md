@@ -52,6 +52,7 @@ Pour accéder à un élément spécifique, on utilise sa position, appelée **in
 {% include array-svg.html
    name="notes"
    values="12,15,8,17"
+   highlight = "0"
 %}
 
 Pour lire un élément, on place son index entre crochets juste après le nom du tableau :
@@ -116,9 +117,9 @@ Index 4 : 10
 ```
 
 **Livrable :**
-Créez un document Markdown (ou un Google Doc) contenant :
+Créez un fichier `tableaux.js` contenant :
 1. Le code JavaScript complet et exécutable de votre programme.
-2. Une courte phrase expliquant pourquoi le dernier index n'est pas égal à `length`.
+2. Une courte phrase expliquant (en commentaire `//` à la fin du fichier) pourquoi le dernier index n'est pas égal à `length`.
 
 **Critère de réussite :**
 Le code est exécutable tel quel, utilise bien `.length` pour trouver la dernière note, et la console affiche exactement le résultat attendu.
