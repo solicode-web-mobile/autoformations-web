@@ -8,7 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.122.12"
 nav_order: 4
-data_html: ""
+simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
@@ -432,429 +432,91 @@ data_css: ""
 data_js: ""
 ---
 
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
+
 ## 1. Objectif
 
-Dans ce tutoriel, vous allez apprendre à :
-
-- utiliser l'attribut `id` ;
-- créer un identifiant unique ;
-- créer un lien interne avec `href="#id"` ;
-- relier un lien à une zone précise de la page.
-
-À la fin du tutoriel, le bouton « Lire les articles » permettra d'aller directement à la zone des articles.
+- Créer des ancres avec l'attribut `id`.
+- Créer des liens internes permettant de scroller directement vers ces ancres.
 
 ## 2. Prérequis
 
-Vous devez déjà savoir :
-
-- créer une page HTML ;
-- utiliser des balises HTML ;
-- utiliser `header` ;
-- utiliser `nav` ;
-- utiliser `main` ;
-- utiliser `footer` ;
-- utiliser `section` ;
-- créer des liens avec `a` et `href`.
-
-Vous devez avoir réalisé :
-
-- **T.122.121 — L'en-tête et la navigation** ;
-- **T.122.122 — La zone principale et le pied de page** ;
-- **T.122.123 — Regrouper en sections**.
+- Savoir structurer une page HTML (`main`, `section`, `a`, `href`).
 
 ## Données de départ
 
-La page d'accueil possède déjà une structure sémantique.
-
-Elle contient :
-
-- un `header` ;
-- un `nav` ;
-- un `main` ;
-- plusieurs `section` ;
-- un `footer`.
-
-Le bouton « Lire les articles » contient déjà un lien interne :
+Dans notre page, un bouton « Lire les articles » existe déjà dans la zone d'accueil avec un lien interne (`href="#articles"`) :
 
 ```html
-<a
-    href="#articles"
-    class="hero-button hero-button-primary"
->
+<a href="#articles" class="hero-button hero-button-primary">
     Lire les articles
 </a>
 ```
 
-Mais aucune zone ne possède encore l'identifiant `articles`.
-
-Le lien ne peut donc pas encore atteindre la zone des articles.
-
-### HTML
-
-La zone des articles est actuellement :
-
-```html
-<section class="articles-section">
-
-    ...
-
-</section>
-```
-
-Dans ce tutoriel, vous allez identifier cette zone avec un `id`.
-
-### CSS
-
-Le CSS existant est conservé.
-
-Aucun nouveau CSS n'est étudié.
-
-### JavaScript
-
-Aucun JavaScript n'est utilisé.
+Cependant, il ne fonctionne pas car aucune section n'a encore l'identifiant correspondant (`id="articles"`).
 
 ## Partie 1 — Théorie
 
-### 1.1. L'attribut `id`
+### 1.1. Les ancres et les liens internes
 
-L'attribut `id` permet d'identifier un élément HTML.
+Pour naviguer à l'intérieur d'une même page, on utilise un système d'ancres :
 
-Exemple :
+1. **La cible (l'ancre) :** On ajoute un attribut `id` (identifiant unique) sur l'élément de destination.
+2. **Le lien :** On crée un lien (`<a>`) dont l'attribut `href` commence par un `#` suivi du nom de l'identifiant.
+
+**Exemple :**
 
 ```html
-<section id="articles">
-    ...
+<!-- Le lien -->
+<a href="#contact">Aller au formulaire de contact</a>
+
+<!-- Beaucoup de contenu ... -->
+
+<!-- La cible -->
+<section id="contact">
+    <h2>Contactez-nous</h2>
 </section>
 ```
 
-Ici, l'identifiant de la section est `articles`.
-
-L'identifiant permet de retrouver précisément cette zone.
-
-### 1.2. Un identifiant unique
-
-Un `id` identifie une seule zone dans une page.
-
-Exemple :
-
-```html
-<section id="articles">
-    ...
-</section>
-```
-
-La valeur `articles` ne doit pas être utilisée pour identifier une autre zone de cette même page.
-
-### 1.3. Le lien interne
-
-Un lien peut pointer vers un élément qui possède un `id`.
-
-Pour cela, on utilise `#` avant la valeur de l'identifiant.
-
-Exemple :
-
-```html
-<a href="#articles">
-    Lire les articles
-</a>
-```
-
-Le navigateur cherche l'élément qui possède :
-
-```html
-id="articles"
-```
-
-Le lien et l'identifiant doivent utiliser la même valeur.
-
-```text
-href="#articles"
-       ↓
-   id="articles"
-```
-
-### 1.4. À retenir
-
-- `id` identifie une zone précise ;
-- un `id` doit être unique dans la page ;
-- `href="#articles"` crée un lien interne ;
-- le `#` indique que le lien cible un `id` ;
-- la valeur du `href` doit correspondre à la valeur du `id`.
+*(Note : Un `id` doit être strictement unique sur toute la page).*
 
 ## Partie 2 — Pratique
 
-### 2.1. Repérer le lien interne
+### 2.1. Ajouter l'identifiant à la cible
 
-Dans la zone d'accueil, recherchez :
-
-```html
-<a
-    href="#articles"
-    class="hero-button hero-button-primary"
->
-    Lire les articles
-</a>
-```
-
-Le lien utilise déjà `#articles`.
-
-Vous devez maintenant créer la zone correspondante.
-
-### 2.2. Identifier la zone des articles
-
-Dans `main`, recherchez :
+Dans votre code HTML de départ, cherchez la section qui contient les articles.
 
 ```html
 <section class="articles-section">
 ```
 
-Cette section contient les catégories et les publications.
-
-Elle est donc la cible du lien « Lire les articles ».
-
-Modifiez la balise ouvrante :
+Ajoutez-lui l'attribut `id="articles"`.
 
 ```html
-<section class="articles-section">
+<section id="articles" class="articles-section">
 ```
 
-en :
+*(Ne modifiez pas le contenu à l'intérieur de la section).*
 
-```html
-<section
-    id="articles"
-    class="articles-section"
->
-```
+### 2.2. Tester le résultat
 
-Ne modifiez pas le contenu de la section.
+Le lien `<a href="#articles">` et la cible `<section id="articles">` sont maintenant reliés !
 
-### 2.3. Vérifier la correspondance
-
-Vous devez maintenant avoir :
-
-```html
-<a href="#articles">
-    Lire les articles
-</a>
-```
-
-et :
-
-```html
-<section
-    id="articles"
-    class="articles-section"
->
-```
-
-Les deux utilisent le même nom :
-
-```text
-articles
-```
-
-Le lien peut maintenant atteindre cette section.
-
-### 2.4. Conserver la structure
-
-Ne supprimez pas :
-
-- le `header` ;
-- le `nav` ;
-- le `main` ;
-- les autres `section` ;
-- le `footer` ;
-- les contenus des articles.
-
-Vous ajoutez seulement un identifiant à la section des articles.
-
-### 2.5. Vérifier le code
-
-La partie concernée de la page doit maintenant être :
-
-```html
-<section class="hero">
-
-    <h1>
-        Mon Blog Personnel :
-        <br>
-        <span>
-            Développer &amp; Partager
-        </span>
-    </h1>
-
-    <p>
-        Découvrez mes derniers articles sur le développement web,
-        l'architecture logicielle et les bonnes pratiques
-        d'intégration UI/UX.
-    </p>
-
-    <div class="hero-actions">
-
-        <a
-            href="#articles"
-            class="hero-button hero-button-primary"
-        >
-            Lire les articles
-        </a>
-
-        <a
-            href="public-apropos.html"
-            class="hero-button hero-button-secondary"
-        >
-            À propos de moi
-        </a>
-
-    </div>
-
-</section>
-
-<section
-    id="articles"
-    class="articles-section"
->
-
-    ...
-
-</section>
-```
-
-Le bouton et la section sont maintenant reliés.
-
-### 2.6. Tester la navigation
-
-Ouvrez la page dans le navigateur.
-
-Cliquez sur :
-
-**Lire les articles**
-
-Vérifiez que le navigateur se déplace vers la zone des articles.
-
-Vérifiez aussi que :
-
-- les articles sont toujours visibles ;
-- les catégories sont toujours visibles ;
-- la page garde la même présentation ;
-- les autres liens fonctionnent.
-
-### 2.7. Présenter la structure
-
-Expliquez la relation entre le lien et la cible :
-
-```text
-Lien
-└── href="#articles"
-          ↓
-Zone cible
-└── id="articles"
-```
-
-Vous devez pouvoir expliquer pourquoi les deux valeurs doivent être identiques.
-
-## Partie 3 — Développement progressif
-
-**Série :** Page d'accueil du blog
-
-**Position :** 4e tutoriel de la série
-
-**Incrément :** Ajout d'un identifiant à la zone des articles pour activer la navigation interne.
-
-**Intégration demandée :**
-
-Utilisez les notions étudiées dans ce tutoriel pour compléter votre page d'accueil.
-
-Rendez fonctionnel le bouton :
-
-```text
-Lire les articles
-```
-
-Le lien doit conduire directement à la zone des articles.
-
-Conservez :
-
-- les textes ;
-- les liens existants ;
-- les classes CSS ;
-- les sections ;
-- les articles ;
-- la présentation.
-
-**Livrable :**
-
-Le fichier HTML de la page d'accueil avec :
-
-- un lien interne `href="#articles"` ;
-- une zone cible avec `id="articles"`.
-
-**Critère de réussite :**
-
-Un clic sur « Lire les articles » déplace le navigateur vers la zone des articles.
-
-**Résultat attendu :**
-
-```html
-<section class="hero">
-
-    ...
-
-    <a
-        href="#articles"
-        class="hero-button hero-button-primary"
-    >
-        Lire les articles
-    </a>
-
-    ...
-
-</section>
-
-<section
-    id="articles"
-    class="articles-section"
->
-
-    <div class="articles-container">
-
-        ...
-
-    </div>
-
-</section>
-```
-
-```html
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/html/tuto-122-124-html.html' | relative_url}}"
-    height="700"
-    title="Résultat attendu">
-</iframe>
-```
-
-Le navigateur doit conserver la même présentation.
-
-Le bouton « Lire les articles » doit maintenant conduire à la section des articles.
+Dans l'aperçu de votre navigateur, cliquez sur le bouton "Lire les articles". Vous verrez que la page scrolle automatiquement jusqu'à la section des articles.
 
 ## Bilan
 
-**Vous avez réalisé :**
-
-La navigation interne entre le bouton d'accueil et la zone des articles.
-
-**Vous savez maintenant :**
-
-- utiliser `id` ;
-- créer un identifiant unique ;
-- utiliser `href="#id"` ;
-- relier un lien à une zone précise ;
-- tester une navigation interne dans une page HTML.
+Vous savez désormais créer une navigation interne (ancres) pour fluidifier le parcours utilisateur sur des pages longues !
 
 ## Glossaire
 
-- **`id`** : identifiant unique d'un élément HTML.
-- **`href="#id"`** : lien vers un élément identifié par un `id`.
-- **Ancre** : point précis d'une page vers lequel un lien peut conduire.
-- **Navigation interne** : déplacement vers une zone de la même page.
+- **`id`** : Identifiant unique d'un élément HTML.
+- **`href="#id"`** : Cible d'un lien pointant vers un élément identifié par un `id` dans la même page.
+- **Ancre** : Point précis de la page vers lequel un lien interne scrolle.

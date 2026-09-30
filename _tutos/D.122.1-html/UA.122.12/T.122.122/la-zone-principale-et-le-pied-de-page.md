@@ -8,6 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.122.12"
 nav_order: 2
+simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
@@ -344,349 +345,105 @@ data_css: ""
 data_js: ""
 ---
 
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
+
 ## 1. Objectif
 
-Dans ce tutoriel, vous allez apprendre à :
-
-- utiliser la balise `main` ;
-- utiliser la balise `footer` ;
-- identifier le contenu principal d'une page ;
-- identifier le pied de page.
-
-À la fin, la page aura une structure globale plus claire.
+- Structurer le contenu central avec la balise sémantique `main`.
+- Structurer le bas de page avec la balise sémantique `footer`.
 
 ## 2. Prérequis
 
-Vous devez déjà savoir :
-
-- créer une page HTML ;
-- utiliser des balises HTML ;
-- utiliser des attributs HTML ;
-- créer des liens ;
-- créer une navigation avec `header` et `nav`.
-
-Ces notions ont été étudiées dans les tutoriels précédents.
-
-Vous devez également avoir réalisé le tutoriel **T.122.121 — L'en-tête et la navigation**.
+- Savoir structurer l'en-tête avec `header` et `nav`.
 
 ## Données de départ
 
-La page contient déjà un en-tête avec `header` et `nav`.
-
-Le contenu placé après l'en-tête correspond au contenu principal du site.
-
-La page contient aussi une zone située à la fin du document.
-
-### HTML
-
-Le début de la page est déjà structuré ainsi :
+Le fichier contient déjà un en-tête (`<header>`). Le reste du code est structuré avec des `div` génériques pour la zone principale et le pied de page :
 
 ```html
 <header class="site-header">
-
-    <nav class="navbar">
-        ...
-    </nav>
-
+    <!-- ... -->
 </header>
-```
 
-Le contenu principal se trouve ensuite.
-
-La fin de la page contient les informations du pied de page.
-
-### CSS
-
-Le CSS existant est conservé.
-
-Aucun nouveau CSS n'est étudié.
-
-### JavaScript
-
-Aucun JavaScript n'est utilisé dans ce tutoriel.
-
-## Partie 1 — Théorie
-
-### 1.1. La balise `main`
-
-`main` représente le contenu principal de la page.
-
-Elle contient le contenu important de la page courante.
-
-Exemple :
-
-```html
-<main>
-
-    <h1>Mon Blog</h1>
-
-    <p>Découvrez mes articles.</p>
-
-</main>
-```
-
-La balise `main` permet d'identifier clairement la zone principale.
-
-### 1.2. La balise `footer`
-
-`footer` représente le pied de page.
-
-Il se trouve généralement à la fin de la page.
-
-Il peut contenir :
-
-- des informations sur le site ;
-- des liens ;
-- des informations de contact ;
-- des informations de copyright.
-
-Exemple :
-
-```html
-<footer>
-
-    <p>Mon Blog Personnel</p>
-
-</footer>
-```
-
-### 1.3. Organiser la page
-
-Une page peut avoir une structure globale comme celle-ci :
-
-```text
-header
-└── nav
-
-main
-└── contenu principal
-
-footer
-└── informations de fin de page
-```
-
-Chaque balise indique le rôle de la zone.
-
-### 1.4. À retenir
-
-- `main` contient le contenu principal.
-- `footer` représente le pied de page.
-- `main` se trouve entre l'en-tête et le pied de page.
-- `footer` se trouve généralement à la fin du document.
-
-## Partie 2 — Pratique
-
-### 2.1. Transformer la zone principale
-
-Dans le fichier HTML, recherchez :
-
-```html
 <div class="page-content">
-```
+    <!-- Contenu des articles -->
+</div>
 
-Cette zone contient le contenu principal de la page.
-
-Remplacez la balise ouvrante par :
-
-```html
-<main class="page-content">
-```
-
-Remplacez ensuite sa balise fermante correspondante :
-
-```html
+<div class="site-footer">
+    <!-- Pied de page -->
 </div>
 ```
 
-par :
+## Partie 1 — Théorie
+
+### 1.1. Les balises `<main>` et `<footer>`
+
+Pour identifier clairement les grandes zones d'une page HTML, on utilise des balises sémantiques spécifiques à la place de simples `div` :
+
+- **`<main>`** : Définit le contenu principal de la page. On n'utilise qu'un seul `<main>` par page, placé entre l'en-tête et le pied de page.
+- **`<footer>`** : Définit le pied de page (souvent situé à la fin du document, contenant des informations comme le copyright ou les liens de navigation de bas de page).
+
+**Structure globale sémantique d'une page HTML :**
 
 ```html
+<header>
+    <nav>
+        <!-- En-tête et navigation principale -->
+    </nav>
+</header>
+
+<main>
+    <!-- Le contenu principal et important de la page -->
 </main>
-```
 
-Ne modifiez pas le contenu situé à l'intérieur.
-
-### 2.2. Transformer le pied de page
-
-À la fin du document, recherchez :
-
-```html
-<div class="site-footer">
-```
-
-Cette zone contient les informations placées en bas de la page.
-
-Remplacez la balise ouvrante par :
-
-```html
-<footer class="site-footer">
-```
-
-Remplacez ensuite sa balise fermante correspondante par :
-
-```html
+<footer>
+    <!-- Le pied de page -->
 </footer>
 ```
 
-Conservez le contenu du pied de page.
+## Partie 2 — Pratique
 
-### 2.3. Vérifier la structure
+### 2.1. Sémantiser la zone principale et le pied de page
 
-Le document doit maintenant commencer et se terminer ainsi :
+Dans le fichier HTML de départ, remplacez les balises génériques par les balises sémantiques adaptées.
+
+1. **La zone principale :** Remplacez la balise `<div class="page-content">` (et sa balise fermante correspondante) par `<main class="page-content">`.
+2. **Le pied de page :** Remplacez la balise `<div class="site-footer">` (et sa balise fermante correspondante) par `<footer class="site-footer">`.
+
+*(Attention à ne pas modifier le contenu à l'intérieur de ces balises).*
+
+### 2.2. Résultat attendu
+
+L'affichage visuel de la page reste inchangé, mais la structure du document est désormais correcte :
 
 ```html
 <header class="site-header">
-
-    <nav class="navbar">
-        ...
-    </nav>
-
+    <!-- ... -->
 </header>
 
 <main class="page-content">
-
-    ...
-    
+    <!-- Contenu principal ... -->
 </main>
 
 <footer class="site-footer">
-
-    ...
-
+    <!-- Pied de page ... -->
 </footer>
 ```
 
-### 2.4. Vérifier le contenu principal
 
-Dans `main`, conservez :
-
-- la zone d'accueil ;
-- la zone des articles ;
-- les contenus déjà présents.
-
-Vous ne devez pas modifier leur contenu.
-
-Dans ce tutoriel, vous apprenez uniquement à identifier la zone principale avec `main`.
-
-### 2.5. Vérifier le pied de page
-
-Dans `footer`, conservez :
-
-- le nom du blog ;
-- les liens de navigation ;
-- les informations de contact ;
-- le copyright.
-
-Vous ne devez pas modifier ces contenus.
-
-### 2.6. Tester la page
-
-Ouvrez la page dans le navigateur.
-
-Vérifiez que :
-
-- l'en-tête est toujours visible ;
-- la navigation fonctionne ;
-- le contenu principal est toujours visible ;
-- le pied de page est toujours visible ;
-- la présentation n'est pas modifiée ;
-- les liens fonctionnent.
-
-Le changement porte sur la structure HTML.
-
-### 2.7. Vérifier la structure finale
-
-Vous devez obtenir cette organisation :
-
-```html
-<header>
-    <nav>
-        ...
-    </nav>
-</header>
-
-<main>
-    ...
-</main>
-
-<footer>
-    ...
-</footer>
-```
-
-Vous devez pouvoir expliquer le rôle de chacune des trois zones.
-
-## Partie 3 — Développement progressif
-
-**Série :** Page d'accueil du blog
-
-**Position :** 2e tutoriel de la série
-
-**Incrément :** Ajout des balises sémantiques `main` et `footer`.
-
-**Intégration demandée :**
-
-Utilisez les notions étudiées dans ce tutoriel pour poursuivre la structure de votre page d'accueil.
-
-Conservez le contenu déjà réalisé dans T.122.121.
-
-Modifiez uniquement les conteneurs qui représentent :
-
-- le contenu principal ;
-- le pied de page.
-
-**Livrable :**
-
-Le fichier HTML de la page d'accueil avec :
-
-```html
-<header>
-    <nav>
-        ...
-    </nav>
-</header>
-
-<main>
-    ...
-</main>
-
-<footer>
-    ...
-</footer>
-```
-
-**Critère de réussite :**
-
-La page utilise correctement `main` pour le contenu principal et `footer` pour le pied de page, sans supprimer le contenu existant.
-
-**Résultat attendu :**
-
-Le navigateur affiche la même page visuelle, mais sa structure HTML contient maintenant `header`, `nav`, `main` et `footer`.
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/html/tuto-122-122-html.html' | relative_url}}"
-    height="700"
-    title="Résultat attendu">
-</iframe>
 
 ## Bilan
 
-**Vous avez réalisé :**
-
-La structure globale de la page avec un en-tête, une zone principale et un pied de page.
-
-**Vous savez maintenant :**
-
-- utiliser `main` ;
-- utiliser `footer` ;
-- identifier le contenu principal ;
-- identifier le pied de page ;
-- organiser les grandes zones d'une page HTML.
+Vous savez désormais structurer les trois grandes zones sémantiques d'une page Web complète en combinant `header`, `main` et `footer`.
 
 ## Glossaire
 
-- **`main`** : zone qui contient le contenu principal de la page.
-- **`footer`** : zone située généralement à la fin de la page.
-- **Contenu principal** : contenu essentiel de la page actuelle.
-- **Pied de page** : zone finale contenant des informations et des liens.
+- **`<main>`** : Zone contenant le contenu principal de la page.
+- **`<footer>`** : Pied de page contenant généralement des informations de conclusion ou de navigation.

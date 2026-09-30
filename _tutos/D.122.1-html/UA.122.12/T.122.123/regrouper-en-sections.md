@@ -8,7 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.122.12"
 nav_order: 3
-data_html: ""
+simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
@@ -397,394 +397,95 @@ data_css: ""
 data_js: ""
 ---
 
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
+
 ## 1. Objectif
 
-Dans ce tutoriel, vous allez apprendre à :
-
-- utiliser la balise `section` ;
-- regrouper des contenus liés ;
-- découper le contenu de `main` en plusieurs zones ;
-- organiser plus clairement une page d'accueil.
-
-À la fin, le contenu principal sera organisé en sections.
+- Utiliser la balise `section` pour découper le contenu principal en plusieurs zones thématiques (accueil, articles, etc.).
 
 ## 2. Prérequis
 
-Vous devez déjà savoir :
-
-- créer une page HTML ;
-- utiliser des balises HTML ;
-- utiliser des attributs ;
-- créer des liens ;
-- utiliser `header` ;
-- utiliser `nav` ;
-- utiliser `main` ;
-- utiliser `footer`.
-
-Vous devez avoir réalisé **T.122.121** et **T.122.122**.
+- Savoir structurer une page avec `header`, `main` et `footer`.
 
 ## Données de départ
 
-La page d'accueil possède déjà une structure globale :
-
-```text
-header
-└── nav
-
-main
-└── contenu de la page
-
-footer
-└── informations de fin de page
-```
-
-Dans `main`, plusieurs contenus appartiennent à des zones différentes.
-
-Dans ce tutoriel, vous allez utiliser `section` pour mieux découper ces contenus.
-
-### HTML
-
-Le début de `main` est actuellement :
+La page contient déjà un `main`. À l'intérieur, deux blocs majeurs sont définis par de simples `div` (`div.hero` et `div.articles-section`) :
 
 ```html
 <main class="page-content">
-
     <div class="hero">
-        ...
+        <!-- Contenu de l'accueil -->
     </div>
 
     <div class="articles-section">
-        ...
+        <!-- Contenu des articles -->
     </div>
-
 </main>
 ```
-
-Ces deux zones représentent deux parties différentes de la page.
-
-### CSS
-
-Le CSS existant est conservé.
-
-Aucun nouveau CSS n'est étudié.
-
-### JavaScript
-
-Aucun JavaScript n'est utilisé.
 
 ## Partie 1 — Théorie
 
-### 1.1. La balise `section`
+### 1.1. La balise `<section>`
 
-`section` permet de regrouper des contenus liés dans une même partie.
+La balise sémantique `<section>` permet de regrouper des contenus liés au sein d'une même partie logique. Une page peut (et devrait) contenir plusieurs sections dans son `<main>`.
 
-Exemple :
-
-```html
-<section>
-
-    <h2>
-        Derniers articles
-    </h2>
-
-    <p>
-        Découvrez les nouveaux articles.
-    </p>
-
-</section>
-```
-
-La balise `section` permet donc de délimiter une partie du contenu.
-
-### 1.2. Une section dans `main`
-
-Une page peut contenir plusieurs sections dans son contenu principal.
-
-Exemple :
+**Structure classique avec sections :**
 
 ```html
 <main>
-
     <section>
-        ...
+        <h2>Accueil</h2>
+        <p>Bienvenue sur mon site.</p>
     </section>
 
     <section>
-        ...
+        <h2>Articles récents</h2>
+        <!-- Liste des articles -->
     </section>
-
 </main>
 ```
-
-Chaque `section` représente une partie distincte de `main`.
-
-### 1.3. Regrouper les contenus
-
-Dans la page du blog, le contenu principal contient plusieurs zones.
-
-Par exemple :
-
-```text
-main
-├── zone d'accueil
-└── zone des articles
-```
-
-Ces zones peuvent être représentées avec `section`.
-
-### 1.4. À retenir
-
-- `section` représente une partie du contenu.
-- Une page peut contenir plusieurs `section`.
-- Les `section` peuvent être placées dans `main`.
-- Une section regroupe des contenus liés.
 
 ## Partie 2 — Pratique
 
-### 2.1. Transformer la zone d'accueil
+### 2.1. Sémantiser les zones du contenu principal
 
-Dans `main`, recherchez :
+Dans le fichier HTML de départ, transformez les zones génériques en sections sémantiques.
 
-```html
-<div class="hero">
-```
+1. **La zone d'accueil :** Remplacez `<div class="hero">` (et sa balise fermante) par `<section class="hero">`.
+2. **La zone des articles :** Remplacez `<div class="articles-section">` (et sa balise fermante) par `<section class="articles-section">`.
 
-Cette zone contient le message d'accueil et les actions principales.
+*(Attention à ne pas supprimer ou modifier le contenu à l'intérieur de ces balises).*
 
-Remplacez la balise ouvrante par :
+### 2.2. Résultat attendu
 
-```html
-<section class="hero">
-```
-
-Puis remplacez la balise fermante correspondante :
-
-```html
-</div>
-```
-
-par :
-
-```html
-</section>
-```
-
-Conservez tout le contenu situé à l'intérieur.
-
-### 2.2. Transformer la zone des articles
-
-Recherchez ensuite :
-
-```html
-<div class="articles-section">
-```
-
-Cette zone contient les contenus liés aux articles.
-
-Remplacez la balise ouvrante par :
-
-```html
-<section class="articles-section">
-```
-
-Puis remplacez sa balise fermante correspondante par :
-
-```html
-</section>
-```
-
-Conservez le contenu intérieur.
-
-### 2.3. Vérifier la structure
-
-Le contenu de `main` doit maintenant commencer ainsi :
+Le rendu visuel ne change pas, mais votre document est désormais découpé logiquement avec des balises `<section>` :
 
 ```html
 <main class="page-content">
 
     <section class="hero">
-
-        ...
-
+        <h1>Mon Blog Personnel ...</h1>
+        <!-- ... -->
     </section>
 
     <section class="articles-section">
-
-        ...
-
+        <!-- ... -->
     </section>
 
 </main>
 ```
-
-Vous avez maintenant deux sections dans le contenu principal.
-
-### 2.4. Conserver les contenus
-
-Ne supprimez pas :
-
-- le titre du blog ;
-- le texte d'introduction ;
-- les boutons ;
-- les catégories ;
-- les publications ;
-- les cartes d'articles.
-
-Le travail consiste à améliorer la structure HTML.
-
-### 2.5. Vérifier la section des catégories
-
-Dans la zone des articles, une section existe déjà :
-
-```html
-<section class="category-filter">
-
-    <h2>
-        Explorer par thème
-    </h2>
-
-    ...
-
-</section>
-```
-
-Elle peut rester telle quelle.
-
-Vous avez donc des sections qui peuvent être imbriquées dans une autre partie du contenu.
-
-### 2.6. Tester la page
-
-Ouvrez la page dans le navigateur.
-
-Vérifiez que :
-
-- la page s'affiche correctement ;
-- la zone d'accueil est visible ;
-- la zone des articles est visible ;
-- les catégories sont visibles ;
-- les liens fonctionnent ;
-- le pied de page est toujours présent.
-
-La présentation visuelle doit rester identique.
-
-### 2.7. Vérifier la structure finale
-
-Vous devez obtenir une organisation proche de :
-
-```text
-header
-└── nav
-
-main
-├── section — accueil
-└── section — articles
-    └── section — catégories
-
-footer
-```
-
-Vous devez pouvoir expliquer pourquoi chaque `section` correspond à une partie du contenu.
-
-## Partie 3 — Développement progressif
-
-**Série :** Page d'accueil du blog
-
-**Position :** 3e tutoriel de la série
-
-**Incrément :** Découpage du contenu principal en sections.
-
-**Intégration demandée :**
-
-Utilisez la balise `section` pour organiser les différentes parties du contenu de votre page d'accueil.
-
-Transformez les deux grandes zones de `main` en sections :
-
-```text
-zone d'accueil
-zone des articles
-```
-
-Conservez les contenus et les classes CSS existantes.
-
-**Livrable :**
-
-Le fichier HTML de la page d'accueil avec plusieurs `section` permettant de distinguer les différentes parties du contenu.
-
-**Critère de réussite :**
-
-Le contenu de `main` est découpé en zones cohérentes avec la balise `section`.
-
-**Résultat attendu :**
-
-```html
-<main class="page-content">
-
-    <section class="hero">
-
-        <h1>
-            Mon Blog Personnel :
-            <br>
-            <span>
-                Développer &amp; Partager
-            </span>
-        </h1>
-
-        <p>
-            Découvrez mes derniers articles sur le développement web,
-            l'architecture logicielle et les bonnes pratiques
-            d'intégration UI/UX.
-        </p>
-
-        <div class="hero-actions">
-
-            <a
-                href="#articles"
-                class="hero-button hero-button-primary">
-                Lire les articles
-            </a>
-
-            <a
-                href="public-apropos.html"
-                class="hero-button hero-button-secondary">
-                À propos de moi
-            </a>
-
-        </div>
-
-    </section>
-
-    <section class="articles-section">
-
-        ...
-
-    </section>
-
-</main>
-```
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/html/tuto-122-123-html.html' | relative_url}}"
-    height="700"
-    title="Résultat attendu">
-</iframe>
 
 ## Bilan
 
-**Vous avez réalisé :**
-
-Le découpage du contenu principal de la page d'accueil en plusieurs sections.
-
-**Vous savez maintenant :**
-
-- utiliser `section` ;
-- regrouper des contenus liés ;
-- découper `main` en plusieurs parties ;
-- organiser une page HTML avec plusieurs sections.
+Vous savez désormais utiliser la balise `<section>` pour découper intelligemment le contenu d'une page en zones thématiques.
 
 ## Glossaire
 
-- **`section`** : partie d'un contenu regroupant des éléments liés.
-- **Contenu principal** : contenu principal de la page.
-- **Zone** : partie identifiable d'une page.
-- **Structure** : organisation des différentes parties d'une page.
+- **`<section>`** : Partie d'un document regroupant des éléments thématiquement liés.
