@@ -3,76 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Derniers articles - Flexbox Synthèse</title>
+    <title>Mon Blog Personnel - Accueil</title>
     <style>
-        body { font-family: sans-serif; background-color: #f8fafc; }
+        /* css/global.css */
+        body { margin: 0; color: #1f2937; background: #f9fafb; font-family: Arial, sans-serif; line-height: 1.5; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; padding: 0; margin: 0; }
 
-        .page-articles {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+        /* css/layout.css */
+        .en-tete-site { padding: 20px 24px; background: white; border-bottom: 1px solid #e5e7eb; }
+        .logo { font-family: Georgia, serif; font-size: 22px; font-weight: 900; }
+        .logo-sombre { color: #111827; }
+        .logo-couleur { color: #2673e8; }
+        .liens-navigation a { color: #6b7280; font-size: 14px; font-weight: 500; }
+        
+        .pied-de-page { margin-top: 80px; padding: 64px 24px 24px; background: white; border-top: 1px solid #e5e7eb; }
+        .colonne-pied-de-page h2 { margin: 0 0 20px; color: #111827; font-size: 16px; text-transform: uppercase; }
+        .colonne-pied-de-page p, .colonne-pied-de-page a { color: #6b7280; font-size: 14px; }
+        .colonne-pied-de-page li { margin-bottom: 12px; }
+        .bas-pied-de-page { max-width: 1200px; margin: 64px auto 0; padding-top: 24px; text-align: center; border-top: 1px solid #e5e7eb; }
+        .bas-pied-de-page p { margin: 0; color: #9ca3af; font-size: 12px; }
 
-        .page-articles h1 {
-            margin: 0 0 32px;
-            color: #1e293b;
-        }
+        /* css/components.css */
+        .bouton-principal { display: inline-block; padding: 10px 20px; color: white; background: #2673e8; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; }
+        .bouton-secondaire { display: inline-block; padding: 10px 20px; color: #1f2937; background: white; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; }
+        .pilule-filtre { display: inline-block; padding: 10px 16px; margin: 4px; color: #4b5563; background: white; border: 1px solid #e5e7eb; border-radius: 8px; }
+        .pilule-filtre.actif { color: white; background: #111827; }
+        
+        .carte-article { overflow: hidden; background: white; border: 1px solid #e5e7eb; border-radius: 16px; margin-bottom: 24px; flex: 1; }
+        .carte-contenu { padding: 20px; }
+        .carte-contenu h3 { margin: 0; color: #111827; font-family: Georgia, serif; font-size: 20px; line-height: 1.4; }
+        .carte-contenu p { margin: 12px 0; color: #6b7280; font-size: 14px; line-height: 1.7; }
+        .carte-meta { margin-top: 20px; padding-top: 16px; color: #9ca3af; font-size: 12px; border-top: 1px solid #f3f4f6; }
+        .etiquette-categorie { display: inline-block; margin: 16px 16px 0; padding: 6px 10px; font-size: 11px; font-weight: 700; background: #f0f6ff; border-radius: 99px; }
+        .etiquette-categorie.bleu { color: #1c5bba; }
+        .etiquette-categorie.rose { color: #db2777; background: #fdf2f8; }
+        .etiquette-categorie.vert { color: #059669; background: #ecfdf5; }
 
-        .liste-cartes {
+        /* css/pages.css */
+        .banniere-accueil { padding: 96px 24px; text-align: center; background: #ffffff; background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 24px 24px; }
+        .banniere-accueil h1 { max-width: 850px; margin: 0 auto; color: #0a2042; font-family: Georgia, serif; font-size: 56px; font-weight: 900; line-height: 1.15; }
+        .banniere-accueil h1 span { color: #2673e8; }
+        .banniere-accueil p { max-width: 680px; margin: 24px auto 0; color: #6b7280; font-size: 17px; line-height: 1.7; }
+        .actions-banniere { margin-top: 28px; }
+
+        .filtre-categories { margin: 64px 24px; text-align: center; }
+        .filtre-categories h2 { margin: 0 0 20px; color: #111827; font-size: 18px; }
+        
+        .section-articles { padding: 80px 24px; }
+        .conteneur-articles { max-width: 1200px; margin: 0 auto; }
+        .entete-liste-articles { margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .entete-liste-articles h2 { margin: 0; color: #111827; font-family: Georgia, serif; font-size: 32px; }
+        .entete-liste-articles p { margin: 8px 0 0; color: #6b7280; }
+        .lien-voir-tout { color: #2673e8; font-size: 14px; font-weight: 600; }
+
+        /* FLEXBOX GLOBAL */
+        .barre-navigation {
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
-            align-items: stretch;
-            flex-wrap: wrap;
-            gap: 24px;
+            align-items: center;
         }
-
-        .carte-article {
-            box-sizing: border-box;
-            min-width: 220px;
-            flex: 1;
-            padding: 20px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .carte-article h2 { margin: 0 0 12px; color: #0f172a; }
-        .carte-article p { margin: 0 0 16px; color: #475569; }
-        .carte-article a {
-            color: #2673e8;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .carte-article a:hover { text-decoration: underline; }
+        .liens-navigation { display: flex; gap: 24px; }
+        .conteneur-pied-de-page { display: flex; justify-content: space-between; gap: 48px; }
+        .liste-filtres { display: flex; flex-wrap: wrap; justify-content: center; }
+        .grille-articles { display: flex; gap: 32px; }
     </style>
 </head>
 <body>
-    <main class="page-articles">
-        <h1>Derniers articles</h1>
-        <section class="liste-cartes">
-            <article class="carte-article">
-                <h2>HTML</h2>
-                <p>Créer la structure d'une page web.</p>
-                <a href="#">Lire l'article</a>
-            </article>
-            <article class="carte-article">
-                <h2>CSS</h2>
-                <p>Mettre en forme une page web.</p>
-                <a href="#">Lire l'article</a>
-            </article>
-            <article class="carte-article">
-                <h2>JavaScript</h2>
-                <p>Ajouter des comportements à une page.</p>
-                <a href="#">Lire l'article</a>
-            </article>
-            <article class="carte-article">
-                <h2>PHP</h2>
-                <p>Créer des applications web dynamiques.</p>
-                <a href="#">Lire l'article</a>
-            </article>
-        </section>
-    </main>
+    <header class="en-tete-site">
+        <nav class="barre-navigation">
+            <a href="index.html" class="logo">
+                <span class="logo-sombre">Mon</span><span class="logo-couleur">Blog.</span>
+            </a>
+            <ul class="liens-navigation">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Catégories</a></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+            <a href="#" class="bouton-principal">Espace Admin</a>
+        </nav>
+    </header>
+
+    <section class="banniere-accueil">
+        <h1>Mon Blog Personnel :<br><span>Développer &amp; Partager</span></h1>
+        <p>Découvrez mes derniers articles sur le développement web, l'architecture logicielle et les bonnes pratiques d'intégration UI/UX.</p>
+        <div class="actions-banniere">
+            <a href="#articles" class="bouton-principal">Lire les articles</a>
+            <a href="#" class="bouton-secondaire">À propos de moi</a>
+        </div>
+    </section>
+
+    <section class="filtre-categories">
+        <h2>Explorer par thème</h2>
+        <div class="liste-filtres">
+            <a href="#" class="pilule-filtre actif">Tous les articles</a>
+            <a href="#" class="pilule-filtre">Développement</a>
+            <a href="#" class="pilule-filtre">Design UI/UX</a>
+            <a href="#" class="pilule-filtre">Management</a>
+            <a href="#" class="pilule-filtre">Tutoriels</a>
+            <a href="#" class="pilule-filtre">Inspirations</a>
+            <a href="#" class="pilule-filtre">Outils</a>
+            <a href="#" class="pilule-filtre">Tendances 2026</a>
+        </div>
+    </section>
+
+    <section id="articles" class="section-articles">
+        <div class="conteneur-articles">
+            <div class="entete-liste-articles">
+                <div>
+                    <h2>Dernières publications</h2>
+                    <p>Les articles les plus récents de la communauté.</p>
+                </div>
+                <a href="#" class="lien-voir-tout">Explorer tout</a>
+            </div>
+
+            <div class="grille-articles">
+                <div class="carte-article">
+                    <span class="etiquette-categorie bleu">Développement</span>
+                    <div class="carte-contenu">
+                        <h3><a href="#">Comment bien débuter avec Tailwind CSS en 2026 ?</a></h3>
+                        <p>Découvrez les concepts fondamentaux de Tailwind CSS et pourquoi cette approche utilitaire est devenue le standard de l'industrie.</p>
+                        <div class="carte-meta"><span>14 Fév 2026</span><span>5 min</span></div>
+                    </div>
+                </div>
+
+                <div class="carte-article">
+                    <span class="etiquette-categorie rose">UI / UX</span>
+                    <div class="carte-contenu">
+                        <h3><a href="#">L'importance des micro-interactions</a></h3>
+                        <p>Une interface belle n'est pas suffisante. Comprendre comment animer de petites actions peut transformer l'expérience utilisateur.</p>
+                        <div class="carte-meta"><span>10 Fév 2026</span><span>3 min</span></div>
+                    </div>
+                </div>
+
+                <div class="carte-article">
+                    <span class="etiquette-categorie vert">Management</span>
+                    <div class="carte-contenu">
+                        <h3><a href="#">Gérer une équipe de développeurs en Full Remote</a></h3>
+                        <p>Les méthodes agiles et les rituels essentiels pour maintenir la cohésion de groupe et la productivité lorsque tous les membres sont distribués.</p>
+                        <div class="carte-meta"><span>05 Fév 2026</span><span>8 min</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pied-de-page">
+        <div class="conteneur-pied-de-page">
+            <div class="colonne-pied-de-page">
+                <h2>Mon Blog</h2>
+                <p>Partager des connaissances, des tutoriels et des découvertes sur le développement web.</p>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">À propos</a></li>
+                </ul>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Contact</h2>
+                <p>Retrouvez les nouveaux articles chaque semaine.</p>
+            </div>
+        </div>
+        <div class="bas-pied-de-page">
+            <p>&copy; 2026 Mon Blog Personnel.</p>
+        </div>
+    </footer>
 </body>
 </html>

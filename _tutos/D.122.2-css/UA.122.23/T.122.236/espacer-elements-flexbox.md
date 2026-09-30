@@ -150,21 +150,25 @@ La propriété `gap` (à appliquer sur le conteneur) résout ce problème en gé
 }
 ```
 
-## Partie 2 — Pratique
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Tester les espacements
+### 2.1. Faire respirer le design avec gap
 
-1. **Expérimentation :**
-   Le conteneur possède déjà `display: flex; flex-wrap: wrap;`. Regardez le rendu : sans `gap`, les cartes se touchent complètement.
-   - Dans le code CSS, ajoutez `row-gap: 30px;` sur le conteneur `.liste-cartes`. Constatez que seules les lignes s'espacent (verticalement).
-   - Remplacez par `column-gap: 20px;`. L'espacement devient purement horizontal.
+Dans notre projet, certains éléments restent collés. Par exemple, les liens du menu (`.liens-navigation`) et les trois colonnes de notre pied de page (`.conteneur-pied-de-page`). Nous pourrions utiliser des marges (`margin`), mais `gap` est bien plus propre avec Flexbox !
 
-2. **Résultat final :**
-   - Remplacez toutes les propriétés d'espacement par un simple `gap: 24px;` pour obtenir un espacement uniforme et esthétique dans toutes les directions (lignes et colonnes).
+1. **Testez l'espacement sur le menu :**
+   - Ouvrez votre fichier `css/layout.css` et repérez la règle `.liens-navigation` (qui est la liste `<ul>` de nos liens).
+   - Ajoutez-y `display: flex;` pour que la liste devienne elle-même un conteneur Flexbox. Les liens se mettent en ligne mais sont serrés.
+   - Ajoutez `gap: 24px;`. Observez le résultat : les liens sont parfaitement espacés, sans aucun décalage sur les bords !
+
+2. **Testez sur le pied de page :**
+   - Toujours dans `layout.css`, ciblez la règle `.conteneur-pied-de-page` (qui possède déjà `display: flex;`).
+   - Ajoutez `column-gap: 48px;`. L'espacement entre les colonnes du pied de page s'agrandit.
+   - Remplacez par le raccourci global `gap: 48px;` (c'est une bonne pratique de l'utiliser même quand il n'y a qu'une ligne, au cas où le footer passe sur plusieurs lignes sur mobile plus tard).
 
 **Livrable :**
 
-Créez un document contenant le code CSS final de `.liste-cartes` avec le raccourci `gap: 24px;`.
+Votre fichier `css/layout.css` mis à jour, contenant `display: flex; gap: 24px;` sur `.liens-navigation` et `gap: 48px;` sur `.conteneur-pied-de-page`.
 
 **Résultat attendu :**
 
@@ -177,7 +181,7 @@ Créez un document contenant le code CSS final de `.liste-cartes` avec le raccou
 </iframe>
 
 **Critère de réussite :**
-Le conteneur utilise `display: flex`, `flex-wrap: wrap` et `gap: 24px;`. Les cartes sont séparées par un espace régulier, sans aucune marge externe indésirable.
+Les liens du menu sont espacés de 24px et les colonnes du pied de page de 48px, donnant à la maquette l'espace dont elle a besoin pour "respirer".
 
 ## Bilan
 

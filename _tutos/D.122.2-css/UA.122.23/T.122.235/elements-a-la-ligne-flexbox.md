@@ -138,20 +138,53 @@ La propriété `flex-wrap` permet d'autoriser le retour à la ligne automatique 
 }
 ```
 
-## Partie 2 — Pratique
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Manipuler le passage à la ligne
+### 2.1. Ajouter les filtres de catégories
 
-1. **Le Problème :**
-   Dans votre HTML, ajoutez une 5ème carte pour "MySQL" dans le conteneur `.liste-cartes`.
-   Si vous regardez le rendu actuel, le conteneur ayant une largeur fixe, les 5 cartes sont forcées sur la même ligne, elles s'écrasent ou dépassent du conteneur.
+Dans notre blog, nous voulons une section permettant de filtrer les articles par catégorie. S'il y a beaucoup de catégories, elles devront passer à la ligne automatiquement sur les petits écrans.
 
-2. **La Solution :**
-   Dans le code CSS, ajoutez `flex-wrap: wrap;` sur le sélecteur `.liste-cartes`. Constatez que les cartes qui manquent de place glissent naturellement vers le bas pour former de nouvelles lignes.
+1. **Le HTML :** Ouvrez votre fichier `index.html` et ajoutez cette nouvelle section *entre* le `<header>` et le `<footer>` :
+
+```html
+    <section class="filtre-categories">
+        <h2>Explorer par thème</h2>
+        <div class="liste-filtres">
+            <a href="#" class="pilule-filtre actif">Tous les articles</a>
+            <a href="#" class="pilule-filtre">Développement</a>
+            <a href="#" class="pilule-filtre">Design UI/UX</a>
+            <a href="#" class="pilule-filtre">Management</a>
+            <a href="#" class="pilule-filtre">Tutoriels</a>
+            <a href="#" class="pilule-filtre">Inspirations</a>
+            <a href="#" class="pilule-filtre">Outils</a>
+            <a href="#" class="pilule-filtre">Tendances 2026</a>
+        </div>
+    </section>
+```
+
+2. **Le CSS :** 
+   - Créez un nouveau fichier `css/pages.css` et ajoutez-y :
+```css
+.filtre-categories { margin: 64px 24px; text-align: center; }
+.filtre-categories h2 { margin: 0 0 20px; color: #111827; font-size: 18px; }
+```
+   - N'oubliez pas d'ajouter `<link rel="stylesheet" href="css/pages.css">` dans le `<head>` de votre fichier HTML !
+   - Dans `css/components.css`, ajoutez les styles de nos petites pilules :
+```css
+.pilule-filtre { display: inline-block; padding: 10px 16px; margin: 4px; color: #4b5563; background: white; border: 1px solid #e5e7eb; border-radius: 8px; }
+.pilule-filtre.actif { color: white; background: #111827; }
+```
+
+### 2.2. Gérer le passage à la ligne
+
+1. **Le Problème :** Ouvrez `index.html` dans le navigateur. Actuellement, les filtres s'affichent un peu n'importe comment (ou sur plusieurs lignes naturellement car ce sont des éléments `inline-block`).
+2. **Activez Flexbox :** Dans `css/pages.css`, ciblez `.liste-filtres` et ajoutez `display: flex;`.
+3. Réduisez la largeur de votre fenêtre de navigateur. Vous remarquerez que les pilules refusent de passer à la ligne et finissent par déborder de l'écran ou être compressées.
+4. **La Solution :** Ajoutez `flex-wrap: wrap;` sur `.liste-filtres`. Les pilules se répartiront maintenant harmonieusement sur plusieurs lignes si l'espace vient à manquer, tout en conservant leurs dimensions ! Pour que les lignes soient centrées, ajoutez également `justify-content: center;`.
 
 **Livrable :**
 
-Créez un document contenant le code CSS de `.liste-cartes` avec le retour à la ligne activé.
+Votre fichier `css/pages.css` contenant la classe `.liste-filtres` configurée avec flexbox et autorisant le retour à la ligne.
 
 **Résultat attendu :**
 
@@ -164,7 +197,7 @@ Créez un document contenant le code CSS de `.liste-cartes` avec le retour à la
 </iframe>
 
 **Critère de réussite :**
-Le conteneur utilise `display: flex` et `flex-wrap: wrap`. Les 5 cartes s'organisent sur plusieurs lignes sans déborder horizontalement.
+Les boutons de filtres s'organisent en ligne, et passent automatiquement à la ligne suivante si la fenêtre est trop étroite.
 
 ## Bilan
 

@@ -138,25 +138,89 @@ La propriété `flex-grow` (appliquée sur les **enfants**) leur donne l'autoris
 }
 ```
 
-## Partie 2 — Pratique
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Manipuler la taille relative des cartes
+### 2.1. Ajouter la section des articles
 
-1. **Testez `flex: 1` :**
-   Regardez le résultat initial : le conteneur fait `900px` mais les cartes ont une petite taille de `220px`, il reste donc beaucoup de vide à droite.
-   - Dans le code CSS, ajoutez `flex: 1;` à la classe `.carte-article`. Constatez que les 3 cartes s'allongent équitablement pour remplir tout le conteneur.
+1. **Le HTML :** Ouvrez votre fichier `index.html` et ajoutez ce bloc *juste avant* le pied de page (`<footer>`) :
 
-2. **Créez une exception :**
-   - La carte "JavaScript" possède déjà la classe `carte-principale` dans le code HTML.
-   - Dans le CSS, ajoutez la règle `.carte-principale { flex: 2; }`.
-   - Observez le résultat : la carte JavaScript devient nettement plus large car elle prend 2 parts de l'espace.
+```html
+    <section id="articles" class="section-articles">
+        <div class="conteneur-articles">
+            <div class="entete-liste-articles">
+                <div>
+                    <h2>Dernières publications</h2>
+                    <p>Les articles les plus récents de la communauté.</p>
+                </div>
+                <a href="#" class="lien-voir-tout">Explorer tout</a>
+            </div>
 
-3. **Résultat final :**
-   - Retirez la règle `.carte-principale` du CSS pour que toutes les cartes reprennent une taille parfaitement égale avec `flex: 1;`.
+            <div class="grille-articles">
+                <div class="carte-article">
+                    <span class="etiquette-categorie bleu">Développement</span>
+                    <div class="carte-contenu">
+                        <h3><a href="#">Comment bien débuter avec Tailwind CSS en 2026 ?</a></h3>
+                        <p>Découvrez les concepts fondamentaux de Tailwind CSS et pourquoi cette approche utilitaire est devenue le standard de l'industrie.</p>
+                        <div class="carte-meta"><span>14 Fév 2026</span><span>5 min</span></div>
+                    </div>
+                </div>
+
+                <div class="carte-article">
+                    <span class="etiquette-categorie rose">UI / UX</span>
+                    <div class="carte-contenu">
+                        <h3><a href="#">L'importance des micro-interactions</a></h3>
+                        <p>Une interface belle n'est pas suffisante. Comprendre comment animer de petites actions peut transformer l'expérience utilisateur.</p>
+                        <div class="carte-meta"><span>10 Fév 2026</span><span>3 min</span></div>
+                    </div>
+                </div>
+
+                <div class="carte-article">
+                    <span class="etiquette-categorie vert">Management</span>
+                    <div class="carte-contenu">
+                        <h3><a href="#">Gérer une équipe de développeurs en Full Remote</a></h3>
+                        <p>Les méthodes agiles et les rituels essentiels pour maintenir la cohésion de groupe et la productivité lorsque tous les membres sont distribués.</p>
+                        <div class="carte-meta"><span>05 Fév 2026</span><span>8 min</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+```
+
+2. **Le CSS :** 
+   - Dans `css/pages.css`, ajoutez les styles de conteneur :
+```css
+.section-articles { padding: 80px 24px; }
+.conteneur-articles { max-width: 1200px; margin: 0 auto; }
+.entete-liste-articles { margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end; }
+.entete-liste-articles h2 { margin: 0; color: #111827; font-family: Georgia, serif; font-size: 32px; }
+.entete-liste-articles p { margin: 8px 0 0; color: #6b7280; }
+.lien-voir-tout { color: #2673e8; font-size: 14px; font-weight: 600; }
+.grille-articles { display: flex; gap: 32px; }
+```
+   - Dans `css/components.css`, ajoutez les styles cosmétiques de la carte (sans la propriété `flex` pour le moment) :
+```css
+.carte-article { overflow: hidden; background: white; border: 1px solid #e5e7eb; border-radius: 16px; margin-bottom: 24px; }
+.carte-contenu { padding: 20px; }
+.carte-contenu h3 { margin: 0; color: #111827; font-family: Georgia, serif; font-size: 20px; line-height: 1.4; }
+.carte-contenu p { margin: 12px 0; color: #6b7280; font-size: 14px; line-height: 1.7; }
+.carte-meta { margin-top: 20px; padding-top: 16px; color: #9ca3af; font-size: 12px; border-top: 1px solid #f3f4f6; }
+.etiquette-categorie { display: inline-block; margin: 16px 16px 0; padding: 6px 10px; font-size: 11px; font-weight: 700; background: #f0f6ff; border-radius: 99px; }
+.etiquette-categorie.bleu { color: #1c5bba; }
+.etiquette-categorie.rose { color: #db2777; background: #fdf2f8; }
+.etiquette-categorie.vert { color: #059669; background: #ecfdf5; }
+```
+
+### 2.2. Répartir l'espace entre les cartes
+
+1. **Testez l'affichage :** Regardez le résultat. Grâce à `.grille-articles { display: flex; gap: 32px; }`, vos 3 cartes sont en ligne. Cependant, elles n'occupent que la place de leur texte, laissant un grand vide sur la droite de la page !
+2. **Autorisez la croissance :** Ouvrez `css/components.css` et ciblez la règle `.carte-article`.
+3. Ajoutez la propriété `flex: 1;`.
+4. Constatez le résultat : vos 3 cartes s'étirent automatiquement et équitablement pour se partager parfaitement toute la largeur disponible de la page.
 
 **Livrable :**
 
-Créez un document contenant le code CSS final avec `.carte-article` utilisant `flex: 1;`.
+Votre fichier `css/components.css` mis à jour avec `flex: 1;` sur la classe `.carte-article`.
 
 **Résultat attendu :**
 
@@ -164,12 +228,12 @@ Créez un document contenant le code CSS final avec `.carte-article` utilisant `
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-237-css.html' | relative_url}}"
-    height="300"
+    height="500"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-Les trois cartes partagent parfaitement l'espace disponible dans le conteneur grâce à l'utilisation de `flex: 1`.
+Les trois cartes articles partagent parfaitement l'espace disponible en largeur grâce à l'utilisation de `flex: 1`.
 
 ## Bilan
 

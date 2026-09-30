@@ -142,24 +142,46 @@ Voici un récapitulatif des propriétés Flexbox que vous avez apprises et que v
   <text x="295" y="155" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">gap</text>
 </svg>
 
-## Partie 2 — Pratique (Projet de synthèse)
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Votre mission : La grille Flexbox
+### 2.1. Assemblage final : la bannière d'accueil
 
-**Travail à faire :**
+Il ne nous manque plus qu'une seule pièce pour finaliser la page d'accueil de notre blog : la bannière principale (le "Hero Header") ! 
 
-En utilisant la classe du conteneur `.liste-cartes` et la classe des enfants `.carte-article`, vous devez écrire le code Flexbox permettant de :
+1. **Le HTML :** Ouvrez `index.html` et ajoutez ce dernier bloc *entre* le `<header>` et la section des filtres :
 
-1. Activer Flexbox sur la liste de cartes en direction horizontale.
-2. Autoriser le retour à la ligne.
-3. Répartir les cartes avec l'espace réparti entre elles (`space-between`).
-4. Aligner les cartes pour qu'elles aient toutes la même hauteur (`stretch`).
-5. Ajouter un espacement régulier de `24px` entre les cartes.
-6. Permettre à chaque carte de grandir de manière égale pour remplir l'espace restant s'il y en a.
+```html
+    <section class="banniere-accueil">
+        <h1>Mon Blog Personnel :<br><span>Développer &amp; Partager</span></h1>
+        <p>Découvrez mes derniers articles sur le développement web, l'architecture logicielle et les bonnes pratiques d'intégration UI/UX.</p>
+        <div class="actions-banniere">
+            <a href="#articles" class="bouton-principal">Lire les articles</a>
+            <a href="#" class="bouton-secondaire">À propos de moi</a>
+        </div>
+    </section>
+```
+
+2. **Le CSS :** 
+   - Dans `css/pages.css`, ajoutez les styles de la bannière :
+```css
+.banniere-accueil { padding: 96px 24px; text-align: center; background: #ffffff; background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 24px 24px; }
+.banniere-accueil h1 { max-width: 850px; margin: 0 auto; color: #0a2042; font-family: Georgia, serif; font-size: 56px; font-weight: 900; line-height: 1.15; }
+.banniere-accueil h1 span { color: #2673e8; }
+.banniere-accueil p { max-width: 680px; margin: 24px auto 0; color: #6b7280; font-size: 17px; line-height: 1.7; }
+.actions-banniere { margin-top: 28px; }
+```
+   - Dans `css/components.css`, ajoutez le style du bouton secondaire (le bouton principal y est déjà) :
+```css
+.bouton-secondaire { display: inline-block; padding: 10px 20px; color: #1f2937; background: white; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; }
+```
+
+### 2.2. Validation du projet
+
+Ouvrez `index.html` dans votre navigateur. Si vous avez bien suivi tous les tutoriels, votre page devrait maintenant être complète et parfaitement organisée !
 
 **Livrable :**
 
-Créez un document contenant le code CSS que vous avez ajouté pour accomplir ces 6 points.
+Votre dossier `projet-blog-flexbox` finalisé contenant `index.html` et les 4 fichiers CSS bien structurés.
 
 **Résultat attendu :**
 
@@ -167,14 +189,14 @@ Créez un document contenant le code CSS que vous avez ajouté pour accomplir ce
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-238-css.html' | relative_url}}"
-    height="500"
+    height="600"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-Le conteneur utilise l'ensemble des propriétés de configuration Flexbox requises. Les 4 cartes s'organisent parfaitement, sont espacées uniformément et réagissent correctement si l'on réduit la taille de la fenêtre (retour à la ligne).
+Votre page locale est visuellement identique à la maquette ci-dessus. Toutes les sections s'adaptent correctement grâce aux propriétés Flexbox (`justify-content`, `align-items`, `gap`, `flex-wrap`, `flex`).
 
 ## Bilan
 
 **Félicitations !**
-Vous avez réalisé une grille de cartes complète, dynamique et responsive (grâce au passage à la ligne), uniquement en combinant intelligemment les différentes propriétés Flexbox. Vous maîtrisez maintenant l'une des techniques de mise en page les plus importantes du Web moderne.
+Vous avez réalisé une page web moderne complète, structurée intelligemment, et mis en pratique toutes les propriétés essentielles de Flexbox. Vous maîtrisez maintenant l'une des techniques de mise en page les plus importantes du Web.
