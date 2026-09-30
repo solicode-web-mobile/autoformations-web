@@ -8,6 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.122.23"
 nav_order: 1
+simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
@@ -56,24 +57,15 @@ window.pageData = {
 
 ## 1. Objectif
 
-Apprendre à transformer un élément en conteneur Flexbox avec `display: flex`.
+Apprendre à transformer un élément en **conteneur Flexbox** avec `display: flex`.
 
 ## 2. Prérequis
 
-Vous savez déjà :
-
-- écrire une règle CSS ;
-- utiliser une classe CSS ;
-- utiliser `width` et `max-width` ;
-- utiliser `padding` ;
-- utiliser `margin` ;
-- utiliser `border` ;
-- utiliser `border-radius` ;
-- construire plusieurs cartes d'articles.
-
-Vous avez déjà réalisé plusieurs cartes dans l'UA.122.22.
+Vous savez déjà utiliser des classes CSS pour donner un style de base (marges, bordures, espacements) à un élément HTML.
 
 ## Données de départ
+
+*(Les données de départ sont chargées automatiquement dans l'éditeur de code de l'interface).*
 
 ### HTML
 
@@ -98,108 +90,38 @@ Vous avez déjà réalisé plusieurs cartes dans l'UA.122.22.
 </section>
 ```
 
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n'est nécessaire.
 
 ## Partie 1 — Théorie
 
-### 1.1. Le conteneur Flexbox
+### 1.1. Le modèle Flexbox : Conteneur et Éléments
 
-Flexbox permet d'organiser plusieurs éléments à l'intérieur d'un conteneur.
+Flexbox est un modèle CSS qui permet d'organiser facilement plusieurs éléments enfants à l'intérieur d'un élément parent. 
 
-Le conteneur est l'élément qui possède la règle Flexbox.
+La règle d'or est simple : **le style Flexbox s'applique au parent (le conteneur), et non aux enfants (les éléments flex)**.
 
-**Exemple :**
-
-```css
-.liste-cartes {
-    display: flex;
-}
+```mermaid
+graph TD
+    A[Conteneur .liste-cartes <br/> <b>display: flex;</b>] --> B(Elément Flex .carte-article)
+    A --> C(Elément Flex .carte-article)
+    A --> D(Elément Flex .carte-article)
+    style A fill:#e2e8f0,stroke:#334155,stroke-width:2px,color:#1e293b
+    style B fill:#bfdbfe,stroke:#2563eb,stroke-width:2px,color:#1e293b
+    style C fill:#bfdbfe,stroke:#2563eb,stroke-width:2px,color:#1e293b
+    style D fill:#bfdbfe,stroke:#2563eb,stroke-width:2px,color:#1e293b
 ```
 
-Ici, `.liste-cartes` devient un **conteneur flex**.
-
-Les cartes placées à l'intérieur deviennent des **éléments flex**.
-
-### 1.2. Utiliser `display: flex`
-
-La propriété `display` permet de définir le mode d'affichage d'un élément.
-
-Avec :
-
-```css
-display: flex;
-```
-
-l'élément devient un conteneur Flexbox.
-
-**Exemple :**
-
-```css
-.liste-cartes {
-    display: flex;
-}
-```
-
-La règle est appliquée au conteneur, et non directement aux cartes.
-
-### 1.3. Conteneur et éléments
-
-Dans cet exemple :
-
-```html
-<section class="liste-cartes">
-    <article class="carte-article">...</article>
-    <article class="carte-article">...</article>
-    <article class="carte-article">...</article>
-</section>
-```
-
-`.liste-cartes` est le **conteneur flex**.
-
-Les trois `.carte-article` sont les **éléments flex**.
-
-### 1.4. Observer le changement
-
-Avant Flexbox, les éléments suivent le comportement normal du document.
-
-Après :
-
-```css
-.liste-cartes {
-    display: flex;
-}
-```
-
-les éléments enfants sont organisés selon le modèle Flexbox.
-
-Pour le moment, nous ne contrôlons pas encore leur direction, leur alignement ou leur espacement.
-
-Ces propriétés seront étudiées dans les tutoriels suivants.
-
-### 1.5. À retenir
-
-- Flexbox sert à organiser des éléments dans un conteneur.
-- `display: flex` transforme un élément en conteneur flex.
-- Les éléments directement contenus dans ce conteneur deviennent des éléments flex.
-- `display: flex` est la première étape avant les autres propriétés Flexbox.
+Il suffit d'ajouter la propriété `display: flex;` sur le conteneur parent pour que tous ses enfants directs se positionnent automatiquement selon les règles de Flexbox (par défaut, ils se placent en ligne).
 
 ## Partie 2 — Pratique
 
-### 2.1. Préparer les cartes
+### 2.1. Mise en place du layout Flexbox
 
-#### Étape 1 — Ajouter le style des cartes
+À partir du HTML fourni en données de départ :
 
-Ajoutez :
-
+1. Ajoutez une quatrième carte (`.carte-article`) dans votre `<section class="liste-cartes">` pour un langage de votre choix (ex: PHP ou Python).
+2. Dans le CSS, ajoutez un style de base pour rendre les cartes visibles :
+   
+   
 ```css
 .carte-article {
     width: 220px;
@@ -208,154 +130,20 @@ Ajoutez :
     border: 1px solid #e5e7eb;
     border-radius: 12px;
 }
-```
 
-Les trois cartes possèdent maintenant une présentation simple.
-
-#### Étape 2 — Ajouter le style de la zone
-
-Ajoutez :
-
-```css
 .liste-cartes {
-    width: 760px;
+    width: 1000px;
     max-width: 100%;
     margin: 40px auto;
     padding: 20px;
     background: #f9fafb;
 }
 ```
-
-La zone contenant les cartes est maintenant visible.
-
-### 2.2. Découvrir Flexbox
-
-#### Étape 1 — Transformer la zone en conteneur flex
-
-Ajoutez :
-
-```css
-.liste-cartes {
-    display: flex;
-    width: 760px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-Observez le résultat.
-
-Les trois cartes sont maintenant des éléments flex.
-
-### 2.3. Identifier le conteneur et les éléments
-
-#### Étape 1 — Observer le HTML
-
-Repérez :
-
-```html
-<section class="liste-cartes">
-```
-
-C'est le conteneur.
-
-Repérez ensuite :
-
-```html
-<article class="carte-article">
-```
-
-Ce sont les éléments contenus dans le conteneur.
-
-#### Étape 2 — Modifier uniquement le conteneur
-
-Supprimez temporairement :
-
-```css
-display: flex;
-```
-
-Observez le résultat.
-
-Ajoutez de nouveau :
-
-```css
-display: flex;
-```
-
-Observez le changement.
-
-### 2.4. Tester avec une quatrième carte
-
-#### Étape 1 — Ajouter une carte
-
-Ajoutez une quatrième carte :
-
-```html
-<article class="carte-article">
-    <h2>PHP</h2>
-    <p>Créer des applications web dynamiques.</p>
-</article>
-```
-
-Les quatre cartes utilisent maintenant le même composant.
-
-#### Étape 2 — Vérifier le conteneur
-
-La règle suivante doit rester sur `.liste-cartes` :
-
-```css
-.liste-cartes {
-    display: flex;
-}
-```
-
-Ne placez pas `display: flex` sur `.carte-article`.
-
-### 2.5. Vérifier la différence
-
-Comparez les deux situations :
-
-Sans :
-
-```css
-display: flex;
-```
-
-Puis avec :
-
-```css
-display: flex;
-```
-
-Vérifiez que la deuxième situation utilise le modèle Flexbox pour les cartes.
-
-**Travail à faire :**
-
-À partir du HTML fourni :
-
-- créez quatre cartes ;
-- utilisez la même classe `.carte-article` pour les quatre cartes ;
-- créez un conteneur `.liste-cartes` ;
-- appliquez `display: flex` au conteneur ;
-- identifiez le conteneur flex ;
-- identifiez les éléments flex.
-
-N'utilisez pas encore :
-
-- `flex-direction` ;
-- `justify-content` ;
-- `align-items` ;
-- `flex-wrap` ;
-- `gap` ;
-- `flex` ;
-- `flex-grow`.
+1. **Activez Flexbox** : Transformez la zone `.liste-cartes` en conteneur flex en lui ajoutant la propriété CSS adéquate. Vous devriez constater que les cartes, au lieu de s'empiler de haut en bas, s'alignent côte à côte.
 
 **Livrable :**
 
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Créez un document Markdown ou copiez votre code CSS dans un document, contenant la règle `.liste-cartes` avec l'activation de Flexbox.
 
 **Résultat attendu :**
 
@@ -363,34 +151,20 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-231-css.html' | relative_url}}"
-    height="700"
+    height="350"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-
-Le conteneur `.liste-cartes` utilise `display: flex`.
-
-Les quatre `.carte-article` sont des éléments flex du même conteneur.
-
-Aucune propriété Flexbox étudiée dans les tutoriels suivants n'est utilisée.
+Le conteneur `.liste-cartes` utilise bien `display: flex`. Les quatre cartes se positionnent en ligne.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- le principe de Flexbox ;
-- le rôle du conteneur flex ;
-- le rôle des éléments flex ;
-- l'utilisation de `display: flex`.
-
-**Vous avez réalisé :**
-
-Une zone contenant plusieurs cartes et utilisant Flexbox.
+- La différence entre le parent (conteneur flex) et les enfants (éléments flex).
+- À activer le modèle Flexbox en utilisant `display: flex`.
 
 ## Glossaire
 
-- **Flexbox** : système CSS qui permet d'organiser des éléments dans un conteneur.
-- **Conteneur flex** : élément qui utilise `display: flex`.
-- **Élément flex** : élément directement contenu dans un conteneur flex.
-- **`display`** : propriété CSS qui définit le mode d'affichage d'un élément.
+- **Conteneur flex** : Élément parent qui possède la règle `display: flex`.
+- **Élément flex** : Enfant direct d'un conteneur flex, positionné par le modèle Flexbox.

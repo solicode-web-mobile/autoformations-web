@@ -8,6 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.122.23"
 nav_order: 4
+simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
@@ -56,19 +57,17 @@ window.pageData = {
 
 ## 1. Objectif
 
-Apprendre à aligner les éléments sur l’axe secondaire d’un conteneur Flexbox avec `align-items`.
+Apprendre à aligner les éléments sur l’axe secondaire d’un conteneur Flexbox en utilisant la propriété `align-items`.
 
 ## 2. Prérequis
 
 Vous savez déjà :
-
-- créer un conteneur Flexbox avec `display: flex` ;
-- utiliser `flex-direction` ;
-- utiliser `row` et `column` ;
-- utiliser `justify-content` ;
-- identifier l’axe principal.
+- utiliser `flex-direction` (Axe principal) ;
+- utiliser `justify-content` (Répartition sur l'axe principal).
 
 ## Données de départ
+
+*(Les données de départ sont chargées automatiquement dans l'éditeur de code de l'interface).*
 
 ### HTML
 
@@ -93,131 +92,42 @@ Vous savez déjà :
 </section>
 ```
 
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n’est nécessaire.
-
 ## Partie 1 — Théorie
 
-### 1.1. Comprendre l’axe secondaire
+### 1.1. L'axe principal vs. L'axe secondaire
 
-Flexbox utilise deux axes.
+Dans Flexbox, il y a toujours deux axes perpendiculaires. Leur orientation dépend de `flex-direction`.
 
-Avec :
+- Avec `flex-direction: row;` (par défaut) :
+  - **Axe principal** = Horizontal (géré par `justify-content`)
+  - **Axe secondaire** = Vertical (géré par `align-items`)
 
-```css
-flex-direction: row;
+- Avec `flex-direction: column;` :
+  - **Axe principal** = Vertical
+  - **Axe secondaire** = Horizontal
+
+```mermaid
+graph TD
+    A[Conteneur Flex] --> B(justify-content <br/> <b>Axe Principal</b>)
+    A --> C(align-items <br/> <b>Axe Secondaire</b>)
+    style A fill:#e2e8f0,stroke:#334155,stroke-width:2px,color:#1e293b
+    style B fill:#bfdbfe,stroke:#2563eb,stroke-width:2px,color:#1e293b
+    style C fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#1e293b
 ```
-
-l’axe principal est horizontal.
-
-L’axe secondaire est vertical.
-
-Avec :
-
-```css
-flex-direction: column;
-```
-
-l’axe principal devient vertical.
-
-L’axe secondaire devient horizontal.
 
 ### 1.2. Aligner avec `align-items`
 
-`align-items` contrôle l’alignement des éléments sur l’axe secondaire.
-
-**Exemple :**
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-```
-
-Les éléments sont alignés au centre sur l’axe secondaire.
-
-### 1.3. Utiliser `flex-start`
-
-`flex-start` place les éléments au début de l’axe secondaire.
-
-```css
-.liste-cartes {
-    display: flex;
-    align-items: flex-start;
-}
-```
-
-Avec `flex-direction: row`, les éléments sont alignés en haut.
-
-### 1.4. Utiliser `center`
-
-`center` place les éléments au centre de l’axe secondaire.
-
-```css
-.liste-cartes {
-    display: flex;
-    align-items: center;
-}
-```
-
-Avec `flex-direction: row`, les éléments sont centrés verticalement.
-
-### 1.5. Distinguer `justify-content` et `align-items`
-
-Les deux propriétés n’agissent pas sur le même axe.
-
-Avec :
-
-```css
-flex-direction: row;
-```
-
-on peut retenir :
-
-| Propriété | Axe |
-|---|---|
-| `justify-content` | axe principal horizontal |
-| `align-items` | axe secondaire vertical |
-
-Exemple :
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-```
-
-Les éléments sont centrés sur les deux axes.
-
-### 1.6. À retenir
-
-- `align-items` agit sur l’axe secondaire.
-- `justify-content` agit sur l’axe principal.
-- Avec `row`, l’axe secondaire est vertical.
-- Avec `column`, l’axe secondaire est horizontal.
-- `center` permet de centrer les éléments sur l’axe secondaire.
+Tout comme `justify-content`, la propriété `align-items` (appliquée au conteneur) possède des valeurs clés pour positionner les éléments sur l'axe secondaire :
+- `flex-start` : Aligne les éléments au début de l'axe secondaire (en haut, pour `row`).
+- `center` : Centre les éléments sur l'axe secondaire (au milieu verticalement, pour `row`).
+- `flex-end` : Aligne les éléments à la fin de l'axe secondaire (en bas, pour `row`).
 
 ## Partie 2 — Pratique
 
-### 2.1. Préparer les cartes
+### 2.1. Centrer les éléments sur les deux axes
 
-#### Étape 1 — Donner une taille aux cartes
-
-Ajoutez :
-
+1. **Préparation :**
+   Appliquez le CSS de base. Notez l'ajout de `height: 260px;` sur le conteneur pour rendre l'alignement vertical bien visible (le conteneur sera plus haut que les cartes).
 ```css
 .carte-article {
     width: 180px;
@@ -226,15 +136,7 @@ Ajoutez :
     border: 1px solid #e5e7eb;
     border-radius: 12px;
 }
-```
 
-Les cartes possèdent une taille visible.
-
-#### Étape 2 — Créer une hauteur pour le conteneur
-
-Ajoutez :
-
-```css
 .liste-cartes {
     display: flex;
     flex-direction: row;
@@ -247,166 +149,16 @@ Ajoutez :
 }
 ```
 
-Le conteneur possède maintenant une hauteur supérieure à celle des cartes.
+2. **Testez l'alignement :**
+   - Ajoutez `align-items: flex-start;` au conteneur. Observez que les cartes se placent tout en haut.
+   - Remplacez par `align-items: center;`. Les cartes se centrent verticalement.
 
-Cette différence permet d'observer l'alignement.
-
-### 2.2. Aligner les cartes au début
-
-#### Étape 1 — Utiliser `flex-start`
-
-Ajoutez :
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 800px;
-    height: 260px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-Les cartes sont alignées en haut du conteneur.
-
-### 2.3. Centrer les cartes
-
-#### Étape 1 — Remplacer la valeur
-
-Remplacez :
-
-```css
-align-items: flex-start;
-```
-
-par :
-
-```css
-align-items: center;
-```
-
-Les cartes sont maintenant alignées au centre vertical du conteneur.
-
-### 2.4. Comparer les deux propriétés
-
-Gardez :
-
-```css
-flex-direction: row;
-```
-
-Testez :
-
-```css
-justify-content: center;
-```
-
-Puis testez :
-
-```css
-align-items: center;
-```
-
-Observez la différence.
-
-`justify-content` déplace les cartes sur l’axe horizontal.
-
-`align-items` déplace les cartes sur l’axe vertical.
-
-### 2.5. Tester l’axe secondaire avec `column`
-
-#### Étape 1 — Changer la direction
-
-Remplacez :
-
-```css
-flex-direction: row;
-```
-
-par :
-
-```css
-flex-direction: column;
-```
-
-Gardez :
-
-```css
-align-items: center;
-```
-
-L’axe principal devient vertical.
-
-L’axe secondaire devient horizontal.
-
-Les cartes sont maintenant centrées horizontalement.
-
-#### Étape 2 — Revenir à `row`
-
-Remplacez :
-
-```css
-flex-direction: column;
-```
-
-par :
-
-```css
-flex-direction: row;
-```
-
-Le résultat revient à une organisation horizontale.
-
-### 2.6. Combiner les deux propriétés
-
-#### Étape 1 — Centrer sur les deux axes
-
-Utilisez :
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-    height: 260px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-Les cartes sont maintenant centrées horizontalement et verticalement.
-
-**Travail à faire :**
-
-À partir du HTML fourni :
-
-- créez trois cartes ;
-- utilisez `.liste-cartes` comme conteneur flex ;
-- utilisez `flex-direction: row` ;
-- testez `align-items: flex-start` ;
-- testez `align-items: center` ;
-- changez ensuite `flex-direction` en `column` ;
-- observez le changement d’axe secondaire ;
-- utilisez finalement `justify-content: center` et `align-items: center`.
-
-N’utilisez pas encore :
-
-- `flex-wrap` ;
-- `gap` ;
-- `flex` ;
-- `flex-grow`.
+3. **Centrage parfait :**
+   - Ajoutez ensuite `justify-content: center;` pour centrer les cartes à la fois horizontalement et verticalement dans votre conteneur.
 
 **Livrable :**
 
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Créez un document contenant le code CSS complet de `.liste-cartes` avec le centrage absolu (horizontal et vertical).
 
 **Résultat attendu :**
 
@@ -414,37 +166,21 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-234-css.html' | relative_url}}"
-    height="700"
+    height="350"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-
-Le conteneur utilise `display: flex`.
-
-L’apprenant sait identifier l’axe principal et l’axe secondaire.
-
-Il sait utiliser `align-items` pour aligner les cartes et comprend la différence entre `justify-content` et `align-items`.
+Le conteneur utilise `display: flex`, `justify-content: center` et `align-items: center`. Les cartes sont centrées horizontalement et verticalement dans la zone grise de 260px de haut.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- la notion d’axe secondaire ;
-- le rôle de `align-items` ;
-- `flex-start` ;
-- `center` ;
-- la différence entre `justify-content` et `align-items`.
-
-**Vous avez réalisé :**
-
-Une liste de cartes dont l’alignement peut être contrôlé sur l’axe secondaire.
+- À faire la distinction entre l'axe principal et l'axe secondaire.
+- À utiliser `align-items` pour aligner les éléments sur l'axe secondaire.
+- À combiner `justify-content` et `align-items` pour centrer parfaitement vos éléments.
 
 ## Glossaire
 
-- **Axe principal** : axe utilisé par Flexbox pour organiser les éléments selon `flex-direction`.
-- **Axe secondaire** : axe perpendiculaire à l’axe principal.
-- **`align-items`** : propriété qui contrôle l’alignement sur l’axe secondaire.
-- **`justify-content`** : propriété qui contrôle la répartition sur l’axe principal.
-- **`flex-start`** : place les éléments au début de l’axe concerné.
-- **`center`** : place les éléments au centre de l’axe concerné.
+- **Axe secondaire** : Axe perpendiculaire à l'axe principal.
+- **`align-items`** : Propriété Flexbox qui gère l'alignement des éléments sur l'axe secondaire.

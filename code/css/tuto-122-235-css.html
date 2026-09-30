@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat - Flex Wrap</title>
+    <style>
+        body { font-family: sans-serif; }
+        .carte-article {
+            box-sizing: border-box;
+            width: 180px;
+            margin: 10px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        .liste-cartes {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 720px;
+            max-width: 100%;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+    <section class="liste-cartes">
+        <article class="carte-article">
+            <h2>HTML</h2>
+            <p>Créer la structure d'une page web.</p>
+        </article>
+        <article class="carte-article">
+            <h2>CSS</h2>
+            <p>Mettre en forme une page web.</p>
+        </article>
+        <article class="carte-article">
+            <h2>JavaScript</h2>
+            <p>Ajouter des comportements à une page.</p>
+        </article>
+        <article class="carte-article">
+            <h2>PHP</h2>
+            <p>Créer des applications web dynamiques.</p>
+        </article>
+        <article class="carte-article">
+            <h2>MySQL</h2>
+            <p>Stocker les données d'une application.</p>
+        </article>
+    </section>
+</body>
+</html>

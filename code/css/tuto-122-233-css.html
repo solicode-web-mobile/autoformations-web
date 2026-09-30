@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat - Répartition Flexbox</title>
+    <style>
+        body { font-family: sans-serif; }
+        .carte-article {
+            width: 180px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        .liste-cartes {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 800px;
+            max-width: 100%;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+    <section class="liste-cartes">
+        <article class="carte-article">
+            <h2>HTML</h2>
+            <p>Créer la structure d'une page web.</p>
+        </article>
+        <article class="carte-article">
+            <h2>CSS</h2>
+            <p>Mettre en forme une page web.</p>
+        </article>
+        <article class="carte-article">
+            <h2>JavaScript</h2>
+            <p>Ajouter des comportements à une page.</p>
+        </article>
+    </section>
+</body>
+</html>

@@ -8,6 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.122.23"
 nav_order: 3
+simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
@@ -56,18 +57,15 @@ window.pageData = {
 
 ## 1. Objectif
 
-Apprendre à répartir les éléments sur l’axe principal d’un conteneur Flexbox avec `justify-content`.
+Apprendre à répartir les éléments sur l’axe principal d’un conteneur Flexbox en utilisant la propriété `justify-content`.
 
 ## 2. Prérequis
 
-Vous savez déjà :
-
-- créer un conteneur Flexbox avec `display: flex` ;
-- choisir une direction avec `flex-direction` ;
-- utiliser `row` et `column` ;
-- identifier les éléments flex.
+Vous savez déjà configurer un conteneur Flexbox (`display: flex`) et choisir sa direction principale (`flex-direction`).
 
 ## Données de départ
+
+*(Les données de départ sont chargées automatiquement dans l'éditeur de code de l'interface).*
 
 ### HTML
 
@@ -92,117 +90,62 @@ Vous savez déjà :
 </section>
 ```
 
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n’est nécessaire.
 
 ## Partie 1 — Théorie
 
-### 1.1. Contrôler la répartition avec `justify-content`
+### 1.1. Répartir avec `justify-content`
 
-`justify-content` contrôle la position des éléments sur l’axe principal du conteneur Flexbox.
+La propriété `justify-content` (à appliquer sur le conteneur parent) permet d'aligner ou de répartir les enfants flex le long de **l'axe principal** (défini par `flex-direction`).
 
-**Exemple :**
+Voici les principales valeurs de répartition :
 
-```css
-.liste-cartes {
-    display: flex;
-    justify-content: center;
-}
-```
+<svg viewBox="0 0 600 300" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <rect id="card" width="60" height="40" rx="6" fill="#3b82f6" />
+    <rect id="container" width="500" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+  </defs>
 
-Les éléments sont placés au centre de l’axe principal.
+  <!-- flex-start -->
+  <g transform="translate(50, 10)">
+    <text x="0" y="15" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">flex-start (défaut)</text>
+    <use href="#container" x="0" y="25" />
+    <use href="#card" x="10" y="35" />
+    <use href="#card" x="80" y="35" />
+    <use href="#card" x="150" y="35" />
+  </g>
 
-### 1.2. Utiliser `flex-start`
+  <!-- center -->
+  <g transform="translate(50, 110)">
+    <text x="0" y="15" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">center</text>
+    <use href="#container" x="0" y="25" />
+    <use href="#card" x="145" y="35" />
+    <use href="#card" x="215" y="35" />
+    <use href="#card" x="285" y="35" />
+  </g>
 
-`flex-start` place les éléments au début de l’axe principal.
+  <!-- space-between -->
+  <g transform="translate(50, 210)">
+    <text x="0" y="15" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">space-between</text>
+    <use href="#container" x="0" y="25" />
+    <use href="#card" x="10" y="35" />
+    <use href="#card" x="220" y="35" />
+    <use href="#card" x="430" y="35" />
+  </g>
+</svg>
 
-```css
-.liste-cartes {
-    display: flex;
-    justify-content: flex-start;
-}
-```
+- **`flex-start`** : Aligne tous les éléments au début du conteneur.
+- **`center`** : Regroupe tous les éléments au centre du conteneur.
+- **`space-between`** : Le premier élément est collé au début, le dernier est collé à la fin, et l'espace restant est réparti de manière égale entre les éléments centraux.
 
-Avec `flex-direction: row`, les éléments commencent à gauche.
-
-### 1.3. Utiliser `center`
-
-`center` place les éléments au centre de l’axe principal.
-
-```css
-.liste-cartes {
-    display: flex;
-    justify-content: center;
-}
-```
-
-Avec `flex-direction: row`, les cartes sont regroupées au centre.
-
-### 1.4. Utiliser `space-between`
-
-`space-between` place le premier élément au début et le dernier à la fin.
-
-L’espace disponible est réparti entre les éléments.
-
-```css
-.liste-cartes {
-    display: flex;
-    justify-content: space-between;
-}
-```
-
-Avec trois cartes :
-
-```text
-Carte 1          Carte 2          Carte 3
-```
-
-L’espace entre les cartes est réparti automatiquement.
-
-### 1.5. Le rôle de l’axe principal
-
-Avec :
-
-```css
-flex-direction: row;
-```
-
-l’axe principal est horizontal.
-
-Avec :
-
-```css
-flex-direction: column;
-```
-
-l’axe principal est vertical.
-
-`justify-content` agit toujours sur cet axe.
-
-### 1.6. À retenir
-
-- `justify-content` contrôle la répartition sur l’axe principal.
-- `flex-start` place les éléments au début.
-- `center` place les éléments au centre.
-- `space-between` répartit l’espace entre les éléments.
-- Le résultat dépend de `flex-direction`.
+*(Note : Si l'axe principal est `column`, ces règles s'appliqueront verticalement de haut en bas.)*
 
 ## Partie 2 — Pratique
 
-### 2.1. Préparer les cartes
+### 2.1. Tester les répartitions sur une ligne de cartes
 
-#### Étape 1 — Donner une taille aux cartes
-
-Ajoutez :
-
+1. **Préparation du terrain :**
+   Ajoutez le CSS de base pour styliser vos 3 cartes et configurer votre conteneur avec Flexbox (direction horizontale) :
+   
 ```css
 .carte-article {
     width: 180px;
@@ -211,15 +154,7 @@ Ajoutez :
     border: 1px solid #e5e7eb;
     border-radius: 12px;
 }
-```
 
-Les trois cartes ont maintenant une taille visible.
-
-#### Étape 2 — Préparer le conteneur
-
-Ajoutez :
-
-```css
 .liste-cartes {
     display: flex;
     flex-direction: row;
@@ -231,156 +166,17 @@ Ajoutez :
 }
 ```
 
-Le conteneur utilise Flexbox avec une direction horizontale.
+2. **Expérimentez les valeurs :**
+   - Ajoutez `justify-content: flex-start;` à `.liste-cartes`. Les cartes se collent à gauche.
+   - Remplacez par `justify-content: center;`. Les cartes se centrent.
+   - Changez temporairement `flex-direction` en `column` pour voir l'impact de `center` sur l'axe vertical, puis revenez à `row`.
 
-### 2.2. Placer les cartes au début
-
-#### Étape 1 — Ajouter `flex-start`
-
-Ajoutez :
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 800px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-Les cartes se placent au début du conteneur.
-
-### 2.3. Centrer les cartes
-
-#### Étape 1 — Remplacer la valeur
-
-Remplacez :
-
-```css
-justify-content: flex-start;
-```
-
-par :
-
-```css
-justify-content: center;
-```
-
-Les trois cartes sont maintenant regroupées au centre.
-
-### 2.4. Répartir l’espace disponible
-
-#### Étape 1 — Utiliser `space-between`
-
-Remplacez :
-
-```css
-justify-content: center;
-```
-
-par :
-
-```css
-justify-content: space-between;
-```
-
-Le premier élément reste au début.
-
-Le dernier élément reste à la fin.
-
-L’espace disponible est réparti entre les cartes.
-
-### 2.5. Comparer les trois valeurs
-
-Testez successivement :
-
-```css
-justify-content: flex-start;
-```
-
-puis :
-
-```css
-justify-content: center;
-```
-
-puis :
-
-```css
-justify-content: space-between;
-```
-
-Observez la position des cartes dans le conteneur.
-
-### 2.6. Tester avec une direction verticale
-
-#### Étape 1 — Changer la direction
-
-Remplacez :
-
-```css
-flex-direction: row;
-```
-
-par :
-
-```css
-flex-direction: column;
-```
-
-Gardez :
-
-```css
-justify-content: center;
-```
-
-Observez le résultat.
-
-`justify-content` agit maintenant sur l’axe vertical.
-
-#### Étape 2 — Revenir à la direction horizontale
-
-Remplacez :
-
-```css
-flex-direction: column;
-```
-
-par :
-
-```css
-flex-direction: row;
-```
-
-Le résultat revient à une organisation horizontale.
-
-**Travail à faire :**
-
-À partir du HTML fourni :
-
-- créez trois cartes ;
-- utilisez `display: flex` sur leur conteneur ;
-- utilisez `flex-direction: row` ;
-- testez `justify-content: flex-start` ;
-- testez `justify-content: center` ;
-- testez `justify-content: space-between` ;
-- choisissez `space-between` pour le résultat final.
-
-N’utilisez pas encore :
-
-- `align-items` ;
-- `flex-wrap` ;
-- `gap` ;
-- `flex` ;
-- `flex-grow`.
+3. **Résultat attendu (`space-between`) :**
+   - Modifiez la valeur finale pour obtenir : `justify-content: space-between;`. Vos trois cartes doivent occuper toute la largeur disponible de manière équilibrée.
 
 **Livrable :**
 
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Créez un document avec le code CSS complet de `.liste-cartes` utilisant `justify-content: space-between;`.
 
 **Résultat attendu :**
 
@@ -388,42 +184,19 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-233-css.html' | relative_url}}"
-    height="700"
+    height="350"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-
-Le conteneur utilise `display: flex` et `flex-direction: row`.
-
-L’apprenant sait modifier la répartition avec :
-
-```text
-flex-start
-center
-space-between
-```
-
-Le résultat final utilise `space-between` et répartit correctement les trois cartes sur l’axe horizontal.
+Le conteneur utilise `display: flex`, `flex-direction: row`, et `justify-content: space-between`. Les éléments sont répartis horizontalement.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- le rôle de `justify-content` ;
-- `flex-start` ;
-- `center` ;
-- `space-between` ;
-- le lien entre `justify-content` et l’axe principal.
-
-**Vous avez réalisé :**
-
-Une ligne de cartes dont la répartition peut être contrôlée avec Flexbox.
+- À utiliser `justify-content` pour répartir l'espace disponible entre les éléments flex sur l'axe principal.
 
 ## Glossaire
 
-- **`justify-content`** : propriété qui contrôle la répartition des éléments sur l’axe principal.
-- **`flex-start`** : place les éléments au début de l’axe principal.
-- **`center`** : place les éléments au centre de l’axe principal.
-- **`space-between`** : répartit l’espace entre les éléments.
-- **Axe principal** : axe utilisé par Flexbox pour organiser les éléments selon `flex-direction`.
+- **`justify-content`** : Propriété qui gère l'alignement et la répartition des éléments sur l'axe principal (axe de lecture).
+- **`space-between`** : Valeur poussant le premier élément au début et le dernier à la fin, répartissant le vide au centre.
