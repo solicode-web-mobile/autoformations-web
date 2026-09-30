@@ -8,41 +8,32 @@ type: "classique"
 version: "normal"
 ua: "UA.122.22"
 nav_order: 4
+simplified: true
 data_html: |
-  <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Carte d'article</title>
-  </head>
-  <body>
+  <div class="carte-test">
+      <img src="https://picsum.photos/400/300" alt="Image d'exemple">
+  </div>
 
-      <article class="carte-article">
-
-          <div class="carte-image">
-              <img
-                  src="images/article-example.png"
-                  alt="Écran montrant du code informatique">
-          </div>
-
-          <div class="carte-contenu">
-              <h2>Le métier de développeur</h2>
-
-              <p>
-                  Le développeur crée des applications
-                  et transforme un besoin en solution.
-              </p>
-
-              <a href="#">Lire l'article</a>
-          </div>
-
-      </article>
-
-  </body>
-  </html>
-
-data_css: ""
+data_css: |
+  body {
+      padding: 20px;
+  }
+  .carte-test {
+      width: 250px;
+      height: 150px;
+      border: 4px solid #ef4444;
+      border-radius: 30px;
+      
+      /* 1. Testez de remplacer 'visible' par 'hidden' */
+      overflow: visible;
+  }
+  .carte-test img {
+      width: 100%;
+      height: 100%;
+      
+      /* 2. Testez de remplacer 'fill' par 'cover' */
+      object-fit: fill;
+  }
 
 data_js: ""
 ---
@@ -58,267 +49,111 @@ window.pageData = {
 
 ## 1. Objectif
 
-Apprendre à contrôler le contenu qui dépasse les limites d’une carte avec `overflow`.
+Apprendre à dompter le contenu rebelle (comme les images) pour qu'il respecte les limites et les formes de notre carte, en utilisant `overflow` et `object-fit`.
 
 ## 2. Prérequis
 
-Vous savez déjà :
-
-- écrire une règle CSS ;
-- utiliser une classe CSS ;
-- utiliser `width` et `height` ;
-- utiliser `min-height` et `max-width` ;
-- utiliser `padding` et `margin` ;
-- utiliser `border` ;
-- utiliser `border-radius` ;
-- utiliser `object-fit`.
-
-## Données de départ
-
-### HTML
-
-```html
-<article class="carte-article">
-
-    <div class="carte-image">
-        <img
-            src="images/article-example.png"
-            alt="Écran montrant du code informatique">
-    </div>
-
-    <div class="carte-contenu">
-        <h2>Le métier de développeur</h2>
-
-        <p>
-            Le développeur crée des applications
-            et transforme un besoin en solution.
-        </p>
-
-        <a href="#">Lire l'article</a>
-    </div>
-
-</article>
-```
-
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n’est nécessaire.
+- Avoir structuré les espacements (`padding`, `margin`).
 
 ## Partie 1 — Théorie
 
-### 1.1. Le dépassement du contenu
+### 1.1. Les deux problèmes des images
 
-Un élément possède une largeur et une hauteur.
+Quand on intègre une image dans une carte, deux problèmes visuels surviennent fréquemment :
 
-Son contenu peut parfois dépasser ces limites.
+1. **Les coins qui dépassent** : Si vous donnez des bords arrondis (`border-radius`) à votre carte, l'image (qui est rectangulaire) va "déborder" par-dessus les jolis coins arrondis.
+   **Solution : `overflow: hidden;`** appliqué sur la carte agit comme des ciseaux et coupe tout ce qui sort de ses limites.
+   
+2. **L'image écrasée** : Si vous forcez une image à prendre une largeur (`width`) et une hauteur (`height`) précises, elle risque d'être déformée (étirée ou écrasée) pour rentrer dans le moule.
+   **Solution : `object-fit: cover;`** appliqué sur l'image permet de la rogner proprement en préservant ses proportions (comme un fond d'écran de téléphone).
 
-Ce contenu est appelé **débordement**.
+### 1.2. Exemple d'application
 
-Par exemple, une image peut dépasser les limites d’une carte.
-
-### 1.2. Contrôler le débordement avec `overflow`
-
-`overflow` contrôle ce qui dépasse les limites d’un élément.
-
-**Exemple :**
+Voici comment combiner ces deux règles magiques (le code HTML correspondant est dans l'onglet HTML de l'éditeur ci-contre) :
 
 ```css
-.carte-article {
-    overflow: hidden;
+.carte-test {
+    border-radius: 30px;
+    /* Coupe les coins carrés de l'image qui dépassent */
+    overflow: hidden; 
+}
+
+.carte-test img {
+    width: 100%;
+    height: 100%;
+    /* Empêche l'image d'être écrasée */
+    object-fit: cover; 
 }
 ```
+*(Dans l'éditeur intégré, passez `overflow` à `hidden` pour voir les coins de l'image se faire couper, puis passez `object-fit` à `cover` pour voir l'image retrouver de belles proportions sans être écrasée).*
 
-La valeur `hidden` masque la partie qui dépasse.
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 1.3. Utiliser `overflow: hidden` avec `border-radius`
+Un article de blog sans image, c'est un peu triste. Ajoutons la miniature de notre article.
 
-Une carte peut avoir des coins arrondis avec `border-radius`.
+### 2.1. Ajouter l'image au HTML
 
-Une image placée dans la carte peut dépasser les coins arrondis.
+1. Ouvrez `index.html`.
+2. Juste **au-dessus** de la `<div class="carte-contenu">`, ajoutez le bloc de l'image (enveloppée dans un lien pour qu'elle soit cliquable plus tard) :
 
-`overflow: hidden` permet de couper cette partie.
-
-**Exemple :**
-
-```css
-.carte-article {
-    border-radius: 12px;
-    overflow: hidden;
-}
+```html
+<div class="carte-article">
+    
+    <!-- Nouveau bloc image -->
+    <a href="#" class="carte-image">
+        <img src="images/article-example.png" alt="Code source">
+    </a>
+    
+    <!-- Bloc de contenu déjà existant -->
+    <div class="carte-contenu">
+        <h3>Comment bien débuter avec Tailwind CSS ?</h3>
+        <p>Découvrez les concepts fondamentaux de Tailwind CSS.</p>
+    </div>
+    
+</div>
 ```
+*(Note : si vous n'avez pas d'image locale, vous pouvez utiliser l'URL `https://picsum.photos/400/300` pour le test).*
 
-L’image reste alors à l’intérieur de la forme de la carte.
+### 2.2. Arrondir la carte et couper les dépassements
 
-### 1.4. À retenir
-
-- `overflow` contrôle le contenu qui dépasse.
-- `hidden` masque la partie qui dépasse.
-- `overflow: hidden` est utile avec une carte qui possède des coins arrondis.
-- La règle agit sur le contenu situé à l’intérieur de l’élément.
-
-## Partie 2 — Pratique
-
-### 2.1. Créer la carte
-
-#### Étape 1 — Définir les dimensions de la carte
-
-Ajoutez :
+1. Ouvrez `css/components.css`.
+2. Repérez la règle `.carte-article` existante.
+3. Ajoutez-y un `border-radius` pour la rendre plus moderne, et SURTOUT `overflow: hidden;` pour que l'image ne vienne pas casser ces arrondis en haut de la carte :
 
 ```css
+/* css/components.css */
 .carte-article {
-    width: 400px;
-    max-width: 100%;
-    min-height: 300px;
-    background: white;
-    border: 1px solid #e5e7eb;
+    width: 300px;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    margin-bottom: 24px;
+    
+    /* Nouvelles règles : */
     border-radius: 16px;
+    overflow: hidden;
 }
 ```
 
-La carte possède maintenant une largeur maximale de `400px`.
+### 2.3. Cadrer l'image parfaitement
 
-Elle possède aussi des coins arrondis.
-
-### 2.2. Préparer l’image
-
-#### Étape 1 — Donner une taille à l’image
-
-Ajoutez :
+1. Toujours dans `components.css`, ajoutez les styles pour l'image.
+2. On lui donne une hauteur fixe de `220px` et on utilise `object-fit: cover` pour garantir qu'elle remplisse cet espace sans jamais être déformée :
 
 ```css
+/* css/components.css */
+.carte-image {
+    display: block; /* Retire le petit espace parasite sous les liens */
+}
+
 .carte-image img {
-    display: block;
     width: 100%;
     height: 220px;
     object-fit: cover;
 }
 ```
 
-L’image prend toute la largeur de la carte.
-
-Elle possède une hauteur de `220px`.
-
-### 2.3. Observer le débordement
-
-#### Étape 1 — Afficher le contenu de la carte
-
-Ajoutez :
-
-```css
-.carte-contenu {
-    padding: 20px;
-}
-```
-
-Ajoutez ensuite :
-
-```css
-.carte-contenu h2 {
-    margin: 0 0 12px;
-}
-
-.carte-contenu p {
-    margin: 0 0 16px;
-}
-
-.carte-contenu a {
-    color: #2673e8;
-}
-```
-
-La carte possède maintenant un contenu visible.
-
-#### Étape 2 — Ajouter `overflow: hidden`
-
-Modifiez la carte :
-
-```css
-.carte-article {
-    width: 400px;
-    max-width: 100%;
-    min-height: 300px;
-    overflow: hidden;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-}
-```
-
-L’image reste maintenant à l’intérieur des coins arrondis de la carte.
-
-### 2.4. Vérifier le résultat
-
-Supprimez temporairement :
-
-```css
-overflow: hidden;
-```
-
-Observez la carte.
-
-Ajoutez ensuite :
-
-```css
-overflow: hidden;
-```
-
-Comparez les deux résultats.
-
-Vérifiez que `overflow: hidden` permet de conserver le contenu à l’intérieur de la forme de la carte.
-
-### 2.5. Réaliser une deuxième carte
-
-Ajoutez une deuxième carte dans le HTML :
-
-```html
-<article class="carte-article">
-
-    <div class="carte-image">
-        <img
-            src="images/article-example.png"
-            alt="Interface utilisateur">
-    </div>
-
-    <div class="carte-contenu">
-        <h2>Créer une interface web</h2>
-
-        <p>
-            Une interface claire aide l’utilisateur
-            à comprendre les actions disponibles.
-        </p>
-
-        <a href="#">Lire l'article</a>
-    </div>
-
-</article>
-```
-
-La même règle CSS doit s’appliquer aux deux cartes.
-
-**Travail à faire :**
-
-Créez deux cartes d’articles.
-
-Donnez aux cartes :
-
-- une largeur maximale ;
-- une hauteur minimale ;
-- des coins arrondis ;
-- une image ;
-- un contenu intérieur.
-
-Utilisez `overflow: hidden` pour garder le contenu dans les limites de chaque carte.
-
 **Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Vos fichiers `index.html` et `components.css` contenant l'image cadrée et la carte arrondie.
 
 **Résultat attendu :**
 
@@ -326,29 +161,19 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-224-css.html' | relative_url}}"
-    height="700"
+    height="450"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-
-Les deux cartes conservent leur contenu à l’intérieur de leurs limites et l’image respecte les coins arrondis de la carte.
+La carte possède de beaux bords arrondis, et l'image au sommet épouse parfaitement cette forme sans être déformée ni écrasée.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- le rôle de `overflow` ;
-- l’utilisation de `overflow: hidden` ;
-- le contrôle du contenu qui dépasse une carte.
-
-**Vous avez réalisé :**
-
-Deux cartes d’articles dont le contenu reste correctement contenu dans leurs limites.
+- À cacher tout ce qui dépasse d'une boîte avec `overflow: hidden`.
+- À forcer une image à remplir une zone sans se déformer grâce à `object-fit: cover`.
 
 ## Glossaire
-
-- **Débordement** : contenu qui dépasse les limites d’un élément.
-- **`overflow`** : propriété CSS qui contrôle le contenu qui dépasse.
-- **`hidden`** : valeur qui masque le contenu qui dépasse.
-- **`border-radius`** : propriété CSS qui arrondit les coins d’un élément.
+- **overflow** : Contrôle ce qui se passe quand le contenu est trop grand pour sa boîte.
+- **object-fit** : Indique comment le contenu d'une balise (comme `<img>`) doit s'adapter à la largeur/hauteur définie.

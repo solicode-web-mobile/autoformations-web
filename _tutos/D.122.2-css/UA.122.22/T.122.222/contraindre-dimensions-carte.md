@@ -8,36 +8,33 @@ type: "classique"
 version: "normal"
 ua: "UA.122.22"
 nav_order: 2
+simplified: true
 data_html: |
-  <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Carte d'article</title>
-  </head>
-  <body>
+  <div class="boite">
+      width: 600px (Fixe)
+  </div>
+  <div class="boite-fluide">
+      max-width: 600px (Fluide)
+  </div>
 
-      <article class="carte-article">
-
-          <img
-              src="images/article-example.png"
-              alt="Écran montrant du code informatique">
-
-          <div class="carte-contenu">
-              <h2>Le métier de développeur</h2>
-              <p>
-                  Le développeur crée des applications
-                  et transforme un besoin en solution.
-              </p>
-          </div>
-
-      </article>
-
-  </body>
-  </html>
-
-data_css: ""
+data_css: |
+  body {
+      padding: 10px;
+      font-family: sans-serif;
+  }
+  .boite {
+      width: 600px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #ef4444;
+      color: white;
+  }
+  .boite-fluide {
+      max-width: 600px;
+      padding: 15px;
+      background: #22c55e;
+      color: white;
+  }
 
 data_js: ""
 ---
@@ -53,250 +50,99 @@ window.pageData = {
 
 ## 1. Objectif
 
-Apprendre à limiter la largeur et la hauteur d’une carte avec `min-width`, `max-width` et `min-height`.
+Apprendre à rendre un élément responsive en limitant ses dimensions avec `max-width`, `min-width` ou `min-height`, plutôt que de lui imposer une taille fixe.
 
 ## 2. Prérequis
 
-Vous savez déjà :
-
-- écrire une règle CSS ;
-- utiliser un sélecteur de classe ;
-- utiliser `width` et `height` ;
-- utiliser `margin` et `padding` ;
-- utiliser `border` et `border-radius`.
-
-## Données de départ
-
-### HTML
-
-```html
-<article class="carte-article">
-
-    <img
-        src="images/article-example.png"
-        alt="Écran montrant du code informatique">
-
-    <div class="carte-contenu">
-        <h2>Le métier de développeur</h2>
-        <p>
-            Le développeur crée des applications
-            et transforme un besoin en solution.
-        </p>
-    </div>
-
-</article>
-```
-
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n’est nécessaire.
+- Avoir assimilé le Box Model (`box-sizing`).
+- Connaître `width` et `height`.
 
 ## Partie 1 — Théorie
 
-### 1.1. Limiter une largeur avec `max-width`
+### 1.1. Les contraintes (min- et max-)
 
-`max-width` définit la largeur maximale d’un élément.
+Utiliser des propriétés fixes comme `width: 800px;` pose souvent un problème sur les petits écrans (smartphones) : l'élément déborde et force l'apparition d'une barre de défilement horizontale.
 
-L’élément peut être plus petit.
+Pour rendre un site "responsive" (adaptable à tous les écrans), on utilise des **contraintes** :
+- **`max-width`** : La boîte prend toute la largeur disponible, mais ne dépassera jamais cette limite.
+- **`min-width`** : La boîte peut s'étirer, mais ne sera jamais plus petite que cette limite.
+- **`min-height`** : La hauteur s'adapte au contenu, mais ne descendra jamais en dessous de cette valeur.
 
-Il ne peut pas dépasser la valeur donnée.
+L'utilisation de `max-width` combinée à un centrage (`margin: 0 auto;`) est la technique standard pour centrer le contenu d'un site sur un grand écran tout en le laissant fluide sur mobile.
 
-**Exemple :**
+### 1.2. Exemple d'application
+
+Voici comment la règle s'applique en CSS (le code HTML correspondant est disponible dans l'onglet HTML de l'éditeur ci-contre) :
 
 ```css
-.carte-article {
-    max-width: 400px;
+.boite-fluide {
+    /* La boîte prend par défaut 100% de l'écran (si c'est un bloc),
+       mais s'arrête de grandir à 600px. */
+    max-width: 600px;
+    background: #22c55e;
 }
 ```
+*(Vous pouvez tester cet exemple dans l'éditeur intégré : réduisez la largeur de votre fenêtre pour voir la boîte rouge déborder, tandis que la boîte verte s'adapte parfaitement à l'écran).*
 
-La carte peut avoir une largeur inférieure à `400px`.
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-Elle ne dépassera pas `400px`.
+Dans le tutoriel précédent, nous avons créé une simple carte. Pour le blog, nous allons structurer la page pour que notre liste d'articles ne s'étire pas à l'infini sur les grands écrans.
 
-### 1.2. Imposer une largeur minimale avec `min-width`
+### 2.1. Englober la carte
 
-`min-width` définit la largeur minimale d’un élément.
-
-L’élément ne peut pas devenir plus petit que cette valeur.
-
-**Exemple :**
-
-```css
-.carte-article {
-    min-width: 280px;
-}
-```
-
-La carte aura au moins `280px` de largeur.
-
-### 1.3. Imposer une hauteur minimale avec `min-height`
-
-`min-height` définit la hauteur minimale d’un élément.
-
-Le contenu peut rendre la carte plus haute.
-
-Mais la carte ne sera pas plus petite que la valeur donnée.
-
-**Exemple :**
-
-```css
-.carte-article {
-    min-height: 300px;
-}
-```
-
-La carte aura au moins `300px` de hauteur.
-
-### 1.4. À retenir
-
-- `min-width` définit une largeur minimale.
-- `max-width` définit une largeur maximale.
-- `min-height` définit une hauteur minimale.
-- Ces propriétés permettent de garder des cartes cohérentes.
-- `width` et `height` ont déjà été étudiés en S2.
-
-## Partie 2 — Pratique
-
-### 2.1. Donner une largeur maximale à la carte
-
-#### Étape 1 — Ouvrir la feuille CSS
-
-Créez un fichier :
-
-```text
-style.css
-```
-
-Ajoutez la règle suivante :
-
-```css
-.carte-article {
-    max-width: 400px;
-}
-```
-
-Cette règle empêche la carte de dépasser `400px` de largeur.
-
-#### Étape 2 — Ajouter un fond et une bordure
-
-Ajoutez :
-
-```css
-.carte-article {
-    max-width: 400px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
-```
-
-La carte possède maintenant une limite de largeur et une bordure visible.
-
-### 2.2. Définir une largeur minimale
-
-#### Étape 1 — Ajouter `min-width`
-
-Modifiez la règle :
-
-```css
-.carte-article {
-    min-width: 280px;
-    max-width: 400px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
-```
-
-La carte doit maintenant rester entre `280px` et `400px` de largeur.
-
-### 2.3. Définir une hauteur minimale
-
-#### Étape 1 — Ajouter `min-height`
-
-Ajoutez la propriété :
-
-```css
-.carte-article {
-    min-width: 280px;
-    max-width: 400px;
-    min-height: 300px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
-```
-
-La carte doit maintenant avoir une hauteur minimale de `300px`.
-
-### 2.4. Vérifier le comportement
-
-Testez les valeurs suivantes :
-
-```css
-min-width: 280px;
-max-width: 400px;
-min-height: 300px;
-```
-
-Vérifiez :
-
-- la carte ne dépasse pas `400px` de largeur ;
-- la carte ne devient pas plus petite que `280px` ;
-- la carte garde au moins `300px` de hauteur.
-
-### 2.5. Appliquer les contraintes à une deuxième carte
-
-Ajoutez une deuxième carte dans le HTML.
-
-Utilisez la même classe :
+1. Ouvrez votre fichier `index.html`.
+2. Entourez votre `<div class="carte-article">` avec un conteneur global qui représentera la zone des articles :
 
 ```html
-<article class="carte-article">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Blog</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+    
+    <!-- Nouveau conteneur principal -->
+    <section class="section-articles">
+        <div class="conteneur-articles">
+            
+            <div class="carte-article">
+                <div class="carte-contenu">
+                    <h3>Comment bien débuter avec Tailwind CSS en 2026 ?</h3>
+                    <p>Découvrez les concepts fondamentaux de Tailwind CSS.</p>
+                </div>
+            </div>
 
-    <img
-        src="images/article-example.png"
-        alt="Interface utilisateur">
+        </div>
+    </section>
 
-    <div class="carte-contenu">
-        <h2>Créer une interface web</h2>
-        <p>
-            Une bonne interface doit être claire,
-            simple et agréable à utiliser.
-        </p>
-    </div>
-
-</article>
+</body>
+</html>
 ```
 
-La même règle CSS doit s'appliquer aux deux cartes.
+### 2.2. Centrer et contraindre la largeur
 
-Vérifiez que les deux cartes respectent les mêmes contraintes.
+1. Dans votre dossier `css`, créez un nouveau fichier `pages.css` (et assurez-vous qu'il est bien lié dans le `<head>` de votre HTML comme ci-dessus).
+2. Ajoutez la contrainte `max-width` pour que la zone d'articles ne dépasse pas 1200px de large, et centrez-la :
 
-**Travail à faire :**
-
-Créez deux cartes d’articles.
-
-Appliquez les contraintes suivantes :
-
-```text
-Largeur minimale : 280px
-Largeur maximale : 400px
-Hauteur minimale : 300px
+```css
+/* css/pages.css */
+.conteneur-articles {
+    max-width: 1200px;
+    /* La marge "auto" à gauche et à droite centre l'élément */
+    margin: 0 auto; 
+}
 ```
 
-Utilisez une seule classe CSS pour les deux cartes.
+### 2.3. Optionnel : vérifier le comportement
+
+Si vous ouvrez votre page en plein écran, le texte ne sera pas collé au bord gauche, mais bien limité dans une colonne invisible de 1200px au centre. Sur petit écran, le texte s'adaptera sans déborder.
 
 **Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Votre fichier `index.html` mis à jour et le nouveau fichier `pages.css` contenant la contrainte de dimension.
 
 **Résultat attendu :**
 
@@ -304,30 +150,20 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-222-css.html' | relative_url}}"
-    height="700"
+    height="250"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-
-Les deux cartes utilisent la même classe CSS et respectent les trois contraintes de dimensionnement.
+Le conteneur global limite désormais l'espace du blog à 1200 pixels et se centre automatiquement.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- `min-width` ;
-- `max-width` ;
-- `min-height`.
-
-**Vous avez réalisé :**
-
-Deux cartes d’articles avec des dimensions contrôlées.
+- La différence entre une largeur stricte (`width`) et fluide (`max-width`).
+- À utiliser `max-width` avec `margin: 0 auto` pour créer un conteneur principal centré, la technique la plus courante en mise en page Web.
 
 ## Glossaire
-
-- **Contrainte de dimension** : règle qui limite la taille d’un élément.
-- **`min-width`** : largeur minimale d’un élément.
-- **`max-width`** : largeur maximale d’un élément.
-- **`min-height`** : hauteur minimale d’un élément.
-- **Composant** : élément réutilisable d’une interface.
+- **Responsive** : Capacité d'une page à s'adapter à la taille de l'écran.
+- **max-width** : Largeur maximale autorisée.
+- **margin: 0 auto** : Technique CSS pour centrer horizontalement un élément de type bloc.

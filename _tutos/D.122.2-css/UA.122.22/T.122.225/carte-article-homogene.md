@@ -8,62 +8,24 @@ type: "classique"
 version: "normal"
 ua: "UA.122.22"
 nav_order: 5
+simplified: true
 data_html: |
-  <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Cartes d'articles</title>
-  </head>
-  <body>
+  <div class="carte">Carte 1</div>
+  <div class="carte">Carte 2</div>
+  <div class="carte">Carte 3</div>
 
-      <article class="carte-article">
-
-          <div class="carte-image">
-              <img
-                  src="images/article-example.png"
-                  alt="Écran montrant du code informatique">
-          </div>
-
-          <div class="carte-contenu">
-              <h2>Le métier de développeur</h2>
-
-              <p>
-                  Le développeur crée des applications
-                  et transforme un besoin en solution.
-              </p>
-
-              <a href="#">Lire l'article</a>
-          </div>
-
-      </article>
-
-      <article class="carte-article">
-
-          <div class="carte-image">
-              <img
-                  src="images/article-example.png"
-                  alt="Interface utilisateur">
-          </div>
-
-          <div class="carte-contenu">
-              <h2>Créer une interface web</h2>
-
-              <p>
-                  Une interface claire aide l'utilisateur
-                  à comprendre les actions disponibles.
-              </p>
-
-              <a href="#">Lire l'article</a>
-          </div>
-
-      </article>
-
-  </body>
-  </html>
-
-data_css: ""
+data_css: |
+  body {
+      padding: 20px;
+      background: #f3f4f6;
+  }
+  .carte {
+      background: white;
+      border: 1px solid #d1d5db;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+  }
 
 data_js: ""
 ---
@@ -79,317 +41,130 @@ window.pageData = {
 
 ## 1. Objectif
 
-Construire une carte d’article homogène en réunissant les règles de dimensionnement, d’espace et de bordure.
+Créer un véritable "Composant" homogène et réutilisable, en finalisant son design et en l'appliquant à plusieurs éléments simultanément.
 
 ## 2. Prérequis
 
-Vous savez déjà :
-
-- utiliser une classe CSS ;
-- utiliser `width` et `max-width` ;
-- utiliser `min-width` et `min-height` ;
-- utiliser `box-sizing` ;
-- utiliser `padding` et `margin` ;
-- utiliser `border` et `border-radius` ;
-- utiliser `overflow: hidden`.
-
-## Données de départ
-
-### HTML
-
-```html
-<article class="carte-article">
-
-    <div class="carte-image">
-        <img
-            src="images/article-example.png"
-            alt="Écran montrant du code informatique">
-    </div>
-
-    <div class="carte-contenu">
-        <h2>Le métier de développeur</h2>
-
-        <p>
-            Le développeur crée des applications
-            et transforme un besoin en solution.
-        </p>
-
-        <a href="#">Lire l'article</a>
-    </div>
-
-</article>
-
-<article class="carte-article">
-
-    <div class="carte-image">
-        <img
-            src="images/article-example.png"
-            alt="Interface utilisateur">
-    </div>
-
-    <div class="carte-contenu">
-        <h2>Créer une interface web</h2>
-
-        <p>
-            Une interface claire aide l'utilisateur
-            à comprendre les actions disponibles.
-        </p>
-
-        <a href="#">Lire l'article</a>
-    </div>
-
-</article>
-```
-
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n'est nécessaire.
+- Avoir structuré la carte (dimensions, overflow, espaces).
 
 ## Partie 1 — Théorie
 
-### 1.1. Réunir plusieurs règles dans un composant
+### 1.1. Le concept de composant réutilisable
 
-Une carte utilise plusieurs propriétés CSS.
+En CSS moderne, on ne style pas les éléments un par un. On crée des "composants" visuels (comme notre classe `.carte-article`) dont on regroupe toutes les propriétés (bordures, fonds, dimensions).
 
-On peut réunir ces propriétés dans une seule classe.
+L'avantage principal d'une classe CSS (contrairement à un identifiant `id`), c'est qu'elle peut être appliquée à une infinité d'éléments dans le HTML. Tous ces éléments partageront exactement la même base visuelle, garantissant ainsi l'**homogénéité** du design de votre site.
+
+### 1.2. Contraste et Fond
+
+Pour qu'un composant ressorte bien à l'écran, on joue généralement avec les couleurs de fond. Si le site a un fond légèrement gris (`#f9fafb`), donner un fond blanc pur (`white`) à la carte la fera ressortir naturellement.
 
 ```css
-.carte-article {
-    box-sizing: border-box;
-    min-width: 280px;
-    max-width: 400px;
-    min-height: 300px;
-    padding: 0;
-    background: white;
+body {
+    background: #f9fafb; /* Gris très clair */
+}
+
+.composant {
+    background: white; /* Blanc pur */
     border: 1px solid #e5e7eb;
+}
+```
+*(Le code de l'éditeur intégré illustre parfaitement ce principe avec 3 cartes identiques qui se détachent du fond).*
+
+## Partie 2 — Pratique (Projet Fil Rouge)
+
+Il est temps de donner la touche finale à notre carte d'article et d'en créer plusieurs !
+
+### 2.1. Les finitions visuelles de la carte
+
+1. Ouvrez `css/global.css`. Assurez-vous que le fond du site (`body`) n'est pas blanc, mais gris très clair :
+
+```css
+/* css/global.css */
+body {
+    margin: 0;
+    background: #f9fafb;
+    font-family: Arial, sans-serif;
+    color: #1f2937;
+}
+```
+
+2. Dans `css/components.css`, assurez-vous que la `.carte-article` possède bien un fond blanc et sa fine bordure :
+
+```css
+/* css/components.css */
+.carte-article {
+    width: 300px;
+    background: white; /* Contraste avec le body */
+    border: 1px solid #e5e7eb;
+    margin-bottom: 24px;
     border-radius: 16px;
     overflow: hidden;
 }
 ```
 
-Cette classe définit les principales contraintes de la carte.
+### 2.2. Ajouter les métadonnées (HTML)
 
-### 1.2. Contrôler le dimensionnement
-
-`box-sizing: border-box` permet d'inclure la bordure et le `padding` dans la largeur et la hauteur définies.
-
-La carte utilise aussi :
-
-```css
-min-width: 280px;
-max-width: 400px;
-min-height: 300px;
-```
-
-Ces propriétés permettent de garder des dimensions cohérentes.
-
-### 1.3. Organiser le contenu
-
-Le contenu de la carte possède son propre espace intérieur.
-
-```css
-.carte-contenu {
-    padding: 20px;
-}
-```
-
-Le titre, le texte et le lien ne touchent donc pas les bords de la carte.
-
-### 1.4. Organiser les espaces entre les éléments
-
-Les marges permettent de séparer le titre, le texte et le lien.
-
-```css
-.carte-contenu h2 {
-    margin: 0 0 12px;
-}
-
-.carte-contenu p {
-    margin: 0 0 16px;
-}
-```
-
-### 1.5. À retenir
-
-- Une classe peut réunir plusieurs règles CSS.
-- `box-sizing: border-box` aide à contrôler la taille réelle du composant.
-- `min-width`, `max-width` et `min-height` contrôlent les dimensions.
-- `padding` organise l’espace intérieur.
-- `margin` sépare les éléments.
-- `border-radius` et `overflow: hidden` permettent de garder une forme propre.
-
-## Partie 2 — Pratique
-
-### 2.1. Construire la base de la carte
-
-#### Étape 1 — Définir le dimensionnement
-
-Ajoutez :
-
-```css
-.carte-article {
-    box-sizing: border-box;
-    min-width: 280px;
-    max-width: 400px;
-    min-height: 300px;
-}
-```
-
-La carte possède maintenant des dimensions contrôlées.
-
-#### Étape 2 — Ajouter la présentation de la carte
-
-Complétez la règle :
-
-```css
-.carte-article {
-    box-sizing: border-box;
-    min-width: 280px;
-    max-width: 400px;
-    min-height: 300px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    overflow: hidden;
-}
-```
-
-La carte possède maintenant une bordure et des coins arrondis.
-
-### 2.2. Mettre en forme l'image
-
-#### Étape 1 — Dimensionner l'image
-
-Ajoutez :
-
-```css
-.carte-image img {
-    display: block;
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-```
-
-L'image occupe toute la largeur disponible.
-
-Sa hauteur est fixée à `220px`.
-
-`object-fit: cover` permet de conserver une image remplissant cette zone.
-
-### 2.3. Organiser le contenu
-
-#### Étape 1 — Ajouter l'espace intérieur
-
-Ajoutez :
-
-```css
-.carte-contenu {
-    padding: 20px;
-}
-```
-
-Le contenu ne touche plus les bords de la carte.
-
-#### Étape 2 — Organiser le titre
-
-Ajoutez :
-
-```css
-.carte-contenu h2 {
-    margin: 0 0 12px;
-}
-```
-
-Un espace de `12px` est créé sous le titre.
-
-#### Étape 3 — Organiser le texte
-
-Ajoutez :
-
-```css
-.carte-contenu p {
-    margin: 0 0 16px;
-}
-```
-
-Un espace de `16px` est créé sous le texte.
-
-### 2.4. Mettre en forme le lien
-
-#### Étape 1 — Ajouter une couleur au lien
-
-Ajoutez :
-
-```css
-.carte-contenu a {
-    color: #2673e8;
-}
-```
-
-Le lien devient facilement identifiable.
-
-### 2.5. Vérifier les deux cartes
-
-Les deux éléments HTML utilisent la même classe :
+1. Dans `index.html`, nous allons ajouter deux petits détails à notre carte : une **étiquette de catégorie** (sous l'image) et des **métadonnées** (date/temps de lecture) à la fin. Modifiez votre carte existante :
 
 ```html
-class="carte-article"
+<div class="carte-article">
+    <a href="#" class="carte-image">
+        <img src="images/article-example.png" alt="Code source">
+    </a>
+    
+    <!-- Nouvelle étiquette (entre l'image et le contenu) -->
+    <span class="etiquette-categorie bleu">Développement</span>
+    
+    <div class="carte-contenu">
+        <h3>Comment bien débuter avec Tailwind CSS en 2026 ?</h3>
+        <p>Découvrez les concepts fondamentaux de Tailwind CSS.</p>
+        
+        <!-- Nouvelles métadonnées (fin du contenu) -->
+        <div class="carte-meta">
+            <span>14 Fév 2026</span>
+            <span>5 min</span>
+        </div>
+    </div>
+</div>
 ```
 
-La même règle CSS s'applique donc aux deux cartes.
+### 2.3. Styler les métadonnées
 
-Vérifiez :
+Dans `css/components.css`, ajoutez les styles pour ces deux nouveaux petits éléments :
 
-- la même largeur maximale ;
-- la même largeur minimale ;
-- la même hauteur minimale ;
-- le même espace intérieur ;
-- la même bordure ;
-- les mêmes coins arrondis ;
-- la même présentation de l'image.
+```css
+/* css/components.css */
+.etiquette-categorie {
+    display: inline-block;
+    margin: 16px 16px 0;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 99px;
+    background: #f0f6ff;
+    color: #1c5bba;
+}
 
-Les contenus peuvent être différents.
-
-La structure et les règles de présentation restent communes.
-
-**Travail à faire :**
-
-Construisez deux cartes d'articles homogènes.
-
-Les deux cartes doivent utiliser la classe :
-
-```text
-carte-article
+.carte-meta {
+    display: flex; /* (Le flexbox pour aligner la date et la durée) */
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 16px;
+    font-size: 12px;
+    color: #9ca3af;
+    border-top: 1px solid #f3f4f6;
+}
 ```
 
-Chaque carte doit avoir :
+### 2.4. Le pouvoir du composant : la duplication !
 
-```text
-largeur minimale : 280px
-largeur maximale : 400px
-hauteur minimale : 300px
-bordure
-coins arrondis
-image
-espace intérieur
-titre
-texte
-lien
-```
+Maintenant que votre composant `.carte-article` est absolument parfait, copiez-collez l'intégralité du bloc `<div class="carte-article"> ... </div>` **deux fois** dans votre HTML (dans le `.conteneur-articles`) pour avoir 3 articles au total.
 
-Utilisez une seule série de règles CSS pour les deux cartes.
+Modifiez les images, les titres et les catégories des nouvelles cartes si vous le souhaitez.
 
 **Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Vos fichiers HTML et CSS. Votre `index.html` doit maintenant contenir 3 cartes d'articles identiques dans leur structure.
 
 **Résultat attendu :**
 
@@ -402,28 +177,14 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 </iframe>
 
 **Critère de réussite :**
-
-Les deux cartes utilisent la même classe CSS et présentent une structure visuelle homogène.
-
-Leurs dimensions, leurs espaces, leurs bordures et leurs coins sont cohérents.
+Les 3 cartes s'affichent les unes sous les autres. Elles ressortent parfaitement du fond gris et possèdent toutes une étiquette et une date.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- à réunir plusieurs règles CSS dans un composant ;
-- à contrôler les dimensions d'une carte ;
-- à organiser son espace intérieur ;
-- à conserver une présentation homogène.
-
-**Vous avez réalisé :**
-
-Deux cartes d'articles utilisant le même composant CSS.
+- À finaliser un composant visuel complet avec des bordures et des contrastes de fond.
+- À réutiliser une classe CSS sur plusieurs éléments pour garantir l'homogénéité du design.
 
 ## Glossaire
-
-- **Composant** : élément d'interface réutilisable.
-- **Homogène** : qui garde la même présentation.
-- **`box-sizing`** : propriété qui contrôle le calcul de la taille d'un élément.
-- **`border-box`** : valeur qui inclut la bordure et le `padding` dans la taille définie.
-- **`overflow`** : propriété qui contrôle le contenu qui dépasse.
+- **Composant** : Bloc visuel autonome et réutilisable d'une interface (ex: bouton, carte).
+- **Homogénéité** : Fait de conserver une apparence strictement identique d'un élément à l'autre.

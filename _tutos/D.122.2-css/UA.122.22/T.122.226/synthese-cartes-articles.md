@@ -1,5 +1,5 @@
 ---
-title: "Projet de synthèse — Cartes d'articles"
+title: "Projet de synthèse — Modèle de boîte"
 layout: tuto
 slug: "synthese-cartes-articles"
 permalink: /tutos/synthese-cartes-articles/
@@ -8,84 +8,10 @@ type: "classique"
 version: "normal"
 ua: "UA.122.22"
 nav_order: 6
+simplified: true
 data_html: |
-  <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Cartes d'articles</title>
-  </head>
-  <body>
-
-      <main>
-          <h1>Derniers articles</h1>
-
-          <section>
-              <article class="carte-article">
-
-                  <div class="carte-image">
-                      <img
-                          src="images/article-example.png"
-                          alt="Écran montrant du code informatique">
-                  </div>
-
-                  <div class="carte-contenu">
-                      <h2>Le métier de développeur</h2>
-                      <p>
-                          Le développeur crée des applications
-                          et transforme un besoin en solution.
-                      </p>
-                      <a href="#">Lire l'article</a>
-                  </div>
-
-              </article>
-
-              <article class="carte-article">
-
-                  <div class="carte-image">
-                      <img
-                          src="images/article-example.png"
-                          alt="Interface utilisateur">
-                  </div>
-
-                  <div class="carte-contenu">
-                      <h2>Créer une interface web</h2>
-                      <p>
-                          Une interface claire aide l'utilisateur
-                          à comprendre les actions disponibles.
-                      </p>
-                      <a href="#">Lire l'article</a>
-                  </div>
-
-              </article>
-
-              <article class="carte-article">
-
-                  <div class="carte-image">
-                      <img
-                          src="images/article-example.png"
-                          alt="Développeur travaillant sur une application">
-                  </div>
-
-                  <div class="carte-contenu">
-                      <h2>Tester une application</h2>
-                      <p>
-                          Les tests permettent de vérifier
-                          que les fonctionnalités fonctionnent.
-                      </p>
-                      <a href="#">Lire l'article</a>
-                  </div>
-
-              </article>
-          </section>
-      </main>
-
-  </body>
-  </html>
-
+  <!-- Pas de code spécifique, c'est une synthèse -->
 data_css: ""
-
 data_js: ""
 ---
 
@@ -100,401 +26,100 @@ window.pageData = {
 
 ## 1. Objectif
 
-Construire plusieurs cartes d’articles avec des dimensions et des espacements cohérents.
+Mettre en pratique toutes les notions du modèle de boîte (espacements, dimensions, centrage) en créant la bannière principale du blog.
 
 ## 2. Prérequis
 
-Vous savez déjà :
+- Avoir complété les tutoriels précédents sur le Box Model (`padding`, `margin`, `max-width`).
 
-- écrire une règle CSS ;
-- utiliser une classe CSS ;
-- utiliser `box-sizing` ;
-- utiliser `min-width` ;
-- utiliser `max-width` ;
-- utiliser `min-height` ;
-- utiliser `padding` ;
-- utiliser `margin` ;
-- utiliser `border` ;
-- utiliser `border-radius` ;
-- utiliser `overflow: hidden` ;
-- utiliser `object-fit`.
+## Partie 1 — Synthèse Théorique
 
-## Données de départ
+Le **Modèle de Boîte (Box Model)** est le cœur de la mise en page en CSS. 
+Voici ce qu'il faut retenir de cette unité d'apprentissage :
 
-### HTML
+1. **`box-sizing: border-box;`** : C'est la règle d'or universelle. Elle garantit que la taille que vous donnez à un élément (`width`) inclut ses bordures et son espace intérieur (`padding`), évitant ainsi des calculs compliqués.
+2. **`padding` (Marge interne)** : Repousse le texte vers l'intérieur, pour qu'il ne touche pas les bords de son conteneur. Il fait "respirer" la boîte.
+3. **`margin` (Marge externe)** : Repousse les autres boîtes vers l'extérieur. Il sépare les éléments entre eux.
+4. **Centrage d'un bloc** : La combinaison absolue pour centrer une zone de texte ou un conteneur est de lui donner une largeur maximale (`max-width: 800px;`) et des marges latérales automatiques (`margin: 0 auto;`).
+5. **Contenu rebelle** : Si un contenu (comme une image) dépasse d'une carte arrondie ou se déforme, on le dompte avec `overflow: hidden;` (sur le parent) et `object-fit: cover;` (sur l'image).
 
-Le HTML de départ contient trois cartes d’articles.
+## Partie 2 — Pratique (Projet Fil Rouge)
+
+Pour clore cette unité, nous allons créer la **Bannière d'accueil (Hero Header)** de notre blog, en utilisant massivement les `padding`, `margin` et `max-width`.
+
+### 2.1. Ajouter le HTML de la bannière
+
+Dans votre fichier `index.html`, **au-dessus** de votre `<section class="section-articles">`, ajoutez le code HTML suivant :
 
 ```html
-<main>
-    <h1>Derniers articles</h1>
+<!-- Nouvelle bannière à insérer -->
+<section class="banniere-accueil">
+    <h1>Mon Blog Personnel :<br><span>Développer &amp; Partager</span></h1>
+    
+    <p>Découvrez mes derniers articles sur le développement web, l'architecture logicielle et les bonnes pratiques d'intégration UI/UX.</p>
+</section>
 
-    <section>
-        <article class="carte-article">
-
-            <div class="carte-image">
-                <img
-                    src="images/article-example.png"
-                    alt="Écran montrant du code informatique">
-            </div>
-
-            <div class="carte-contenu">
-                <h2>Le métier de développeur</h2>
-                <p>
-                    Le développeur crée des applications
-                    et transforme un besoin en solution.
-                </p>
-                <a href="#">Lire l'article</a>
-            </div>
-
-        </article>
-
-        <article class="carte-article">
-
-            <div class="carte-image">
-                <img
-                    src="images/article-example.png"
-                    alt="Interface utilisateur">
-            </div>
-
-            <div class="carte-contenu">
-                <h2>Créer une interface web</h2>
-                <p>
-                    Une interface claire aide l'utilisateur
-                    à comprendre les actions disponibles.
-                </p>
-                <a href="#">Lire l'article</a>
-            </div>
-
-        </article>
-
-        <article class="carte-article">
-
-            <div class="carte-image">
-                <img
-                    src="images/article-example.png"
-                    alt="Développeur travaillant sur une application">
-            </div>
-
-            <div class="carte-contenu">
-                <h2>Tester une application</h2>
-                <p>
-                    Les tests permettent de vérifier
-                    que les fonctionnalités fonctionnent.
-                </p>
-                <a href="#">Lire l'article</a>
-            </div>
-
-        </article>
-    </section>
-</main>
+<!-- L'ancienne section commence ici -->
+<section class="section-articles">
+...
 ```
 
-### CSS
+### 2.2. Faire respirer la bannière
 
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n’est nécessaire.
-
-## Partie 1 — Théorie
-
-### 1.1. Construire un composant homogène
-
-Les trois cartes utilisent la même classe :
+Dans votre fichier `css/pages.css`, nous allons donner un immense espace intérieur à cette bannière pour qu'elle prenne de la place à l'écran, et centrer le texte :
 
 ```css
-.carte-article
-```
-
-Une seule règle CSS peut donc définir les caractéristiques communes des trois cartes.
-
-### 1.2. Contrôler les dimensions
-
-Une carte peut avoir :
-
-```css
-min-width: 280px;
-max-width: 400px;
-min-height: 300px;
-```
-
-Ces contraintes permettent de garder une taille cohérente.
-
-### 1.3. Organiser l’espace
-
-Le `padding` crée un espace à l’intérieur de la carte.
-
-Les `margin` séparent les éléments.
-
-Exemple :
-
-```css
-.carte-contenu {
-    padding: 20px;
-}
-
-.carte-contenu h2 {
-    margin: 0 0 12px;
-}
-
-.carte-contenu p {
-    margin: 0 0 16px;
+/* css/pages.css */
+.banniere-accueil {
+    padding: 96px 24px;
+    text-align: center;
+    background: #ffffff;
+    /* Petit effet de fond (grille) pour le style */
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
 }
 ```
 
-### 1.4. Maîtriser l’image
+### 2.3. Restreindre et centrer le texte (Le test ultime !)
 
-Une image peut utiliser :
+Actuellement, si vous avez un très grand écran, le titre et le texte de la bannière s'étirent sur toute la largeur de l'écran, ce qui les rend difficiles à lire. 
 
-```css
-width: 100%;
-height: 220px;
-object-fit: cover;
-```
-
-Elle occupe ainsi toute la largeur de la zone prévue.
-
-### 1.5. À retenir
-
-Le projet réunit les notions de l’UA.122.22 :
-
-- dimensionner ;
-- limiter ;
-- espacer ;
-- contenir ;
-- homogénéiser.
-
-## Partie 2 — Pratique
-
-### 2.1. Préparer la page
-
-#### Étape 1 — Créer la feuille CSS
-
-Créez le fichier :
-
-```text
-style.css
-```
-
-Reliez-le à la page HTML.
-
-### 2.2. Mettre en forme la carte
-
-#### Étape 1 — Définir les dimensions
-
-Ajoutez la règle :
+Nous allons utiliser la technique de limitation `max-width` + `margin: auto` pour resserrer ces textes au milieu de la bannière. Ajoutez :
 
 ```css
-.carte-article {
-    box-sizing: border-box;
-    min-width: 280px;
-    max-width: 400px;
-    min-height: 300px;
+/* css/pages.css */
+.banniere-accueil h1 {
+    max-width: 850px;
+    margin: 0 auto; /* Centre le titre de 850px au milieu de la page */
+    font-size: 56px;
+    color: #0a2042;
+}
+
+.banniere-accueil p {
+    max-width: 680px;
+    margin: 24px auto 0; /* 24px en haut, Auto à gauche/droite, 0 en bas */
+    font-size: 17px;
+    color: #6b7280;
 }
 ```
-
-#### Étape 2 — Ajouter la présentation de la carte
-
-Complétez la règle :
-
-```css
-.carte-article {
-    box-sizing: border-box;
-    min-width: 280px;
-    max-width: 400px;
-    min-height: 300px;
-    margin-bottom: 24px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    overflow: hidden;
-}
-```
-
-Les cartes ont maintenant une taille contrôlée.
-
-Un espace de `24px` est créé entre deux cartes.
-
-### 2.3. Mettre en forme les images
-
-#### Étape 1 — Préparer la zone de l’image
-
-Ajoutez :
-
-```css
-.carte-image img {
-    display: block;
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-```
-
-Chaque image occupe toute la largeur disponible.
-
-### 2.4. Organiser le contenu
-
-#### Étape 1 — Ajouter le `padding`
-
-Ajoutez :
-
-```css
-.carte-contenu {
-    padding: 20px;
-}
-```
-
-Le contenu ne touche plus les bords.
-
-#### Étape 2 — Organiser le titre
-
-Ajoutez :
-
-```css
-.carte-contenu h2 {
-    margin: 0 0 12px;
-}
-```
-
-#### Étape 3 — Organiser le texte
-
-Ajoutez :
-
-```css
-.carte-contenu p {
-    margin: 0 0 16px;
-}
-```
-
-### 2.5. Mettre en forme le lien
-
-#### Étape 1 — Donner une couleur au lien
-
-Ajoutez :
-
-```css
-.carte-contenu a {
-    color: #2673e8;
-    text-decoration: none;
-}
-```
-
-### 2.6. Organiser la page
-
-#### Étape 1 — Ajouter un espace autour du contenu
-
-Ajoutez :
-
-```css
-main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-```
-
-La page possède maintenant une largeur maximale.
-
-Le contenu est centré avec `margin: auto`.
-
-#### Étape 2 — Organiser le titre
-
-Ajoutez :
-
-```css
-main h1 {
-    margin: 0 0 32px;
-}
-```
-
-Un espace est créé entre le titre et les cartes.
-
-### 2.7. Vérifier les trois cartes
-
-Observez les trois cartes.
-
-Vérifiez :
-
-- les trois cartes utilisent la même classe ;
-- leur largeur est limitée ;
-- leur hauteur minimale est identique ;
-- leur contenu possède le même espace intérieur ;
-- leurs images ont la même hauteur ;
-- leurs bordures sont identiques ;
-- leurs coins sont arrondis ;
-- un espace régulier sépare les cartes.
-
-**Travail à faire :**
-
-À partir du HTML fourni, réalisez la présentation complète des trois cartes.
-
-Votre CSS doit :
-
-- contrôler la taille des cartes ;
-- organiser l’espace intérieur ;
-- séparer les éléments avec `margin` ;
-- limiter les images ;
-- garder les images dans les coins de la carte ;
-- appliquer les mêmes règles aux trois cartes ;
-- ajouter un espace entre les cartes ;
-- centrer la zone principale de la page.
-
-N’utilisez pas Flexbox.
-
-N’utilisez pas `gap`.
 
 **Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Vos fichiers `index.html` et `pages.css` mis à jour avec la bannière.
 
 **Résultat attendu :**
 
 <button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
     class="auto-wrapper tuto-resultat"
-    src="{{'/code/css/tuto-122-22-6-css.html' | relative_url}}"
+    src="{{'/code/css/tuto-122-226-css.html' | relative_url}}"
     height="700"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
+Le haut de votre page affiche désormais une grande bannière blanche quadrillée. Le titre et le paragraphe à l'intérieur ne s'étirent pas à l'infini sur grand écran, grâce à la contrainte de `max-width`.
 
-Les trois cartes utilisent une même structure CSS.
+## Bilan Final de l'Unité
 
-Leurs dimensions sont cohérentes.
-
-Les contenus sont correctement espacés.
-
-Les images restent dans les limites des cartes.
-
-Les cartes sont présentées avec un espacement régulier.
-
-La page reste lisible dans sa zone de contenu.
-
-## Bilan
-
-**Vous avez réalisé :**
-
-Une page contenant trois cartes d’articles homogènes.
-
-**Vous savez maintenant :**
-
-- contrôler les dimensions d’un composant ;
-- organiser son espace intérieur ;
-- séparer ses éléments ;
-- contrôler le contenu qui dépasse ;
-- réutiliser les mêmes règles CSS sur plusieurs cartes.
-
-## Glossaire
-
-- **Carte** : bloc qui présente un contenu court.
-- **Composant** : élément d’interface réutilisable.
-- **Homogène** : qui garde la même présentation.
-- **Dimension** : taille d’un élément.
-- **Espacement** : distance entre deux éléments.
-- **`overflow`** : propriété qui contrôle le contenu qui dépasse.
+Félicitations ! Vous avez structuré la zone de contenu principal et créé le composant de carte de votre blog en maîtrisant le modèle de boîte. 
+Dans la prochaine unité, vous découvrirez **Flexbox**, qui vous permettra de mettre toutes ces cartes les unes à côté des autres (en grille) et de créer la barre de navigation.

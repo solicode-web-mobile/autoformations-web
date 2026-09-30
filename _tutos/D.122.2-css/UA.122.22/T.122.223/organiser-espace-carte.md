@@ -8,39 +8,24 @@ type: "classique"
 version: "normal"
 ua: "UA.122.22"
 nav_order: 3
+simplified: true
 data_html: |
-  <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Carte d'article</title>
-  </head>
-  <body>
+  <div class="boite">
+      Voici le contenu de ma boîte.
+  </div>
 
-      <article class="carte-article">
-
-          <img
-              src="images/article-example.png"
-              alt="Écran montrant du code informatique">
-
-          <div class="carte-contenu">
-              <h2>Le métier de développeur</h2>
-
-              <p>
-                  Le développeur crée des applications
-                  et transforme un besoin en solution.
-              </p>
-
-              <a href="#">Lire l'article</a>
-          </div>
-
-      </article>
-
-  </body>
-  </html>
-
-data_css: ""
+data_css: |
+  body {
+      padding: 10px;
+      font-family: sans-serif;
+  }
+  .boite {
+      border: 4px solid #3b82f6;
+      background: #f8fafc;
+      /* Modifiez ces valeurs pour voir l'effet : */
+      padding: 20px;
+      margin: 40px;
+  }
 
 data_js: ""
 ---
@@ -56,279 +41,100 @@ window.pageData = {
 
 ## 1. Objectif
 
-Apprendre à organiser l’espace à l’intérieur d’une carte avec `padding` et `margin`.
+Apprendre à organiser l’espace à l’intérieur et à l'extérieur des éléments avec `padding` et `margin`.
 
 ## 2. Prérequis
 
-Vous savez déjà :
-
-- écrire une règle CSS ;
-- utiliser une classe CSS ;
-- utiliser `width` et `max-width` ;
-- utiliser `min-height` ;
-- utiliser `padding` ;
-- utiliser `margin` ;
-- utiliser une bordure.
-
-## Données de départ
-
-### HTML
-
-```html
-<article class="carte-article">
-
-    <img
-        src="images/article-example.png"
-        alt="Écran montrant du code informatique">
-
-    <div class="carte-contenu">
-        <h2>Le métier de développeur</h2>
-
-        <p>
-            Le développeur crée des applications
-            et transforme un besoin en solution.
-        </p>
-
-        <a href="#">Lire l'article</a>
-    </div>
-
-</article>
-```
-
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n’est nécessaire.
+- Avoir compris le Box Model (`box-sizing`).
 
 ## Partie 1 — Théorie
 
-### 1.1. Ajouter de l’espace dans une carte avec `padding`
+### 1.1. Padding (intérieur) vs Margin (extérieur)
 
-`padding` ajoute un espace entre le contenu et le bord de l’élément.
+Pour éviter que tous les éléments visuels d'un site web ne soient collés les uns aux autres, on utilise deux propriétés fondamentales :
 
-**Exemple :**
+- **`padding`** (marges internes) : Crée de l'espace **à l'intérieur** de la bordure d'un élément. C'est l'espace entre le contenu (le texte) et le bord de la boîte.
+- **`margin`** (marges externes) : Crée de l'espace **à l'extérieur** de la bordure d'un élément. C'est l'espace qui repousse les autres éléments autour.
+
+On peut utiliser des raccourcis CSS pour définir l'espace sur les 4 côtés (`margin: 20px;`), sur l'axe vertical/horizontal (`margin: 20px 10px;`), ou viser un côté spécifique (`margin-bottom: 24px;`).
+
+### 1.2. Exemple d'application
+
+Voici comment utiliser ces propriétés en CSS (le code HTML correspondant est disponible dans l'onglet HTML de l'éditeur ci-contre) :
 
 ```css
+.boite {
+    border: 4px solid #3b82f6;
+    
+    /* Repousse le texte à 20px du bord bleu (vers l'intérieur) */
+    padding: 20px; 
+    
+    /* Repousse les autres boîtes à 40px du bord bleu (vers l'extérieur) */
+    margin: 40px; 
+}
+```
+*(Testez cet exemple dans l'éditeur de code intégré et passez le `padding` à `0` pour voir le texte se coller à la bordure).*
+
+## Partie 2 — Pratique (Projet Fil Rouge)
+
+Continuons notre blog. Actuellement, le texte de notre article touche les bords de la carte, et si on ajoute une deuxième carte, elles seront collées.
+
+### 2.1. Faire respirer la carte d'article
+
+1. Ouvrez votre fichier `css/components.css`.
+2. Repérez la classe `.carte-contenu` (qui entoure le titre et le texte de l'article) et ajoutez un `padding` pour que le texte ne touche plus les bords extérieurs :
+
+```css
+/* css/components.css */
 .carte-contenu {
     padding: 20px;
 }
 ```
 
-Le texte ne touche plus les bords de la carte.
-
-### 1.2. Créer un espace autour d’un élément avec `margin`
-
-`margin` crée un espace à l’extérieur d’un élément.
-
-**Exemple :**
+3. Ajoutez une marge extérieure sous `.carte-article` pour que, lorsqu'il y aura plusieurs cartes, elles soient espacées de 24 pixels :
 
 ```css
-.carte-contenu h2 {
-    margin-bottom: 12px;
-}
-```
-
-Un espace est créé sous le titre.
-
-### 1.3. Utiliser un raccourci de `margin`
-
-Une seule valeur applique le même espace aux quatre côtés.
-
-```css
-.carte-contenu {
-    margin: 20px;
-}
-```
-
-Deux valeurs permettent de définir :
-
-```css
-.carte-contenu {
-    margin: 20px 10px;
-}
-```
-
-`20px` correspond au haut et au bas.
-
-`10px` correspond à gauche et à droite.
-
-### 1.4. Organiser les espaces d'une carte
-
-Dans une carte, on peut utiliser :
-
-- `padding` pour créer un espace dans le bloc ;
-- `margin-bottom` pour séparer les éléments ;
-- `margin-top` pour créer un espace avant un élément.
-
-Exemple :
-
-```css
-.carte-contenu {
-    padding: 20px;
-}
-
-.carte-contenu h2 {
-    margin: 0 0 12px;
-}
-
-.carte-contenu p {
-    margin: 0 0 16px;
-}
-```
-
-### 1.5. À retenir
-
-- `padding` crée un espace à l’intérieur.
-- `margin` crée un espace à l’extérieur.
-- `margin-bottom` crée un espace sous un élément.
-- Les raccourcis permettent d’écrire moins de code.
-- L’objectif est de créer des espaces réguliers et lisibles.
-
-## Partie 2 — Pratique
-
-### 2.1. Préparer la carte
-
-#### Étape 1 — Créer le style de la carte
-
-Ajoutez :
-
-```css
+/* css/components.css */
 .carte-article {
-    max-width: 400px;
-    min-height: 300px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
+    /* ... (règles précédentes de fond et bordure) ... */
+    margin-bottom: 24px;
 }
 ```
 
-La carte possède déjà des dimensions cohérentes.
+### 2.2. Gérer les espaces de texte
 
-#### Étape 2 — Ajouter un espace dans le contenu
-
-Ajoutez :
+Par défaut, le navigateur ajoute ses propres marges aux titres et paragraphes. Nous allons les contrôler.
+Dans `css/components.css`, ajoutez :
 
 ```css
-.carte-contenu {
-    padding: 20px;
+/* css/components.css */
+.carte-contenu h3 {
+    margin: 0; /* Enlève la marge par défaut du titre */
 }
-```
 
-Le contenu doit maintenant être éloigné des bords de la carte.
-
-### 2.2. Organiser le titre
-
-#### Étape 1 — Supprimer la marge par défaut
-
-Ajoutez :
-
-```css
-.carte-contenu h2 {
-    margin: 0;
-}
-```
-
-Le titre n’a plus de marge extérieure par défaut.
-
-#### Étape 2 — Ajouter un espace sous le titre
-
-Modifiez la règle :
-
-```css
-.carte-contenu h2 {
-    margin: 0 0 12px;
-}
-```
-
-Un espace de `12px` est maintenant créé entre le titre et le paragraphe.
-
-### 2.3. Organiser le paragraphe
-
-#### Étape 1 — Ajouter un espace sous le paragraphe
-
-Ajoutez :
-
-```css
 .carte-contenu p {
-    margin: 0 0 16px;
+    margin: 12px 0; /* 12px en haut et en bas, 0 à gauche et à droite */
 }
 ```
 
-Un espace de `16px` sépare le paragraphe du lien.
+### 2.3. Ajouter de l'espace global (Section)
 
-### 2.4. Organiser le lien
-
-#### Étape 1 — Ajouter un style simple au lien
-
-Ajoutez :
+1. Ouvrez votre fichier `css/pages.css`.
+2. Repérez (ou créez) la classe `.section-articles` (qui contient la page entière) et donnez-lui un gros padding pour que la section respire par rapport au haut et au bas de l'écran :
 
 ```css
-.carte-contenu a {
-    color: #2673e8;
+/* css/pages.css */
+.section-articles {
+    padding: 80px 24px;
 }
 ```
 
-Le lien devient visible comme une action.
+### 2.4. Vérifier l'intégration
 
-#### Étape 2 — Vérifier les espacements
-
-Observez la carte.
-
-Vérifiez que :
-
-- le contenu ne touche pas le bord ;
-- le titre est séparé du paragraphe ;
-- le paragraphe est séparé du lien ;
-- les espaces sont réguliers.
-
-### 2.5. Réaliser une deuxième carte
-
-Ajoutez une deuxième carte :
-
-```html
-<article class="carte-article">
-
-    <img
-        src="images/article-example.png"
-        alt="Interface utilisateur">
-
-    <div class="carte-contenu">
-        <h2>Créer une interface web</h2>
-
-        <p>
-            Une interface claire aide l’utilisateur
-            à comprendre les actions disponibles.
-        </p>
-
-        <a href="#">Lire l'article</a>
-    </div>
-
-</article>
-```
-
-La même feuille CSS doit organiser les deux cartes.
-
-**Travail à faire :**
-
-Créez deux cartes d’articles.
-
-Organisez l’espace :
-
-- entre le bord et le contenu ;
-- entre le titre et le texte ;
-- entre le texte et le lien.
-
-Utilisez `padding` et `margin`.
+Affichez votre `index.html` dans le navigateur. Le texte de votre carte est maintenant joliment espacé de ses bordures, et le titre de la carte s'aligne bien avec son texte explicatif. De plus, la page globale n'est plus collée en haut de l'écran.
 
 **Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Vos fichiers `components.css` et `pages.css` mis à jour avec les espaces.
 
 **Résultat attendu :**
 
@@ -336,30 +142,19 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-223-css.html' | relative_url}}"
-    height="700"
+    height="350"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-
-Les deux cartes présentent des espaces réguliers entre les bords, le titre, le texte et le lien.
+Les espaces intérieurs (`padding`) et extérieurs (`margin`) sont correctement appliqués, rendant le design plus aéré et lisible.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- à utiliser `padding` pour créer un espace intérieur ;
-- à utiliser `margin` pour séparer les éléments ;
-- à utiliser les raccourcis de `margin` ;
-- à organiser les espaces d’une carte.
-
-**Vous avez réalisé :**
-
-Deux cartes d’articles avec un contenu correctement espacé.
+- La différence fondamentale entre l'espace intérieur (`padding`) et l'espace extérieur (`margin`).
+- À réinitialiser et imposer vos propres espacements pour écraser les marges par défaut des navigateurs.
 
 ## Glossaire
-
-- **`padding`** : espace entre le contenu et le bord d’un élément.
-- **`margin`** : espace autour d’un élément.
-- **`margin-bottom`** : espace sous un élément.
-- **Raccourci CSS** : écriture qui permet de définir plusieurs valeurs avec une seule propriété.
+- **padding** : Marge interne, entre le contenu et la bordure.
+- **margin** : Marge externe, à l'extérieur de la bordure.
