@@ -6,7 +6,7 @@ permalink: /tutos/ajouter-des-attributs-de-donnees-data-attributes/
 tuto_id: "T.122.161"
 type: "classique"
 version: "normal"
-ua: "UA.122.16"
+ua: "UA.122.15"
 nav_order: 1
 data_html: |
   <!DOCTYPE html>

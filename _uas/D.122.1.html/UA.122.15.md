@@ -1,21 +1,19 @@
 ---
-title: "Construire un tableau de données HTML"
+title: "Associer des données invisibles aux éléments (Data-Attributes)"
 layout: ua
 code: "UA.122.15"
-ordre: 35
+ordre: 40
 competence: "C.122"
 domaine: "D.122.1"
 duree: 1
 objectif: >
-  Découvrir et utiliser la sémantique des tableaux.
+  Stocker des métadonnées pour faciliter leur usage futur en JavaScript.
 description: >
-  Utiliser les balises table, thead, tbody, tr, th, td pour afficher des données structurées dans l'administration.
+  Ajouter des attributs personnalisés aux cartes d'articles pour préparer le système de filtrage et recherche.
 notions:
-  - "<table>"
-  - "<thead> et <tbody>"
-  - "<tr>, <th> et <td>"
+  - "Attributs data-* (ex: data-categorie)"
 livrable: >
-  Tableau listant les catégories dans l'admin.
+  Attributs data-categorie ajoutés aux éléments pertinents.
 travail_a_faire: >
-  Construire un tableau structuré affichant des données dans l'interface d'administration en utilisant les balises sémantiques appropriées.
+  Ajouter des attributs de données (Data-Attributes) aux éléments HTML nécessaires pour pouvoir les manipuler ultérieurement avec JavaScript.
 ---

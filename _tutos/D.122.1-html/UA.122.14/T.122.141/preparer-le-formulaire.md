@@ -6,7 +6,7 @@ permalink: /tutos/:slug/
 tuto_id: "T.122.141"
 type: "classique"
 version: "normal"
-ua: "UA.122.14"
+ua: "UA.122.13"
 nav_order: 1
 data_html: ""
 data_css: ""
@@ -341,7 +341,7 @@ Le navigateur doit afficher la page d'administration avec un formulaire vide.
 
 **Série :** Formulaire d'ajout d'un article
 
-**Position :** 1er tutoriel de la série UA.122.14
+**Position :** 1er tutoriel de la série UA.122.13
 
 **Incrément :** Préparation du formulaire avec une destination PHP et une méthode d'envoi.
 

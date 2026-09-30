@@ -6,7 +6,7 @@ permalink: /tutos/:slug/
 tuto_id: "T.122.143"
 type: "classique"
 version: "normal"
-ua: "UA.122.14"
+ua: "UA.122.13"
 nav_order: 3
 data_html: ""
 data_css: ""
@@ -466,7 +466,7 @@ Une saisie vide doit être refusée par le navigateur.
 
 **Série :** Formulaire d'ajout d'un article
 
-**Position :** 3e tutoriel de la série UA.122.14
+**Position :** 3e tutoriel de la série UA.122.13
 
 **Incrément :** Ajout de la validation du titre et du bouton de soumission.
 

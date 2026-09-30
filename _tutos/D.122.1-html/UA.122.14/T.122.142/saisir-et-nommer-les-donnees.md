@@ -6,7 +6,7 @@ permalink: /tutos/:slug/
 tuto_id: "T.122.142"
 type: "classique"
 version: "normal"
-ua: "UA.122.14"
+ua: "UA.122.13"
 nav_order: 2
 data_html: ""
 data_css: ""
@@ -444,7 +444,7 @@ Le navigateur doit afficher un champ de saisie pour le titre de l'article.
 
 **Série :** Formulaire d'ajout d'un article
 
-**Position :** 2e tutoriel de la série UA.122.14
+**Position :** 2e tutoriel de la série UA.122.13
 
 **Incrément :** Ajout du premier champ de saisie du formulaire.
 

@@ -6,7 +6,7 @@ permalink: /tutos/construire-un-tableau-de-donnees-admin/
 tuto_id: "T.122.151"
 type: "classique"
 version: "normal"
-ua: "UA.122.15"
+ua: "UA.122.14"
 nav_order: 1
 data_html: ""
 data_html: |
