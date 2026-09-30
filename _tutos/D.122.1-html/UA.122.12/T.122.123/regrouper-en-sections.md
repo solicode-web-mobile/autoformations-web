@@ -1,7 +1,7 @@
 ---
-title: "Regrouper en sections"
+title: "Navigation interne par ancres"
 layout: tuto
-slug: "regrouper-en-sections"
+slug: "navigation-interne-par-ancres"
 permalink: /tutos/:slug/
 tuto_id: "T.122.123"
 type: "classique"
@@ -12,387 +12,142 @@ simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
-
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Mon Blog Personnel - Accueil</title>
-
-      <link rel="stylesheet" href="css/global.css">
-      <link rel="stylesheet" href="css/public-index.css">
   </head>
-
   <body>
-
-      <header class="site-header">
-
-          <nav class="navbar">
-
-              <a href="public-index.html" class="brand">
-                  <span class="brand-dark">Mon</span>
-                  <span class="brand-primary">Blog.</span>
+      <!-- EN-TÊTE DU SITE -->
+      <header class="en-tete-site">
+          <nav class="barre-navigation">
+              <a href="public-index.html" class="logo">
+                  <span class="logo-sombre">Mon</span><span class="logo-couleur">Blog.</span>
               </a>
-
-              <ul class="nav-links">
-
-                  <li>
-                      <a href="public-index.html">
-                          Accueil
-                      </a>
-                  </li>
-
-                  <li>
-                      <a href="public-categorie.html">
-                          Catégories
-                      </a>
-                  </li>
-
-                  <li>
-                      <a href="public-apropos.html">
-                          À propos
-                      </a>
-                  </li>
-
+              <ul class="liens-navigation">
+                  <li><a href="public-index.html">Accueil</a></li>
+                  <li><a href="public-categorie.html">Catégories</a></li>
+                  <li><a href="public-apropos.html">À propos</a></li>
               </ul>
-
-              <a href="admin-login.html" class="button">
+              <a href="admin-login.html" class="bouton-principal">
                   Espace Admin
               </a>
-
           </nav>
-
       </header>
-
-      <main class="page-content">
-
-          <div class="hero">
-
+  
+      <main>
+          <section class="banniere-accueil">
               <h1>
-                  Mon Blog Personnel :
-                  <br>
-                  <span>
-                      Développer &amp; Partager
-                  </span>
+                  Mon Blog Personnel :<br>
+                  <span>Développer &amp; Partager</span>
               </h1>
-
               <p>
                   Découvrez mes derniers articles sur le développement web,
                   l'architecture logicielle et les bonnes pratiques
                   d'intégration UI/UX.
               </p>
-
-              <div class="hero-actions">
-
-                  <a
-                      href="#articles"
-                      class="hero-button hero-button-primary">
-                      Lire les articles
-                  </a>
-
-                  <a
-                      href="public-apropos.html"
-                      class="hero-button hero-button-secondary">
-                      À propos de moi
-                  </a>
-
+              <div class="actions-banniere">
+                  <a href="#articles" class="bouton-principal">Lire les articles</a>
+                  <a href="public-apropos.html" class="bouton-secondaire">À propos de moi</a>
               </div>
-
-          </div>
-
-          <div class="articles-section">
-
-              <div class="articles-container">
-
-                  <section class="category-filter">
-
-                      <h2>
-                          Explorer par thème
-                      </h2>
-
-                      <div class="category-list">
-
-                          <a
-                              href="public-index.html"
-                              class="category-pill active">
-                              Tous les articles
-                          </a>
-
-                          <a
-                              href="public-categorie.html"
-                              class="category-pill">
-                              Développement
-                          </a>
-
-                          <a
-                              href="public-categorie.html"
-                              class="category-pill">
-                              Design UI/UX
-                          </a>
-
-                          <a
-                              href="public-categorie.html"
-                              class="category-pill">
-                              Productivité
-                          </a>
-
-                          <a
-                              href="public-categorie.html"
-                              class="category-pill">
-                              Management
-                          </a>
-
+          </section>
+  
+          <section class="section-articles">
+              <div class="conteneur-articles">
+  
+                  <section class="filtre-categories">
+                      <h2>Explorer par thème</h2>
+                      <div class="liste-filtres">
+                          <a href="public-index.html" class="pilule-filtre actif">Tous les articles</a>
+                          <a href="public-categorie.html" class="pilule-filtre">Développement</a>
+                          <a href="public-categorie.html" class="pilule-filtre">Design UI/UX</a>
+                          <a href="public-categorie.html" class="pilule-filtre">Productivité</a>
+                          <a href="public-categorie.html" class="pilule-filtre">Management</a>
                       </div>
-
                   </section>
-
-                  <div class="articles-header">
-
+  
+                  <div class="entete-liste-articles">
                       <div>
-
-                          <h2>
-                              Dernières publications
-                          </h2>
-
-                          <p>
-                              Les articles les plus récents de la communauté.
-                          </p>
-
+                          <h2>Dernières publications</h2>
+                          <p>Les articles les plus récents de la communauté.</p>
                       </div>
-
-                      <a
-                          href="public-categorie.html"
-                          class="articles-more">
-                          Explorer tout
-                      </a>
-
+                      <a href="public-categorie.html" class="lien-voir-tout">Explorer tout</a>
                   </div>
-
-                  <div class="articles-grid">
-
-                      <div class="article-card">
-
-                          <a
-                              href="public-article.html"
-                              class="article-image">
-
-                              <img
-                                  src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=600&h=400&fit=crop"
-                                  alt="Code source affiché sur un écran">
-
+  
+                  <div class="grille-articles">
+                      <div class="carte-article">
+                          <a href="public-article.html" class="carte-image">
+                              <img src="images/article-example.png" alt="Code source affiché sur un écran">
                           </a>
-
-                          <span class="article-category blue">
-                              Développement
-                          </span>
-
-                          <div class="article-content">
-
-                              <h3>
-                                  <a href="public-article.html">
-                                      Comment bien débuter avec Tailwind CSS en 2026 ?
-                                  </a>
-                              </h3>
-
-                              <p>
-                                  Découvrez les concepts fondamentaux de Tailwind CSS
-                                  et pourquoi cette approche utilitaire est devenue
-                                  le standard de l'industrie pour les développeurs
-                                  frontend modernes.
-                              </p>
-
-                              <div class="article-meta">
-
-                                  <span>
-                                      14 Fév 2026
-                                  </span>
-
-                                  <span>
-                                      5 min
-                                  </span>
-
+                          <span class="etiquette-categorie bleu">Développement</span>
+                          <div class="carte-contenu">
+                              <h3><a href="public-article.html">Comment bien débuter avec Tailwind CSS en 2026 ?</a></h3>
+                              <p>Découvrez les concepts fondamentaux de Tailwind CSS et pourquoi cette approche utilitaire est devenue le standard de l'industrie.</p>
+                              <div class="carte-meta">
+                                  <span>14 Fév 2026</span>
+                                  <span>5 min</span>
                               </div>
-
                           </div>
-
                       </div>
-
-                      <div class="article-card">
-
-                          <a
-                              href="public-article.html"
-                              class="article-image">
-
-                              <img
-                                  src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?w=600&h=400&fit=crop"
-                                  alt="Interface utilisateur moderne">
-
+                      <div class="carte-article">
+                          <a href="public-article.html" class="carte-image">
+                              <img src="images/article-example.png" alt="Interface utilisateur moderne">
                           </a>
-
-                          <span class="article-category pink">
-                              UI / UX
-                          </span>
-
-                          <div class="article-content">
-
-                              <h3>
-                                  <a href="public-article.html">
-                                      L'importance des micro-interactions
-                                  </a>
-                              </h3>
-
-                              <p>
-                                  Une interface belle n'est pas suffisante.
-                                  Comprendre comment animer de petites actions peut
-                                  transformer l'expérience utilisateur et augmenter
-                                  l'engagement.
-                              </p>
-
-                              <div class="article-meta">
-
-                                  <span>
-                                      10 Fév 2026
-                                  </span>
-
-                                  <span>
-                                      3 min
-                                  </span>
-
+                          <span class="etiquette-categorie rose">UI / UX</span>
+                          <div class="carte-contenu">
+                              <h3><a href="public-article.html">L'importance des micro-interactions</a></h3>
+                              <p>Une interface belle n'est pas suffisante. Comprendre comment animer de petites actions peut transformer l'expérience utilisateur.</p>
+                              <div class="carte-meta">
+                                  <span>10 Fév 2026</span>
+                                  <span>3 min</span>
                               </div>
-
                           </div>
-
                       </div>
-
-                      <div class="article-card">
-
-                          <a
-                              href="public-article.html"
-                              class="article-image">
-
-                              <img
-                                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
-                                  alt="Équipe de développeurs en réunion">
-
+                      <div class="carte-article">
+                          <a href="public-article.html" class="carte-image">
+                              <img src="images/article-example.png" alt="Équipe de développeurs en réunion">
                           </a>
-
-                          <span class="article-category green">
-                              Management
-                          </span>
-
-                          <div class="article-content">
-
-                              <h3>
-                                  <a href="public-article.html">
-                                      Gérer une équipe de développeurs en Full Remote
-                                  </a>
-                              </h3>
-
-                              <p>
-                                  Les méthodes agiles et les rituels essentiels pour
-                                  maintenir la cohésion de groupe et la productivité
-                                  lorsque tous les membres sont distribués.
-                              </p>
-
-                              <div class="article-meta">
-
-                                  <span>
-                                      05 Fév 2026
-                                  </span>
-
-                                  <span>
-                                      8 min
-                                  </span>
-
+                          <span class="etiquette-categorie vert">Management</span>
+                          <div class="carte-contenu">
+                              <h3><a href="public-article.html">Gérer une équipe de développeurs en Full Remote</a></h3>
+                              <p>Les méthodes agiles et les rituels essentiels pour maintenir la cohésion de groupe et la productivité lorsque tous les membres sont distribués.</p>
+                              <div class="carte-meta">
+                                  <span>05 Fév 2026</span>
+                                  <span>8 min</span>
                               </div>
-
                           </div>
-
                       </div>
-
                   </div>
-
               </div>
-
-          </div>
-
+          </section>
       </main>
-
-      <footer class="site-footer">
-
-          <div class="footer-container">
-
-              <div class="footer-column">
-
-                  <h2>
-                      Mon Blog
-                  </h2>
-
-                  <p>
-                      Partager des connaissances, des tutoriels
-                      et des découvertes sur le développement web.
-                  </p>
-
+  
+      <!-- PIED DE PAGE -->
+      <footer class="pied-de-page">
+          <div class="conteneur-pied-de-page">
+              <div class="colonne-pied-de-page">
+                  <h2>Mon Blog</h2>
+                  <p>Partager des connaissances, des tutoriels et des découvertes sur le développement web.</p>
               </div>
-
-              <div class="footer-column">
-
-                  <h2>
-                      Navigation
-                  </h2>
-
+              <div class="colonne-pied-de-page">
+                  <h2>Navigation</h2>
                   <ul>
-
-                      <li>
-                          <a href="public-index.html">
-                              Accueil
-                          </a>
-                      </li>
-
-                      <li>
-                          <a href="public-categorie.html">
-                              Catégories
-                          </a>
-                      </li>
-
-                      <li>
-                          <a href="public-apropos.html">
-                              À propos
-                          </a>
-                      </li>
-
+                      <li><a href="public-index.html">Accueil</a></li>
+                      <li><a href="public-categorie.html">Catégories</a></li>
+                      <li><a href="public-apropos.html">À propos</a></li>
                   </ul>
-
               </div>
-
-              <div class="footer-column">
-
-                  <h2>
-                      Contact
-                  </h2>
-
-                  <p>
-                      Retrouvez les nouveaux articles
-                      chaque semaine.
-                  </p>
-
+              <div class="colonne-pied-de-page">
+                  <h2>Contact</h2>
+                  <p>Retrouvez les nouveaux articles chaque semaine.</p>
               </div>
-
           </div>
-
-          <div class="footer-bottom">
-
-              <p>
-                  &copy; 2026 Mon Blog Personnel.
-              </p>
-
+          <div class="bas-pied-de-page">
+              <p>&copy; 2026 Mon Blog Personnel.</p>
           </div>
-
       </footer>
-
   </body>
-
   </html>
-
 data_css: ""
 data_js: ""
 ---
@@ -408,84 +163,73 @@ window.pageData = {
 
 ## 1. Objectif
 
-- Utiliser la balise `section` pour découper le contenu principal en plusieurs zones thématiques (accueil, articles, etc.).
+- Créer des ancres avec l'attribut `id`.
+- Rendre des liens internes fonctionnels pour scroller directement vers ces ancres.
 
 ## 2. Prérequis
 
-- Savoir structurer une page avec `header`, `main` et `footer`.
+- Avoir structuré la page avec `main` et `section` au tutoriel précédent.
 
 ## Données de départ
 
-La page contient déjà un `main`. À l'intérieur, deux blocs majeurs sont définis par de simples `div` (`div.hero` et `div.articles-section`) :
+La structure de notre page est maintenant parfaite. De plus, dans la bannière, le bouton "Lire les articles" contient déjà un lien vers la balise de destination sous cette forme : `<a href="#articles">`.
 
-```html
-<main class="page-content">
-    <div class="hero">
-        <!-- Contenu de l'accueil -->
-    </div>
-
-    <div class="articles-section">
-        <!-- Contenu des articles -->
-    </div>
-</main>
-```
+Cependant, il ne fonctionne pas car aucune section n'a encore l'identifiant correspondant (`id="articles"`).
 
 ## Partie 1 — Théorie
 
-### 1.1. La balise `<section>`
+### 1.1. L'attribut `id`
 
-La balise sémantique `<section>` permet de regrouper des contenus liés au sein d'une même partie logique. Une page peut (et devrait) contenir plusieurs sections dans son `<main>`.
+Un **`id`** est un identifiant unique que l'on peut attribuer à n'importe quelle balise HTML. 
+*Règle d'or : On ne peut pas avoir deux fois le même `id` dans une même page !*
 
-**Structure classique avec sections :**
+### 1.2. Le lien interne (l'ancre)
+
+Pour faire scroller la page vers l'élément qui possède un `id` spécifique, il suffit de créer un lien classique `<a>` et de faire commencer son attribut `href` par un **`#`** suivi du nom de l'id.
+
+**Exemple complet :**
 
 ```html
-<main>
-    <section>
-        <h2>Accueil</h2>
-        <p>Bienvenue sur mon site.</p>
-    </section>
+<!-- Le lien de navigation -->
+<a href="#contact">Aller au formulaire</a>
 
-    <section>
-        <h2>Articles récents</h2>
-        <!-- Liste des articles -->
-    </section>
-</main>
+<!-- Beaucoup de contenu ... -->
+
+<!-- La cible de l'ancre -->
+<section id="contact">
+    <h2>Formulaire de contact</h2>
+</section>
 ```
 
 ## Partie 2 — Pratique
 
-### 2.1. Sémantiser les zones du contenu principal
+### 2.1. Ajouter l'identifiant à la cible
 
-Dans le fichier HTML de départ, transformez les zones génériques en sections sémantiques.
+Dans votre code HTML, la zone des articles est actuellement définie ainsi :
+```html
+<section class="section-articles">
+```
 
-1. **La zone d'accueil :** Remplacez `<div class="hero">` (et sa balise fermante) par `<section class="hero">`.
-2. **La zone des articles :** Remplacez `<div class="articles-section">` (et sa balise fermante) par `<section class="articles-section">`.
-
-*(Attention à ne pas supprimer ou modifier le contenu à l'intérieur de ces balises).*
-
-### 2.2. Résultat attendu
-
-Le rendu visuel ne change pas, mais votre document est désormais découpé logiquement avec des balises `<section>` :
+Ajoutez-lui l'identifiant `articles` comme ceci :
 
 ```html
-<main class="page-content">
-
-    <section class="hero">
-        <h1>Mon Blog Personnel ...</h1>
-        <!-- ... -->
-    </section>
-
-    <section class="articles-section">
-        <!-- ... -->
-    </section>
-
-</main>
+<section id="articles" class="section-articles">
 ```
+
+### 2.2. Tester le résultat
+
+Le lien (`href="#articles"`) et la cible (`id="articles"`) sont désormais connectés !
+
+Allez tester votre page ! Si vous cliquez sur le bouton "Lire les articles", vous verrez la page défiler doucement jusqu'à la liste de vos publications.
+
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat attendu complet</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/html/T.122.123.html' | relative_url }}"
+    height="320"
+    title="Résultat attendu">
+</iframe>
 
 ## Bilan
 
-Vous savez désormais utiliser la balise `<section>` pour découper intelligemment le contenu d'une page en zones thématiques.
-
-## Glossaire
-
-- **`<section>`** : Partie d'un document regroupant des éléments thématiquement liés.
+Vous avez terminé la structuration de la page d'accueil de votre blog, et appris à gérer une navigation fluide à l'intérieur d'une page !
