@@ -1,0 +1,118 @@
+/* =========================================================
+   LAYOUT (layout.css)
+   En-tête et pied de page communs à toutes les pages
+========================================================= */
+
+/* EN-TÊTE DU SITE (HEADER) */
+.en-tete-site {
+    padding: 20px 24px;
+    background: white;
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.barre-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.logo-sombre {
+    color: var(--couleur-titre);
+}
+
+.logo-couleur {
+    color: var(--couleur-primaire);
+}
+
+.liens-navigation {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.liens-navigation a {
+    color: var(--couleur-secondaire);
+    font-size: 14px;
+}
+
+.liens-navigation a:hover {
+    color: var(--couleur-primaire);
+}
+
+
+/* PIED DE PAGE (FOOTER) */
+.pied-de-page {
+    margin-top: 80px;
+    padding: 48px 24px 24px;
+    background: white;
+    border-top: 1px solid var(--couleur-bordure);
+}
+
+.conteneur-pied-de-page {
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.colonne-pied-de-page {
+    flex: 1;
+}
+
+.colonne-pied-de-page h2 {
+    margin: 0 0 16px;
+    color: var(--couleur-titre);
+    font-size: 16px;
+}
+
+.colonne-pied-de-page p {
+    max-width: 320px;
+    margin: 0;
+    color: var(--couleur-secondaire);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.colonne-pied-de-page ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.colonne-pied-de-page li {
+    margin-bottom: 10px;
+}
+
+.colonne-pied-de-page a {
+    color: var(--couleur-secondaire);
+    font-size: 14px;
+}
+
+.colonne-pied-de-page a:hover {
+    color: var(--couleur-primaire);
+}
+
+.bas-pied-de-page {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    text-align: center;
+    border-top: 1px solid var(--couleur-bordure);
+}
+
+.bas-pied-de-page p {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 12px;
+}

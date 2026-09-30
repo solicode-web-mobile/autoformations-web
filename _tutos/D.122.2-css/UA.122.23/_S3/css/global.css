@@ -1,0 +1,32 @@
+/* =========================================================
+   GLOBAL (global.css)
+   Variables natives, polices, reset basique
+========================================================= */
+
+:root {
+    --couleur-texte: #1f2937;
+    --couleur-fond: #f9fafb;
+    --couleur-primaire: #2673e8;
+    --couleur-primaire-hover: #1c5bba;
+    --couleur-secondaire: #6b7280;
+    --couleur-titre: #111827;
+    --couleur-bordure: #e5e7eb;
+}
+
+body {
+    margin: 0;
+    color: var(--couleur-texte);
+    background: var(--couleur-fond);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

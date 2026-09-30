@@ -1,0 +1,149 @@
+/* =========================================================
+   COMPONENTS (components.css)
+   Composants réutilisables : Boutons, Cartes, Étiquettes
+========================================================= */
+
+/* BOUTONS */
+.bouton-principal {
+    display: inline-block;
+    padding: 10px 18px;
+    color: white;
+    background: var(--couleur-primaire);
+    border-radius: 8px;
+}
+
+.bouton-principal:hover {
+    background: var(--couleur-primaire-hover);
+}
+
+.bouton-secondaire {
+    display: inline-block;
+    padding: 10px 18px;
+    color: var(--couleur-texte);
+    background: white;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 8px;
+}
+
+.bouton-secondaire:hover {
+    color: var(--couleur-primaire);
+    border-color: var(--couleur-primaire);
+}
+
+
+/* CARTES D'ARTICLES */
+.carte-article {
+    flex: 1;
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 16px;
+}
+
+.carte-image {
+    display: block;
+}
+
+.carte-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.carte-contenu {
+    padding: 20px;
+}
+
+.carte-contenu h3 {
+    margin: 0;
+    color: var(--couleur-titre);
+    font-family: Georgia, serif;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.carte-contenu p {
+    margin: 12px 0;
+    color: var(--couleur-secondaire);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.carte-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 16px;
+    color: #9ca3af;
+    font-size: 12px;
+    border-top: 1px solid #f3f4f6;
+}
+
+
+/* ÉTIQUETTES CATÉGORIE (BADGES) */
+.etiquette-categorie {
+    display: inline-block;
+    margin: 16px 16px 0;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #f0f6ff;
+    border-radius: 99px;
+}
+
+.etiquette-categorie.bleu { color: #1c5bba; }
+.etiquette-categorie.rose { color: #db2777; background: #fdf2f8; }
+.etiquette-categorie.vert { color: #059669; background: #ecfdf5; }
+
+/* Filtres de catégorie (Pilules) */
+.pilule-filtre {
+    padding: 10px 16px;
+    color: #4b5563;
+    background: white;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 8px;
+}
+
+.pilule-filtre:hover {
+    color: var(--couleur-primaire);
+    border-color: var(--couleur-primaire);
+}
+
+.pilule-filtre.actif {
+    color: white;
+    background: var(--couleur-titre);
+}
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 64px;
+}
+
+.bouton-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--couleur-secondaire);
+    background: white;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 50%;
+    font-weight: 500;
+}
+
+.bouton-pagination:hover {
+    color: var(--couleur-primaire);
+    background: #f0f6ff;
+    border-color: #e0edff;
+}
+
+.bouton-pagination.actif {
+    color: white;
+    background: var(--couleur-primaire);
+    border-color: var(--couleur-primaire);
+}
