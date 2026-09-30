@@ -1,0 +1,72 @@
+/* =========================================================
+   COMPOSANT : ARRAY SVG (algo-svg)
+   ========================================================= */
+
+.algo-svg-container {
+  overflow-x: auto;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.algo-svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.algo-svg-idx {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 16px;
+  font-weight: bold;
+  fill: #7253ed;
+  text-anchor: middle;
+}
+
+.algo-svg-box {
+  fill: #f3f0ff;
+  stroke: #c4b5fd;
+  stroke-width: 2px;
+  rx: 8px;
+}
+
+.algo-svg-val {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 20px;
+  font-weight: bold;
+  fill: #374151;
+  text-anchor: middle;
+}
+
+.algo-svg-arrow {
+  stroke: #9ca3af;
+  stroke-width: 2px;
+  stroke-dasharray: 4;
+  marker-end: url(#arrowhead);
+}
+
+.algo-svg-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  fill: #6b7280;
+}
+
+.algo-svg-label-center {
+  text-anchor: middle;
+}
+
+.algo-svg-label-end {
+  text-anchor: end;
+}
+
+.algo-svg-hl-box {
+  fill: #7253ed;
+  stroke: #7253ed;
+}
+
+.algo-svg-hl-text {
+  fill: #ffffff;
+}
+
+.algo-svg-hl-idx {
+  fill: #111827;
+}

@@ -1,0 +1,49 @@
+{% assign vals = include.values | split: ',' %}
+{% assign total = vals.size %}
+{% assign svg_width = total | times: 90 | plus: 120 %}
+
+<div class="algo-svg-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ svg_width }} 150" class="algo-svg" width="{{ svg_width }}">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af" />
+    </marker>
+  </defs>
+  
+  <!-- Titre optionnel -->
+  {% if include.title %}
+  <text x="{{ svg_width | divided_by: 2 }}" y="20" class="algo-svg-label algo-svg-label-center">
+    {{ include.title }} {% if include.name %} ({{ include.name }}){% endif %}
+  </text>
+  {% endif %}
+
+  <!-- Labels de lignes -->
+  <text x="90" y="55" class="algo-svg-label algo-svg-label-end">Index</text>
+  <text x="90" y="113" class="algo-svg-label algo-svg-label-end">Élément</text>
+
+  <!-- Éléments du tableau -->
+  {% for val in vals %}
+    {% assign cx = forloop.index0 | times: 90 | plus: 150 %}
+    {% assign rect_x = cx | minus: 30 %}
+    
+    {% capture current_idx %}{{ forloop.index0 }}{% endcapture %}
+    {% assign is_hl = false %}
+    {% capture highlight_str %}{{ include.highlight }}{% endcapture %}
+    {% if include.highlight and current_idx == highlight_str %}
+      {% assign is_hl = true %}
+    {% endif %}
+
+    <!-- Index -->
+    <text x="{{ cx }}" y="55" class="algo-svg-idx {% if is_hl %}algo-svg-hl-idx{% endif %}">{{ forloop.index0 }}</text>
+    
+    <!-- Arrow -->
+    <line x1="{{ cx }}" y1="65" x2="{{ cx }}" y2="75" class="algo-svg-arrow" />
+    
+    <!-- Box -->
+    <rect x="{{ rect_x }}" y="85" width="60" height="40" class="algo-svg-box {% if is_hl %}algo-svg-hl-box{% endif %}" />
+    
+    <!-- Value -->
+    <text x="{{ cx }}" y="112" class="algo-svg-val {% if is_hl %}algo-svg-hl-text{% endif %}">{{ val | strip }}</text>
+  {% endfor %}
+</svg>
+</div>
