@@ -8,68 +8,20 @@ type: "classique"
 version: "normal"
 ua: "UA.125.11"
 nav_order: 1
-data_html: |
-  <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-      <meta charset="UTF-8">
-      <title>Mon article</title>
-
-      <style>
-          body {
-              font-family: Arial, sans-serif;
-          }
-
-          h1 {
-              color: #333;
-          }
-      </style>
-  </head>
-
-  <body>
-      <h1>Mon article</h1>
-
-      <p>Bienvenue sur ma page.</p>
-      <p>Voici le contenu de mon article.</p>
-
-      <script>
-          console.log("JavaScript chargé.");
-      </script>
-  </body>
-  </html>
-
-data_css: ""
-
 data_js: ""
+data_html: ""
+data_css: ""
+simplified: true
 ---
 
 ## 1. Objectif
 
-Dans ce tutoriel, vous allez apprendre à séparer le code d'une page Web.
+L'architecture d'un projet web commence par une règle d'or : **La Séparation des Préoccupations** (Separation of Concerns).
+Dans ce tutoriel, vous allez apprendre à extraire le style et le comportement d'une page web vers des fichiers dédiés pour rendre votre code propre et maintenable.
 
-Vous allez créer :
+## Partie 1 — Le problème : le code "Plat"
 
-- un fichier HTML pour le contenu ;
-- un fichier CSS pour le style ;
-- un fichier JavaScript pour le comportement.
-
-À la fin, les trois fichiers seront liés et la page fonctionnera comme avant.
-
-## 2. Prérequis
-
-Vous devez savoir :
-
-- créer un fichier ;
-- écrire une structure HTML simple ;
-- ajouter un titre avec `h1` ;
-- ajouter un paragraphe avec `p` ;
-- ouvrir une page HTML dans un navigateur.
-
-## Données de départ
-
-### HTML
-
-Le code de départ est contenu dans un seul fichier `article.html`.
+Imaginez un projet web dont tout le code est concentré dans un seul fichier `index.html` :
 
 ```html
 <!DOCTYPE html>
@@ -77,24 +29,17 @@ Le code de départ est contenu dans un seul fichier `article.html`.
 <head>
     <meta charset="UTF-8">
     <title>Mon article</title>
-
+    <!-- MAUVAISE PRATIQUE : CSS dans le HTML -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            color: #333;
-        }
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #333; }
     </style>
 </head>
-
 <body>
     <h1>Mon article</h1>
-
     <p>Bienvenue sur ma page.</p>
-    <p>Voici le contenu de mon article.</p>
 
+    <!-- MAUVAISE PRATIQUE : JS dans le HTML -->
     <script>
         console.log("JavaScript chargé.");
     </script>
@@ -102,272 +47,59 @@ Le code de départ est contenu dans un seul fichier `article.html`.
 </html>
 ```
 
-### CSS
+Mélanger les langages rend le fichier illisible, empêche de réutiliser le style sur d'autres pages, et rend le travail en équipe (un designer sur le CSS, un dev sur le JS) impossible.
 
-Le CSS est encore écrit dans `article.html`.
+## Partie 2 — La solution : L'architecture découpée
 
-### JavaScript
+Pour structurer ce projet proprement, nous devons séparer chaque "préoccupation" dans son propre fichier.
+Le résultat final doit correspondre à cette arborescence :
 
-Le JavaScript est encore écrit dans `article.html`.
+{% include arch-svg.html
+   title="Architecture séparée"
+   tree="
+   mon-projet/|folder|0,
+   index.html|file-html|1,
+   style.css|file-css|1,
+   script.js|file-js|1
+   "
+%}
 
-## Partie 1 — Théorie
+### Comment relier ces fichiers ?
 
-### 1.1. Le rôle du fichier HTML
+Une fois séparés, le fichier HTML agit comme le chef d'orchestre qui appelle ses musiciens :
 
-Le fichier HTML contient la structure et le contenu de la page.
-
-Par exemple :
-
-```html
-<h1>Mon article</h1>
-<p>Bienvenue sur ma page.</p>
-```
-
-Le fichier HTML indique ce qui doit apparaître dans la page.
-
-### 1.2. Le rôle du fichier CSS
-
-Le fichier CSS contient les règles qui définissent l'apparence de la page.
-
-Par exemple :
-
-```css
-h1 {
-    color: #333;
-}
-```
-
-Le CSS permet de modifier le style sans modifier le contenu HTML.
-
-### 1.3. Le rôle du fichier JavaScript
-
-Le fichier JavaScript contient le code qui ajoute un comportement à la page.
-
-Dans notre exemple :
-
-```javascript
-console.log("JavaScript chargé.");
-```
-
-Ce code permet de vérifier que le fichier JavaScript est chargé.
-
-### 1.4. Relier les fichiers
-
-Le HTML peut utiliser un fichier CSS avec `link` :
-
+**Pour lier le fichier CSS** (à placer dans le `<head>`) :
 ```html
 <link rel="stylesheet" href="style.css">
 ```
 
-Le HTML peut utiliser un fichier JavaScript avec `script` :
-
+**Pour lier le fichier JavaScript** (à placer à la fin du `<body>` ou dans le `<head>` avec l'attribut `defer`) :
 ```html
 <script src="script.js" defer></script>
 ```
 
-Le fichier HTML reste le point de départ de la page.
-
-### 1.5. À retenir
-
-- HTML = contenu et structure.
-- CSS = apparence.
-- JavaScript = comportement.
-- Les fichiers peuvent être séparés.
-- Le HTML doit être relié aux fichiers CSS et JavaScript.
-
-## Partie 2 — Pratique
-
-### 2.1. Créer les fichiers
-
-#### Étape 1 — Ouvrir le projet
-
-Ouvrez le dossier de votre projet dans Visual Studio Code.
-
-#### Étape 2 — Créer le fichier CSS
-
-Créez un fichier nommé :
-
-```text
-style.css
-```
-
-#### Étape 3 — Déplacer le CSS
-
-Dans `article.html`, supprimez la balise `style`.
-
-Placez son contenu dans `style.css` :
-
-```css
-body {
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    color: #333;
-}
-```
-
-#### Étape 4 — Relier le fichier CSS
-
-Dans `article.html`, ajoutez la ligne suivante dans `head` :
-
-```html
-<link rel="stylesheet" href="style.css">
-```
-
-La partie `head` devient :
-
-```html
-<head>
-    <meta charset="UTF-8">
-    <title>Mon article</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-```
-
-#### Étape 5 — Créer le fichier JavaScript
-
-Créez un fichier nommé :
-
-```text
-script.js
-```
-
-#### Étape 6 — Déplacer le JavaScript
-
-Dans `article.html`, supprimez la balise `script` qui contient le code JavaScript.
-
-Placez son contenu dans `script.js` :
-
-```javascript
-console.log("JavaScript chargé.");
-```
-
-#### Étape 7 — Relier le fichier JavaScript
-
-Ajoutez cette ligne avant la fermeture de `body` :
-
-```html
-<script src="script.js" defer></script>
-```
-
-Votre fichier `article.html` devient :
-
-```html
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Mon article</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <h1>Mon article</h1>
-
-    <p>Bienvenue sur ma page.</p>
-    <p>Voici le contenu de mon article.</p>
-
-    <script src="script.js" defer></script>
-</body>
-</html>
-```
-
-### 2.2. Vérifier la séparation
-
-#### Étape 1 — Vérifier le HTML
-
-Dans `article.html`, vérifiez qu'il n'y a plus de bloc `style`.
-
-Vérifiez aussi qu'il n'y a plus de code JavaScript écrit directement dans le HTML.
-
-#### Étape 2 — Vérifier le CSS
-
-Ouvrez `style.css`.
-
-Vérifiez que les règles CSS sont présentes.
-
-#### Étape 3 — Vérifier le JavaScript
-
-Ouvrez `script.js`.
-
-Vérifiez que le code JavaScript est présent.
-
-#### Étape 4 — Tester la page
-
-Ouvrez `article.html` dans le navigateur.
-
-Vérifiez que :
-
-- le titre apparaît ;
-- les paragraphes apparaissent ;
-- le style fonctionne.
-
-### 2.3. Exercice individuel
+## Partie 3 — Pratique (Livrable)
 
 **Travail à faire :**
+1. Créez un dossier de projet vide.
+2. Recréez le code "Plat" fourni dans la Partie 1 dans un fichier `index.html`.
+3. Séparez correctement le CSS dans un nouveau fichier `style.css`.
+4. Séparez correctement le JavaScript dans un nouveau fichier `script.js`.
+5. Modifiez votre `index.html` pour lier proprement les deux nouveaux fichiers.
+6. Ouvrez `index.html` dans votre navigateur pour vérifier que le style s'applique bien et que le message JavaScript s'affiche dans la console.
 
-À partir de la page fournie :
+**Livrable exigé :**
+Dans votre dépôt GitHub de livrables, créez un dossier nommé `T.125.111`.
+Placez-y l'arborescence complète de votre projet (`index.html`, `style.css`, `script.js`).
+Fournissez **le lien vers ce dossier précis sur GitHub**.
 
-1. Séparez le HTML dans `article.html`.
-2. Séparez le CSS dans `style.css`.
-3. Séparez le JavaScript dans `script.js`.
-4. Reliez les trois fichiers.
-5. Ouvrez la page dans le navigateur.
-
-**Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant :
-
-- les noms des trois fichiers ;
-- une courte phrase indiquant le rôle de chaque fichier ;
-- une capture ou une description du résultat obtenu.
-
-**Résultat attendu :**
-
-La page conserve le même contenu et le même style.
-
-Les trois fichiers sont séparés et correctement liés.
-
-<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
-<iframe
-    class="auto-wrapper tuto-resultat"
-    src="{{'/code/architecture/tuto-1-architecture.html' | relative_url}}"
-    height="700"
-    title="Résultat attendu">
-</iframe>
-
-**Critère de réussite :**
-
-La page fonctionne sans CSS ou JavaScript écrit directement dans `article.html`.
+*(L'évaluation portera strictement sur la présence des 3 fichiers distincts et le bon usage des balises `<link>` et `<script>`)*.
 
 ## Bilan
 
-**Vous avez réalisé :**
-
-Une page Web composée de trois fichiers :
-
-```text
-article.html
-style.css
-script.js
-```
-
 **Vous savez maintenant :**
+- que chaque langage (HTML, CSS, JS) doit avoir son propre fichier ;
+- utiliser la balise `<link>` pour importer du style ;
+- utiliser la balise `<script>` pour importer du comportement.
 
-- séparer le contenu HTML ;
-- séparer le style CSS ;
-- séparer le code JavaScript ;
-- relier les trois fichiers ;
-- vérifier que la page fonctionne après la séparation.
-
-## Glossaire
-
-- **HTML** : langage utilisé pour créer la structure d'une page Web.
-- **CSS** : langage utilisé pour définir l'apparence d'une page Web.
-- **JavaScript** : langage utilisé pour ajouter du comportement à une page Web.
-- **Ressource** : fichier utilisé par une page Web.
-- **`link`** : balise HTML utilisée ici pour relier un fichier CSS.
-- **`script`** : balise HTML utilisée pour charger du JavaScript.
+La première règle de l'architecture est acquise ! Dans le prochain tutoriel, nous apprendrons à organiser ces fichiers dans des dossiers (pour les projets plus volumineux).
