@@ -516,4 +516,17 @@ a:focus-visible {
   max-height: none !important;
 }
 
+/* =========================================================
+   14. SIDEBAR TOGGLE
+   ========================================================= */
 
+.side-bar.sidebar-hidden {
+  display: none !important;
+}
+
+@media (min-width: 50rem) {
+  .main.sidebar-hidden-main,
+  .side-bar.sidebar-hidden + .main {
+    margin-left: 0 !important;
+  }
+}
