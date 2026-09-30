@@ -3,7 +3,7 @@ title: "Séparer le HTML, CSS et JavaScript"
 layout: tuto
 slug: "separer-html-css-js"
 permalink: /tutos/separer-html-css-js/
-tuto_id: "T.125.11.1"
+tuto_id: "T.125.111"
 type: "classique"
 version: "normal"
 ua: "UA.125.11"

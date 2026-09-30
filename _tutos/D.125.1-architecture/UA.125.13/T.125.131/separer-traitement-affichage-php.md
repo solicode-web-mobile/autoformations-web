@@ -3,7 +3,7 @@ title: "Séparer traitement et affichage en PHP"
 layout: tuto
 slug: "separer-traitement-affichage-php"
 permalink: /tutos/separer-traitement-affichage-php/
-tuto_id: "T.125.13.1"
+tuto_id: "T.125.131"
 type: "classique"
 version: "normal"
 ua: "UA.125.13"

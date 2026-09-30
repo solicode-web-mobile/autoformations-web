@@ -3,7 +3,7 @@ title: "Séparer l'espace Public et Admin"
 layout: tuto
 slug: "separer-public-admin"
 permalink: /tutos/separer-public-admin/
-tuto_id: "T.125.16.1"
+tuto_id: "T.125.161"
 type: "classique"
 version: "normal"
 ua: "UA.125.16"

@@ -3,7 +3,7 @@ title: "Réutiliser l'architecture dynamique"
 layout: tuto
 slug: "reutiliser-architecture-dynamique"
 permalink: /tutos/reutiliser-architecture-dynamique/
-tuto_id: "T.125.15.1"
+tuto_id: "T.125.151"
 type: "classique"
 version: "normal"
 ua: "UA.125.15"

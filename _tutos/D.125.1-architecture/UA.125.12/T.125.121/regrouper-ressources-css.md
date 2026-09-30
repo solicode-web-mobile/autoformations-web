@@ -3,7 +3,7 @@ title: "Regrouper les ressources communes et structurer le CSS"
 layout: tuto
 slug: "regrouper-ressources-css"
 permalink: /tutos/regrouper-ressources-css/
-tuto_id: "T.125.12.1"
+tuto_id: "T.125.121"
 type: "classique"
 version: "normal"
 ua: "UA.125.12"

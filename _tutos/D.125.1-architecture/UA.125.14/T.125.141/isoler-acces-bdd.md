@@ -3,7 +3,7 @@ title: "Isoler l'accès à la base de données"
 layout: tuto
 slug: "isoler-acces-bdd"
 permalink: /tutos/isoler-acces-bdd/
-tuto_id: "T.125.14.1"
+tuto_id: "T.125.141"
 type: "classique"
 version: "normal"
 ua: "UA.125.14"
