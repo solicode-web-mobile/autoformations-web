@@ -6,22 +6,22 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 | Session | Identifiant | Titre | Objectif | Livrable |
 | :--- | :--- | :--- | :--- | :--- |
-| **S2** | **T.115.21.1** | Définir le résultat attendu d'une tâche | Lire une consigne et en extraire le périmètre et les critères de réussite. | Fiche de tâche remplie. |
-| **S3** | **T.115.22.1** | Créer un planning simple | Estimer le temps nécessaire pour chaque action et les organiser. | Planning individuel (tâche, durée, échéance). |
-| **S5** | **T.152.13.1** | Découper une tâche en actions simples | Transformer un travail global en une suite de petites étapes logiques. | Plan de travail détaillé. |
-| **S6** | **T.152.14.1** | Utiliser un tableau de suivi | Rendre visible l'état de son travail (À faire, En cours, Terminé). | Tableau de suivi à jour. |
-| **S7** | **T.152.15.1** | Comparer temps prévu et temps réel | Prendre l'habitude de mesurer son temps et d'assumer les écarts. | Tableau comparatif (prévu vs réel). |
-| **S8** | **T.152.16.1** | Signaler un blocage efficacement | Demander de l'aide en expliquant le problème et ce qui a déjà été tenté. | Message "SOS" structuré. |
-| **S9** | **T.152.17.1** | Faire un compte rendu d'avancement | Dire simplement ce qui a été fait, ce qui reste, et les difficultés. | Bilan écrit synthétique. |
-| **S10** | **T.152.18.1** | Tenir son suivi à jour | Maintenir ses outils de gestion à jour tout au long de la création du code. | Suivi global actualisé. |
+| **S2** | **T.152.21.1** | Définir le résultat attendu d'une tâche | Lire une consigne et en extraire le périmètre et les critères de réussite. | Fiche de tâche remplie. |
+| **S3** | **T.152.22.1** | Créer un planning simple | Estimer le temps nécessaire pour chaque action et les organiser. | Planning individuel (tâche, durée, échéance). |
+| **S5** | **T.152.23.1** | Découper une tâche en actions simples | Transformer un travail global en une suite de petites étapes logiques. | Plan de travail détaillé. |
+| **S6** | **T.152.24.1** | Utiliser un tableau de suivi | Rendre visible l'état de son travail (À faire, En cours, Terminé). | Tableau de suivi à jour. |
+| **S7** | **T.152.25.1** | Comparer temps prévu et temps réel | Prendre l'habitude de mesurer son temps et d'assumer les écarts. | Tableau comparatif (prévu vs réel). |
+| **S8** | **T.152.26.1** | Signaler un blocage efficacement | Demander de l'aide en expliquant le problème et ce qui a déjà été tenté. | Message "SOS" structuré. |
+| **S9** | **T.152.27.1** | Faire un compte rendu d'avancement | Dire simplement ce qui a été fait, ce qui reste, et les difficultés. | Bilan écrit synthétique. |
+| **S10** | **T.152.28.1** | Tenir son suivi à jour | Maintenir ses outils de gestion à jour tout au long de la création du code. | Suivi global actualisé. |
 
 ---
 
 ## Détail des tutoriels
 
-### UA.115.21 - Comprendre une tâche et son résultat attendu
+### UA.152.21 - Comprendre une tâche et son résultat attendu
 
-#### T.115.21.1 - Définir le résultat attendu d'une tâche
+#### T.152.21.1 - Définir le résultat attendu d'une tâche
 *   **Objectif :** Analyser une demande avant de commencer à coder.
 *   **Description :** À partir d'une consigne simple, l'apprenant doit identifier : Qu'est-ce que je dois fabriquer ? Quelles sont les limites (périmètre) ? Comment saurai-je que j'ai fini (critères de réussite) ?
 *   **Notions abordées :** Tâche, résultat attendu, périmètre, conditions de réalisation, critère de réussite.
@@ -30,9 +30,9 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ---
 
-### UA.115.22 - Estimer et organiser son temps
+### UA.152.22 - Estimer et organiser son temps
 
-#### T.115.22.1 - Créer un planning simple
+#### T.152.22.1 - Créer un planning simple
 *   **Objectif :** Prévoir et attribuer une durée aux différentes parties de son travail.
 *   **Description :** L'apprenant définit une durée estimée pour la maquette, le HTML, le CSS, etc. Il construit un planning qui associe une durée et une échéance à chaque grande tâche.
 *   **Notions abordées :** Durée, échéance, estimation, temps disponible, ordre, planning.
@@ -41,9 +41,9 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ---
 
-### UA.152.13 - Découper et ordonner son travail
+### UA.152.23 - Découper et ordonner son travail
 
-#### T.152.13.1 - Découper une tâche en actions simples
+#### T.152.23.1 - Découper une tâche en actions simples
 *   **Objectif :** Transformer un travail global en une liste d'actions toutes simples et réalisables une par une.
 *   **Description :** À l'aide de son planning, l'apprenant découpe l'intégration d'une page Web en actions concrètes : "Créer le `<head>`", "Faire la bannière", "Appliquer le style des boutons". Il vérifie que l'ordre est logique.
 *   **Notions abordées :** Action, étape, découpage, ordre, dépendance simple, vérification.
@@ -52,9 +52,9 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ---
 
-### UA.152.14 - Rendre l’état de son travail visible
+### UA.152.24 - Rendre l’état de son travail visible
 
-#### T.152.14.1 - Utiliser un tableau de suivi
+#### T.152.24.1 - Utiliser un tableau de suivi
 *   **Objectif :** Informer soi-même et les autres de ce qui avance.
 *   **Description :** L'apprenant crée un tableau de suivi basique (trois colonnes : À faire, En cours, Terminé) et place ses petites actions découpées à l'étape précédente dans la bonne colonne.
 *   **Notions abordées :** État d'une tâche, À faire, En cours, Terminé, mise à jour, visibilité.
@@ -63,9 +63,9 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ---
 
-### UA.152.15 - Suivre son avancement par rapport au temps
+### UA.152.25 - Suivre son avancement par rapport au temps
 
-#### T.152.15.1 - Comparer temps prévu et temps réel
+#### T.152.25.1 - Comparer temps prévu et temps réel
 *   **Objectif :** Accepter qu'une tâche puisse prendre plus (ou moins) de temps et l'assumer en le notant, sans culpabiliser.
 *   **Description :** L'apprenant reprend ses estimations et écrit à côté le temps qu'il a *vraiment* passé. Il calcule l'écart.
 *   **Notions abordées :** Temps prévu, temps réel, avancement, écart, retard, ajustement.
@@ -74,9 +74,9 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ---
 
-### UA.152.16 - Identifier et signaler un blocage
+### UA.152.26 - Identifier et signaler un blocage
 
-#### T.152.16.1 - Signaler un blocage efficacement
+#### T.152.26.1 - Signaler un blocage efficacement
 *   **Objectif :** Rédiger une demande d'aide claire pour un collègue ou un formateur.
 *   **Description :** L'apprenant rédige un "SOS" structuré contenant : le comportement attendu/observé, ce qu'il a déjà tenté, l'impact sur son travail et son besoin.
 *   **Notions abordées :** Problème, blocage, impact, tentative, besoin d'aide, signalement.
@@ -85,9 +85,9 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ---
 
-### UA.152.17 - Rendre compte clairement de sa contribution
+### UA.152.27 - Rendre compte clairement de sa contribution
 
-#### T.152.17.1 - Faire un compte rendu d'avancement
+#### T.152.27.1 - Faire un compte rendu d'avancement
 *   **Objectif :** Résumer sa session de travail de manière très synthétique.
 *   **Description :** À la fin de la journée, l'apprenant fait le bilan en 3 phrases : "Ce que j'ai fini", "Ce qui me reste à faire la prochaine fois", "Les difficultés rencontrées".
 *   **Notions abordées :** Réalisé, reste à faire, difficulté, résultat, compte rendu, communication.
@@ -96,9 +96,9 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ---
 
-### UA.152.18 - Maintenir un suivi exploitable
+### UA.152.28 - Maintenir un suivi exploitable
 
-#### T.152.18.1 - Tenir son suivi à jour
+#### T.152.28.1 - Tenir son suivi à jour
 *   **Objectif :** Regrouper toutes les bonnes pratiques précédentes et s'y tenir tout au long de la réalisation du projet.
 *   **Description :** L'apprenant gère tout le suivi (actions, temps, Kanban, alertes) pour l'ensemble du projet final sans abandonner en cours de route.
 *   **Notions abordées :** Suivi, historique, mise à jour, information fiable.
