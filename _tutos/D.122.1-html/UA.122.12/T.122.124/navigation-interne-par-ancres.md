@@ -3,11 +3,11 @@ title: "Navigation interne par ancres"
 layout: tuto
 slug: "navigation-interne-par-ancres"
 permalink: /tutos/:slug/
-tuto_id: "T.122.123"
+tuto_id: "T.122.124"
 type: "classique"
 version: "normal"
 ua: "UA.122.12"
-nav_order: 3
+nav_order: 4
 simplified: true
 data_html: ""
 data_css: ""
@@ -30,9 +30,12 @@ window.pageData = {
 
 ## 2. Prérequis
 
-- Avoir structuré la page avec `main` et `section` au tutoriel précédent.
+- Avoir terminé de sémantiser les contenus (`article`) au tutoriel précédent.
 
 ## Données de départ
+
+Voici la page avec sa sémantique parfaite ! 
+Dans la bannière, le bouton "Lire les articles" contient déjà un lien vers la balise de destination sous cette forme : `<a href="#articles">`. Cependant, il ne fonctionne pas car aucune section n'a encore l'identifiant correspondant.
 
 Copiez et collez le code suivant dans votre éditeur pour commencer :
 
@@ -102,7 +105,7 @@ Copiez et collez le code suivant dans votre éditeur pour commencer :
                 </div>
 
                 <div class="grille-articles">
-                    <div class="carte-article">
+                    <article class="carte-article">
                         <a href="public-article.html" class="carte-image">
                             <img src="images/article-example.png" alt="Code source affiché sur un écran">
                         </a>
@@ -115,8 +118,8 @@ Copiez et collez le code suivant dans votre éditeur pour commencer :
                                 <span>5 min</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="carte-article">
+                    </article>
+                    <article class="carte-article">
                         <a href="public-article.html" class="carte-image">
                             <img src="images/article-example.png" alt="Interface utilisateur moderne">
                         </a>
@@ -129,8 +132,8 @@ Copiez et collez le code suivant dans votre éditeur pour commencer :
                                 <span>3 min</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="carte-article">
+                    </article>
+                    <article class="carte-article">
                         <a href="public-article.html" class="carte-image">
                             <img src="images/article-example.png" alt="Équipe de développeurs en réunion">
                         </a>
@@ -143,7 +146,7 @@ Copiez et collez le code suivant dans votre éditeur pour commencer :
                                 <span>8 min</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -176,10 +179,6 @@ Copiez et collez le code suivant dans votre éditeur pour commencer :
 </body>
 </html>
 ```
-
-La structure de notre page est maintenant parfaite. De plus, dans la bannière, le bouton "Lire les articles" contient déjà un lien vers la balise de destination sous cette forme : `<a href="#articles">`.
-
-Cependant, il ne fonctionne pas car aucune section n'a encore l'identifiant correspondant (`id="articles"`).
 
 ## Partie 1 — Théorie
 
@@ -230,11 +229,11 @@ Allez tester votre page ! Si vous cliquez sur le bouton "Lire les articles", vou
 <button class="btn btn-primary btn-toggle-resultat">Afficher le résultat attendu complet</button>
 <iframe
     class="auto-wrapper tuto-resultat"
-    src="{{ '/code/html/T.122.123.html' | relative_url }}"
+    src="{{ '/code/html/T.122.124.html' | relative_url }}"
     height="320"
     title="Résultat attendu">
 </iframe>
 
 ## Bilan
 
-Vous avez terminé la structuration de la page d'accueil de votre blog, et appris à gérer une navigation fluide à l'intérieur d'une page !
+Félicitations ! Vous avez terminé l'intégration de toute l'architecture de la page d'accueil de votre blog, en alliant sémantique parfaite et navigation interne !

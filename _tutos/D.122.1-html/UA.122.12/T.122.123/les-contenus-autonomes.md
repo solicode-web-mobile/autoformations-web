@@ -1,3 +1,44 @@
+---
+title: "Les contenus autonomes"
+layout: tuto
+slug: "les-contenus-autonomes"
+permalink: /tutos/:slug/
+tuto_id: "T.122.123"
+type: "classique"
+version: "normal"
+ua: "UA.122.12"
+nav_order: 3
+simplified: true
+data_html: ""
+data_css: ""
+data_js: ""
+---
+
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
+
+## 1. Objectif
+
+- Utiliser la balise `article` pour définir des contenus indépendants.
+- Appliquer cette balise à nos cartes d'articles de blog.
+
+## 2. Prérequis
+
+- Avoir sémantisé le cœur de la page (`main`, `section`) au tutoriel précédent.
+
+## Données de départ
+
+Voici le code obtenu à la fin de l'étape précédente. Les trois articles de notre blog sont affichés à l'aide de balises génériques `<div class="carte-article">`.
+
+Copiez et collez le code suivant dans votre éditeur pour commencer :
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -63,7 +104,7 @@
                 </div>
 
                 <div class="grille-articles">
-                    <article class="carte-article">
+                    <div class="carte-article">
                         <a href="public-article.html" class="carte-image">
                             <img src="images/article-example.png" alt="Code source affiché sur un écran">
                         </a>
@@ -76,8 +117,8 @@
                                 <span>5 min</span>
                             </div>
                         </div>
-                    </article>
-                    <article class="carte-article">
+                    </div>
+                    <div class="carte-article">
                         <a href="public-article.html" class="carte-image">
                             <img src="images/article-example.png" alt="Interface utilisateur moderne">
                         </a>
@@ -90,8 +131,8 @@
                                 <span>3 min</span>
                             </div>
                         </div>
-                    </article>
-                    <article class="carte-article">
+                    </div>
+                    <div class="carte-article">
                         <a href="public-article.html" class="carte-image">
                             <img src="images/article-example.png" alt="Équipe de développeurs en réunion">
                         </a>
@@ -104,7 +145,7 @@
                                 <span>8 min</span>
                             </div>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -136,3 +177,64 @@
     </footer>
 </body>
 </html>
+```
+
+## Partie 1 — Théorie
+
+La balise **`<article>`** représente un contenu totalement autonome. Cela signifie qu'il a du sens même si on le lit en dehors de la page.
+C'est la balise parfaite pour modéliser des billets de blog, des commentaires, ou des cartes de produits !
+
+**Exemple :**
+
+```html
+<article>
+    <h2>Mon premier article</h2>
+    <p>Voici le contenu de l'article.</p>
+</article>
+```
+
+## Partie 2 — Pratique
+
+Dans votre éditeur, repérez la zone de la grille contenant vos trois articles :
+```html
+<div class="grille-articles">
+```
+
+À l'intérieur, vous verrez trois grandes `div` qui représentent vos cartes :
+```html
+<div class="carte-article">
+    ... (contenu de l'article 1)
+</div>
+<div class="carte-article">
+    ... (contenu de l'article 2)
+</div>
+<div class="carte-article">
+    ... (contenu de l'article 3)
+</div>
+```
+
+**Votre mission :** 
+Transformez les balises ouvrantes et fermantes de ces trois éléments en `<article>`.
+
+Vous devez obtenir ceci pour chaque carte :
+```html
+<article class="carte-article">
+    ...
+</article>
+```
+
+### Résultat attendu
+
+Visuellement, rien ne change ! Mais pour les robots d'indexation (Google), votre page vient de gagner énormément en clarté. Ils savent maintenant exactement où trouver vos contenus à lire.
+
+<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat attendu complet</button>
+<iframe
+    class="auto-wrapper tuto-resultat"
+    src="{{ '/code/html/T.122.123.html' | relative_url }}"
+    height="320"
+    title="Résultat attendu">
+</iframe>
+
+## Bilan
+
+Bravo, vous maîtrisez maintenant l'une des balises sémantiques les plus importantes du Web moderne !
