@@ -164,7 +164,7 @@ body {
         <!-- Nouvelles métadonnées (fin du contenu) -->
         <div class="carte-meta">
             <span>14 Fév 2026</span>
-            <span>5 min</span>
+            <span>- 5 min de lecture</span>
         </div>
     </div>
 </div>
@@ -188,8 +188,6 @@ Dans `css/components.css`, ajoutez les styles pour ces deux nouveaux petits él�
 }
 
 .carte-meta {
-    display: flex; /* (Le flexbox pour aligner la date et la durée) */
-    justify-content: space-between;
     margin-top: 20px;
     padding-top: 16px;
     font-size: 12px;
