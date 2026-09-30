@@ -58,6 +58,24 @@ Pour éviter que tous les éléments visuels d'un site web ne soient collés les
 
 On peut utiliser des raccourcis CSS pour définir l'espace sur les 4 côtés (`margin: 20px;`), sur l'axe vertical/horizontal (`margin: 20px 10px;`), ou viser un côté spécifique (`margin-bottom: 24px;`).
 
+<svg viewBox="0 0 600 250" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background/Margin Area -->
+  <rect x="150" y="20" width="300" height="200" fill="#fef08a" />
+  <text x="300" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#854d0e" text-anchor="middle">MARGIN (Extérieur)</text>
+  
+  <!-- Border -->
+  <rect x="190" y="60" width="220" height="120" fill="#bbf7d0" stroke="#16a34a" stroke-width="4" />
+  
+  <!-- Padding Area -->
+  <text x="300" y="85" font-family="sans-serif" font-size="14" font-weight="bold" fill="#166534" text-anchor="middle">PADDING (Intérieur)</text>
+  
+  <!-- Content Area -->
+  <rect x="230" y="100" width="140" height="60" fill="#bfdbfe" />
+  <text x="300" y="135" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a" text-anchor="middle">CONTENU</text>
+  
+  <text x="300" y="240" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">La bordure verte sépare le padding (interne) du margin (externe).</text>
+</svg>
+
 ### 1.2. Exemple d'application
 
 Voici comment utiliser ces propriétés en CSS (le code HTML correspondant est disponible dans l'onglet HTML de l'éditeur ci-contre) :

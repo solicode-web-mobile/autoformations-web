@@ -55,6 +55,47 @@ En CSS moderne, on ne style pas les éléments un par un. On crée des "composan
 
 L'avantage principal d'une classe CSS (contrairement à un identifiant `id`), c'est qu'elle peut être appliquée à une infinité d'éléments dans le HTML. Tous ces éléments partageront exactement la même base visuelle, garantissant ainsi l'**homogénéité** du design de votre site.
 
+<svg viewBox="0 0 600 200" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blueprint/Class -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="140" height="120" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="6,6" rx="8" />
+    <text x="70" y="55" font-family="sans-serif" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle">Classe CSS</text>
+    <text x="70" y="80" font-family="sans-serif" font-size="14" font-family="monospace" fill="#3b82f6" text-anchor="middle">.carte-article</text>
+  </g>
+  
+  <!-- Arrows -->
+  <path d="M180,80 L230,40" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M180,80 L230,80" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M180,80 L230,120" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+  
+  <!-- Instances -->
+  <g transform="translate(250, 10)">
+    <rect x="0" y="0" width="100" height="80" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" rx="6" />
+    <rect x="10" y="10" width="80" height="30" fill="#94a3b8" rx="2" />
+    <rect x="10" y="50" width="60" height="8" fill="#cbd5e1" />
+  </g>
+  
+  <g transform="translate(370, 50)">
+    <rect x="0" y="0" width="100" height="80" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" rx="6" />
+    <rect x="10" y="10" width="80" height="30" fill="#94a3b8" rx="2" />
+    <rect x="10" y="50" width="60" height="8" fill="#cbd5e1" />
+  </g>
+  
+  <g transform="translate(490, 90)">
+    <rect x="0" y="0" width="100" height="80" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" rx="6" />
+    <rect x="10" y="10" width="80" height="30" fill="#94a3b8" rx="2" />
+    <rect x="10" y="50" width="60" height="8" fill="#cbd5e1" />
+  </g>
+  
+  <text x="420" y="190" font-family="sans-serif" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle">3 cartes HTML, 1 seule classe CSS !</text>
+  
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+    </marker>
+  </defs>
+</svg>
+
 ### 1.2. Contraste et Fond
 
 Pour qu'un composant ressorte bien à l'écran, on joue généralement avec les couleurs de fond. Si le site a un fond légèrement gris (`#f9fafb`), donner un fond blanc pur (`white`) à la carte la fera ressortir naturellement.

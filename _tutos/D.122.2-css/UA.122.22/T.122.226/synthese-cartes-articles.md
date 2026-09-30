@@ -43,6 +43,18 @@ Voici ce qu'il faut retenir de cette unité d'apprentissage :
 4. **Centrage d'un bloc** : La combinaison absolue pour centrer une zone de texte ou un conteneur est de lui donner une largeur maximale (`max-width: 800px;`) et des marges latérales automatiques (`margin: 0 auto;`).
 5. **Contenu rebelle** : Si un contenu (comme une image) dépasse d'une carte arrondie ou se déforme, on le dompte avec `overflow: hidden;` (sur le parent) et `object-fit: cover;` (sur l'image).
 
+<svg viewBox="0 0 600 200" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <rect x="50" y="20" width="500" height="160" fill="#fef08a" rx="8" />
+  <text x="300" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#854d0e" text-anchor="middle">Margin (Espace externe)</text>
+  
+  <rect x="100" y="60" width="400" height="100" fill="#bbf7d0" stroke="#16a34a" stroke-width="4" rx="4" />
+  <text x="300" y="85" font-family="sans-serif" font-size="14" font-weight="bold" fill="#166534" text-anchor="middle">Padding (Espace interne)</text>
+  <text x="130" y="115" font-family="sans-serif" font-size="14" font-weight="bold" fill="#16a34a">Bordure</text>
+  
+  <rect x="220" y="100" width="160" height="40" fill="#bfdbfe" rx="2" />
+  <text x="300" y="125" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Contenu</text>
+</svg>
+
 ## Partie 2 — Pratique (Projet Fil Rouge)
 
 Pour clore cette unité, nous allons créer la **Bannière d'accueil (Hero Header)** de notre blog, en utilisant massivement les `padding`, `margin` et `max-width`.

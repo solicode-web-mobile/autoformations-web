@@ -67,6 +67,35 @@ Quand on intègre une image dans une carte, deux problèmes visuels surviennent 
 2. **L'image écrasée** : Si vous forcez une image à prendre une largeur (`width`) et une hauteur (`height`) précises, elle risque d'être déformée (étirée ou écrasée) pour rentrer dans le moule.
    **Solution : `object-fit: cover;`** appliqué sur l'image permet de la rogner proprement en préservant ses proportions (comme un fond d'écran de téléphone).
 
+<svg viewBox="0 0 600 220" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sans overflow hidden -->
+  <g transform="translate(50, 20)">
+    <rect x="0" y="0" width="180" height="150" fill="#f1f5f9" rx="24" stroke="#94a3b8" stroke-width="2"/>
+    <text x="90" y="180" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle">Coins qui débordent !</text>
+    
+    <!-- Image carrée qui dépasse des coins ronds -->
+    <rect x="0" y="0" width="180" height="80" fill="#3b82f6" />
+    <text x="90" y="45" font-family="sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Image rectangulaire</text>
+    
+    <!-- Highlights the overlapping corners -->
+    <path d="M0,24 L0,0 L24,0 A24,24 0 0,0 0,24" fill="#ef4444" />
+    <path d="M156,0 L180,0 L180,24 A24,24 0 0,0 156,0" fill="#ef4444" />
+  </g>
+  
+  <!-- Avec overflow hidden -->
+  <g transform="translate(350, 20)">
+    <rect x="0" y="0" width="180" height="150" fill="#f1f5f9" rx="24" stroke="#94a3b8" stroke-width="2"/>
+    <!-- Clip path to simulate overflow hidden -->
+    <clipPath id="card-clip">
+      <rect x="0" y="0" width="180" height="150" rx="24" />
+    </clipPath>
+    <rect x="0" y="0" width="180" height="80" fill="#22c55e" clip-path="url(#card-clip)" />
+    
+    <text x="90" y="45" font-family="sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Coupée proprement</text>
+    <text x="90" y="180" font-family="sans-serif" font-size="14" font-weight="bold" fill="#22c55e" text-anchor="middle">overflow: hidden;</text>
+  </g>
+</svg>
+
 ### 1.2. Exemple d'application
 
 Voici comment combiner ces deux règles magiques (le code HTML correspondant est dans l'onglet HTML de l'éditeur ci-contre) :

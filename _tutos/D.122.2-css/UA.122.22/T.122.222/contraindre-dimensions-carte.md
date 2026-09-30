@@ -68,6 +68,27 @@ Pour rendre un site "responsive" (adaptable à tous les écrans), on utilise des
 - **`min-width`** : La boîte peut s'étirer, mais ne sera jamais plus petite que cette limite.
 - **`min-height`** : La hauteur s'adapte au contenu, mais ne descendra jamais en dessous de cette valeur.
 
+<svg viewBox="0 0 600 200" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- width fixe -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="200" height="150" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="100" y="140" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Écran mobile (200px)</text>
+    
+    <rect x="10" y="20" width="280" height="80" fill="#ef4444" rx="4"/>
+    <text x="150" y="65" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">width: 280px; (Déborde!)</text>
+  </g>
+  
+  <!-- max-width -->
+  <g transform="translate(350, 20)">
+    <rect x="0" y="0" width="200" height="150" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="100" y="140" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Écran mobile (200px)</text>
+    
+    <rect x="10" y="20" width="180" height="80" fill="#22c55e" rx="4"/>
+    <text x="100" y="65" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">max-width: 280px;</text>
+    <text x="100" y="85" font-family="sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">(S'adapte à 180px)</text>
+  </g>
+</svg>
+
 L'utilisation de `max-width` combinée à un centrage (`margin: 0 auto;`) est la technique standard pour centrer le contenu d'un site sur un grand écran tout en le laissant fluide sur mobile.
 
 ### 1.2. Exemple d'application
