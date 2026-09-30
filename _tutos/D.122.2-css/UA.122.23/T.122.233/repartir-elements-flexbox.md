@@ -16,6 +16,25 @@ data_html: |
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Répartition des cartes</title>
+      <style>
+          body { font-family: sans-serif; }
+          .carte-article {
+              box-sizing: border-box;
+              width: 90px;
+              padding: 10px;
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-radius: 12px;
+          }
+          .liste-cartes {
+              box-sizing: border-box;
+              width: 800px;
+              max-width: 100%;
+              margin: 40px auto;
+              padding: 20px;
+              background: #f9fafb;
+          }
+      </style>
   </head>
   <body>
 
@@ -41,7 +60,11 @@ data_html: |
   </body>
   </html>
 
-data_css: ""
+data_css: |
+  .liste-cartes {
+      display: flex;
+      flex-direction: row;
+  }
 
 data_js: ""
 ---
@@ -69,27 +92,28 @@ Vous savez déjà configurer un conteneur Flexbox (`display: flex`) et choisir s
 
 ### HTML
 
+Le fichier HTML contient une balise `<style>` cachant la mise en forme de base (dimensions, couleurs, bordures) pour que vous puissiez vous concentrer uniquement sur le CSS Flexbox.
+
 ```html
 <section class="liste-cartes">
-
     <article class="carte-article">
         <h2>HTML</h2>
         <p>Créer la structure d'une page web.</p>
     </article>
-
-    <article class="carte-article">
-        <h2>CSS</h2>
-        <p>Mettre en forme une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>JavaScript</h2>
-        <p>Ajouter des comportements à une page.</p>
-    </article>
-
+    <!-- ... autres cartes ... -->
 </section>
 ```
 
+### CSS
+
+Le fichier CSS contient uniquement la configuration Flexbox initiale :
+
+```css
+.liste-cartes {
+    display: flex;
+    flex-direction: row;
+}
+```
 
 ## Partie 1 — Théorie
 
@@ -99,7 +123,7 @@ La propriété `justify-content` (à appliquer sur le conteneur parent) permet d
 
 Voici les principales valeurs de répartition :
 
-<svg viewBox="0 0 600 300" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 600 300" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <rect id="card" width="60" height="40" rx="6" fill="#3b82f6" />
     <rect id="container" width="500" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
@@ -137,41 +161,29 @@ Voici les principales valeurs de répartition :
 - **`center`** : Regroupe tous les éléments au centre du conteneur.
 - **`space-between`** : Le premier élément est collé au début, le dernier est collé à la fin, et l'espace restant est réparti de manière égale entre les éléments centraux.
 
+**Exemple d'utilisation dans le code CSS :**
+```css
+.liste-cartes {
+    display: flex;
+    flex-direction: row;
+    /* Espace de manière égale les éléments horizontalement */
+    justify-content: space-between; 
+}
+```
+
 *(Note : Si l'axe principal est `column`, ces règles s'appliqueront verticalement de haut en bas.)*
 
 ## Partie 2 — Pratique
 
 ### 2.1. Tester les répartitions sur une ligne de cartes
 
-1. **Préparation du terrain :**
-   Ajoutez le CSS de base pour styliser vos 3 cartes et configurer votre conteneur avec Flexbox (direction horizontale) :
-   
-```css
-.carte-article {
-    width: 180px;
-    padding: 20px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
+1. **Expérimentez les valeurs :**
+   Le conteneur est déjà configuré avec `display: flex; flex-direction: row;`.
+   - Dans le code CSS, ajoutez `justify-content: flex-start;` à `.liste-cartes`. Les cartes se collent à gauche.
+   - Remplacez par `justify-content: center;`. Les cartes se centrent horizontalement.
+   - Changez temporairement `flex-direction` en `column` pour voir l'impact de `justify-content: center;` sur l'axe vertical, puis revenez à `row`.
 
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    width: 800px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-2. **Expérimentez les valeurs :**
-   - Ajoutez `justify-content: flex-start;` à `.liste-cartes`. Les cartes se collent à gauche.
-   - Remplacez par `justify-content: center;`. Les cartes se centrent.
-   - Changez temporairement `flex-direction` en `column` pour voir l'impact de `center` sur l'axe vertical, puis revenez à `row`.
-
-3. **Résultat attendu (`space-between`) :**
+2. **Résultat final (`space-between`) :**
    - Modifiez la valeur finale pour obtenir : `justify-content: space-between;`. Vos trois cartes doivent occuper toute la largeur disponible de manière équilibrée.
 
 **Livrable :**

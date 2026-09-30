@@ -16,6 +16,26 @@ data_html: |
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Alignement des cartes</title>
+      <style>
+          body { font-family: sans-serif; }
+          .carte-article {
+              box-sizing: border-box;
+              width: 90px;
+              padding: 10px;
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-radius: 12px;
+          }
+          .liste-cartes {
+              box-sizing: border-box;
+              width: 800px;
+              height: 260px;
+              max-width: 100%;
+              margin: 40px auto;
+              padding: 20px;
+              background: #f9fafb;
+          }
+      </style>
   </head>
   <body>
 
@@ -41,7 +61,11 @@ data_html: |
   </body>
   </html>
 
-data_css: ""
+data_css: |
+  .liste-cartes {
+      display: flex;
+      flex-direction: row;
+  }
 
 data_js: ""
 ---
@@ -65,32 +89,7 @@ Vous savez déjà :
 - utiliser `flex-direction` (Axe principal) ;
 - utiliser `justify-content` (Répartition sur l'axe principal).
 
-## Données de départ
 
-*(Les données de départ sont chargées automatiquement dans l'éditeur de code de l'interface).*
-
-### HTML
-
-```html
-<section class="liste-cartes">
-
-    <article class="carte-article">
-        <h2>HTML</h2>
-        <p>Créer la structure d'une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>CSS</h2>
-        <p>Mettre en forme une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>JavaScript</h2>
-        <p>Ajouter des comportements à une page.</p>
-    </article>
-
-</section>
-```
 
 ## Partie 1 — Théorie
 
@@ -118,42 +117,58 @@ graph TD
 ### 1.2. Aligner avec `align-items`
 
 Tout comme `justify-content`, la propriété `align-items` (appliquée au conteneur) possède des valeurs clés pour positionner les éléments sur l'axe secondaire :
-- `flex-start` : Aligne les éléments au début de l'axe secondaire (en haut, pour `row`).
-- `center` : Centre les éléments sur l'axe secondaire (au milieu verticalement, pour `row`).
-- `flex-end` : Aligne les éléments à la fin de l'axe secondaire (en bas, pour `row`).
+
+<svg viewBox="0 0 300 150" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <rect id="card" width="40" height="30" rx="4" fill="#10b981" />
+    <rect id="container" width="80" height="120" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+  </defs>
+
+  <!-- flex-start -->
+  <g transform="translate(10, 0)">
+    <text x="40" y="12" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">flex-start</text>
+    <use href="#container" x="0" y="20" />
+    <use href="#card" x="20" y="26" />
+  </g>
+
+  <!-- center -->
+  <g transform="translate(110, 0)">
+    <text x="40" y="12" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">center</text>
+    <use href="#container" x="0" y="20" />
+    <use href="#card" x="20" y="65" />
+  </g>
+
+  <!-- flex-end -->
+  <g transform="translate(210, 0)">
+    <text x="40" y="12" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">flex-end</text>
+    <use href="#container" x="0" y="20" />
+    <use href="#card" x="20" y="104" />
+  </g>
+</svg>
+
+- **`flex-start`** : Aligne les éléments au début de l'axe secondaire (en haut, pour `row`).
+- **`center`** : Centre les éléments sur l'axe secondaire (au milieu verticalement, pour `row`).
+- **`flex-end`** : Aligne les éléments à la fin de l'axe secondaire (en bas, pour `row`).
+
+**Exemple d'utilisation dans le code CSS :**
+```css
+.liste-cartes {
+    display: flex;
+    /* Aligne les cartes au centre de la hauteur du conteneur */
+    align-items: center; 
+}
+```
 
 ## Partie 2 — Pratique
 
 ### 2.1. Centrer les éléments sur les deux axes
 
-1. **Préparation :**
-   Appliquez le CSS de base. Notez l'ajout de `height: 260px;` sur le conteneur pour rendre l'alignement vertical bien visible (le conteneur sera plus haut que les cartes).
-```css
-.carte-article {
-    width: 180px;
-    padding: 20px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
-
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    width: 800px;
-    height: 260px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-2. **Testez l'alignement :**
-   - Ajoutez `align-items: flex-start;` au conteneur. Observez que les cartes se placent tout en haut.
+1. **Expérimentation :**
+   Le conteneur possède déjà une hauteur de `260px` (plus grand que les cartes).
+   - Dans le code CSS de `.liste-cartes`, ajoutez `align-items: flex-start;`. Observez que les cartes se placent tout en haut.
    - Remplacez par `align-items: center;`. Les cartes se centrent verticalement.
 
-3. **Centrage parfait :**
+2. **Centrage parfait :**
    - Ajoutez ensuite `justify-content: center;` pour centrer les cartes à la fois horizontalement et verticalement dans votre conteneur.
 
 **Livrable :**

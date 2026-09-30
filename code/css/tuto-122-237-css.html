@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultat - Répartition Flexbox</title>
+    <title>Résultat - Flex Grow</title>
     <style>
         body { font-family: sans-serif; }
-        .carte-article {
-            width: 90px;
-            padding: 10px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-        }
-
         .liste-cartes {
+            box-sizing: border-box;
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            width: 800px;
+            gap: 24px;
+            width: 900px;
             max-width: 100%;
             margin: 40px auto;
             padding: 20px;
             background: #f9fafb;
+        }
+
+        .carte-article {
+            box-sizing: border-box;
+            width: 220px;
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
         }
     </style>
 </head>

@@ -16,6 +16,26 @@ data_html: |
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Cartes sur plusieurs lignes</title>
+      <style>
+          body { font-family: sans-serif; }
+          .carte-article {
+              box-sizing: border-box;
+              width: 180px;
+              margin: 10px;
+              padding: 20px;
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-radius: 12px;
+          }
+          .liste-cartes {
+              box-sizing: border-box;
+              width: 720px;
+              max-width: 100%;
+              margin: 40px auto;
+              padding: 20px;
+              background: #f9fafb;
+          }
+      </style>
   </head>
   <body>
 
@@ -46,7 +66,11 @@ data_html: |
   </body>
   </html>
 
-data_css: ""
+data_css: |
+  .liste-cartes {
+      display: flex;
+      flex-direction: row;
+  }
 
 data_js: ""
 ---
@@ -68,44 +92,7 @@ Apprendre à faire passer les éléments Flexbox sur plusieurs lignes avec la pr
 
 Vous savez déjà configurer un conteneur Flexbox et définir sa direction (`flex-direction`).
 
-## Données de départ
 
-*(Les données de départ sont chargées automatiquement dans l'éditeur de code de l'interface).*
-
-### HTML
-
-```html
-<section class="liste-cartes">
-
-    <article class="carte-article">
-        <h2>HTML</h2>
-        <p>Créer la structure d'une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>CSS</h2>
-        <p>Mettre en forme une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>JavaScript</h2>
-        <p>Ajouter des comportements à une page.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>PHP</h2>
-        <p>Créer des applications web dynamiques.</p>
-    </article>
-
-</section>
-```
-
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
 
 ## Partie 1 — Théorie
 
@@ -115,55 +102,52 @@ Par défaut, Flexbox essaie de faire tenir tous les enfants sur une seule et mê
 
 La propriété `flex-wrap` permet d'autoriser le retour à la ligne automatique lorsque l'espace horizontal (ou vertical, selon la direction) du conteneur est insuffisant.
 
-```text
-Sans flex-wrap (défaut) :
-[ Conteneur étroit ]
-[Carte1][Carte2][Ca] <-- Les éléments s'écrasent ou débordent
-
-Avec flex-wrap: wrap;
-[ Conteneur étroit ]
-[Carte1][Carte2]
-[Carte3]             <-- Les éléments passent à la ligne
-```
+<svg viewBox="0 0 600 250" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sans flex-wrap -->
+  <g transform="translate(10, 10)">
+    <text x="0" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">flex-wrap: nowrap (défaut)</text>
+    <rect x="0" y="30" width="250" height="70" rx="4" fill="#f8fafc" stroke="#ef4444" stroke-width="2"/>
+    <text x="5" y="115" font-family="sans-serif" font-size="12" fill="#ef4444">Le contenu déborde ou s'écrase</text>
+    <rect x="10" y="40" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <rect x="95" y="40" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <rect x="180" y="40" width="80" height="50" rx="4" fill="#3b82f6" opacity="0.6"/>
+    <rect x="265" y="40" width="80" height="50" rx="4" fill="#3b82f6" opacity="0.6"/>
+  </g>
+  
+  <!-- Avec flex-wrap -->
+  <g transform="translate(320, 10)">
+    <text x="0" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">flex-wrap: wrap</text>
+    <rect x="0" y="30" width="250" height="150" rx="4" fill="#f8fafc" stroke="#22c55e" stroke-width="2"/>
+    <text x="5" y="200" font-family="sans-serif" font-size="12" fill="#22c55e">Les éléments passent à la ligne</text>
+    <rect x="10" y="40" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <rect x="95" y="40" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <rect x="10" y="100" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <rect x="95" y="100" width="80" height="50" rx="4" fill="#3b82f6"/>
+  </g>
+</svg>
 
 - **`flex-wrap: nowrap;`** (par défaut) : Les éléments restent sur une seule ligne.
 - **`flex-wrap: wrap;`** : Les éléments qui n'ont plus de place passent sur la ligne suivante.
+
+**Exemple d'utilisation dans le code CSS :**
+```css
+.liste-cartes {
+    display: flex;
+    /* Autorise les éléments à passer à la ligne si la largeur est insuffisante */
+    flex-wrap: wrap; 
+}
+```
 
 ## Partie 2 — Pratique
 
 ### 2.1. Manipuler le passage à la ligne
 
-1. **Préparation :**
-   Dans votre HTML, ajoutez une 5ème carte pour "MySQL".
-   Dans votre CSS, ajoutez le code suivant. Notez que le conteneur a une largeur maximale (`720px`), ce qui forcera les cartes à manquer de place.
-```css
-.carte-article {
-    box-sizing: border-box;
-    width: 180px;
-    margin: 10px;
-    padding: 20px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
+1. **Le Problème :**
+   Dans votre HTML, ajoutez une 5ème carte pour "MySQL" dans le conteneur `.liste-cartes`.
+   Si vous regardez le rendu actuel, le conteneur ayant une largeur fixe, les 5 cartes sont forcées sur la même ligne, elles s'écrasent ou dépassent du conteneur.
 
-.liste-cartes {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    width: 720px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-2. **Le Problème :**
-   Si vous regardez le rendu actuel, les 5 cartes sont forcées sur la même ligne, elles s'écrasent ou dépassent du conteneur.
-
-3. **La Solution :**
-   Ajoutez `flex-wrap: wrap;` sur le sélecteur `.liste-cartes`. Constatez que les cartes qui manquent de place glissent naturellement vers le bas pour former de nouvelles lignes.
+2. **La Solution :**
+   Dans le code CSS, ajoutez `flex-wrap: wrap;` sur le sélecteur `.liste-cartes`. Constatez que les cartes qui manquent de place glissent naturellement vers le bas pour former de nouvelles lignes.
 
 **Livrable :**
 

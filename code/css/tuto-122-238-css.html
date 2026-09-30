@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derniers articles - Flexbox Synthèse</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f8fafc; }
+
+        .page-articles {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-articles h1 {
+            margin: 0 0 32px;
+            color: #1e293b;
+        }
+
+        .liste-cartes {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .carte-article {
+            box-sizing: border-box;
+            min-width: 220px;
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .carte-article h2 { margin: 0 0 12px; color: #0f172a; }
+        .carte-article p { margin: 0 0 16px; color: #475569; }
+        .carte-article a {
+            color: #2673e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .carte-article a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <main class="page-articles">
+        <h1>Derniers articles</h1>
+        <section class="liste-cartes">
+            <article class="carte-article">
+                <h2>HTML</h2>
+                <p>Créer la structure d'une page web.</p>
+                <a href="#">Lire l'article</a>
+            </article>
+            <article class="carte-article">
+                <h2>CSS</h2>
+                <p>Mettre en forme une page web.</p>
+                <a href="#">Lire l'article</a>
+            </article>
+            <article class="carte-article">
+                <h2>JavaScript</h2>
+                <p>Ajouter des comportements à une page.</p>
+                <a href="#">Lire l'article</a>
+            </article>
+            <article class="carte-article">
+                <h2>PHP</h2>
+                <p>Créer des applications web dynamiques.</p>
+                <a href="#">Lire l'article</a>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

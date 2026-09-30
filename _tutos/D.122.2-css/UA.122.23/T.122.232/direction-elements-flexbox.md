@@ -16,6 +16,25 @@ data_html: |
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Direction des cartes</title>
+      <style>
+          body { font-family: sans-serif; }
+          .carte-article {
+              box-sizing: border-box;
+              width: 220px;
+              padding: 20px;
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-radius: 12px;
+          }
+          .liste-cartes {
+              box-sizing: border-box;
+              width: 1000px;
+              max-width: 100%;
+              margin: 40px auto;
+              padding: 20px;
+              background: #f9fafb;
+          }
+      </style>
   </head>
   <body>
 
@@ -41,7 +60,10 @@ data_html: |
   </body>
   </html>
 
-data_css: ""
+data_css: |
+  .liste-cartes {
+      display: flex;
+  }
 
 data_js: ""
 ---
@@ -63,32 +85,6 @@ Apprendre à choisir la direction des éléments dans un conteneur Flexbox avec 
 
 Vous savez déjà créer un conteneur Flexbox avec `display: flex`.
 
-## Données de départ
-
-*(Les données de départ sont chargées automatiquement dans l'éditeur de code de l'interface).*
-
-### HTML
-
-```html
-<section class="liste-cartes">
-
-    <article class="carte-article">
-        <h2>HTML</h2>
-        <p>Créer la structure d'une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>CSS</h2>
-        <p>Mettre en forme une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>JavaScript</h2>
-        <p>Ajouter des comportements à une page.</p>
-    </article>
-
-</section>
-```
 
 
 ## Partie 1 — Théorie
@@ -97,21 +93,47 @@ Vous savez déjà créer un conteneur Flexbox avec `display: flex`.
 
 Par défaut, Flexbox aligne les éléments horizontalement. La propriété `flex-direction` (à appliquer sur le conteneur) permet de changer ce comportement.
 
-```mermaid
-graph LR
-    subgraph row [flex-direction: row]
-    A1[Carte 1] --> B1[Carte 2] --> C1[Carte 3]
-    end
-```
-```mermaid
-graph TD
-    subgraph column [flex-direction: column]
-    A2[Carte 1] --> B2[Carte 2] --> C2[Carte 3]
-    end
-```
+<svg viewBox="0 0 600 250" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- row -->
+  <g transform="translate(10, 10)">
+    <text x="0" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">flex-direction: row</text>
+    <rect x="0" y="30" width="300" height="70" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+    <rect x="10" y="40" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <text x="50" y="70" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Carte 1</text>
+    <rect x="100" y="40" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <text x="140" y="70" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Carte 2</text>
+    <rect x="190" y="40" width="80" height="50" rx="4" fill="#3b82f6"/>
+    <text x="230" y="70" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Carte 3</text>
+  </g>
+  
+  <!-- column -->
+  <g transform="translate(350, 10)">
+    <text x="0" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">flex-direction: column</text>
+    <rect x="0" y="30" width="120" height="200" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+    <rect x="10" y="40" width="100" height="40" rx="4" fill="#3b82f6"/>
+    <text x="60" y="65" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Carte 1</text>
+    <rect x="10" y="90" width="100" height="40" rx="4" fill="#3b82f6"/>
+    <text x="60" y="115" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Carte 2</text>
+    <rect x="10" y="140" width="100" height="40" rx="4" fill="#3b82f6"/>
+    <text x="60" y="165" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Carte 3</text>
+  </g>
+</svg>
 
 - `flex-direction: row;` (par défaut) : Organise les éléments sur une **ligne** (horizontalement, de gauche à droite).
 - `flex-direction: column;` : Organise les éléments dans une **colonne** (verticalement, de haut en bas).
+
+**Exemples d'utilisation dans le code CSS :**
+```css
+.liste-cartes-colonne {
+    display: flex;
+    flex-direction: column; /* Empile les éléments de haut en bas */
+}
+
+.liste-cartes-ligne {
+    display: flex;
+    flex-direction: row; /* Aligne les éléments de gauche à droite */
+}
+```
 
 ## Partie 2 — Pratique
 
@@ -119,30 +141,12 @@ graph TD
 
 1. **Préparation :**
    - Ajoutez une 4ème carte en HTML (ex: PHP) dans `<section class="liste-cartes">`.
-   - Ajoutez le CSS de base pour styliser vos cartes et le conteneur :
-  
-```css
-.carte-article {
-    width: 220px;
-    padding: 20px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
+   - Le conteneur possède déjà `display: flex;`, observez que les cartes sont alignées horizontalement par défaut.
 
-.liste-cartes {
-    display: flex;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
+2. **Testez la direction `column` :**
+   - Ajoutez `flex-direction: column;` sur le conteneur `.liste-cartes` dans le code CSS. Constatez que les cartes s'empilent verticalement.
 
-1. **Testez la direction `column` :**
-   - Ajoutez `flex-direction: column;` sur le conteneur `.liste-cartes`. Constatez que les cartes s'empilent verticalement.
-
-2. **Revenez à la direction `row` :**
+3. **Revenez à la direction `row` :**
    - Remplacez par `flex-direction: row;`. Les cartes reprennent leur position horizontale en ligne.
 
 **Livrable :**

@@ -8,6 +8,7 @@ type: "classique"
 version: "normal"
 ua: "UA.122.23"
 nav_order: 6
+simplified: true
 data_html: |
   <!DOCTYPE html>
   <html lang="fr">
@@ -15,6 +16,25 @@ data_html: |
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Espacement des cartes</title>
+      <style>
+          body { font-family: sans-serif; }
+          .carte-article {
+              box-sizing: border-box;
+              width: 200px;
+              padding: 20px;
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-radius: 12px;
+          }
+          .liste-cartes {
+              box-sizing: border-box;
+              width: 500px;
+              max-width: 100%;
+              margin: 40px auto;
+              padding: 20px;
+              background: #f9fafb;
+          }
+      </style>
   </head>
   <body>
 
@@ -45,7 +65,11 @@ data_html: |
   </body>
   </html>
 
-data_css: ""
+data_css: |
+  .liste-cartes {
+      display: flex;
+      flex-wrap: wrap;
+  }
 
 data_js: ""
 ---
@@ -61,368 +85,86 @@ window.pageData = {
 
 ## 1. Objectif
 
-Apprendre à créer un espace régulier entre les éléments d’un conteneur Flexbox avec `gap`.
+Apprendre à créer un espace régulier et automatique entre les éléments d’un conteneur Flexbox grâce à la propriété `gap`.
 
 ## 2. Prérequis
 
 Vous savez déjà :
+- utiliser `display: flex` et `flex-wrap: wrap`.
 
-- créer un conteneur Flexbox avec `display: flex` ;
-- utiliser `flex-direction` ;
-- utiliser `justify-content` ;
-- utiliser `align-items` ;
-- utiliser `flex-wrap` ;
-- faire passer les éléments sur plusieurs lignes ;
-- identifier l’axe principal et l’axe secondaire.
 
-## Données de départ
-
-### HTML
-
-```html
-<section class="liste-cartes">
-
-    <article class="carte-article">
-        <h2>HTML</h2>
-        <p>Créer la structure d'une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>CSS</h2>
-        <p>Mettre en forme une page web.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>JavaScript</h2>
-        <p>Ajouter des comportements à une page.</p>
-    </article>
-
-    <article class="carte-article">
-        <h2>PHP</h2>
-        <p>Créer des applications web dynamiques.</p>
-    </article>
-
-</section>
-```
-
-### CSS
-
-Le fichier CSS est vide au départ.
-
-```css
-```
-
-### JavaScript
-
-Aucun JavaScript n’est nécessaire.
 
 ## Partie 1 — Théorie
 
-### 1.1. Créer un espace avec `gap`
+### 1.1. L'espacement simplifié avec `gap`
 
-`gap` crée un espace entre les éléments d’un conteneur Flexbox.
+Avant Flexbox, il fallait utiliser `margin` sur chaque élément pour les espacer, ce qui créait souvent des décalages indésirables sur les bords du conteneur.
 
-**Exemple :**
+La propriété `gap` (à appliquer sur le conteneur) résout ce problème en gérant l'espacement **uniquement entre les éléments**. 
 
+<svg viewBox="0 0 600 250" width="800px" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22c55e" />
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="580" height="230" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="20" y="30" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">Propriété gap (row-gap et column-gap)</text>
+  
+  <rect x="30" y="50" width="150" height="70" rx="4" fill="#3b82f6"/>
+  
+  <!-- column-gap -->
+  <path d="M 185 85 L 225 85" stroke="#ef4444" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="205" y="75" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">column-gap</text>
+  
+  <rect x="230" y="50" width="150" height="70" rx="4" fill="#3b82f6"/>
+  
+  <!-- column-gap -->
+  <path d="M 385 85 L 425 85" stroke="#ef4444" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="405" y="75" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">gap</text>
+  
+  <rect x="430" y="50" width="140" height="70" rx="4" fill="#3b82f6"/>
+  
+  <!-- row-gap -->
+  <path d="M 105 125 L 105 155" stroke="#22c55e" stroke-width="3" marker-end="url(#arrow-green)" marker-start="url(#arrow-green)"/>
+  <text x="115" y="145" font-family="sans-serif" font-size="12" font-weight="bold" fill="#22c55e">row-gap</text>
+  
+  <rect x="30" y="160" width="150" height="70" rx="4" fill="#3b82f6"/>
+  <rect x="230" y="160" width="150" height="70" rx="4" fill="#3b82f6"/>
+</svg>
+
+- **`gap`** : Définit l'espace entre toutes les colonnes et toutes les lignes.
+- **`column-gap`** : Définit l'espace uniquement entre les colonnes (horizontal).
+- **`row-gap`** : Définit l'espace uniquement entre les lignes (vertical).
+
+**Exemple d'utilisation dans le code CSS :**
 ```css
 .liste-cartes {
     display: flex;
-    gap: 20px;
+    /* Ajoute 24px d'espace entre chaque ligne et chaque colonne */
+    gap: 24px; 
 }
 ```
-
-Un espace de `20px` est créé entre les cartes.
-
-### 1.2. Pourquoi utiliser `gap` ?
-
-Avant `gap`, on peut créer un espace entre les cartes avec `margin`.
-
-Avec Flexbox, `gap` permet de gérer directement l’espace entre les éléments du conteneur.
-
-**Exemple :**
-
-```css
-.liste-cartes {
-    display: flex;
-    gap: 20px;
-}
-```
-
-L’espace est géré par le conteneur.
-
-Il n’est pas nécessaire d’ajouter une marge à chaque carte pour créer cet espace.
-
-### 1.3. Utiliser `gap` avec plusieurs lignes
-
-`gap` fonctionne aussi lorsque les éléments passent à la ligne.
-
-Exemple :
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-```
-
-Un espace est créé :
-
-- entre les éléments d’une même ligne ;
-- entre les lignes.
-
-### 1.4. Contrôler l’espace vertical avec `row-gap`
-
-`row-gap` définit l’espace entre les lignes.
-
-**Exemple :**
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 30px;
-}
-```
-
-L’espace entre deux lignes est de `30px`.
-
-### 1.5. Contrôler l’espace horizontal avec `column-gap`
-
-`column-gap` définit l’espace entre les colonnes.
-
-**Exemple :**
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 20px;
-}
-```
-
-L’espace entre deux éléments sur une même ligne est de `20px`.
-
-### 1.6. Combiner `row-gap` et `column-gap`
-
-On peut définir les deux espaces séparément.
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 30px;
-    column-gap: 20px;
-}
-```
-
-Dans cet exemple :
-
-- l’espace horizontal est de `20px` ;
-- l’espace vertical est de `30px`.
-
-### 1.7. À retenir
-
-- `gap` crée un espace entre les éléments Flexbox.
-- `gap` agit horizontalement et verticalement lorsque plusieurs lignes existent.
-- `row-gap` contrôle l’espace entre les lignes.
-- `column-gap` contrôle l’espace entre les éléments sur une ligne.
-- `gap` s’utilise sur le conteneur Flexbox.
 
 ## Partie 2 — Pratique
 
-### 2.1. Préparer les cartes
+### 2.1. Tester les espacements
 
-#### Étape 1 — Donner une taille aux cartes
+1. **Expérimentation :**
+   Le conteneur possède déjà `display: flex; flex-wrap: wrap;`. Regardez le rendu : sans `gap`, les cartes se touchent complètement.
+   - Dans le code CSS, ajoutez `row-gap: 30px;` sur le conteneur `.liste-cartes`. Constatez que seules les lignes s'espacent (verticalement).
+   - Remplacez par `column-gap: 20px;`. L'espacement devient purement horizontal.
 
-Ajoutez :
-
-```css
-.carte-article {
-    box-sizing: border-box;
-    width: 180px;
-    padding: 20px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
-```
-
-Les quatre cartes possèdent maintenant une taille visible.
-
-#### Étape 2 — Préparer le conteneur
-
-Ajoutez :
-
-```css
-.liste-cartes {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 700px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-Les cartes peuvent passer sur plusieurs lignes.
-
-### 2.2. Ajouter un espace entre les cartes
-
-#### Étape 1 — Utiliser `gap`
-
-Ajoutez :
-
-```css
-.liste-cartes {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    width: 700px;
-    max-width: 100%;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f9fafb;
-}
-```
-
-Un espace de `20px` apparaît entre les cartes.
-
-### 2.3. Observer la différence
-
-#### Étape 1 — Retirer `gap`
-
-Supprimez temporairement :
-
-```css
-gap: 20px;
-```
-
-Observez les cartes.
-
-#### Étape 2 — Ajouter `gap`
-
-Ajoutez de nouveau :
-
-```css
-gap: 20px;
-```
-
-Observez la différence.
-
-L’espace est maintenant géré directement par le conteneur.
-
-### 2.4. Créer un espace différent entre les lignes
-
-#### Étape 1 — Utiliser `row-gap`
-
-Remplacez :
-
-```css
-gap: 20px;
-```
-
-par :
-
-```css
-row-gap: 30px;
-column-gap: 20px;
-```
-
-Les cartes gardent un espace horizontal de `20px`.
-
-Les lignes sont séparées par `30px`.
-
-### 2.5. Utiliser le raccourci `gap`
-
-#### Étape 1 — Revenir à une valeur commune
-
-Remplacez :
-
-```css
-row-gap: 30px;
-column-gap: 20px;
-```
-
-par :
-
-```css
-gap: 20px;
-```
-
-Les deux directions utilisent maintenant le même espace.
-
-### 2.6. Tester plusieurs valeurs
-
-Testez :
-
-```css
-gap: 10px;
-```
-
-Puis :
-
-```css
-gap: 20px;
-```
-
-Puis :
-
-```css
-gap: 30px;
-```
-
-Observez l'évolution de l’espace entre les cartes.
-
-### 2.7. Préparer la liste d’articles
-
-Pour une liste de cartes d’articles, vous pouvez maintenant utiliser :
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 24px;
-}
-```
-
-Les cartes peuvent passer sur plusieurs lignes.
-
-L’espace entre les cartes reste régulier.
-
-**Travail à faire :**
-
-À partir du HTML fourni :
-
-- créez quatre cartes ;
-- utilisez `.liste-cartes` comme conteneur Flexbox ;
-- autorisez le retour à la ligne ;
-- utilisez `gap` pour créer un espace régulier ;
-- testez plusieurs valeurs de `gap` ;
-- testez `row-gap` et `column-gap` ;
-- choisissez une valeur finale adaptée à votre liste de cartes.
-
-Pour le résultat final, utilisez :
-
-```css
-gap: 24px;
-```
-
-N’utilisez pas encore :
-
-- `flex` ;
-- `flex-grow` ;
-- `flex-basis`.
+2. **Résultat final :**
+   - Remplacez toutes les propriétés d'espacement par un simple `gap: 24px;` pour obtenir un espacement uniforme et esthétique dans toutes les directions (lignes et colonnes).
 
 **Livrable :**
 
-Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre code CSS.
+Créez un document contenant le code CSS final de `.liste-cartes` avec le raccourci `gap: 24px;`.
 
 **Résultat attendu :**
 
@@ -430,35 +172,20 @@ Créez un document Markdown (ou un Google Doc) contenant vos réponses et votre 
 <iframe
     class="auto-wrapper tuto-resultat"
     src="{{'/code/css/tuto-122-236-css.html' | relative_url}}"
-    height="700"
+    height="500"
     title="Résultat attendu">
 </iframe>
 
 **Critère de réussite :**
-
-Le conteneur `.liste-cartes` utilise `display: flex` et `flex-wrap: wrap`.
-
-Les cartes sont séparées par un espace régulier de `24px`.
-
-L’apprenant sait également utiliser `row-gap` et `column-gap` pour contrôler séparément les deux directions.
+Le conteneur utilise `display: flex`, `flex-wrap: wrap` et `gap: 24px;`. Les cartes sont séparées par un espace régulier, sans aucune marge externe indésirable.
 
 ## Bilan
 
 **Vous avez appris :**
-
-- le rôle de `gap` ;
-- l’utilisation de `row-gap` ;
-- l’utilisation de `column-gap` ;
-- la différence entre un espace commun et des espaces séparés.
-
-**Vous avez réalisé :**
-
-Une liste de cartes Flexbox avec un espacement régulier entre les éléments et entre les lignes.
+- À espacer facilement les éléments flex avec `gap`.
+- À dissocier l'espace vertical (`row-gap`) de l'espace horizontal (`column-gap`).
 
 ## Glossaire
 
-- **`gap`** : espace entre les éléments d’un conteneur.
-- **`row-gap`** : espace entre les lignes.
-- **`column-gap`** : espace entre les colonnes ou les éléments d’une même ligne.
-- **Espacement** : distance entre deux éléments.
-- **Conteneur Flexbox** : élément qui utilise `display: flex`.
+- **`gap`** : Propriété du conteneur définissant l'espace entre ses enfants.
+- **`row-gap`** / **`column-gap`** : Contrôles spécifiques pour l'espacement des lignes et des colonnes.

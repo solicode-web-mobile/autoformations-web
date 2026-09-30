@@ -45,8 +45,14 @@ La section **"Données de départ"** ne doit être incluse dans le tutoriel ré�
 
 **Si ces trois champs sont vides (`""`), la section "Données de départ" doit être omise du tutoriel.**
 
+### 8. L'exemple doit être prêt à l'emploi et fonctionnel
+Les exemples (Données de départ / code initial) doivent être capables de montrer dans l'éditeur de code la technique en train d'être expliquée. L'exemple doit être créé spécifiquement pour atteindre son objectif sans préparation inutile de la part de l'apprenant. L'effet visuel ou fonctionnel doit être garanti dès le premier test (consultez les skills de domaine pour les règles spécifiques liées à chaque technologie).
+
 ## Procédure d'exécution
-0. **Identifier le domaine** : Avant toute action, lisez le Front Matter du tutoriel pour identifier son domaine (via le champ `ua`, `tuto_id`, ou le chemin du fichier). Ensuite, **activez et appliquez le skill de domaine correspondant** en plus des règles du présent skill :
+0. **Identifier le domaine et les capacités globales** : 
+   - **Toujours lire et appliquer la capacité globale `bonnes-pratiques-editeur`** (située dans `.agent/capacites/bonnes-pratiques-editeur.md`) pour garantir que le code de préparation est correctement isolé dans les données de départ.
+   - **Toujours lire et appliquer la capacité globale `progression-pratique`** (située dans `.agent/capacites/progression-pratique.md`) pour s'assurer que l'exercice pratique s'inscrit dans la progression de l'unité d'apprentissage.
+   - Avant toute action, lisez le Front Matter du tutoriel pour identifier son domaine (via le champ `ua`, `tuto_id`, ou le chemin du fichier). Ensuite, **activez et appliquez le skill de domaine correspondant** en plus des règles du présent skill :
    - Tutoriel du domaine algo (C.121, UA.121.xx) → lire et appliquer le skill `domaine-algo`.
    - Tutoriel du domaine analyse (C.111, UA.111.xx) → lire et appliquer le skill `domaine-analyse`.
    - Tutoriel du domaine conception (C.112, UA.112.xx) → lire et appliquer le skill `domaine-conception`.

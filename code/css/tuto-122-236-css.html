@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultat - Répartition Flexbox</title>
+    <title>Résultat - Flex Gap</title>
     <style>
         body { font-family: sans-serif; }
         .carte-article {
-            width: 90px;
-            padding: 10px;
+            box-sizing: border-box;
+            width: 200px;
+            padding: 20px;
             background: white;
             border: 1px solid #e5e7eb;
             border-radius: 12px;
         }
 
         .liste-cartes {
+            box-sizing: border-box;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 800px;
+            flex-wrap: wrap;
+            gap: 24px;
+            width: 500px;
             max-width: 100%;
             margin: 40px auto;
             padding: 20px;
@@ -39,6 +41,10 @@
         <article class="carte-article">
             <h2>JavaScript</h2>
             <p>Ajouter des comportements à une page.</p>
+        </article>
+        <article class="carte-article">
+            <h2>PHP</h2>
+            <p>Créer des applications web dynamiques.</p>
         </article>
     </section>
 </body>

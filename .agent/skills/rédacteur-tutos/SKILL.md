@@ -316,7 +316,10 @@ Avant de rédiger, disposer de :
 
 Avant la rédaction :
 
-1. Identifier le **Domaine**, la **Compétence** et l’UA cible.
+1. **Identifier le domaine et les capacités globales** :
+   - Toujours lire et appliquer la capacité globale `bonnes-pratiques-editeur` (située dans `.agent/capacites/bonnes-pratiques-editeur.md`) pour garantir une gestion propre du code de départ (isolation de la mise en forme).
+   - Toujours lire et appliquer la capacité globale `progression-pratique` (située dans `.agent/capacites/progression-pratique.md`) pour garantir l'alignement des exercices avec l'objectif final de l'unité d'apprentissage.
+   - Identifier le **Domaine**, la **Compétence** et l’UA cible et activer le skill de domaine correspondant.
 2. Consulter le plan pédagogique validé du Domaine.
 3. Vérifier l’ordre des UA, leur progression, leurs prérequis, leurs notions et leurs tutoriels.
 4. Positionner le tutoriel cible dans cette progression.
