@@ -1,0 +1,2 @@
+
+si la traille de code est long, on doit pas affiche le bouton "Executer le code" car on peut pas exectuer une page de code, l'éduteur fonctionne avec des exempe de code qui ne dpéasse pas une taille, qui la longue d'une paramétre http.

@@ -86,35 +86,6 @@ Apprendre à répartir les éléments sur l’axe principal d’un conteneur Fle
 
 Vous savez déjà configurer un conteneur Flexbox (`display: flex`) et choisir sa direction principale (`flex-direction`).
 
-## Données de départ
-
-*(Les données de départ sont chargées automatiquement dans l'éditeur de code de l'interface).*
-
-### HTML
-
-Le fichier HTML contient une balise `<style>` cachant la mise en forme de base (dimensions, couleurs, bordures) pour que vous puissiez vous concentrer uniquement sur le CSS Flexbox.
-
-```html
-<section class="liste-cartes">
-    <article class="carte-article">
-        <h2>HTML</h2>
-        <p>Créer la structure d'une page web.</p>
-    </article>
-    <!-- ... autres cartes ... -->
-</section>
-```
-
-### CSS
-
-Le fichier CSS contient uniquement la configuration Flexbox initiale :
-
-```css
-.liste-cartes {
-    display: flex;
-    flex-direction: row;
-}
-```
-
 ## Partie 1 — Théorie
 
 ### 1.1. Répartir avec `justify-content`
@@ -173,22 +144,24 @@ Voici les principales valeurs de répartition :
 
 *(Note : Si l'axe principal est `column`, ces règles s'appliqueront verticalement de haut en bas.)*
 
-## Partie 2 — Pratique
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Tester les répartitions sur une ligne de cartes
+### 2.1. Répartir le menu et le pied de page
 
-1. **Expérimentez les valeurs :**
-   Le conteneur est déjà configuré avec `display: flex; flex-direction: row;`.
-   - Dans le code CSS, ajoutez `justify-content: flex-start;` à `.liste-cartes`. Les cartes se collent à gauche.
-   - Remplacez par `justify-content: center;`. Les cartes se centrent horizontalement.
-   - Changez temporairement `flex-direction` en `column` pour voir l'impact de `justify-content: center;` sur l'axe vertical, puis revenez à `row`.
+Maintenant que notre menu et notre pied de page sont en Flexbox, nous voulons repousser leurs éléments vers les extrémités (ex: le logo à gauche, le bouton à droite).
 
-2. **Résultat final (`space-between`) :**
-   - Modifiez la valeur finale pour obtenir : `justify-content: space-between;`. Vos trois cartes doivent occuper toute la largeur disponible de manière équilibrée.
+1. **Testez l'alignement sur le menu :**
+   - Ouvrez votre fichier `css/layout.css` et ciblez `.barre-navigation`.
+   - Ajoutez `justify-content: center;` et observez le résultat dans votre navigateur. Les éléments se regroupent au centre.
+   - Remplacez par `justify-content: space-between;`. Observez que le Logo est repoussé à gauche, le Bouton à droite, et les Liens se placent au centre !
+
+2. **Appliquez-le au pied de page :**
+   - Dans le même fichier, ciblez `.conteneur-pied-de-page`.
+   - Ajoutez également `justify-content: space-between;`. Les trois colonnes se répartissent harmonieusement sur toute la largeur disponible.
 
 **Livrable :**
 
-Créez un document avec le code CSS complet de `.liste-cartes` utilisant `justify-content: space-between;`.
+Votre fichier `css/layout.css` mis à jour, contenant la propriété `justify-content: space-between;` appliquée sur `.barre-navigation` et `.conteneur-pied-de-page`.
 
 **Résultat attendu :**
 
@@ -201,7 +174,7 @@ Créez un document avec le code CSS complet de `.liste-cartes` utilisant `justif
 </iframe>
 
 **Critère de réussite :**
-Le conteneur utilise `display: flex`, `flex-direction: row`, et `justify-content: space-between`. Les éléments sont répartis horizontalement.
+Les éléments du menu et les colonnes du footer utilisent tout l'espace disponible en repoussant les éléments extérieurs vers les bords.
 
 ## Bilan
 

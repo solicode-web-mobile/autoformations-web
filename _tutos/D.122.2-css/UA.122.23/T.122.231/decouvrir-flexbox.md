@@ -109,6 +109,7 @@ La règle d'or est simple : **le style Flexbox s'applique au parent (le conteneu
 Il suffit d'ajouter la propriété `display: flex;` sur le conteneur parent pour que tous ses enfants directs se positionnent automatiquement selon les règles de Flexbox (par défaut, ils se placent en ligne).
 
 **Exemple d'utilisation dans le code CSS :**
+
 ```css
 .liste-cartes {
     /* Transforme la section en conteneur flex */
@@ -116,18 +117,82 @@ Il suffit d'ajouter la propriété `display: flex;` sur le conteneur parent pour
 }
 ```
 
-## Partie 2 — Pratique
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Mise en place du layout Flexbox
+Tout au long de cette unité d'apprentissage, vous allez construire la page d'accueil complète d'un blog, pas à pas, directement sur votre ordinateur.
 
-À partir du code fourni en données de départ (HTML et CSS) :
+### 2.1. Préparation du projet local
 
-1. **Complétez le contenu** : Ajoutez une quatrième carte (`.carte-article`) dans votre `<section class="liste-cartes">` pour un langage de votre choix (ex: PHP ou Python). Observez que les cartes s'empilent de haut en bas (comportement par défaut).
-2. **Activez Flexbox** : Dans le code CSS, transformez la zone `.liste-cartes` en conteneur flex en lui ajoutant la propriété `display: flex;`. Vous devriez constater que les cartes s'alignent immédiatement côte à côte.
+1. Sur votre ordinateur, créez un nouveau dossier nommé `projet-blog-flexbox`.
+2. À l'intérieur, créez un fichier `index.html` et un dossier `css` contenant un fichier `style.css`.
+3. **Le HTML de départ :** Copiez le code suivant dans votre fichier `index.html`.
+
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Blog Personnel - Accueil</title>
+    <!-- Chargement des différents fichiers CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+    <header class="en-tete-site">
+        <nav class="barre-navigation">
+            <a href="index.html" class="logo">
+                <span class="logo-sombre">Mon</span><span class="logo-couleur">Blog.</span>
+            </a>
+            <ul class="liens-navigation">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Catégories</a></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+            <a href="#" class="bouton-principal">Espace Admin</a>
+        </nav>
+    </header>
+</body>
+</html>
+```
+
+4. **L'architecture CSS :** Dans votre dossier `css`, créez les trois fichiers suivants et copiez-y le code correspondant. Ils gèrent la typographie, les couleurs et les bordures du menu, mais **ne contiennent aucune disposition Flexbox**. *(Note : vous créerez `pages.css` dans un prochain tutoriel)*.
+
+**`css/global.css`** (Styles globaux) :
+
+```css
+body { margin: 0; color: #1f2937; background: #f9fafb; font-family: Arial, sans-serif; line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; padding: 0; margin: 0; }
+```
+
+**`css/layout.css`** (Structure principale) :
+
+```css
+.en-tete-site { padding: 20px 24px; background: white; border-bottom: 1px solid #e5e7eb; }
+.logo { font-family: Georgia, serif; font-size: 22px; font-weight: 900; }
+.logo-sombre { color: #111827; }
+.logo-couleur { color: #2673e8; }
+.liens-navigation a { color: #6b7280; font-size: 14px; font-weight: 500; }
+```
+
+**`css/components.css`** (Composants réutilisables) :
+
+```css
+.bouton-principal { display: inline-block; padding: 10px 20px; color: white; background: #2673e8; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; }
+```
+
+### 2.2. Activer Flexbox
+
+1. **Ouvrez `index.html` dans votre navigateur.** Vous constaterez que le logo, les liens et le bouton s'empilent verticalement de façon très basique.
+2. **Dans votre fichier `css/layout.css`**, ciblez la classe `.barre-navigation` (par exemple à la suite de la règle `.logo-couleur`) et ajoutez-y la propriété `display: flex;`.
+3. Enregistrez et actualisez la page dans votre navigateur.
 
 **Livrable :**
-
-Créez un document Markdown ou copiez votre code CSS dans un document, contenant la règle `.liste-cartes` avec l'activation de Flexbox.
+Votre fichier `css/layout.css` mis à jour contenant l'activation du Flexbox sur la barre de navigation.
 
 **Résultat attendu :**
 
@@ -140,7 +205,7 @@ Créez un document Markdown ou copiez votre code CSS dans un document, contenant
 </iframe>
 
 **Critère de réussite :**
-Le conteneur `.liste-cartes` utilise bien `display: flex`. Les quatre cartes se positionnent en ligne.
+Les éléments du menu (logo, liens, bouton) et les 3 cartes d'articles s'affichent désormais sur une seule ligne horizontale !
 
 ## Bilan
 

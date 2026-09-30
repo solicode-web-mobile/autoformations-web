@@ -159,21 +159,20 @@ Tout comme `justify-content`, la propriété `align-items` (appliquée au conten
 }
 ```
 
-## Partie 2 — Pratique
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Centrer les éléments sur les deux axes
+### 2.1. Centrer verticalement le menu
 
-1. **Expérimentation :**
-   Le conteneur possède déjà une hauteur de `260px` (plus grand que les cartes).
-   - Dans le code CSS de `.liste-cartes`, ajoutez `align-items: flex-start;`. Observez que les cartes se placent tout en haut.
-   - Remplacez par `align-items: center;`. Les cartes se centrent verticalement.
+Avez-vous remarqué que dans votre page de blog, le logo, les liens et le bouton de la navigation ne sont pas tout à fait alignés verticalement ? Le logo est un peu plus grand, ce qui donne l'impression que le texte des liens "flotte" vers le haut. Corrigeons cela sur l'axe secondaire !
 
-2. **Centrage parfait :**
-   - Ajoutez ensuite `justify-content: center;` pour centrer les cartes à la fois horizontalement et verticalement dans votre conteneur.
+1. **Testez l'alignement sur le menu :**
+   - Ouvrez votre fichier `css/layout.css` et repérez la règle `.barre-navigation`.
+   - Ajoutez `align-items: flex-end;` et observez le résultat. Tous les éléments s'alignent vers le bas de la barre.
+   - Remplacez par `align-items: center;`. Parfait ! Le logo, le texte des liens et le bouton sont désormais parfaitement alignés au centre vertical de la barre de navigation.
 
 **Livrable :**
 
-Créez un document contenant le code CSS complet de `.liste-cartes` avec le centrage absolu (horizontal et vertical).
+Votre fichier `css/layout.css` mis à jour, contenant la propriété `align-items: center;` appliquée sur `.barre-navigation`.
 
 **Résultat attendu :**
 
@@ -186,7 +185,7 @@ Créez un document contenant le code CSS complet de `.liste-cartes` avec le cent
 </iframe>
 
 **Critère de réussite :**
-Le conteneur utilise `display: flex`, `justify-content: center` et `align-items: center`. Les cartes sont centrées horizontalement et verticalement dans la zone grise de 260px de haut.
+Les éléments de la barre de navigation sont parfaitement centrés verticalement sur l'axe secondaire.
 
 ## Bilan
 

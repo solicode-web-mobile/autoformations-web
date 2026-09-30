@@ -135,23 +135,59 @@ Par défaut, Flexbox aligne les éléments horizontalement. La propriété `flex
 }
 ```
 
-## Partie 2 — Pratique
+## Partie 2 — Pratique (Projet Fil Rouge)
 
-### 2.1. Manipuler la direction des cartes
+### 2.1. Ajout du Pied de page
 
-1. **Préparation :**
-   - Ajoutez une 4ème carte en HTML (ex: PHP) dans `<section class="liste-cartes">`.
-   - Le conteneur possède déjà `display: flex;`, observez que les cartes sont alignées horizontalement par défaut.
+1. **Le HTML :** Ouvrez votre fichier `index.html` et ajoutez le code suivant tout en bas, juste avant la balise fermante `</body>`.
 
-2. **Testez la direction `column` :**
-   - Ajoutez `flex-direction: column;` sur le conteneur `.liste-cartes` dans le code CSS. Constatez que les cartes s'empilent verticalement.
+```html
+    <footer class="pied-de-page">
+        <div class="conteneur-pied-de-page">
+            <div class="colonne-pied-de-page">
+                <h2>Mon Blog</h2>
+                <p>Partager des connaissances, des tutoriels et des découvertes sur le développement web.</p>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">À propos</a></li>
+                </ul>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Contact</h2>
+                <p>Retrouvez les nouveaux articles chaque semaine.</p>
+            </div>
+        </div>
+        <div class="bas-pied-de-page">
+            <p>&copy; 2026 Mon Blog Personnel.</p>
+        </div>
+    </footer>
+```
 
-3. **Revenez à la direction `row` :**
-   - Remplacez par `flex-direction: row;`. Les cartes reprennent leur position horizontale en ligne.
+2. **Le CSS :** Ouvrez votre fichier `css/layout.css` et ajoutez-y les styles suivants pour mettre en forme le pied de page (sans Flexbox pour le moment).
+
+```css
+.pied-de-page { margin-top: 80px; padding: 64px 24px 24px; background: white; border-top: 1px solid #e5e7eb; }
+.colonne-pied-de-page h2 { margin: 0 0 20px; color: #111827; font-size: 16px; text-transform: uppercase; }
+.colonne-pied-de-page p, .colonne-pied-de-page a { color: #6b7280; font-size: 14px; }
+.colonne-pied-de-page li { margin-bottom: 12px; }
+.bas-pied-de-page { max-width: 1200px; margin: 64px auto 0; padding-top: 24px; text-align: center; border-top: 1px solid #e5e7eb; }
+.bas-pied-de-page p { margin: 0; color: #9ca3af; font-size: 12px; }
+```
+
+### 2.2. Manipuler la direction
+
+1. **Testez sans Flexbox :** Actualisez votre page. Les 3 colonnes du pied de page s'empilent verticalement (comportement par défaut des blocs HTML).
+2. **Activez Flexbox :** Dans `css/layout.css`, ciblez `.conteneur-pied-de-page` et ajoutez `display: flex;`. Actualisez : les colonnes se placent désormais en ligne (direction `row` par défaut).
+3. **Changez la direction :** Ajoutez `flex-direction: column;` à ce même conteneur. Observez que les colonnes se ré-empilent, mais cette fois elles sont contrôlées par Flexbox (utile pour la future version mobile du blog !).
+4. **Conclusion :** Pour notre maquette sur ordinateur, nous voulons qu'elles soient en ligne. Remplacez `flex-direction: column;` par `flex-direction: row;` (ou supprimez simplement la propriété car c'est le comportement par défaut).
 
 **Livrable :**
 
-Créez un document avec le code CSS complet de `.liste-cartes` en utilisant `flex-direction: column;`.
+Votre fichier `css/layout.css` mis à jour, avec le conteneur du pied de page utilisant Flexbox en direction horizontale.
 
 **Résultat attendu :**
 
@@ -164,7 +200,7 @@ Créez un document avec le code CSS complet de `.liste-cartes` en utilisant `fle
 </iframe>
 
 **Critère de réussite :**
-Le conteneur utilise `display: flex` et `flex-direction: row`. Les éléments s'affichent horizontalement.
+Le pied de page s'affiche avec ses 3 colonnes alignées horizontalement.
 
 ## Bilan
 

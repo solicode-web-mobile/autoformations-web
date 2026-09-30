@@ -3,45 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultat - Flex Direction</title>
+    <title>Mon Blog Personnel - Accueil</title>
     <style>
-        body { font-family: sans-serif; }
-        .carte-article {
-            width: 220px;
-            padding: 20px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
+        /* css/global.css */
+        body { margin: 0; color: #1f2937; background: #f9fafb; font-family: Arial, sans-serif; line-height: 1.5; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* css/layout.css */
+        .en-tete-site { padding: 20px 24px; background: white; border-bottom: 1px solid #e5e7eb; }
+        .logo { font-family: Georgia, serif; font-size: 22px; font-weight: 900; }
+        .logo-sombre { color: #111827; }
+        .logo-couleur { color: #2673e8; }
+        .liens-navigation a { color: #6b7280; font-size: 14px; font-weight: 500; }
+        
+        .pied-de-page { margin-top: 80px; padding: 64px 24px 24px; background: white; border-top: 1px solid #e5e7eb; }
+        .colonne-pied-de-page h2 { margin: 0 0 20px; color: #111827; font-size: 16px; text-transform: uppercase; }
+        .colonne-pied-de-page p, .colonne-pied-de-page a { color: #6b7280; font-size: 14px; }
+        .colonne-pied-de-page li { margin-bottom: 12px; }
+        .bas-pied-de-page { max-width: 1200px; margin: 64px auto 0; padding-top: 24px; text-align: center; border-top: 1px solid #e5e7eb; }
+        .bas-pied-de-page p { margin: 0; color: #9ca3af; font-size: 12px; }
+
+        /* css/components.css */
+        .bouton-principal { display: inline-block; padding: 10px 20px; color: white; background: #2673e8; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; }
+
+        /* FLEXBOX (Résultat attendu de la pratique du Tuto 1) */
+        .barre-navigation {
+            display: flex;
         }
 
-        .liste-cartes {
+        /* FLEXBOX (Résultat attendu de la pratique du Tuto 2) */
+        .conteneur-pied-de-page {
             display: flex;
-            flex-direction: column;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #f9fafb;
+            flex-direction: row;
         }
     </style>
 </head>
 <body>
-    <section class="liste-cartes">
-        <article class="carte-article">
-            <h2>HTML</h2>
-            <p>Créer la structure d'une page web.</p>
-        </article>
-        <article class="carte-article">
-            <h2>CSS</h2>
-            <p>Mettre en forme une page web.</p>
-        </article>
-        <article class="carte-article">
-            <h2>JavaScript</h2>
-            <p>Ajouter des comportements à une page.</p>
-        </article>
-        <article class="carte-article">
-            <h2>PHP</h2>
-            <p>Créer des applications web dynamiques.</p>
-        </article>
-    </section>
+    <header class="en-tete-site">
+        <nav class="barre-navigation">
+            <a href="index.html" class="logo">
+                <span class="logo-sombre">Mon</span><span class="logo-couleur">Blog.</span>
+            </a>
+            <ul class="liens-navigation">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Catégories</a></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+            <a href="#" class="bouton-principal">Espace Admin</a>
+        </nav>
+    </header>
+
+    <footer class="pied-de-page">
+        <div class="conteneur-pied-de-page">
+            <div class="colonne-pied-de-page">
+                <h2>Mon Blog</h2>
+                <p>Partager des connaissances, des tutoriels et des découvertes sur le développement web.</p>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">À propos</a></li>
+                </ul>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Contact</h2>
+                <p>Retrouvez les nouveaux articles chaque semaine.</p>
+            </div>
+        </div>
+        <div class="bas-pied-de-page">
+            <p>&copy; 2026 Mon Blog Personnel.</p>
+        </div>
+    </footer>
 </body>
 </html>
