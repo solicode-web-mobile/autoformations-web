@@ -9,795 +9,145 @@ version: "normal"
 ua: "UA.121.13"
 nav_order: 2
 data_js: ""
+simplified: true
 ---
+
+## 1. Objectif
 
 Dans ce tutoriel, vous allez apprendre à **lire et modifier les éléments d'un tableau**.
 
 Vous allez apprendre à :
-
-* accéder à un élément avec son index ;
-* utiliser `length` pour identifier une position ;
-* modifier une valeur ;
-* remplacer une valeur ;
-* modifier le premier élément ;
-* modifier le dernier élément ;
-* vérifier le tableau après une modification.
-
-À la fin du tutoriel, vous devez être capable de passer de :
-
-```text id="1u6ydy"
-Tableau initial
-       ↓
-Accéder à un élément
-       ↓
-Modifier l'élément
-       ↓
-Observer le nouveau tableau
-```
-
-Le parcours automatique du tableau avec une boucle sera étudié dans un tutoriel suivant.
+* lire la valeur d'un élément grâce à son **index** ;
+* modifier (remplacer) la valeur d'un élément ;
+* utiliser `length` pour modifier dynamiquement le dernier élément.
 
 ## 2. Prérequis
 
 Vous devez savoir :
+* déclarer et afficher des variables avec `console.log()` ;
+* créer un tableau basique ;
+* comprendre que le premier index d'un tableau est toujours `0`.
 
-* déclarer une variable ;
-* utiliser `console.log()` ;
-* créer un tableau ;
-* comprendre les éléments d'un tableau ;
-* comprendre les index ;
-* utiliser `length`.
-
-Exemple :
-
-```javascript id="j9q21f"
-let notes = [12, 15, 8, 17];
-
-console.log(notes[0]);
-```
-
-Résultat :
-
-```text id="v4g8mr"
-12
-```
-
-## Données de départ
-
-### JavaScript
-
-Créez un fichier :
-
-```text id="d5qj4m"
-modifier-tableau.js
-```
-
-Ajoutez :
-
-```javascript id="ktw4pm"
-let notes = [12, 15, 8, 17];
-
-console.log(notes);
-```
-
-Exécutez :
-
-```bash id="q5v4pt"
-node modifier-tableau.js
-```
-
-Résultat :
-
-```text id="m6k0gz"
-[ 12, 15, 8, 17 ]
-```
+*(Note : Ce tutoriel ne nécessite aucune donnée de départ pré-codée, vous écrirez tout vous-même !)*
 
 ## Partie 1 — Théorie
 
-### 1.1. Accéder à un élément
+### 1.1. Lire et utiliser un élément
 
-Pour lire un élément, on utilise :
+Pour accéder à la valeur d'un élément, on utilise son index entre crochets `[]`.
 
-```text
-tableau[index]
-```
+{% include array-svg.html
+   name="notes"
+   title="Tableau de notes"
+   values="12,15,8,17"
+   highlight="1"
+%}
 
-Exemple :
-
-```javascript id="4zlm2d"
+```javascript
 let notes = [12, 15, 8, 17];
 
-console.log(notes[1]);
-```
+// Lecture simple
+console.log("La deuxième note est :", notes[1]); // Affiche 15
 
-Résultat :
-
-```text id="vjq5n9"
-15
-```
-
-Le programme lit l'élément situé à l'index `1`.
-
-On peut représenter le tableau ainsi :
-
-```text id="m8b2f1"
-Index :   0    1    2    3
-          ↓    ↓    ↓    ↓
-Notes  : [12, 15,  8, 17]
-```
-
-Donc :
-
-```text id="9e6f5r"
-notes[0] → 12
-notes[1] → 15
-notes[2] → 8
-notes[3] → 17
-```
-
-### 1.2. Lire une valeur pour l'utiliser
-
-L'accès à un élément ne sert pas seulement à l'afficher.
-
-On peut utiliser la valeur dans un calcul.
-
-Exemple :
-
-```javascript id="u6qh0s"
-let notes = [12, 15, 8, 17];
-
-let premiereNote = notes[0];
-
-console.log(premiereNote);
-```
-
-Résultat :
-
-```text id="0p7u4m"
-12
-```
-
-On peut aussi faire :
-
-```javascript id="7zmd9x"
+// Utilisation dans un calcul
 let somme = notes[0] + notes[1];
-
-console.log(somme);
+console.log("Somme des deux premières notes :", somme); // Affiche 27
 ```
 
-Résultat :
+*Attention : Si vous essayez de lire un index qui n'existe pas (ex: `notes[4]`), le résultat affiché sera `undefined`.*
 
-```text id="8fbj1a"
-27
-```
+### 1.2. Modifier (remplacer) un élément
 
-L'élément du tableau peut donc être utilisé comme une valeur normale.
+On utilise la même syntaxe `tableau[index]` mais on la place **à gauche** du signe égal `=` pour lui affecter une nouvelle valeur.
 
-### 1.3. Modifier un élément
-
-Pour modifier un élément, on utilise son index à gauche de `=`.
-
-Exemple :
-
-```javascript id="2qy4pr"
+```javascript
 let notes = [12, 15, 8, 17];
 
-notes[2] = 10;
+// Modification du 3ème élément (index 2)
+notes[2] = 10; 
 
-console.log(notes);
+// Modification du 1er élément (index 0)
+notes[0] = 14; 
+
+console.log(notes); // Affiche [ 14, 15, 10, 17 ]
 ```
 
-Résultat :
+Comme vous pouvez le voir, seules les valeurs ciblées ont été remplacées, les autres restent intactes.
 
-```text id="t8xtl3"
-[ 12, 15, 10, 17 ]
-```
+### 1.3. Modifier le dernier élément dynamiquement (`length`)
 
-Avant :
+Souvent, on ne connaît pas la taille exacte d'un tableau à l'avance. Pour cibler le tout dernier élément, on utilise la formule `length - 1`.
 
-```text id="9fsd0k"
-[12, 15, 8, 17]
-```
-
-Après :
-
-```text id="lhb8qd"
-[12, 15, 10, 17]
-```
-
-Seul l'élément à l'index `2` a changé.
-
-### 1.4. Lire puis modifier
-
-On peut d'abord lire une valeur, puis la modifier.
-
-Exemple :
-
-```javascript id="gv51i1"
+```javascript
 let notes = [12, 15, 8, 17];
 
-console.log(notes[2]);
-
-notes[2] = 10;
-
-console.log(notes[2]);
-```
-
-Résultat :
-
-```text id="74x3ar"
-8
-10
-```
-
-La valeur était `8`.
-
-Elle devient `10`.
-
-### 1.5. Modifier le premier élément
-
-Le premier élément est à l'index `0`.
-
-Exemple :
-
-```javascript id="ivkzj5"
-let notes = [12, 15, 8, 17];
-
-notes[0] = 14;
-
-console.log(notes);
-```
-
-Résultat :
-
-```text id="w2g0fu"
-[ 14, 15, 8, 17 ]
-```
-
-La règle est :
-
-```text id="egm9vc"
-premier élément → index 0
-```
-
-### 1.6. Modifier le dernier élément
-
-Le dernier index est :
-
-```text id="mblq4z"
-length - 1
-```
-
-Exemple :
-
-```javascript id="h8brn6"
-let notes = [12, 15, 8, 17];
-
-notes[notes.length - 1] = 20;
-
-console.log(notes);
-```
-
-Résultat :
-
-```text id="h9pnrt"
-[ 12, 15, 8, 20 ]
-```
-
-Cette méthode fonctionne même si le nombre d'éléments change.
-
-### 1.7. Modifier plusieurs éléments
-
-On peut modifier plusieurs positions.
-
-Exemple :
-
-```javascript id="53j9pi"
-let notes = [12, 15, 8, 17];
-
-notes[0] = 14;
-notes[2] = 10;
-notes[3] = 18;
-
-console.log(notes);
-```
-
-Résultat :
-
-```text id="5a1l3c"
-[ 14, 15, 10, 18 ]
-```
-
-Chaque modification utilise un index précis.
-
-### 1.8. La position doit exister
-
-Considérons :
-
-```javascript id="bnm4r5"
-let notes = [12, 15, 8, 17];
-```
-
-Les index existants sont :
-
-```text id="1t4qyg"
-0
-1
-2
-3
-```
-
-Un accès comme :
-
-```javascript id="nr2ay4"
-console.log(notes[4]);
-```
-
-ne donne pas un élément existant.
-
-Le résultat est :
-
-```text id="me7z6n"
-undefined
-```
-
-Il faut donc connaître les positions disponibles.
-
-### 1.9. `length` permet de connaître la taille du tableau
-
-Exemple :
-
-```javascript id="lw4u95"
-let notes = [12, 15, 8, 17];
-
-console.log(notes.length);
-```
-
-Résultat :
-
-```text id="n34dy3"
-4
-```
-
-Le tableau possède quatre éléments.
-
-Le dernier index est donc :
-
-```text id="sy5p9j"
-4 - 1 = 3
-```
-
-### 1.10. Modifier le dernier élément avec `length`
-
-On peut donc écrire :
-
-```javascript id="5f6l9g"
-let notes = [12, 15, 8, 17];
-
+// Trouver le dernier index (ici 4 - 1 = 3)
 let dernierIndex = notes.length - 1;
 
+// Remplacer la dernière note par 20
 notes[dernierIndex] = 20;
 
-console.log(notes);
+console.log(notes); // Affiche [ 12, 15, 8, 20 ]
 ```
 
-Résultat :
-
-```text id="y5z9ey"
-[ 12, 15, 8, 20 ]
-```
-
-Cette écriture permet de rendre le traitement plus clair :
-
-```text id="h6x4l4"
-length
-  ↓
-dernier index
-  ↓
-dernier élément
-```
-
-### 1.11. Modifier une valeur à partir d'une règle
-
-Une modification peut dépendre d'une règle.
-
-Exemple :
-
-```javascript id="lq4z7s"
-let note = 8;
-
-if (note < 10) {
-    note = 10;
-}
-
-console.log(note);
-```
-
-Résultat :
-
-```text id="ji3s26"
-10
-```
-
-Cette idée pourra ensuite être appliquée aux éléments d'un tableau pendant son parcours.
-
-Pour le moment, nous modifions seulement une position connue.
-
-### 1.12. Lire et modifier sont deux opérations différentes
-
-Pour lire :
-
-```javascript id="st1i80"
-console.log(notes[2]);
-```
-
-Pour modifier :
-
-```javascript id="dqkx5y"
-notes[2] = 10;
-```
-
-La différence est importante :
-
-```text id="g7u3ro"
-notes[2]
-```
-
-permet d'obtenir une valeur.
-
-Alors que :
-
-```text id="y4a9sk"
-notes[2] = 10
-```
-
-remplace cette valeur.
-
-### 1.13. À retenir
-
-* `tableau[index]` permet d'accéder à un élément.
-* Le premier élément est à l'index `0`.
-* Pour modifier un élément, on utilise `tableau[index] = nouvelleValeur`.
-* `length` donne le nombre d'éléments.
-* Le dernier index est `length - 1`.
-* On peut utiliser un élément dans un calcul.
-* On peut modifier plusieurs éléments.
-* Un index qui n'existe pas donne `undefined` lors de la lecture.
+Cette méthode fonctionnera toujours, peu importe si le tableau contient 4, 10 ou 1000 éléments !
 
 ## Partie 2 — Pratique
 
-### 2.1. Lire plusieurs éléments
+### 2.1. Lecture et utilisation
 
-Créez :
+1. Déclarez un tableau `nombres = [10, 20, 30, 40]`.
+2. Affichez la somme du premier élément et du dernier élément.
+3. Le résultat attendu dans la console est `50`.
 
-```javascript id="yzwxpu"
-let nombres = [10, 20, 30, 40];
-```
+### 2.2. Modification classique et dynamique
 
-Affichez :
+1. Déclarez le tableau `temperatures = [18, 20, 23, 19]`.
+2. Affichez "Avant :", suivi du tableau complet.
+3. Remplacez la deuxième température (`20`) par `21`.
+4. Remplacez la toute dernière température par `25` en utilisant la formule `length - 1`.
+5. Affichez "Après :", suivi du tableau complet. Le résultat final doit être `[ 18, 21, 23, 25 ]`.
 
-```text id="8q2spb"
-10
-30
-40
-```
+### 2.3. Travail à faire (Livrable)
 
-Vous devez utiliser les index appropriés.
+Créez le programme autonome suivant :
 
-### 2.2. Modifier un élément
-
-À partir de :
-
-```javascript id="e9s01a"
-let nombres = [10, 20, 30, 40];
-```
-
-modifiez la valeur `30` pour obtenir `35`.
-
-Résultat attendu :
-
-```text id="0df0p6"
-[10, 20, 35, 40]
-```
-
-### 2.3. Modifier le premier élément
-
-À partir de :
-
-```javascript id="08q4k0"
-let nombres = [10, 20, 30, 40];
-```
-
-remplacez `10` par `15`.
-
-Résultat :
-
-```text id="8pyt1o"
-[15, 20, 30, 40]
-```
-
-### 2.4. Modifier le dernier élément
-
-À partir de :
-
-```javascript id="w6g9p7"
-let nombres = [10, 20, 30, 40];
-```
-
-remplacez `40` par `50`.
-
-Utilisez :
-
-```text id="68m6ep"
-length - 1
-```
-
-Résultat :
-
-```text id="b61kdo"
-[10, 20, 30, 50]
-```
-
-### 2.5. Lire puis modifier une note
-
-Considérez :
-
-```javascript id="7b3hps"
-let notes = [12, 15, 8, 17];
-```
-
-Affichez d'abord la note à l'index `2`.
-
-Puis remplacez cette note par `10`.
-
-Affichez ensuite le tableau complet.
-
-Résultat attendu :
-
-```text id="lw4a1a"
-8
-[12, 15, 10, 17]
-```
-
-### 2.6. Modifier plusieurs notes
-
-Considérez :
-
-```javascript id="n3f0f5"
-let notes = [10, 12, 8, 14];
-```
-
-Modifiez :
-
-```text id="y86ap4"
-index 0 → 11
-index 2 → 10
-index 3 → 15
-```
-
-Résultat attendu :
-
-```text id="j8h4cy"
-[11, 12, 10, 15]
-```
-
-### 2.7. Utiliser une valeur dans un calcul
-
-Considérez :
-
-```javascript id="y6zk0h"
-let nombres = [10, 20, 30, 40];
-```
-
-Calculez :
-
-```text id="xy6wix"
-premier élément + dernier élément
-```
-
-Le résultat attendu est :
-
-```text id="8de2fg"
-50
-```
-
-### 2.8. Exercice — Corriger une note
-
-Considérez :
-
-```javascript id="1df3ku"
-let notes = [12, 7, 15, 9];
-```
-
-La note à l'index `1` est incorrecte.
-
-Elle doit devenir `10`.
-
-Après modification, le tableau doit être :
-
-```text id="xq8u4d"
-[12, 10, 15, 9]
-```
-
-### 2.9. Exercice — Corriger la dernière valeur
-
-Considérez :
-
-```javascript id="k8h2t5"
-let temperatures = [18, 20, 23, 19];
-```
-
-La dernière température doit être remplacée par `21`.
-
-Utilisez `length` pour trouver le dernier index.
-
-Résultat attendu :
-
-```text id="pa4b8s"
-[18, 20, 23, 21]
-```
-
-### 2.10. Exercice — Remplacer plusieurs valeurs
-
-Considérez :
-
-```javascript id="0r4u8n"
-let prix = [50, 80, 120, 150];
-```
-
-Modifiez :
-
-```text id="qo6sh8"
-50 → 55
-120 → 125
-150 → 160
-```
-
-Résultat attendu :
-
-```text id="5l9zco"
-[55, 80, 125, 160]
-```
-
-### 2.11. Exercice — Observer avant et après
-
-Considérez :
-
-```javascript id="z2blf6"
-let notes = [11, 14, 9, 16];
-```
-
-Le programme doit afficher :
-
-```text id="n3u8zj"
-Avant : [11, 14, 9, 16]
-```
-
-Puis modifier la troisième note en `10`.
-
-Enfin :
-
-```text id="jbr0ta"
-Après : [11, 14, 10, 16]
-```
-
-### 2.12. Exercice — Utiliser `length`
-
-Considérez :
-
-```javascript id="w4mx3f"
-let nombres = [5, 8, 12, 20, 25];
-```
-
-Le programme doit :
-
-1. afficher le nombre d'éléments ;
-2. afficher le dernier élément ;
-3. remplacer le dernier élément par `30` ;
-4. afficher le tableau final.
-
-Résultat attendu :
-
-```text id="nnc7yr"
-Nombre d'éléments : 5
-Dernier élément : 25
-Tableau final : [5, 8, 12, 20, 30]
-```
-
-### 2.13. Travail à faire
-
-Créez le programme suivant :
-
-```javascript id="z7krt5"
+```javascript
 let notes = [12, 8, 15, 9, 17];
 ```
 
-Le tableau contient cinq notes.
+Votre programme doit réaliser les actions suivantes, sans utiliser de boucle :
+1. Remplacer la deuxième note par `10`.
+2. Remplacer la quatrième note par `11`.
+3. Afficher la première note.
+4. Afficher la dernière note (utilisez `length`).
+5. Afficher le tableau final.
+6. Afficher le nombre total de notes.
 
-Vous devez :
+**Livrable :**
+Créez un fichier `tableaux-modifier.js` contenant :
+1. Le code JavaScript complet et exécutable de votre programme.
+2. Un commentaire `//` expliquant la différence entre lire `notes[2]` et modifier `notes[2] = 10`.
 
-1. afficher la première note ;
-2. afficher la dernière note ;
-3. remplacer la deuxième note par `10` ;
-4. remplacer la quatrième note par `11` ;
-5. afficher le tableau final ;
-6. afficher le nombre total de notes.
-
-Le résultat final doit être :
-
-```text id="gs34hn"
-[12, 10, 15, 11, 17]
-```
-
-### Livrable
-
-Créez un document Markdown ou un Google Doc contenant :
-
-* le tableau de départ ;
-* les opérations réalisées ;
-* le code JavaScript ;
-* le tableau final ;
-* les résultats affichés.
-
-### Critère de réussite
-
-Le travail est réussi si :
-
-* les index sont correctement utilisés ;
-* les valeurs sont correctement lues ;
-* les valeurs demandées sont correctement modifiées ;
-* `length` est correctement utilisé ;
-* le tableau final correspond à la consigne ;
-* aucune boucle n'est utilisée.
-
-### Résultat attendu
-
-Pour :
-
-```javascript id="8mx7xd"
-let notes = [12, 8, 15, 9, 17];
-```
-
-le programme doit produire :
-
-```text id="4wo5cg"
+**Résultat attendu dans la console :**
+```text
 Première note : 12
 Dernière note : 17
-Tableau final : [12, 10, 15, 11, 17]
+Tableau final : [ 12, 10, 15, 11, 17 ]
 Nombre de notes : 5
 ```
 
 ## Bilan
 
 **Vous avez appris :**
-
-* à accéder à un élément avec son index ;
-* à utiliser un élément dans un calcul ;
-* à modifier un élément ;
-* à modifier plusieurs éléments ;
-* à utiliser `length` pour trouver le dernier index ;
-* à lire un tableau avant et après une modification.
-
-**Vous savez maintenant :**
-
-```text id="5m2vqy"
-Tableau
-   ↓
-Index
-   ↓
-Lire
-   ↓
-Modifier
-   ↓
-Vérifier
-```
-
-Dans le prochain tutoriel, vous allez utiliser les **boucles** pour parcourir automatiquement tous les éléments d'un tableau.
+* à lire et utiliser la valeur d'un élément existant ;
+* à remplacer un ou plusieurs éléments en ciblant leurs index avec `tableau[index] = nouvelleValeur` ;
+* à modifier dynamiquement la fin d'un tableau en utilisant `length - 1`.
 
 ## Glossaire
 
-* **Accès** : opération qui permet de lire un élément d'un tableau.
-* **Modification** : remplacement d'une valeur par une autre.
+* **Lecture** : opération qui permet de récupérer un élément (`let a = tableau[0]`).
+* **Modification** : remplacement d'une valeur existante par une autre (`tableau[0] = 5`).
 * **Index** : position d'un élément dans un tableau.
 * **Affectation** : opération qui donne une nouvelle valeur à une variable ou à un élément.
 * **`length`** : propriété qui indique le nombre d'éléments du tableau.
