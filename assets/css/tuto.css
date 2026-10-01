@@ -65,9 +65,16 @@
   display: flex;
   flex-wrap: wrap;
 
-  gap: 0.2rem 0.9rem;
+  gap: 0.4rem 0.6rem;
 
   margin-top: 0.45rem;
+  align-items: center;
+}
+
+.tuto-breadcrumb-separator {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  user-select: none;
 }
 
 .tuto-reference {
@@ -85,18 +92,12 @@
 }
 
 .tuto-reference-label {
-  color: #374151;
-
-  font-size: 0.7rem;
-  font-weight: 700;
-
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  display: none;
 }
 
 .tuto-reference a {
-  color: #6b7280;
-
+  color: #4b5563;
+  font-weight: 500;
   text-decoration: none;
 }
 
