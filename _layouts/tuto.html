@@ -10,23 +10,23 @@ layout: default
     <div class="tuto-topbar-left">
       {% if page.tuto_id %}
       <span class="tuto-code">
-        {{ page.tuto_id }} : 
-         {% include tuto-domain-menu.html %}
+        <span class="tuto-code-badge">{{ page.tuto_id }}</span>
+        {% include tuto-domain-menu.html %}
       </span>
       {% endif %}
     </div>
     <div class="tuto-topbar-right">
       <div class="tuto-topbar-nav">
         {% if previous_type %}
-          <a class="tuto-topbar-nav-btn" href="{{ previous_url | relative_url }}" title="{{ previous_title }}">←</a>
+          <a class="tuto-topbar-btn" href="{{ previous_url | relative_url }}" title="{{ previous_title }}">←</a>
         {% else %}
-          <span class="tuto-topbar-nav-btn disabled">←</span>
+          <span class="tuto-topbar-btn disabled">←</span>
         {% endif %}
         
         {% if next_type %}
-          <a class="tuto-topbar-nav-btn" href="{{ next_url | relative_url }}" title="{{ next_title }}">→</a>
+          <a class="tuto-topbar-btn" href="{{ next_url | relative_url }}" title="{{ next_title }}">→</a>
         {% else %}
-          <span class="tuto-topbar-nav-btn disabled">→</span>
+          <span class="tuto-topbar-btn disabled">→</span>
         {% endif %}
       </div>
       <div class="tuto-tools">
@@ -102,7 +102,7 @@ layout: default
 
 
 
-  {% include next-step.html %}
+
 
 
   <!-- ==================================================
