@@ -149,7 +149,11 @@ layout: default
 
   <main class="tuto-content">
 
-    {{ content }}
+    {% if page.en_construction %}
+      <p>🚧 <strong>Ce tutoriel est en cours de construction.</strong> Son contenu sera disponible prochainement.</p>
+    {% else %}
+      {{ content }}
+    {% endif %}
 
   </main>
 
