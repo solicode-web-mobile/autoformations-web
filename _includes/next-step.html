@@ -391,28 +391,16 @@
           data-detaille-url="{% if previous_detaille_url %}{{ previous_detaille_url | relative_url }}{% endif %}"
         >
 
-          <span class="next-step-arrow">
-            ←
-          </span>
+          <span class="next-step-arrow">←</span>
 
-          <span class="next-step-content">
-
-            <span class="next-step-label">
-              Étape précédente
-            </span>
-
-            <span class="next-step-type">
-              Tutoriel précédent
-            </span>
-
-            <span class="next-step-title">
-              {{ previous_title }}
-            </span>
-
+          <span class="next-step-title">
+            {{ previous_title }}
           </span>
 
         </a>
 
+      {% else %}
+        <div></div>
       {% endif %}
 
 
@@ -430,35 +418,11 @@
           data-detaille-url="{% if next_detaille_url %}{{ next_detaille_url | relative_url }}{% endif %}"
         >
 
-          <span class="next-step-content">
-
-            <span class="next-step-label">
-              Étape suivante
-            </span>
-
-            <span class="next-step-type">
-
-              {% if next_type == "tuto" %}
-                Tutoriel suivant
-              {% elsif next_type == "lab" %}
-                Lab
-              {% elsif next_type == "prototype" %}
-                Prototype
-              {% elsif next_type == "projet" %}
-                Projet Fil Rouge
-              {% endif %}
-
-            </span>
-
-            <span class="next-step-title">
-              {{ next_title }}
-            </span>
-
+          <span class="next-step-title">
+            {{ next_title }}
           </span>
 
-          <span class="next-step-arrow">
-            →
-          </span>
+          <span class="next-step-arrow">→</span>
 
         </a>
 
