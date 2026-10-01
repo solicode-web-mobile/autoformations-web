@@ -31,10 +31,48 @@
   margin-bottom: 1rem;
 }
 
-.tuto-topbar-left,
+.tuto-topbar-left {
+  display: flex;
+  align-items: center;
+}
+
 .tuto-topbar-right {
   display: flex;
   align-items: center;
+  gap: 1.25rem;
+}
+
+.tuto-topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-right: 1px solid #e5e7eb;
+  padding-right: 1.25rem;
+}
+
+.tuto-topbar-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 0.35rem;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.tuto-topbar-nav-btn:hover:not(.disabled) {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.tuto-topbar-nav-btn.disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .tuto-header {
@@ -547,6 +585,16 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  .tuto-topbar-right {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .tuto-topbar-nav {
+    border-right: none;
+    padding-right: 0;
   }
 
   .tuto-tools {

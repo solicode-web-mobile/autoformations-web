@@ -3,6 +3,8 @@ layout: default
 ---
 
 <div class="tuto-page layout-page">
+  
+  {% include tuto-nav-logic.html %}
 
   <div class="tuto-topbar">
     <div class="tuto-topbar-left">
@@ -14,6 +16,19 @@ layout: default
       {% endif %}
     </div>
     <div class="tuto-topbar-right">
+      <div class="tuto-topbar-nav">
+        {% if previous_type %}
+          <a class="tuto-topbar-nav-btn" href="{{ previous_url | relative_url }}" title="{{ previous_title }}">←</a>
+        {% else %}
+          <span class="tuto-topbar-nav-btn disabled">←</span>
+        {% endif %}
+        
+        {% if next_type %}
+          <a class="tuto-topbar-nav-btn" href="{{ next_url | relative_url }}" title="{{ next_title }}">→</a>
+        {% else %}
+          <span class="tuto-topbar-nav-btn disabled">→</span>
+        {% endif %}
+      </div>
       <div class="tuto-tools">
         {% include version-switcher.html %}
         {% include text-size-control.html %}
