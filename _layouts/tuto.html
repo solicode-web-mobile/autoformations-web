@@ -4,17 +4,25 @@ layout: default
 
 <div class="tuto-page layout-page">
 
-  <header class="tuto-header layout-header">
-    <div class="tuto-header-title">
-
-      <!-- Menu des tutos de même domaines de compétence -->
+  <div class="tuto-topbar">
+    <div class="tuto-topbar-left">
       {% if page.tuto_id %}
       <span class="tuto-code">
         {{ page.tuto_id }} : 
          {% include tuto-domain-menu.html %}
       </span>
       {% endif %}
-      
+    </div>
+    <div class="tuto-topbar-right">
+      <div class="tuto-tools">
+        {% include version-switcher.html %}
+        {% include text-size-control.html %}
+      </div>
+    </div>
+  </div>
+
+  <header class="tuto-header layout-header">
+    <div class="tuto-header-title">
       <h1>{{ page.title }}</h1>
     </div>
     <div class="tuto-references tuto-breadcrumb">
@@ -76,14 +84,7 @@ layout: default
   </header>
 
 
-  <!-- ==================================================
-       OUTILS DE LECTURE
-       ================================================== -->
 
-  <div class="tuto-tools">
-    {% include version-switcher.html %}
-    {% include text-size-control.html %}
-  </div>
 
 
   {% include next-step.html %}
