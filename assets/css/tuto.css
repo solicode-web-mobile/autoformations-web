@@ -825,10 +825,12 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
+  width: max-content;
+  max-width: 95vw;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border: 1px solid #e2e8f0;
-  border-radius: 3rem;
+  border-radius: 1.25rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0.75rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -846,20 +848,22 @@
 .tuto-action-bar-inner {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
 }
 
 .tuto-action-bar-nav {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  border-right: 1px solid #cbd5e1;
-  padding-right: 1.25rem;
 }
 
 .tuto-action-bar-tools {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
 }
 
