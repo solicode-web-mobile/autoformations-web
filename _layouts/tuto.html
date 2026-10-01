@@ -2,39 +2,28 @@
 layout: default
 ---
 
-<div class="tuto-page layout-page">
+<div class="tuto-layout-wrapper">
   
-  {% include tuto-nav-logic.html %}
+  <div class="tuto-main-column">
+    <div class="tuto-page layout-page">
+      
+      {% include tuto-nav-logic.html %}
 
-  <div class="tuto-topbar">
-    <div class="tuto-topbar-left">
-      {% if page.tuto_id %}
-      <span class="tuto-code">
-        <span class="tuto-code-badge">{{ page.tuto_id }}</span>
-        {% include tuto-domain-menu.html %}
-      </span>
-      {% endif %}
-    </div>
-    <div class="tuto-topbar-right">
-      <div class="tuto-topbar-nav">
-        {% if previous_type %}
-          <a class="tuto-topbar-btn" href="{{ previous_url | relative_url }}" title="{{ previous_title }}">←</a>
-        {% else %}
-          <span class="tuto-topbar-btn disabled">←</span>
-        {% endif %}
-        
-        {% if next_type %}
-          <a class="tuto-topbar-btn" href="{{ next_url | relative_url }}" title="{{ next_title }}">→</a>
-        {% else %}
-          <span class="tuto-topbar-btn disabled">→</span>
-        {% endif %}
+      <div class="tuto-topbar">
+        <div class="tuto-topbar-left">
+          {% if page.tuto_id %}
+          <span class="tuto-code">
+            <span class="tuto-code-badge">{{ page.tuto_id }}</span>
+            <span class="tuto-domain-name">
+              {% assign current_ua_header = site.uas | where: "code", page.ua | first %}
+              {% assign current_domaine_code_header = page.domaine | default: current_ua_header.domaine %}
+              {% assign current_domaine_header = site.domaines | where: "code", current_domaine_code_header | first %}
+              {{ current_domaine_header.title }}
+            </span>
+          </span>
+          {% endif %}
+        </div>
       </div>
-      <div class="tuto-tools">
-        {% include version-switcher.html %}
-        {% include text-size-control.html %}
-      </div>
-    </div>
-  </div>
 
   <header class="tuto-header layout-header">
     <div class="tuto-header-title">
@@ -126,8 +115,49 @@ layout: default
 
   {% include next-step.html %}
 
+    </div>
+  </div>
+
+  <aside class="tuto-sidebar" id="tuto-sidebar">
+    <div class="tuto-sidebar-header">
+      <h3 class="tuto-sidebar-title">Parcours</h3>
+      <button class="tuto-sidebar-toggle" id="tuto-sidebar-toggle" title="Réduire le menu">
+        <span class="tuto-sidebar-icon-close">>&gt;</span>
+      </button>
+    </div>
+    <div class="tuto-sidebar-content">
+      {% include tuto-domain-menu.html %}
+    </div>
+  </aside>
+  
+  <button class="tuto-sidebar-open-btn" id="tuto-sidebar-open-btn" title="Afficher le parcours">
+    &lt;&lt;
+  </button>
 </div>
 
+<div class="tuto-action-bar" id="tuto-action-bar">
+  <div class="tuto-action-bar-inner">
+    <div class="tuto-action-bar-nav">
+      {% if previous_type %}
+        <a class="tuto-topbar-btn" href="{{ previous_url | relative_url }}" title="{{ previous_title }}">←</a>
+      {% else %}
+        <span class="tuto-topbar-btn disabled">←</span>
+      {% endif %}
+      
+      {% if next_type %}
+        <a class="tuto-topbar-btn" href="{{ next_url | relative_url }}" title="{{ next_title }}">→</a>
+      {% else %}
+        <span class="tuto-topbar-btn disabled">→</span>
+      {% endif %}
+    </div>
+    <div class="tuto-action-bar-tools">
+      {% include version-switcher.html %}
+      {% include text-size-control.html %}
+      <div class="tuto-action-bar-separator"></div>
+      <button class="tuto-topbar-btn tuto-action-bar-pos-btn" id="tuto-action-bar-pos-btn" title="Changer la position (Haut/Bas)">↕️</button>
+    </div>
+  </div>
+</div>
 
 <!-- ======================================================
      DONNÉES POUR JAVASCRIPT
