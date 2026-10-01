@@ -87,4 +87,26 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  // 3. Floating Action Bar Pin/Unpin
+  const actionBarPinBtn = document.getElementById('tuto-action-bar-pin-btn');
+
+  if (actionBar && actionBarPinBtn) {
+    const savedActionBarPin = localStorage.getItem('tutoActionBarPin');
+    if (savedActionBarPin === 'unpinned') {
+      actionBar.classList.add('unpinned');
+      actionBarPinBtn.style.opacity = '0.5';
+    }
+
+    actionBarPinBtn.addEventListener('click', function() {
+      actionBar.classList.toggle('unpinned');
+      if (actionBar.classList.contains('unpinned')) {
+        localStorage.setItem('tutoActionBarPin', 'unpinned');
+        actionBarPinBtn.style.opacity = '0.5';
+      } else {
+        localStorage.setItem('tutoActionBarPin', 'pinned');
+        actionBarPinBtn.style.opacity = '1';
+      }
+    });
+  }
+
 });
