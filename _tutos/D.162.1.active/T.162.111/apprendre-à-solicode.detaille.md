@@ -6,6 +6,7 @@ permalink: /tutos/:slug/detaille
 tuto_id: "T.162.111"
 version: "detaille"
 ua: "UA.162.11"
+nav_order: 1
 ---
 
 À Solicode, vous apprenez surtout **en faisant**. Vous découvrez une notion, vous la mettez en pratique, vous cherchez des solutions lorsque cela est nécessaire, puis vous réalisez et expliquez votre travail.
