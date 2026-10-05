@@ -50,17 +50,7 @@ Un fichier ne passe **jamais** directement du dossier de travail à l'historique
 2. **La Zone de préparation (Staging Area)** : C'est la "salle d'attente". Parmi toutes les modifications que vous avez faites dans votre dossier, vous choisissez celles qui sont prêtes à être regroupées. Vous pouvez très bien préparer un seul fichier modifié et en laisser un autre de côté pour plus tard.
 3. **Le Dépôt Git (Repository)** : C'est l'historique officiel de votre projet. Quand vous transformez le contenu de la zone de préparation en un **commit**, cet instantané est gravé dans l'historique avec une date, un auteur, et un message descriptif.
 
-### Résultat attendu
 
-Voici à quoi ressemblent ces zones dans le terminal lorsque vous observez l'état de votre projet avec Git. Il sépare clairement les fichiers qui sont dans la zone de préparation (prêts à être validés) de ceux qui sont restés dans le dossier de travail.
-
-<button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
-<iframe
-    class="auto-wrapper tuto-resultat"
-    src="{{'/code/git/T.151.121.html' | relative_url}}"
-    height="300"
-    title="Résultat de git status illustrant les 3 zones">
-</iframe>
 
 ## Bilan
 
