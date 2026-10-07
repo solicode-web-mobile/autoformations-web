@@ -8,181 +8,59 @@ type: "classique"
 version: "normal"
 ua: "UA.151.12"
 nav_order: 1
-data_html: ""
-data_css: ""
-data_js: ""
-en_construction: true
+simplified: true
+en_construction: false
 ---
 
 ## 1. Objectif
 
-Comprendre le parcours d'un fichier dans Git :
+Comprendre le parcours d'un fichier dans Git, du moment où vous le modifiez jusqu'à son enregistrement final.
 
-**Dossier de travail → Zone de préparation → Dépôt Git**
-
-À la fin du tutoriel, vous saurez expliquer le rôle de chacune des trois zones.
+À la fin de ce tutoriel, vous saurez identifier les rôles du **Dossier de travail**, de la **Zone de préparation** et du **Dépôt Git**.
 
 ## 2. Prérequis
 
-Vous devez :
+- Avoir compris la différence entre Git et GitHub.
+- Connaître la notion de fichier et de projet.
 
-* avoir compris la différence entre Git et GitHub dans le Tuto 2 ;
-* connaître la notion de fichier et de projet.
+*(Note : Ce tutoriel est purement théorique pour poser les bases de la logique Git avant la pratique).*
 
-Ce tutoriel est principalement théorique.
+## Partie 1 — Théorie
 
-## Partie 1 — Théorie : Le parcours d'un fichier
+### 1.1. Le parcours d'une modification
 
-### 1.1. Le dossier de travail
+Contrairement à un simple "Ctrl+S" (Enregistrer), une modification dans Git traverse obligatoirement **trois zones distinctes**.
 
-Le **dossier de travail** est le dossier de votre projet sur votre ordinateur.
-
-C'est dans cette zone que vous :
-
-* créez des fichiers ;
-* modifiez votre code ;
-* supprimez des fichiers ;
-* testez votre travail.
-
-Lorsque vous modifiez un fichier, Git détecte la modification.
-
-La modification n'est pas encore préparée pour un commit.
-
-### 1.2. La zone de préparation
-
-La **zone de préparation** est aussi appelée **Staging Area**.
-
-Elle permet de sélectionner les modifications que vous voulez inclure dans le prochain commit.
-
-Vous pouvez donc choisir :
-
-* une modification ;
-* plusieurs modifications ;
-* certains fichiers seulement.
-
-Cette étape permet de préparer précisément le contenu du prochain commit.
-
-### 1.3. Le dépôt Git
-
-Le **dépôt Git** contient l'historique des commits du projet.
-
-Après avoir préparé les modifications, vous créez un **commit**.
-
-Le commit enregistre un état du projet dans l'historique Git.
-
-Le commit contient notamment :
-
-* les modifications sélectionnées ;
-* la date ;
-* l'auteur ;
-* un message.
-
-### 1.4. Le parcours d'un fichier
-
-Une modification peut suivre ce parcours :
-
-```text
-Dossier de travail
-       ↓
-Je modifie le fichier
-       ↓
-Zone de préparation
-       ↓
-Je sélectionne la modification
-       ↓
-Dépôt Git
-       ↓
-Je crée un commit
+```mermaid
+flowchart LR
+    A["Dossier de Travail\nJe modifie mon fichier"] -->|"Je sélectionne\n(Préparation)"| B["Zone de Préparation\nStaging Area"]
+    B -->|"J'enregistre\n(Commit)"| C["Dépôt Git\nHistorique"]
 ```
 
-Les trois zones ont donc des rôles différents :
+Un fichier ne passe **jamais** directement du dossier de travail à l'historique : il doit toujours être "préparé" (sélectionné) d'abord.
 
-* **Dossier de travail** : je modifie mon projet.
-* **Zone de préparation** : je sélectionne les modifications du prochain commit.
-* **Dépôt Git** : j'enregistre ces modifications dans l'historique.
+### 1.2. Le rôle des 3 zones
 
-### 1.5. Exemple simple
+<figure align="center">
+    <img src="{{ '/images-tutos/D.151.1-git/T.151.121/git-zones.svg' | relative_url }}" alt="Schéma des 3 zones de Git" style="max-width: 600px; width: 100%;">
+    <figcaption>Les 3 zones de Git</figcaption>
+</figure>
 
-Vous avez un fichier :
+1. **Le Dossier de travail (Working Directory)** : C'est le dossier de votre projet sur votre ordinateur. C'est ici que vous tapez du code, créez, modifiez ou supprimez des fichiers. Git détecte ces changements, mais ils ne sont pas encore sauvegardés dans l'historique.
+2. **La Zone de préparation (Staging Area)** : C'est la "salle d'attente". Parmi toutes les modifications que vous avez faites dans votre dossier, vous choisissez celles qui sont prêtes à être regroupées. Vous pouvez très bien préparer un seul fichier modifié et en laisser un autre de côté pour plus tard.
+3. **Le Dépôt Git (Repository)** : C'est l'historique officiel de votre projet. Quand vous transformez le contenu de la zone de préparation en un **commit**, cet instantané est gravé dans l'historique avec une date, un auteur, et un message descriptif.
 
-```text
-index.html
-```
 
-Vous modifiez le titre de la page.
-
-Au départ :
-
-**Dossier de travail**
-
-Le fichier contient la modification.
-
-Ensuite :
-
-**Zone de préparation**
-
-Vous ajoutez `index.html` à la zone de préparation.
-
-Enfin :
-
-**Dépôt Git**
-
-Vous créez un commit, par exemple :
-
-```text
-Modification du titre de la page
-```
-
-La modification fait maintenant partie de l'historique Git.
-
-### 1.6. À retenir
-
-Le cycle de base est :
-
-```text
-Dossier de travail
-        ↓
-   Préparation
-        ↓
-      Commit
-        ↓
-Historique du dépôt
-```
-
-Un fichier ne passe donc pas directement du dossier de travail au commit.
-
-La **zone de préparation** permet de choisir ce qui sera enregistré dans le prochain commit.
-
-### Résultat attendu
-
-Le schéma suivant résume les trois zones de Git et le parcours d'une modification :
-
-<iframe
-    class="auto-wrapper"
-    src="{{'/code/git/tuto-4-git.html' | relative_url}}"
-    height="250"
-    title="Les 3 zones de Git">
-</iframe>
 
 ## Bilan
 
-**Vous avez réalisé :**
-
-La compréhension des trois principales zones utilisées lors de l'enregistrement d'une modification avec Git.
-
-**Vous savez maintenant :**
-
-* identifier le dossier de travail ;
-* identifier la zone de préparation ;
-* comprendre le rôle du dépôt Git ;
-* comprendre le parcours d'une modification ;
-* comprendre la relation entre préparation et commit.
+**Vous avez appris :**
+- À distinguer le Dossier de travail (les fichiers sur lesquels vous travaillez), la Zone de préparation (votre sélection) et le Dépôt Git (l'historique).
+- Qu'une modification ne va jamais directement dans l'historique sans avoir été préparée d'abord.
 
 ## Glossaire
 
-* **Dossier de travail** : dossier du projet dans lequel vous modifiez les fichiers.
-* **Zone de préparation** : zone dans laquelle vous sélectionnez les modifications du prochain commit.
-* **Dépôt Git** : espace contenant l'historique des commits du projet.
-* **Staging Area** : autre nom de la zone de préparation.
-* **Commit** : enregistrement d'un état du projet dans l'historique Git.
-* **Historique** : ensemble des commits enregistrés dans le dépôt Git.
+- **Dossier de travail** : Fichiers actuels du projet modifiables sur votre machine.
+- **Zone de préparation (Staging Area)** : Zone où l'on place les fichiers sélectionnés pour le prochain commit.
+- **Dépôt Git** : L'historique contenant l'ensemble des commits du projet.
+- **Commit** : Enregistrement définitif d'un état du projet dans l'historique Git.

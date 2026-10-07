@@ -25,3 +25,22 @@ Pour éviter que l'apprenant ne détruise involontairement la mise en forme de b
 
 **Conséquence dans le corps du tutoriel :**
 Dans la section "Données de départ" du texte du tutoriel, les blocs de code affichés (`### HTML`, `### CSS`, etc.) doivent refléter fidèlement cette structure (ex: le bloc HTML inclura la balise `<style>` avec le CSS de préparation).
+
+## Initialisation obligatoire de l'éditeur
+
+Si un tutoriel définit des données de départ dans son Front Matter (au moins un des champs `data_html`, `data_css`, `data_js` ou `data_php` est non vide), il est **strictement obligatoire** d'insérer le script de configuration `window.pageData` juste en dessous du Front Matter, quel que soit le domaine du tutoriel.
+
+Ceci garantit que l'éditeur interactif récupère correctement les données initiales pour les afficher à l'apprenant.
+
+**Snippet à insérer systématiquement sous le Front Matter :**
+
+```html
+<script>
+window.pageData = {
+    html: {{ page.data_html | default: "" | jsonify }},
+    css: {{ page.data_css | default: "" | jsonify }},
+    js: {{ page.data_js | default: "" | jsonify }},
+    php: {{ page.data_php | default: "" | jsonify }}
+};
+</script>
+```
