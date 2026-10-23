@@ -100,9 +100,14 @@ layout: default
 
   <main class="tuto-content">
 
-    {% if page.en_construction %}
+    {% if page.en_construction and site.show_construction != true %}
       <p>🚧 <strong>Ce tutoriel est en cours de construction.</strong> Son contenu sera disponible prochainement.</p>
     {% else %}
+      {% if page.en_construction %}
+        <div class="banner-construction" style="background: #fff3cd; color: #856404; padding: 15px; margin-bottom: 25px; border-radius: 6px; border: 1px solid #ffeeba;">
+          🚧 <strong>Mode Conception actif</strong> : Ce tutoriel est marqué "en construction". Son contenu vous est affiché pour révision.
+        </div>
+      {% endif %}
       {{ content }}
     {% endif %}
 
@@ -119,15 +124,54 @@ layout: default
   </div>
 
   <aside class="tuto-sidebar" id="tuto-sidebar">
-    <div class="tuto-sidebar-header">
-      <h3 class="tuto-sidebar-title">Parcours</h3>
-      <button class="tuto-sidebar-toggle" id="tuto-sidebar-toggle" title="Réduire le menu">
+    <div class="tuto-sidebar-header" style="align-items: flex-end;">
+      <div class="tuto-sidebar-tabs" style="display:flex; gap:0.5rem; flex:1;">
+        <button class="tuto-sidebar-tab" onclick="switchSidebarMenu('domain')" style="background:none; border:none; border-bottom:2px solid transparent; color:#64748b; font-weight:600; padding:0.25rem 0.5rem; cursor:pointer; font-size:0.85rem;">Domaine</button>
+        <button class="tuto-sidebar-tab" onclick="switchSidebarMenu('session')" style="background:none; border:none; border-bottom:2px solid #2563eb; color:#0f172a; font-weight:600; padding:0.25rem 0.5rem; cursor:pointer; font-size:0.85rem;">Session</button>
+      </div>
+      <button class="tuto-sidebar-toggle" id="tuto-sidebar-toggle" title="Réduire le menu" style="margin-bottom:0.25rem;">
         <span class="tuto-sidebar-icon-close">>&gt;</span>
       </button>
     </div>
-    <div class="tuto-sidebar-content">
+    <div class="tuto-sidebar-content" id="sidebar-domain-menu" style="display: none;">
       {% include tuto-domain-menu.html %}
     </div>
+    <div class="tuto-sidebar-content" id="sidebar-session-menu">
+      {% include tuto-session-menu.html %}
+    </div>
+    
+    <script>
+      function switchSidebarMenu(menu) {
+        var tabs = document.querySelectorAll('.tuto-sidebar-tab');
+        tabs.forEach(function(tab) {
+          tab.style.borderColor = 'transparent';
+          tab.style.color = '#64748b';
+        });
+        document.getElementById('sidebar-domain-menu').style.display = 'none';
+        document.getElementById('sidebar-session-menu').style.display = 'none';
+        
+        if(menu === 'domain') {
+          tabs[0].style.borderColor = '#2563eb';
+          tabs[0].style.color = '#0f172a';
+          document.getElementById('sidebar-domain-menu').style.display = 'block';
+          localStorage.setItem('tutoActiveMenu', 'domain');
+        } else {
+          tabs[1].style.borderColor = '#2563eb';
+          tabs[1].style.color = '#0f172a';
+          document.getElementById('sidebar-session-menu').style.display = 'block';
+          localStorage.setItem('tutoActiveMenu', 'session');
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var savedMenu = localStorage.getItem('tutoActiveMenu');
+        if (savedMenu === 'domain') {
+          switchSidebarMenu('domain');
+        } else {
+          switchSidebarMenu('session');
+        }
+      });
+    </script>
   </aside>
   
   <button class="tuto-sidebar-open-btn" id="tuto-sidebar-open-btn" title="Afficher le parcours">
