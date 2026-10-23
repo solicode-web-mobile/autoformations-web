@@ -9,6 +9,7 @@ version: "normal"
 ua: "UA.121.14"
 nav_order: 5
 data_js: ""
+en_construction: true
 ---
 
 Dans les tutoriels précédents, vous avez construit plusieurs algorithmes sur les tableaux :
