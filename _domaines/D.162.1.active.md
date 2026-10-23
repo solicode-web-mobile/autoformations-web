@@ -2,6 +2,7 @@
 title: "Apprendre avec la pédagogie active"
 layout: domaines
 code: "D.162.1"
+mini-code: "active"
 competence: "C.162"
 ordre: 1
 capacite_finale: >

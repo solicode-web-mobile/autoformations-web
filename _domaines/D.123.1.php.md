@@ -2,6 +2,7 @@
 title: "Programmer des traitements serveur avec PHP"
 layout: domaines
 code: "D.123.1"
+mini-code: "php"
 competence: "C.123"
 ordre: 9
 capacite_finale: >

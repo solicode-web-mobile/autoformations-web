@@ -2,6 +2,7 @@
 title: "Mettre en forme une interface avec CSS"
 layout: domaines
 code: "D.122.2"
+mini-code: "css"
 competence: "C.122"
 ordre: 7
 capacite_finale: >

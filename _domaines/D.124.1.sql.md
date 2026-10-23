@@ -2,6 +2,7 @@
 title: "Interroger une base de données avec SQL"
 layout: domaines
 code: "D.124.1"
+mini-code: "sql"
 competence: "C.124"
 ordre: 10
 capacite_finale: >

@@ -2,6 +2,7 @@
 title: "Organiser et rendre visible son travail"
 layout: domaines
 code: "D.152.2"
+mini-code: "gestion"
 competence: "C.152"
 ordre: 17
 capacite_finale: >

@@ -2,6 +2,7 @@
 title: "Déployer une application Web dans un environnement local"
 layout: domaines
 code: "D.141.1"
+mini-code: "deploy"
 competence: "C.141"
 ordre: 15
 capacite_finale: >

@@ -2,6 +2,7 @@
 title: "Technologies de développement"
 layout: domaines
 code: "D.161.1"
+mini-code: "veille-tech"
 competence: "C.161"
 ordre: 2
 capacite_finale: >

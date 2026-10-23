@@ -2,6 +2,7 @@
 title: "Versionner et synchroniser son travail avec Git"
 layout: domaines
 code: "D.151.1"
+mini-code: "git"
 competence: "C.151"
 ordre: 16
 capacite_finale: >

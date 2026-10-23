@@ -2,6 +2,7 @@
 title: "Structurer le code"
 layout: domaines
 code: "D.125.1"
+mini-code: "architecture"
 competence: "C.125"
 ordre: 12
 capacite_finale: >

@@ -2,6 +2,7 @@
 title: "Exploiter les résultats et les données dans l’application"
 layout: domaines
 code: "D.124.2"
+mini-code: "php-sql"
 competence: "C.124"
 ordre: 11
 capacite_finale: >

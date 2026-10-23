@@ -2,6 +2,7 @@
 title: "Analyser et formaliser un besoin fonctionnel existant"
 layout: domaines
 code: "D.111.1"
+mini-code: "analyse"
 competence: "C.111"
 ordre: 3
 capacite_finale: >

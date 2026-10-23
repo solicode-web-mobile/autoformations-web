@@ -2,6 +2,7 @@
 title: "Modéliser les données"
 layout: domaines
 code: "D.112.1"
+mini-code: "conception"
 competence: "C.112"
 ordre: 4
 capacite_finale: >

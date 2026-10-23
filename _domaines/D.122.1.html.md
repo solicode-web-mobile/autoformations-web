@@ -2,6 +2,7 @@
 title: "Structurer une interface avec HTML"
 layout: domaines
 code: "D.122.1"
+mini-code: "html"
 competence: "C.122"
 ordre: 6
 capacite_finale: >

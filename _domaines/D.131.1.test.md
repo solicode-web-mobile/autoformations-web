@@ -2,6 +2,7 @@
 title: "Vérifier le fonctionnement d’une solution"
 layout: domaines
 code: "D.131.1"
+mini-code: "test"
 competence: "C.131"
 ordre: 14
 capacite_finale: >
