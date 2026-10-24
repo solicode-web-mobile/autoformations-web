@@ -11,30 +11,26 @@ nav_order: 9
 data_html: ""
 data_css: ""
 data_js: ""
+simplified: true
 ---
 
-## 1. Objectif
+## Objectif
 
-L'objectif de ce tutoriel est d'assembler toutes les entités, relations et cardinalités que vous avez isolées précédemment afin de construire le **MCD complet du Blog**.
+Assembler l'ensemble des entités, relations et cardinalités validées précédemment pour construire le **Modèle Conceptuel de Données (MCD) complet du Blog**.
 
-Vous allez apprendre à :
-* rassembler logiquement les différents éléments d'un modèle conceptuel ;
-* représenter visuellement des entités, leurs attributs et leurs relations ;
-* vérifier la cohérence globale du modèle final.
+## Prérequis
 
-## 2. Prérequis
-
-* Avoir construit les entités (T.112.133).
-* Avoir déterminé les relations et les cardinalités (T.112.141).
+- Savoir construire les entités à partir des données (T.112.133).
+- Savoir déterminer les relations et cardinalités (T.112.141).
 
 ## Données de départ
 
-Vos résultats validés lors des étapes précédentes constituent vos données de départ :
-* Vos **entités** : `ARTICLE`, `AUTEUR`, `VILLE`, `CATEGORIE`.
-* Vos **relations** : 
-  * `VILLE (0,N) ─── habite ─── (1,1) AUTEUR`
-  * `AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE`
-  * `CATEGORIE (0,N) ─── regroupe ─── (1,1) ARTICLE`
+Vos résultats validés aux étapes précédentes :
+- **Entités :** `ARTICLE`, `AUTEUR`, `VILLE`, `CATEGORIE`.
+- **Relations :**
+  - `VILLE (0,N) ─── habite ─── (1,1) AUTEUR`
+  - `AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE`
+  - `CATEGORIE (0,N) ─── regroupe ─── (1,1) ARTICLE`
 
 ---
 
@@ -42,87 +38,87 @@ Vos résultats validés lors des étapes précédentes constituent vos données 
 
 ### 1.1. Qu'est-ce qu'un MCD ?
 
-Le **Modèle Conceptuel de Données (MCD)** est le schéma global qui rassemble et organise :
-* Les entités (avec leurs identifiants et attributs)
-* Les relations qui les unissent
-* Les cardinalités qui délimitent ces relations
+Le **Modèle Conceptuel de Données (MCD)** est la vue d'ensemble de votre base de données. Il rassemble :
+1. Les **entités** (leurs attributs et leur identifiant souligné).
+2. Les **relations** (les verbes d'action dans des ovales).
+3. Les **cardinalités** (les couples `min,max` posés sur les traits).
 
-Attention : Le MCD représente des concepts (des idées). Il ne représente pas encore la véritable base de données (il n'y a pas encore de tables ou de clés étrangères physiques).
+> **Important :** Le MCD décrit la structure métier des données. Il ne contient pas encore de notions techniques de base de données (pas de clés étrangères ni de types SQL).
 
-### 1.2. Assemblage
+### 1.2. La règle d'assemblage
 
-L'assemblage suit une règle très stricte :
-```text
-Entités existantes + Relations existantes + Cardinalités validées = MCD complet
-```
-* **Règle d'or** : À ce stade, vous ne devez inventer aucune nouvelle entité ni ajouter de nouvelle relation. De plus, vous ne devez absolument pas modifier les cardinalités que vous avez déjà validées.
+L'assemblage d'un MCD obéit à une règle simple :
 
-### 1.3. Lecture d'un MCD
+$$\text{Entités existantes} + \text{Relations validées} + \text{Cardinalités fixées} = \text{MCD complet}$$
 
-Un schéma bien conçu doit pouvoir se lire comme un texte, toujours dans les deux sens :
-```text
-AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE
-```
-> Un auteur rédige zéro, un ou plusieurs articles. Inversement, un article est rédigé par exactement un auteur.
+* **Règle d'or :** À cette étape, n'inventez aucune nouvelle entité, n'ajoutez aucune nouvelle relation et ne modifiez aucune cardinalité.
 
-### 1.4. Vérifications essentielles
+### 1.3. Contrôler le modèle assemblé
 
-Un MCD doit toujours être contrôlé avant d'être validé :
-1. **Intégrité des attributs** : Chaque donnée doit impérativement rester dans son entité d'origine, telle que vous l'aviez modélisée.
-2. **Exclusion des données calculées** : Une donnée calculée et non stockée (par exemple `duree_lecture`) ne doit **jamais** apparaître dans le MCD.
+Avant de valider votre schéma, effectuez deux vérifications :
+1. **Lecture dans les deux sens :** Chaque relation doit pouvoir se lire clairement dans les deux sens (*« Un auteur rédige 0 ou plusieurs articles »* et *« Un article est rédigé par un seul auteur »*).
+2. **Exclusion des données calculées :** Vérifiez qu'aucune donnée calculée (comme `duree_lecture`) n'a été réintroduite par erreur.
 
 ---
 
 ## Partie 2 — Pratique
 
-### 2.1. Rassembler les briques
+### 2.1. Les briques à assembler
 
-Pour commencer, reprenez vos 4 entités finalisées avec toutes leurs données respectives :
-* **VILLE** (`id_ville`, `nom_ville`)
-* **AUTEUR** (`id_auteur`, `nom_auteur`, `prenom_auteur`, `email_auteur`)
-* **ARTICLE** (`id_article`, `titre_article`, `contenu_article`, `date_publication`, `statut_article`, `image_article`)
-* **CATEGORIE** (`id_categorie`, `nom_categorie`)
+Reprenez vos 4 entités avec leurs attributs respectifs :
+- **VILLE** (`id_ville`, `nom_ville`)
+- **AUTEUR** (`id_auteur`, `nom_auteur`, `prenom_auteur`, `email_auteur`)
+- **ARTICLE** (`id_article`, `titre_article`, `contenu_article`, `date_publication`, `statut_article`, `image_article`)
+- **CATEGORIE** (`id_categorie`, `nom_categorie`)
 
-### 2.2. Connecter les relations
+### 2.2. Exemple d'assemblage visuel
 
-Liez maintenant ces entités en utilisant exclusivement les 3 relations issues du tutoriel précédent (habite, rédige, regroupe).
+Organisez vos entités verticalement en reliant chaque bloc à sa relation :
 
-### 2.3. Assembler le MCD (Exemple visuel)
+<svg viewBox="0 0 320 250" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lignes verticales VILLE - habite - AUTEUR -->
+  <line x1="160" y1="80" x2="160" y2="105" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="98" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#dc2626">0,N</text>
 
-Sur une feuille de papier, un tableau blanc ou un logiciel de modélisation, organisez les blocs pour obtenir ce type de schéma visuel :
+  <line x1="160" y1="145" x2="160" y2="170" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="162" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#dc2626">1,1</text>
 
-```text
-VILLE
------
-id_ville
-...
-  | (0,N)
-habite
-  | (1,1)
-AUTEUR
-------
-id_auteur
-...
-```
+  <!-- Entité VILLE -->
+  <g transform="translate(80, 10)">
+    <rect width="160" height="70" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 154 0 C 158 0 160 2 160 6 L 160 26 L 0 26 Z" fill="#e2e8f0"/>
+    <line x1="0" y1="26" x2="160" y2="26" stroke="#334155" stroke-width="1.5"/>
+    <text x="80" y="18" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">VILLE</text>
+    <text x="14" y="44" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_ville</text>
+    <text x="14" y="62" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">nom_ville</text>
+  </g>
 
-### 2.4. Vérifier la cohérence
+  <!-- Relation habite -->
+  <g transform="translate(160, 125)">
+    <ellipse cx="0" cy="0" rx="55" ry="20" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="0" y="5" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e40af" text-anchor="middle">habite</text>
+  </g>
 
-Contrôlez la qualité de votre modèle final en utilisant cette check-list :
-* Les 4 entités attendues sont-elles bien présentes avec leur identifiant souligné ?
-* Tous les attributs sont-ils présents et bien placés (et avez-vous bien supprimé `duree_lecture`) ?
-* Les 3 relations sont-elles présentes, sans ajout supplémentaire ?
-* Les cardinalités sont-elles rigoureusement identiques à celles de l'exercice précédent ?
+  <!-- Entité AUTEUR -->
+  <g transform="translate(80, 170)">
+    <rect width="160" height="70" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 154 0 C 158 0 160 2 160 6 L 160 26 L 0 26 Z" fill="#e2e8f0"/>
+    <line x1="0" y1="26" x2="160" y2="26" stroke="#334155" stroke-width="1.5"/>
+    <text x="80" y="18" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">AUTEUR</text>
+    <text x="14" y="44" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_auteur</text>
+    <text x="14" y="62" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">nom_auteur</text>
+  </g>
+</svg>
 
-### 2.5. Travail à faire
+### 2.3. Travail à faire
 
-Construisez le **MCD complet du Blog** en assemblant proprement tous vos résultats sous forme de schéma conceptuel (ou de blocs de texte structurés).
+Construisez le **MCD complet du Blog** en reliant l'ensemble des 4 entités (`VILLE`, `AUTEUR`, `ARTICLE`, `CATEGORIE`) avec leurs 3 relations (`habite`, `rédige`, `regroupe`) et leurs cardinalités.
 
-## Livrable
+### Livrable attendu
 
-Créez un document **Markdown** contenant votre MCD final.
-Nom conseillé : `mcd-blog.md`
+Créez un fichier Markdown nommé `mcd-blog.md` présentant votre MCD complet (sous forme de schéma textuel ou visuel), et commitez-le dans votre dépôt GitHub.
 
-## Résultat attendu
+### Résultat attendu
 
 <button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
@@ -132,23 +128,25 @@ Nom conseillé : `mcd-blog.md`
     title="Résultat attendu — MCD complet du Blog">
 </iframe>
 
-## Critères de réussite
+### Critères de réussite
 
-* Le MCD contient très exactement les 4 entités et les 3 relations attendues.
-* Les cardinalités sont justes et n'ont pas été modifiées par erreur.
-* La donnée calculée a été correctement exclue de la modélisation.
+- Les 4 entités sont présentes avec leurs attributs et leur identifiant souligné.
+- Les 3 relations (`habite`, `rédige`, `regroupe`) relient correctement les entités.
+- Les cardinalités correspondent exactement aux résultats validés au tutoriel précédent.
+- La donnée calculée `duree_lecture` est bien absente du modèle.
+- Le fichier `mcd-blog.md` est commité sur GitHub.
 
 ---
 
 ## Bilan
 
-### Vous avez appris :
-* À assembler un Modèle Conceptuel de Données complet à partir de briques isolées.
-* À vérifier la cohérence et la lisibilité globale d'un schéma de données.
+**Vous savez maintenant :**
+- Assembler un Modèle Conceptuel de Données complet à partir d'entités et de relations isolées.
+- Vérifier la cohérence globale et la double lecture d'un schéma Merise.
 
-Dans le prochain tutoriel, vous apprendrez à transformer ce MCD abstrait en **tables relationnelles** concrètes prêtes pour votre base de données.
+Dans le prochain tutoriel, vous transformerez ce MCD abstrait en **Modèle Logique de Données (MLD)** avec des tables relationnelles et des clés étrangères.
 
 ## Glossaire
 
-* **MCD** : Modèle global et abstrait regroupant les entités, relations et cardinalités.
-* **Cohérence** : Phase de vérification finale pour s'assurer que le modèle assemblé respecte toutes les règles définies en amont.
+- **MCD** : Schéma global qui rassemble les entités, les relations et les cardinalités selon la norme Merise.
+- **Cohérence** : Contrôle assurant que le schéma final respecte toutes les règles de gestion sans contradiction.
