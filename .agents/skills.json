@@ -1,0 +1,11 @@
+{
+  "hubPath": "D:/solicode-lms/skills-workspace",
+  "skills": {
+    "local": [],
+    "global": [
+      "project-setup",
+      "tutorial-writer",
+      "plugin-dev"
+    ]
+  }
+}
