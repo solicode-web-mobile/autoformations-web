@@ -19,9 +19,10 @@ Ce méta-skill assure la gouvernance technique complète de l'écosystème IA : 
   - Documentation d'un nouveau flux de travail dans `references/workflows/`.
   - Audit de conformité des compétences, cohérence des directives et contrôle SemVer.
 - **Quand NE PAS l'activer :**
-  - Développement applicatif métier (PHP, Blade, JS) ➔ Utiliser `feature-dev`.
-  - Initialisation d'agent pour un projet ➔ Utiliser `project-setup`.
-  - Documentation d'un package applicatif ➔ Utiliser `context-generator`.
+  - Rédaction ou simplification de tutoriels ➔ Utiliser `tutorial-writer`.
+  - Développement de composants ou de styles Jekyll ➔ Utiliser `dev-jekyll`.
+  - Synchronisation du socle technique partagé (Core Theme) ➔ Utiliser `sync-theme`.
+  - Initialisation d'agent ou diagnostic projet ➔ Utiliser `project-setup`.
 
 # 3. Entrées & Ressources à Charger
 - **Priorité 1 :** `.agents/references/anthropic/anthropic-skill-patterns.md` (Motifs officiels Anthropic).

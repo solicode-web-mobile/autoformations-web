@@ -27,10 +27,10 @@ Ce skill est l'**orchestrateur universel d'onboarding, d'audit architectural et 
   - Qualification et proposition de nouveaux skills ou de règles locales pour le projet.
   - Vérification de santé et réalignement de l'environnement IA (`manage-skills.cjs list`).
 - **Quand NE PAS l'activer :**
-  - Développement direct de fonctionnalités de code ➔ Utiliser [feature-dev](../feature-dev/SKILL.md).
-  - Conception ou modification physique d'un skill du Hub ➔ Utiliser [plugin-dev](../plugin-dev/SKILL.md).
-  - Diagnostic d'anomalies sur logs applicatifs ➔ Utiliser [bug-fixer](../bug-fixer/SKILL.md).
-  - Rédaction effective d'un tutoriel ➔ Utiliser [tutorial-writer](../tutorial-writer/SKILL.md).
+  - Rédaction ou simplification de tutoriels ➔ Utiliser [tutorial-writer](../tutorial-writer/SKILL.md).
+  - Conception, modification ou gouvernance des compétences et règles ➔ Utiliser [plugin-dev](../plugin-dev/SKILL.md).
+  - Développement de composants, styles CSS ou layouts Jekyll ➔ Utiliser [dev-jekyll](../dev-jekyll/SKILL.md).
+  - Synchronisation du socle technique partagé (Core Theme) ➔ Utiliser [sync-theme](../sync-theme/SKILL.md).
 
 ---
 
