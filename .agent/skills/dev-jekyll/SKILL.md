@@ -1,5 +1,5 @@
 ---
-name: developpeur-jekyll
+name: dev-jekyll
 description: Expert en développement, optimisation et maintenance de la plateforme d'autoformation avec Jekyll et Just the Docs.
 ---
 
