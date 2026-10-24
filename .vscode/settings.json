@@ -24,7 +24,7 @@
     "hide-files.files": [],
     "folder-color.pathColors": [
         {
-            "folderPath": "autoformations-web\\.agent\\",
+            "folderPath": "autoformations-web\\old_agent",
             "isFolderOnly": true,
             "color": "foldercolorizer.color_d787af"
         },
