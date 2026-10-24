@@ -1,7 +1,7 @@
 ---
 name: tutorial-writer
 description: Conçoit et rédige des tutoriels techniques (unitaires ou en série progressive vers un code final) nativement simplifiés, concrets et vérifiables pour les apprenants.
-version: 2.0.0
+version: 2.1.0
 inspiration:
   source: "solicode-pedagogy"
   plugin: "pedagogy-referential"
@@ -39,8 +39,9 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 - **Données d'entrée pour une série progressive :**
   1. Le **Plan des tutoriels de l'UA** : Liste ordonnée des tutoriels avec leurs notions cibles.
   2. Le **Code source final d'arrivée** : Fichier(s) complet(s) ou maquette terminée représentant le livrable final attendu à l'issue de l'UA.
-- **Ressource didactique interne (chargée à la demande) :**
-  - [domaines-pedagogiques.md](resources/domaines-pedagogiques.md) : Règles spécifiques pour le domaine enseigné parmi les 17 domaines techniques (ex: livrable `.js` pur avec `array-svg.html` en algorithmique, requêtes préparées PDO en PHP, etc.).
+- **Ressources didactiques internes par domaine (chargées à la demande) :**
+  - [domaines-pedagogiques.md](resources/domaines-pedagogiques.md) : Index central des 17 domaines techniques.
+  - Fiches modulaires par domaine dans `resources/` (ex: [domaine-conception.md](resources/domaine-conception.md) pour les gabarits SVG de diagrammes MCD Merise, [domaine-algo.md](resources/domaine-algo.md) pour les tableaux `array-svg.html`, [domaine-css.md](resources/domaine-css.md), etc.).
 - **Ressources transversales du projet :**
   - `.agents/rules/pedagogie-spartel.md` (Directives de style et progression N1).
   - `.agents/rules/standards-techniques.md` (Encodage UTF-8, règles Jekyll, `window.pageData`, livrables GitHub/MD).
