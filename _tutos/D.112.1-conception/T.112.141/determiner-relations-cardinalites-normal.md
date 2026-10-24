@@ -16,7 +16,7 @@ simplified: true
 
 ## Objectif
 
-Relier les entités du Blog entre elles à l'aide de **relations** et de **cardinalités** pour modéliser la structure de la base de données.
+Relier les entités du Blog entre elles à l'aide de **relations** et de **cardinalités** pour modéliser la structure de la base de données selon la norme Merise.
 
 ## Prérequis
 
@@ -36,21 +36,51 @@ Sur la **Page Détail d'un article** et la **Page d'accueil**, observez comment 
 
 ### 1.1. La règle de gestion et la relation
 
-Une **règle de gestion** est une phrase simple qui décrit le lien métier entre deux entités. Elle utilise toujours un **verbe d'action**.
+Une **règle de gestion** est une phrase simple décrivant le lien métier entre deux entités. Elle utilise toujours un **verbe d'action**.
 
-Une **relation** représente ce lien sur le schéma.
+Dans un Modèle Conceptuel de Données (MCD) :
+* Une **entité** est représentée par un **rectangle** (en-tête avec le nom, corps avec les attributs et identifiant souligné).
+* Une **relation** (ou association) est représentée par un **ovale** contenant le verbe d'action.
+* Des **traits** relient les entités à la relation.
 
 *Exemple :* « Un auteur habite dans une ville. »
 
-```mermaid
-flowchart LR
-    AUTEUR["AUTEUR"] --- R{"habite"} --- VILLE["VILLE"]
-    style R fill:#e8f4fd,stroke:#0d6efd
-```
+<svg viewBox="0 0 600 110" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ligne AUTEUR - habite -->
+  <line x1="160" y1="55" x2="235" y2="55" stroke="#334155" stroke-width="2"/>
+  <!-- Ligne habite - VILLE -->
+  <line x1="365" y1="55" x2="440" y2="55" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Entité AUTEUR -->
+  <g transform="translate(20, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">AUTEUR</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_auteur</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">nom_auteur</text>
+  </g>
+
+  <!-- Relation habite -->
+  <g transform="translate(300, 55)">
+    <ellipse cx="0" cy="0" rx="65" ry="26" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="0" y="5" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1e40af" text-anchor="middle">habite</text>
+  </g>
+
+  <!-- Entité VILLE -->
+  <g transform="translate(440, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">VILLE</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_ville</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">nom_ville</text>
+  </g>
+</svg>
 
 ### 1.2. Calculer les cardinalités (min, max)
 
-Une **cardinalité** indique combien de fois une entité participe à une relation. Elle s'écrit toujours : `(minimum, maximum)`.
+Une **cardinalité** indique combien de fois une entité participe à une relation. Elle s'écrit toujours : `(minimum, maximum)` et se place **sur le trait, du côté de l'entité**.
 
 Pour trouver les valeurs de chaque côté, posez deux questions simples :
 
@@ -65,23 +95,83 @@ Les 4 couples de cardinalités possibles sont : `(0,1)`, `(1,1)`, `(0,N)`, `(1,N
 
 * **La relation 1–N (un à plusieurs) :**
   C'est le cas le plus courant. Une occurrence d'un côté est liée à plusieurs occurrences en face.
-  *Exemple :* Un auteur rédige un ou plusieurs articles. Un article est rédigé par un seul auteur.
+  *Exemple :* Un auteur rédige un ou plusieurs articles `(1,N)`. Un article est rédigé par un seul auteur `(1,1)`.
 
-```mermaid
-flowchart LR
-    AUTEUR["AUTEUR"] --- |"(1,N)"| R{"rédige"} --- |"(1,1)"| ARTICLE["ARTICLE"]
-    style R fill:#e8f4fd,stroke:#0d6efd
-```
+<svg viewBox="0 0 600 110" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ligne AUTEUR - rédige -->
+  <line x1="160" y1="55" x2="235" y2="55" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">1,N</text>
+
+  <!-- Ligne rédige - ARTICLE -->
+  <line x1="365" y1="55" x2="440" y2="55" stroke="#334155" stroke-width="2"/>
+  <text x="405" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">1,1</text>
+
+  <!-- Entité AUTEUR -->
+  <g transform="translate(20, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">AUTEUR</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_auteur</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">nom_auteur</text>
+  </g>
+
+  <!-- Relation rédige -->
+  <g transform="translate(300, 55)">
+    <ellipse cx="0" cy="0" rx="65" ry="26" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="0" y="5" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1e40af" text-anchor="middle">rédige</text>
+  </g>
+
+  <!-- Entité ARTICLE -->
+  <g transform="translate(440, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">ARTICLE</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_article</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">titre_article</text>
+  </g>
+</svg>
 
 * **La relation N–N (plusieurs à plusieurs) :**
   Les occurrences peuvent être multiples des deux côtés.
-  *Exemple :* Un article possède zéro ou plusieurs tags. Un tag peut être associé à zéro ou plusieurs articles.
+  *Exemple :* Un article possède zéro ou plusieurs tags `(0,N)`. Un tag peut être associé à zéro ou plusieurs articles `(0,N)`.
 
-```mermaid
-flowchart LR
-    ARTICLE["ARTICLE"] --- |"(0,N)"| R{"possède"} --- |"(0,N)"| TAG["TAG"]
-    style R fill:#e8f4fd,stroke:#0d6efd
-```
+<svg viewBox="0 0 600 110" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ligne ARTICLE - possède -->
+  <line x1="160" y1="55" x2="235" y2="55" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">0,N</text>
+
+  <!-- Ligne possède - TAG -->
+  <line x1="365" y1="55" x2="440" y2="55" stroke="#334155" stroke-width="2"/>
+  <text x="405" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">0,N</text>
+
+  <!-- Entité ARTICLE -->
+  <g transform="translate(20, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">ARTICLE</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_article</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">titre_article</text>
+  </g>
+
+  <!-- Relation possède -->
+  <g transform="translate(300, 55)">
+    <ellipse cx="0" cy="0" rx="65" ry="26" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="0" y="5" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1e40af" text-anchor="middle">possède</text>
+  </g>
+
+  <!-- Entité TAG -->
+  <g transform="translate(440, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">TAG</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_tag</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">nom_tag</text>
+  </g>
+</svg>
 
 ---
 
@@ -100,9 +190,41 @@ Appliquez la méthode des deux questions pour relier `VILLE` et `AUTEUR` avec le
    - Peut-il habiter dans plusieurs villes ? Non $\rightarrow$ `max = 1`.
    - **Cardinalité côté AUTEUR = `(1,1)`**.
 
-```text
-VILLE (1,N) ─── habite ─── (1,1) AUTEUR
-```
+<svg viewBox="0 0 600 110" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ligne VILLE - habite -->
+  <line x1="160" y1="55" x2="235" y2="55" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">1,N</text>
+
+  <!-- Ligne habite - AUTEUR -->
+  <line x1="365" y1="55" x2="440" y2="55" stroke="#334155" stroke-width="2"/>
+  <text x="405" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">1,1</text>
+
+  <!-- Entité VILLE -->
+  <g transform="translate(20, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">VILLE</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_ville</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">nom_ville</text>
+  </g>
+
+  <!-- Relation habite -->
+  <g transform="translate(300, 55)">
+    <ellipse cx="0" cy="0" rx="65" ry="26" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="0" y="5" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1e40af" text-anchor="middle">habite</text>
+  </g>
+
+  <!-- Entité AUTEUR -->
+  <g transform="translate(440, 15)">
+    <rect width="140" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <path d="M 0 28 L 140 28" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 0 6 C 0 2 2 0 6 0 L 134 0 C 138 0 140 2 140 6 L 140 28 L 0 28 Z" fill="#e2e8f0"/>
+    <text x="70" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">AUTEUR</text>
+    <text x="14" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-decoration="underline" fill="#1e293b">id_auteur</text>
+    <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">nom_auteur</text>
+  </g>
+</svg>
 
 ### 2.2. Travail à faire
 
@@ -151,5 +273,5 @@ Dans le prochain tutoriel, vous assemblerez vos entités et vos relations pour c
 ## Glossaire
 
 - **Règle de gestion** : Phrase décrivant un fonctionnement métier entre deux entités.
-- **Relation** : Lien logique entre deux entités, représenté par un verbe d'action.
+- **Relation** : Lien logique entre deux entités, représenté par un verbe d'action dans un ovale Merise.
 - **Cardinalité** : Couple `(minimum, maximum)` indiquant le nombre de participations d'une entité à une relation.

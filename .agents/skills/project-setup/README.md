@@ -6,7 +6,7 @@
 > **Fichier technique IA :** [`SKILL.md`](SKILL.md)
 
 ---
-
+aabb
 ## 🎯 1. À quoi sert ce Skill ?
 
 Le skill `project-setup` est l'**orchestrateur universel d'initialisation et de diagnostic d'agent IA**. Il permet :
@@ -42,16 +42,15 @@ Le script de gouvernance et de synchronisation est colocalisé dans ce skill :
 # 1. Consulter l'inventaire des compétences (locales vs globales Hub)
 node .agents/skills/project-setup/scripts/manage-skills.cjs list
 
-# 2. Synchroniser les compétences globales depuis le Hub (copie physique compatible Antigravity)
-node .agents/skills/project-setup/scripts/manage-skills.cjs sync
+# 2. Récupérer / Synchroniser toutes les compétences globales depuis le Hub (Hub -> Projet)
+node .agents/skills/project-setup/scripts/manage-skills.cjs pull
+# (ou avec un nom de skill : node ... pull plugin-dev)
 
-# 3. Synchroniser une compétence spécifique
-node .agents/skills/project-setup/scripts/manage-skills.cjs sync plugin-dev
+# 3. Pousser / Synchroniser toutes les compétences globales vers le Hub (Projet -> Hub)
+node .agents/skills/project-setup/scripts/manage-skills.cjs push
+# (ou avec un nom de skill : node ... push plugin-dev)
 
-# 4. Promouvoir une compétence locale vers le Hub (avec références en cascade)
-node .agents/skills/project-setup/scripts/manage-skills.cjs promote <nom-du-skill>
-
-# 5. Détacher une compétence globale pour modification locale (incubation)
+# 4. Détacher une compétence globale pour modification locale (incubation)
 node .agents/skills/project-setup/scripts/manage-skills.cjs localize <nom-du-skill>
 ```
 
@@ -84,11 +83,17 @@ Pour mettre à jour les compétences locales lorsque le Hub `skills-workspace` a
    ```
 
 ### B. Synchronisation Montante (Projet Local ➔ Hub Global)
-Pour partager une compétence créée ou améliorée dans le projet local avec l'ensemble des projets :
+Pour envoyer vos modifications locales vers le Hub central :
+
 ```powershell
-node .agents/skills/project-setup/scripts/manage-skills.cjs promote <nom-du-skill>
+# Pousser TOUTES les compétences globales vers le Hub (sans argument)
+node .agents/skills/project-setup/scripts/manage-skills.cjs push
+
+# Ou pousser / promouvoir une compétence spécifique
+node .agents/skills/project-setup/scripts/manage-skills.cjs push <nom-du-skill>
+# (alias promote : node ... promote <nom-du-skill>)
 ```
-*Le script copie le dossier vers le Hub et transfère automatiquement les fiches de référence sous `.agents/references/` déclarées dans le `SKILL.md`.*
+*Le script déploie les dossiers vers le Hub et transfère automatiquement les fiches de référence sous `.agents/references/` déclarées dans les `SKILL.md`.*
 
 ---
 

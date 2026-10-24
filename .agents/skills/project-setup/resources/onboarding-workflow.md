@@ -112,12 +112,12 @@ Si un dossier `old_agent` ou `.agent/` non normé préexiste :
 Au fil de la vie du projet, lorsque de nouvelles améliorations sont publiées dans le Hub global (`skills-workspace`) :
 
 ```powershell
-# Mettre à jour l'ensemble des compétences globales déployées
-node .agents/skills/project-setup/scripts/manage-skills.cjs sync
+# Récupérer l'ensemble des compétences globales (Hub -> Projet)
+node .agents/skills/project-setup/scripts/manage-skills.cjs pull
 
-# Mettre à jour une seule compétence (ex: plugin-dev)
-node .agents/skills/project-setup/scripts/manage-skills.cjs sync plugin-dev
+# Pousser l'ensemble des compétences globales vers le Hub (Projet -> Hub)
+node .agents/skills/project-setup/scripts/manage-skills.cjs push
 
-# Pousser une compétence locale enrichie vers le Hub (promotion)
-node .agents/skills/project-setup/scripts/manage-skills.cjs promote <nom-du-skill>
+# Pousser ou mettre à jour une compétence spécifique
+node .agents/skills/project-setup/scripts/manage-skills.cjs push <nom-du-skill>
 ```

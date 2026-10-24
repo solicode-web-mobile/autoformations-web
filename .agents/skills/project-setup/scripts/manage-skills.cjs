@@ -14,9 +14,10 @@
  *
  * Usage :
  *   node .agents/skills/project-setup/scripts/manage-skills.cjs list
- *   node .agents/skills/project-setup/scripts/manage-skills.cjs sync [skill-name]
+ *   node .agents/skills/project-setup/scripts/manage-skills.cjs pull [skill-name]     (Hub -> Projet local)
+ *   node .agents/skills/project-setup/scripts/manage-skills.cjs push [skill-name]     (Projet local -> Hub)
  *   node .agents/skills/project-setup/scripts/manage-skills.cjs install
- *   node .agents/skills/project-setup/scripts/manage-skills.cjs promote <skill-name>
+ *   node .agents/skills/project-setup/scripts/manage-skills.cjs promote [skill-name]  (Alias de push)
  *   node .agents/skills/project-setup/scripts/manage-skills.cjs localize <skill-name>
  *   node .agents/skills/project-setup/scripts/manage-skills.cjs bootstrap [hub-path]
  */
@@ -229,69 +230,70 @@ switch (command) {
         break;
     }
 
+    case 'push':
     case 'promote': {
-        const skillName = args[1];
-        if (!skillName) {
-            console.error('❌ Usage : node manage-skills.cjs promote <nom-du-skill>');
-            process.exit(1);
+        const targetSkill = args[1];
+        const skillsToPush = targetSkill
+            ? [targetSkill]
+            : (config.skills.global || []);
+
+        if (skillsToPush.length === 0) {
+            console.log(`ℹ️ Aucune compétence globale à pousser vers le Hub.`);
+            break;
         }
 
-        const localSkillPath = path.join(skillsDir, skillName);
-        if (!fs.existsSync(localSkillPath)) {
-            console.error(`❌ Le skill local n'existe pas dans : ${localSkillPath}`);
-            process.exit(1);
-        }
+        console.log(`\n🚀 [PUSH / PROMOTION VERS LE HUB GLOBAL] (Projet local ➔ Hub)`);
+        console.log(`📂 Projet source : ${skillsDir}`);
+        console.log(`📦 Hub cible     : ${hubSkillsDir}\n`);
 
-        const status = getSkillStatus(skillName);
-        if (status.isGlobal) {
-            console.log(`ℹ️ Le skill [${skillName}] est DÉJÀ global (lien symbolique vers le Hub).`);
-            process.exit(0);
-        }
+        skillsToPush.forEach(skillName => {
+            const localSkillPath = path.join(skillsDir, skillName);
+            if (!fs.existsSync(localSkillPath)) {
+                console.warn(`⚠️ Compétence locale introuvable : ${localSkillPath}`);
+                return;
+            }
 
-        console.log(`\n🚀 [PROMOTION DÉPENDANCIELLE EN CASCADE] : ${skillName}`);
-        console.log(`   Transfert du Local vers le Global (Hub)...\n`);
+            console.log(`📤 Poussée de [${skillName}] vers le Hub...`);
 
-        // Étape 1 : Analyser et promouvoir les ressources partagées requises
-        const dependencies = extractDependenciesFromSkill(localSkillPath);
-        if (dependencies.length > 0) {
-            console.log(`🔍 Dépendances de références détectées (${dependencies.length}) :`);
-            dependencies.forEach(dep => {
-                const localRef = path.join(referencesDir, dep);
-                const hubRef = path.join(hubReferencesDir, dep);
+            // Étape 1 : Analyser et promouvoir les ressources partagées requises
+            const dependencies = extractDependenciesFromSkill(localSkillPath);
+            if (dependencies.length > 0) {
+                dependencies.forEach(dep => {
+                    const localRef = path.join(referencesDir, dep);
+                    const hubRef = path.join(hubReferencesDir, dep);
 
-                if (fs.existsSync(localRef)) {
-                    const hubRefDir = path.dirname(hubRef);
-                    if (!fs.existsSync(hubRefDir)) fs.mkdirSync(hubRefDir, { recursive: true });
+                    if (fs.existsSync(localRef)) {
+                        const hubRefDir = path.dirname(hubRef);
+                        if (!fs.existsSync(hubRefDir)) fs.mkdirSync(hubRefDir, { recursive: true });
 
-                    if (!fs.existsSync(hubRef)) {
                         fs.copyFileSync(localRef, hubRef);
-                        console.log(`  🔗 [CASCADE] Référence partagée promue vers le Hub : references/${dep}`);
-                    } else {
-                        console.log(`  ℹ️ Référence partagée déjà présente dans le Hub : references/${dep}`);
+                        console.log(`  └─ 🔗 Référence partagée mise à jour dans le Hub : references/${dep}`);
                     }
+                });
+            }
+
+            // Étape 2 : Copier le skill vers le Hub
+            const hubSkillPath = path.join(hubSkillsDir, skillName);
+            if (!fs.existsSync(hubSkillsDir)) fs.mkdirSync(hubSkillsDir, { recursive: true });
+            
+            fs.cpSync(localSkillPath, hubSkillPath, { recursive: true, force: true });
+            console.log(`  └─ 📦 Déploiement physique dans le Hub : ${hubSkillPath}`);
+
+            // Étape 3 : Conserver le dossier local comme copie physique (Solution B - Compatible Antigravity)
+            console.log(`  └─ 📋 Copie physique maintenue dans le projet local : .agents/skills/${skillName}`);
+
+            // Étape 4 : Mettre à jour skills.json si c'était un skill local
+            if ((config.skills.local || []).includes(skillName)) {
+                config.skills.local = config.skills.local.filter(s => s !== skillName);
+                if (!config.skills.global) config.skills.global = [];
+                if (!config.skills.global.includes(skillName)) {
+                    config.skills.global.push(skillName);
                 }
-            });
-        }
+            }
+        });
 
-        // Étape 2 : Copier le skill vers le Hub
-        const hubSkillPath = path.join(hubSkillsDir, skillName);
-        if (!fs.existsSync(hubSkillsDir)) fs.mkdirSync(hubSkillsDir, { recursive: true });
-        
-        console.log(`📦 Déploiement physique dans le Hub : ${hubSkillPath}`);
-        fs.cpSync(localSkillPath, hubSkillPath, { recursive: true });
-
-        // Étape 3 : Conserver le dossier local comme copie physique (Solution B - Compatible Antigravity)
-        console.log(`📋 Copie physique maintenue dans le projet local : .agents/skills/${skillName}`);
-
-        // Étape 4 : Mettre à jour skills.json
-        config.skills.local = (config.skills.local || []).filter(s => s !== skillName);
-        if (!config.skills.global) config.skills.global = [];
-        if (!config.skills.global.includes(skillName)) {
-            config.skills.global.push(skillName);
-        }
         saveConfig(config);
-
-        console.log(`\n🎉 Félicitations ! Le skill [${skillName}] et ses dépendances sont désormais GLOBAUX.`);
+        console.log(`\n🎉 Poussée vers le Hub terminée avec succès !`);
         break;
     }
 
@@ -473,6 +475,6 @@ switch (command) {
 
     default:
         console.log(`Commande inconnue : ${command}`);
-        console.log('Commandes disponibles : list, sync, promote, localize, install, bootstrap');
+        console.log('Commandes disponibles : list, pull (sync), push (promote), localize, install, bootstrap');
         process.exit(1);
 }
