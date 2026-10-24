@@ -63,3 +63,17 @@ Le projet partage son socle technique avec d'autres plateformes d'autoformation 
 - **Règle de sécurité IA :**  
   L'agent IA ne doit **JAMAIS exécuter automatiquement** `push_theme.ps1` ou `pull_theme.ps1`. L'exécution doit rester une décision explicite et manuelle du développeur.
 - **Portée :** N'ajouter au `theme-sync.json` que des éléments génériques réutilisables. Les éléments propres au cursus web local restent exclus du socle partagé.
+
+---
+
+## 5. Fonctionnalités JavaScript Interactives & Diagrammes Mermaid
+
+- **Bouton d'Affichage du Résultat (`tuto.js`) :** Bascule l'affichage du bloc de correction ou du démonstrateur associé au tutoriel.
+- **Injecteur d'Éditeur Interactif (`code-editor-injector.js`) :** Monte dynamiquement l'interface d'édition de code multi-onglets (HTML, CSS, JS, PHP) initialisée avec `window.pageData`.
+- **Bloc Plein Écran (`fullscreen-block.js`) :** Permet à l'apprenant d'étendre un éditeur ou une iframe de prévisualisation sur tout l'écran.
+- **Iframe Auto-Wrapper (`iframe-controls.js`) :** Isole les démonstrateurs exécutables pointant vers `/code/...` et ajuste leur viewport.
+- **Diagrammes Mermaid dans Conteneurs Masqués :**
+  - Just the Docs peut masquer des blocs par défaut (ex: onglets ou accordéons).
+  - Pour éviter les erreurs de dimensionnement `0x0` lors du rendu Mermaid, le script réinitialise le SVG (`mermaid.run()`) dès l'événement d'ouverture du conteneur parent.
+  - Formats supportés : `flowchart LR/TD`, `classDiagram`, `erDiagram` et `sequenceDiagram`.
+

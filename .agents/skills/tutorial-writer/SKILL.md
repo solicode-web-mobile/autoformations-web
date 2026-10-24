@@ -1,61 +1,72 @@
 ---
 name: tutorial-writer
-description: Redige des tutoriels techniques pas-a-pas progressifs, verifiables et ancres dans le code reel de Solicode LMS pour les apprenants developpeurs.
-version: 1.0.0
+description: Rédige, simplifie et optimise des tutoriels techniques pas-à-pas progressifs, vérifiables et ancrés dans le code réel pour les apprenants.
+version: 1.1.0
 inspiration:
   source: "solicode-pedagogy"
   plugin: "pedagogy-referential"
-  pattern: "competency-based active pedagogy & step-by-step guidance"
+  pattern: "competency-based active pedagogy, step-by-step guidance & tutorial simplification"
 ---
 
 # 1. Mission
-Ce skill a pour mission de concevoir des guides d'apprentissage techniques pas-à-pas (tutoriels) clairs, didactiques et directement testables. Chaque tutoriel vise l'acquisition d'un savoir-faire précis par les apprenants développeurs de Solicode, en utilisant des exemples issus du codebase réel et en appliquant le principe de divulgation progressive.
+Ce skill a pour mission de **concevoir, rédiger, simplifier et optimiser** des guides d'apprentissage techniques pas-à-pas (tutoriels) clairs, didactiques et directement testables. Chaque tutoriel vise l'acquisition d'un savoir-faire précis par les apprenants en appliquant le principe de divulgation progressive et en éliminant toute surcharge cognitive inutile.
 
 # 2. Déclenchement & Limites
 - **Quand l'activer :**
-  - Demande de tutoriel guidé ou pas-à-pas ("Rédige un tutoriel pour créer un filtre TableUI", "Explique aux apprenants comment lever une BlException").
-  - Documentation pédagogique d'un composant complexe (Services, Traits, FormUI).
-  - Guide méthodologique pour débuter sur un module de SoliLMS.
+  - Rédaction initiale d'un tutoriel guidé pas-à-pas (*« Rédige un tutoriel pour l'UA D.122.1 »*, *« Crée un guide pas-à-pas »*).
+  - Simplification, optimisation ou allègement d'un tutoriel existant trop dense (*« Simplifie ce tutoriel »*, *« Allège la théorie et mutualise les exercices »*).
+  - Harmonisation et mise en conformité pédagogique d'un tutoriel (*« Ajoute simplified: true et vérifie les données de départ »*).
+  - Documentation pédagogique d'un composant complexe.
 - **Quand NE PAS l'activer :**
   - Conception d'un sujet de TP ou brief d'évaluation autonome -> Déclencher `workshop-builder`.
   - Implémentation directe de code applicatif -> Déclencher `feature-dev`.
   - Fiche de contexte brute pour l'IA -> Déclencher `context-generator`.
 
 # 3. Entrées & Ressources à Charger
-1. **Priorité 1 (Contexte Pédagogique) :** `.agents/references/standards/pedagogy-referential.md` (Compétences cibles Solicode, niveaux d'autonomie).
-2. **Priorité 2 (Références Techniques) :**
-   - `.agents/references/architecture/layers-3tiers.md`
-   - `.agents/references/frontend/tableui-framework.md`
-   - `.agents/references/gapp/01-conventions-et-garde-fous.md`
-3. **Priorité 3 (Code Source Réel) :** Extraire les exemples directement depuis les classes fonctionnelles du projet (ex: `FiliereService.php`, `TableUI.js`).
+1. **Priorité 1 (Conventions & Domaines) :**
+   - `.agents/references/conventions/project-conventions.md` (Pédagogie N1, Spartel).
+   - `.agents/references/conventions/domaines-pedagogiques.md` (Règles spécifiques du domaine ciblé).
+   - `.agents/references/conventions/redaction-tutoriels.md` (Gabarit canonique & règles de simplification).
+2. **Priorité 2 (Code & Démonstrateurs) :** Code réel sous `/code/` ou classes applicatives réelles.
 
 # 4. Contraintes & Règles Inviolables
-- **Zéro Code Fictif :** Les exemples de code DOIVENT correspondre rigoureusement à l'architecture réelle de Solicode LMS (pas de faux code PHP ou de snippets génériques trouvés sur le web).
-- **Divulgation Progressive :** Ne jamais noyer l'apprenant sous des notions avancées hors-sujet. Isoler une difficulté à la fois.
-- **Expliciter les Pièges Réels :** Toujours mettre en garde contre les erreurs fréquentes observées chez les apprenants (ex: modifier par erreur `Base/` au lieu de la classe enfant, oublier `data-calcule`).
+- **Zéro Code Fictif :** Les exemples de code DOIVENT correspondre rigoureusement à l'architecture réelle enseignée (pas de faux code ni de snippets cassés).
+- **Divulgation Progressive & Clarté :** Isoler une difficulté à la fois. Si une explication théorique dépasse 4 lignes, la remplacer ou l'accompagner d'un schéma (Mermaid/SVG) ou d'un exemple concret.
+- **Règles d'Or de Simplification :**
+  - Fusionner les notions indissociables (3 à 4 sections H3 maximum en théorie).
+  - Mutualiser les exercices pratiques (un seul tableau synthétique au lieu de plusieurs micro-tableaux).
+  - Déclarer `simplified: true` et supprimer `en_construction: true` dans le Front Matter lors d'une passe d'optimisation.
+  - N'inclure la section "Données de départ" que si au moins un champ `data_*` est non vide.
+  - Mettre à jour les fichiers de résultats et démos dans `/code/` associés au tutoriel.
 
-# 5. Procédure Pas-à-Pas (Workflow de Rédaction)
-1. **Étape 1 : Cadrage Pédagogique :**
-   - Définir l'objectif SMART du tutoriel (ex: "À la fin de ce guide, vous serez capable d'ajouter un filtre ManyToOne fonctionnel").
-   - Préciser les prérequis techniques (notions PHP/Laravel, environnement local prêt).
-2. **Étape 2 : Mise en Situation Métier :** Formuler un besoin client crédible (ex: "Le responsable pédagogique souhaite filtrer les projets par session de formation").
-3. **Étape 3 : Découpage en Étapes Numérotées :**
-   - Chaque étape doit comporter : *L'action à réaliser*, *Le fichier exact à ouvrir/modifier*, *Le bloc de code commenté*, et *Ce qui se passe sous le capot*.
-4. **Étape 4 : Défi d'Application Autonome :** Proposer un exercice court de mise en pratique pour tester l'ancrage des connaissances.
-5. **Étape 5 : Checklist d'Auto-Évaluation :** Fournir une liste de points observables pour que l'apprenant valide lui-même son travail.
+# 5. Procédure Pas-à-Pas
+
+### Parcours A : Rédaction d'un Nouveau Tutoriel
+1. **Cadrage Pédagogique :** Identifier l'UA, la compétence, le domaine, le niveau (N1 par défaut) et les prérequis.
+2. **Mise en Situation :** Formuler un cas d'étude narratif concret issu de la vie professionnelle.
+3. **Étapes Pas-à-Pas :** Action à réaliser, fichier ciblé, code commenté, et observation du résultat.
+4. **Pratique Continue :** Progression vers la réalisation finale de l'UA, livrable sous forme de dépôt GitHub (ou `.md` de commandes).
+5. **Auto-Évaluation & Glossaire :** Checklist observable et glossaire court des termes nouveaux.
+
+### Parcours B : Simplification d'un Tutoriel Existant
+1. **Diagnostic Cognitif :** Repérer les digressions académiques, doublons théoriques ou exercices dispersés.
+2. **Fusion & Élagage :** Regrouper les concepts théoriques sous 3 ou 4 sous-sections maximum, remplacer les longs paragraphes par des schémas visuels.
+3. **Mutualisation Pratique :** Regrouper les consignes dans un tableau de travail unifié.
+4. **Mise à Jour Front Matter & Dépendances :** Marquer `simplified: true`, vérifier les champs `data_*`, et ajuster le cas échéant les fichiers témoins dans `/code/`.
 
 # 6. Gestion des Ambiguïtés & Décisions
-- Si le niveau des apprenants n'est pas spécifié : calibrer par défaut pour un développeur junior (Niveau 1/2 : expliquer le pourquoi de chaque annotation et relation).
+- Si le niveau des apprenants n'est pas spécifié : calibrer par défaut pour un développeur débutant N1 (français A1-A2, explications concrètes).
 
 # 7. Format de Sortie & Livrables
 Un document Markdown structuré comprenant obligatoirement :
-- `# [Titre Clair du Tutoriel]`
+- Front Matter YAML normé (avec `title`, `layout: tuto`, `domain`, `ua`, etc.)
+- Script `window.pageData` (si `data_*` présent)
 - `## 1. Contexte & Objectif d'Apprentissage`
-- `## 2. Prérequis`
-- `## 3. Étapes Pas-à-Pas (Guidées)`
-- `## 4. Pièges Fréquents & Bonnes Pratiques`
-- `## 5. Défi Pratique Autonome`
-- `## 6. Checklist de Validation (Je valide que mon code marche)`
+- `## 2. Données de départ` (uniquement si au moins un champ `data_*` est non vide)
+- `## 3. Théorie Pas-à-Pas (Simplifiée & Illustrée)`
+- `## 4. Pratique & Réalisation Guidée`
+- `## 5. Livrable & Critères de Réussite`
+- `## 6. Glossaire & Checklist d'Auto-Évaluation`
 
 # 8. Contrôle Qualité (Checklist Binaire)
 - [ ] Le code présenté est-il strictement conforme aux conventions réelles de SoliLMS ?
