@@ -23,11 +23,12 @@ Ce skill a pour mission de **concevoir, rédiger, simplifier et optimiser** des 
   - Fiche de contexte brute pour l'IA -> Déclencher `context-generator`.
 
 # 3. Entrées & Ressources à Charger
-1. **Priorité 1 (Conventions & Domaines) :**
-   - `.agents/references/conventions/project-conventions.md` (Pédagogie N1, Spartel).
-   - `.agents/references/conventions/domaines-pedagogiques.md` (Règles spécifiques du domaine ciblé).
-   - `.agents/references/conventions/redaction-tutoriels.md` (Gabarit canonique & règles de simplification).
-2. **Priorité 2 (Code & Démonstrateurs) :** Code réel sous `/code/` ou classes applicatives réelles.
+- **Ressources méthodologiques internes (chargées à la demande) :**
+  - [redaction-tutoriels.md](resources/redaction-tutoriels.md) : Gabarit canonique, règles d'or de simplification et gestion des données de départ.
+- **Ressources transversales du projet :**
+  - `.agents/references/conventions/project-conventions.md` (Pédagogie N1, cadre Spartel).
+  - `.agents/references/conventions/domaines-pedagogiques.md` (Règles spécifiques au domaine ciblé).
+  - Code réel et démonstrateurs sous `/code/`.
 
 # 4. Contraintes & Règles Inviolables
 - **Zéro Code Fictif :** Les exemples de code DOIVENT correspondre rigoureusement à l'architecture réelle enseignée (pas de faux code ni de snippets cassés).
