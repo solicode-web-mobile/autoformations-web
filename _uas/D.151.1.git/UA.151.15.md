@@ -1,5 +1,5 @@
 ---
-title: "Explorer l'historique et annuler des erreurs simples"
+title: "Créer un fichier .gitignore et annuler des erreurs"
 layout: ua
 code: "UA.151.15"
 ordre: 37
@@ -7,17 +7,16 @@ competence: "C.151"
 domaine: "D.151.1"
 duree: 1
 objectif: >
-  Lire le passé du projet, retrouver une ancienne version et effacer une modification locale non désirée.
+  Sécuriser le projet en excluant les fichiers inutiles avec .gitignore et annuler des modifications non désirées avec git restore.
 description: >
-  Apprendre à naviguer dans l'historique d'un projet Git et à utiliser les commandes de restauration pour annuler des modifications récentes non validées.
+  Configurer les règles d'exclusion de fichiers pour garder un dépôt propre. Utiliser git restore pour annuler des modifications locales ou retirer un fichier de la zone de préparation sans perdre le travail sain.
 notions:
-  - "L'historique (log)"
-  - "L'identifiant de commit"
-  - "HEAD"
-  - "Commandes : git log, git log --oneline, git diff"
-  - "Commandes : git restore, git restore --staged"
+  - "Rôle et syntaxe du fichier .gitignore"
+  - "Fichiers à exclure (système, logs, configuration locale)"
+  - "Annulation locale avec git restore"
+  - "Désindexation avec git restore --staged"
 livrable: >
-  Des manipulations réussies dans le terminal pour explorer l'historique et annuler des modifications ciblées.
+  Dépôt sécurisé par un fichier .gitignore opérationnel et modifications erronées annulées proprement.
 travail_a_faire: >
-  Consulter l'historique des commits du projet, visualiser les différences introduites, et expérimenter avec les commandes d'annulation pour retirer des fichiers du staging ou restaurer leur état initial.
+  Créer un fichier .gitignore à la racine du Blog, tester l'exclusion de fichiers temporaires, et annuler une modification incorrecte avec git restore.
 ---

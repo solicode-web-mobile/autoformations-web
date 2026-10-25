@@ -1,5 +1,5 @@
 ---
-title: "Sécuriser son projet et ignorer l'inutile"
+title: "Consulter l'historique du projet avec git log"
 layout: ua
 code: "UA.151.14"
 ordre: 36
@@ -7,15 +7,16 @@ competence: "C.151"
 domaine: "D.151.1"
 duree: 1
 objectif: >
-  Contrôler précisément ce qui est envoyé sur GitHub pour éviter de partager des fichiers personnels, temporaires ou des mots de passe.
+  Explorer l'historique des commits pour retrouver une information, comprendre l'évolution du code et identifier des versions antérieures.
 description: >
-  Mettre en place de bonnes pratiques de sécurité en excluant les éléments indésirables du contrôle de version avant tout commit.
+  Utiliser les commandes de consultation d'historique dans le terminal. Lire les informations d'un commit (auteur, date, hash), filtrer la vue avec les options de git log et comparer l'état du code.
 notions:
-  - "Fichiers .env, secrets, dépendances"
-  - "Configuration d'un fichier .gitignore"
-  - "Vérification avec git status et git diff"
+  - "L'historique Git (log)"
+  - "L'identifiant de commit (hash SHA-1)"
+  - "Commande git log et option --oneline"
+  - "Navigation dans l'historique"
 livrable: >
-  Un dépôt propre incluant un fichier .gitignore correctement configuré et protégeant les données sensibles.
+  Historique de commits exploré et tracé dans le terminal sans anomalie.
 travail_a_faire: >
-  Créer et configurer un fichier .gitignore pour exclure du suivi Git les fichiers contenant des variables d'environnement, les dépendances et les fichiers temporaires, puis vérifier la prise en compte avec git status.
+  Exécuter git log sur le dépôt du Blog pour visualiser la chronologie des versions et retrouver le hash d'un commit précis.
 ---
