@@ -8,14 +8,14 @@ domaine: "D.161.1"
 session: "S3"
 duree: 1
 objectif: >
-  Comprendre le rÃ´le d'un serveur Web et d'un langage dynamique pour prÃ©parer la transition vers PHP en S4.
+  Comprendre le rôle d'un serveur Web et d'un langage dynamique pour préparer la transition vers PHP en S4.
 description: >
-  Comprendre la diffÃ©rence entre un site web statique et un site web dynamique gÃ©nÃ©rÃ© cÃ´tÃ© serveur par un moteur PHP.
+  Comprendre la différence entre un site web statique et un site web dynamique généré côté serveur par un moteur PHP.
 notions:
   - "Serveur Web (Apache, Nginx)"
-  - "GÃ©nÃ©ration dynamique de code HTML"
-  - "Cycle d'exÃ©cution PHP cÃ´tÃ© serveur"
-  - "InterprÃ©tation vs exÃ©cution navigateur"
+  - "Génération dynamique de code HTML"
+  - "Cycle d'exécution PHP côté serveur"
+  - "Interprétation vs exécution navigateur"
 livrable: >
-  Slide partagÃ©e sur le traitement serveur PHP : Â« Du HTML statique au PHP dynamique : le rÃ´le du serveur Â».
+  Slide partagée sur le traitement serveur PHP : « Du HTML statique au PHP dynamique : le rôle du serveur ».
 ---

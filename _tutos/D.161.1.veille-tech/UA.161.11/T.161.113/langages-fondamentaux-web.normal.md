@@ -78,10 +78,10 @@ Une carte d'article de blog comporte :
 
 #### Étape 2 : Répartir les responsabilités
 Associez chaque élément au langage responsable :
-* Le titre et l'image $\rightarrow$ **HTML**
-* L'arrondi, les couleurs et les ombres $\rightarrow$ **CSS**
-* L'animation interactive au clic $\rightarrow$ **JavaScript**
-* La sélection des articles en base de données $\rightarrow$ **PHP**
+* Le titre et l'image → **HTML**
+* L'arrondi, les couleurs et les ombres → **CSS**
+* L'animation interactive au clic → **JavaScript**
+* La sélection des articles en base de données → **PHP**
 
 ### 2.2. Livrable attendu
 
