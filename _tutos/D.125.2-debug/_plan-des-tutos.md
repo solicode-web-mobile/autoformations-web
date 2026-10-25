@@ -1,679 +1,122 @@
-Voici le **plan de formation complet mis à jour**, avec l’initiation au débogage PHP et la configuration de l’environnement intégrées dans **S6 — UA.125.22**, sans créer de nouvelle UA.
+# Plan de Réalisation — Déboguer et Résoudre les Erreurs (D.125.2)
 
-# Plan de formation : Déboguer et résoudre les erreurs (Debug)
+**Domaine de compétence :** Déboguer et résoudre les erreurs (`D.125.2`)  
+**Session de première mobilisation :** S2 — Page de détail d’un article — V1 statique  
+**Niveau :** N1 (Débutant)  
 
-## 1. Objectif global
-
-Rendre progressivement l'apprenant autonome pour :
-
-> **reproduire un problème, observer l'exécution, localiser l'erreur, la corriger et vérifier que le résultat attendu est obtenu.**
-
-La progression est construite en deux dimensions complémentaires.
-
-### Progression de la compétence
-
-```text
-Observer
-   ↓
-Localiser
-   ↓
-Corriger
-   ↓
-Résoudre un parcours complet
-```
-
-### Progression technique
-
-```text
-JavaScript
-   ↓
-PHP
-   ↓
-PHP
-   ↓
-PHP + MySQL
-```
-
-Le passage de JavaScript à PHP ne constitue donc pas une nouvelle méthode de débogage. L'apprenant **transfère progressivement les mêmes gestes de débogage dans un environnement de plus en plus proche du projet réel**.
+> **Règle d'Unicité Pédagogique :**  
+> Ce document est rédigé une seule fois dans la session S2 (première session mobilisant le débogage). Il formalise la méthodologie générale et l'ensemble des tutoriels de débogage pour **les 12 sessions de la formation**. Dans les sessions suivantes (S6, S7, S9), l'apprenant réalisera l'Unité d'Apprentissage prévue à son sprint à partir de ce document unique de référence.
 
 ---
 
-# 2. Tableau récapitulatif des tutoriels
+## 1. Méthodologie Pédagogique du Débogage en Niveau N1
 
-| Session | UA | Tutoriel | Langage / environnement | Compétence principale | Livrable |
-|---|---|---|---|---|---|
-| **S2** | **UA.125.21** | **T.125.21.1 — Déboguer un programme JavaScript pas à pas** | JavaScript + navigateur | Observer l'exécution | Programme + trace |
-| **S6** | **UA.125.22** | **T.125.22.1 — Configurer le débogage PHP** | PHP + Xdebug + VS Code | Configurer l'outil de débogage | Environnement configuré |
-| **S6** | **UA.125.22** | **T.125.22.2 — Localiser une erreur en PHP** | PHP + Xdebug + Blog | Reproduire, observer et localiser | Enquête et localisation |
-| **S7** | **UA.125.23** | **T.125.23.1 — Corriger une erreur ciblée et vérifier** | PHP + Blog | Corriger et vérifier | Correction + preuve |
-| **S9** | **UA.125.24** | **T.125.24.1 — Diagnostiquer un bug sur un parcours complet** | PHP + MySQL + Xdebug + Blog | Suivre, corriger et vérifier un flux complet | Rapport + trace |
+Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur vers la solution :
 
----
+* **Démarche scientifique et méthodique en 4 temps :**
+  1. **Observer :** Quel est le symptôme exact (valeur inattendue, message dans la console, page blanche) ?
+  2. **Interrompre l'exécution :** Poser un point d'arrêt (*breakpoint*) pour figer le programme au moment critique.
+  3. **Inspecter :** Vérifier le contenu réel de chaque variable dans la mémoire de l'ordinateur (panneau *Scope*).
+  4. **Avancer pas à pas :** Exécuter les instructions ligne par ligne (*Step Over* - `F10`) pour identifier précisément l'instruction défaillante, puis corriger le code.
 
-# 3. S2 — UA.125.21 : Déboguer un programme pas à pas
-
-## T.125.21.1 — Déboguer un programme JavaScript pas à pas
-
-### Objectif
-
-Suivre l'exécution d'un petit programme JavaScript et observer les valeurs des variables à différents moments.
-
-### Environnement technique
-
-**JavaScript dans le navigateur**, à partir d'une Sandbox Algorithmique.
-
-### Situation d'apprentissage
-
-L'apprenant travaille sur un petit programme manipulant des données liées aux articles.
-
-Il apprend d'abord à **observer ce que fait réellement le programme**, sans chercher immédiatement à modifier le code.
-
-### Concepts clés
-
-| Concept | Compréhension attendue au N1 |
-|---|---|
-| **Exécution** | Le programme exécute des instructions dans un certain ordre. |
-| **Ligne exécutée** | Instruction actuellement traitée. |
-| **Point d'arrêt** | Endroit où le programme peut être mis en pause. |
-| **Pause** | Arrêt temporaire pour observer le programme. |
-| **Reprendre** | Continuer l'exécution après la pause. |
-| **Exécution pas à pas** | Avancer progressivement dans le programme. |
-| **Variable** | Donnée conservée par le programme. |
-| **Valeur** | Contenu d'une variable à un moment donné. |
-| **Inspection** | Observation d'une valeur pendant l'exécution. |
-| **`console.log()`** | Affichage d'une information pour observer une valeur. |
-| **Trace de débogage** | Notation des observations réalisées. |
-
-### Progression pédagogique
-
-**Je vois**
-
-Le formateur montre :
-
-```text
-Code
-  ↓
-Point d'arrêt
-  ↓
-Pause
-  ↓
-Variable
-  ↓
-Valeur
-  ↓
-Étape suivante
-```
-
-**Je comprends**
-
-L'apprenant comprend que le programme est exécuté progressivement et qu'il peut observer son état pendant cette exécution.
-
-**Je reproduis**
-
-Il refait le même débogage sur un exercice proche.
-
-**Je teste**
-
-Il modifie une donnée et observe son effet sur l'exécution.
-
-**Je présente**
-
-Il produit une trace d'observation.
-
-### Travail à réaliser
-
-**Sandbox Algorithmique JavaScript traitant des données liées aux articles.**
-
-### Livrable
-
-> **Programme JavaScript accompagné d'une trace de débogage montrant l'exécution pas à pas et l'évolution des variables.**
-
-### Validation
-
-L'apprenant est capable de :
-
-```text
-Mettre en pause
-→ Avancer pas à pas
-→ Observer
-→ Décrire ce qui se passe
-```
+> **Principe d'Action Directe :**  
+> Aucun livrable documentaire ou rapport écrit n'est demandé à l'apprenant. L'apprenant réalise le débogage en direct avec les outils professionnels et résout l'anomalie dans le code source.
 
 ---
 
-# 4. S6 — UA.125.22 : Localiser un problème dans le code
+## 2. Articulation Temporelle par Session (S2 à S12)
 
-## T.125.22.1 — Configurer l'environnement de débogage PHP
+### ⏮️ Acquis Passés (Session S1)
+- Manipulation des premières variables et affichage des résultats avec `console.log()` dans le Sandbox Algorithmique (`UA.121.11`).
 
-### Objectif
+### 🎯 Unité d'Apprentissage Mobilisée dans ce Sprint (Session S2)
+- **UA.125.21 — Déboguer un programme pas à pas :**  
+  Utiliser les outils de débogage du navigateur (DevTools) pour poser un point d'arrêt dans un script de traitement d'articles, avancer pas à pas avec *Step Over*, observer l'évolution des variables en mémoire et corriger l'erreur de calcul.
 
-Mettre en place l'environnement PHP avec Xdebug et Visual Studio Code pour retrouver les gestes de débogage vus en JavaScript.
-
-### Environnement technique
-
-**PHP + Xdebug + Visual Studio Code.**
-
-### Situation d'apprentissage
-
-L'apprenant connaît déjà le principe du débogage grâce à JavaScript en S2.
-Il doit maintenant **retrouver les mêmes gestes avec PHP**.
-
-La session commence donc par une courte prise en main de l'environnement :
-
-```text
-Installer Xdebug
-   ↓
-Vérifier son installation
-   ↓
-Configurer PHP
-   ↓
-Configurer VS Code
-   ↓
-Lancer une session de débogage
-   ↓
-Tester un point d'arrêt
-   ↓
-Observer une variable PHP
-```
-
-### Livrable
-
-> **Un environnement PHP préparé pour le débogage et une courte trace de prise en main (point d'arrêt testé).**
+### ⏭️ Perspectives Futures (Sessions S3 à S12)
+- **S6 (UA.125.22) :** Localiser une instruction responsable d'un échec de traitement de données PHP / MySQL.
+- **S7 (UA.125.23) :** Corriger une erreur simple dans l'affichage dynamique des articles par catégorie.
+- **S9 (UA.125.24) :** Diagnostiquer et résoudre un problème complexe sur un parcours complet (formulaire → requête POST → insertion SQL → redirection).
 
 ---
 
-## T.125.22.2 — Localiser une erreur en PHP
+## 3. Grille Complète des Tutoriels de Débogage (S2 à S9)
 
-### Objectif
-
-Reproduire un problème dans le Blog, utiliser l'environnement de débogage PHP pour observer l'exécution et les données, puis localiser la partie du traitement probablement responsable.
-
-### Environnement technique
-
-**PHP + Xdebug + Visual Studio Code + application Blog.**
-
-### Situation d'apprentissage
-
-> **Un article du Blog ne s'affiche pas.**
-
-L'apprenant doit chercher où le traitement ne produit plus le résultat attendu.
-
-### Progression pédagogique
-
-**Je reproduis**
-
-L'apprenant reproduit le problème du Blog :
-
-```text
-Attendu : l'article doit s'afficher.
-Obtenu : l'article ne s'affiche pas.
-```
-
-**Je teste**
-
-Il place des points d'arrêt et des points de contrôle (ex: `var_dump($article);`).
-La question centrale devient : *À quel moment la donnée n'a-t-elle plus la valeur attendue ?*
-
-**Je présente**
-
-L'apprenant produit sa trace :
-```text
-Problème : l'article ne s'affiche pas.
-Scénario : ...
-Observation 1 : ...
-Observation 2 : ...
-Localisation probable : ...
-```
-
-### Livrable
-
-> **Un document présentant le scénario de reproduction, les observations et la partie du traitement probablement responsable.**
+| Identifiant | Session | Titre du tutoriel | Unité ciblée | Action & Résolution attendue |
+| :--- | :---: | :--- | :---: | :--- |
+| **T.125.21.1** | **S2** | Déboguer un script JavaScript pas à pas avec des breakpoints | UA.125.21 | Point d'arrêt posé, exécution pas à pas (`F10`), erreur de calcul corrigée. |
+| **T.125.22.1** | **S6** | Installer et tester Xdebug avec VS Code | UA.125.22 | Module activé dans `php.ini`, extension configurée, point d'arrêt testé. |
+| **T.125.22.2** | **S6** | Traquer une anomalie dans un script PHP | UA.125.22 | Points d'arrêt sur boucle foreach, erreur de calcul corrigée. |
+| **T.125.23.1** | **S7** | Corriger une variable mal transmise dans l'URL | UA.125.23 | Erreur de paramètre URL identifiée et affichage par catégorie rétabli. |
+| **T.125.24.1** | **S9** | Déboguer un parcours complet de soumission de formulaire | UA.125.24 | Suivi du flux complet (HTML → PHP → SQL) et résolution de l'anomalie de bout en bout. |
 
 ---
 
-# 5. S7 — UA.125.23 : Corriger une erreur simple
+## 4. Fiche Détaillée — Session S2 (UA.125.21)
 
-## T.125.23.1 — Corriger une erreur ciblée et vérifier
+### T.125.21.1 — Déboguer un script JavaScript pas à pas avec des breakpoints
 
-### Objectif
-
-Corriger une erreur simple de manière ciblée et vérifier que le résultat attendu est obtenu.
-
-### Environnement technique
-
-**PHP + application Blog + débogueur PHP.**
-
-L'environnement reste le même que S6 afin que la nouvelle difficulté porte sur le **raisonnement de correction**, et non sur l'apprentissage d'un nouvel outil.
-
-### Concepts clés
-
-| Concept | Compréhension attendue au N1 |
-|---|---|
-| **Erreur** | Élément du code qui provoque le comportement incorrect. |
-| **Cause probable** | Partie identifiée comme responsable du problème. |
-| **Correction ciblée** | Modification limitée à ce qui est nécessaire. |
-| **Faute de syntaxe** | Écriture incorrecte d'une instruction. |
-| **Mauvais nom de variable** | Utilisation d'un nom qui ne correspond pas à la variable attendue. |
-| **Modification** | Changement effectué dans le code. |
-| **Test** | Vérification après la correction. |
-| **Résultat attendu** | Résultat que l'application doit produire. |
-| **Preuve de correction** | Élément montrant que le problème est résolu. |
-
-### Situation d'apprentissage
-
-Suite au travail de S6 :
-
-> le problème d'affichage d'une catégorie est localisé.
-
-L'apprenant doit maintenant corriger **l'erreur identifiée** dans :
-
-```text
-categories.php
-categories-template.php
-```
-
-### Progression pédagogique
-
-```text
-Problème reproduit
-       ↓
-Erreur localisée
-       ↓
-Correction ciblée
-       ↓
-Nouveau test
-       ↓
-Comparaison
-       ↓
-Preuve
-```
-
-La règle essentielle :
-
-> **Ne pas modifier plusieurs éléments au hasard. Corriger ce que le diagnostic permet d'expliquer.**
-
-### Travail à réaliser
-
-**Corriger une erreur empêchant l'affichage des articles correspondant à la catégorie demandée.**
-
-### Livrable
-
-> **Code corrigé, trace de la modification et preuve d'une exécution correcte après correction.**
-
-### Validation
-
-L'apprenant sait :
-
-```text
-Localiser
-→ Corriger
-→ Tester
-→ Vérifier
-```
+- **Objectif :** Figer le temps et suivre l'évolution d'un calcul pas à pas sans multiplier les `console.log()`.
+- **Notions :** DevTools (`F12`), onglet *Sources / Débogueur*, point d'arrêt (*Breakpoint*), panneau des variables locales (*Scope*), bouton *Step Over* (`F10`).
+- **Consigne pas-à-pas :**
+  1. Ouvrir le navigateur Chrome, Firefox ou Edge sur la page de test `debug.html`.
+  2. Ouvrir les DevTools avec la touche `F12`.
+  3. Aller dans l'onglet **Sources** (ou **Débogueur**).
+  4. Sélectionner le fichier JavaScript et cliquer sur la marge pour poser un point d'arrêt au début du calcul.
+  5. Recharger la page (`F5`) : le script se fige sur la ligne marquée.
+  6. Observer le panneau **Scope** à droite : inspecter les valeurs des variables en mémoire.
+  7. Cliquer sur le bouton **Step Over** (`F10`) pour avancer ligne par ligne et constater l'erreur de calcul.
+  8. Modifier le code dans l'éditeur pour corriger l'opération et vérifier le résultat attendu dans la console.
+- **Validation :** L'apprenant sait poser un point d'arrêt, inspecter les variables locales et résoudre le problème dans le code source.
 
 ---
 
-# 6. S9 — UA.125.24 : Résoudre un problème dans un parcours complet
+## 5. Fiches Préparatoires — Sessions Futures (S6, S7, S9)
 
-## T.125.24.1 — Diagnostiquer un bug sur un parcours complet
-
-### Objectif
-
-Suivre une donnée à travers un parcours complet, identifier l'étape où le problème apparaît, corriger le problème et vérifier le fonctionnement de l'ensemble du parcours.
-
-### Environnement technique
-
-**PHP + MySQL + application Blog + Xdebug.**
-
-### Situation d'apprentissage
-
-> Un nouvel article est saisi dans l'administration, mais l'article n'apparaît pas comme prévu.
-
-L'apprenant doit suivre le parcours de la donnée au lieu de chercher directement une ligne fautive.
-
-### Parcours étudié
-
-```text
-admin/articles/form.php
-        ↓
-Formulaire
-        ↓
-$_POST
-        ↓
-admin/articles/traitement.php
-        ↓
-Traitement PHP
-        ↓
-Requête SQL exécutée avec PDO
-        ↓
-MySQL
-        ↓
-Enregistrement
-        ↓
-Récupération
-        ↓
-Affichage
-```
-
-### Concepts clés
-
-| Concept | Compréhension attendue au N1 |
-|---|---|
-| **Parcours** | Ensemble des étapes nécessaires à une action. |
-| **Flux de données** | Passage d'une donnée d'une étape à l'autre. |
-| **Formulaire** | Point de départ de l'action utilisateur. |
-| **`$_POST`** | Données reçues depuis le formulaire. |
-| **Traitement PHP** | Code qui reçoit et traite les données. |
-| **Requête SQL** | Instruction utilisée pour agir sur la base de données. |
-| **PDO** | Mécanisme PHP utilisé pour communiquer avec la base. |
-| **MySQL** | Système utilisé pour stocker les données. |
-| **Enregistrement** | Donnée stockée dans la base. |
-| **Récupération** | Lecture des données nécessaires à l'affichage. |
-| **Affichage** | Présentation finale du résultat. |
-| **Point de contrôle** | Endroit où l'on vérifie l'état d'une donnée. |
-| **Suivi de la donnée** | Vérification de la donnée à travers les différentes étapes. |
-
-### Progression pédagogique
-
-**Je vois**
-
-Le formateur représente le parcours :
-
-```text
-Formulaire
-→ PHP
-→ SQL
-→ MySQL
-→ Affichage
-```
-
-Puis montre comment placer des points de contrôle.
-
-**Je comprends**
-
-L'apprenant comprend qu'un problème situé en fin de parcours peut avoir commencé plus tôt.
-
-Il réutilise :
-
-```text
-S2 → observer
-S6 → localiser
-S7 → corriger et vérifier
-```
-
-**Je reproduis**
-
-Il réalise l'action complète :
-
-```text
-1. Ouvrir le formulaire
-2. Saisir un article
-3. Envoyer
-4. Consulter le résultat
-5. Reproduire le problème
-```
-
-**Je teste**
-
-Il vérifie successivement :
-
-```text
-La donnée est-elle envoyée ?
-        ↓
-Est-elle reçue dans $_POST ?
-        ↓
-Est-elle correctement traitée en PHP ?
-        ↓
-La requête SQL utilise-t-elle les bonnes données ?
-        ↓
-L'enregistrement est-il effectué ?
-        ↓
-La donnée est-elle récupérée ?
-        ↓
-Est-elle affichée ?
-```
-
-Par exemple :
-
-```php
-var_dump($_POST);
-```
-
-peut servir à vérifier les données reçues par le traitement PHP.
-
-**Je localise**
-
-L'apprenant détermine l'étape où apparaît l'anomalie.
-
-**Je corrige**
-
-Il applique une correction ciblée.
-
-**Je vérifie**
-
-Il refait le parcours complet et vérifie le résultat final.
-
-**Je présente**
-
-Il produit une trace complète :
-
-```text
-Problème :
-...
-
-Scénario de reproduction :
-...
-
-Étape 1 :
-...
-
-Étape 2 :
-...
-
-Anomalie identifiée :
-...
-
-Correction :
-...
-
-Test après correction :
-...
-
-Résultat final :
-...
-```
-
-### Travail à réaliser
-
-**Diagnostiquer un problème d'ajout ou de modification d'article en suivant le parcours : formulaire → requête → traitement PHP → accès SQL → affichage.**
-
-### Livrable
-
-> **Rapport d'enquête retraçant le parcours de la donnée, l'étape fautive identifiée, le code corrigé et la trace de débogage finale confirmant le bon fonctionnement du parcours.**
-
-### Validation
-
-L'apprenant sait :
-
-```text
-Reproduire
-→ Suivre la donnée
-→ Localiser
-→ Corriger
-→ Tester
-→ Vérifier le parcours complet
-```
+### S6 — UA.125.22 : T.125.22.1 — Installer et tester Xdebug avec VS Code
+- **Objectif :** Mettre en place l'environnement de débogage serveur PHP et valider un premier point d'arrêt.
+- **Environnement :** PHP + Xdebug + VS Code.
+- **Situation :** Script simple `test-debug.php`.
+- **Démarche :**
+  1. Activer le bloc `[xdebug]` dans `php.ini`.
+  2. Installer l'extension PHP Debug dans VS Code.
+  3. Configurer l'écouteur `Listen for Xdebug` sur le port 9003 dans `launch.json`.
+  4. Créer `test-debug.php`, poser un point d'arrêt et vérifier la suspension de l'exécution lors de la requête web.
 
 ---
 
-# 7. Progression des concepts
-
-La progression des notions est volontairement cumulative.
-
-### S2 — Observer
-
-```text
-Exécution
-→ ligne
-→ point d'arrêt
-→ pause
-→ pas à pas
-→ variable
-→ valeur
-→ inspection
-```
-
-### S6 — Localiser
-
-```text
-Bug
-→ attendu / obtenu
-→ reproduction
-→ observation
-→ point de contrôle
-→ var_dump()
-→ localisation
-```
-
-### S7 — Corriger
-
-```text
-Erreur
-→ cause probable
-→ correction ciblée
-→ test
-→ preuve
-```
-
-### S9 — Résoudre
-
-```text
-Parcours
-→ flux de données
-→ formulaire
-→ $_POST
-→ PHP
-→ SQL
-→ MySQL
-→ récupération
-→ affichage
-→ suivi de la donnée
-```
+### S6 — UA.125.22 : T.125.22.2 — Traquer une anomalie dans un script PHP
+- **Objectif :** Suivre pas à pas l'exécution d'une boucle PHP avec Xdebug, observer l'évolution des variables locales et corriger une erreur de logique de calcul.
+- **Environnement :** PHP + Xdebug + VS Code.
+- **Situation :** Le calcul du cumul des lectures d'articles du Blog produit un résultat faux.
+- **Démarche :**
+  1. Poser un point d'arrêt à l'intérieur de la boucle `foreach` du script `statistiques.php`.
+  2. Lancer l'écoute Xdebug et charger la page dans le navigateur.
+  3. Suivre l'exécution pas à pas avec Step Over (`F10`) et inspecter la variable d'accumulation dans le panneau des variables locales.
+  4. Constater l'écrasement de la valeur et corriger l'instruction avec l'opérateur d'accumulation (`+=`).
 
 ---
 
-# 8. Séquençage pédagogique global
-
-## S2 : apprendre le geste de débogage
-
-**JavaScript**
-
-L'apprenant découvre le débogage dans un environnement simple.
-
-```text
-Je mets en pause
-→ j'avance
-→ je regarde
-→ j'explique
-```
-
-Il apprend principalement **à observer**.
+### S7 — UA.125.23 : T.125.23.1 — Corriger une variable mal transmise dans l'URL
+- **Objectif :** Corriger une erreur ciblée liée à la transmission d'un paramètre dans une requête Web.
+- **Environnement :** PHP + application Blog.
+- **Situation :** Le filtre par catégorie ne renvoie aucun article lorsqu'on clique sur un lien de navigation.
+- **Démarche :**
+  1. Inspecter le paramètre `$_GET['categorie']` transmis dans l'URL.
+  2. Poser un point d'arrêt au début du script de filtrage.
+  3. Vérifier la valeur reçue par rapport à la valeur attendue par la requête SQL.
+  4. Appliquer la correction ciblée dans le template ou dans le script de traitement.
+  5. Vérifier que les articles de la catégorie s'affichent correctement.
 
 ---
 
-## S6 : transférer le geste vers PHP
-
-**PHP + Xdebug**
-
-L'apprenant retrouve les mêmes gestes avec PHP :
-
-```text
-Point d'arrêt
-→ pause
-→ pas à pas
-→ inspection
-```
-
-Puis il les applique à un vrai problème du Blog.
-
-Il apprend principalement **à localiser**.
-
----
-
-## S7 : transformer le diagnostic en action
-
-**PHP**
-
-L'apprenant reste dans le même environnement et apprend à :
-
-```text
-Localiser
-→ Corriger
-→ Tester
-```
-
-Il apprend principalement **à corriger proprement et à vérifier**.
-
----
-
-## S9 : résoudre de bout en bout
-
-**PHP + MySQL**
-
-L'apprenant réutilise toute la méthode sur un parcours plus long :
-
-```text
-Formulaire
-→ $_POST
-→ PHP
-→ SQL
-→ MySQL
-→ récupération
-→ affichage
-```
-
-Il apprend principalement **à suivre une donnée à travers plusieurs étapes pour résoudre un problème de bout en bout**.
-
----
-
-# 9. Logique finale du parcours
-
-Le domaine Debug peut donc être résumé ainsi :
-
-```text
-              DÉBOGUAGE N1
-                   │
-                   ↓
-        ┌─────────────────────┐
-        │ S2 — JavaScript     │
-        │ Observer            │
-        └──────────┬──────────┘
-                   ↓
-        ┌─────────────────────┐
-        │ S6 — PHP            │
-        │ Localiser           │
-        │ + découvrir Xdebug  │
-        └──────────┬──────────┘
-                   ↓
-        ┌─────────────────────┐
-        │ S7 — PHP            │
-        │ Corriger            │
-        │ + vérifier          │
-        └──────────┬──────────┘
-                   ↓
-        ┌─────────────────────┐
-        │ S9 — PHP + MySQL    │
-        │ Suivre et résoudre  │
-        │ un parcours complet  │
-        └─────────────────────┘
-```
-
-La méthode commune à toutes les sessions devient :
-
-> **Reproduire → Observer → Localiser → Corriger → Tester → Vérifier**
-
-La technologie évolue :
-
-> **JavaScript → PHP → PHP → PHP + MySQL**
-
-mais **la méthode de débogage reste stable**. C'est précisément cette stabilité qui permet à l'apprenant N1 de construire progressivement son autonomie sans être confronté à des techniques de débogage avancées.
+### S9 — UA.125.24 : T.125.24.1 — Déboguer un parcours complet de soumission de formulaire
+- **Objectif :** Suivre une donnée tout au long d'un cycle complet (Frontend → Serveur → Base de données → Redirection).
+- **Environnement :** PHP + MySQL + application Blog (partie Admin).
+- **Situation :** L'ajout d'un nouvel article depuis le formulaire d'administration ne produit aucun enregistrement en base.
+- **Démarche :**
+  1. Suivre la donnée depuis la soumission du formulaire (`$_POST`).
+  2. Vérifier la réception et la validation des champs dans le script de traitement.
+  3. Inspecter la requête préparée PDO avant son exécution.
+  4. Identifier à quelle étape précise le flux est interrompu et corriger le dysfonctionnement.
+  5. Valider la création effective de l'article dans l'interface et en base de données.

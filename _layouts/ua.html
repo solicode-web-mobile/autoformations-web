@@ -136,6 +136,7 @@ layout: default
   {% assign ua_tutos =
     site.tutos
     | where: "ua", page.code
+    | sort: "nav_order"
   %}
 
   <section class="ua-section layout-section">

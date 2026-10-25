@@ -1,7 +1,7 @@
 {% assign current_ua = site.uas | where: "code", page.ua | first %}
 {% assign current_domaine_code = page.domaine | default: current_ua.domaine %}
 {% assign current_domaine = site.domaines | where: "code", current_domaine_code | first %}
-{% assign domaine_uas = site.uas | where: "domaine", current_domaine_code %}
+{% assign domaine_uas = site.uas | where: "domaine", current_domaine_code | sort: "ordre" %}
 
 {% if domaine_uas.size > 0 %}
 <div class="tuto-domain-menu">

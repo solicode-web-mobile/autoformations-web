@@ -1,7 +1,8 @@
 ---
-title: "Définir le résultat attendu d'une tâche"
+title: "Comprendre une tâche et son résultat attendu"
 layout: ua
 code: "UA.152.21"
+session: "S2"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 1

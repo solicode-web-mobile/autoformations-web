@@ -172,6 +172,7 @@ layout: default
     {% assign competence_uas =
       site.uas
       | where: "competence", page.code
+      | sort: "ordre"
     %}
 
     {% if competence_uas.size > 0 %}
@@ -222,6 +223,7 @@ layout: default
   {% assign competence_uas =
     site.uas
     | where: "competence", page.code
+    | sort: "ordre"
   %}
 
   {% assign competence_session_codes = "" | split: "," %}

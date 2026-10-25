@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "D:/solicode-web-mobile/autoformations-web"
+		}
+	],
+	"settings": {
+		"folder-color.pathColors": [
+			{
+				"folderPath": "autoformations-web\\old_agent",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_d787af"
+			},
+			{
+				"filePath": "autoformations-web\\_tutos\\D.122.2-css\\_notions-et-uas.md",
+				"color": "foldercolorizer.color_008080"
+			},
+			{
+				"folderPath": "autoformations-web\\.agents\\",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_ff8700"
+			}
+		]
+	}
+}

@@ -1,4 +1,4 @@
-{% assign filtered_tutos = include.tutos %}
+{% assign filtered_tutos = include.tutos | sort: "nav_order" %}
 
 {% if filtered_tutos and filtered_tutos.size > 0 %}
 

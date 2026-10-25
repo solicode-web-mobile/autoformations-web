@@ -17,7 +17,7 @@ notions:
   - "Vérification après modification"
   - "Preuve de bon fonctionnement"
 livrable: >
-  Script corrigé et compte-rendu ou trace attestant de la résolution du problème et du retour au comportement nominal.
+  Script PHP corrigé assurant le bon affichage dynamique des articles selon la catégorie sélectionnée.
 travail_a_faire: >
   Identifier la cause d'une erreur reproduite (ex. erreur de syntaxe SQL ou variable indéfinie), modifier le code pour corriger le dysfonctionnement et vérifier le résultat dans le navigateur.
 ---

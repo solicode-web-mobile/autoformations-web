@@ -17,7 +17,7 @@ notions:
   - "Traçage des variables à travers plusieurs fichiers"
   - "Correction méthodique et non destructive"
 livrable: >
-  Rapport de diagnostic et code corrigé validant la réussite du parcours complet d'ajout ou de modification d'un article.
+  Parcours applicatif complet (formulaire, traitement PHP et persistance SQL) corrigé et validé sans régression.
 travail_a_faire: >
   Suivre pas à pas avec le débogueur l'exécution d'un traitement d'article complet comportant un bug, identifier l'étape défaillante et appliquer la correction nécessaire.
 ---

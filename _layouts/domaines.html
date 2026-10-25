@@ -89,6 +89,7 @@ layout: default
     {% assign domaine_uas =
       site.uas
       | where: "domaine", page.code
+      | sort: "ordre"
     %}
 
     {% if domaine_uas.size > 0 %}
@@ -121,6 +122,7 @@ layout: default
             {% assign ua_tutos =
               site.tutos
               | where: "ua", ua.code
+              | sort: "nav_order"
             %}
 
             {% if ua_tutos.size > 0 %}
@@ -165,6 +167,7 @@ layout: default
     {% assign domaine_uas =
       site.uas
       | where: "domaine", page.code
+      | sort: "ordre"
     %}
 
 
