@@ -1,5 +1,5 @@
 ---
-title: "Veille prospective : Découvrir Flexbox et CSS Grid"
+title: "Veille technologique : Découvrir Flexbox et CSS Grid"
 layout: tuto
 slug: "veille-flexbox-grid"
 permalink: /tutos/:slug/
@@ -15,14 +15,14 @@ simplified: true
 
 ## 1. Objectif
 
-Dans ce tutoriel de veille prospective de la session S2, vous allez explorer les deux technologies modernes d'agencement visuel du Web : **CSS Flexbox** et **CSS Grid**.
+Dans ce tutoriel de **veille technologique** de la session S2, vous allez explorer deux technologies modernes d'agencement visuel du Web : **CSS Flexbox** et **CSS Grid**.
 
-Cette veille a pour but de vous préparer au défi technique de la session S3 : **l'affichage d'une grille d'articles responsive pour la page d'accueil du Blog**.
+Cette veille technologique a pour but de vous préparer au défi technique de la session S3 : **l'affichage d'une grille d'articles responsive pour la page d'accueil du Blog**.
 
 Vous allez apprendre à :
 * comprendre pourquoi Flexbox et Grid ont remplacé les anciennes méthodes de mise en page ;
 * identifier la différence fondamentale entre la disposition à une dimension (Flexbox) et à deux dimensions (Grid) ;
-* réaliser votre slide de veille synthétique selon les 4 critères imposés ;
+* concevoir votre slide de veille technologique selon les 4 critères imposés ;
 * préparer votre restitution orale de 3 minutes.
 
 ## 2. Prérequis
@@ -48,7 +48,7 @@ Sans Flexbox ni Grid, réaliser cette mise en page nécessite des bricolages com
 
 ### 1.2. Deux outils pour deux besoins complémentaires
 
-Pour votre veille, retenez cette distinction essentielle :
+Pour votre veille technologique, retenez cette distinction essentielle :
 
 ```mermaid
 flowchart TD
@@ -60,11 +60,11 @@ flowchart TD
 
 ## Partie 2 — Travail à Réaliser (Autonomie de l'Apprenant)
 
-### 2.1. Votre mission de veille
+### 2.1. Votre mission de veille technologique
 
-À l'aide de recherches documentaires (MDN Web Docs, tutoriels de référence), explorez le fonctionnement de Flexbox et Grid, puis concevez **une seule slide synthétique** dans votre présentation Google Slides de veille.
+À l'aide de recherches documentaires (MDN Web Docs, documentations de référence), explorez le fonctionnement de Flexbox et Grid, puis concevez **une seule slide synthétique** dans votre présentation Google Slides de veille technologique.
 
-**Votre slide doit obligatoirement respecter les 4 critères du standard Spartel N1 :**
+**Votre slide doit obligatoirement respecter les 4 critères du standard de veille technologique Spartel N1 :**
 
 1. **Noms et logos :** CSS Flexbox et CSS Grid.
 2. **Définition simple (en une seule phrase accessible) :**  
@@ -76,7 +76,7 @@ flowchart TD
 
 ### 2.2. Préparation de la restitution orale
 
-Vous présenterez votre slide devant votre formateur ou vos pairs en **3 minutes maximum** :
+Vous présenterez votre slide de veille technologique devant votre formateur ou vos pairs en **3 minutes maximum** :
 * **Minute 1 :** Présentez le sujet et donnez votre définition simple.
 * **Minute 2 :** Montrez en quoi Flexbox et Grid facilitent l'affichage des cartes d'articles du Blog pour le sprint S3.
 * **Minute 3 :** Citez vos 3 mots-clés et concluez sur la règle d'or (Flexbox pour 1 axe, Grid pour 2 axes).
@@ -86,19 +86,19 @@ Vous présenterez votre slide devant votre formateur ou vos pairs en **3 minutes
 Dans votre dépôt annuel de travail, créez le fichier de traçabilité suivant :
 
 ```text
-veille/prospective/flexbox-grid/slide.md
+veille/technologique/flexbox-grid/slide.md
 ```
 
 **Contenu de votre fichier `slide.md` :**
 ```markdown
-# Veille Prospective : Flexbox et CSS Grid
+# Veille Technologique : Flexbox et CSS Grid
 
 - **Auteur :** [Votre Prénom et Nom]
 - **Session de réalisation :** S2 — Page Article (HTML/CSS)
 - **Session préparée :** S3 — Grille d'articles et mise en page responsive
 - **Lien public de la slide :** [Coller ici votre URL Google Slides accessible en mode Lecteur]
 
-## Synthèse de mes recherches
+## Synthèse de ma veille technologique
 - **Définition en une phrase :** [Votre phrase simple]
 - **Problème résolu pour S3 :** [Pourquoi ces outils simplifient la grille d'articles]
 - **Mes 3 mots-clés :** [Mot-clé 1] — [Mot-clé 2] — [Mot-clé 3]
@@ -108,7 +108,7 @@ Commitez et poussez votre fichier sur votre dépôt GitHub.
 
 ### Critères de réussite
 
-* Votre slide de veille est finalisée sur Google Slides avec un lien public accessible en lecture seule.
+* Votre slide de veille technologique est finalisée sur Google Slides avec un lien public accessible en lecture seule.
 * Les 4 critères de contenu sont clairement visibles et compréhensibles en un coup d'œil.
 * Vous êtes capable d'expliquer oralement la différence entre Flexbox (1 dimension) et Grid (2 dimensions) en 3 minutes chrono.
 * Le fichier `slide.md` est commité dans votre dépôt d'autoformation à l'emplacement indiqué.
@@ -117,12 +117,13 @@ Commitez et poussez votre fichier sur votre dépôt GitHub.
 
 ## Bilan
 
-* Vous avez identifié par vous-même les solutions techniques qui vous serviront lors du prochain sprint.
+* Vous avez mené une démarche de **veille technologique** en autonomie pour identifier les solutions techniques de votre prochain sprint.
 * Flexbox et Grid ne sont pas concurrents, mais complémentaires : Grid organise la structure globale et Flexbox ajuste les alignements locaux.
-* Cette démarche de veille proactive vous donne une longueur d'avance pour aborder la session S3 en toute sérénité.
+* Cette veille technologique vous donne une longueur d'avance pour aborder la session S3 en toute sérénité.
 
 ## Glossaire
 
+* **Veille technologique** : Démarche méthodique d'information et d'exploration de technologies pour anticiper les évolutions et les défis d'un projet informatique.
 * **Flexbox (Flexible Box Layout)** : Module CSS conçu pour distribuer l'espace et aligner des éléments le long d'un axe unique (horizontal ou vertical).
 * **CSS Grid Layout** : Système de disposition bidimensionnel permettant de concevoir des grilles complexes composées de lignes et de colonnes.
 * **Responsive Design** : Approche de conception Web permettant à une page de s'adapter automatiquement à la taille de l'écran du visiteur.

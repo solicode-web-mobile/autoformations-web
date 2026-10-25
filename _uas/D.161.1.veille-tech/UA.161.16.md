@@ -1,5 +1,5 @@
 ---
-title: "Veille sur la méthode HTTP GET et les paramètres d'URL"
+title: "Veille sur la mÃ©thode HTTP GET et les paramÃ¨tres d'URL"
 layout: ua
 code: "UA.161.16"
 ordre: 6
@@ -8,14 +8,14 @@ domaine: "D.161.1"
 session: "S6"
 duree: 1
 objectif: >
-  Comprendre comment l'URL transporte des données pour préparer la page détail dynamique et le filtrage en S7.
+  Comprendre comment l'URL transporte des donnÃ©es pour prÃ©parer la page dÃ©tail dynamique et le filtrage en S7.
 description: >
-  Comprendre la chaîne de requête (query string), la transmission de variables via l'URL et leur récupération sécurisée en PHP via $_GET.
+  Comprendre la chaÃ®ne de requÃªte (query string), la transmission de variables via l'URL et leur rÃ©cupÃ©ration sÃ©curisÃ©e en PHP via $_GET.
 notions:
-  - "Méthode HTTP GET"
+  - "MÃ©thode HTTP GET"
   - "Query String (?id=12)"
   - "Tableau superglobal $_GET"
-  - "Filtrage et affichage ciblé"
+  - "Filtrage et affichage ciblÃ©"
 livrable: >
-  Slide partagée sur la méthode GET et les requêtes Web : « Comment fonctionne une requête HTTP GET avec paramètres d'URL ? ».
+  Slide partagÃ©e sur la mÃ©thode GET et les requÃªtes Web : Â« Comment fonctionne une requÃªte HTTP GET avec paramÃ¨tres d'URL ? Â».
 ---

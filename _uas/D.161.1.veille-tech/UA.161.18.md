@@ -1,5 +1,5 @@
 ---
-title: "Veille sur la méthode POST et la soumission sécurisée"
+title: "Veille sur la mÃ©thode POST et la soumission sÃ©curisÃ©e"
 layout: ua
 code: "UA.161.18"
 ordre: 8
@@ -8,14 +8,14 @@ domaine: "D.161.1"
 session: "S8"
 duree: 1
 objectif: >
-  Comprendre pourquoi utiliser la méthode POST et comment valider les données de formulaire pour préparer la gestion des articles en S9.
+  Comprendre pourquoi utiliser la mÃ©thode POST et comment valider les donnÃ©es de formulaire pour prÃ©parer la gestion des articles en S9.
 description: >
-  Distinguer GET et POST, comprendre pourquoi les données sensibles transitent dans le corps de la requête HTTP et comment contrôler leur validité.
+  Distinguer GET et POST, comprendre pourquoi les donnÃ©es sensibles transitent dans le corps de la requÃªte HTTP et comment contrÃ´ler leur validitÃ©.
 notions:
-  - "Méthode HTTP POST vs GET"
-  - "Transmission masquée des données"
+  - "MÃ©thode HTTP POST vs GET"
+  - "Transmission masquÃ©e des donnÃ©es"
   - "Superglobale $_POST"
-  - "Contrôles de saisie et assainissement"
+  - "ContrÃ´les de saisie et assainissement"
 livrable: >
-  Slide partagée sur la soumission sécurisée POST : « GET vs POST : pourquoi et comment sécuriser l'envoi d'un formulaire ? ».
+  Slide partagÃ©e sur la soumission sÃ©curisÃ©e POST : Â« GET vs POST : pourquoi et comment sÃ©curiser l'envoi d'un formulaire ? Â».
 ---

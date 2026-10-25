@@ -8,14 +8,14 @@ domaine: "D.161.1"
 session: "S7"
 duree: 1
 objectif: >
-  Comprendre la séparation entre espace visiteur et espace administration, et les 4 opérations CRUD pour préparer l'Admin en S8.
+  Comprendre la sÃ©paration entre espace visiteur et espace administration, et les 4 opÃ©rations CRUD pour prÃ©parer l'Admin en S8.
 description: >
-  Découvrir les principes d'une zone d'administration sécurisée permettant aux gestionnaires d'effectuer les 4 opérations fondamentales sur les données.
+  DÃ©couvrir les principes d'une zone d'administration sÃ©curisÃ©e permettant aux gestionnaires d'effectuer les 4 opÃ©rations fondamentales sur les donnÃ©es.
 notions:
   - "Front-Office vs Back-Office"
-  - "Opérations CRUD (Create, Read, Update, Delete)"
-  - "Séparation des droits d'accès"
+  - "OpÃ©rations CRUD (Create, Read, Update, Delete)"
+  - "SÃ©paration des droits d'accÃ¨s"
   - "Interface d'administration"
 livrable: >
-  Slide partagée sur le CRUD et l'administration : « Qu'est-ce qu'un CRUD et comment s'organise un espace d'administration ? ».
+  Slide partagÃ©e sur le CRUD et l'administration : Â« Qu'est-ce qu'un CRUD et comment s'organise un espace d'administration ? Â».
 ---
