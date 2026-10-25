@@ -14,7 +14,7 @@
 ---
 
 ## 2. Progression Didactique N1
-Sélection d'éléments (`document.querySelector`, `querySelectorAll`) $\rightarrow$ Écouteurs d'événements (`addEventListener('click', ...)`) $\rightarrow$ Modification du contenu et attributs (`textContent`, `setAttribute`) $\rightarrow$ Manipulation des classes CSS (`classList.add`, `remove`, `toggle`) $\rightarrow$ Rendu dynamique et conditions simples.
+Sélection d'éléments (`document.querySelector`, `querySelectorAll`) → Écouteurs d'événements (`addEventListener('click', ...)`) → Modification du contenu et attributs (`textContent`, `setAttribute`) → Manipulation des classes CSS (`classList.add`, `remove`, `toggle`) → Rendu dynamique et conditions simples.
 
 ---
 

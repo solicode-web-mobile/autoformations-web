@@ -13,7 +13,7 @@
 ---
 
 ## 2. Progression Didactique N1
-Sélecteurs élémentaires (`element`, `.classe`, `#id`) $\rightarrow$ Modèle de boîte (`margin`, `padding`, `border`, `box-sizing`) $\rightarrow$ Typographie & Couleurs $\rightarrow$ Flexbox (axes, alignement, wrap) $\rightarrow$ Grid basique $\rightarrow$ Media Queries & Responsive Design.
+Sélecteurs élémentaires (`element`, `.classe`, `#id`) → Modèle de boîte (`margin`, `padding`, `border`, `box-sizing`) → Typographie & Couleurs → Flexbox (axes, alignement, wrap) → Grid basique → Media Queries & Responsive Design.
 
 ---
 

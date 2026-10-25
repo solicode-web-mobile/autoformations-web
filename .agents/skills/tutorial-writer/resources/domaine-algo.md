@@ -22,7 +22,7 @@ Chaque bloc d'exemple doit pouvoir être copié-collé et exécuté immédiateme
 ---
 
 ## 3. Schémas Visuels & Diagrammes Algorithmiques (Mermaid)
-Pour rendre les notions algorithmiques concrètes (*« Je vois $\rightarrow$ Je comprends »*), **utiliser des diagrammes Mermaid (`flowchart TD` ou `flowchart LR`)** dans les explications théoriques :
+Pour rendre les notions algorithmiques concrètes (*« Je vois → Je comprends »*), **utiliser des diagrammes Mermaid (`flowchart TD` ou `flowchart LR`)** dans les explications théoriques :
 - **Flux d'exécution séquentiel :** Montrer l'ordre d'évaluation des instructions.
 - **Cycle d'une fonction :** Distinguer visuellement la déclaration (mise en mémoire) et l'appel (déclenchement).
 - **Conditions & Boucles :** Utiliser les losanges de décision `{Condition ?}` avec branches claires `Oui / Non`.
@@ -45,4 +45,4 @@ Pour représenter le **contenu en mémoire d'un tableau indexé**, ne jamais des
 ---
 
 ## 5. Progression Didactique N1
-Variables & types simples $\rightarrow$ Opérateurs & expressions booléennes $\rightarrow$ Conditions `if/else` $\rightarrow$ Boucles `for` et `while` $\rightarrow$ Tableaux indexés $\rightarrow$ Parcours et accumulateurs $\rightarrow$ Algorithmes de recherche et filtrage $\rightarrow$ Fonctions (déclaration, appel, réutilisation, paramètres, retour).
+Variables & types simples → Opérateurs & expressions booléennes → Conditions `if/else` → Boucles `for` et `while` → Tableaux indexés → Parcours et accumulateurs → Algorithmes de recherche et filtrage → Fonctions (déclaration, appel, réutilisation, paramètres, retour).

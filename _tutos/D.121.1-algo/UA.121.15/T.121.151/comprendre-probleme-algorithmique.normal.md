@@ -8,510 +8,199 @@ type: "classique"
 version: "normal"
 ua: "UA.121.15"
 nav_order: 1
-data_html: ""
-data_css: ""
 data_js: ""
-----
+simplified: true
+---
 
 ## 1. Objectif
 
-Dans ce tutoriel, vous allez apprendre à **lire un problème avant de coder**.
+Dans ce tutoriel, vous allez apprendre à **analyser un problème avant d'écrire la moindre ligne de code**.
 
-Vous allez apprendre à identifier :
-
-* les données ;
-* les entrées ;
-* le résultat attendu ;
-* les règles ;
-* le traitement à réaliser.
-
-À la fin du tutoriel, vous saurez transformer un problème écrit en français en une description simple :
-
-```text
-Entrées → Traitement → Sorties
-```
+Vous allez apprendre à :
+* décomposer tout énoncé selon le modèle universel : **Entrées → Règles / Traitement → Sortie** ;
+* identifier les informations disponibles et le résultat attendu ;
+* formaliser votre raisonnement sous forme de grille d'analyse simple ;
+* traduire cette analyse en une solution de code minimale et vérifiable.
 
 ## 2. Prérequis
 
-Vous devez savoir :
+* Savoir déclarer des variables et écrire une condition simple (`if ... else`).
+* Savoir créer une fonction avec un paramètre et utiliser `return`.
+* Savoir afficher un message avec `console.log()`.
 
-* utiliser des variables ;
-* utiliser des valeurs numériques ;
-* utiliser des tableaux simples ;
-* utiliser des opérations simples ;
-* lire un énoncé court ;
-* utiliser Node.js pour exécuter un programme simple.
-
-Vous n'avez pas besoin de construire le programme complet dans ce tutoriel.
-
-## Données de départ
-
-### Problème
-
-On dispose de plusieurs notes d'un apprenant.
-
-On veut calculer sa moyenne.
-
-Les notes sont :
-
-```text
-12
-15
-8
-17
-```
-
-Le programme doit produire :
-
-```text
-Moyenne : 13
-```
-
-### Deuxième problème
-
-Un programme reçoit deux nombres.
-
-Il doit afficher le plus grand nombre.
-
-Exemple :
-
-```text
-Premier nombre : 12
-Deuxième nombre : 18
-
-Résultat : 18
-```
-
-Ces deux problèmes seront utilisés pour apprendre à analyser un problème algorithmique.
+---
 
 ## Partie 1 — Théorie
 
-### 1.1. Qu'est-ce qu'un problème algorithmique ?
+### 1.1. Pourquoi analyser avant de coder ?
 
-Un problème algorithmique décrit **un résultat que le programme doit produire**.
+Écrire du code directement sans réfléchir conduit souvent à des erreurs de logique et à des blocages.
 
-Le problème donne généralement :
+Tout problème algorithmique décrit une **transformation logique** : on part de données initiales (les entrées) pour arriver à un résultat précis (la sortie) en appliquant des règles claires.
 
-* des données ;
-* une règle ;
-* un résultat attendu.
-
-Avant d'écrire du code, il faut donc comprendre le problème.
-
-Exemple :
-
-> À partir de plusieurs notes, calculer la moyenne.
-
-Le programme doit comprendre :
-
-```text
-Données → notes
-Résultat → moyenne
+```mermaid
+flowchart LR
+    A["1. Données d'entrée<br>(Quelles sont les données de départ ?)"] --> B["2. Règle / Traitement<br>(Quelle condition ou calcul appliquer ?)"]
+    B --> C["3. Résultat de sortie<br>(Que doit produire le programme ?)"]
 ```
 
-Le code vient après.
+### 1.2. La grille d'analyse d'un problème
 
-### 1.2. Identifier les données
+Pour résoudre n'importe quel problème avec méthode, on répond à 4 questions systématiques :
 
-Les **données** sont les informations utilisées par le traitement.
+1. **Entrée :** Quelles sont les valeurs fournies au départ ?
+2. **Sortie :** Quel est le résultat final attendu ?
+3. **Règle :** Quelle condition ou formule mathématique relie l'entrée à la sortie ?
+4. **Traitement :** Quel outil informatique utiliser (calcul, condition `if`, boucle, fonction) ?
 
-Dans le problème des notes :
+**Exemple concret :** *"Calculer le prix TTC d'un article à partir de son prix HT avec 20% de TVA."*
 
-```text
-12
-15
-8
-17
+| Étape d'analyse | Question à se poser | Réponse pour ce problème |
+| :--- | :--- | :--- |
+| **Entrée** | Quelles sont les données fournies ? | Le prix HT (`prixHT = 100`) |
+| **Règle** | Quelle formule s'applique ? | `TTC = HT * 1.20` |
+| **Sortie** | Quel résultat afficher ? | Le prix TTC calculé (`120 DH`) |
+| **Traitement** | Quel outil de code ? | Une fonction avec calcul arithmétique et `return` |
+
+**Code autonome correspondant :**
+
+```javascript
+function calculerTTC(prixHT) {
+    return prixHT * 1.20;
+}
+
+let montantTTC = calculerTTC(100);
+console.log("Montant TTC : " + montantTTC + " DH");
 ```
 
-Ce sont les données disponibles.
-
-On peut aussi les présenter sous la forme :
-
+**Résultat attendu dans la console :**
 ```text
-notes = [12, 15, 8, 17]
+Montant TTC : 120 DH
 ```
 
-La question à poser est :
+### 1.3. Exemple avec décision : la validation d'accès
 
-> Quelles informations possède le programme ?
+Lorsque le problème dépend d'une condition, la règle détermine quel chemin emprunter.
 
-### 1.3. Identifier les entrées
+**Énoncé :** *"Vérifier si un utilisateur peut entrer selon son âge (minimum 18 ans)."*
 
-Une **entrée** est une donnée utilisée par le programme pour commencer le traitement.
-
-Dans le problème des notes :
-
-```text
-Entrée :
-liste des notes
+```mermaid
+flowchart TD
+    A["Entrée : age = 19"] --> B{"Règle : age >= 18 ?"}
+    B -->|Vrai| C["Sortie : 'Accès autorisé'"]
+    B -->|Faux| D["Sortie : 'Accès refusé'"]
 ```
 
-Dans le problème des deux nombres :
+**Code autonome correspondant :**
 
-```text
-Entrées :
-premier nombre
-deuxième nombre
+```javascript
+function verifierAcces(age) {
+    if (age >= 18) {
+        return "Accès autorisé";
+    }
+    return "Accès refusé";
+}
+
+console.log("Âge 19 : " + verifierAcces(19));
+console.log("Âge 15 : " + verifierAcces(15));
 ```
 
-La question à poser est :
-
-> Quelles informations le programme reçoit-il ?
-
-### 1.4. Identifier le résultat attendu
-
-Le **résultat attendu** est ce que le programme doit produire.
-
-Dans le problème des notes :
-
+**Résultat attendu dans la console :**
 ```text
-Résultat :
-la moyenne
+Âge 19 : Accès autorisé
+Âge 15 : Accès refusé
 ```
 
-Dans le problème des deux nombres :
+---
 
-```text
-Résultat :
-le plus grand nombre
+## Partie 2 — Pratique guidée
+
+Le but de cette pratique est de valider votre compréhension avec le **strict minimum de code**.
+
+### 2.1. Analyser et résoudre un problème de livraison
+
+Considérez le problème suivant :
+> Une boutique en ligne applique la règle suivante :  
+> Si le montant de la commande est supérieur ou égal à 200 DH, la livraison est gratuite (0 DH).  
+> Sinon, les frais de livraison sont facturés 20 DH.
+
+Dans votre fichier `solution.js` :
+1. Notez la grille d'analyse en commentaire (Entrée, Règle, Sortie, Traitement).
+2. Écrivez la fonction `calculerFraisLivraison(montant)` appliquant cette règle.
+3. Testez votre fonction avec une commande de 250 DH, puis une commande de 150 DH.
+
+**Code à écrire dans `solution.js` :**
+
+```javascript
+// ==============================================================
+// Livrable : Comprendre un problème algorithmique
+// Emplacement : algo/resolution-problemes/comprendre-probleme-algorithmique/solution.js
+// ==============================================================
+
+/*
+--- Grille d'analyse du problème ---
+1. Entrée     : montant de la commande (ex: montant = 250)
+2. Règle      : gratuit (0 DH) si montant >= 200, sinon 20 DH
+3. Sortie     : montant des frais de livraison (0 ou 20)
+4. Traitement : fonction avec condition if / else et return
+*/
+
+function calculerFraisLivraison(montant) {
+    if (montant >= 200) {
+        return 0;
+    }
+    return 20;
+}
+
+// Tests de validation
+console.log("Commande 250 DH -> Frais : " + calculerFraisLivraison(250) + " DH");
+console.log("Commande 150 DH -> Frais : " + calculerFraisLivraison(150) + " DH");
+
+// --- Bilan personnel ---
+// Formaliser les entrées, règles et sorties avant de coder
+// permet d'écrire la bonne condition du premier coup sans hésitation.
 ```
 
-La question à poser est :
-
-> Qu'est-ce que le programme doit produire ?
-
-### 1.5. Identifier la règle
-
-Une **règle** indique ce que le programme doit faire avec les données.
-
-Exemple avec les notes :
-
+**Résultat attendu dans la console :**
 ```text
-Règle :
-additionner les notes
-puis calculer la moyenne
+Commande 250 DH -> Frais : 0 DH
+Commande 150 DH -> Frais : 20 DH
 ```
 
-Exemple avec deux nombres :
+### 2.2. Livrable & Critères de réussite
+
+#### Emplacement obligatoire dans votre dépôt
+
+Déposez votre fichier dans votre dépôt annuel de tutoriels au chemin suivant :
 
 ```text
-Règle :
-comparer les deux nombres
-puis conserver le plus grand
+algo/resolution-problemes/comprendre-probleme-algorithmique/solution.js
 ```
 
-La règle explique le traitement à réaliser.
+> **Rappel :** N'utilisez pas de codes de modules (`UA.121.15` ou `T.121.151`) dans vos noms de dossiers, utilisez uniquement des noms de dossiers clairs et lisibles.
 
-### 1.6. Identifier le traitement
+#### Critères d'auto-évaluation
 
-Le **traitement** est l'action réalisée par le programme sur les données.
+Avant de valider et de commiter votre travail sur GitHub :
+* [ ] Le fichier commence par la grille d'analyse en commentaire (Entrée, Règle, Sortie, Traitement).
+* [ ] La fonction `calculerFraisLivraison` utilise une condition pour appliquer la règle de seuil.
+* [ ] Les deux cas (commande $\ge 200$ et commande $< 200$) sont testés et affichés.
+* [ ] Tout le fichier s'exécute sans erreur avec `node solution.js`.
+* [ ] Le fichier est commité dans votre dépôt à l'emplacement `algo/resolution-problemes/comprendre-probleme-algorithmique/solution.js`.
 
-Pour les notes :
+---
 
-```text
-Notes
-↓
-Additionner
-↓
-Calculer la moyenne
-↓
-Afficher la moyenne
+## 3. Bilan
+
+```mermaid
+flowchart LR
+    A["Énoncé en français"] --> B["Grille d'analyse<br>(Entrée / Règle / Sortie)"]
+    B --> C["Outil de code adapté<br>(Calcul / Condition)"]
+    C --> D["Solution vérifiable"]
 ```
 
-Pour deux nombres :
-
-```text
-Nombre 1
-Nombre 2
-↓
-Comparer
-↓
-Choisir le plus grand
-↓
-Afficher le résultat
-```
-
-Le traitement transforme les entrées en résultat.
-
-### 1.7. Entrées → Traitement → Sorties
-
-Un problème simple peut être résumé ainsi :
-
-```text
-Entrées
-   ↓
-Traitement
-   ↓
-Sorties
-```
-
-Exemple :
-
-```text
-Entrées :
-12, 15, 8, 17
-
-Traitement :
-calculer la moyenne
-
-Sortie :
-13
-```
-
-Cette représentation aide à comprendre le problème avant de commencer le code.
-
-### 1.8. À retenir
-
-* Un problème décrit un résultat à obtenir.
-* Les données sont les informations disponibles.
-* Les entrées sont les données utilisées par le programme.
-* Le résultat attendu indique ce que le programme doit produire.
-* La règle indique ce que le programme doit faire.
-* Le traitement transforme les entrées en résultats.
-
-Retenez surtout :
-
-```text
-Avant de coder :
-
-1. Quelles sont les données ?
-2. Quel est le résultat attendu ?
-3. Quelle règle faut-il appliquer ?
-4. Quel traitement faut-il réaliser ?
-```
-
-## Partie 2 — Pratique
-
-### 2.1. Analyser un premier problème
-
-Lisez le problème :
-
-> Une classe possède les notes suivantes : 12, 15, 8 et 17. Le programme doit afficher la moyenne.
-
-Ne commencez pas par écrire du code.
-
-Commencez par identifier les éléments du problème.
-
-#### Étape 1 — Identifier les données
-
-Demandez-vous :
-
-> Quelles informations possède le programme ?
-
-Les données sont :
-
-```text
-12
-15
-8
-17
-```
-
-Elles représentent :
-
-```text
-une liste de notes
-```
-
-#### Étape 2 — Identifier l'entrée
-
-Demandez-vous :
-
-> Qu'est-ce que le programme utilise pour commencer le traitement ?
-
-L'entrée est :
-
-```text
-liste de notes
-```
-
-#### Étape 3 — Identifier le résultat
-
-Demandez-vous :
-
-> Qu'est-ce que le programme doit produire ?
-
-Le résultat attendu est :
-
-```text
-la moyenne
-```
-
-#### Étape 4 — Identifier la règle
-
-Demandez-vous :
-
-> Que faut-il faire avec les notes ?
-
-La règle est :
-
-```text
-additionner les notes
-puis calculer la moyenne
-```
-
-#### Étape 5 — Décrire le traitement
-
-On peut maintenant représenter le problème simplement :
-
-```text
-Liste de notes
-↓
-Calcul de la moyenne
-↓
-Moyenne obtenue
-```
-
-### 2.2. Construire la fiche du problème
-
-Pour un problème simple, vous pouvez utiliser cette fiche :
-
-| Élément          | Réponse                                        |
-| ---------------- | ---------------------------------------------- |
-| Données          | Liste de notes                                 |
-| Entrée           | Liste de notes                                 |
-| Résultat attendu | Moyenne                                        |
-| Règle            | Calculer la moyenne                            |
-| Traitement       | Additionner les notes puis calculer la moyenne |
-
-Cette fiche permet de comprendre le problème avant de construire le programme.
-
-### 2.3. Analyser un deuxième problème
-
-Lisez le problème :
-
-> Un programme reçoit deux nombres. Il doit afficher le plus grand nombre.
-
-Ne cherchez pas encore à écrire le code.
-
-Complétez d'abord l'analyse.
-
-| Élément          | Réponse      |
-| ---------------- | ------------ |
-| Données          | Deux nombres |
-| Entrées          | ?            |
-| Résultat attendu | ?            |
-| Règle            | ?            |
-| Traitement       | ?            |
-
-Prenez le temps d'identifier chaque élément.
-
-### 2.4. Décrire le problème avant le code
-
-Une fois l'analyse terminée, représentez le problème :
-
-```text
-Entrées
-↓
-Traitement
-↓
-Sortie
-```
-
-Pour le problème des deux nombres, vous devez obtenir une description de cette forme :
-
-```text
-Deux nombres
-↓
-Comparer les deux nombres
-↓
-Plus grand nombre
-```
-
-### 2.5. Exercice individuel
-
-Lisez le problème suivant :
-
-> Un programme reçoit une note. Il doit afficher si la note est validée lorsque la note est supérieure ou égale à 10.
-
-Ne codez pas encore le programme.
-
-Complétez :
-
-| Élément          | Votre réponse |
-| ---------------- | ------------- |
-| Données          |               |
-| Entrée           |               |
-| Résultat attendu |               |
-| Règle            |               |
-| Traitement       |               |
-
-Ensuite, écrivez le problème sous la forme :
-
-```text
-Entrée
-↓
-Traitement
-↓
-Sortie
-```
-
-**Travail à faire :**
-
-Analyser le problème et compléter les deux représentations.
-
-**Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant vos réponses.
-
-**Résultat attendu :**
-
-Votre document doit contenir :
-
-```text
-Données
-Entrée
-Résultat attendu
-Règle
-Traitement
-```
-
-puis :
-
-```text
-Entrée
-↓
-Traitement
-↓
-Sortie
-```
-
-**Critère de réussite :**
-
-Chaque élément doit correspondre au problème donné et être formulé simplement.
-
-## Bilan
-
-**Vous avez appris :**
-
-* à lire un problème avant de coder ;
-* à identifier les données ;
-* à identifier les entrées ;
-* à identifier le résultat attendu ;
-* à identifier les règles ;
-* à décrire le traitement.
-
-**Vous savez maintenant :**
-
-transformer un problème simple en :
-
-```text
-Entrées
-↓
-Traitement
-↓
-Sorties
-```
-
-La prochaine étape consiste à utiliser cette analyse pour **construire une première solution**.
-
-## Glossaire
-
-* **Problème** : situation pour laquelle le programme doit produire un résultat.
-* **Donnée** : information utilisée par le programme.
-* **Entrée** : donnée fournie au traitement.
-* **Sortie** : résultat produit par le programme.
-* **Règle** : action ou condition à respecter pour produire le résultat.
-* **Traitement** : opération réalisée sur les données.
-* **Résultat attendu** : résultat que le programme doit produire.
+## 4. Glossaire
+
+* **Entrée :** information ou valeur initiale fournie au programme pour exécuter le traitement.
+* **Sortie :** résultat attendu produit par le programme à destination de l'utilisateur.
+* **Règle métier :** condition logique ou calcul arithmétique imposé par le problème pour transformer l'entrée en sortie.

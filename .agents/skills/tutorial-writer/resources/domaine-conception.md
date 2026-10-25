@@ -13,8 +13,8 @@
 - **Périmètre Strict (Zéro SQL) :** Aucun code SQL physique (`CREATE TABLE`, types SQL `VARCHAR`, etc.) n'est introduit dans les tutoriels de conception. Le SQL relève exclusivement du domaine base de données.
 - **Règles de Gestion Claires :** Chaque relation métier est formulée par une phrase simple avec un **verbe d'action** à l'infinitif (ex: *« Un auteur rédige un article »*).
 - **Méthode des Deux Questions pour les Cardinalités :**
-  1. *Est-ce obligatoire ?* Non $\rightarrow$ `0` \| Oui $\rightarrow$ `1`
-  2. *Peut-il y en avoir plusieurs ?* Une seule $\rightarrow$ `1` \| Plusieurs $\rightarrow$ `N`
+  1. *Est-ce obligatoire ?* Non → `0` \| Oui → `1`
+  2. *Peut-il y en avoir plusieurs ?* Une seule → `1` \| Plusieurs → `N`
 
 ---
 

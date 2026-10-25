@@ -29,4 +29,4 @@ window.pageData = {
 ---
 
 ## 3. Progression Didactique N1
-Structure minimale d'une page (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`) $\rightarrow$ Titres et paragraphes $\rightarrow$ Liens et images $\rightarrow$ Listes $\rightarrow$ Balises sémantiques structurelles $\rightarrow$ Formulaires et champs de saisie.
+Structure minimale d'une page (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`) → Titres et paragraphes → Liens et images → Listes → Balises sémantiques structurelles → Formulaires et champs de saisie.

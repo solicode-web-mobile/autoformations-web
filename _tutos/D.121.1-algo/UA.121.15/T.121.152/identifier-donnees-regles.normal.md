@@ -8,662 +8,196 @@ type: "classique"
 version: "normal"
 ua: "UA.121.15"
 nav_order: 2
-data_html: ""
-data_css: ""
 data_js: ""
-en_construction: true
+simplified: true
 ---
 
 ## 1. Objectif
 
-Dans ce tutoriel, vous allez apprendre à **décrire précisément un problème avant d'écrire le programme**.
+Dans ce tutoriel, vous allez apprendre à analyser des problèmes complexes comportant **plusieurs règles et des résultats intermédiaires**.
 
-Vous allez apprendre à identifier :
-
-* les données disponibles ;
-* les entrées ;
-* les résultats attendus ;
-* les règles ;
-* les traitements nécessaires ;
-* les résultats intermédiaires lorsque cela est utile.
-
-À la fin du tutoriel, vous saurez transformer un problème écrit en français en une description simple :
-
-```text
-Données
-+
-Règles
-+
-Résultats attendus
-+
-Traitements
-```
+Vous allez apprendre à :
+* distinguer les **données d'entrée initiales** et les **résultats intermédiaires** de calcul ;
+* décomposer un problème en une suite logique de règles ordonnées ;
+* cartographier l'enchaînement des étapes avant de rédiger le code ;
+* implémenter une solution vérifiable avec des conditions basées sur des valeurs calculées.
 
 ## 2. Prérequis
 
-Vous devez savoir :
+* Avoir suivi le tutoriel [Comprendre un problème algorithmique](/tutos/comprendre-probleme-algorithmique/).
+* Savoir utiliser une boucle `for` pour additionner les éléments d'un tableau.
+* Savoir utiliser une condition `if ... else`.
 
-* lire un problème simple ;
-* identifier des données ;
-* identifier une entrée ;
-* identifier une sortie ;
-* utiliser la représentation :
-
-```text
-Entrée → Traitement → Sortie
-```
-
-Vous devez également connaître les notions de base étudiées dans les UA précédentes :
-
-* variables ;
-* conditions ;
-* boucles ;
-* tableaux ;
-* fonctions simples.
-
-Dans ce tutoriel, vous ne construisez pas encore la solution complète.
-
-## Données de départ
-
-### Problème de référence
-
-Un groupe possède les notes suivantes :
-
-```text
-12, 15, 8, 17, 10
-```
-
-Le programme doit :
-
-* calculer la moyenne ;
-* indiquer si la moyenne est validée ;
-* afficher le résultat.
-
-La règle de validation est :
-
-```text
-moyenne >= 10
-```
-
-### Exemple de résultat
-
-Pour les données :
-
-```text
-12, 15, 8, 17, 10
-```
-
-le programme doit produire :
-
-```text
-Moyenne : 12.4
-Statut : Validé
-```
-
-Le travail du tutoriel consiste à **analyser ce problème avant d'écrire le code**.
+---
 
 ## Partie 1 — Théorie
 
-### 1.1. Identifier toutes les données
+### 1.1. Les résultats intermédiaires : un pont entre deux règles
 
-La première étape consiste à repérer les informations présentes dans le problème.
+Dans de nombreux problèmes, il est impossible de produire la sortie finale en une seule opération directe.
 
-Dans notre exemple :
+On doit d'abord calculer une valeur pivot appelée **résultat intermédiaire** (ex. le total des ventes ou la moyenne de notes), qui sert ensuite à évaluer la règle de décision suivante.
 
-```text
-12
-15
-8
-17
-10
+```mermaid
+flowchart LR
+    A["Entrée brute :<br>notes = [14, 16, 12]"] --> B["Règle 1 : Calcul de moyenne"]
+    B --> C["Résultat intermédiaire :<br><b>moyenne = 14</b>"]
+    C --> D["Règle 2 : Décision (moyenne >= 10)"]
+    D --> E["Sortie finale :<br><b>'Admis'</b>"]
 ```
 
-Ces valeurs représentent :
+### 1.2. Cartographier un problème à règles multiples
 
-```text
-une liste de notes
+Pour ne rien oublier lors de l'analyse, on structure les règles de manière chronologique :
+
+1. **Entrées :** Données brutes fournies au départ.
+2. **Règle 1 (Calcul) :** Transformation arithmétique des entrées → produit un résultat intermédiaire.
+3. **Règle 2 (Décision) :** Test conditionnel sur le résultat intermédiaire → produit la sortie finale.
+
+**Exemple concret :** *"Un magasin applique 10% de réduction sur une facture si le client achète plus de 5 articles."*
+
+| Étape | Question | Réponse pour ce problème |
+| :--- | :--- | :--- |
+| **Entrées** | Quelles données au départ ? | `prixUnitaire = 20`, `quantite = 6` |
+| **Règle 1** | Comment calculer le montant brut ? | `sousTotal = prixUnitaire * quantite` (Résultat intermédiaire) |
+| **Règle 2** | Quelle condition de remise ? | Si `quantite > 5`, appliquer `sousTotal * 0.90` |
+| **Sortie** | Quel montant final facturer ? | Le total net calculé (`108 DH`) |
+
+**Code autonome correspondant :**
+
+```javascript
+function calculerPrixFacture(prixUnitaire, quantite) {
+    let sousTotal = prixUnitaire * quantite;
+    if (quantite > 5) {
+        return sousTotal * 0.90; // 10% de remise
+    }
+    return sousTotal;
+}
+
+console.log("6 articles à 20 DH : " + calculerPrixFacture(20, 6) + " DH");
+console.log("3 articles à 20 DH : " + calculerPrixFacture(20, 3) + " DH");
 ```
 
-On peut donc écrire :
-
+**Résultat attendu dans la console :**
 ```text
-Donnée :
-liste de notes
+6 articles à 20 DH : 108 DH
+3 articles à 20 DH : 60 DH
 ```
 
-Une donnée peut être :
+### 1.3. Ordonner rigoureusement l'exécution des règles
 
-* un nombre ;
-* un texte ;
-* une valeur vraie ou fausse ;
-* une liste de valeurs.
+Une erreur fréquente consiste à vouloir tester une condition avant d'avoir calculé la valeur nécessaire. L'ordre d'écriture dans votre fonction doit respecter l'ordre d'analyse.
 
-La question à poser est :
-
-> Quelles informations sont disponibles ?
-
-### 1.2. Distinguer donnée et entrée
-
-Une donnée représente une information.
-
-Une entrée représente une donnée utilisée par le programme pour réaliser le traitement.
-
-Dans notre problème :
-
-```text
-Donnée :
-liste de notes
-
-Entrée :
-liste de notes
+```mermaid
+flowchart TD
+    R1["1. Calculer le résultat intermédiaire (sous-total)"] --> R2["2. Évaluer la règle conditionnelle (remise)"]
+    R2 --> R3["3. Renvoyer le résultat final avec return"]
 ```
 
-Dans certains problèmes, toutes les données décrites ne sont pas forcément des entrées.
+---
 
-Exemple :
+## Partie 2 — Pratique guidée
 
-```text
-Seuil de validation : 10
+Le but de cette pratique est de valider votre compréhension avec le **strict minimum de code**.
+
+### 2.1. Analyser et résoudre un problème de prime commerciale
+
+Considérez l'énoncé suivant :
+> Un employé reçoit un salaire de base fixe ainsi qu'une liste de ventes réalisées dans le mois.  
+> 1. On calcule le total cumulé de ses ventes.  
+> 2. Si le total des ventes dépasse 5 000 DH, l'employé reçoit une prime de 500 DH. Sinon, sa prime est de 0 DH.  
+> 3. Le salaire final versé est égal au salaire de base augmenté de la prime.
+
+Dans votre fichier `solution.js` :
+1. Notez en commentaire la grille d'analyse identifiant les entrées, le résultat intermédiaire et la règle de prime.
+2. Écrivez la fonction `calculerSalaireFinal(salaireBase, ventes)`.
+3. Testez votre fonction sur deux profils d'employés distincts.
+
+**Code à écrire dans `solution.js` :**
+
+```javascript
+// ==============================================================
+// Livrable : Identifier les données et les règles
+// Emplacement : algo/resolution-problemes/identifier-donnees-regles/solution.js
+// ==============================================================
+
+/*
+--- Grille d'analyse ---
+1. Entrées                : salaireBase (ex: 4000), ventes = [2000, 4000]
+2. Règle 1 (Cumul)        : somme des ventes
+3. Résultat intermédiaire : totalVentes (ex: 6000 DH)
+4. Règle 2 (Prime)        : si totalVentes > 5000 -> prime = 500 DH, sinon 0 DH
+5. Sortie finale          : salaireBase + prime (ex: 4500 DH)
+*/
+
+function calculerSalaireFinal(salaireBase, ventes) {
+    // Calcul du résultat intermédiaire
+    let totalVentes = 0;
+    for (let i = 0; i < ventes.length; i++) {
+        totalVentes += ventes[i];
+    }
+
+    // Application de la règle de prime
+    let prime = 0;
+    if (totalVentes > 5000) {
+        prime = 500;
+    }
+
+    return salaireBase + prime;
+}
+
+// Tests de validation
+let ventesEmployeA = [2000, 4000]; // Total 6000 > 5000 -> Prime 500 DH
+let ventesEmployeB = [1000, 2500]; // Total 3500 <= 5000 -> Prime 0 DH
+
+console.log("Salaire Employé A : " + calculerSalaireFinal(4000, ventesEmployeA) + " DH");
+console.log("Salaire Employé B : " + calculerSalaireFinal(4000, ventesEmployeB) + " DH");
+
+// --- Bilan personnel ---
+// Identifier le résultat intermédiaire (totalVentes) évite
+// de mélanger le calcul de la boucle et la condition de la prime.
 ```
 
-Le seuil est une donnée utilisée par le traitement.
-
-L'entrée principale reste :
-
+**Résultat attendu dans la console :**
 ```text
-liste de notes
+Salaire Employé A : 4500 DH
+Salaire Employé B : 4000 DH
 ```
 
-Il faut donc identifier le rôle de chaque donnée.
+### 2.2. Livrable & Critères de réussite
 
-### 1.3. Identifier les résultats attendus
+#### Emplacement obligatoire dans votre dépôt
 
-Le problème demande plusieurs résultats :
-
-```text
-Moyenne
-Statut de validation
-```
-
-On peut donc écrire :
+Déposez votre fichier dans votre dépôt annuel de tutoriels au chemin suivant :
 
 ```text
-Résultat 1 :
-moyenne
-
-Résultat 2 :
-validé / non validé
+algo/resolution-problemes/identifier-donnees-regles/solution.js
 ```
 
-La question à poser est :
+> **Rappel :** N'utilisez pas de codes de modules (`UA.121.15` ou `T.121.152`) dans vos noms de dossiers, utilisez uniquement des noms de dossiers clairs et lisibles.
 
-> Quelles informations le programme doit-il produire ?
+#### Critères d'auto-évaluation
 
-### 1.4. Identifier les règles
+Avant de valider et de commiter votre travail sur GitHub :
+* [ ] Le résultat intermédiaire (`totalVentes`) est clairement identifié et calculé en premier.
+* [ ] La condition de prime s'applique sur le résultat intermédiaire et non directement sur les ventes individuelles.
+* [ ] Les deux cas (avec prime et sans prime) sont testés et affichés en console.
+* [ ] Tout le fichier s'exécute sans erreur avec `node solution.js`.
+* [ ] Le fichier est commité dans votre dépôt à l'emplacement `algo/resolution-problemes/identifier-donnees-regles/solution.js`.
 
-Une règle indique comment passer des données au résultat.
+---
 
-Dans notre problème, il existe deux règles.
+## 3. Bilan
 
-#### Règle 1 — Calcul de la moyenne
-
-```text
-moyenne = somme des notes / nombre de notes
+```mermaid
+flowchart LR
+    A["Entrées brutes"] -->|Calcul| B["Résultat intermédiaire"]
+    B -->|Décision| C["Règle conditionnelle"]
+    C -->|Addition / Formule| D["Sortie finale"]
 ```
 
-#### Règle 2 — Validation
-
-```text
-si la moyenne >= 10
-alors la moyenne est validée
-```
-
-Les règles peuvent donc être :
-
-* un calcul ;
-* une comparaison ;
-* une condition ;
-* une règle métier simple.
-
-Il faut les écrire avant de coder.
-
-### 1.5. Identifier les traitements
-
-Un traitement est l'action réalisée sur une donnée.
-
-Dans notre exemple :
-
-```text
-1. calculer la somme des notes ;
-2. compter les notes ;
-3. calculer la moyenne ;
-4. comparer la moyenne avec 10 ;
-5. produire le statut.
-```
-
-On peut représenter le traitement ainsi :
-
-```text
-Notes
-↓
-Calculer la somme
-↓
-Compter les notes
-↓
-Calculer la moyenne
-↓
-Comparer avec 10
-↓
-Produire le statut
-```
-
-Le traitement décrit **ce que le programme doit faire**.
-
-### 1.6. Identifier les résultats intermédiaires
-
-Un problème peut demander plusieurs opérations avant d'obtenir le résultat final.
-
-Dans notre exemple :
-
-```text
-Notes
-↓
-Somme
-↓
-Moyenne
-↓
-Statut
-```
-
-La somme est un **résultat intermédiaire**.
-
-Elle n'est pas directement demandée par l'utilisateur, mais elle est nécessaire pour calculer la moyenne.
-
-On peut donc distinguer :
-
-```text
-Résultat intermédiaire :
-somme
-
-Résultat final :
-moyenne
-statut
-```
-
-Cette distinction devient importante lorsque le problème contient plusieurs traitements.
-
-### 1.7. Relier les données, les règles et les résultats
-
-On peut maintenant représenter le problème complètement :
-
-```text
-Données
-↓
-Notes
-
-Règle
-↓
-Calculer la moyenne
-
-Résultat intermédiaire
-↓
-Moyenne
-
-Règle
-↓
-Comparer la moyenne avec 10
-
-Résultat final
-↓
-Validé / non validé
-```
-
-Cette représentation permet de voir les différentes informations nécessaires avant de coder.
-
-### 1.8. Une fiche simple d'analyse
-
-Pour un problème algorithmique, utilisez cette structure :
-
-| Élément                  | Question                                                   |
-| ------------------------ | ---------------------------------------------------------- |
-| Données                  | Quelles informations possède-t-on ?                        |
-| Entrées                  | Quelles données sont utilisées par le programme ?          |
-| Résultats                | Que doit produire le programme ?                           |
-| Règles                   | Quelles règles faut-il appliquer ?                         |
-| Traitements              | Quelles actions faut-il réaliser ?                         |
-| Résultats intermédiaires | Quels résultats sont nécessaires avant le résultat final ? |
-
-Cette fiche permet de préparer la solution.
-
-### 1.9. À retenir
-
-Avant d'écrire le code :
-
-```text
-1. Identifier les données.
-2. Identifier les entrées.
-3. Identifier les résultats.
-4. Identifier les règles.
-5. Identifier les traitements.
-6. Identifier les résultats intermédiaires si nécessaire.
-```
-
-La question principale est :
-
-> **Que doit faire le programme avec les données pour produire les résultats demandés ?**
-
-## Partie 2 — Pratique
-
-### 2.1. Analyser le problème de référence
-
-Reprenons le problème :
-
-> Un groupe possède les notes 12, 15, 8, 17 et 10. Le programme doit calculer la moyenne et indiquer si elle est validée. Une moyenne supérieure ou égale à 10 est validée.
-
-Commencez par identifier les données.
-
-#### Étape 1 — Identifier les données
-
-Les données sont :
-
-```text
-12, 15, 8, 17, 10
-10
-```
-
-Elles représentent :
-
-```text
-liste de notes
-seuil de validation
-```
-
-#### Étape 2 — Identifier les entrées
-
-Les entrées sont :
-
-```text
-liste de notes
-```
-
-Le seuil de validation est une donnée utilisée dans la règle.
-
-#### Étape 3 — Identifier les résultats
-
-Le programme doit produire :
-
-```text
-moyenne
-statut
-```
-
-#### Étape 4 — Identifier les règles
-
-Règle de calcul :
-
-```text
-moyenne = somme des notes / nombre de notes
-```
-
-Règle de validation :
-
-```text
-moyenne >= 10
-```
-
-#### Étape 5 — Identifier les traitements
-
-Les traitements sont :
-
-```text
-Calculer la somme
-↓
-Compter les notes
-↓
-Calculer la moyenne
-↓
-Comparer la moyenne avec 10
-↓
-Produire le statut
-```
-
-#### Étape 6 — Identifier les résultats intermédiaires
-
-Le traitement produit d'abord :
-
-```text
-somme
-```
-
-puis :
-
-```text
-moyenne
-```
-
-Le statut est produit à partir de la moyenne.
-
-On obtient donc :
-
-```text
-notes
-↓
-somme
-↓
-moyenne
-↓
-statut
-```
-
-### 2.2. Construire la fiche complète
-
-La fiche du problème devient :
-
-| Élément                  | Description                           |
-| ------------------------ | ------------------------------------- |
-| Données                  | Liste de notes, seuil de validation   |
-| Entrée                   | Liste de notes                        |
-| Résultats                | Moyenne, statut                       |
-| Règle 1                  | Calculer la moyenne                   |
-| Règle 2                  | Une moyenne >= 10 est validée         |
-| Traitements              | Somme, comptage, moyenne, comparaison |
-| Résultats intermédiaires | Somme, moyenne                        |
-
-Cette fiche est suffisamment précise pour préparer la construction du programme.
-
-### 2.3. Analyser un nouveau problème
-
-Lisez le problème :
-
-> Une boutique possède une liste de prix : 20, 35, 15 et 30. Le programme doit calculer le total et indiquer si le total dépasse 90.
-
-Ne codez pas encore.
-
-Identifiez d'abord :
-
-```text
-Données :
-?
-
-Entrées :
-?
-
-Résultats :
-?
-
-Règles :
-?
-
-Traitements :
-?
-```
-
-### 2.4. Décrire les traitements
-
-Une fois les éléments identifiés, représentez le traitement :
-
-```text
-Liste de prix
-↓
-?
-↓
-?
-```
-
-Puis complétez la suite :
-
-```text
-Résultat intermédiaire
-↓
-Règle
-↓
-Résultat final
-```
-
-L'objectif est de décrire **ce que le programme doit faire**, sans écrire encore le code JavaScript.
-
-### 2.5. Deuxième problème
-
-Lisez le problème :
-
-> Un programme reçoit trois nombres. Il doit calculer leur somme et indiquer si la somme est paire.
-
-Analysez le problème.
-
-Complétez le tableau :
-
-| Élément                | Votre réponse |
-| ---------------------- | ------------- |
-| Données                |               |
-| Entrées                |               |
-| Résultats              |               |
-| Règle 1                |               |
-| Règle 2                |               |
-| Traitements            |               |
-| Résultat intermédiaire |               |
-
-### 2.6. Exercice individuel
-
-Analysez le problème suivant :
-
-> Un formateur dispose des notes suivantes : 14, 9, 12, 16 et 7. Le programme doit calculer la moyenne, trouver la meilleure note et indiquer si la moyenne est validée. La validation est obtenue avec une moyenne supérieure ou égale à 10.
-
-Vous devez analyser le problème avant toute écriture de code.
-
-Complétez :
-
-| Élément                  | Votre réponse |
-| ------------------------ | ------------- |
-| Données                  |               |
-| Entrées                  |               |
-| Résultat 1               |               |
-| Résultat 2               |               |
-| Résultat 3               |               |
-| Règle 1                  |               |
-| Règle 2                  |               |
-| Règle 3                  |               |
-| Traitements nécessaires  |               |
-| Résultats intermédiaires |               |
-
-Puis représentez les traitements :
-
-```text
-Données
-↓
-Traitement 1
-↓
-Résultat intermédiaire
-↓
-Traitement 2
-↓
-Résultat
-```
-
-Ajoutez les traitements nécessaires pour représenter tout le problème.
-
-**Travail à faire :**
-
-Analyser complètement le problème sans écrire le programme JavaScript.
-
-**Livrable :**
-
-Créez un document Markdown (ou un Google Doc) contenant votre analyse.
-
-Le document doit contenir :
-
-* les données ;
-* les entrées ;
-* les résultats attendus ;
-* les règles ;
-* les traitements ;
-* les résultats intermédiaires ;
-* le schéma du traitement.
-
-**Résultat attendu :**
-
-Votre analyse doit montrer clairement :
-
-```text
-Données
-↓
-Traitements
-↓
-Résultats intermédiaires
-↓
-Résultats finaux
-```
-
-**Critère de réussite :**
-
-L'analyse est correcte lorsque :
-
-* toutes les données utiles sont identifiées ;
-* chaque résultat demandé possède une règle ;
-* les traitements nécessaires sont identifiés ;
-* les résultats intermédiaires utiles sont repérés ;
-* aucun code n'est nécessaire pour comprendre la solution.
-
-## Bilan
-
-**Vous avez appris à :**
-
-* identifier les données d'un problème ;
-* distinguer les données et les entrées ;
-* identifier plusieurs résultats ;
-* identifier les règles ;
-* identifier les traitements ;
-* repérer les résultats intermédiaires.
-
-**Vous savez maintenant passer de :**
-
-```text
-Problème en français
-```
-
-à :
-
-```text
-Données
-↓
-Entrées
-↓
-Règles
-↓
-Traitements
-↓
-Résultats intermédiaires
-↓
-Résultats finaux
-```
-
-Vous êtes maintenant prêt à passer de l'analyse à la construction d'une première solution.
-
-## Glossaire
-
-* **Donnée** : information utilisée dans un problème.
-* **Entrée** : donnée utilisée par le programme pour commencer le traitement.
-* **Règle** : condition ou opération à appliquer aux données.
-* **Traitement** : action réalisée par le programme.
-* **Résultat** : information produite par le programme.
-* **Résultat intermédiaire** : résultat utilisé pour produire un autre résultat.
-* **Résultat final** : résultat demandé à la fin du traitement.
+## 4. Glossaire
+
+* **Résultat intermédiaire :** valeur temporaire calculée au cours du traitement et indispensable pour appliquer les règles suivantes.
+* **Chaînage de règles :** succession logique où le résultat d'une première règle devient l'entrée de la règle suivante.
+* **Données brutes :** ensemble des valeurs fournies en entrée avant toute transformation.

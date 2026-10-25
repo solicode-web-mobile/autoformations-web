@@ -9,1271 +9,235 @@ version: "normal"
 ua: "UA.121.14"
 nav_order: 5
 data_js: ""
-en_construction: true
+simplified: true
 ---
 
-Dans les tutoriels précédents, vous avez construit plusieurs algorithmes sur les tableaux :
+## 1. Objectif
 
-* calculer une somme ;
-* calculer une moyenne ;
-* rechercher une valeur ;
-* trouver un maximum ;
-* trouver un minimum ;
-* compter des valeurs.
+Dans ce tutoriel, vous allez apprendre à transformer vos algorithmes sur les tableaux en **fonctions réutilisables**.
 
-Dans ce tutoriel, vous allez transformer ces traitements en **fonctions réutilisables**.
-
-La progression est :
-
-```text
-Algorithme connu
-      ↓
-Identifier les données
-      ↓
-Choisir les paramètres
-      ↓
-Placer le traitement dans une fonction
-      ↓
-Retourner le résultat
-      ↓
-Appeler la fonction
-      ↓
-Réutiliser le traitement
-```
-
-À la fin du tutoriel, vous devez être capable de construire un petit répertoire de fonctions de traitement.
+Vous allez apprendre à :
+* transmettre un tableau en paramètre à une fonction ;
+* encapsuler un algorithme de parcours (`for`) à l'intérieur d'une fonction ;
+* renvoyer le résultat calculé avec `return` ;
+* réutiliser la même fonction sur plusieurs tableaux sans réécrire la boucle.
 
 ## 2. Prérequis
 
-Vous devez savoir :
+* Avoir suivi le tutoriel [Parcourir un tableau](/tutos/parcourir-tableau/).
+* Avoir suivi le tutoriel [Utiliser les paramètres et le retour](/tutos/utiliser-parametres-retour/).
+* Savoir utiliser un accumulateur ou un compteur dans une boucle `for`.
 
-* créer et parcourir un tableau ;
-* utiliser `for` ;
-* utiliser `if` ;
-* utiliser un compteur ;
-* utiliser un accumulateur ;
-* rechercher une valeur ;
-* trouver un maximum ;
-* trouver un minimum ;
-* déclarer une fonction ;
-* utiliser des paramètres ;
-* utiliser `return`.
-
-Exemple :
-
-```javascript
-function additionner(a, b) {
-  return a + b;
-}
-
-let resultat = additionner(10, 5);
-
-console.log(resultat);
-```
-
-Résultat :
-
-```text
-15
-```
-
-## Données de départ
-
-### JavaScript
-
-Créez un fichier :
-
-```text
-algorithmes-fonctions.js
-```
-
-Commencez avec :
-
-```javascript
-let nombres = [12, 8, 15, 4, 19];
-
-console.log(nombres);
-```
-
-Exécutez :
-
-```bash
-node algorithmes-fonctions.js
-```
-
-Résultat :
-
-```text
-[ 12, 8, 15, 4, 19 ]
-```
-
-Ce tableau sera utilisé pour transformer plusieurs algorithmes en fonctions.
+---
 
 ## Partie 1 — Théorie
 
-### 1.1. Un algorithme peut devenir une fonction
+### 1.1. Du script figé à la fonction réutilisable
 
-Dans l'UA.121.13, nous avons construit un algorithme de somme :
+Un algorithme écrit dans un script classique ne fonctionne que pour un seul tableau déterminé : si les données changent, il faut copier-coller tout le code.
+
+En transformant l'algorithme en **fonction**, on déclare un paramètre générique (ex: `tableau`) pour recevoir n'importe quel tableau transmis lors de l'appel.
+
+```mermaid
+flowchart LR
+    subgraph ScriptFigé["Script classique (figé)"]
+        A1["let notes = [10, 20]"] --> B1["Boucle for"]
+        B1 --> C1["Affichage unique"]
+    end
+
+    subgraph FonctionDynamique["Fonction réutilisable (dynamique)"]
+        Arg1["Tableau A [12, 14, 16]"] --> F["calculerSomme(tableau)"]
+        Arg2["Tableau B [10, 20]"] --> F
+        F --> Ret["return somme"]
+    end
+```
+
+**Exemple exécutable :**
 
 ```javascript
-let somme = 0;
-
-for (let i = 0; i < nombres.length; i++) {
-  somme = somme + nombres[i];
-}
-
-console.log(somme);
-```
-
-Le traitement fonctionne.
-
-Mais il est directement lié à la variable :
-
-```text
-nombres
-```
-
-Nous voulons pouvoir utiliser le même traitement avec :
-
-```text
-[12, 8, 15, 4, 19]
-```
-
-ou :
-
-```text
-[5, 10, 20]
-```
-
-ou :
-
-```text
-[7, 3, 9, 12]
-```
-
-Il faut donc transformer le tableau en **paramètre**.
-
-### 1.2. Identifier la donnée variable
-
-Dans notre algorithme :
-
-```javascript
-let somme = 0;
-
-for (let i = 0; i < nombres.length; i++) {
-  somme = somme + nombres[i];
-}
-```
-
-la partie qui change d'un appel à l'autre est :
-
-```text
-nombres
-```
-
-Nous pouvons donc créer :
-
-```javascript
-function calculerSomme(nombres) {
-  ...
-}
-```
-
-Ici :
-
-```text
-nombres
-```
-
-devient un paramètre.
-
-### 1.3. Transformer l'algorithme en fonction
-
-L'algorithme devient :
-
-```javascript
-function calculerSomme(nombres) {
-  let somme = 0;
-
-  for (let i = 0; i < nombres.length; i++) {
-    somme = somme + nombres[i];
-  }
-
-  return somme;
-}
-```
-
-La fonction reçoit un tableau.
-
-Elle calcule la somme.
-
-Elle retourne le résultat.
-
-On obtient :
-
-```text
-tableau
-   ↓
-calculerSomme()
-   ↓
-somme
-```
-
-### 1.4. Appeler la fonction
-
-Nous pouvons maintenant écrire :
-
-```javascript
-let nombres = [12, 8, 15, 4, 19];
-
-let somme = calculerSomme(nombres);
-
-console.log(somme);
-```
-
-Résultat :
-
-```text
-58
-```
-
-Le même algorithme peut maintenant être réutilisé.
-
-### 1.5. Utiliser la fonction avec un autre tableau
-
-Nous pouvons écrire :
-
-```javascript
-let nombres1 = [12, 8, 15, 4, 19];
-let nombres2 = [5, 10, 20];
-
-console.log(calculerSomme(nombres1));
-console.log(calculerSomme(nombres2));
-```
-
-Résultat :
-
-```text
-58
-35
-```
-
-Une seule fonction permet donc de traiter plusieurs tableaux.
-
-### 1.6. Transformer l'algorithme de moyenne
-
-Nous avons déjà appris à calculer une moyenne.
-
-L'algorithme est :
-
-```text
-somme = 0
-
-parcourir le tableau
-    ajouter chaque valeur à la somme
-
-moyenne = somme / nombre d'éléments
-```
-
-Nous pouvons le transformer en :
-
-```javascript
-function calculerMoyenne(nombres) {
-  let somme = 0;
-
-  for (let i = 0; i < nombres.length; i++) {
-    somme = somme + nombres[i];
-  }
-
-  return somme / nombres.length;
-}
-```
-
-Appel :
-
-```javascript
-let moyenne = calculerMoyenne([12, 15, 9]);
-
-console.log(moyenne);
-```
-
-Résultat :
-
-```text
-12
-```
-
-### 1.7. Réutiliser une fonction dans une autre fonction
-
-Nous pouvons éviter de réécrire le calcul de la somme.
-
-```javascript
-function calculerSomme(nombres) {
-  let somme = 0;
-
-  for (let i = 0; i < nombres.length; i++) {
-    somme = somme + nombres[i];
-  }
-
-  return somme;
-}
-
-function calculerMoyenne(nombres) {
-  let somme = calculerSomme(nombres);
-
-  return somme / nombres.length;
-}
-```
-
-La fonction `calculerMoyenne()` utilise alors :
-
-```text
-calculerSomme()
-      ↓
-somme
-      ↓
-division par length
-      ↓
-moyenne
-```
-
-C'est un premier exemple de **réutilisation d'un traitement**.
-
-### 1.8. Transformer l'algorithme de recherche
-
-L'algorithme connu est :
-
-```text
-pour chaque élément :
-    comparer avec la valeur recherchée
-    si égal :
-        valeur trouvée
-```
-
-Nous pouvons le transformer en :
-
-```javascript
-function rechercher(nombres, valeur) {
-  for (let i = 0; i < nombres.length; i++) {
-    if (nombres[i] === valeur) {
-      return true;
+function calculerSomme(tableau) {
+    let somme = 0;
+    for (let i = 0; i < tableau.length; i++) {
+        somme += tableau[i];
     }
-  }
-
-  return false;
+    return somme;
 }
+
+let notes1 = [12, 14, 16];
+let notes2 = [10, 20];
+
+console.log("Somme 1 : " + calculerSomme(notes1));
+console.log("Somme 2 : " + calculerSomme(notes2));
 ```
 
-Appel :
+**Résultat attendu dans la console :**
+```text
+Somme 1 : 42
+Somme 2 : 30
+```
+
+### 1.2. Transformer un algorithme de comptage conditionnel
+
+Un algorithme de comptage filtre les éléments respectant un critère (ex: `note >= 10`) et retourne le nombre total d'occurrences.
+
+```mermaid
+flowchart TD
+    A["Entrée : tableau de notes"] --> B["compteur = 0"]
+    B --> C["Parcourir chaque note avec for"]
+    C --> D{"note >= 10 ?"}
+    D -->|Oui| E["compteur++"]
+    D -->|Non| F["Passer à la suivante"]
+    E --> G["Fin de boucle"]
+    F --> G
+    G --> H["return compteur"]
+```
+
+**Exemple exécutable :**
 
 ```javascript
-console.log(rechercher([12, 8, 15, 4, 19], 15));
-```
-
-Résultat :
-
-```text
-true
-```
-
-### 1.9. Pourquoi `return true` dans la boucle ?
-
-Dès que la valeur est trouvée :
-
-```javascript
-if (nombres[i] === valeur) {
-  return true;
-}
-```
-
-la fonction a déjà obtenu le résultat demandé.
-
-Elle peut donc retourner immédiatement :
-
-```text
-true
-```
-
-Si la boucle se termine sans trouver la valeur :
-
-```javascript
-return false;
-```
-
-est exécuté.
-
-Le fonctionnement est :
-
-```text
-Recherche
-   ↓
-Valeur trouvée ?
- ┌──────┴──────┐
-oui            non
- ↓              ↓
-true          continuer
-                ↓
-             fin du tableau
-                ↓
-             false
-```
-
-### 1.10. Transformer l'algorithme du maximum
-
-L'algorithme connu est :
-
-```text
-prendre le premier élément
-      ↓
-pour chaque élément suivant :
-    comparer
-    si la valeur est plus grande :
-        remplacer le maximum
-```
-
-Nous obtenons :
-
-```javascript
-function trouverMaximum(nombres) {
-  let maximum = nombres[0];
-
-  for (let i = 1; i < nombres.length; i++) {
-    if (nombres[i] > maximum) {
-      maximum = nombres[i];
+function compterReussites(notes) {
+    let compteur = 0;
+    for (let i = 0; i < notes.length; i++) {
+        if (notes[i] >= 10) {
+            compteur++;
+        }
     }
-  }
-
-  return maximum;
+    return compteur;
 }
+
+let resultats = [14, 8, 12, 9, 16];
+console.log("Nombre d'admis : " + compterReussites(resultats));
 ```
 
-Appel :
-
-```javascript
-console.log(trouverMaximum([12, 8, 15, 4, 19]));
-```
-
-Résultat :
-
+**Résultat attendu dans la console :**
 ```text
-19
+Nombre d'admis : 3
 ```
 
-### 1.11. Transformer l'algorithme du minimum
+### 1.3. Transformer un algorithme de recherche d'extremum (maximum)
 
-Le principe est presque identique :
+Pour trouver le plus grand élément d'un tableau, la fonction initialise le maximum avec la première case `tableau[0]`, puis parcourt le reste du tableau pour actualiser la valeur retenue.
+
+```mermaid
+flowchart LR
+    A["max = tableau[0]"] --> B["Parcourir de l'index 1 à length - 1"]
+    B --> C{"element > max ?"}
+    C -->|Oui| D["max = element"]
+    C -->|Non| E["Continuer"]
+    D --> F["Fin du parcours"]
+    E --> F
+    F --> G["return max"]
+```
+
+**Exemple exécutable :**
 
 ```javascript
-function trouverMinimum(nombres) {
-  let minimum = nombres[0];
-
-  for (let i = 1; i < nombres.length; i++) {
-    if (nombres[i] < minimum) {
-      minimum = nombres[i];
+function trouverMaximum(tableau) {
+    let max = tableau[0];
+    for (let i = 1; i < tableau.length; i++) {
+        if (tableau[i] > max) {
+            max = tableau[i];
+        }
     }
-  }
-
-  return minimum;
+    return max;
 }
+
+let temperatures = [18, 24, 15, 29, 21];
+console.log("Température max : " + trouverMaximum(temperatures) + "°C");
 ```
 
-Appel :
+**Résultat attendu dans la console :**
+```text
+Température max : 29°C
+```
+
+---
+
+## Partie 2 — Pratique guidée
+
+Le but de cette pratique est de valider votre compréhension avec le **strict minimum de code**.
+
+### 2.1. Transformer le calcul de moyenne en fonction réutilisable
+
+Vous allez convertir l'algorithme de moyenne en une fonction qui opère sur n'importe quel tableau de nombres :
+
+1. Déclarez une fonction `calculerMoyenne(notes)` :
+   - initialisez un accumulateur `somme = 0` ;
+   - cumulez chaque valeur du tableau dans `somme` à l'aide d'une boucle `for` ;
+   - renvoyez la moyenne arithmétique `somme / notes.length` avec `return`.
+2. Déclarez deux tableaux distincts : `groupeA = [12, 14, 16]` et `groupeB = [10, 18, 11, 13]`.
+3. Appelez la fonction pour chaque groupe et affichez les moyennes obtenues.
+
+**Code à écrire dans `fonctions.js` :**
 
 ```javascript
-console.log(trouverMinimum([12, 8, 15, 4, 19]));
-```
+// ==============================================================
+// Livrable : Transformer les algorithmes élémentaires en fonctions
+// Emplacement : algo/fonctions/transformer-algorithmes-fonctions/fonctions.js
+// ==============================================================
 
-Résultat :
-
-```text
-4
-```
-
-### 1.12. Transformer un comptage en fonction
-
-Nous avons aussi appris à compter les valeurs qui respectent une règle.
-
-Exemple :
-
-```text
-Compter les nombres pairs.
-```
-
-L'algorithme est :
-
-```text
-compteur = 0
-
-pour chaque nombre :
-    si le nombre est pair :
-        compteur++
-```
-
-La fonction peut être :
-
-```javascript
-function compterPairs(nombres) {
-  let compteur = 0;
-
-  for (let i = 0; i < nombres.length; i++) {
-    if (nombres[i] % 2 === 0) {
-      compteur++;
+// Transformation de l'algorithme de moyenne en fonction
+function calculerMoyenne(notes) {
+    let somme = 0;
+    for (let i = 0; i < notes.length; i++) {
+        somme += notes[i];
     }
-  }
-
-  return compteur;
-}
-```
-
-Appel :
-
-```javascript
-console.log(compterPairs([4, 7, 2, 9, 5, 8]));
-```
-
-Résultat :
-
-```text
-3
-```
-
-### 1.13. Un algorithme possède maintenant une interface
-
-Une fonction peut être vue comme une petite boîte :
-
-```text
-         Entrées
-            ↓
-     ┌─────────────┐
-     │   Fonction  │
-     │             │
-     │ Traitement  │
-     └─────────────┘
-            ↓
-         Résultat
-```
-
-Par exemple :
-
-```text
-[12, 8, 15, 4, 19]
-        ↓
-trouverMaximum()
-        ↓
-       19
-```
-
-La fonction cache les détails du traitement.
-
-L'utilisateur de la fonction n'a besoin de connaître que :
-
-```text
-ce qu'il fournit
-```
-
-et :
-
-```text
-ce qu'il récupère
-```
-
-### 1.14. Le nom doit représenter le traitement
-
-Les fonctions doivent avoir des noms clairs :
-
-```text
-calculerSomme()
-calculerMoyenne()
-rechercher()
-trouverMaximum()
-trouverMinimum()
-compterPairs()
-```
-
-Le nom doit permettre de comprendre le rôle du traitement.
-
-### 1.15. Ne pas changer l'algorithme pendant la transformation
-
-Lorsque nous transformons un algorithme connu en fonction, nous ne devons pas modifier inutilement sa logique.
-
-La démarche est :
-
-```text
-Algorithme validé
-       ↓
-Identifier les entrées
-       ↓
-Les transformer en paramètres
-       ↓
-Conserver le traitement
-       ↓
-Retourner le résultat
-```
-
-Cette règle est importante.
-
-La fonction doit d'abord **encapsuler** l'algorithme existant.
-
-L'amélioration de l'algorithme pourra être faite plus tard.
-
-### 1.16. Comparer avant et après
-
-Avant :
-
-```javascript
-let maximum = nombres[0];
-
-for (let i = 1; i < nombres.length; i++) {
-  if (nombres[i] > maximum) {
-    maximum = nombres[i];
-  }
+    return somme / notes.length;
 }
 
-console.log(maximum);
+// Réutilisation sur deux séries de données distinctes
+let groupeA = [12, 14, 16];
+let groupeB = [10, 18, 11, 13];
+
+console.log("Moyenne Groupe A : " + calculerMoyenne(groupeA));
+console.log("Moyenne Groupe B : " + calculerMoyenne(groupeB));
+
+// --- Bilan personnel ---
+// En recevant le tableau en paramètre, la fonction applique le même algorithme
+// à n'importe quel jeu de données sans recopier la boucle for.
 ```
 
-Après :
-
-```javascript
-function trouverMaximum(nombres) {
-  let maximum = nombres[0];
-
-  for (let i = 1; i < nombres.length; i++) {
-    if (nombres[i] > maximum) {
-      maximum = nombres[i];
-    }
-  }
-
-  return maximum;
-}
-
-console.log(trouverMaximum(nombres));
+**Résultat attendu dans la console :**
+```text
+Moyenne Groupe A : 14
+Moyenne Groupe B : 13
 ```
 
-Le traitement interne est presque identique.
+### 2.2. Livrable & Critères de réussite
 
-La différence est que maintenant :
+#### Emplacement obligatoire dans votre dépôt
+
+Déposez votre fichier dans votre dépôt annuel de tutoriels au chemin suivant :
 
 ```text
-le traitement est nommé
+algo/fonctions/transformer-algorithmes-fonctions/fonctions.js
 ```
 
-et :
-
-```text
-le traitement est réutilisable
-```
-
-### 1.17. Construire un petit répertoire
-
-À partir des algorithmes déjà étudiés, nous pouvons créer :
-
-```text
-calculerSomme()
-calculerMoyenne()
-rechercher()
-trouverMaximum()
-trouverMinimum()
-compterPairs()
-```
-
-Ce répertoire constitue une première collection de traitements réutilisables.
-
-### 1.18. À retenir
-
-* Un algorithme connu peut être transformé en fonction.
-* Les données qui changent deviennent des paramètres.
-* Le résultat de l'algorithme devient la valeur retournée.
-* La logique du traitement reste la même.
-* Une fonction permet de réutiliser un algorithme.
-* Une fonction peut utiliser une autre fonction.
-* Le nom de la fonction doit représenter le traitement.
-
-## Partie 2 — Pratique
-
-### 2.1. Étape 1 — Transformer la somme
-
-Partez de cet algorithme :
-
-```javascript
-let nombres = [12, 8, 15, 4, 19];
-
-let somme = 0;
-
-for (let i = 0; i < nombres.length; i++) {
-  somme = somme + nombres[i];
-}
-
-console.log(somme);
-```
-
-Transformez-le en :
-
-```javascript
-function calculerSomme(nombres) {
-  // votre traitement
-}
-```
-
-La fonction doit retourner le résultat.
-
-Testez avec :
-
-```text
-[12, 8, 15, 4, 19]
-```
-
-puis :
-
-```text
-[5, 10, 20]
-```
-
-Résultats attendus :
-
-```text
-58
-35
-```
-
-### 2.2. Étape 2 — Transformer la moyenne
-
-Créez :
-
-```javascript
-function calculerMoyenne(nombres) {
-  // votre traitement
-}
-```
-
-Utilisez la fonction `calculerSomme()` pour éviter de refaire inutilement le même traitement.
-
-Testez :
-
-```text
-[12, 15, 9]
-```
-
-Résultat :
-
-```text
-12
-```
-
-### 2.3. Étape 3 — Transformer la recherche
-
-Créez :
-
-```javascript
-function rechercher(nombres, valeur) {
-  // votre traitement
-}
-```
-
-La fonction doit retourner :
-
-```text
-true
-```
-
-si la valeur existe.
-
-Sinon :
-
-```text
-false
-```
-
-Tests :
-
-```text
-rechercher([12, 8, 15, 4, 19], 15) → true
-rechercher([12, 8, 15, 4, 19], 7) → false
-```
-
-### 2.4. Étape 4 — Transformer le maximum
-
-Créez :
-
-```javascript
-function trouverMaximum(nombres) {
-  // votre traitement
-}
-```
-
-Test :
-
-```text
-trouverMaximum([12, 8, 15, 4, 19])
-```
-
-Résultat :
-
-```text
-19
-```
-
-### 2.5. Étape 5 — Transformer le minimum
-
-Créez :
-
-```javascript
-function trouverMinimum(nombres) {
-  // votre traitement
-}
-```
-
-Test :
-
-```text
-trouverMinimum([12, 8, 15, 4, 19])
-```
-
-Résultat :
-
-```text
-4
-```
-
-### 2.6. Étape 6 — Transformer le comptage
-
-Créez :
-
-```javascript
-function compterPairs(nombres) {
-  // votre traitement
-}
-```
-
-Test :
-
-```text
-compterPairs([4, 7, 2, 9, 5, 8])
-```
-
-Résultat :
-
-```text
-3
-```
-
-### 2.7. Étape 7 — Tester plusieurs tableaux
-
-Utilisez :
-
-```javascript
-let nombres1 = [12, 8, 15, 4, 19];
-let nombres2 = [5, 10, 20, 7];
-let nombres3 = [3, 6, 9, 12, 15];
-```
-
-Testez les fonctions :
-
-```text
-calculerSomme()
-calculerMoyenne()
-trouverMaximum()
-trouverMinimum()
-```
-
-avec les trois tableaux.
-
-L'objectif est de vérifier que les mêmes fonctions fonctionnent avec différentes données.
-
-### 2.8. Étape 8 — Utiliser une fonction dans une autre
-
-Construisez :
-
-```javascript
-function calculerSomme(nombres) {
-  // ...
-}
-
-function calculerMoyenne(nombres) {
-  // utiliser calculerSomme()
-}
-```
-
-Pour :
-
-```text
-[10, 14, 16]
-```
-
-le résultat doit être :
-
-```text
-13.33
-```
-
-### 2.9. Étape 9 — Construire le répertoire
-
-Votre fichier doit maintenant contenir :
-
-```text
-calculerSomme()
-calculerMoyenne()
-rechercher()
-trouverMaximum()
-trouverMinimum()
-compterPairs()
-```
-
-Pour chaque fonction, testez au moins deux tableaux différents.
-
-### 2.10. Exercice 1 — Fonction de somme
-
-Transformez l'algorithme de somme d'un tableau en fonction :
-
-```text
-calculerSomme(nombres)
-```
-
-Testez avec :
-
-```text
-[1, 2, 3, 4, 5]
-```
-
-Résultat :
-
-```text
-15
-```
+> **Rappel :** N'utilisez pas de codes de modules (`UA.121.14` ou `T.121.145`) dans vos noms de dossiers, utilisez uniquement des noms de dossiers clairs et lisibles.
+
+#### Critères d'auto-évaluation
+
+Avant de valider et de commiter votre travail sur GitHub :
+* [ ] La fonction reçoit le tableau de données en paramètre (`notes`).
+* [ ] La boucle `for` s'adapte automatiquement à la taille du tableau grâce à `notes.length`.
+* [ ] La fonction renvoie la moyenne calculée à l'aide de `return`.
+* [ ] La fonction est appelée avec succès sur deux tableaux de longueurs différentes.
+* [ ] Tout le fichier s'exécute sans erreur avec `node fonctions.js`.
+* [ ] Le fichier est commité dans votre dépôt à l'emplacement `algo/fonctions/transformer-algorithmes-fonctions/fonctions.js`.
 
 ---
 
-### 2.11. Exercice 2 — Fonction de moyenne
+## 3. Bilan
 
-Transformez l'algorithme de moyenne :
-
-```text
-calculerMoyenne(nombres)
+```mermaid
+flowchart LR
+    A["Algorithme ponctuel<br>(tableau en dur)"] -->|Paramètre tableau| B["Fonction générique<br><code>function f(tab)</code>"]
+    B -->|Boucle avec tab.length| C["Traitement interne"]
+    C -->|return résultat| D["Réutilisable sur<br>tout tableau"]
 ```
 
-Testez avec :
-
-```text
-[10, 12, 14, 16]
-```
-
-Résultat :
-
-```text
-13
-```
-
----
-
-### 2.12. Exercice 3 — Fonction de recherche
-
-Transformez l'algorithme de recherche :
-
-```text
-rechercher(nombres, valeur)
-```
-
-Tests :
-
-```text
-rechercher([4, 8, 12, 15], 12) → true
-rechercher([4, 8, 12, 15], 7) → false
-```
-
----
-
-### 2.13. Exercice 4 — Fonction maximum
-
-Créez :
-
-```text
-trouverMaximum(nombres)
-```
-
-Test :
-
-```text
-[18, 12, 25, 9, 16]
-```
-
-Résultat :
-
-```text
-25
-```
-
----
-
-### 2.14. Exercice 5 — Fonction minimum
-
-Créez :
-
-```text
-trouverMinimum(nombres)
-```
-
-Test :
-
-```text
-[18, 12, 25, 9, 16]
-```
-
-Résultat :
-
-```text
-9
-```
-
----
-
-### 2.15. Exercice 6 — Fonction de comptage
-
-Créez :
-
-```text
-compterPairs(nombres)
-```
-
-Test :
-
-```text
-[2, 5, 8, 11, 14, 17]
-```
-
-Résultat :
-
-```text
-3
-```
-
----
-
-### 2.16. Exercice 7 — Transformer un algorithme de comptage
-
-À partir de :
-
-```text
-[12, 8, 15, 9, 17, 6, 10]
-```
-
-créez :
-
-```text
-compterValidees(notes)
-```
-
-Une note est validée si :
-
-```text
-note >= 10
-```
-
-Résultat attendu :
-
-```text
-4
-```
-
----
-
-### 2.17. Exercice 8 — Fonction de somme conditionnelle
-
-Créez :
-
-```text
-calculerSommePairs(nombres)
-```
-
-Exemple :
-
-```text
-[4, 7, 2, 9, 5, 8]
-```
-
-Résultat :
-
-```text
-14
-```
-
----
-
-### 2.18. Exercice 9 — Réutiliser plusieurs fonctions
-
-Créez :
-
-```text
-calculerSomme()
-calculerMoyenne()
-trouverMaximum()
-trouverMinimum()
-```
-
-Puis utilisez-les avec :
-
-```javascript
-let notes = [12, 15, 8, 17, 10, 14];
-```
-
-Le programme doit afficher :
-
-```text
-Somme : 76
-Moyenne : 12.67
-Maximum : 17
-Minimum : 8
-```
-
----
-
-### 2.19. Exercice 10 — Construire une analyse avec des fonctions
-
-Avec :
-
-```javascript
-let notes = [12, 8, 15, 9, 17, 6, 14, 10];
-```
-
-utilisez les fonctions pour calculer :
-
-* la somme ;
-* la moyenne ;
-* le maximum ;
-* le minimum ;
-* le nombre de notes validées.
-
-Le résultat attendu est :
-
-```text
-Somme : 91
-Moyenne : 11.38
-Maximum : 17
-Minimum : 6
-Notes validées : 5
-```
-
-### 2.20. Travail à faire
-
-Construisez votre premier **répertoire de traitements réutilisables**.
-
-Le fichier doit contenir les fonctions :
-
-```text
-calculerSomme()
-calculerMoyenne()
-rechercher()
-trouverMaximum()
-trouverMinimum()
-compterValidees()
-```
-
-Puis utilisez-les avec :
-
-```javascript
-let notes = [12, 8, 15, 9, 17, 6, 14, 10];
-```
-
-Le programme doit afficher :
-
-```text
-Somme : 91
-Moyenne : 11.38
-Maximum : 17
-Minimum : 6
-Notes validées : 5
-```
-
-Testez ensuite les mêmes fonctions avec un second tableau.
-
-### Livrable
-
-Créez un document Markdown ou un Google Doc contenant :
-
-* la liste des fonctions ;
-* le rôle de chaque fonction ;
-* les paramètres de chaque fonction ;
-* le code JavaScript ;
-* un premier tableau de test ;
-* un deuxième tableau de test ;
-* les résultats obtenus.
-
-### Critère de réussite
-
-Le travail est réussi si :
-
-* chaque algorithme est correctement transformé en fonction ;
-* les tableaux sont reçus comme paramètres ;
-* les valeurs recherchées sont reçues comme paramètres lorsque nécessaire ;
-* chaque fonction retourne son résultat ;
-* les fonctions peuvent être utilisées avec plusieurs tableaux ;
-* `calculerMoyenne()` réutilise `calculerSomme()` ;
-* les résultats sont corrects.
-
-### Résultat attendu
-
-Le programme doit permettre d'appeler simplement :
-
-```javascript
-calculerSomme(notes);
-calculerMoyenne(notes);
-rechercher(notes, 15);
-trouverMaximum(notes);
-trouverMinimum(notes);
-compterValidees(notes);
-```
-
-Les traitements internes restent cachés.
-
-L'utilisateur de la fonction connaît simplement :
-
-```text
-Entrées
-   ↓
-Fonction
-   ↓
-Résultat
-```
-
-## Bilan
-
-**Vous avez appris :**
-
-* à reprendre un algorithme existant ;
-* à identifier ses données d'entrée ;
-* à transformer ces données en paramètres ;
-* à placer l'algorithme dans une fonction ;
-* à retourner le résultat ;
-* à réutiliser la fonction avec plusieurs tableaux ;
-* à utiliser une fonction dans une autre fonction ;
-* à construire un premier répertoire de traitements réutilisables.
-
-**Vous savez maintenant :**
-
-```text
-Algorithme
-    ↓
-Paramètres
-    ↓
-Fonction
-    ↓
-Traitement
-    ↓
-return
-    ↓
-Réutilisation
-```
-
-Vous passez maintenant d'une logique où les traitements sont écrits directement dans le programme à une logique où les traitements sont **nommés et réutilisables**.
-
-Dans le prochain tutoriel, vous allez combiner plusieurs fonctions pour construire un **traitement complet**.
-
-## Glossaire
-
-* **Algorithme** : suite organisée d'étapes pour résoudre un problème.
-* **Fonction réutilisable** : fonction qui peut être appelée plusieurs fois avec des données différentes.
-* **Paramètre** : donnée reçue par une fonction.
-* **Entrée** : donnée fournie au traitement.
-* **Sortie** : résultat produit par le traitement.
-* **Encapsulation** : fait de regrouper un traitement dans une fonction.
-* **Réutilisation** : fait d'utiliser le même traitement plusieurs fois.
-* **Composition** : utilisation d'une fonction dans un autre traitement ou dans une autre fonction.
+## 4. Glossaire
+
+* **Encapsulation :** fait d'isoler un algorithme dans une fonction avec ses propres variables locales.
+* **Paramètre tableau :** variable qui reçoit la référence d'une liste de données lors de l'appel d'une fonction.
+* **Généralisation :** passage d'un script écrit pour des données fixes à une fonction capable de traiter n'importe quel tableau.

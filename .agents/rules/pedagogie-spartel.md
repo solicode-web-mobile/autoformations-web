@@ -16,7 +16,7 @@ trigger: always_on
 Chaque tutoriel et atelier doit appliquer rigoureusement le cycle :
 $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Expérimenter} \longrightarrow \text{Réaliser} \longrightarrow \text{Réutiliser}$$
 
-- **Hiérarchie inviolable :** Session $\rightarrow$ Sprint $\rightarrow$ UA $\rightarrow$ Activité $\rightarrow$ Réalisation $\rightarrow$ Livrable.
+- **Hiérarchie inviolable :** Session → Sprint → UA → Activité → Réalisation → Livrable.
 - **Divulgation progressive :** Ne jamais introduire une notion sans vérifier ses prérequis dans l'UA. Isoler une difficulté à la fois.
 - **Glossaire obligatoire :** Dès qu'un nouveau terme technique est introduit, fournir une définition concise d'une ligne.
 

@@ -52,8 +52,8 @@ Pour chaque côté, posez deux questions :
 
 | Question | Réponse possible | Valeur retenue |
 | :--- | :--- | :---: |
-| **1. Est-ce obligatoire ?** (Minimum) | Non $\rightarrow$ `0`<br>Oui $\rightarrow$ `1` | `0` ou `1` |
-| **2. Peut-il y en avoir plusieurs ?** (Maximum) | Une seule $\rightarrow$ `1`<br>Plusieurs $\rightarrow$ `N` | `1` ou `N` |
+| **1. Est-ce obligatoire ?** (Minimum) | Non → `0`<br>Oui → `1` | `0` ou `1` |
+| **2. Peut-il y en avoir plusieurs ?** (Maximum) | Une seule → `1`<br>Plusieurs → `N` | `1` ou `N` |
 
 Les 4 couples possibles sont : `(0,1)`, `(1,1)`, `(0,N)`, `(1,N)`.
 
@@ -147,13 +147,13 @@ Les 4 couples possibles sont : `(0,1)`, `(1,1)`, `(0,N)`, `(1,N)`.
 
 Appliquez les deux questions pour relier `VILLE` et `AUTEUR` avec le verbe **habite** :
 
-1. **Sens VILLE $\rightarrow$ AUTEUR :**
-   - Une ville accueille-t-elle obligatoirement des auteurs ? Oui $\rightarrow$ `min = 1`.
-   - Peut-elle accueillir plusieurs auteurs ? Oui $\rightarrow$ `max = N`.
+1. **Sens VILLE → AUTEUR :**
+   - Une ville accueille-t-elle obligatoirement des auteurs ? Oui → `min = 1`.
+   - Peut-elle accueillir plusieurs auteurs ? Oui → `max = N`.
    - **Cardinalité côté VILLE = `(1,N)`**.
-2. **Sens AUTEUR $\rightarrow$ VILLE :**
-   - Un auteur a-t-il obligatoirement une ville ? Oui $\rightarrow$ `min = 1`.
-   - Peut-il habiter dans plusieurs villes ? Non $\rightarrow$ `max = 1`.
+2. **Sens AUTEUR → VILLE :**
+   - Un auteur a-t-il obligatoirement une ville ? Oui → `min = 1`.
+   - Peut-il habiter dans plusieurs villes ? Non → `max = 1`.
    - **Cardinalité côté AUTEUR = `(1,1)`**.
 
 ### 2.2. Travail à faire
