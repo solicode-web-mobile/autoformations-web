@@ -1,7 +1,8 @@
 ---
-title: "Créer un planning simple"
+title: "Estimer et organiser son temps"
 layout: ua
 code: "UA.152.22"
+session: "S3"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 2

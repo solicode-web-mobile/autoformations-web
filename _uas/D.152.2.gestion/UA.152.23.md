@@ -1,7 +1,8 @@
 ---
-title: "Découper une tâche en actions simples"
+title: "Découper et ordonner son travail"
 layout: ua
 code: "UA.152.23"
+session: "S5"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 3

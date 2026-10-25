@@ -1,7 +1,8 @@
 ---
-title: "Faire un compte rendu d'avancement"
+title: "Rendre compte clairement de sa contribution"
 layout: ua
 code: "UA.152.27"
+session: "S9"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 7

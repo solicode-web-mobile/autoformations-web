@@ -1,7 +1,8 @@
 ---
-title: "Tenir son suivi à jour"
+title: "Maintenir un suivi exploitable"
 layout: ua
 code: "UA.152.28"
+session: "S10"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 8

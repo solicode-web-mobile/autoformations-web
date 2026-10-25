@@ -109,11 +109,11 @@ Intégration statique de la page de détail d'un article.
 
 1. Dès que vous créez les fichiers `public-article.html` et `css/style.css` pour commencer à coder, modifiez la ligne de statut :
    ```markdown
-   - **Statut :** En cours
+   Statut : En cours
    ```
 2. Lorsque toutes les cases de la section *Vérifications* sont cochées et que votre code est commité sur GitHub, passez le statut à :
    ```markdown
-   - **Statut :** Terminé ✅
+   Statut : Terminé ✅
    ```
 
 ---

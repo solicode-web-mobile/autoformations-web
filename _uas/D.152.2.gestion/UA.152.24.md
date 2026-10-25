@@ -1,7 +1,8 @@
 ---
-title: "Utiliser un tableau de suivi"
+title: "Rendre l'état de son travail visible"
 layout: ua
 code: "UA.152.24"
+session: "S6"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 4

@@ -1,7 +1,8 @@
 ---
-title: "Signaler un blocage efficacement"
+title: "Identifier et formuler un blocage technique"
 layout: ua
 code: "UA.152.26"
+session: "S8"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 6

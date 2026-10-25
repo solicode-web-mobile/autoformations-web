@@ -1,7 +1,8 @@
 ---
-title: "Comparer temps prévu et temps réel"
+title: "Suivre son avancement par rapport au temps"
 layout: ua
 code: "UA.152.25"
+session: "S7"
 competence: "C.152"
 domaine: "D.152.2"
 ordre: 5
