@@ -11,29 +11,29 @@ nav_order: 11
 data_html: ""
 data_css: ""
 data_js: ""
-en_construction: true
+simplified: true
 ---
 
 ## 1. Objectif
 
-L'objectif de ce tutoriel est de transformer les relations **1–N** (Un-à-Plusieurs) de votre MCD en **clés étrangères** (FK) dans vos tables.
+Dans ce tutoriel, vous allez apprendre à traduire les **relations 1–N (Un-à-Plusieurs)** de votre Modèle Conceptuel de Données en **clés étrangères (`FK`)** dans vos tables relationnelles.
 
 Vous allez apprendre à :
-* repérer le côté "1" et le côté "N" d'une relation ;
+* identifier le côté donneur ("N") et le côté receveur ("1") d'une relation ;
 * appliquer la règle de migration des identifiants ;
 * placer la clé étrangère dans la bonne table ;
-* annoter proprement la clé étrangère (`FK`).
+* annoter précisément la colonne avec la mention `(FK)`.
 
 ## 2. Prérequis
 
-* Avoir transformé les entités en tables simples avec leur `PK` (T.112.151).
-* Avoir déterminé et validé les cardinalités (T.112.141).
+* Avoir transformé les entités en tables simples avec leur `(PK)` ([T.112.151](/tutos/transformer-entites-tables/normal)).
+* Savoir lire les cardinalités d'un MCD ([T.112.141](/tutos/determiner-relations-cardinalites/normal)).
 
 ## Données de départ
 
-Vos tables simples actuelles : `VILLE`, `AUTEUR`, `ARTICLE`, `CATEGORIE`.
+Vos 4 tables relationnelles de base : `VILLE`, `AUTEUR`, `CATEGORIE`, `ARTICLE`.
 
-Vos relations (qui sont toutes des relations 1-N) :
+Les 3 relations 1–N validées sur le MCD du Blog :
 * `VILLE (0,N) ─── habite ─── (1,1) AUTEUR`
 * `AUTEUR (0,N) ─── rédige ─── (1,1) ARTICLE`
 * `CATEGORIE (0,N) ─── regroupe ─── (1,1) ARTICLE`
@@ -42,36 +42,36 @@ Vos relations (qui sont toutes des relations 1-N) :
 
 ## Partie 1 — Théorie
 
-### 1.1. La règle du "1 vers N"
+### 1.1. La règle d'or de migration des identifiants (1–N)
 
-Comment relier deux tables physiquement ? En copiant la Clé Primaire (`PK`) de l'une pour l'insérer dans l'autre. Mais dans quel sens ?
-* **La règle d'or** : La table située du côté `(0,N)` (ou `1,N`) donne sa clé primaire à la table située du côté `(0,1)` (ou `1,1`).
-* Autrement dit, de manière plus visuelle : **Le côté "1" reçoit toujours la clé du côté "N".**
+Dans une base de données relationnelle, le lien entre deux tables se matérialise en copiant la Clé Primaire (`PK`) d'une table pour l'insérer dans l'autre :
 
-### 1.2. La Clé Étrangère (FK)
+```mermaid
+flowchart LR
+    subgraph CoteN["Côté N (Donneur)"]
+        N["Cardinalité (0,N) ou (1,N)<br><b>Donne sa Clé Primaire</b>"]
+    end
+    subgraph Cote1["Côté 1 (Receveur)"]
+        U["Cardinalité (0,1) ou (1,1)<br><b>Reçoit la Clé Étrangère (FK)</b>"]
+    end
+    N -->|Migration de l'identifiant| U
+```
 
-Cette clé qui vient d'être copiée et collée dans la nouvelle table porte un nom précis : c'est une **Clé Étrangère** (en anglais *Foreign Key* - **FK**).
-* Elle permet à la base de données de faire le lien entre la ligne actuelle et une ligne correspondante dans une autre table.
-* **Notation standard** : On ajoute l'annotation `(FK)` juste à côté de la colonne (exemple : `id_ville (FK)` dans la table Auteur).
+> **Règle d'or :** Le côté **« 1 »** reçoit toujours la clé du côté **« N »**.
 
-### 1.3. Exemple d'application
+### 1.2. La Clé Étrangère (Foreign Key - FK)
 
-Prenons la relation `habite` :
-`VILLE (0,N) ─── habite ─── (1,1) AUTEUR`
-* `AUTEUR` est du côté (1,1) : c'est le côté "1". Donc la table Auteur reçoit la clé.
-* `VILLE` est du côté (0,N) : c'est le côté "N". Donc la table Ville donne sa clé.
-* **Résultat** : La table `AUTEUR` s'enrichit d'une nouvelle colonne nommée `id_ville (FK)`.
+La clé copiée dans la table receveuse s'appelle une **Clé Étrangère** (`FK`) :
+* Elle établit une passerelle fiable vers l'enregistrement correspondant dans la table parente.
+* **Notation standard :** On ajoute l'annotation `(FK)` à droite du nom de la colonne migrée (ex: `id_ville (FK)`).
 
----
+### 1.3. Exemple guidé : la relation « habite »
 
-## Partie 2 — Pratique
+Examinons la relation entre `VILLE` et `AUTEUR` :
+* `AUTEUR` a la cardinalité `(1,1)` : c'est le **côté 1**, donc la table receveuse.
+* `VILLE` a la cardinalité `(0,N)` : c'est le **côté N**, donc la table donneuse.
+* **Résultat :** La table `AUTEUR` reçoit une nouvelle colonne `id_ville (FK)`.
 
-### 2.1. Appliquer la règle
-
-Reprenez les 4 tables simples que vous avez créées au tutoriel précédent.
-Pour chaque relation listée dans les données de départ, déterminez qui donne sa PK et qui la reçoit comme FK, puis ajoutez la colonne.
-
-**Table AUTEUR après l'ajout de sa FK :**
 ```text
 Table : AUTEUR
 --------------
@@ -82,17 +82,64 @@ email_auteur
 id_ville (FK)
 ```
 
-### 2.2. Travail à faire
+---
 
-Appliquez cette même logique mathématique pour les 3 relations de votre Blog. 
-Ajoutez les clés étrangères nécessaires dans vos tables `AUTEUR` et `ARTICLE`.
+## Partie 2 — Pratique
 
-## Livrable
+### 2.1. Exercice d'application : Intégrer les clés étrangères du Blog
 
-Mettez à jour votre fichier texte contenant vos 4 tables, en incluant cette fois-ci toutes les `FK` aux bons endroits.
-Nom conseillé : `tables-fk.md`
+Dans cet exercice, vous allez appliquer la règle de migration aux 3 relations 1–N du Blog afin de relier vos tables entre elles.
 
-## Résultat attendu
+**Consignes :**
+1. Pour la relation `habite` : ajoutez la clé étrangère de `VILLE` dans la table `AUTEUR`.
+2. Pour la relation `rédige` : ajoutez la clé étrangère de `AUTEUR` dans la table `ARTICLE`.
+3. Pour la relation `regroupe` : ajoutez la clé étrangère de `CATEGORIE` dans la table `ARTICLE`.
+4. Vérifiez que `VILLE` et `CATEGORIE` ne reçoivent aucune clé étrangère.
+
+**Structure attendue de vos tables :**
+
+```text
+Table : VILLE
+-------------
+id_ville (PK)
+nom_ville
+
+Table : AUTEUR
+--------------
+id_auteur (PK)
+nom_auteur
+prenom_auteur
+email_auteur
+id_ville (FK)
+
+Table : CATEGORIE
+-----------------
+id_categorie (PK)
+nom_categorie
+
+Table : ARTICLE
+---------------
+id_article (PK)
+titre_article
+contenu_article
+date_publication
+statut_article
+image_article
+id_auteur (FK)
+id_categorie (FK)
+```
+
+### 2.2. Livrable attendu
+
+Mettez à jour votre fichier de documentation dans votre dépôt d'autoformation :
+
+```text
+conception/mld/transformer-relations-cles-etrangeres/tables-fk.md
+```
+
+Commitez votre fichier sur votre dépôt GitHub.
+
+### Résultat attendu
 
 <button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
@@ -102,23 +149,23 @@ Nom conseillé : `tables-fk.md`
     title="Résultat attendu — Tables avec clés étrangères">
 </iframe>
 
-## Critères de réussite
+### Critères de réussite
 
-* L'entité `AUTEUR` a bien reçu la colonne `id_ville (FK)`.
-* L'entité `ARTICLE` a bien reçu les colonnes `id_auteur (FK)` et `id_categorie (FK)`.
-* Les entités `VILLE` et `CATEGORIE` n'ont reçu aucune clé étrangère.
+* La table `AUTEUR` possède la clé étrangère `id_ville (FK)`.
+* La table `ARTICLE` possède les deux clés étrangères `id_auteur (FK)` et `id_categorie (FK)`.
+* Les tables `VILLE` et `CATEGORIE` ne contiennent aucune clé étrangère.
+* Toutes les colonnes portent des annotations claires (`PK` ou `FK`).
 
 ---
 
 ## Bilan
 
-### Vous avez appris :
-* La règle incontournable de migration des identifiants pour toutes les relations de type 1-N.
-* À matérialiser informatiquement un lien entre deux tables via l'utilisation d'une Clé Étrangère (`FK`).
-
-Dans le prochain et tout dernier tutoriel de conception, vous apprendrez à traiter le seul cas qui nous échappe encore : les relations N-N.
+* Les relations 1–N se traduisent par la migration d'un identifiant vers la table située du côté de la cardinalité maximale « 1 ».
+* La Clé Étrangère (`FK`) matérialise informatiquement le lien entre deux tables sans dupliquer les informations.
+* Dans le prochain tutoriel, vous traiterez le dernier type de relation : les relations **N–N**.
 
 ## Glossaire
 
-* **FK (Foreign Key / Clé Étrangère)** : Copie de la clé primaire d'une autre table, placée ici dans le but exclusif de créer un lien relationnel entre les deux tables.
-* **Relation 1-N** : Relation classique où l'un des côtés a pour cardinalité maximale "1", et l'autre côté a pour cardinalité maximale "N".
+* **FK (Foreign Key / Clé Étrangère)** : Colonne contenant la clé primaire d'une autre table afin de créer un lien relationnel entre les enregistrements.
+* **Relation 1–N** : Relation où une entité participe au maximum 1 fois et l'autre au maximum N fois.
+* **Migration d'identifiant** : Mécanisme consistant à dupliquer une clé primaire sous forme de clé étrangère dans une autre table.

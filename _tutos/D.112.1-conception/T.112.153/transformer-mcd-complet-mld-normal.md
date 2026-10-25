@@ -11,86 +11,138 @@ nav_order: 12
 data_html: ""
 data_css: ""
 data_js: ""
-en_construction: true
+simplified: true
 ---
 
 ## 1. Objectif
 
-Il est temps de finaliser le Modèle Logique de Données (MLD) en traitant le dernier cas de modélisation : la fameuse relation **N-N** (Plusieurs-à-Plusieurs).
+Dans ce tutoriel de clôture de la conception, vous allez traiter le dernier cas de modélisation relationnelle : la **relation N–N (Plusieurs-à-Plusieurs)**, afin d'assembler le **Modèle Logique de Données (MLD) complet** de l'application Blog.
 
 Vous allez apprendre à :
-* identifier rapidement une relation N-N sur un MCD ;
-* la transformer correctement en créant une **table de liaison** (ou table associative) ;
-* assembler et valider le MLD final et complet du Blog.
+* repérer une relation N–N sur un MCD ;
+* résoudre l'impossibilité de migration directe par la création d'une **table de liaison** ;
+* définir une **clé primaire composée** `(PK, FK)` ;
+* assembler et valider la structure complète des 6 tables de la base de données.
 
 ## 2. Prérequis
 
-* Avoir transformé les entités en tables (T.112.151).
-* Avoir compris et appliqué le système des clés étrangères pour les relations 1-N (T.112.152).
+* Avoir transformé les entités en tables simples ([T.112.151](/tutos/transformer-entites-tables/normal)).
+* Maîtriser le mécanisme des clés étrangères pour les relations 1–N ([T.112.152](/tutos/transformer-relations-cles-etrangeres/normal)).
 
 ## Données de départ
 
-* Votre MLD actuel, qui compte pour l'instant 4 tables avec leurs PK et FK.
-* **Nouveau besoin métier** : Pour finaliser le blog, on souhaite ajouter un système de "Tags" (des mots-clés thématiques).
-  * L'entité classique : `TAG` (id_tag, nom_tag).
-  * La règle de gestion : Un article possède un ou plusieurs tags, et un tag peut catégoriser un ou plusieurs articles.
-* Ce qui nous donne la nouvelle relation MCD suivante :
-  `ARTICLE (0,N) ─── possede ─── (0,N) TAG`
+* Votre MLD actuel composé de 4 tables avec leurs clés (`VILLE`, `AUTEUR`, `CATEGORIE`, `ARTICLE`).
+* **Nouveau besoin métier (Les Tags) :**
+  * Entité : `TAG` (`id_tag`, `nom_tag`).
+  * Règle de gestion : Un article peut avoir plusieurs tags, et un tag peut caractériser plusieurs articles.
+  * Relation MCD associée : `ARTICLE (0,N) ─── possède ─── (0,N) TAG`.
 
 ---
 
 ## Partie 1 — Théorie
 
-### 1.1. Le problème du "N vers N"
+### 1.1. L'impasse du « N vers N »
 
-Face à la relation `ARTICLE (0,N) --- (0,N) TAG`, si l'on essaie d'appliquer notre règle habituelle du "1 vers N", on se retrouve bloqué : aucun des deux côtés n'est un "1".
-* Si l'on met `id_tag (FK)` dans la table `ARTICLE`, on ne pourra stocker qu'un seul tag pour cet article. C'est faux.
-* Si l'on met `id_article (FK)` dans la table `TAG`, on ne pourra lier ce tag qu'à un seul article. C'est faux également.
+Dans une relation N–N, aucun des deux côtés ne possède une cardinalité maximale égale à 1 :
+* Placer `id_tag (FK)` dans `ARTICLE` limiterait un article à un seul tag.
+* Placer `id_article (FK)` dans `TAG` limiterait un tag à un seul article.
 
-### 1.2. La solution : La table de liaison
+Pour respecter le modèle relationnel sans perdre de données, aucune des deux tables ne peut recevoir la clé de l'autre.
 
-Puisqu'aucune des deux tables ne peut recevoir la clé de l'autre sans briser la règle, la solution est de créer une troisième table au milieu. La règle de transformation pour une relation N-N est la suivante :
-1. **La relation (la bulle ovale du MCD) devient une véritable table**. On la nomme généralement en fusionnant le nom des deux autres tables (ex: `ARTICLE_TAG`).
-2. Cette nouvelle table associative récupère les clés primaires (`PK`) des deux tables d'origine.
-3. Ces deux clés deviennent **à la fois des Clés Étrangères (FK) et une Clé Primaire composée (PK)** pour cette nouvelle table.
+### 1.2. La solution : la table de liaison
 
-### 1.3. Exemple de modélisation
+La règle de transformation Merise pour une relation N–N est universelle :
+1. **La relation devient une table intermédiaire :** on l'appelle table de liaison ou table associative (nommée généralement en combinant les deux tables : `ARTICLE_TAG`).
+2. **Elle récupère les clés primaires des deux tables reliées.**
+3. **Ces deux clés deviennent des clés étrangères (`FK`).**
 
-La relation : `ARTICLE (0,N) ─── possede ─── (0,N) TAG`
-Se transforme automatiquement en la table de liaison :
+```mermaid
+flowchart TD
+    A["Table ARTICLE<br><b>id_article (PK)</b>"] -->|Donne sa clé| L["Table ARTICLE_TAG<br><b>id_article (PK, FK)</b><br><b>id_tag (PK, FK)</b>"]
+    T["Table TAG<br><b>id_tag (PK)</b>"] -->|Donne sa clé| L
+```
+
+### 1.3. La clé primaire composée
+
+Dans la table de liaison `ARTICLE_TAG`, l'association des deux clés étrangères forme la **Clé Primaire composée** :
+* Elle garantit qu'on ne peut pas associer deux fois le même tag au même article.
+* On note chaque colonne : `(PK, FK)`.
+
 ```text
 Table : ARTICLE_TAG
 -------------------
 id_article (PK, FK)
 id_tag (PK, FK)
 ```
-Cette petite table sert uniquement d'annuaire de correspondance entre les articles et les tags.
 
 ---
 
 ## Partie 2 — Pratique
 
-### 2.1. Transformer la nouvelle entité TAG
+### 2.1. Exercice d'application : Assembler le MLD complet du Blog
 
-Commencez logiquement par transformer la nouvelle entité `TAG` en une table classique, comme vous l'avez appris dans T.112.151, avec sa clé primaire.
+Dans cet exercice, vous allez transformer la nouvelle entité `TAG`, créer la table de liaison `ARTICLE_TAG` et assembler le MLD complet du Blog comprenant **6 tables au total**.
 
-### 2.2. Créer la table de liaison
+**Consignes :**
+1. Transformez l'entité `TAG` en table simple avec sa clé `id_tag (PK)`.
+2. Créez la table associative `ARTICLE_TAG` avec sa clé primaire composée.
+3. Rassemblez l'ensemble des 6 tables du Blog dans un document unique.
+4. Vérifiez que chaque table et chaque colonne porte son annotation (`PK`, `FK` ou `PK, FK`).
 
-Créez ensuite la table de liaison `ARTICLE_TAG` pour résoudre la nouvelle relation N-N.
-* Elle ne contiendra que les deux colonnes identifiantes : `id_article` et `id_tag`.
-* N'oubliez pas d'annoter ces colonnes avec `(PK, FK)` pour indiquer leur double nature.
+**Structure complète du MLD final du Blog :**
 
-### 2.3. Travail à faire
+```text
+Table : VILLE
+-------------
+id_ville (PK)
+nom_ville
 
-Assemblez l'intégralité du MLD de l'application Blog.
-En comptant les 4 tables de base, la table TAG et la nouvelle table associative, vous devez obtenir **6 tables au total**.
+Table : AUTEUR
+--------------
+id_auteur (PK)
+nom_auteur
+prenom_auteur
+email_auteur
+id_ville (FK)
 
-## Livrable
+Table : CATEGORIE
+-----------------
+id_categorie (PK)
+nom_categorie
 
-Mettez à jour votre fichier de conception pour qu'il contienne le MLD final et complet.
-Nom conseillé : `mld-complet.md`
+Table : TAG
+-----------
+id_tag (PK)
+nom_tag
 
-## Résultat attendu
+Table : ARTICLE
+---------------
+id_article (PK)
+titre_article
+contenu_article
+date_publication
+statut_article
+image_article
+id_auteur (FK)
+id_categorie (FK)
+
+Table : ARTICLE_TAG
+-------------------
+id_article (PK, FK)
+id_tag (PK, FK)
+```
+
+### 2.2. Livrable attendu
+
+Mettez à jour le fichier de documentation final dans votre dépôt d'autoformation :
+
+```text
+conception/mld/transformer-mcd-complet-mld/mld-complet.md
+```
+
+Commitez votre travail sur votre dépôt GitHub.
+
+### Résultat attendu
 
 <button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
@@ -100,26 +152,25 @@ Nom conseillé : `mld-complet.md`
     title="Résultat attendu — MLD Complet">
 </iframe>
 
-## Critères de réussite
+### Critères de réussite
 
-* Votre MLD final contient bien exactement 6 tables.
-* La table classique `TAG` possède bien sa propre `(PK)`.
-* La table de liaison `ARTICLE_TAG` est présente et contient exactement les deux clés migrées avec la notation `(PK, FK)`.
-* Les 4 autres tables (Auteur, Ville, Catégorie, Article) n'ont subi aucune modification et conservent les clés définies précédemment.
+* Le MLD complet comporte exactement 6 tables relationnelles.
+* La table classique `TAG` possède sa clé primaire simple `id_tag (PK)`.
+* La table de liaison `ARTICLE_TAG` est présente et contient les deux clés avec la mention `(PK, FK)`.
+* Les 4 tables d'origine conservent l'intégralité de leurs attributs et clés.
 
 ---
 
 ## Bilan
 
-### Vous avez appris :
-* À identifier le cas particulier d'une relation "Plusieurs-à-Plusieurs" (N-N).
-* À résoudre cette impossibilité technique de manière élégante via la création d'une table de liaison.
-* À produire un Modèle Logique de Données (MLD) complet, cohérent et sans erreur.
-
-Félicitations, toute la phase de conception théorique est désormais terminée ! Vous avez construit les plans parfaits de votre application. Vous êtes prêt(e) à attaquer la réalisation technique (le langage SQL) dans la prochaine Unité d'Apprentissage.
+* Vous avez complété avec succès les trois règles de transformation du MCD vers le MLD :
+  1. Entité → Table avec Clé Primaire (`PK`).
+  2. Relation 1–N → Clé Étrangère (`FK`) du côté 1.
+  3. Relation N–N → Table de liaison avec Clé Primaire composée (`PK, FK`).
+* Votre modélisation de données est désormais prête pour la création physique des tables avec le langage SQL.
 
 ## Glossaire
 
-* **Relation N-N** : Relation symétrique où les cardinalités maximales des deux entités valent "N".
-* **Table de liaison (ou d'association)** : Table purement technique créée pour résoudre une relation N-N, contenant au minimum les clés étrangères des deux tables qu'elle relie.
-* **Clé primaire composée** : Clé primaire globale (`PK`) qui est constituée de l'association de plusieurs colonnes (ici, la paire id_article + id_tag garantit qu'on ne lie pas deux fois le même tag au même article).
+* **Relation N–N** : Relation où les deux entités associées peuvent participer plusieurs fois.
+* **Table de liaison (ou associative)** : Table intermédiaire créée pour matérialiser une relation N–N.
+* **Clé primaire composée** : Clé primaire constituée de la combinaison de deux ou plusieurs colonnes pour garantir l'unicité globale de la ligne.
