@@ -9,7 +9,7 @@ version: "normal"
 ua: "UA.121.14"
 nav_order: 1
 data_js: ""
-en_construction: true
+simplified: true
 ---
 
 ## 1. Objectif
@@ -17,1016 +17,221 @@ en_construction: true
 Dans ce tutoriel, vous allez découvrir les **fonctions JavaScript**.
 
 Vous allez apprendre à :
+* comprendre le rôle d'une fonction (regrouper des instructions sous un nom) ;
+* déclarer une fonction avec le mot-clé `function` ;
+* appeler une fonction pour exécuter son traitement ;
+* réutiliser un traitement plusieurs fois sans dupliquer de code.
 
-* comprendre le rôle d'une fonction ;
-* reconnaître un traitement ;
-* regrouper plusieurs instructions dans une fonction ;
-* donner un nom à une fonction ;
-* appeler une fonction ;
-* exécuter plusieurs fois le même traitement.
-
-À la fin du tutoriel, vous devez comprendre cette idée :
-
-```text id="r7x3qp"
-Traitement
-    ↓
-Fonction
-    ↓
-Appel
-    ↓
-Exécution
-```
-
-Dans ce tutoriel, les fonctions sont simples.
-
-Les **paramètres** et la valeur de retour avec `return` seront étudiés plus tard.
+*(Note : Les paramètres et la valeur de retour avec `return` seront étudiés dans les prochains tutoriels.)*
 
 ## 2. Prérequis
 
 Vous devez savoir :
+* créer et exécuter un fichier JavaScript avec Node.js ;
+* déclarer des variables avec `let` ou `const` ;
+* utiliser `console.log()` pour afficher un résultat ;
+* utiliser une condition (`if / else`) et une boucle (`for`).
 
-* créer un fichier JavaScript ;
-* exécuter un fichier avec Node.js ;
-* déclarer une variable ;
-* utiliser `console.log()` ;
-* utiliser une condition ;
-* utiliser une boucle ;
-* construire un petit traitement.
-
-Vous devez notamment comprendre qu'un programme peut être organisé en plusieurs instructions.
-
-Exemple :
-
-```javascript id="w2m8kn"
-let age = 20;
-
-if (age >= 18) {
-    console.log("Majeur");
-}
-```
-
-## Données de départ
-
-### JavaScript
-
-Créez un fichier :
-
-```text id="y6q5cr"
-fonctions.js
-```
-
-Ajoutez :
-
-```javascript id="d7r1lx"
-console.log("Bonjour Madani Ali");
-```
-
-Exécutez :
-
-```bash id="j2g4qv"
-node fonctions.js
-```
-
-Résultat :
-
-```text id="6q05dw"
-Bonjour Madani Ali
-```
-
-Ce traitement est simple.
-
-Nous allons maintenant apprendre à lui donner un nom pour pouvoir le réutiliser.
+*(Note : Ce tutoriel ne nécessite aucune donnée de départ pré-codée, vous écrirez tout vous-même !)*
 
 ## Partie 1 — Théorie
 
-### 1.1. Un programme contient des traitements
+### 1.1. Qu'est-ce qu'une fonction ?
 
-Un programme réalise des actions.
+Dans un programme, un **traitement** est une série d'actions réalisées pour accomplir une tâche.
+Sans fonction, répéter un traitement oblige à copier-coller les mêmes lignes de code. C'est lourd et source d'erreurs.
 
-Exemple :
+Une **fonction** permet d'isoler un traitement et de lui donner un **nom** clair.
 
-```javascript id="8p3m1n"
-console.log("Bonjour Madani Ali");
+```mermaid
+flowchart LR
+    A["Mot-clé function"] --> B["Nom de la fonction"]
+    B --> C["Parenthèses ()"]
+    C --> D["Bloc { instructions }"]
+    D --> E["Traitement réutilisable"]
 ```
 
-Le traitement est :
+Pour créer une fonction, on utilise le mot-clé `function` suivi d'un nom explicite (en minuscules avec majuscules intermédiaires, comme `afficherBienvenue`) :
 
-```text id="h2z8jb"
-Afficher un message
-```
-
-On peut avoir un autre traitement :
-
-```javascript id="m6b5xq"
-console.log("Bienvenue");
-```
-
-Puis un autre :
-
-```javascript id="k9r4tp"
-console.log("Au revoir");
-```
-
-Chaque groupe d'instructions réalise une tâche.
-
-### 1.2. Qu'est-ce qu'une fonction ?
-
-Une **fonction** est un bloc d'instructions regroupées sous un nom.
-
-Elle permet de donner un nom à un traitement.
-
-On peut représenter une fonction ainsi :
-
-```text id="r8v2kf"
-Nom de la fonction
-       ↓
-  Instructions
-       ↓
-    Traitement
-```
-
-Par exemple :
-
-```javascript id="9j7d2s"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Ici :
-
-```text id="q4z6tm"
-afficherBonjour
-```
-
-est le nom de la fonction.
-
-La fonction contient :
-
-```text id="v5u3sp"
-console.log("Bonjour");
-```
-
-### 1.3. Déclarer une fonction
-
-Pour créer une fonction, on utilise le mot :
-
-```text id="x3n8ka"
-function
-```
-
-Structure :
-
-```javascript id="b4c7mj"
-function nomFonction() {
-    instructions;
-}
-```
-
-Exemple :
-
-```javascript id="9h2s6v"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Cette écriture **déclare** la fonction.
-
-Elle décrit le traitement.
-
-### 1.4. Une déclaration ne lance pas le traitement
-
-Observez :
-
-```javascript id="n5m2qx"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Si vous exécutez seulement ce programme, aucun message n'est affiché.
-
-Pourquoi ?
-
-Parce que le programme a seulement créé la fonction.
-
-Le traitement n'a pas encore été exécuté.
-
-On distingue donc :
-
-```text id="b1m5vw"
-Créer la fonction
-       ↓
-Appeler la fonction
-       ↓
-Exécuter le traitement
-```
-
-### 1.5. Appeler une fonction
-
-Pour exécuter une fonction, on écrit son nom suivi de parenthèses :
-
-```javascript id="r1q9cz"
-afficherBonjour();
-```
-
-Exemple complet :
-
-```javascript id="m3f7yt"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-
-afficherBonjour();
-```
-
-Résultat :
-
-```text id="8t2cxb"
-Bonjour
-```
-
-La ligne :
-
-```javascript id="4w9v1p"
-afficherBonjour();
-```
-
-est un **appel de fonction**.
-
-### 1.6. Déclaration et appel
-
-Il faut bien distinguer les deux.
-
-Déclaration :
-
-```javascript id="8y2k3c"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Appel :
-
-```javascript id="n6v4s8"
-afficherBonjour();
-```
-
-On peut représenter :
-
-```text id="u5x3qm"
-Déclaration
-    ↓
-La fonction existe
-    ↓
-Appel
-    ↓
-Le traitement s'exécute
-```
-
-### 1.7. Une fonction possède un nom
-
-Le nom permet d'identifier le traitement.
-
-Exemple :
-
-```javascript id="m4n8sj"
+```javascript
 function afficherBienvenue() {
-    console.log("Bienvenue");
-}
-```
-
-Le nom :
-
-```text id="7f3xqk"
-afficherBienvenue
-```
-
-indique l'action réalisée.
-
-Un nom de fonction doit être simple et lié à son rôle.
-
-Exemples :
-
-```text id="w2c7la"
-afficherBonjour
-afficherMessage
-calculerSomme
-verifierAge
-```
-
-Pour ce tutoriel, nous utilisons surtout des fonctions dont le nom commence par une action.
-
-### 1.8. Une fonction peut contenir plusieurs instructions
-
-Une fonction ne contient pas obligatoirement une seule instruction.
-
-Exemple :
-
-```javascript id="6f1p8r"
-function afficherInformations() {
-    console.log("Nom : Madani Ali");
-    console.log("Niveau : Débutant");
-    console.log("Module : JavaScript");
-}
-```
-
-L'appel :
-
-```javascript id="0t7k4n"
-afficherInformations();
-```
-
-produit :
-
-```text id="6h8q9m"
-Nom : Madani Ali
-Niveau : Débutant
-Module : JavaScript
-```
-
-La fonction regroupe donc plusieurs instructions liées au même traitement.
-
-### 1.9. Une fonction permet de réutiliser un traitement
-
-Sans fonction :
-
-```javascript id="q4n8jc"
-console.log("Bonjour Madani Ali");
-console.log("Bonjour Madani Ali");
-console.log("Bonjour Madani Ali");
-```
-
-Avec une fonction :
-
-```javascript id="2k6r9v"
-function afficherBonjour() {
-    console.log("Bonjour Madani Ali");
+    console.log("=== Bienvenue sur le système ===");
+    console.log("Statut : Utilisateur connecté");
 }
 
-afficherBonjour();
-afficherBonjour();
-afficherBonjour();
+afficherBienvenue();
 ```
 
-La même action est définie une seule fois.
+Résultat affiché dans la console :
 
-Puis elle est appelée plusieurs fois.
-
-On obtient :
-
-```text id="p3w7dz"
-Définir une fois
-      ↓
-Réutiliser plusieurs fois
+```text
+=== Bienvenue sur le système ===
+Statut : Utilisateur connecté
 ```
 
-### 1.10. Une fonction peut être appelée plusieurs fois
+### 1.2. Déclarer vs Appeler une fonction
 
-Exemple :
+Il ne faut pas confondre **créer** une fonction et **l'exécuter** :
+* **Déclarer** une fonction enregistre son code en mémoire. Elle n'exécute rien immédiatement.
+* **Appeler** une fonction ordonne à l'ordinateur d'exécuter ses instructions. Pour cela, on écrit son nom suivi de parenthèses `()`.
 
-```javascript id="s4m8x1"
-function afficherBonjour() {
-    console.log("Bonjour");
+```mermaid
+flowchart TD
+    subgraph Etape1["1. Déclaration (Création)"]
+        D1["function afficherBienvenue() { ... }"] --> D2["Enregistrée en mémoire<br>(Rien ne s'affiche encore)"]
+    end
+    subgraph Etape2["2. Appel (Déclenchement)"]
+        A1["afficherBienvenue();"] --> A2["Exécution des instructions<br>console.log(...) affiche le message"]
+    end
+    D2 -.->|En attente de l'appel| A1
+```
+
+Exemple complet et exécutable :
+
+```javascript
+// 1. Déclaration de la fonction
+function afficherBienvenue() {
+    console.log("=== Bienvenue sur le système ===");
+    console.log("Statut : Utilisateur connecté");
 }
 
-afficherBonjour();
-afficherBonjour();
-afficherBonjour();
+// 2. Appel de la fonction
+afficherBienvenue();
 ```
 
-Résultat :
+Résultat affiché dans la console :
 
-```text id="k6r2nb"
-Bonjour
-Bonjour
-Bonjour
+```text
+=== Bienvenue sur le système ===
+Statut : Utilisateur connecté
 ```
 
-Le traitement est identique à chaque appel.
+Si vous supprimez la ligne `afficherBienvenue();`, la console reste totalement vide car la fonction n'a jamais été appelée.
 
-### 1.11. Une fonction peut être placée avant plusieurs appels
+### 1.3. Réutiliser un traitement et organiser son code
 
-Exemple :
+Le grand intérêt d'une fonction est sa **réutilisation**. On écrit le traitement une seule fois, puis on l'appelle autant de fois que nécessaire :
 
-```javascript id="c7m5w2"
-function afficherMessage() {
-    console.log("Bienvenue dans le programme");
+```mermaid
+flowchart TD
+    F["Fonction en mémoire :<br>afficherSeparateur()"]
+    A1["1er appel : afficherSeparateur()"] --> F
+    A2["2ème appel : afficherSeparateur()"] --> F
+    A3["3ème appel : afficherSeparateur()"] --> F
+    F --> R["Ligne affichée à chaque appel :<br>------------------------------"]
+```
+
+```javascript
+function afficherSeparateur() {
+    console.log("------------------------------");
 }
 
-afficherMessage();
-afficherMessage();
+afficherSeparateur();
+console.log("Module 1 : Algorithmes");
+afficherSeparateur();
+console.log("Module 2 : Fonctions");
+afficherSeparateur();
 ```
 
-Le programme :
+On peut également appeler une fonction à l'intérieur d'une boucle :
 
-1. crée la fonction ;
-2. appelle la fonction ;
-3. exécute son traitement ;
-4. appelle à nouveau la fonction ;
-5. exécute à nouveau son traitement.
-
-### 1.12. Fonction et boucle
-
-Les fonctions et les boucles ont des rôles différents.
-
-Une fonction permet de **nommer et réutiliser un traitement**.
-
-Une boucle permet de **répéter un traitement**.
-
-Exemple :
-
-```javascript id="y2r7cf"
-function afficherBonjour() {
-    console.log("Bonjour");
+```javascript
+function sonnerAlarme() {
+    console.log("Bip !");
 }
 
 for (let i = 1; i <= 3; i++) {
-    afficherBonjour();
+    sonnerAlarme();
 }
 ```
 
-La fonction définit l'action :
+Une fonction peut regrouper n'importe quel traitement (calculs, conditions, boucles). Elle permet de découper un programme long en petites étapes faciles à lire et à maintenir.
 
-```text id="b4j8qm"
-afficherBonjour
-```
+## Partie 2 — Pratique guidée
 
-La boucle contrôle le nombre de répétitions :
+Le but de cette pratique est de valider votre compréhension avec le **strict minimum de code**.
 
-```text id="v6k2zd"
-3 fois
-```
+### 2.1. Déclarer et appeler une fonction
 
-On obtient :
+Vous allez créer une fonction simple, l'appeler pour exécuter son code, puis la réutiliser :
 
-```text id="y9m3sa"
-Fonction → quel traitement ?
-Boucle   → combien de fois ?
-```
+1. Déclarez une fonction `afficherBienvenue()` qui affiche deux messages :
+   - `"=== Bienvenue sur le système ==="`
+   - `"Statut : Utilisateur connecté"`
+2. Appelez la fonction une première fois.
+3. Appelez-la une seconde fois pour constater que le traitement est réutilisé sans dupliquer de code.
 
-### 1.13. Une fonction peut contenir une boucle
+**Code à écrire dans `fonctions.js` :**
 
-L'inverse est également possible.
+```javascript
+// ==============================================================
+// Livrable : Comprendre les fonctions
+// Emplacement : algo/fonctions/comprendre-fonctions/fonctions.js
+// ==============================================================
 
-Exemple :
-
-```javascript id="j8c5vf"
-function afficherNombres() {
-    for (let i = 1; i <= 5; i++) {
-        console.log(i);
-    }
-}
-```
-
-Puis :
-
-```javascript id="r4q7mp"
-afficherNombres();
-```
-
-Résultat :
-
-```text id="9f3knd"
-1
-2
-3
-4
-5
-```
-
-La fonction regroupe ici un traitement contenant une boucle.
-
-### 1.14. Une fonction peut contenir une condition
-
-Exemple :
-
-```javascript id="v6x8nk"
-function verifierAge() {
-    let age = 20;
-
-    if (age >= 18) {
-        console.log("Majeur");
-    } else {
-        console.log("Mineur");
-    }
-}
-```
-
-Puis :
-
-```javascript id="h2m5qk"
-verifierAge();
-```
-
-La fonction regroupe donc plusieurs notions déjà connues.
-
-### 1.15. Une fonction isole un traitement
-
-Avant les fonctions, nous pouvons avoir un programme long :
-
-```text id="s9c5hf"
-Instructions
-Instructions
-Instructions
-Instructions
-Instructions
-Instructions
-```
-
-Avec plusieurs fonctions :
-
-```text id="z4m8vt"
-fonction A
-fonction B
-fonction C
-```
-
-Puis :
-
-```text id="a7q2ps"
-Appel A
-Appel B
-Appel C
-```
-
-Le programme devient plus facile à organiser.
-
-### 1.16. Une fonction doit avoir un rôle clair
-
-Une bonne fonction réalise un traitement identifiable.
-
-Exemple :
-
-```javascript id="m1z8xc"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Le rôle est clair :
-
-```text id="e9w4qt"
-afficherBonjour
-```
-
-Il est préférable d'éviter une fonction qui fait trop de choses différentes.
-
-Exemple moins clair :
-
-```javascript id="x7p3km"
-function faireProgramme() {
-    console.log("Bonjour");
-    console.log("Calcul");
-    console.log("Fin");
-}
-```
-
-Dans les prochains tutoriels, nous apprendrons à construire des fonctions avec des entrées et des résultats.
-
-### 1.17. Ce tutoriel ne traite pas encore les paramètres
-
-Pour le moment, nous utilisons :
-
-```javascript id="c8m2wn"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Nous n'utilisons pas encore :
-
-```javascript id="d3f6qr"
-function afficherBonjour(prenom) {
-    ...
-}
-```
-
-Les paramètres seront étudiés dans un prochain tutoriel.
-
-### 1.18. Ce tutoriel ne traite pas encore `return`
-
-Pour le moment, la fonction affiche directement son traitement :
-
-```javascript id="p7x4ls"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Nous n'utilisons pas encore :
-
-```javascript id="j5c8rv"
-return ...
-```
-
-Le retour d'une valeur sera étudié avec les paramètres.
-
-### 1.19. À retenir
-
-* Une **fonction** regroupe des instructions sous un nom.
-* `function` permet de déclarer une fonction.
-* La déclaration crée la fonction, mais ne lance pas son traitement.
-* Un **appel** exécute la fonction.
-* Une fonction peut être appelée plusieurs fois.
-* Une fonction peut contenir plusieurs instructions.
-* Une fonction peut contenir une condition ou une boucle.
-* La fonction permet de réutiliser un traitement.
-* Les paramètres et `return` seront étudiés ensuite.
-
-## Partie 2 — Pratique
-
-### 2.1. Créer une première fonction
-
-Créez :
-
-```javascript id="z4j8mc"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-```
-
-Ajoutez ensuite :
-
-```javascript id="q3v7fn"
-afficherBonjour();
-```
-
-Exécutez le programme.
-
-Résultat attendu :
-
-```text id="x8k4rp"
-Bonjour
-```
-
-### 2.2. Appeler la fonction plusieurs fois
-
-Modifiez le programme :
-
-```javascript id="m5p9xd"
-function afficherBonjour() {
-    console.log("Bonjour");
-}
-
-afficherBonjour();
-afficherBonjour();
-afficherBonjour();
-```
-
-Résultat attendu :
-
-```text id="s7j2lw"
-Bonjour
-Bonjour
-Bonjour
-```
-
-Observez que le traitement n'a été écrit qu'une seule fois.
-
-### 2.3. Créer une fonction pour afficher un message
-
-Créez :
-
-```javascript id="y9k3fp"
+// Déclaration de la fonction
 function afficherBienvenue() {
-    console.log("Bienvenue dans le programme");
+    console.log("=== Bienvenue sur le système ===");
+    console.log("Statut : Utilisateur connecté");
 }
+
+// Appels de la fonction
+afficherBienvenue();
+afficherBienvenue();
+
+// --- Bilan personnel ---
+// La déclaration crée la fonction en mémoire avec son nom et son bloc d'instructions.
+// L'appel déclenche l'exécution du code de la fonction.
 ```
 
-Appelez ensuite la fonction deux fois.
-
-Résultat attendu :
-
-```text id="r2c7vm"
-Bienvenue dans le programme
-Bienvenue dans le programme
+**Résultat attendu dans la console :**
+```text
+=== Bienvenue sur le système ===
+Statut : Utilisateur connecté
+=== Bienvenue sur le système ===
+Statut : Utilisateur connecté
 ```
 
-### 2.4. Créer une fonction avec plusieurs instructions
+### 2.2. Livrable & Critères de réussite
 
-Créez :
+#### Emplacement obligatoire dans votre dépôt
 
-```javascript id="n5q8bx"
-function afficherInformations() {
-    console.log("Nom : Madani Ali");
-    console.log("Niveau : Débutant");
-    console.log("Langage : JavaScript");
-}
+Déposez votre fichier dans votre dépôt annuel de tutoriels au chemin suivant :
+
+```text
+algo/fonctions/comprendre-fonctions/fonctions.js
 ```
 
-Appelez :
-
-```javascript id="u6m3jt"
-afficherInformations();
-```
-
-Résultat attendu :
-
-```text id="p9v4ck"
-Nom : Madani Ali
-Niveau : Débutant
-Langage : JavaScript
-```
-
-### 2.5. Créer une fonction qui contient une condition
-
-Créez :
-
-```javascript id="g2s7xm"
-function verifierAge() {
-    let age = 20;
-
-    if (age >= 18) {
-        console.log("Majeur");
-    } else {
-        console.log("Mineur");
-    }
-}
-```
-
-Appelez :
-
-```javascript id="r8f4vq"
-verifierAge();
-```
-
-Résultat attendu :
-
-```text id="k7m2cs"
-Majeur
-```
-
-### 2.6. Créer une fonction qui contient une boucle
-
-Créez :
-
-```javascript id="d6x9pt"
-function afficherNombres() {
-    for (let i = 1; i <= 5; i++) {
-        console.log(i);
-    }
-}
-```
-
-Appelez :
-
-```javascript id="w4n7bh"
-afficherNombres();
-```
-
-Résultat attendu :
-
-```text id="7p3qkm"
-1
-2
-3
-4
-5
-```
-
-### 2.7. Utiliser une fonction dans une boucle
-
-Créez :
-
-```javascript id="c5z8ry"
-function afficherBonjour() {
-    console.log("Bonjour Madani Ali");
-}
-```
-
-Puis :
-
-```javascript id="h4m7st"
-for (let i = 1; i <= 3; i++) {
-    afficherBonjour();
-}
-```
-
-Résultat attendu :
-
-```text id="2v9xkc"
-Bonjour Madani Ali
-Bonjour Madani Ali
-Bonjour Madani Ali
-```
-
-Identifiez les rôles :
-
-```text id="0f4kwp"
-fonction → action à réaliser
-boucle   → nombre de répétitions
-```
-
-### 2.8. Exercice — Créer une fonction d'affichage
-
-Créez une fonction nommée :
-
-```text id="ep2i9m"
-afficherTitre
-```
-
-Elle doit afficher :
-
-```text id="m7q3xw"
-=== JavaScript ===
-```
-
-Appelez-la trois fois.
-
-### 2.9. Exercice — Créer deux fonctions
-
-Créez :
-
-```text id="v6k8zn"
-afficherDebut()
-afficherFin()
-```
-
-La première affiche :
-
-```text id="e5p1rq"
-Début du programme
-```
-
-La deuxième :
-
-```text id="n4w7cs"
-Fin du programme
-```
-
-Appelez-les dans cet ordre :
-
-```text id="7j2mvp"
-Début du programme
-Fin du programme
-```
-
-### 2.10. Exercice — Organiser un programme
-
-Construisez trois fonctions :
-
-```text id="u8f3ml"
-afficherTitre()
-afficherMessage()
-afficherFin()
-```
-
-Elles doivent produire :
-
-```text id="6c4wzy"
-=== Mon programme ===
-Bienvenue Madani Ali
-=== Fin ===
-```
-
-Appelez les fonctions dans le bon ordre.
-
-### 2.11. Exercice — Fonction avec une boucle
-
-Créez une fonction :
-
-```text id="h8z2qk"
-afficherNombres
-```
-
-Elle doit afficher les nombres de `1` à `10`.
-
-Appelez ensuite cette fonction.
-
-### 2.12. Exercice — Fonction et condition
-
-Créez une fonction :
-
-```text id="v3c6yx"
-verifierNote
-```
-
-Elle doit utiliser une variable :
-
-```javascript id="k7n2qf"
-let note = 14;
-```
-
-Puis afficher :
-
-```text id="r6z8mw"
-Validé
-```
-
-si la note est supérieure ou égale à `10`.
-
-Sinon :
-
-```text id="c5p3jt"
-Non validé
-```
-
-Pour le moment, la fonction travaille avec une valeur définie directement dans son code.
-
-### 2.13. Travail à faire
-
-Construisez un petit programme organisé avec trois fonctions :
-
-```text id="u4q9xs"
-afficherTitre()
-afficherInformations()
-afficherFin()
-```
-
-Le programme doit produire :
-
-```text id="8v5m2j"
-====================
-Mon premier programme
-====================
-Nom : Madani Ali
-Langage : JavaScript
-Niveau : N1
-====================
-Fin du programme
-====================
-```
-
-Chaque partie doit être produite par une fonction différente.
-
-Appelez ensuite les fonctions dans le bon ordre.
-
-### Livrable
-
-Créez un document Markdown ou un Google Doc contenant :
-
-* le code JavaScript ;
-* le nom des trois fonctions ;
-* le rôle de chaque fonction ;
-* le résultat obtenu dans la console.
-
-### Critère de réussite
-
-Le programme :
-
-* contient trois fonctions ;
-* donne un rôle clair à chaque fonction ;
-* appelle correctement les trois fonctions ;
-* produit le résultat attendu ;
-* ne répète pas inutilement les mêmes instructions ;
-* n'utilise pas encore de paramètres ou de `return`.
-
-### Résultat attendu
-
-Le programme doit produire :
-
-```text id="m9c4qp"
-====================
-Mon premier programme
-====================
-Nom : Madani Ali
-Langage : JavaScript
-Niveau : N1
-====================
-Fin du programme
-====================
-```
+> **Rappel :** N'utilisez pas de codes de modules (`UA.121.14` ou `T.121.141`) dans vos noms de dossiers, utilisez uniquement des noms de dossiers clairs et lisibles.
+
+#### Critères d'auto-évaluation
+
+Avant de valider et de commiter votre travail sur GitHub :
+* [ ] La fonction est correctement déclarée avec le mot-clé `function` et des accolades `{}`.
+* [ ] La fonction est exécutée grâce à ses parenthèses d'appel `()`.
+* [ ] Le traitement s'affiche deux fois à l'écran grâce aux deux appels successifs.
+* [ ] Tout le fichier s'exécute avec la commande `node fonctions.js` sans aucune erreur.
+* [ ] Le fichier est commité dans votre dépôt à l'emplacement `algo/fonctions/comprendre-fonctions/fonctions.js`. 
 
 ## Bilan
 
-**Vous avez appris :**
-
-* ce qu'est une fonction ;
-* comment déclarer une fonction ;
-* comment donner un nom à une fonction ;
-* comment appeler une fonction ;
-* comment réutiliser une fonction ;
-* comment mettre plusieurs instructions dans une fonction ;
-* comment utiliser une condition dans une fonction ;
-* comment utiliser une boucle dans une fonction.
-
-**Vous savez maintenant :**
-
-```text id="n4x8sm"
-Traitement
-    ↓
-Fonction
-    ↓
-Nom
-    ↓
-Appel
-    ↓
-Exécution
+```mermaid
+flowchart LR
+    A["1. Identifier un traitement"] --> B["2. Déclarer function nom()"]
+    B --> C["3. Appeler nom()"]
+    C --> D["4. Exécuter le code"]
 ```
 
-Une fonction permet donc d'**isoler un traitement et de le réutiliser**.
-
-Dans le prochain tutoriel, vous apprendrez à créer des fonctions capables de recevoir des **paramètres** et de retourner un **résultat**.
+**Vous avez appris :**
+* qu'une **fonction** regroupe plusieurs instructions sous un nom pour réaliser un traitement ;
+* à **déclarer** une fonction avec le mot-clé `function` ;
+* à **appeler** une fonction avec `nomFonction()` pour déclencher son exécution ;
+* à **réutiliser** un traitement plusieurs fois sans dupliquer de code.
 
 ## Glossaire
 
-* **Fonction** : bloc d'instructions regroupées sous un nom.
-* **Déclaration** : création d'une fonction avec `function`.
-* **Appel** : instruction qui demande l'exécution d'une fonction.
-* **Traitement** : ensemble d'actions réalisées par le programme.
-* **Réutilisation** : fait d'utiliser plusieurs fois le même traitement.
-* **Bloc** : ensemble d'instructions placées entre `{` et `}`.
-* **Paramètre** : donnée reçue par une fonction ; cette notion sera étudiée dans un prochain tutoriel.
-* **`return`** : instruction permettant de retourner une valeur ; cette notion sera étudiée dans un prochain tutoriel.
+* **Fonction** : bloc d'instructions réutilisable identifié par un nom unique.
+* **Déclaration** : création d'une fonction avec `function` et son bloc de code `{}`.
+* **Appel** : instruction qui ordonne l'exécution de la fonction en utilisant son nom suivi de `()`.
+* **Traitement** : ensemble d'actions logiques coordonnées pour réaliser une tâche.
+* **Bloc** : instructions regroupées entre des accolades `{` et `}`.
