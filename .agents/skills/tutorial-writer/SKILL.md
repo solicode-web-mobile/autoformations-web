@@ -1,7 +1,7 @@
 ---
 name: tutorial-writer
 description: Conçoit et rédige des tutoriels techniques (unitaires ou en série progressive vers un code final) nativement simplifiés, concrets et vérifiables pour les apprenants, en chargeant obligatoirement les règles didactiques du domaine concerné et en rappelant l'emplacement exact du livrable dans le dépôt annuel.
-version: 2.4.0
+version: 2.5.0
 inspiration:
   source: "solicode-pedagogy"
   plugin: "pedagogy-referential"
@@ -192,6 +192,7 @@ window.pageData = {
 - [ ] Le livrable respecte-t-il les exigences du domaine (format imposé, zéro capture d'écran) ?
 - [ ] Le fichier de livrable rassemble-t-il le code produit délimité par des commentaires clairs ?
 - [ ] Chaque terme nouveau est-il défini en une ligne dans le glossaire ?
+- [ ] Le texte évite-t-il toute syntaxe mathématique LaTeX (`$...$`, `\ge`, `\rightarrow`) au profit de symboles Unicode ou texte lisible (`→`, `>=`, `<=`) ?
 
 ---
 
@@ -209,6 +210,7 @@ window.pageData = {
 | Bloc de code non exécutable | Variable non déclarée ou absence de `console.log` | Déclarer systématiquement les variables avec `let`/`const` |
 | Afficher "Données de départ" quand les champs sont vides | Inattention | Supprimer la section si `data_*` est vide |
 | Demander des captures d'écran en livrable | Violation de la règle du livrable | Remplacer par un lien vers le dépôt GitHub |
+| Utiliser la syntaxe mathématique LaTeX (`$...$`, `\ge`, `\rightarrow`) | Just the Docs ne charge pas MathJax par défaut, affichant la syntaxe brute | Utiliser des symboles Unicode simples (`→`, `>=`, `<=`) ou des balises de code en ligne |
 
 ---
 

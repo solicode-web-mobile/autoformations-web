@@ -184,7 +184,7 @@ algo/resolution-problemes/comprendre-probleme-algorithmique/solution.js
 Avant de valider et de commiter votre travail sur GitHub :
 * [ ] Le fichier commence par la grille d'analyse en commentaire (Entrée, Règle, Sortie, Traitement).
 * [ ] La fonction `calculerFraisLivraison` utilise une condition pour appliquer la règle de seuil.
-* [ ] Les deux cas (commande $\ge 200$ et commande $< 200$) sont testés et affichés.
+* [ ] Les deux cas (commande >= 200 et commande < 200) sont testés et affichés.
 * [ ] Tout le fichier s'exécute sans erreur avec `node solution.js`.
 * [ ] Le fichier est commité dans votre dépôt à l'emplacement `algo/resolution-problemes/comprendre-probleme-algorithmique/solution.js`.
 

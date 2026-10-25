@@ -17,7 +17,7 @@ simplified: true
 Dans ce tutoriel, vous allez apprendre à définir avec précision les **entrées et les sorties** de chaque étape d'un algorithme décomposé avant d'en écrire le code.
 
 Vous allez apprendre à :
-* modéliser une fonction sous la forme d'une boîte noire (Entrée $\rightarrow$ Traitement $\rightarrow$ Sortie) ;
+* modéliser une fonction sous la forme d'une boîte noire (Entrée → Traitement → Sortie) ;
 * identifier les types de données échangés (nombre, booléen, tableau) ;
 * vérifier la compatibilité entre la sortie d'un traitement et l'entrée du suivant ;
 * concevoir des contrats de fonctions clairs et sans ambiguïté.
@@ -51,7 +51,7 @@ Avant d'écrire le moindre algorithme, on rédige sa **spécification** :
 | Fonction | Donnée reçue (Entrée) | Opération réalisée | Donnée renvoyée (Sortie) |
 | :--- | :--- | :--- | :--- |
 | `calculerTVA` | `prixHT` *(nombre)* | Multiplier par 0.20 | Montant TVA *(nombre)* |
-| `estAdmis` | `moyenne` *(nombre)* | Vérifier si $\ge 10$ | Statut *(booléen : true/false)* |
+| `estAdmis` | `moyenne` *(nombre)* | Vérifier si >= 10 | Statut *(booléen : true/false)* |
 | `extrairePairs` | `nombres` *(tableau)* | Filtrer les éléments divisibles par 2 | Nouveau tableau *(tableau)* |
 
 ### 1.3. Aligner le flux de données
@@ -97,7 +97,7 @@ Livraison gratuite : true
 ### 2.1. Exercice d'application : Convertir une température et détecter une alerte
 
 Dans cet exercice, vous allez modéliser et coder deux fonctions dépendantes :
-1. `celsiusVersFahrenheit(degresC)` : reçoit une température en Celsius et renvoie la valeur équivalente en Fahrenheit selon la formule : $F = (C \times 9 / 5) + 32$.
+1. `celsiusVersFahrenheit(degresC)` : reçoit une température en Celsius et renvoie la valeur équivalente en Fahrenheit selon la formule : `F = (C * 9 / 5) + 32`.
 2. `estAlerteChaleur(degresF)` : reçoit la température en Fahrenheit et renvoie `true` si la valeur est supérieure ou égale à 100°F, sinon `false`.
 
 **Données de départ :**

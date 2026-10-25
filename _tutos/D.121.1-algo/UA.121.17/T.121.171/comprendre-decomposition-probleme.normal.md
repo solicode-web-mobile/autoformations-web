@@ -59,7 +59,7 @@ Chaque sous-traitement doit avoir **une seule responsabilité** :
 
 ### 1.3. Exemple concret : Traiter une série de notes
 
-Pour déterminer la moyenne des élèves ayant la moyenne (notes $\ge 10$) :
+Pour déterminer la moyenne des élèves ayant la moyenne (notes >= 10) :
 1. Étape 1 : isoler les notes valides.
 2. Étape 2 : calculer la moyenne de ces notes isolées.
 

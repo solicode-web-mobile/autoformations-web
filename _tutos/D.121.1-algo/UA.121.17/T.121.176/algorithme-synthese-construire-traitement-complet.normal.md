@@ -45,7 +45,7 @@ flowchart TD
 ### 1.2. Architecture modulaire d'un bilan d'évaluation
 
 Pour analyser une promotion d'étudiants, nous séparons distinctement 3 calculs :
-1. **Filtrer :** isoler les étudiants ayant obtenu la moyenne ($\ge 10$).
+1. **Filtrer :** isoler les étudiants ayant obtenu la moyenne (>= 10).
 2. **Calculer la moyenne :** sommer les valeurs et diviser par le nombre d'éléments.
 3. **Trouver le maximum :** identifier la meilleure note de la promotion.
 
@@ -65,7 +65,7 @@ let notesPromotion = [14, 8, 18, 6, 12, 16, 10];
 ```
 
 **Consignes :**
-1. Écrivez la fonction `filtrerAdmis(notes)` qui extrait les notes $\ge 10$.
+1. Écrivez la fonction `filtrerAdmis(notes)` qui extrait les notes >= 10.
 2. Écrivez la fonction `calculerMoyenne(notes)` qui calcule la moyenne arithmétique.
 3. Écrivez la fonction `trouverMaximum(notes)` qui trouve la note la plus élevée.
 4. Écrivez la fonction chef d'orchestre `genererBilanPromotion(toutesLesNotes)` qui produit un objet récapitulatif.

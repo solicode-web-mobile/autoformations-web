@@ -184,6 +184,6 @@ node algo/tri/tester-adapter-algorithme-tri/tri.js
 
 ## Glossaire
 
-* **Tri décroissant** : organisation des éléments du plus grand au plus petit ($A \ge B \ge C$).
+* **Tri décroissant** : organisation des éléments de la plus grande à la plus petite valeur (A >= B >= C).
 * **Cas limite** : cas d'exécution particulier (tableau vide, un seul élément, données déjà triées) permettant de tester la robustesse d'un algorithme.
 * **Doublon** : valeur apparaissant plusieurs fois dans une même collection.
