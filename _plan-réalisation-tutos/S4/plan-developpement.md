@@ -169,23 +169,25 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 *Unité d'Apprentissage (UA) :* `UA.123.12` — Construire une page Web dynamique avec PHP (`D.123.1.php`)
 
 - **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
-  Cette étape introduit les données métier qui vont alimenter la page. Au lieu de laisser le contenu figé dans le HTML, l'apprenant modélise les articles sous la forme d'un tableau associatif multidimensionnel `$articles` placé en tête de `index.php`. Cette brique prépare la source de données que la vue affichera.
+  Cette étape introduit les données métier qui vont alimenter la page. L'apprenant consulte le dossier de départ sur GitHub (`https://github.com/solicode-web-mobile/dossiers-depart-n1/tree/master/S4/dossier-depart`) et analyse les éléments d'une carte d'article dans `public-index.html`. Dans un nouveau fichier `index.php`, il modélise les articles sous la forme d'un tableau associatif multidimensionnel `$articles` et manipule les données avec `echo`.
 
 - **1. Ce que l'apprenant doit apprendre :**
-  - **Notions cibles :** Tableaux indexés, tableaux associatifs (`clé => valeur`), collections multidimensionnelles.
-  - **Syntaxe & Outils :** Syntaxe de tableau court `[...]`, paires `'cle' => 'valeur'`, séparateur virgule `,`.
+  - **Notions cibles :** Observation des données du dossier de départ, tableaux indexés, tableaux associatifs (`clé => valeur`), collections multidimensionnelles.
+  - **Syntaxe & Outils :** Syntaxe de tableau court `[...]`, paires `'cle' => 'valeur'`, séparateur virgule `,`, accès aux valeurs `$articles[0]['titre']`.
   - **Règles & Bonnes pratiques :** Utiliser des clés explicites et cohérentes pour représenter un modèle de données réaliste.
 
 - **2. Description technique de la réalisation (Développement du projet) :**
-  - Ouvrir `index.php`.
-  - Avant l'instruction `require 'index-template.php';`, déclarer la variable `$articles` contenant 2 articles sous forme de tableaux associatifs (clés : `id`, `titre`, `contenu`, `image`, `date_creation`, `categorie_libelle`, `categorie_couleur`).
-  - Vérifier la structure des données en mémoire à l'aide d'un `var_dump($articles);` temporaire.
+  - Consulter le dossier de départ sur GitHub : `https://github.com/solicode-web-mobile/dossiers-depart-n1/tree/master/S4/dossier-depart`.
+  - Repérer la structure d'une carte d'article dans `public-index.html` (titre, contenu, image, date, catégorie).
+  - Créer le fichier `index.php`.
+  - Déclarer la variable `$articles` contenant 2 articles sous forme de tableaux associatifs.
+  - Manipuler et afficher les données en mémoire avec `echo`.
 
 - **3. Fichiers impactés :**
-  - `index.php` (modification).
+  - `index.php` (création).
 
 - **4. État de départ ($E_{n-1}$) :**
-  `index.php` ne contenant que le `require`.
+  Dossier de départ téléchargé (`public-index.html`, `css/`, `images/`). Aucun fichier `index.php` ni `index-template.php` n'existe encore.
 
 - **5. État d'arrivée ($E_n$) :**
   ```php
@@ -211,11 +213,12 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
       ]
   ];
 
-  require 'index-template.php';
+  echo "Article 1 : " . $articles[0]['titre'] . " (" . $articles[0]['categorie_libelle'] . ")<br>";
+  echo "Article 2 : " . $articles[1]['titre'] . " (" . $articles[1]['categorie_libelle'] . ")";
   ```
 
 - **6. Livrable physique tapé par l'apprenant :**
-  - Fichier `index.php` enrichi du code de déclaration de `$articles`.
+  - Fichier `index.php` contenant la déclaration et l'affichage de vérification du tableau `$articles`.
 
 ---
 
