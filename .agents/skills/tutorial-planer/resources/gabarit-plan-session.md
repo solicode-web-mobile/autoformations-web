@@ -1,12 +1,20 @@
 # Gabarit Normé — Plan de Réalisation d'une Session
 
 Ce gabarit sert de modèle de référence pour tout fichier `plan-developpement.md` sous `_plan-réalisation-tutos/SX/`.  
-Il constitue le **contrat technique et pédagogique complet** qui relie le `dossier-depart/` (code reçu au début de la session) au `code-a-apprendre/` (code cible final).  
+Il constitue le **contrat technique et pédagogique complet** qui relie le `dossier-depart/` (reçu au début de la session) au **livrable complet final** (dossier de départ enrichi et transformé avec le `code-a-apprendre/`).  
 Une fois ce plan validé, le skill `tutorial-writer` dispose de l'intégralité des éléments techniques pour rédiger les tutoriels sans avoir à deviner la progression.
 
 ---
 
 ```markdown
+---
+session: "S[X]"
+version: "1.0.0"
+audite: true
+date_audit: "AAAA-MM-JJ"
+statut: "audité et validé"
+---
+
 # Plan de Réalisation — Progression [Nom du Domaine / Voie] (Session S[X])
 
 **Voie de progression :** [Ex: Développement Web Applicatif Fil Rouge (HTML, CSS, PHP, SQL, Architecture)]  
@@ -25,11 +33,11 @@ Expliciter la transition par rapport à la session précédente.]
 * **Stack technique :** [Technologies, outils, versions exactes]
 * **Architecture / Flux de données :** [Brève explication de l'organisation des fichiers]
 * **Point de départ technique :** Dossier `dossier-depart/` contenant [lister les fichiers hérités de la session précédente].
-* **Point d'arrivée technique :** Dossier `code-a-apprendre/` contenant [lister les fichiers cibles à produire].
+* **Livrable attendu de la session :** Le `dossier-depart/` enrichi et transformé avec le `code-a-apprendre/` formant une application Web locale opérationnelle.
 
 ```mermaid
 flowchart LR
-    A["[dossier-depart/ : Fichier initial]"] -->|Transformation progressive par les tutos| B["[code-a-apprendre/ : Livrable final]"]
+    A["dossier-depart/<br>(Pages statiques S3, CSS, images)"] -->|Transformation incrémentale par les tutoriels| B["Livrable Complet S[X]<br>(Application dynamique avec index.php)"]
 ```
 
 ---
@@ -41,19 +49,22 @@ flowchart LR
 - [Acquis 2 mobilisé avec référence d'UA]
 
 ### 🎯 Unités d'Apprentissage & Tutoriels Mobilisés dans ce Sprint (Session S[X])
-> **Règle de Granularité Cognitive :** De préférence **une seule UA (1 UA)** d'un domaine donné par session, afin d'éviter la surcharge cognitive.  
-> *Exception admise :* Démarrage d'un nouveau langage/technologie nécessitant de dissocier le sas d'installation/démarrage de la pratique applicative.
+> **Règle de Granularité des UAs :**  
+> - **Par défaut :** Exactement **une seule Unité d'Apprentissage (1 UA)** par domaine de compétence par session.  
+> - **Exception de Démarrage Technologique :** Lorsqu'une nouvelle technologie/langage est abordé pour la première fois, le domaine comprend **exactement deux UAs (2 UAs)** :  
+>   1. **L'Unité « Bien démarrer avec [Technologie] »** (installation, serveur local, affichage des erreurs, premier script autonome).  
+>   2. **L'Unité de formation du Projet d'imitation** (regroupant l'ensemble des notions applicatives nécessaires au livrable de la session).
 
 #### [Domaine Principal] ([Code Domaine], [slug-domaine])
 
 * **UA.[Code] — [Titre Logique de l'UA] :**  
   [Description du rôle de l'UA dans la session]
 
-  - **T.[Code].1 — [Titre Technique Concret]**  
+  - **T.[Code].1 — [Titre Équilibré : Un Seul Objectif Technique Concret]**  
     *Objectif logique : [Titre logique / pédagogique]*  
     *Livrable :* [Description du livrable] | *Fichier :* `[nom-fichier]`
 
-  - **T.[Code].2 — [Titre Technique Concret]**  
+  - **T.[Code].2 — [Titre Équilibré : Un Seul Objectif Technique Concret]**  
     *Objectif logique : [Titre logique / pédagogique]*  
     *Livrable :* [Description du livrable] | *Fichier :* `[nom-fichier]`
 
@@ -65,13 +76,19 @@ flowchart LR
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
 <!-- 
-CONTRAT D'INTERFACE AVEC TUTORIAL-WRITER :
-Chaque fiche fournit la spécification technique et pédagogique complète du tutoriel.
-Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir de ces informations.
+RÈGLES DE TITRAGE ÉQUILIBRÉ :
+1. Le titre H3 exprime UN SEUL OBJECTIF TECHNIQUE CONCRET CENTRÉ SUR LA NOTION À APPRENDRE.
+2. INTERDICTION FORMELLE DE MENTIONNER LES ENTITÉS MÉTIER DU PROJET DANS LE TITRE (pas d'Article, Catégorie, Produit, etc. qui ne sont que des données d'illustration). L'application concrète sur le projet se fait dans la description technique et la pratique.
+3. Le SOUS-TITRE en italique indique l'OBJECTIF LOGIQUE (conceptuel / pédagogique).
+4. Le code de départ (E_n-1) est EXACTEMENT le résultat du tutoriel précédent.
 -->
 
-### T.[Code].1 — [Titre Technique : Commande, Fonction, Fichier ou Syntaxe Précise]
-*Objectif logique : [Titre logique / conceptuel]*
+### T.[Code].1 — [Titre Équilibré : Un Seul Objectif Technique Concret]
+*Objectif logique : [Titre logique / conceptuel]*  
+*Unité d'Apprentissage (UA) :* UA.[Code] — [Libellé officiel de l'UA] ([Domaine])
+
+- **Progression pédagogique (Brique de code vers le Projet d'imitation) :**
+  [Explication claire de la brique de code spécifique ajoutée ou transformée à cette étape pour faire progresser le code hérité vers le livrable final du projet d'imitation].
 
 - **1. Ce que l'apprenant doit apprendre :**
   - **Notions cibles :** [Concepts techniques exacts à assimiler].
@@ -97,14 +114,18 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
   // Extrait représentatif du code après manipulation
   ```
 
-- **6. Livrable vérifiable :**
-  - [Comportement observable dans le navigateur ou le terminal validant la réussite].
-  - **Fichier cible dans `code-a-apprendre/` :** `[chemin/nom-fichier]`.
+- **6. Livrable physique tapé par l'apprenant :**
+  - [Code source effectivement écrit par l'apprenant ou fichier commandes.md citant les commandes exécutées. Zéro justification verbale ou constat visuel sans code].
+  - **Fichier cible dans le projet :** `[chemin/nom-fichier]`.
 
 ---
 
-### T.[Code].2 — [Titre Technique : Commande, Fonction, Fichier ou Syntaxe Précise]
-*Objectif logique : [Titre logique / conceptuel]*
+### T.[Code].2 — [Titre Équilibré : Un Seul Objectif Technique Concret]
+*Objectif logique : [Titre logique / conceptuel]*  
+*Unité d'Apprentissage (UA) :* UA.[Code] — [Libellé officiel de l'UA] ([Domaine])
+
+- **Progression pédagogique (Brique de code vers le Projet d'imitation) :**
+  [Explication claire de la brique de code spécifique ajoutée ou transformée à cette étape pour faire progresser le code hérité vers le livrable final du projet d'imitation].
 
 - **1. Ce que l'apprenant doit apprendre :**
   - **Notions cibles :** [Concepts techniques exacts].
@@ -129,9 +150,9 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
   // Extrait représentatif du code après manipulation
   ```
 
-- **6. Livrable vérifiable :**
-  - [Résultat observable et mesurable].
-  - **Fichier cible dans `code-a-apprendre/` :** `[chemin/nom-fichier]`.
+- **6. Livrable physique tapé par l'apprenant :**
+  - [Code source effectivement écrit par l'apprenant ou fichier commandes.md citant les commandes exécutées. Zéro justification verbale ou constat visuel sans code].
+  - **Fichier cible dans le projet :** `[chemin/nom-fichier]`.
 
 ---
 
@@ -140,7 +161,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 1. **Tutoriels (Comprendre avec le minimum de code) :**  
    Chaque tutoriel ci-dessus isole une difficulté technique et apporte le minimum de code pour valider la compréhension sur le projet guidé.
 2. **Projet d'Imitation (Reproduire pour maîtriser le fil conducteur) :**  
-   L'accumulation ordonnée des livrables de chaque tutoriel transforme le `dossier-depart/` pour aboutir au `code-a-apprendre/` complet de la session (ex: page d'accueil dynamique complète).
+   L'accumulation ordonnée des livrables de chaque tutoriel transforme le `dossier-depart/` pour aboutir au **livrable complet de la session** (ex: page d'accueil dynamique complète avec contrôleur et template).
 3. **Projet Prototype (Expérimenter en autonomie sur un cas similaire) :**  
    L'apprenant réinvestit immédiatement la même stack et la même logique sur un cas d'étude parallèle sans assistance pas-à-pas (ex: catalogue e-commerce).
 4. **Projet Fil Rouge (Réutiliser & Développer la compétence métier) :**  

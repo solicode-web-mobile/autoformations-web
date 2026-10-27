@@ -1,7 +1,7 @@
 ---
 name: tutorial-planer
-description: Conçoit, audite et optimise les plans de réalisation et la progression pédagogique des tutoriels par session/sprint, garantissant le chaînage sans rupture cognitive, le titrage technique prioritaire, le sas 'Bien démarrer', la description technique complète à partir du dossier de départ et le respect de la granularité (1 UA par domaine par session).
-version: 1.1.0
+description: Conçoit, audite et optimise les plans de réalisation et la progression pédagogique des tutoriels par session/sprint, garantissant le chaînage sans rupture cognitive, le titrage technique équilibré (un seul objectif concret), le sas 'Bien démarrer', la description technique complète transformant le dossier de départ vers le livrable final, et le respect de la granularité (1 UA par domaine par session).
+version: 1.2.0
 inspiration:
   source: "solicode-pedagogy"
   plugin: "pedagogy-referential"
@@ -15,8 +15,9 @@ Il intervient en amont de [tutorial-writer](../tutorial-writer/SKILL.md) pour co
 Sa vocation est de garantir un parcours d'apprentissage **sans rupture cognitive et sans saut de connaissance** :
 chaque apprenant doit être capable de réaliser chaque tutoriel $N$ uniquement avec les connaissances acquises aux étapes $1 \dots N-1$ et des sessions antérieures, sans présupposer de savoirs implicites.
 
-### Rôle Clé : De `dossier-depart/` vers `code-a-apprendre/`
-Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-depart/`)** hérité des sessions précédentes. L'objectif technique du sprint est d'atteindre le **code cible (`code-a-apprendre/`)**.
+### Rôle Clé : Du `dossier-depart/` vers le Livrable Complet de Session
+Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-depart/`)** hérité des sessions précédentes (pages statiques, CSS, images).  
+À la fin de la session, l'apprenant doit produire **le livrable complet de la session**, constitué du **`dossier-depart/` enrichi et transformé avec le `code-a-apprendre/`** (projet fonctionnel complet prêt pour commit).  
 `tutorial-planer` fournit le **plan et la description technique exhaustive** de cette transformation :
 - Il découpe l'évolution du code en paliers élémentaires (les tutoriels).
 - Pour chaque tutoriel, il spécifie précisément **ce que l'apprenant doit apprendre**, **comment le code évolue techniquement**, quels fichiers sont impactés, et les extraits de code d'entrée ($E_{n-1}$) et de sortie ($E_n$).
@@ -31,26 +32,43 @@ Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-d
 
 1. **Continuité Cognitive Déterministe ($E_{n-1} \rightarrow E_n$) :**
    Le code et les notions de départ du tutoriel $N$ correspondent rigoureusement au résultat final du tutoriel $N-1$. Aucune syntaxe, commande ou configuration non vue préalablement ne doit apparaître sans accompagnement.
-2. **Priorité au Titrage Technique, Titre Logique en Sous-titre :**
-   Les apprenants débutants (N1) se repèrent et mémorisent les notions par les éléments techniques concrets (commandes CLI, noms de fichiers, fonctions, mots-clés) plutôt que par les intitulés conceptuels abstraits.  
-   - **Titre principal H3 :** Technique (ex: `### T.123.14.1 — Boucler sur $articles avec foreach et sécuriser avec htmlspecialchars`).
-   - **Sous-titre :** Logique / Pédagogique (ex: `*Objectif logique : Répéter un affichage dynamique sécurisé*`).
+2. **Juste Équilibre de Titrage : Orienté Notion Technique Pure (Sans Entités du Projet) :**
+   Le titre d'un tutoriel doit expliquer **la notion de base que l'on va apprendre dans la technologie** (syntaxe, structure de contrôle, fonction, composant).
+   - *Interdiction des entités du projet dans le titre :* Ne jamais mentionner les entités métier du cas d'exemple (ex: pas d'« Article », « Catégorie », « Badge », « Produit » dans le titre). Ce sont de simples données d'illustration utilisées dans le projet. L'apprenant doit mémoriser la compétence technique transférable, pas le cas particulier.
+   - *À proscrire (Trop abstrait / académique) :* « Contrôler un traitement », « Répéter un traitement », « Manipuler les expressions ».
+   - *À proscrire également (Trop technique / surchargé) :* « Installer PHP CLI, tester php -S et activer display_errors dans php.ini ».
+   - **Règle retenue (Le juste équilibre) :** Le titre principal en H3 exprime **un seul objectif technique concret centré sur la notion à apprendre** (ex: `### T.123.12.1 — Déclarer et manipuler un tableau associatif`).  
+     Le **sous-titre** explicite l'**objectif logique / pédagogique** (ex: `*Objectif logique : Modéliser et stocker une collection de données en mémoire*`).
 3. **Sas Générique « Bien Démarrer » :**
    Avant d'engager le livrable d'un projet applicatif dans un nouveau langage, runtime, framework ou outil, passage obligatoire par deux paliers préalables :
    - *Hello World & Diagnostic :* Vérification de l'installation, exécution minimale et **activation explicite de l'affichage des erreurs** (débogage immédiat).
    - *Démarrage Rapide (Quickstart) :* Premier micro-exemple isolé sur fichier autonome (`demo.php`) pour assimiler la syntaxe de base sans bruit applicatif.
-4. **Spécification Technique Complète par Fiche de Tutoriel :**
+4. **Spécification Technique et Pédagogique Complète par Fiche de Tutoriel :**
    Chaque tutoriel dans le plan comporte obligatoirement :
+   - Le titre technique équilibré en H3 et le sous-titre logique / pédagogique.
+   - **L'Unité d'Apprentissage (UA) de rattachement** : code UA officiel, domaine et libellé.
+   - **La description de la progression pédagogique :** expliciter clairement la brique de code spécifique ajoutée ou transformée à cette étape pour faire avancer le projet vers le livrable du Projet d'imitation de la session.
    - Ce que l'apprenant doit apprendre (notions, syntaxe, fonctions, bonnes pratiques).
    - La description technique de la réalisation (actions concrètes de développement sur le projet).
    - Les fichiers sources impactés issus de `dossier-depart/`.
    - L'état de départ ($E_{n-1}$) et l'état d'arrivée ($E_n$) avec extraits de code.
-   - Le micro-livrable vérifiable et le fichier cible.
-5. **Granularité Cognitive Minimale :**
-   **Une seule Unité d'Apprentissage (1 UA)** d'un domaine donné par session au maximum (sauf exception motivée pour dissocier le sas d'installation/démarrage de la pratique applicative).
-6. **Triade Active LMS :**
+   - Le livrable physique tapé par l'apprenant (code source ou `commandes.md`) et le fichier cible.
+5. **Livrables Strictement Physiques : Code Source et Fichier `commandes.md` :**
+   Tous les livrables demandés doivent être le **code source effectivement tapé par l'apprenant** (fichiers `.php`, `.html`, etc.). Interdiction absolue de demander des justifications verbales, des constats visuels d'écrans ou des captures d'écran sans code. Pour les tutoriels d'installation ou d'exécution CLI, le livrable est obligatoirement un **fichier Markdown listant les commandes réelles exécutées (`commandes.md`)** accompagné du script de test associé.
+6. **Front Matter Obligatoire du Plan de Réalisation :**
+   Tout fichier `plan-developpement.md` comporte un Front Matter YAML indiquant :
+   - Le numéro de version du plan (`version: "1.0.0"`).
+   - Le statut d'audit (`audite: true` ou `false`).
+   - La date d'audit (`date_audit: "YYYY-MM-DD"`).
+   - Le statut de conformité (`statut: "audité et validé"` ou `"en cours"`).
+7. **Règle de Granularité des UAs (1 UA par Défaut, 2 UAs au Démarrage Technologique) :**
+   - **Règle par défaut :** On attribue obligatoirement **une seule Unité d'Apprentissage (1 UA) par domaine de compétence par session**. Interdiction formelle d'éparpiller de multiples micro-UAs atomiques pour chaque structure ou mot-clé d'un même domaine.
+   - **Exception Unique de Démarrage :** Lorsqu'un nouveau langage ou une nouvelle technologie est abordé pour la première fois (ex: PHP en S4), le domaine est structuré en **EXACTEMENT DEUX UNITÉS D'APPRENTISSAGE (2 UAs)** :
+     1. **L'Unité « Bien démarrer avec [Technologie] » :** Sas d'installation locale, serveur de développement, activation des erreurs et premier script autonome.
+     2. **L'Unité de formation du Projet d'imitation :** Regroupe l'ensemble des tutoriels d'apprentissage nécessaires pour développer la brique applicative de la session (tableaux, boucles, conditions).
+8. **Triade Active LMS :**
    $$\text{Tutoriel (Comprendre)} \longrightarrow \text{Projet d'Imitation (Reproduire)} \longrightarrow \text{Projet Prototype (Expérimenter)} \longrightarrow \text{Projet Fil Rouge (Réutiliser)}$$
-7. **Gouvernance DRY (Don't Repeat Yourself) :**
+9. **Gouvernance DRY (Don't Repeat Yourself) :**
    Aucune duplication des règles permanentes de l'agent (`.agents/rules/`). Séparation stricte : `tutorial-planer` conçoit la trajectoire technique, `tutorial-writer` rédige les guides.
 
 ---
@@ -59,9 +77,9 @@ Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-d
 
 - **Quand l'activer :**
   - Cadrage et conception d'un nouveau plan de réalisation (`_plan-réalisation-tutos/SX/plan-developpement.md`).
-  - Définition de la trajectoire technique transformant `dossier-depart/` en `code-a-apprendre/`.
-  - Spécification détaillée des tutoriels pour fournir à `tutorial-writer` un contrat d'implémentation prêt à rédiger.
-  - Audit d'un plan existant pour identifier les ruptures cognitives, prérequis oubliés ou saturations de charge.
+  - Définition de la trajectoire technique transformant `dossier-depart/` vers le livrable final enrichi.
+  - Audit d'un plan existant (marquage `audite: true` ou détection des ruptures).
+  - Formulation des titres selon la règle du juste équilibre (un seul objectif technique concret).
   - Découpage pédagogique lors de l'introduction d'un nouveau langage ou framework (PHP, React, SQL, etc.).
 - **Quand NE PAS l'activer :**
   - Rédaction détaillée pas-à-pas du corps d'un tutoriel ➔ Utiliser [tutorial-writer](../tutorial-writer/SKILL.md).
@@ -79,7 +97,7 @@ Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-d
   3. La fiche de cadrage de la session (`_sessions/SX.md` et `_plan-réalisation-tutos/SX/README.md`).
 - **Ressources internes encapsulées :**
   - [methode-bien-demarrer.md](resources/methode-bien-demarrer.md) : Protocole complet du sas d'atterrissage (Hello World, configuration erreurs, Quickstart isolé).
-  - [gabarit-plan-session.md](resources/gabarit-plan-session.md) : Gabarit Markdown normé avec la fiche technique complète par tutoriel.
+  - [gabarit-plan-session.md](resources/gabarit-plan-session.md) : Gabarit Markdown normé avec Front Matter et fiches techniques complètes.
 - **Ressources transversales du projet :**
   - `.agents/rules/pedagogie-spartel.md` (Directives didactiques N1 et cycle actif).
   - `.agents/rules/standards-techniques.md` (Encodage UTF-8 sans BOM, conventions de nommage et livrables).
@@ -90,29 +108,29 @@ Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-d
 
 ### Parcours A : Cadrage & Conception d'un Nouveau Plan Technique
 1. **Étape 1 : Analyse des Codes Source (`dossier-depart/` vs `code-a-apprendre/`) :**
-   - Comparer les deux dossiers pour cartographier exactement les fichiers à créer, modifier ou supprimer.
+   - Comparer les deux dossiers pour cartographier exactement les fichiers à créer, modifier ou conserver.
    - Identifier si une nouvelle technologie, un nouveau runtime ou une nouvelle bibliothèque fait son apparition.
 2. **Étape 2 : Planification du Sas « Bien Démarrer » (Si nouvelle technologie) :**
    - Consulter [methode-bien-demarrer.md](resources/methode-bien-demarrer.md).
-   - Positionner le tutoriel d'installation/Hello World avec activation des erreurs (`display_errors`, console dev, mode debug).
-   - Positionner le tutoriel de démarrage rapide (Quickstart) sur bac à sable isolé (`demo.php`).
+   - Positionner le tutoriel d'installation et environnement local (avec activation des erreurs `display_errors`).
+   - Positionner le tutoriel de démarrage rapide (Quickstart) sur bac à sable isolé (`hello.php`).
 3. **Étape 3 : Contrôle de Granularité des UAs :**
    - S'assurer que le plan ne mobilise qu'une seule UA du domaine principal (hors sas de démarrage).
    - Si plusieurs UAs se bousculent, arbitrer pour scinder la progression ou reporter sur la session suivante.
-4. **Étape 4 : Découpage Incrémental en Chaîne Sans Rupture :**
+4. **Étape 4 : Découpage Incrémental vers le Livrable Complet :**
    - Découper la transformation de `dossier-depart/` en étapes successives indépendantes.
    - Vérifier pour chaque étape que $E_{n-1}$ fournit rigoureusement 100% des prérequis de $E_n$.
 5. **Étape 5 : Rédaction des Fiches Techniques Détaillées :**
    - Remplir le plan selon [gabarit-plan-session.md](resources/gabarit-plan-session.md).
    - Pour chaque tutoriel, rédiger obligatoirement :
-     - Le titre technique H3 et le sous-titre logique.
+     - Le titre équilibré : **un seul objectif technique concret** en H3 et le sous-titre logique.
      - Ce que l'apprenant doit apprendre (notions, syntaxe, fonctions).
      - La description technique de la manipulation sur le code du projet.
      - Les fichiers impactés.
      - Les extraits de code représentatifs de départ ($E_{n-1}$) et d'arrivée ($E_n$).
      - Le micro-livrable vérifiable.
-6. **Étape 6 : Articulation des 3 Projets :**
-   - Décrire comment le cumul des tutoriels forme le Projet d'imitation, et expliciter les passerelles vers le Prototype et le Fil Rouge.
+6. **Étape 6 : Validation du Front Matter & Audit :**
+   - Renseigner `version:`, `audite: true`, `date_audit:` et `statut: "audité et validé"`.
 
 ---
 
@@ -120,15 +138,13 @@ Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-d
 1. **Étape 1 : Diagnostic des Ruptures Cognitives :**
    - Parcourir les tutoriels planifiés dans l'ordre chronologique.
    - Identifier tout prérequis manquant (environnement, debug, notions syntaxiques non introduites).
-2. **Étape 2 : Audit de Précision Technique :**
-   - Vérifier si les tutoriels contiennent de vraies descriptions techniques actionnables ou de simples puces vagues.
-   - Compléter les fiches avec les 6 rubriques techniques obligatoires.
-3. **Étape 3 : Diagnostic de Surcharge Cognitive (Audit des UAs) :**
-   - Compter les UAs d'un même domaine au sein de la session. Si > 1, isoler ce qui relève du démarrage et ce qui doit être reporté.
-4. **Étape 4 : Audit du Titrage :**
-   - Remplacer les titres académiques par des titres techniques concrets avec sous-titres logiques.
-5. **Étape 5 : Restructuration Chirurgicale du Plan :**
+2. **Étape 2 : Audit du Titrage (Le Juste Équilibre) :**
+   - Éliminer les titres trop abstraits et simplifier les titres surchargés de détails techniques vers **un seul objectif technique concret**.
+3. **Étape 3 : Audit de Précision Technique :**
+   - Compléter chaque fiche avec les 6 rubriques techniques obligatoires.
+4. **Étape 4 : Restructuration Chirurgicale du Plan :**
    - Réécrire le fichier `plan-developpement.md` selon le gabarit normé enrichi.
+   - Mettre à jour le Front Matter (`audite: true`, `statut: "audité"`).
 
 ---
 
@@ -137,80 +153,62 @@ Au début d'une session, l'apprenant reçoit un **dossier de départ (`dossier-d
 Tout plan produit est un fichier Markdown conforme à [gabarit-plan-session.md](resources/gabarit-plan-session.md) sous :  
 `_plan-réalisation-tutos/S[X]/plan-developpement.md`
 
+Il s'ouvre obligatoirement par son Front Matter d'audit :
+```yaml
+---
+session: "S[X]"
+version: "1.0.0"
+audite: true
+date_audit: "AAAA-MM-JJ"
+statut: "audité et validé"
+---
+```
+
 Chaque fiche de tutoriel comporte impérativement :
 ```text
-### T.[Code] — [Titre Technique Concret]
+### T.[Code] — [Titre Technique Équilibré : Un Seul Objectif Concret]
 *Objectif logique : [Titre Logique / Pédagogique]*
+*Unité d'Apprentissage (UA) :* UA.[Code] — [Libellé officiel de l'UA] ([Domaine])
 
-- 1. Ce que l'apprenant doit apprendre (Notions, syntaxe, fonctions)
-- 2. Description technique de la réalisation (Actions concrètes sur le code)
+- **Progression pédagogique (Brique de code vers le Projet d'imitation) :**
+  [Explication claire de la brique de code spécifique ajoutée ou transformée à cette étape pour faire progresser le code hérité vers le livrable final du projet d'imitation].
+- 1. Ce que l'apprenant doit apprendre (Notions, syntaxe, fonctions, bonnes pratiques)
+- 2. Description technique de la réalisation (Actions concrètes sur le code du projet)
 - 3. Fichiers impactés (Issus de dossier-depart/)
 - 4. État de départ (E_n-1 avec extrait de code)
 - 5. État d'arrivée (E_n avec extrait de code)
-- 6. Livrable vérifiable & Fichier cible dans code-a-apprendre/
+- 6. Livrable physique tapé par l'apprenant (Code source ou fichier commandes.md) & Fichier cible dans le projet
 ```
 
 ---
 
 ## 7. Contrôle Qualité (Checklist Binaire)
 
-- [ ] Le point de départ (`dossier-depart/`) et le point d'arrivée (`code-a-apprendre/`) sont-ils clairement identifiés ?
-- [ ] Tout nouvel outil ou langage intègre-t-il obligatoirement son étape Hello World (installation/vérification) ?
-- [ ] La configuration de l'affichage des erreurs fait-elle l'objet d'une manipulation explicite dès le premier tutoriel ?
-- [ ] Une étape Démarrage Rapide (Quickstart) sur un fichier isolé précède-t-elle le livrable du projet d'imitation ?
-- [ ] Chaque tutoriel porte-t-il obligatoirement un **titre technique concret** en H3 et un **sous-titre logique** ?
+- [ ] Le Front Matter du plan contient-il `version:`, `audite:` (booléen), `date_audit:` et `statut:` ?
+- [ ] Le point de départ (`dossier-depart/`) et l'aboutissement (livrable complet transformé) sont-ils clairement identifiés ?
+- [ ] Tout nouvel outil intègre-t-il son étape Hello World (installation et activation de `display_errors`) ?
+- [ ] Une étape Démarrage Rapide (Quickstart) sur un fichier isolé précède-t-elle le projet applicatif ?
+- [ ] Chaque tutoriel porte-t-il un **titre équilibré centré sur la notion technique à apprendre**, sans mentionner les entités du cas projet (pas d'Article, Catégorie, etc.) ?
+- [ ] L'**Unité d'Apprentissage (UA)** de rattachement est-elle clairement affichée pour chaque tutoriel ?
+- [ ] La **progression pédagogique et la brique de code ajoutée** vers le Projet d'imitation sont-elles explicitées pour chaque étape ?
 - [ ] Chaque fiche de tutoriel contient-elle la description technique complète et ce que l'on doit apprendre ?
 - [ ] Chaque fiche indique-t-elle les fichiers impactés, ainsi que les extraits de code $E_{n-1}$ et $E_n$ ?
-- [ ] La session respecte-t-elle la règle de **1 seule UA par domaine** (hors exception sas de démarrage) ?
+- [ ] Tous les livrables spécifiés sont-ils obligatoirement du **code source tapé ou un fichier `commandes.md`** (zéro justification verbale ou constat visuel sans code) ?
+- [ ] La session respecte-t-elle la règle de granularité : **1 seule UA par domaine par défaut**, et **exactement 2 UAs** (1. « Bien démarrer » + 2. Formation du Projet d'imitation) en cas de démarrage technologique ?
 - [ ] L'état de départ ($E_{n-1}$) correspond-il exactement à la sortie du tutoriel précédent (zéro trou) ?
-- [ ] Le plan détaille-t-il l'articulation vers les 3 projets (Imitation, Prototype, Fil Rouge) ?
 - [ ] Le fichier est-il encodé en **UTF-8 sans BOM** ?
 - [ ] Le plan permet-il à `tutorial-writer` de rédiger directement le support sans avoir à concevoir la technique ?
 
 ---
 
-## 8. Exemple Concret (Fiche Technique Type pour S4)
+## 8. Exemples de Titrage Équilibré (Few-Shot)
 
-### T.123.14.1 — Boucler sur `$articles` avec `foreach` et sécuriser avec `htmlspecialchars`
-*Objectif logique : Répéter un traitement d'affichage dynamique sécurisé*
-
-- **1. Ce que l'apprenant doit apprendre :**
-  - **Notions :** Répétition d'affichage dynamique, prévention des injections XSS.
-  - **Syntaxe & Fonctions :** Boucle `foreach ($articles as $article) : ... endforeach;`, fonction de sécurisation `htmlspecialchars()`.
-  - **Bonnes pratiques :** Ne jamais injecter directement une chaîne issue des données sans échappement HTML.
-
-- **2. Description technique de la réalisation :**
-  - Dans `index-template.php`, localiser les 3 cartes d'articles HTML statiques héritées de `dossier-depart/public-index.html`.
-  - Conserver une seule carte comme gabarit et envelopper cette carte dans la boucle PHP alternative `foreach ($articles as $article) : ... endforeach;`.
-  - Remplacer les valeurs figées (titre, résumé, date, image) par les variables dynamiques correspondantes échappées avec `htmlspecialchars($article['titre'])`.
-
-- **3. Fichiers impactés :**
-  - `index-template.php` (modification du template HTML).
-
-- **4. État de départ ($E_{n-1}$) :**
-  ```html
-  <!-- 3 cartes HTML dupliquées et statiques -->
-  <article class="carte-article">
-      <h2>Titre figé 1</h2>
-      <p>Contenu figé 1...</p>
-  </article>
-  <article class="carte-article">
-      <h2>Titre figé 2</h2>
-      <p>Contenu figé 2...</p>
-  </article>
-  ```
-
-- **5. État d'arrivée ($E_n$) :**
-  ```php
-  <!-- Une seule carte enveloppée dans foreach -->
-  <?php foreach ($articles as $article) : ?>
-      <article class="carte-article">
-          <h2><?= htmlspecialchars($article['titre']); ?></h2>
-          <p><?= htmlspecialchars($article['contenu']); ?></p>
-      </article>
-  <?php endforeach; ?>
-  ```
-
-- **6. Livrable vérifiable :**
-  - La page `index.php` exécutée sur le serveur local affiche dynamiquement l'intégralité des articles déclarés dans le tableau `$articles`.
-  - **Fichier cible dans `code-a-apprendre/` :** `index-template.php`.
+| Titre Trop Abstrait (Banni) | Titre Trop Surchargé ou Lié au Projet (Banni) | Titre Équilibré Retenu (Normé) | Sous-Titre Logique Associé |
+| :--- | :--- | :--- | :--- |
+| Écrire et exécuter un script | Installer PHP CLI, tester php -S et activer display_errors dans php.ini | **Installer PHP et préparer l'environnement local** | *Valider l'environnement d'exécution serveur et le débogage* |
+| Débuter en PHP | Créer hello.php avec balises <?php, déclarer variables et echo | **Créer son premier script avec echo** | *Démarrage rapide sur la syntaxe PHP élémentaire* |
+| Structurer une page serveur | Renommer public-index.html et require index-template.php pour le blog | **Séparer les données et l'affichage avec require** | *Structurer la page en contrôleur et template HTML* |
+| Manipuler les données | Déclarer les articles du blog en tableau associatif | **Déclarer et manipuler un tableau associatif** | *Modéliser et stocker une collection de données en mémoire* |
+| Répéter un traitement | Boucler sur les articles avec foreach et htmlspecialchars | **Parcourir une collection avec la boucle foreach** | *Générer dynamiquement une liste d'éléments sécurisés* |
+| Contrôler un traitement | Conditionner l'affichage du badge de l'article avec if/else | **Adapter l'affichage avec la condition if / else** | *Contrôler dynamiquement le rendu visuel selon une donnée* |
+| Dynamiser une liste | Générer les filtres de catégories du blog avec foreach | **Générer des liens dynamiques avec la boucle foreach** | *Répéter un affichage de liens avec paramètres* |
