@@ -131,9 +131,14 @@ Tout tutoriel produit respecte rigoureusement la structure suivante :
 ```markdown
 ---
 layout: tuto
-title: "Titre clair et concis"
-domain: "d-xxx"
-ua: "ua-xxx"
+title: "Titre clair et concis (Objectif technique concret)"
+sous_titre: "Sous-titre logique / conceptuel du tutoriel"
+slug: "slug-du-tutoriel"
+permalink: /tutos/:slug/
+tuto_id: "T.[Code_UA][Num_Tuto]" # ex: T.123.110 (UA.123.11 + 0)
+version: "normal" # normal, compact ou detaille
+ua: "UA.[Code_UA]" # ex: UA.123.11
+nav_order: 1
 simplified: true
 data_html: ""
 data_css: ""

@@ -8,9 +8,9 @@ Dans cette session charnière, l'apprenant effectue la transition majeure de sa 
 ## 1. Objectifs Pédagogiques du Sprint S4
 
 * **Développement Web (PHP procédural — D.123.1) :** Organisé en **exactement 2 UAs** (règle de démarrage d'une nouvelle technologie) :
-  - **UA.123.11 — Bien démarrer avec PHP :** Installer PHP, préparer l'environnement local avec le serveur intégré (`php -S`), et écrire son premier script autonome avec `echo` hors projet (`T.123.11.0`, `T.123.11.1`).
-  - **UA.123.12 — Construire une page Web dynamique avec PHP :** Manipuler des structures de données en mémoire (tableaux associatifs), adapter l'affichage avec des conditions (`if / else`), et générer dynamiquement les cartes et liens avec `foreach` sécurisé par `htmlspecialchars()` (`T.123.12.1` à `T.123.12.4`).
-* **Architecture Web (D.125.1) :** Séparer la préparation des données (`index.php`) du template d'affichage HTML (`index-template.php`) grâce à l'instruction `require` (`UA.125.13`, `T.125.13.1`).
+  - **UA.123.11 — Bien démarrer avec PHP :** Installer PHP, préparer l'environnement local avec le serveur intégré (`php -S`), et écrire son premier script autonome avec `echo` hors projet (`T.123.110`, `T.123.111`).
+  - **UA.123.12 — Construire une page Web dynamique avec PHP :** Manipuler des structures de données en mémoire (tableaux associatifs), adapter l'affichage avec des conditions (`if / else`), et générer dynamiquement les cartes et liens avec `foreach` sécurisé par `htmlspecialchars()` (`T.123.121` à `T.123.124`).
+* **Architecture Web (D.125.1) :** Séparer la préparation des données (`index.php`) du template d'affichage HTML (`index-template.php`) grâce à l'instruction `require` (`UA.125.13`, `T.125.131`).
 * **Conception des Données (D.112.1) :** Déterminer les relations, les cardinalités et formaliser le schéma conceptuel complet (MCD) du Blog (`UA.112.14`).
 * **Veille Technologique (D.161.1) :** Découvrir la factorisation avec les fonctions et l'inclusion de templates pour préparer la session S5 (`UA.161.14`).
 

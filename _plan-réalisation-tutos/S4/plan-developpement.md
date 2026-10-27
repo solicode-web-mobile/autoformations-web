@@ -50,25 +50,25 @@ flowchart LR
 
 * **UA.123.11 — Bien démarrer avec PHP :**  
   Prendre en main l'environnement local d'exécution serveur et écrire un premier script autonome hors projet.
-  - **T.123.11.0 — Installer PHP et préparer l'environnement local**  
-    *Objectif logique : Valider l'installation de PHP et l'environnement d'exécution local*  
-    *Livrable :* Fichier `commandes.md` (CLI) et script de diagnostic | *Fichiers :* `commandes.md`, `test-serveur.php`
-  - **T.123.11.1 — Écrire son premier script avec echo**  
+  - **T.123.110 — Installer PHP et préparer l'environnement local**  
+    *Objectif logique : Valider l'installation de PHP et la préparation de l'environnement local*  
+    *Livrable :* Fichier `commandes.md` (CLI) et script de vérification | *Fichiers :* `commandes.md`, `test-serveur.php`
+  - **T.123.111 — Écrire son premier script avec echo**  
     *Objectif logique : Démarrage rapide sur la syntaxe PHP élémentaire*  
     *Livrable :* Script minimal autonome | *Fichier :* `hello.php`
 
 * **UA.123.12 — Construire une page Web dynamique avec PHP :**  
   Manipuler des structures de données en mémoire et générer dynamiquement le contenu HTML du Blog.
-  - **T.123.12.1 — Déclarer et manipuler un tableau associatif**  
+  - **T.123.121 — Déclarer et manipuler un tableau associatif**  
     *Objectif logique : Modéliser et stocker une collection de données en mémoire*  
     *Livrable :* Tableau `$articles` structuré en mémoire | *Fichier :* `index.php`
-  - **T.123.12.2 — Parcourir une collection avec la boucle foreach**  
+  - **T.123.122 — Parcourir une collection avec la boucle foreach**  
     *Objectif logique : Générer dynamiquement une liste d'éléments sécurisés*  
     *Livrable :* Boucle `foreach` dynamique avec `htmlspecialchars()` | *Fichier :* `index-template.php`
-  - **T.123.12.3 — Adapter l'affichage avec la condition if / else**  
+  - **T.123.123 — Adapter l'affichage avec la condition if / else**  
     *Objectif logique : Contrôler dynamiquement le rendu visuel selon une donnée*  
     *Livrable :* Structure conditionnelle adaptant la couleur | *Fichier :* `index-template.php`
-  - **T.123.12.4 — Générer des liens dynamiques avec la boucle foreach**  
+  - **T.123.124 — Générer des liens dynamiques avec la boucle foreach**  
     *Objectif logique : Répéter un affichage de liens avec paramètres*  
     *Livrable :* Boucle sur `$categories` finalisant les filtres | *Fichiers :* `index.php`, `index-template.php`
 
@@ -76,7 +76,7 @@ flowchart LR
 
 * **UA.125.13 — Structurer une page avec traitement serveur :**  
   Séparer la logique de préparation des données du template de rendu HTML dès le démarrage du projet applicatif.
-  - **T.125.13.1 — Séparer les données et l'affichage avec require**  
+  - **T.125.131 — Séparer les données et l'affichage avec require**  
     *Objectif logique : Structurer la page en contrôleur et template HTML*  
     *Livrable :* Séparation effective entre contrôleur et vue | *Fichiers :* `index.php`, `index-template.php`
 
@@ -94,37 +94,39 @@ Chaque fiche fournit la spécification technique et pédagogique complète du tu
 Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir de ces informations.
 -->
 
-### T.123.11.0 — Installer PHP et préparer l'environnement local
-*Objectif logique : Valider l'installation de PHP et l'environnement d'exécution local*  
+### T.123.110 — Installer PHP et préparer l'environnement local
+*Objectif logique : Valider l'installation de PHP et la préparation de l'environnement local*  
 *Unité d'Apprentissage (UA) :* `UA.123.11` — Bien démarrer avec PHP (`D.123.1.php`)
 
 - **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
-  Avant d'aborder les fichiers du Blog, cette étape pose le socle d'exécution serveur. L'apprenant écrit un script de test minimal qui configure l'affichage des erreurs avec `ini_set('display_errors', '1')`. Cette brique garantit que pour tout le reste de la session, aucune faute de frappe ne produira d'écran blanc bloquant.
+  Avant d'aborder les fichiers du Blog, cette étape pose le socle d'exécution serveur. L'apprenant installe le binaire officiel de PHP sous Windows dans `C:\php`, ajoute le dossier au `PATH` et démarre le serveur local de développement. Cette brique garantit que l'apprenant dispose d'un environnement d'exécution local fonctionnel pour exécuter ses scripts tout au long de la session.
 
 - **1. Ce que l'apprenant doit apprendre :**
-  - **Notions cibles :** Rôle de l'interpréteur serveur, fonctionnement du serveur Web de développement local.
-  - **Syntaxe & Outils :** Commande `php -v`, commande serveur `php -S localhost:8000`, directive `display_errors = On` et fonction `ini_set()`.
-  - **Règles & Bonnes pratiques :** Ne jamais coder sans retour visuel d'erreurs en phase d'apprentissage.
+  - **Notions cibles :** Binaire officiel d'un langage, variable d'environnement système `PATH`, rôle de l'interpréteur serveur, fonctionnement du serveur Web de développement local intégré.
+  - **Syntaxe & Outils :** Extraction de l'archive officielle dans `C:\php`, configuration du `PATH`, commande de vérification `php -v`, commande de démarrage du serveur local `php -S localhost:8000`.
+  - **Règles & Bonnes pratiques :** Privilégier le binaire officiel léger sans suite tierce (pas de XAMPP), et vérifier la commande dans un terminal neuf après modification du `PATH`.
 
 - **2. Description technique de la réalisation (Développement du projet) :**
-  - Ouvrir le terminal dans un dossier de bac à sable local.
-  - Vérifier la présence de PHP via la commande `php -v`.
-  - Créer un fichier `test-serveur.php` contenant `<?php ini_set('display_errors', '1'); echo "Serveur PHP opérationnel"; ?>`.
-  - Démarrer le serveur local via `php -S localhost:8000` et ouvrir l'adresse dans le navigateur pour vérifier la réponse.
+  - Télécharger l'archive Zip du binaire officiel sur `windows.php.net/download` (version VS16 x64 Thread Safe).
+  - Extraire l'archive dans `C:\php` et créer `php.ini` depuis `php.ini-development`.
+  - Ajouter `C:\php` à la variable d'environnement système `Path`.
+  - Ouvrir un nouveau terminal et vérifier la présence de PHP via la commande `php -v`.
+  - Créer un fichier de test `test-serveur.php` contenant : `<?php echo "Environnement local PHP opérationnel"; ?>`.
+  - Démarrer le serveur local via la commande `php -S localhost:8000`.
+  - Ouvrir le navigateur à l'adresse `http://localhost:8000/test-serveur.php` pour valider la réponse du serveur local.
 
 - **3. Fichiers impactés :**
   - `commandes.md` (nouveau fichier de relevé des commandes).
   - `test-serveur.php` (nouveau fichier de test).
 
 - **4. État de départ ($E_{n-1}$) :**
-  Terminal ouvert, aucun interpréteur ni serveur Web local actif.
+  Machine sans binaire PHP configuré dans le PATH, aucun serveur Web local actif.
 
 - **5. État d'arrivée ($E_n$) :**
-  Serveur actif sur `http://localhost:8000`, message de confirmation visible dans le navigateur.
+  PHP officiel installé dans `C:\php`, disponible en CLI via `php -v`, serveur actif sur `http://localhost:8000`, message de confirmation visible dans le navigateur.
   ```php
   <?php
-  ini_set('display_errors', '1');
-  echo "Serveur PHP opérationnel";
+  echo "Environnement local PHP opérationnel";
   ```
 
 - **6. Livrable physique tapé par l'apprenant :**
@@ -133,7 +135,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 ---
 
-### T.123.11.1 — Écrire son premier script avec echo
+### T.123.111 — Écrire son premier script avec echo
 *Objectif logique : Démarrage rapide sur la syntaxe PHP élémentaire*  
 *Unité d'Apprentissage (UA) :* `UA.123.11` — Bien démarrer avec PHP (`D.123.1.php`)
 
@@ -170,7 +172,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 ---
 
-### T.125.13.1 — Séparer les données et l'affichage avec require
+### T.125.131 — Séparer les données et l'affichage avec require
 *Objectif logique : Structurer la page en contrôleur et template HTML*  
 *Unité d'Apprentissage (UA) :* `UA.125.13` — Structurer une page avec traitement serveur (`D.125.1.architecture`)
 
@@ -208,7 +210,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 ---
 
-### T.123.12.1 — Déclarer et manipuler un tableau associatif
+### T.123.121 — Déclarer et manipuler un tableau associatif
 *Objectif logique : Modéliser et stocker une collection de données en mémoire*  
 *Unité d'Apprentissage (UA) :* `UA.123.12` — Construire une page Web dynamique avec PHP (`D.123.1.php`)
 
@@ -263,7 +265,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 ---
 
-### T.123.12.2 — Parcourir une collection avec la boucle foreach
+### T.123.122 — Parcourir une collection avec la boucle foreach
 *Objectif logique : Générer dynamiquement une liste d'éléments sécurisés*  
 *Unité d'Apprentissage (UA) :* `UA.123.12` — Construire une page Web dynamique avec PHP (`D.123.1.php`)
 
@@ -316,7 +318,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 ---
 
-### T.123.12.3 — Adapter l'affichage avec la condition if / else
+### T.123.123 — Adapter l'affichage avec la condition if / else
 *Objectif logique : Contrôler dynamiquement le rendu visuel selon une donnée*  
 *Unité d'Apprentissage (UA) :* `UA.123.12` — Construire une page Web dynamique avec PHP (`D.123.1.php`)
 
@@ -351,7 +353,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 ---
 
-### T.123.12.4 — Générer des liens dynamiques avec la boucle foreach
+### T.123.124 — Générer des liens dynamiques avec la boucle foreach
 *Objectif logique : Répéter un affichage de liens avec paramètres*  
 *Unité d'Apprentissage (UA) :* `UA.123.12` — Construire une page Web dynamique avec PHP (`D.123.1.php`)
 
