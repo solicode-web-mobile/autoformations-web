@@ -36,6 +36,16 @@
 				"folderPath": "autoformations-web\\_tutos\\C122\\",
 				"isFolderOnly": true,
 				"color": "foldercolorizer.color_5f5fd7"
+			},
+			{
+				"folderPath": "autoformations-web\\.agents\\",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_ff8700"
+			},
+			{
+				"folderPath": "autoformations-web\\_plan-réalisation-tutos\\S4\\",
+				"color": "foldercolorizer.color_af5f00",
+				"isFolderOnly": true
 			}
 		]
 	}
