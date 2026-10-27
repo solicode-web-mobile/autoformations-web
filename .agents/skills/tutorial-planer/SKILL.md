@@ -80,6 +80,15 @@ Lors de la conception ou de l'audit d'une session :
    Aucune duplication des règles permanentes de l'agent (`.agents/rules/`). Séparation stricte : `tutorial-planer` conçoit la trajectoire technique et les entités de structure, `tutorial-writer` rédige les guides.
 10. **Intégrité Référentielle des Collections Jekyll (Zéro Entité Fantôme) :**
     Toute Session (`S[X]`), tout Domaine (`D.XXX.Y`) et toute Unité d'Apprentissage (`UA.XXX.YY`) cités dans le plan doivent obligatoirement exister physiquement sous `_sessions/`, `_domaines/` et `_uas/`. Le skill crée ou synchronise immédiatement toute entité manquante à partir de ses gabarits dédiés ([gabarit-session.md](resources/gabarit-session.md), [gabarit-domaine.md](resources/gabarit-domaine.md), [gabarit-ua.md](resources/gabarit-ua.md)).
+11. **Périmètre Strict du Plan de Développement (Domaines de Code Pur) :**
+    Le fichier `plan-developpement.md` traite **exclusivement des domaines de développement logiciel** :
+    - `HTML` (`D.122.1`)
+    - `CSS` (`D.122.2`)
+    - `JS DOM` (`D.122.3`)
+    - `PHP` (`D.123.1`)
+    - `SQL` (`D.124.1` / `D.124.2`)
+    Les domaines transverses ou méthodologiques (Analyse `D.111.1`, Conception `D.112.1`, Architecture `D.125.1`, Debug `D.125.2`, Test `D.131.1`, Déploiement `D.141.1`, Git `D.151.1`, Gestion de projet `D.152.2`, Veille `D.161.1`) ne doivent **en aucun cas** figurer dans le `plan-developpement.md`.
+    *Inviolabilité des tutoriels existants :* Il est formellement interdit de réécrire ou de modifier les tutoriels existants et déjà validés appartenant aux autres domaines. Les autres domaines font l'objet de progressions à part et sont abordés lors de la première apparition du domaine concerné.
 
 ---
 

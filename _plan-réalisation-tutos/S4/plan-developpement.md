@@ -72,14 +72,6 @@ flowchart LR
     *Objectif logique : Répéter un affichage de liens avec paramètres*  
     *Livrable :* Boucle sur `$categories` finalisant les filtres | *Fichiers :* `index.php`, `index-template.php`
 
-#### Structurer et déboguer une solution (D.125.1, architecture) : 1 seule UA
-
-* **UA.125.13 — Structurer une page avec traitement serveur :**  
-  Séparer la logique de préparation des données du template de rendu HTML dès le démarrage du projet applicatif.
-  - **T.125.131 — Séparer les données et l'affichage avec require**  
-    *Objectif logique : Structurer la page en contrôleur et template HTML*  
-    *Livrable :* Séparation effective entre contrôleur et vue | *Fichiers :* `index.php`, `index-template.php`
-
 ### ⏭️ Perspectives Futures (Sessions S5 à S12)
 - **S5 :** Extraire les données dans des fonctions personnalisées modulaires avec `fonctions.php` (`UA.123.15`).
 - **S6 :** Connecter la page d'accueil à une base de données MySQL via PDO et exécuter des requêtes SELECT (`UA.124.11` à `UA.124.22`).
@@ -169,44 +161,6 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 - **6. Livrable physique tapé par l'apprenant :**
   - Fichier `hello.php` complet écrit par l'apprenant.
-
----
-
-### T.125.131 — Séparer les données et l'affichage avec require
-*Objectif logique : Structurer la page en contrôleur et template HTML*  
-*Unité d'Apprentissage (UA) :* `UA.125.13` — Structurer une page avec traitement serveur (`D.125.1.architecture`)
-
-- **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
-  C'est l'entrée dans le projet d'imitation (le Blog). L'apprenant prend la page statique `public-index.html` issue du `dossier-depart/` et la transforme en architecture applicative : la vue devient `index-template.php`, et le point d'entrée devient `index.php` qui charge la vue via `require`. Cette brique crée le socle architectural indispensable avant d'injecter des données dynamiques.
-
-- **1. Ce que l'apprenant doit apprendre :**
-  - **Notions cibles :** Séparation des responsabilités (données serveur vs template de rendu), inclusion de fichier PHP.
-  - **Syntaxe & Outils :** Instruction d'inclusion obligatoire `require 'fichier.php';`.
-  - **Règles & Bonnes pratiques :** Ne jamais mélanger le traitement logique serveur et la structure du balisage HTML dans un fichier unique.
-
-- **2. Description technique de la réalisation (Développement du projet) :**
-  - Dupliquer et renommer `dossier-depart/public-index.html` en `index-template.php`.
-  - Créer le fichier contrôleur `index.php`.
-  - Dans `index.php`, insérer l'instruction `require 'index-template.php';`.
-  - Lancer le serveur local sur le dossier du projet et vérifier que `http://localhost:8000/index.php` restitue la page d'accueil à l'identique.
-
-- **3. Fichiers impactés :**
-  - `index.php` (création).
-  - `index-template.php` (création par renommage de `public-index.html`).
-
-- **4. État de départ ($E_{n-1}$) :**
-  `dossier-depart/public-index.html` (page HTML statique figée).
-
-- **5. État d'arrivée ($E_n$) :**
-  Architecture modulaire fonctionnelle. `index.php` contient :
-  ```php
-  <?php
-  require 'index-template.php';
-  ```
-
-- **6. Livrable physique tapé par l'apprenant :**
-  - Fichier `index.php` écrit par l'apprenant.
-  - Fichier `index-template.php` prêt à être dynamisé.
 
 ---
 

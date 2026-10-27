@@ -37,7 +37,7 @@ Pour respecter le principe de non-redondance, chaque volet d'apprentissage fait 
 
 ### A. Progression de Développement Web Applicatif (Spécifique à ce Sprint)
 * **[plan-developpement.md](plan-developpement.md) :**  
-  Plan d'apprentissage pas-à-pas de PHP procédural et de l'architecture dynamique (`UA.123.11`, `UA.123.12`, `UA.125.13`).
+  Plan d'apprentissage pas-à-pas de PHP procédural (`UA.123.11`, `UA.123.12`).
 
 ### B. Domaines Transversaux Mobilisés (Référencés depuis les Sessions S1 et S2)
 * **[plan-conception.md](../S1/plan-conception.md) :**  
