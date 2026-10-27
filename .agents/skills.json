@@ -3,7 +3,8 @@
   "skills": {
     "local": [
       "sync-theme",
-      "dev-jekyll"
+      "dev-jekyll",
+      "tutorial-planer"
     ],
     "global": [
       "project-setup",
