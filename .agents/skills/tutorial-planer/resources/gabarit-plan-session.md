@@ -1,6 +1,8 @@
 # Gabarit Normé — Plan de Réalisation d'une Session
 
-Ce gabarit sert de modèle de référence pour tout fichier `plan-developpement.md` sous `_plan-réalisation-tutos/SX/`.
+Ce gabarit sert de modèle de référence pour tout fichier `plan-developpement.md` sous `_plan-réalisation-tutos/SX/`.  
+Il constitue le **contrat technique et pédagogique complet** qui relie le `dossier-depart/` (code reçu au début de la session) au `code-a-apprendre/` (code cible final).  
+Une fois ce plan validé, le skill `tutorial-writer` dispose de l'intégralité des éléments techniques pour rédiger les tutoriels sans avoir à deviner la progression.
 
 ---
 
@@ -19,13 +21,15 @@ Ce gabarit sert de modèle de référence pour tout fichier `plan-developpement.
 [Description concise du saut qualitatif opéré par l'apprenant dans cette session. 
 Expliciter la transition par rapport à la session précédente.]
 
-* **Objectif central :** [Objectif concret et observable]
+* **Objectif central :** [Objectif concret et observable de développement applicatif]
 * **Stack technique :** [Technologies, outils, versions exactes]
 * **Architecture / Flux de données :** [Brève explication de l'organisation des fichiers]
+* **Point de départ technique :** Dossier `dossier-depart/` contenant [lister les fichiers hérités de la session précédente].
+* **Point d'arrivée technique :** Dossier `code-a-apprendre/` contenant [lister les fichiers cibles à produire].
 
 ```mermaid
 flowchart LR
-    A["[Composant A / Fichier Source]"] -->|Action / Inclusion| B["[Composant B / Vue ou Traitement]"]
+    A["[dossier-depart/ : Fichier initial]"] -->|Transformation progressive par les tutos| B["[code-a-apprendre/ : Livrable final]"]
 ```
 
 ---
@@ -61,42 +65,84 @@ flowchart LR
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
 <!-- 
-RÈGLES STRICTES DE TITRAGE & PROGRESSION :
-1. Le titre H3 porte OBLIGATOIREMENT le TITRE TECHNIQUE (outils, syntaxe, fonctions, commandes).
-2. Le SOUS-TITRE en italique indique l'OBJECTIF LOGIQUE (conceptuel / pédagogique).
-3. Le code de départ (E_n-1) est EXACTEMENT le résultat du tutoriel précédent.
+CONTRAT D'INTERFACE AVEC TUTORIAL-WRITER :
+Chaque fiche fournit la spécification technique et pédagogique complète du tutoriel.
+Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir de ces informations.
 -->
 
-### T.[Code].1 — [Titre Technique : Commande, Fonction ou Syntaxe Précise]
+### T.[Code].1 — [Titre Technique : Commande, Fonction, Fichier ou Syntaxe Précise]
 *Objectif logique : [Titre logique / conceptuel]*
 
-- **Objectif opérationnel :** [Action concrète que l'apprenant réalise].
-- **Description :** [Déroulement pas-à-pas de l'activité].
-- **Notions techniques manipulées :** [Mots-clés, fonctions, balises exactes].
-- **État de départ ($E_{n-1}$) :** [Fichier ou code initial requis].
-- **État d'arrivée ($E_n$) :** [Brique de code ajoutée sans rupture].
-- **Livrable :** [Résultat observable et vérifiable].
-- **Fichier cible dans `code-a-apprendre/` :** `[chemin/nom-fichier]`.
+- **1. Ce que l'apprenant doit apprendre :**
+  - **Notions cibles :** [Concepts techniques exacts à assimiler].
+  - **Syntaxe & Outils :** [Commandes CLI, fonctions, mots-clés, directives à manipuler].
+  - **Règles & Bonnes pratiques :** [Ex: sécurité, affichage des erreurs, conventions de code].
+
+- **2. Description technique de la réalisation (Développement du projet) :**
+  - [Explication pas-à-pas de l'action technique à mener].
+  - [Préciser comment cette étape modifie ou enrichit les fichiers issus de `dossier-depart/`].
+
+- **3. Fichiers impactés :**
+  - Fichier(s) modifié(s) ou créé(s) : `[chemin/nom-fichier]`.
+
+- **4. État de départ ($E_{n-1}$) :**
+  - [Fichier ou code initial requis, issu du dossier-depart ou du tutoriel précédent].
+  ```php
+  // Extrait représentatif du code avant manipulation
+  ```
+
+- **5. État d'arrivée ($E_n$) :**
+  - [Brique de code ajoutée ou transformée sans rupture].
+  ```php
+  // Extrait représentatif du code après manipulation
+  ```
+
+- **6. Livrable vérifiable :**
+  - [Comportement observable dans le navigateur ou le terminal validant la réussite].
+  - **Fichier cible dans `code-a-apprendre/` :** `[chemin/nom-fichier]`.
 
 ---
 
-### T.[Code].2 — [Titre Technique : Commande, Fonction ou Syntaxe Précise]
+### T.[Code].2 — [Titre Technique : Commande, Fonction, Fichier ou Syntaxe Précise]
 *Objectif logique : [Titre logique / conceptuel]*
 
-- **Objectif opérationnel :** [Action concrète que l'apprenant réalise].
-- **Description :** [Déroulement pas-à-pas de l'activité].
-- **Notions techniques manipulées :** [Mots-clés, fonctions, balises exactes].
-- **État de départ ($E_{n-1}$) :** [Code issu de T.[Code].1].
-- **État d'arrivée ($E_n$) :** [Nouvelle brique cumulée].
-- **Livrable :** [Résultat observable et vérifiable].
-- **Fichier cible dans `code-a-apprendre/` :** `[chemin/nom-fichier]`.
+- **1. Ce que l'apprenant doit apprendre :**
+  - **Notions cibles :** [Concepts techniques exacts].
+  - **Syntaxe & Outils :** [Fonctions, boucles, conditions, instructions].
+  - **Règles & Bonnes pratiques :** [Formatage, typage, modularité].
+
+- **2. Description technique de la réalisation (Développement du projet) :**
+  - [Explication pas-à-pas de la transformation appliquée au code de T.[Code].1].
+
+- **3. Fichiers impactés :**
+  - Fichier(s) modifié(s) ou créé(s) : `[chemin/nom-fichier]`.
+
+- **4. État de départ ($E_{n-1}$) :**
+  - [Code issu de l'étape T.[Code].1].
+  ```php
+  // Extrait représentatif du code avant manipulation
+  ```
+
+- **5. État d'arrivée ($E_n$) :**
+  - [Code final intégrant la nouvelle notion].
+  ```php
+  // Extrait représentatif du code après manipulation
+  ```
+
+- **6. Livrable vérifiable :**
+  - [Résultat observable et mesurable].
+  - **Fichier cible dans `code-a-apprendre/` :** `[chemin/nom-fichier]`.
 
 ---
 
 ## 4. Articulation vers les Projets de l'Apprenant (Triade Active LMS)
 
-1. **Tutoriels (Comprendre) :** Chaque tutoriel ci-dessus apporte le minimum de code nécessaire pour comprendre la notion isolée.
-2. **Projet d'Imitation (Reproduire) :** L'apprenant réunit l'ensemble des livrables des tutoriels pour produire le livrable final de la session (ex: page d'accueil dynamique complète).
-3. **Projet Prototype (Expérimenter en autonomie) :** L'apprenant applique immédiatement les notions acquises sur un cas d'étude similaire sans assistance pas-à-pas (ex: catalogue produit).
-4. **Projet Fil Rouge (Réutiliser & Compétence) :** L'apprenant transfère la compétence métier dans son grand projet annuel.
+1. **Tutoriels (Comprendre avec le minimum de code) :**  
+   Chaque tutoriel ci-dessus isole une difficulté technique et apporte le minimum de code pour valider la compréhension sur le projet guidé.
+2. **Projet d'Imitation (Reproduire pour maîtriser le fil conducteur) :**  
+   L'accumulation ordonnée des livrables de chaque tutoriel transforme le `dossier-depart/` pour aboutir au `code-a-apprendre/` complet de la session (ex: page d'accueil dynamique complète).
+3. **Projet Prototype (Expérimenter en autonomie sur un cas similaire) :**  
+   L'apprenant réinvestit immédiatement la même stack et la même logique sur un cas d'étude parallèle sans assistance pas-à-pas (ex: catalogue e-commerce).
+4. **Projet Fil Rouge (Réutiliser & Développer la compétence métier) :**  
+   L'apprenant transfère l'ensemble des compétences validées dans la réalisation de son projet annuel professionnel.
 ```
