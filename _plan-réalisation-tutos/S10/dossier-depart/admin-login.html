@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Admin Mon Blog</title>
+    <!-- On utilise le CSS de l'administration -->
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body class="page-login">
+
+    <main class="carte-login">
+        
+        <div class="logo-icone" style="margin: 0 auto 20px;">B.</div>
+        <h1>Bienvenue</h1>
+        <p>Connectez-vous à votre espace administrateur</p>
+
+        <form action="admin-dashboard.html" method="GET" style="display: flex; flex-direction: column; gap: 20px; text-align: left;">
+            
+            <div class="groupe-champ">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" class="champ-texte" placeholder="admin@monblog.fr" required>
+            </div>
+
+            <div class="groupe-champ">
+                <div style="display: flex; justify-content: space-between;">
+                    <label for="password">Mot de passe</label>
+                    <a href="#" style="font-size: 12px; color: var(--couleur-primaire); text-decoration: none;">Oublié ?</a>
+                </div>
+                <input type="password" id="password" class="champ-texte" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="bouton-login">
+                Se connecter
+            </button>
+
+        </form>
+
+    </main>
+
+    <footer style="margin-top: 40px; text-align: center; font-size: 14px;">
+        <a href="public-index.html" style="color: var(--couleur-texte-gris); text-decoration: none;">Retour au site public</a>
+    </footer>
+
+</body>
+</html>

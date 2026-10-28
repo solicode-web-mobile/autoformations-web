@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Article - Admin Mon Blog</title>
+    <!-- Lien vers notre fichier CSS natif -->
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+    <!-- 1. Barre latérale gauche (Menu) -->
+    <aside class="barre-laterale">
+        <div class="en-tete-logo">
+            <div class="logo-icone">B.</div>
+            <div>
+                <strong>Admin</strong>
+                <div class="texte-aide">Mon Blog</div>
+            </div>
+        </div>
+
+        <nav class="menu-navigation">
+            <a href="admin-dashboard.html" class="lien-menu">Tableau de bord</a>
+            <a href="admin-articles.html" class="lien-menu actif">Articles</a>
+            <a href="admin-categories.html" class="lien-menu">Catégories</a>
+        </nav>
+    </aside>
+
+    <!-- 2. Zone principale (Droite) -->
+    <div class="zone-principale">
+        
+        <!-- En-tête haut de la page -->
+        <header class="en-tete-haut">
+            <div class="barre-recherche">
+                <input type="text" placeholder="Rechercher...">
+            </div>
+            <div class="profil-admin">
+                <a href="public-index.html" class="bouton-retour">Voir le site</a>
+                <img src="https://i.pravatar.cc/100?img=11" alt="Profil" class="image-profil">
+                <span>Jean D.</span>
+            </div>
+        </header>
+
+        <!-- Contenu principal -->
+        <main class="contenu-page">
+            
+            <div class="entete-formulaire">
+                <h1 class="titre-page">Ajouter un Article</h1>
+                <a href="admin-articles.html" class="bouton-retour">Retour à la liste</a>
+            </div>
+
+            <!-- Formulaire d'ajout d'article -->
+            <form class="carte-formulaire">
+                
+                <div class="corps-formulaire">
+                    <!-- Champ Titre -->
+                    <div class="groupe-champ">
+                        <label for="titre_article">Titre de l'article <span class="etoile-obligatoire">*</span></label>
+                        <input type="text" id="titre_article" name="titre_article" class="champ-texte" placeholder="Ex: Les meilleures pratiques de développement" required>
+                    </div>
+
+                    <!-- Ligne avec 2 champs (Catégorie et Statut) -->
+                    <div class="grille-champs">
+                        
+                        <!-- Champ Catégorie -->
+                        <div class="groupe-champ">
+                            <label for="categorie_article">Catégorie <span class="etoile-obligatoire">*</span></label>
+                            <select id="categorie_article" name="categorie_article" class="champ-select" required>
+                                <option value="" disabled selected>Sélectionnez une catégorie</option>
+                                <option value="dev">Développement</option>
+                                <option value="design">Design UI/UX</option>
+                                <option value="prod">Productivité</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                        </div>
+
+                        <!-- Champ Statut -->
+                        <div class="groupe-champ">
+                            <label for="statut_article">Statut <span class="etoile-obligatoire">*</span></label>
+                            <select id="statut_article" name="statut_article" class="champ-select" required>
+                                <option value="brouillon" selected>Brouillon</option>
+                                <option value="publie">Publié</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Zone de téléchargement de l'image -->
+                    <div class="groupe-champ">
+                        <label for="image_article">Image de couverture</label>
+                        <div class="zone-telechargement">
+                            <input type="file" id="image_article" name="image_article" accept="image/*">
+                            <p class="texte-aide">PNG, JPG, GIF jusqu'à 10MB</p>
+                        </div>
+                    </div>
+
+                    <!-- Champ Contenu (Zone de texte large) -->
+                    <div class="groupe-champ">
+                        <label for="contenu_article">Contenu de l'article <span class="etoile-obligatoire">*</span></label>
+                        <textarea id="contenu_article" name="contenu_article" class="champ-texte" rows="10" placeholder="Rédigez le contenu de votre article ici..." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Boutons d'action -->
+                <div class="pied-formulaire">
+                    <button type="button" class="bouton-annuler">Annuler</button>
+                    <button type="submit" class="bouton-enregistrer">Enregistrer l'article</button>
+                </div>
+
+            </form>
+        </main>
+    </div>
+
+</body>
+</html>

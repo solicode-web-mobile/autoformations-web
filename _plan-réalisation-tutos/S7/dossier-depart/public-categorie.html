@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Blog - Catégorie Développement Web</title>
+    <!-- CSS Organisé pour N1 -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+    
+    <!-- =====================================================
+         MENU (EN-TÊTE)
+    ====================================================== -->
+    <header class="en-tete-site">
+        <nav class="barre-navigation">
+            <a href="public-index.html" class="logo">
+                <span class="logo-sombre">Mon</span><span class="logo-couleur">Blog.</span>
+            </a>
+            <ul class="liens-navigation">
+                <li><a href="public-index.html">Accueil</a></li>
+                <li><a href="public-categorie.html" style="color:var(--couleur-primaire); font-weight:bold;">Catégories</a></li>
+                <li><a href="public-apropos.html">À propos</a></li>
+            </ul>
+            <a href="admin-login.html" class="bouton-principal">
+                Espace Admin
+            </a>
+        </nav>
+    </header>
+
+    <!-- =====================================================
+         EN-TÊTE DE CATÉGORIE
+    ====================================================== -->
+    <header class="entete-page-simple">
+        <span class="etiquette">Catégorie</span>
+        <h1>Développement Web</h1>
+        <p>Tutoriels, astuces et bonnes pratiques pour concevoir des applications modernes et performantes.</p>
+    </header>
+
+    <!-- =====================================================
+         GRILLE DES ARTICLES DE LA CATÉGORIE
+    ====================================================== -->
+    <main class="section-articles">
+        <div class="conteneur-articles">
+            
+            <div class="grille-articles">
+                
+                <!-- Article 1 -->
+                <div class="carte-article">
+                    <a href="public-article.html" class="carte-image">
+                        <img src="images/article-example.png" alt="Code">
+                    </a>
+                    <span class="etiquette-categorie bleu">Code</span>
+                    <div class="carte-contenu">
+                        <h3><a href="public-article.html">Comment structurer ses composants UI avec Atomic Design ?</a></h3>
+                        <p>Découvrez les concepts fondamentaux de Tailwind CSS et pourquoi cette approche utilitaire est devenue le standard de l'industrie pour les développeurs frontend modernes.</p>
+                        <div class="carte-meta">
+                            <span>14 Fév 2026</span>
+                            <span>5 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="carte-article">
+                    <a href="public-article.html" class="carte-image">
+                        <img src="images/article-example.png" alt="Interface">
+                    </a>
+                    <span class="etiquette-categorie rose">Design</span>
+                    <div class="carte-contenu">
+                        <h3><a href="public-article.html">Maîtriser les micro-interactions UX</a></h3>
+                        <p>Une interface belle n'est pas suffisante. Comprendre comment animer de petites actions peut transformer l'expérience utilisateur et augmenter l'engagement.</p>
+                        <div class="carte-meta">
+                            <span>10 Fév 2026</span>
+                            <span>3 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="carte-article">
+                    <a href="public-article.html" class="carte-image">
+                        <img src="images/article-example.png" alt="Équipe">
+                    </a>
+                    <span class="etiquette-categorie vert">Productivité</span>
+                    <div class="carte-contenu">
+                        <h3><a href="public-article.html">Gérer son temps en équipe distribuée</a></h3>
+                        <p>Les méthodes agiles et les rituels essentiels pour maintenir la cohésion de groupe et la productivité lorsque tous les membres sont distribués.</p>
+                        <div class="carte-meta">
+                            <span>05 Fév 2026</span>
+                            <span>8 min</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- =====================================================
+                 PAGINATION
+            ====================================================== -->
+            <div class="pagination">
+                <a href="#" class="bouton-pagination">&lt;</a>
+                <a href="#" class="bouton-pagination actif">1</a>
+                <a href="#" class="bouton-pagination">2</a>
+                <a href="#" class="bouton-pagination">&gt;</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- =====================================================
+         PIED DE PAGE (FOOTER)
+    ====================================================== -->
+    <footer class="pied-de-page">
+        <div class="conteneur-pied-de-page">
+            <div class="colonne-pied-de-page">
+                <h2>Mon Blog</h2>
+                <p>Partager des connaissances, des tutoriels et des découvertes sur le développement web.</p>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="public-index.html">Accueil</a></li>
+                    <li><a href="public-categorie.html">Catégories</a></li>
+                    <li><a href="public-apropos.html">À propos</a></li>
+                </ul>
+            </div>
+            <div class="colonne-pied-de-page">
+                <h2>Contact</h2>
+                <p>Retrouvez les nouveaux articles chaque semaine.</p>
+            </div>
+        </div>
+        <div class="bas-pied-de-page">
+            <p>&copy; 2026 Mon Blog Personnel.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

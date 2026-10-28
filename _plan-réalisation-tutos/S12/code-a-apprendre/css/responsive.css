@@ -1,0 +1,83 @@
+/* =========================================================
+   RESPONSIVE DESIGN (responsive.css) - Session S12
+   UA.122.25 - Adapter une interface aux écrans
+========================================================= */
+
+/* 1. Écrans moyens et tablettes (Largeur <= 1024px) */
+@media (max-width: 1024px) {
+    .conteneur-page,
+    .conteneur-articles,
+    .barre-navigation {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .grille-articles {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* 2. Petits écrans et smartphones (Largeur <= 768px) */
+@media (max-width: 768px) {
+    /* Barre de navigation publique */
+    .barre-navigation {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .menu-navigation {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Grille des articles sur une seule colonne */
+    .grille-articles {
+        grid-template-columns: 1fr;
+    }
+
+    /* Page de détail de l'article */
+    .en-tete-article h1 {
+        font-size: 24px;
+    }
+
+    .image-principale {
+        height: 220px;
+    }
+
+    /* Interface d'administration (Back-Office) */
+    body {
+        flex-direction: column;
+    }
+
+    .barre-laterale {
+        width: 100%;
+        min-height: auto;
+        position: relative;
+    }
+
+    .zone-principale {
+        width: 100%;
+    }
+
+    .en-tete-haut {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .barre-recherche {
+        max-width: 100% !important;
+    }
+
+    /* Tableaux responsives avec défilement horizontal */
+    .contenu-page {
+        overflow-x: auto;
+    }
+
+    .table-admin {
+        min-width: 600px;
+    }
+}

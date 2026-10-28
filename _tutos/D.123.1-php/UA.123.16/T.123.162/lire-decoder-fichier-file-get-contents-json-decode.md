@@ -28,10 +28,10 @@ Vous allez également sécuriser votre code avec `file_exists()` et la constante
 
 ```mermaid
 flowchart LR
-    A["data/articles.json<br>(Texte brut JSON)"] -->|file_get_contents| B["Chaîne JSON en mémoire"]
-    B -->|json_decode(..., true)| C["Tableau PHP associatif"]
-    C -->|return| D["index.php<br>(Contrôleur)"]
-    D --> E["index-template.php<br>(Vue d'affichage)"]
+    A["data/articles.json"] -->|file_get_contents| B["Chaîne JSON en mémoire"]
+    B -->|json_decode| C["Tableau PHP associatif"]
+    C --> D["index.php (Contrôleur)"]
+    D --> E["index-template.php (Vue)"]
 ```
 
 ---
