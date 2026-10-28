@@ -1,24 +1,23 @@
 ---
-title: "Lire des données depuis des fichiers en PHP"
+title: "Organiser un traitement PHP complet"
 layout: ua
 code: "UA.123.19"
 competence: "C.123"
 domaine: "D.123.1"
-ordre: 6
+ordre: 9
 duree: 1
 objectif: >
-  Lire et exploiter des données stockées dans un fichier externe avec PHP pour alimenter dynamiquement la page Web.
+  Combiner variables, conditions, boucles, fonctions et données reçues afin de réaliser un traitement serveur cohérent.
 description: >
-  Remplacer les données codées en dur par des données persistées dans un fichier externe (ex. fichier JSON). 
-  Charger le fichier avec PHP, décoder son contenu en tableau associatif et l'utiliser dans le flux de traitement de la page.
+  Ordonner l'ensemble des concepts de programmation serveur (réception des données d'un formulaire, validation, appel de fonctions métier, interaction BDD et redirection HTTP avec header) pour concevoir un flux de traitement complet (CRUD des articles).
 notions:
-  - "Persistance de données simple dans des fichiers"
-  - "Lecture de fichier (file_get_contents)"
-  - "Format de données JSON (json_decode)"
-  - "Conversion en tableau associatif PHP"
-  - "Vérification de l'existence d'un fichier (file_exists)"
+  - "Flux de traitement serveur complet"
+  - "Combinaison variables, conditions, fonctions et requêtes"
+  - "Redirection HTTP (header('Location: ...')) et exit/die"
+  - "Message flash ou confirmation de traitement"
+  - "Cohérence et robustesse du traitement métier"
 livrable: >
-  Page Web dynamique alimentée par la lecture et le décodage d'un fichier de données externe via PHP.
+  Script PHP complet assurant le cycle d'ajout, modification ou suppression d'un article et redirigeant proprement vers la liste avec confirmation.
 travail_a_faire: >
-  Créer un fichier de données externe (ex. articles.json), écrire une fonction PHP pour lire ce fichier et décoder son contenu, puis transmettre les données à la page pour affichage.
+  Construire le script PHP de traitement d'un article : valider les données saisies, exécuter l'opération en base de données et rediriger l'administrateur vers la liste des articles.
 ---

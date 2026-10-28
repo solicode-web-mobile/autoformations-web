@@ -1,23 +1,25 @@
 ---
-title: "Organiser un traitement PHP complet"
+title: "Contrôler les données reçues"
 layout: ua
 code: "UA.123.18"
 competence: "C.123"
 domaine: "D.123.1"
-ordre: 9
+ordre: 8
 duree: 1
 objectif: >
-  Combiner variables, conditions, boucles, fonctions et données reçues afin de réaliser un traitement serveur cohérent.
+  Contrôler les données reçues afin de gérer les cas valides et invalides avant leur traitement.
 description: >
-  Ordonner l'ensemble des concepts de programmation serveur (réception des données d'un formulaire, validation, appel de fonctions métier, interaction BDD et redirection HTTP avec header) pour concevoir un flux de traitement complet (CRUD des articles).
+  Intercepter les données envoyées par formulaire via la méthode HTTP POST et la superglobale $_POST.
+  Appliquer des règles de validation rigoureuses (champs obligatoires, format, nettoyage des espaces avec trim) 
+  et distinguer le traitement d'une soumission valide de la gestion des erreurs.
 notions:
-  - "Flux de traitement serveur complet"
-  - "Combinaison variables, conditions, fonctions et requêtes"
-  - "Redirection HTTP (header('Location: ...')) et exit/die"
-  - "Message flash ou confirmation de traitement"
-  - "Cohérence et robustesse du traitement métier"
+  - "Méthode HTTP POST et superglobale $_POST"
+  - "Nettoyage des données (trim(), stripslashes())"
+  - "Validation de champs obligatoires (empty(), strlen())"
+  - "Gestion des messages d'erreur et retour utilisateur"
+  - "Distinction traitement valide vs formulaire rejeté"
 livrable: >
-  Script PHP complet assurant le cycle d'ajout, modification ou suppression d'un article et redirigeant proprement vers la liste avec confirmation.
+  Script PHP de traitement de formulaire validant les données reçues et préparant leur insertion ou le retour d'erreurs.
 travail_a_faire: >
-  Construire le script PHP de traitement d'un article : valider les données saisies, exécuter l'opération en base de données et rediriger l'administrateur vers la liste des articles.
+  Traiter la soumission du formulaire d'ajout de catégorie en PHP, vérifier que le libellé n'est pas vide et conforme, et afficher un message d'erreur si la saisie est invalide.
 ---

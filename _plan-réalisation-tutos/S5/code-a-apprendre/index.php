@@ -1,5 +1,5 @@
 <?php
-// S5 : Utilisation de fonctions
+// S5 : Contrôleur allégé - Modularité par fonctions et données externes
 require_once 'fonctions.php';
 
 $articles = get_derniers_articles();

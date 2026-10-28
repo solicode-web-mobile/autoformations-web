@@ -1,25 +1,24 @@
 ---
-title: "Contrôler les données reçues"
+title: "Recevoir des données d’une requête Web"
 layout: ua
 code: "UA.123.17"
 competence: "C.123"
 domaine: "D.123.1"
-ordre: 8
+ordre: 7
 duree: 1
 objectif: >
-  Contrôler les données reçues afin de gérer les cas valides et invalides avant leur traitement.
+  Recevoir et exploiter des données simples transmises par une requête Web.
 description: >
-  Intercepter les données envoyées par formulaire via la méthode HTTP POST et la superglobale $_POST.
-  Appliquer des règles de validation rigoureuses (champs obligatoires, format, nettoyage des espaces avec trim) 
-  et distinguer le traitement d'une soumission valide de la gestion des erreurs.
+  Récupérer les paramètres passés dans l'URL via la méthode HTTP GET et la superglobale PHP $_GET. 
+  Vérifier la présence d'un paramètre (ex. identifiant de catégorie ou d'article) et l'utiliser pour conditionner les traitements serveur.
 notions:
-  - "Méthode HTTP POST et superglobale $_POST"
-  - "Nettoyage des données (trim(), stripslashes())"
-  - "Validation de champs obligatoires (empty(), strlen())"
-  - "Gestion des messages d'erreur et retour utilisateur"
-  - "Distinction traitement valide vs formulaire rejeté"
+  - "Paramètres d'URL (query string : ?cle=valeur)"
+  - "Superglobale $_GET"
+  - "Vérification d'existence (isset(), empty())"
+  - "Validation de type simple"
+  - "Transmission de paramètre entre pages (liens hypertextes dynamiques)"
 livrable: >
-  Script PHP de traitement de formulaire validant les données reçues et préparant leur insertion ou le retour d'erreurs.
+  Script PHP capable d'intercepter un paramètre d'URL (ex. categorie_id) et de l'utiliser pour orienter l'affichage ou le filtrage.
 travail_a_faire: >
-  Traiter la soumission du formulaire d'ajout de catégorie en PHP, vérifier que le libellé n'est pas vide et conforme, et afficher un message d'erreur si la saisie est invalide.
+  Créer des liens avec paramètres d'URL, récupérer le paramètre transmis dans la page de destination à l'aide de $_GET, et vérifier sa validité avant traitement.
 ---

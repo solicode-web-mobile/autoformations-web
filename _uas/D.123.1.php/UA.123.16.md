@@ -1,24 +1,24 @@
 ---
-title: "Recevoir des données d’une requête Web"
+title: "Lire des données depuis des fichiers en PHP"
 layout: ua
 code: "UA.123.16"
 competence: "C.123"
 domaine: "D.123.1"
-ordre: 7
+ordre: 6
 duree: 1
 objectif: >
-  Recevoir et exploiter des données simples transmises par une requête Web.
+  Lire et exploiter des données stockées dans un fichier externe avec PHP pour alimenter dynamiquement la page Web.
 description: >
-  Récupérer les paramètres passés dans l'URL via la méthode HTTP GET et la superglobale PHP $_GET. 
-  Vérifier la présence d'un paramètre (ex. identifiant de catégorie ou d'article) et l'utiliser pour conditionner les traitements serveur.
+  Remplacer les données codées en dur par des données persistées dans un fichier externe (ex. fichier JSON). 
+  Charger le fichier avec PHP, décoder son contenu en tableau associatif et l'utiliser dans le flux de traitement de la page.
 notions:
-  - "Paramètres d'URL (query string : ?cle=valeur)"
-  - "Superglobale $_GET"
-  - "Vérification d'existence (isset(), empty())"
-  - "Validation de type simple"
-  - "Transmission de paramètre entre pages (liens hypertextes dynamiques)"
+  - "Persistance de données simple dans des fichiers"
+  - "Lecture de fichier (file_get_contents)"
+  - "Format de données JSON (json_decode)"
+  - "Conversion en tableau associatif PHP"
+  - "Vérification de l'existence d'un fichier (file_exists)"
 livrable: >
-  Script PHP capable d'intercepter un paramètre d'URL (ex. categorie_id) et de l'utiliser pour orienter l'affichage ou le filtrage.
+  Page Web dynamique alimentée par la lecture et le décodage d'un fichier de données externe via PHP.
 travail_a_faire: >
-  Créer des liens avec paramètres d'URL, récupérer le paramètre transmis dans la page de destination à l'aide de $_GET, et vérifier sa validité avant traitement.
+  Créer un fichier de données externe (ex. articles.json), écrire une fonction PHP pour lire ce fichier et décoder son contenu, puis transmettre les données à la page pour affichage.
 ---
