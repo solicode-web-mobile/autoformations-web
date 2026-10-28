@@ -47,6 +47,11 @@ Son rôle primordial est de garantir la **stricte progression incrémentale sans
 /dev-n1 Synchronise le dossier-depart de S6 avec le code-a-apprendre validé de S5, en vérifiant que le passage de JSON à MySQL est parfaitement préparé.
 ```
 
+```markdown
+# Synchronisation miroir vers les kits apprenants externes
+/dev-n1 Synchronise les dossiers de départ de autoformations-web vers D:\solicode-web-mobile\dossiers-depart-n1 pour répercuter les assainissements CSS.
+```
+
 ---
 
 ## 4. Prérequis & Données d'Entrée
@@ -70,6 +75,16 @@ Son rôle primordial est de garantir la **stricte progression incrémentale sans
    L'agent veille à ce que les classes CSS (`.carte-article`, `.bouton-principal`), les identifiants DOM et les colonnes SQL soient rigoureusement identiques entre les templates, les scripts et les feuilles de style.
 4. **Étape 4 — Test d'Exécution :**  
    L'agent teste les scripts localement pour garantir zéro erreur de syntaxe, zéro avertissement PHP et zéro exception JavaScript.
+5. **Étape 5 — Synchronisation des Kits Apprenants :**  
+   L'agent ou le développeur synchronise les dossiers de départ révisés vers le dépôt externe :
+   ```bash
+   # Simulation préalable
+   node .agents/skills/dev-n1/scripts/sync-dossiers-depart.cjs --dry-run
+   # Exécution réelle ciblée ou globale
+   node .agents/skills/dev-n1/scripts/sync-dossiers-depart.cjs --session S7
+   # Ou en PowerShell
+   .\.agents\skills\dev-n1\scripts\sync-dossiers-depart.ps1 -Session S7
+   ```
 
 ---
 

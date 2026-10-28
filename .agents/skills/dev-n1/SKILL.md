@@ -49,6 +49,9 @@ $$\text{Code de départ } (E_{n-1}) + \text{Livrables des tutoriels } (\Delta) \
   - PHP : `skills/tutorial-writer/resources/domaine-php.md`
   - SQL : `skills/tutorial-writer/resources/domaine-sql.md`
   - PHP & SQL : `skills/tutorial-writer/resources/domaine-php-sql.md`
+- **Scripts & Utilitaires d'Automatisation :**
+  - `scripts/sync-dossiers-depart.cjs` : Script Node.js de synchronisation miroir stricte entre `_plan-réalisation-tutos/` et le dépôt centralisé `D:\solicode-web-mobile\dossiers-depart-n1`.
+  - `scripts/sync-dossiers-depart.ps1` : Wrapper PowerShell pour exécution native sous Windows avec support de `--session` et `--dry-run`.
 - **Règles transversales :**
   - `.agents/rules/standards-techniques.md` (Encodage strict UTF-8 sans BOM, livrables, zéro capture).
   - `.agents/rules/pedagogie-spartel.md` (Pédagogie active, cycle de réalisation).
@@ -90,6 +93,12 @@ $$\text{Code de départ } (E_{n-1}) + \text{Livrables des tutoriels } (\Delta) \
    - Vérifier que chaque instruction écrite dans les tutoriels (`T.xxx`) manipule les sélecteurs, fonctions et tables réels présents dans le code source.
 5. **Étape 5 : Test d'Exécution Local :**
    - Lancer le serveur local, vérifier le rendu graphique et les flux de requêtes sans régression.
+6. **Étape 6 : Synchronisation des Kits Apprenants (Miroir Strict) :**
+   - Après toute modification ou assainissement d'un dossier de départ, synchroniser `dossiers-depart-n1` :
+     ```bash
+     node .agents/skills/dev-n1/scripts/sync-dossiers-depart.cjs --session S[X]
+     ```
+   - Utiliser `--dry-run` au préalable pour vérifier les fichiers modifiés et les orphelins supprimés.
 
 ---
 
