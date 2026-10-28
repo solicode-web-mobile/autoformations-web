@@ -40,13 +40,14 @@ flowchart TD
         T1["T.124.110 : Installer MySQL et Workbench"]
         T2["T.124.111 : Créer la base et les tables (DDL)"]
         T3["T.124.112 : Insérer les données de test (DML)"]
-        T4["T.124.121 : Extraire des données avec JOIN"]
+        T4["T.124.121 : Sélectionner et trier des données (SELECT)"]
+        T5["T.124.122 : Croiser des tables avec JOIN"]
     end
 
     subgraph Bloc2["Bloc 2 : Connexion PDO & Vue (D.124.2.php-sql)"]
-        T5["T.124.211 : Initialiser la connexion PDO (db.php)"]
-        T6["T.124.212 : Interroger la base avec fetchAll (index.php)"]
-        T7["T.124.221 : Lier les données au template (index-template.php)"]
+        T6["T.124.211 : Initialiser la connexion PDO (db.php)"]
+        T7["T.124.212 : Interroger la base avec fetchAll (index.php)"]
+        T8["T.124.221 : Lier les données au template (index-template.php)"]
     end
 
     subgraph Arrivee["Livrable Complet S6 (code-a-apprendre/)"]
@@ -63,7 +64,8 @@ flowchart TD
     T4 --> T5
     T5 --> T6
     T6 --> T7
-    T7 --> Arrivee
+    T7 --> T8
+    T8 --> Arrivee
     D3 -.->|Inchangé, consomme $articles et $categories| Arrivee
 ```
 
@@ -95,10 +97,13 @@ flowchart TD
     *Livrable :* Requêtes DML peuplant les 4 tables du blog | *Fichier :* `database.sql`
 
 * **UA.124.12 — Construire une requête SELECT simple :**  
-  Concevoir et tester la requête SQL croisant deux tables liées pour récupérer les données nécessaires à l'affichage du blog.
-  - **T.124.121 — Extraire des données associées avec la jointure JOIN**  
-    *Objectif logique : Concevoir et tester la requête SQL croisant les articles et leurs catégories*  
-    *Livrable :* Requête SQL relationnelle testée et validée | *Fichier :* `requetes.sql` / console SQL
+  Interroger la base relationnelle : extraire, trier et limiter les données sur une seule table, puis croiser deux tables liées avec une jointure pour récupérer les informations nécessaires à l'affichage du blog.
+  - **T.124.121 — Sélectionner et trier des données avec SELECT et ORDER BY**  
+    *Objectif logique : Extraire des colonnes ciblées, ordonner chronologiquement et restreindre le nombre de résultats*  
+    *Livrable :* Requêtes de sélection simple testées et validées | *Fichier :* `requetes.sql`
+  - **T.124.122 — Croiser des tables associées avec la jointure JOIN**  
+    *Objectif logique : Lier deux tables relationnelles, utiliser des alias et composer la requête d'affichage du blog*  
+    *Livrable :* Requête SQL relationnelle complète avec jointure et alias | *Fichier :* `requetes.sql`
 
 #### Développer l’accès aux données en PHP (D.124.2, php-sql)
 
@@ -137,17 +142,20 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 *Unité d'Apprentissage (UA) :* `UA.124.11` — Création de la base de données et des tables (`D.124.1.sql`)
 
 - **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
-  Sas « Bien Démarrer ». Avant de toucher au code de l'application, l'apprenant s'assure que le serveur de base de données MySQL est opérationnel sur sa machine et qu'il maîtrise son client d'administration graphique MySQL Workbench. Il valide son installation en exécutant une première requête de diagnostic.
+  Sas « Bien Démarrer ». Avant de toucher au code de l'application, l'apprenant installe le serveur officiel MySQL Server comme service Windows natif et l'outil MySQL Workbench via l'utilitaire MySQL Installer (dev.mysql.com/downloads/installer/). Il configure le mot de passe du super-utilisateur root, configure le démarrage automatique du service Windows et valide son installation en exécutant une première requête de diagnostic.
 
 - **1. Ce que l'apprenant doit apprendre :**
-  - **Notions cibles :** Rôle d'un SGBDR, architecture client/serveur, port standard MySQL (`3306`), rôle de MySQL Workbench (interface graphique d'administration et d'exécution SQL).
-  - **Syntaxe & Outils :** Démarrage du service MySQL (Laragon, XAMPP ou service Windows), création d'une connexion locale dans Workbench (`Host: 127.0.0.1`, `Port: 3306`, `User: root`), commande de test `SELECT VERSION();`.
-  - **Règles & Bonnes pratiques :** Vérifier que le service MySQL est actif avant de lancer Workbench, noter ses identifiants locaux (mot de passe root vide ou défini lors de l'installation).
+  - **Notions cibles :** Rôle d'un SGBDR, architecture client/serveur, port standard MySQL (`3306`), rôle de MySQL Workbench (interface graphique d'administration et d'exécution SQL), service Windows (`MySQL80`), mot de passe administrateur `root`.
+  - **Syntaxe & Outils :** Téléchargement de MySQL Installer (`https://dev.mysql.com/downloads/installer/`), installation des composants MySQL Server et MySQL Workbench, configuration du mot de passe `root`, création d'une connexion locale dans Workbench (`Host: 127.0.0.1`, `Port: 3306`, `User: root`), commande de test `SELECT VERSION();`.
+  - **Règles & Bonnes pratiques :** Noter précieusement le mot de passe `root` configuré lors de l'installation (il sera réutilisé dans Workbench et dans `db.php`), vérifier que le service Windows démarre automatiquement.
 
 - **2. Description technique de la réalisation (Développement du projet) :**
-  - Démarrer le serveur MySQL local.
-  - Lancer MySQL Workbench.
-  - Configurer ou sélectionner la connexion locale `localhost:3306` avec l'utilisateur `root`.
+  - Télécharger l'installateur officiel MySQL Installer pour Windows.
+  - Installer MySQL Server et MySQL Workbench en mode personnalisé (*Custom*).
+  - Définir le mot de passe administrateur `root` (ex: `admin`).
+  - Configurer MySQL comme service Windows démarrant automatiquement au lancement du système.
+  - Lancer MySQL Workbench et ouvrir la connexion locale `localhost:3306`.
+  - Saisir le mot de passe `root`.
   - Ouvrir un onglet d'éditeur SQL (*Query Tab*).
   - Saisir et exécuter la requête `SELECT VERSION();`.
   - Vérifier l'affichage du numéro de version de MySQL dans la grille de résultats inférieure.
@@ -242,15 +250,57 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 
 ---
 
-### T.124.121 — Extraire des données associées avec la jointure JOIN
-*Objectif logique : Concevoir et tester la requête SQL croisant les articles et leurs catégories*  
+### T.124.121 — Sélectionner et trier des données avec SELECT et ORDER BY
+*Objectif logique : Extraire des colonnes ciblées, ordonner chronologiquement et restreindre le nombre de résultats*  
 *Unité d'Apprentissage (UA) :* `UA.124.12` — Construire une requête SELECT simple (`D.124.1.sql`)
 
 - **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
-  Dans `articles`, la catégorie n'est représentée que par `categorie_id`. Or, la carte d'article du blog a besoin du nom (`libelle`) et de la couleur (`couleur`) de la catégorie. L'apprenant apprend à croiser les deux tables avec une jointure interne `JOIN ... ON` et à renommer les colonnes avec `AS` pour correspondre au template.
+  Les données de test étant insérées dans la base `blog_n1`, l'apprenant découvre l'ordre SQL fondamental `SELECT`. Avant d'aborder les relations entre plusieurs tables, il apprend à interroger la table `articles` de manière isolée : sélection globale (`*`), projection de colonnes ciblées (`id`, `titre`, `date_creation`), tri chronologique décroissant (`ORDER BY ... DESC`) et limitation de volume (`LIMIT 6`).
 
 - **1. Ce que l'apprenant doit apprendre :**
-  - **Notions cibles :** Clause `SELECT`, clause `FROM` avec alias de table (`articles a`), jointure interne `JOIN categories c ON a.categorie_id = c.id`, alias de colonnes (`AS categorie_libelle`, `AS categorie_couleur`), tri `ORDER BY ... DESC` et limitation `LIMIT`.
+  - **Notions cibles :** Clause `SELECT`, clause `FROM`, sélection globale (`*`), projection de colonnes, tri `ORDER BY` (`ASC` / `DESC`), restriction de quantité `LIMIT`.
+  - **Syntaxe & Outils :**
+    ```sql
+    SELECT id, titre, date_creation, image, categorie_id
+    FROM articles
+    ORDER BY date_creation DESC
+    LIMIT 6;
+    ```
+  - **Règles & Bonnes pratiques :** Privilégier la projection explicite de colonnes plutôt que `SELECT *` pour économiser la bande passante et la mémoire serveur.
+
+- **2. Description technique de la réalisation (Développement du projet) :**
+  - Dans MySQL Workbench, ouvrir un nouvel onglet de requête sur `blog_n1`.
+  - Exécuter la sélection globale `SELECT * FROM articles;`.
+  - Rédiger la projection de colonnes : `SELECT id, titre, date_creation, image, categorie_id FROM articles;`.
+  - Ajouter le tri chronologique `ORDER BY date_creation DESC` pour placer les publications les plus récentes en tête.
+  - Ajouter la clause `LIMIT 6`.
+  - Exécuter la requête et valider l'affichage ordonné dans la grille de résultats.
+  - Sauvegarder la requête dans `requetes.sql`.
+
+- **3. Fichiers impactés :**
+  - `requetes.sql` (création du fichier de requêtes).
+
+- **4. État de départ ($E_3$) :**
+  Tables peuplées de données de test, sans requêtes de sélection formalisées.
+
+- **5. État d'arrivée ($E_4$) :**
+  Requête de sélection simple avec projection, tri et limite validée dans Workbench.
+
+- **6. Livrable physique tapé par l'apprenant :**
+  - Fichier `requetes.sql` contenant les requêtes de sélection simple.
+  - **Fichier cible dans le projet :** `requetes.sql`.
+
+---
+
+### T.124.122 — Croiser des tables associées avec la jointure JOIN
+*Objectif logique : Lier deux tables relationnelles, utiliser des alias et composer la requête d'affichage du blog*  
+*Unité d'Apprentissage (UA) :* `UA.124.12` — Construire une requête SELECT simple (`D.124.1.sql`)
+
+- **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
+  Dans `articles`, la catégorie n'est représentée que par son identifiant numérique `categorie_id`. Or, la carte d'article du blog a besoin du nom (`libelle`) et de la couleur (`couleur`) de la catégorie. L'apprenant franchit le cap du relationnel en reliant les deux tables avec une jointure interne `JOIN ... ON` et en renommant les colonnes avec `AS` pour correspondre au template.
+
+- **1. Ce que l'apprenant doit apprendre :**
+  - **Notions cibles :** Clause `JOIN` (ou `INNER JOIN`), condition de liaison `ON`, alias de table (`articles a`, `categories c`), alias de colonnes (`AS categorie_libelle`, `AS categorie_couleur`), requête SQL relationnelle consolidée.
   - **Syntaxe & Outils :**
     ```sql
     SELECT a.*, c.libelle AS categorie_libelle, c.couleur AS categorie_couleur
@@ -262,23 +312,24 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
   - **Règles & Bonnes pratiques :** Tester et valider toute requête complexe directement dans MySQL Workbench avant de l'intégrer dans le code PHP.
 
 - **2. Description technique de la réalisation (Développement du projet) :**
-  - Dans MySQL Workbench, ouvrir un nouvel onglet de requête sur `blog_n1`.
-  - Rédiger la requête de sélection avec jointure `JOIN categories c ON a.categorie_id = c.id`.
-  - Ajouter le tri chronologique `ORDER BY a.date_creation DESC` et la limite `LIMIT 6`.
-  - Exécuter la requête et vérifier que chaque ligne contient bien à la fois les colonnes de l'article et les colonnes `categorie_libelle` et `categorie_couleur`.
-  - Enregistrer la requête dans `requetes.sql`.
+  - Dans MySQL Workbench, ouvrir l'onglet de travail sur `blog_n1`.
+  - Rédiger la requête de sélection avec jointure : `JOIN categories c ON a.categorie_id = c.id`.
+  - Définir les alias de projection `AS categorie_libelle` et `AS categorie_couleur`.
+  - Combiner avec le tri chronologique `ORDER BY a.date_creation DESC` et `LIMIT 6`.
+  - Exécuter la requête et vérifier que chaque ligne contient à la fois les colonnes de l'article et les libellés/couleurs de sa catégorie.
+  - Consigner la requête finale dans `requetes.sql`.
 
 - **3. Fichiers impactés :**
-  - `requetes.sql` (fichier de requêtes de travail).
+  - `requetes.sql` (enrichi avec la requête relationnelle finale).
 
-- **4. État de départ ($E_3$) :**
-  Données réparties dans des tables séparées sans requête d'assemblage relationnel.
+- **4. État de départ ($E_4$) :**
+  Sélection simple maîtrisée, mais données de catégorie non associées aux articles.
 
-- **5. État d'arrivée ($E_4$) :**
-  Requête SQL relationnelle optimisée, validée dans Workbench et prête à être injectée dans le code PHP.
+- **5. État d'arrivée ($E_5$) :**
+  Requête relationnelle complète optimisée, validée dans Workbench et prête à être injectée dans le code PHP.
 
 - **6. Livrable physique tapé par l'apprenant :**
-  - Fichier `requetes.sql` contenant la requête de sélection relationnelle validée.
+  - Fichier `requetes.sql` contenant la requête relationnelle validée.
   - **Fichier cible dans le projet :** `requetes.sql`.
 
 ---
@@ -288,11 +339,14 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 *Unité d'Apprentissage (UA) :* `UA.124.21` — Récupérer les résultats SQL dans PHP (`D.124.2.php-sql`)
 
 - **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
-  L'apprenant bascule côté PHP. Au lieu d'écrire la connexion MySQL dans chaque fichier, il crée un module dédié `db.php` qui instancie l'objet PDO, applique le charset `utf8mb4`, active le mode d'exceptions et sécurise l'exécution avec `try / catch`.
+  L'apprenant bascule côté PHP. Avant d'initialiser la connexion, il active le pilote officiel `pdo_mysql` et le répertoire d'extensions dans son fichier `C:\php\php.ini`, puis vérifie l'activation avec `php -m`. Il crée ensuite un module dédié `db.php` qui instancie l'objet PDO, applique le charset `utf8mb4`, active le mode d'exceptions et sécurise l'exécution avec `try / catch`.
 
 - **1. Ce que l'apprenant doit apprendre :**
-  - **Notions cibles :** Extension PDO (*PHP Data Objects*), chaîne DSN (`mysql:host=...;dbname=...;charset=utf8mb4`), instanciation `new PDO()`, gestion des erreurs par exceptions (`try / catch`, `PDOException`), configuration des attributs PDO (`ATTR_ERRMODE`, `ATTR_DEFAULT_FETCH_MODE`).
+  - **Notions cibles :** Extension PDO (*PHP Data Objects*), pilote `pdo_mysql`, fichier de configuration `php.ini`, commande de vérification des modules `php -m`, chaîne DSN (`mysql:host=...;dbname=...;charset=utf8mb4`), instanciation `new PDO()`, gestion des erreurs par exceptions (`try / catch`, `PDOException`), configuration des attributs PDO (`ATTR_ERRMODE`, `ATTR_DEFAULT_FETCH_MODE`).
   - **Syntaxe & Outils :**
+    - Dans `php.ini` : décommenter `extension_dir = "ext"` et `extension=pdo_mysql`.
+    - Dans le terminal : `php -m` pour vérifier la présence de `PDO` et `pdo_mysql`.
+    - Dans `db.php` :
     ```php
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -302,9 +356,11 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
         die("Erreur de connexion : " . $e->getMessage());
     }
     ```
-  - **Règles & Bonnes pratiques :** Toujours spécifier `charset=utf8mb4` dans le DSN pour éviter la corruption des caractères accentués, et configurer `PDO::FETCH_ASSOC` par défaut pour manipuler des tableaux associatifs propres.
+  - **Règles & Bonnes pratiques :** Toujours activer `pdo_mysql` dans `php.ini` pour éviter l'erreur fatale *could not find driver*, spécifier `charset=utf8mb4` dans le DSN et configurer `PDO::FETCH_ASSOC` par défaut.
 
 - **2. Description technique de la réalisation (Développement du projet) :**
+  - Ouvrir `C:\php\php.ini` et décommenter `extension_dir = "ext"` et `extension=pdo_mysql`.
+  - Vérifier dans le terminal avec `php -m` que le module `pdo_mysql` est actif.
   - Créer un fichier `db.php` à la racine du projet.
   - Déclarer les variables de configuration (`$host = '127.0.0.1'`, `$dbname = 'blog_n1'`, `$username = 'root'`, `$password`).
   - Instancier l'objet PDO dans un bloc `try / catch`.
@@ -314,10 +370,10 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 - **3. Fichiers impactés :**
   - `db.php` (nouveau fichier créé à la racine).
 
-- **4. État de départ ($E_4$) :**
+- **4. État de départ ($E_5$) :**
   Le projet PHP ne dispose d'aucun moyen de communication avec le serveur MySQL.
 
-- **5. État d'arrivée ($E_5$) :**
+- **5. État d'arrivée ($E_6$) :**
   Module `db.php` opérationnel, instanciant une connexion PDO sécurisée et réutilisable.
 
 - **6. Livrable physique tapé par l'apprenant :**
@@ -331,7 +387,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 *Unité d'Apprentissage (UA) :* `UA.124.21` — Récupérer les résultats SQL dans PHP (`D.124.2.php-sql`)
 
 - **Progression pédagogique (Brique de code vers le Projet d'imitation) :**  
-  Dans le contrôleur `index.php`, l'apprenant remplace l'inclusion de `fonctions.php` par `require_once 'db.php'`. Il injecte la requête SQL conçue en T.124.121 dans `$pdo->query()` et extrait la collection d'articles avec `$stmt->fetchAll()`. Il extrait également les catégories avec une seconde requête.
+  Dans le contrôleur `index.php`, l'apprenant remplace l'inclusion de `fonctions.php` par `require_once 'db.php'`. Il injecte la requête SQL conçue en T.124.122 dans `$pdo->query()` et extrait la collection d'articles avec `$stmt->fetchAll()`. Il extrait également les catégories avec une seconde requête.
 
 - **1. Ce que l'apprenant doit apprendre :**
   - **Notions cibles :** Méthode `$pdo->query($sql)`, objet résultant `PDOStatement`, extraction complète avec `$stmt->fetchAll()`, stockage des résultats dans des variables PHP.
@@ -356,10 +412,10 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 - **3. Fichiers impactés :**
   - `index.php` (refonte du contrôleur).
 
-- **4. État de départ ($E_5$) :**
+- **4. État de départ ($E_6$) :**
   `index.php` fait encore appel aux anciennes fonctions lisant les fichiers JSON de S5.
 
-- **5. État d'arrivée ($E_6$) :**
+- **5. État d'arrivée ($E_7$) :**
   `index.php` exécute les requêtes sur MySQL via PDO et extrait dynamiquement les collections en mémoire.
 
 - **6. Livrable physique tapé par l'apprenant :**
@@ -397,10 +453,10 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
   - `index.php` (finalisation du contrôleur).
   - `index-template.php` (consommation vérifiée).
 
-- **4. État de départ ($E_6$) :**
+- **4. État de départ ($E_7$) :**
   Données SQL extraites en mémoire dans `index.php`, mais affichage Web final non validé.
 
-- **5. État d'arrivée ($E_7$) :**
+- **5. État d'arrivée ($E_8$) :**
   Page d'accueil du blog entièrement dynamique, connectée à MySQL et validée en direct dans le navigateur.
 
 - **6. Livrable physique tapé par l'apprenant :**
@@ -412,7 +468,7 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 ## 4. Articulation vers les Projets de l'Apprenant (Triade Active LMS)
 
 1. **Tutoriels (Comprendre avec le minimum de code) :**  
-   Les 7 tutoriels ci-dessus isolent chaque palier technique : vérification de l'environnement MySQL (T.124.110), création des tables (T.124.111), insertion des données (T.124.112), jointure relationnelle (T.124.121), connexion PDO (T.124.211), extraction avec fetchAll (T.124.212), et affichage dans la vue (T.124.221).
+   Les 8 tutoriels ci-dessus isolent chaque palier technique : vérification de l'environnement MySQL (T.124.110), création des tables (T.124.111), insertion des données (T.124.112), sélection simple et tri (T.124.121), jointure relationnelle (T.124.122), connexion PDO (T.124.211), extraction avec fetchAll (T.124.212), et affichage dans la vue (T.124.221).
 2. **Projet d'Imitation (Reproduire pour maîtriser le fil conducteur) :**  
    L'accumulation ordonnée des livrables de chaque tutoriel transforme le `dossier-depart/` hérité de S5 pour aboutir au **livrable complet de la session S6** : un blog connecté à sa base de données relationnelle MySQL réelle via PDO.
 3. **Projet Prototype (Expérimenter en autonomie sur un cas similaire) :**  

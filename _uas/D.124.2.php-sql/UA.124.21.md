@@ -12,6 +12,7 @@ description: >
   Établir une connexion à MySQL en utilisant l'extension PDO de PHP. Exécuter une requête SQL SELECT 
   et récupérer le jeu d'enregistrements sous forme de tableau PHP exploitable.
 notions:
+  - "Configuration et activation de pdo_mysql dans php.ini"
   - "Extension PDO (PHP Data Objects)"
   - "Initialisation de connexion ($pdo = new PDO(...))"
   - "Méthode query()"

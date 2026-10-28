@@ -12,7 +12,7 @@ Dans cette session, l'apprenant accomplit un tournant fondamental dans son parco
 * **Débogage :** Localiser un problème d'accès aux données ou d'exécution de requête en inspectant les messages d'erreur PDO (`UA.125.22`).
 * **Versionnement Git :** Consulter l'historique des commits pour suivre l'évolution des versions de l'application (`UA.151.14`).
 * **Organisation du Travail :** Mettre à jour l'état d'avancement d'une tâche sur son tableau de bord pour rendre son travail visible aux autres (`UA.152.14`).
-* **Veille Technologique :** Comprendre le fonctionnement de la méthode HTTP GET et le transport de paramètres dans l'URL pour préparer la session S7 (`UA.161.16`).
+* **Veille Technologique :** Comprendre le fonctionnement de la méthode HTTP GET préparant S7 (`UA.161.16`) et découvrir l'environnement tout-en-un Laragon sous Windows (`UA.161.113`).
 
 ---
 
@@ -36,7 +36,7 @@ Pour garantir l'unicité des plans et éviter toute redondance, chaque volet est
 
 ### A. Progression de Développement Web Applicatif (Spécifique à ce Sprint)
 * **[plan-developpement.md](plan-developpement.md) :**  
-  Plan d'apprentissage pas-à-pas en 7 étapes découpées intégrant le démarrage MySQL avec Workbench, la création DDL, l'insertion DML, la jointure SQL, la connexion PDO, l'extraction avec `fetchAll` et l'affichage dynamique (`UA.124.11`, `UA.124.12`, `UA.124.21`, `UA.124.22`).
+  Plan d'apprentissage pas-à-pas en 8 étapes découpées intégrant le démarrage MySQL avec Workbench, la création DDL, l'insertion DML, la sélection simple avec tri, la jointure SQL, la connexion PDO, l'extraction avec `fetchAll` et l'affichage dynamique (`UA.124.11`, `UA.124.12`, `UA.124.21`, `UA.124.22`).
 
 ### B. Domaines Transversaux Mobilisés (Référencés depuis les Sessions S1 et S2)
 * **[plan-architecture.md](../S2/plan-architecture.md) :**  
@@ -48,7 +48,7 @@ Pour garantir l'unicité des plans et éviter toute redondance, chaque volet est
 * **[plan-gestion.md](../S2/plan-gestion.md) :**  
   Mobilisation de l'Unité **UA.152.14** (*Rendre l’état de son travail visible*).
 * **[plan-veille.md](../S1/plan-veille.md) :**  
-  Mobilisation de l'Unité **UA.161.16** (*Veille sur la méthode HTTP GET et les paramètres d'URL* préparant S7).
+  Mobilisation des Unités **UA.161.16** (*Veille sur la méthode HTTP GET*) et **UA.161.113** (*Veille sur Laragon et le dev local*).
 
 ---
 
@@ -60,4 +60,5 @@ Pour garantir l'unicité des plans et éviter toute redondance, chaque volet est
 4. La page d'accueil du Blog affichant dynamiquement les articles enregistrés en base de données.
 5. Une consultation de l'historique Git (`git log --oneline`) documentée.
 6. Le statut de la tâche technique mis à jour en `Terminé` sur le tableau Kanban / Trello.
-7. Une slide de veille synthétique sur le fonctionnement de la méthode HTTP GET partagée avec un lien public.
+7. Une slide de veille synthétique sur le fonctionnement de la méthode HTTP GET partagée avec un lien public (`T.161.161`).
+8. Une slide de veille synthétique sur l'environnement de développement Laragon partagée avec un lien public (`T.161.1131`).

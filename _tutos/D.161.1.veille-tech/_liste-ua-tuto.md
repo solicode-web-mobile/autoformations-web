@@ -86,7 +86,17 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.16.1** | Veille technologique : Paramètres d'URL et méthode GET | Découvrir la syntaxe `?id=12` et son exploitation par PHP pour cibler un article. | Slide partagée sur la méthode GET et les requêtes Web. |
+| **T.161.161** | Veille technologique : Paramètres d'URL et méthode GET | Découvrir la syntaxe `?id=12` et son exploitation par PHP pour cibler un article. | Slide partagée sur la méthode GET et les requêtes Web. |
+
+---
+
+### UA.161.113 — Veille sur l'environnement de développement local et Laragon (Session S6)
+* **Objectif d'apprentissage :** Découvrir les fonctionnalités et les avantages d'une suite de développement local portable tout-en-un sous Windows avec Laragon.
+* **Livrable :** Slide de veille : *« Découvrir Laragon et les environnements de développement local »*.
+
+| Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
+| :--- | :--- | :--- | :--- |
+| **T.161.1131** | Veille technologique : Découvrir Laragon et le dev local | Découvrir une suite locale portable sous Windows (Virtual Hosts automatiques, isolation, multi-versions). | Slide partagée sur l'environnement Laragon. |
 
 ---
 

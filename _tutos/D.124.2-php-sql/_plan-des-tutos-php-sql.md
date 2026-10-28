@@ -8,9 +8,9 @@
 
 | Identifiant | Titre du tutoriel | Objectif | Livrable |
 | :--- | :--- | :--- | :--- |
-| **T.124.21.1** | Se connecter avec `PDO` | Initialiser la connexion entre PHP et MySQL. | Fichier `db.php` fonctionnel. |
-| **T.124.21.2** | Exécuter et récupérer (`query` & `fetchAll`) | Récupérer les résultats SQL sous forme de tableau PHP. | Remplacement des données en dur par la BDD. |
-| **T.124.22.1** | Afficher dynamiquement | Intégrer les données SQL dans le template HTML. | Page d'accueil 100% dynamique. |
+| **T.124.211** | Initialiser une connexion sécurisée avec `PDO` | Activer le pilote `pdo_mysql` dans `php.ini` et initialiser la connexion PHP-MySQL. | Fichier `db.php` fonctionnel. |
+| **T.124.212** | Exécuter et récupérer des données avec PDO | Récupérer les résultats SQL sous forme de tableau associatif PHP. | Script d'extraction des articles. |
+| **T.124.221** | Intégrer les données SQL dans l'interface web | Remplacer les données simulées par les enregistrements de la base de données. | Page d'accueil 100% dynamique. |
 
 ## Unité 2 : Sécurité et Paramètres (Session S7)
 *Livrable : Vue détaillée d'un article sécurisée.*
