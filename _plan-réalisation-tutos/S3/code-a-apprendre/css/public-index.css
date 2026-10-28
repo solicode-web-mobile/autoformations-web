@@ -1,0 +1,389 @@
+
+/* =========================================================
+   PAGE ACCUEIL
+========================================================= */
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    padding: 96px 24px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    background-image: radial-gradient(
+        #e5e7eb 1px,
+        transparent 1px
+    );
+
+    background-size: 24px 24px;
+
+}
+
+.hero h1 {
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    color: #0a2042;
+
+    font-family: Georgia, serif;
+
+    font-size: 56px;
+
+    font-weight: 900;
+
+    line-height: 1.15;
+
+}
+
+.hero h1 span {
+
+    color: #2673e8;
+
+}
+
+.hero p {
+
+    max-width: 680px;
+
+    margin: 24px auto 0;
+
+    color: #6b7280;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   ACTIONS HERO
+========================================================= */
+
+.hero-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    margin-top: 28px;
+
+}
+
+.hero-button {
+
+    padding: 12px 24px;
+
+    border-radius: 8px;
+
+}
+
+.hero-button-primary {
+
+    color: white;
+
+    background: #2673e8;
+
+}
+
+.hero-button-secondary {
+
+    color: #1f2937;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+}
+
+.hero-button-secondary:hover {
+
+    color: #2673e8;
+
+    border-color: #2673e8;
+
+}
+
+
+/* =========================================================
+   ARTICLES
+========================================================= */
+
+.articles-section {
+
+    padding: 80px 24px;
+
+}
+
+.articles-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   CATÉGORIES
+========================================================= */
+
+.category-filter {
+
+    margin-bottom: 64px;
+
+}
+
+.category-filter h2 {
+
+    margin: 0 0 20px;
+
+    color: #111827;
+
+    font-size: 18px;
+
+}
+
+.category-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+.category-pill {
+
+    padding: 10px 16px;
+
+    color: #4b5563;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+}
+
+.category-pill:hover {
+
+    color: #2673e8;
+
+    border-color: #2673e8;
+
+}
+
+.category-pill.active {
+
+    color: white;
+
+    background: #111827;
+
+}
+
+
+/* =========================================================
+   EN-TÊTE DES ARTICLES
+========================================================= */
+
+.articles-header {
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 32px;
+
+}
+
+.articles-header h2 {
+
+    margin: 0;
+
+    color: #111827;
+
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+}
+
+.articles-header p {
+
+    margin: 8px 0 0;
+
+    color: #6b7280;
+
+}
+
+.articles-more {
+
+    color: #2673e8;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   ARTICLES
+========================================================= */
+
+.articles-grid {
+
+    display: flex;
+
+    gap: 24px;
+
+}
+
+.article-card {
+
+    flex: 1;
+
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+}
+
+.article-image {
+
+    display: block;
+
+}
+
+.article-image img {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+}
+
+
+/* =========================================================
+   CATÉGORIE ARTICLE
+========================================================= */
+
+.article-category {
+
+    display: inline-block;
+
+    margin: 16px 16px 0;
+
+    padding: 6px 10px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    background: #f0f6ff;
+
+    border-radius: 999px;
+
+}
+
+.article-category.blue {
+
+    color: #1c5bba;
+
+}
+
+.article-category.pink {
+
+    color: #db2777;
+
+}
+
+.article-category.green {
+
+    color: #059669;
+
+}
+
+
+/* =========================================================
+   CONTENU DE LA CARTE
+========================================================= */
+
+.article-content {
+
+    padding: 20px;
+
+}
+
+.article-content h3 {
+
+    margin: 0;
+
+    color: #111827;
+
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+}
+
+.article-content p {
+
+    margin: 12px 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   META ARTICLE
+========================================================= */
+
+.article-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    border-top: 1px solid #f3f4f6;
+
+}
+
