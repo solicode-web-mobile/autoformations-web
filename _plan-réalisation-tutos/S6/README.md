@@ -8,7 +8,7 @@ Dans cette session, l'apprenant accomplit un tournant fondamental dans son parco
 ## 1. Objectifs Pédagogiques du Sprint S6
 
 * **Exploiter les données (SQL & PDO) :** Créer la base de données relationnelle et ses tables à partir du MLD, puis écrire et exécuter des requêtes `SELECT` avec jointure (`UA.124.11`, `UA.124.12`, `UA.124.21`, `UA.124.22`).
-* **Architecture d'Application Web :** Structurer une page dynamique en distinguant rigoureusement la configuration d'accès aux données (`db.php`), le traitement logique (`index.php`) et l'affichage (`index-template.php`) (`UA.125.14`).
+* **Architecture d'Application Web :** Structurer une page dynamique en distinguant rigoureusement la configuration d'accès aux données (`db.php`), le traitement logique (`index.php`) et l'affichage (`index-template.php`) (`UA.125.14`). En atelier autonome (`Prototype 6` et `Sprint 6`), consolider cette architecture en encapsulant les requêtes SQL dans des fonctions d'accès aux données réutilisables.
 * **Débogage :** Localiser un problème d'accès aux données ou d'exécution de requête en inspectant les messages d'erreur PDO (`UA.125.22`).
 * **Versionnement Git :** Consulter l'historique des commits pour suivre l'évolution des versions de l'application (`UA.151.14`).
 * **Organisation du Travail :** Mettre à jour l'état d'avancement d'une tâche sur son tableau de bord pour rendre son travail visible aux autres (`UA.152.14`).
@@ -62,3 +62,5 @@ Pour garantir l'unicité des plans et éviter toute redondance, chaque volet est
 6. Le statut de la tâche technique mis à jour en `Terminé` sur le tableau Kanban / Trello.
 7. Une slide de veille synthétique sur le fonctionnement de la méthode HTTP GET partagée avec un lien public (`T.161.161`).
 8. Une slide de veille synthétique sur l'environnement de développement Laragon partagée avec un lien public (`T.161.1131`).
+9. Le Portfolio (`Prototype 6`) connecté à MySQL via son module de fonctions d'accès aux données adapté.
+10. L'application du projet fil rouge (`Sprint 6`) alimentée depuis MySQL via une couche de fonctions PHP réutilisables.

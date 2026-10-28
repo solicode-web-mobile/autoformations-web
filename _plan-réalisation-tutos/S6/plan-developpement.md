@@ -468,10 +468,14 @@ Il ne reste à tutorial-writer qu'à rédiger le guide d'apprentissage à partir
 ## 4. Articulation vers les Projets de l'Apprenant (Triade Active LMS)
 
 1. **Tutoriels (Comprendre avec le minimum de code) :**  
-   Les 8 tutoriels ci-dessus isolent chaque palier technique : vérification de l'environnement MySQL (T.124.110), création des tables (T.124.111), insertion des données (T.124.112), sélection simple et tri (T.124.121), jointure relationnelle (T.124.122), connexion PDO (T.124.211), extraction avec fetchAll (T.124.212), et affichage dans la vue (T.124.221).
+   Les 8 tutoriels ci-dessus isolent chaque palier technique : vérification de l'environnement MySQL (T.124.110), création des tables (T.124.111), insertion des données (T.124.112), sélection simple et tri (T.124.121), jointure relationnelle (T.124.122), connexion PDO (T.124.211), extraction avec fetchAll (T.124.212), et affichage dans la vue (T.124.221).  
+   Pour minimiser la charge cognitive lors de la découverte initiale de PDO, les requêtes SQL sont formulées directement dans le contrôleur `index.php` sans introduire de complexité liée à la portée globale des variables.
+
 2. **Projet d'Imitation (Reproduire pour maîtriser le fil conducteur) :**  
    L'accumulation ordonnée des livrables de chaque tutoriel transforme le `dossier-depart/` hérité de S5 pour aboutir au **livrable complet de la session S6** : un blog connecté à sa base de données relationnelle MySQL réelle via PDO.
-3. **Projet Prototype (Expérimenter en autonomie sur un cas similaire) :**  
-   L'apprenant réinvestit immédiatement la même architecture sur son cas d'étude parallèle (ex: catalogue e-commerce) en créant la base `boutique_n1`, les tables `produits` et `categories`, le fichier `db.php` et la page d'accueil connectée sans assistance pas-à-pas.
+
+3. **Projet Prototype (Expérimenter en autonomie sur un cas similaire — Portfolio) :**  
+   L'apprenant franchit un palier d'autonomie et d'architecture : contrairement aux tutoriels où les requêtes étaient directes, il **adapte les fonctions de son Portfolio héritées de la session S5 (ex: `get_projets()`, `get_competences()`) pour y encapsuler l'accès PDO**. Il sépare ainsi rigoureusement `db.php`, son module de fonctions d'accès aux données, son contrôleur et sa vue.
+
 4. **Projet Fil Rouge (Réutiliser & Développer la compétence métier) :**  
-   L'apprenant transfère la modélisation de tables relationnelles et l'utilisation de PDO dans le cadre de son projet annuel professionnel.
+   Dans le cadre du travail en équipe sur le projet annuel, l'apprenant applique les standards professionnels : toutes les requêtes PDO sont obligatoirement **encapsulées dans des fonctions réutilisables**, assurant une continuité parfaite avec le découpage modulaire du Sprint 5.
