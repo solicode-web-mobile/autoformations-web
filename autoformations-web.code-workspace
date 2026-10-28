@@ -44,8 +44,13 @@
 			},
 			{
 				"folderPath": "autoformations-web\\_plan-réalisation-tutos\\S4\\",
-				"color": "foldercolorizer.color_af5f00",
-				"isFolderOnly": true
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_af5f00"
+			},
+			{
+				"folderPath": "autoformations-web\\_plan-réalisation-tutos\\",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_ff8700"
 			}
 		]
 	}

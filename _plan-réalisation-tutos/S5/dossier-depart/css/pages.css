@@ -1,0 +1,264 @@
+/* =========================================================
+   PAGES (pages.css)
+   Styles spécifiques aux différentes pages
+========================================================= */
+
+/* PAGE ACCUEIL : BANNIÈRE (HERO) */
+.banniere-accueil {
+    padding: 96px 24px;
+    text-align: center;
+    background: #ffffff;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.banniere-accueil h1 {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #0a2042;
+    font-family: Georgia, serif;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+.banniere-accueil h1 span {
+    color: var(--couleur-primaire);
+}
+
+.banniere-accueil p {
+    max-width: 680px;
+    margin: 24px auto 0;
+    color: var(--couleur-secondaire);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.actions-banniere {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+/* PAGE ACCUEIL : SECTION ARTICLES */
+.section-articles {
+    padding: 80px 24px;
+}
+
+.conteneur-articles {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filtre-categories {
+    margin-bottom: 64px;
+}
+
+.filtre-categories h2 {
+    margin: 0 0 20px;
+    color: var(--couleur-titre);
+    font-size: 18px;
+}
+
+.liste-filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.entete-liste-articles {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.entete-liste-articles h2 {
+    margin: 0;
+    color: var(--couleur-titre);
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.entete-liste-articles p {
+    margin: 8px 0 0;
+    color: var(--couleur-secondaire);
+}
+
+.lien-voir-tout {
+    color: var(--couleur-primaire);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.grille-articles {
+    display: flex;
+    gap: 24px;
+}
+
+
+/* PAGE DÉTAIL ARTICLE */
+.entete-article-detail {
+    padding: 96px 24px 64px;
+    background: var(--couleur-fond);
+    text-align: center;
+}
+
+.entete-article-detail h1 {
+    margin: 0 auto;
+    color: var(--couleur-titre);
+    font-family: Georgia, serif;
+    font-size: 50px;
+    line-height: 1.15;
+}
+
+.auteur-article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.auteur-article img {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.auteur-article span {
+    display: block;
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.couverture-article {
+    height: 250px;
+    margin: 0;
+}
+
+.couverture-article img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.conteneur-principal-article {
+    max-width: 920px;
+    margin: -100px auto 80px;
+    padding: 0 24px;
+}
+
+.corps-article {
+    padding: 110px 80px;
+    color: var(--couleur-texte);
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 40px;
+    font-size: 16px;
+}
+
+.corps-article h2,
+.corps-article h3 {
+    color: #0a2042;
+    font-family: Georgia, serif;
+    font-weight: 900;
+    line-height: 1.3;
+}
+
+.corps-article h2 { margin: 0 0 24px; font-size: 32px; }
+.corps-article h3 { margin: 48px 0 20px; font-size: 22px; }
+
+.corps-article p { margin: 0 0 24px; }
+.corps-article ul { margin: 0 0 24px; padding-left: 24px; }
+.corps-article li { margin-bottom: 12px; }
+.corps-article strong { color: var(--couleur-titre); }
+
+.corps-article code {
+    padding: 3px 7px;
+    color: #0a2042;
+    background: #f0f6ff;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.figure-article { margin: 32px 0; }
+.figure-article img { width: 100%; border-radius: 16px; }
+.figure-article figcaption {
+    margin-top: 10px;
+    color: var(--couleur-secondaire);
+    font-size: 13px;
+    text-align: center;
+}
+
+.citation-article {
+    margin: 40px 0;
+    padding: 24px 28px;
+    color: #4b5563;
+    background: #f0f6ff;
+    border-left: 4px solid var(--couleur-primaire);
+    border-radius: 0 12px 12px 0;
+}
+
+.citation-article p { margin: 0; font-style: italic; }
+.citation-article cite {
+    display: block;
+    margin-top: 12px;
+    color: var(--couleur-secondaire);
+    font-size: 13px;
+    font-style: normal;
+}
+
+/* EN-TÊTE DE PAGE SIMPLE (Ex: À Propos, Catégorie) */
+.entete-page-simple {
+    padding: 96px 24px;
+    text-align: center;
+    background: white;
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.entete-page-simple .etiquette {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 6px 16px;
+    color: var(--couleur-secondaire);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: white;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 99px;
+}
+
+.entete-page-simple h1 {
+    margin: 0 0 24px;
+    color: var(--couleur-titre);
+    font-family: Georgia, serif;
+    font-size: 48px;
+    font-weight: 900;
+}
+
+.entete-page-simple p {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--couleur-secondaire);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* PHOTO DE PROFIL (À Propos) */
+.photo-profil {
+    display: block;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 48px;
+    object-fit: cover;
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
