@@ -25,3 +25,8 @@ trigger: always_on
 ## 4. Transparence de l'Agent IA
 - **Affichage des compétences :** Indiquer les compétences mobilisées à la fin de chaque réponse.
 - **Plans d'action :** Expliciter obligatoirement les compétences prévues pour réaliser chaque étape d'un plan d'implémentation.
+
+## 5. Gouvernance des Skills & Documentation Obligatoire
+- Tout skill (`.agents/skills/<nom-du-skill>/`) doit obligatoirement inclure un sous-dossier `doc/` contenant son guide d'utilisation opérationnel (`doc/how-to-use.md`).
+- Ce document formalise : le rôle du skill, les cas d'usage, les prompts types pour l'invoquer, les prérequis, le déroulement pas-à-pas et la méthode de vérification des livrables.
+

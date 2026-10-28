@@ -126,10 +126,18 @@ if (!fs.existsSync(skillsDir)) {
             }
         });
 
+        // Vérification du dossier de documentation doc/ et de how-to-use.md
+        const docDir = path.join(skillsDir, skillName, 'doc');
+        const docFile = path.join(docDir, 'how-to-use.md');
+        if (!fs.existsSync(docDir) || !fs.existsSync(docFile)) {
+            console.error(`❌ ERREUR [${skillName}] : Documentation manquante ! 'doc/how-to-use.md' obligatoire.`);
+            errorsCount++;
+        }
+
         if (missingRubrics.length > 0) {
             console.warn(`⚠️ AVERTISSEMENT [${skillName}] : Rubriques manquantes : ${missingRubrics.join(', ')}`);
-        } else {
-            console.log(`✅ Skill [${skillName}] : Conforme (YAML + Inspiration Anthropic + 10 rubriques).`);
+        } else if (fs.existsSync(docFile)) {
+            console.log(`✅ Skill [${skillName}] : Conforme (YAML + Inspiration Anthropic + 10 rubriques + doc/how-to-use.md).`);
         }
     });
 }

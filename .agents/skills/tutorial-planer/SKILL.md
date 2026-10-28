@@ -1,7 +1,7 @@
 ---
 name: tutorial-planer
 description: Conçoit, audite et optimise les plans de réalisation et la progression pédagogique des tutoriels par session/sprint, garantissant le chaînage sans rupture cognitive, le titrage technique équilibré (un seul objectif concret), le sas 'Bien démarrer', la description technique complète transformant le dossier de départ vers le livrable final, le respect de la granularité (1 UA par domaine par session, 2 au démarrage), et la création automatique des entités pédagogiques manquantes (Unités d'Apprentissage _uas/, Sessions _sessions/, Domaines _domaines/).
-version: 1.3.0
+version: 1.4.0
 inspiration:
   source: "solicode-pedagogy"
   plugin: "pedagogy-referential"
@@ -30,9 +30,17 @@ Lors de la conception ou de l'audit d'une session :
 - **Unités d'Apprentissage manquantes :** Si une UA `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md` n'existe pas, le skill la **crée automatiquement** selon [`gabarit-ua.md`](resources/gabarit-ua.md).
 - **Synchronisation des entités existantes :** Si des entités existantes présentent des métadonnées obsolètes (titres non alignés, liste `uas:` dans la session incomplète ou non conforme aux 2 UAs de démarrage), le skill les met immédiatement à jour.
 
+### Rôle Clé 3 : Initialisation Automatique des Fichiers de Tutoriels (`en_construction: true`)
+Pour chaque tutoriel spécifié dans le plan de développement, `tutorial-planer` **crée obligatoirement le fichier physique cible** sous `_tutos/[Domaine]/[UA]/[Code-Tuto]/[slug].md`.
+Ces fichiers sont initialisés sans contenu rédactionnel, avec leur frontmatter YAML complet (`layout: tuto`, `title:`, `sous_titre:`, `slug:`, `permalink:`, `tuto_id:`, `ua:`, `nav_order:`, `simplified: true`, champs `data_*` vides) et l'état explicite :
+```yaml
+en_construction: true
+```
+Ce mécanisme réserve immédiatement la route Jekyll, insère le badge 🚧 dans la navigation (`_includes/tuto-list.html`), et référence automatiquement la fiche sur la page `tutos-en-attente.md`, préparant l'espace de travail pour `tutorial-writer`.
+
 > **Contrat d'Interface avec `tutorial-writer` :**  
-> `tutorial-planer` livre une spécification technique et pédagogique complète et fermée, ainsi que toutes les entités de structure (`_sessions/`, `_domaines/`, `_uas/`) créées et validées.  
-> **Ce qu'il reste à `tutorial-writer` est exclusivement la rédaction du support d'apprentissage :** injecter les consignes dans le gabarit canonique (`layout: tuto`), insérer `window.pageData`, rédiger la théorie illustrée courte (3-4 H3), formuler les exercices pratiques pas-à-pas et définir le glossaire, **sans jamais devoir inventer le code, la trajectoire technique, ni les entités du référentiel.**
+> `tutorial-planer` livre une spécification technique et pédagogique complète et fermée, toutes les entités de structure (`_sessions/`, `_domaines/`, `_uas/`) créées et validées, ainsi que **l'ensemble des fichiers stubs de tutoriels créés avec `en_construction: true`**.  
+> **Ce qu'il reste à `tutorial-writer` est exclusivement la rédaction du support d'apprentissage :** remplacer l'état `en_construction: true` par le contenu pédagogique rédigé (théorie illustrée courte, exercices pratiques pas-à-pas et glossaire), **sans jamais devoir inventer le code, la trajectoire technique, les entités du référentiel ni créer les fichiers stubs.**
 
 ---
 
@@ -89,6 +97,12 @@ Lors de la conception ou de l'audit d'une session :
     - `SQL` (`D.124.1` / `D.124.2`)
     Les domaines transverses ou méthodologiques (Analyse `D.111.1`, Conception `D.112.1`, Architecture `D.125.1`, Debug `D.125.2`, Test `D.131.1`, Déploiement `D.141.1`, Git `D.151.1`, Gestion de projet `D.152.2`, Veille `D.161.1`) ne doivent **en aucun cas** figurer dans le `plan-developpement.md`.
     *Inviolabilité des tutoriels existants :* Il est formellement interdit de réécrire ou de modifier les tutoriels existants et déjà validés appartenant aux autres domaines. Les autres domaines font l'objet de progressions à part et sont abordés lors de la première apparition du domaine concerné.
+12. **Génération Déterministe des Fichiers Stubs (`en_construction: true`) :**
+    Pour chaque tutoriel spécifié dans le plan, `tutorial-planer` crée obligatoirement son fichier physique sous `_tutos/[Domaine]/[UA]/[Code-Tuto]/[slug].md` avec son frontmatter YAML complet (`layout: tuto`, `title:`, `sous_titre:`, `slug:`, `permalink:`, `tuto_id:`, `ua:`, `nav_order:`, `simplified: true`, champs `data_*` vides) et l'état :
+    ```yaml
+    en_construction: true
+    ```
+    Le corps du fichier reste vierge, réservant la route Jekyll et insérant le badge 🚧 en attendant la rédaction par `tutorial-writer`.
 
 ---
 
@@ -99,6 +113,7 @@ Lors de la conception ou de l'audit d'une session :
   - Définition de la trajectoire technique transformant `dossier-depart/` vers le livrable final enrichi.
   - Audit d'un plan existant (marquage `audite: true` ou détection des ruptures).
   - Détection, création et synchronisation des entités pédagogiques manquantes (`_sessions/`, `_domaines/`, `_uas/`).
+  - Création des fichiers stubs de tutoriels sous `_tutos/` avec `en_construction: true`.
   - Formulation des titres selon la règle du juste équilibre (un seul objectif technique concret).
   - Découpage pédagogique lors de l'introduction d'un nouveau langage ou framework (PHP, React, SQL, etc.).
 - **Quand NE PAS l'activer :**
@@ -119,12 +134,14 @@ Lors de la conception ou de l'audit d'une session :
   - `_sessions/` : Fiches de session `S[X].md`.
   - `_domaines/` : Fiches de domaines de compétences `D.XXX.Y.[mini-code].md`.
   - `_uas/` : Fiches d'Unités d'Apprentissage classées par sous-dossier de domaine `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md`.
+  - `_tutos/` : Fichiers stubs de tutoriels `_tutos/[Domaine]/[UA]/[Code-Tuto]/[slug].md`.
 - **Ressources internes encapsulées :**
   - [methode-bien-demarrer.md](resources/methode-bien-demarrer.md) : Protocole complet du sas d'atterrissage (installation, environnement local, Quickstart isolé).
   - [gabarit-plan-session.md](resources/gabarit-plan-session.md) : Gabarit Markdown normé avec Front Matter et fiches techniques complètes.
   - [gabarit-session.md](resources/gabarit-session.md) : Gabarit normé pour créer ou synchroniser une fiche de session (`_sessions/S[X].md`).
   - [gabarit-domaine.md](resources/gabarit-domaine.md) : Gabarit normé pour créer un domaine de compétence (`_domaines/D.XXX.Y.[mini-code].md`).
   - [gabarit-ua.md](resources/gabarit-ua.md) : Gabarit normé pour créer une Unité d'Apprentissage (`_uas/[domaine]/UA.XXX.YY.md`).
+  - [gabarit-tuto-en-construction.md](resources/gabarit-tuto-en-construction.md) : Gabarit normé pour initialiser les fichiers stubs de tutoriels (`en_construction: true`).
 - **Ressources transversales du projet :**
   - `.agents/rules/pedagogie-spartel.md` (Directives didactiques N1 et cycle actif).
   - `.agents/rules/standards-techniques.md` (Encodage UTF-8 sans BOM, conventions de nommage et livrables).
@@ -157,95 +174,124 @@ Lors de la conception ou de l'audit d'une session :
      - Les fichiers impactés.
      - Les extraits de code représentatifs de départ ($E_{n-1}$) et d'arrivée ($E_n$).
      - Le livrable physique tapé par l'apprenant (`commandes.md` ou code source).
-6. **Étape 6 : Création et Synchronisation des Entités Pédagogiques Manquantes :**
-   - **Vérifier la Session :** Vérifier que `_sessions/S[X].md` existe. Sinon, la créer avec [`gabarit-session.md`](resources/gabarit-session.md). Si elle existe, s'assurer que la liste `uas:` correspond exactement aux UAs actives du plan.
-   - **Vérifier les Domaines :** Vérifier que chaque domaine cité existe sous `_domaines/D.XXX.Y.[mini-code].md`. Sinon, le créer avec [`gabarit-domaine.md`](resources/gabarit-domaine.md).
-   - **Vérifier les UAs :** Pour chaque UA référencée, vérifier sa présence sous `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md`. Si manquante, la créer avec [`gabarit-ua.md`](resources/gabarit-ua.md). Si existante, synchroniser son titre, sa description et ses notions pour refléter la planification validée.
-7. **Étape 7 : Validation du Front Matter & Audit :**
-   - Renseigner `version:`, `audite: true`, `date_audit:` et `statut: "audité et validé"` dans `plan-developpement.md`.
+177: 6. **Étape 6 : Création et Synchronisation des Entités Pédagogiques Manquantes :**
+178:    - **Vérifier la Session :** Vérifier que `_sessions/S[X].md` existe. Sinon, la créer avec [`gabarit-session.md`](resources/gabarit-session.md). Si elle existe, s'assurer que la liste `uas:` correspond exactement aux UAs actives du plan.
+179:    - **Vérifier les Domaines :** Vérifier que chaque domaine cité existe sous `_domaines/D.XXX.Y.[mini-code].md`. Sinon, le créer avec [`gabarit-domaine.md`](resources/gabarit-domaine.md).
+180:    - **Vérifier les UAs :** Pour chaque UA référencée, vérifier sa présence sous `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md`. Si manquante, la créer avec [`gabarit-ua.md`](resources/gabarit-ua.md). Si existante, synchroniser son titre, sa description et ses notions pour refléter la planification validée.
+181: 7. **Étape 7 : Initialisation des Fichiers Stubs de Tutoriels (`en_construction: true`) :**
+182:    - Pour chaque tutoriel planifié, initialiser son fichier stub physique sous `_tutos/[Domaine]/[UA]/[Code-Tuto]/[slug].md` selon [`gabarit-tuto-en-construction.md`](resources/gabarit-tuto-en-construction.md).
+183:    - Renseigner le Front Matter YAML complet (`layout: tuto`, `title:`, `sous_titre:`, `slug:`, `permalink:`, `tuto_id:`, `ua:`, `nav_order:`, `simplified: true`, `en_construction: true`, champs `data_*` vides).
+184:    - Laisser le corps du fichier **strictement vierge (sans contenu)** sous `---`.
+185: 8. **Étape 8 : Validation du Front Matter & Audit :**
+186:    - Renseigner `version:`, `audite: true`, `date_audit:` et `statut: "audité et validé"` dans `plan-developpement.md`.
+187: 
+188: ---
+189: 
+190: ### Parcours B : Audit & Refonte d'un Plan Existant
+191: 1. **Étape 1 : Diagnostic des Ruptures Cognitives :**
+192:    - Parcourir les tutoriels planifiés dans l'ordre chronologique.
+193:    - Identifier tout prérequis manquant (environnement, debug, notions syntaxiques non introduites).
+194: 2. **Étape 2 : Audit du Titrage (Le Juste Équilibre) :**
+195:    - Éliminer les titres trop abstraits et simplifier les titres surchargés de détails techniques vers **un seul objectif technique concret**.
+196: 3. **Étape 3 : Audit de Granularité et des Entités Référencées :**
+197:    - Réduire à 1 UA (ou 2 au démarrage technologique) par domaine.
+198:    - Vérifier et créer ou aligner les fichiers correspondants sous `_sessions/`, `_domaines/` et `_uas/`.
+199: 4. **Étape 4 : Audit de Précision Technique :**
+200:    - Compléter chaque fiche avec les 6 rubriques techniques obligatoires.
+201: 5. **Étape 5 : Restructuration Chirurgicale du Plan :**
+202:    - Réécrire le fichier `plan-developpement.md` selon le gabarit normé enrichi.
+203:    - Mettre à jour le Front Matter (`audite: true`, `statut: "audité et validé"`).
+204: 6. **Étape 6 : Initialisation ou Alignement des Fichiers Stubs sous `_tutos/` (`en_construction: true`) :**
+205:    - Initialiser ou mettre à jour les fichiers sous `_tutos/[Domaine]/[UA]/[Code-Tuto]/[slug].md` avec `en_construction: true` et corps vierge.
+206: 
+207: ---
+208: 
+209: ## 6. Gestion des Ambiguïtés & Décisions
+210: - **Arbitrage de granularité (1 UA vs 2 UAs) :** Si une session introduit un nouveau langage ou outil (ex: PHP en S4), autoriser exactement 2 UAs (1. Bien démarrer + 2. Formation du Projet d'imitation). En régime de croisière, refuser toute micro-UA atomique et consolider en une seule UA par domaine par session.
+211: - **Entités manquantes :** Toute entité (`_sessions/`, `_domaines/`, `_uas/`) référencée dans le plan et absente physiquement doit être créée immédiatement à partir de ses gabarits dédiés sans bloquer la planification.
+212: - **Fichiers stubs :** Les tutoriels planifiés doivent immédiatement exister dans `_tutos/` avec `en_construction: true` pour réserver leur URL, permettre la navigation et matérialiser le backlog sans attendre la rédaction.
+213: 
+214: ---
+215: 
+216: ## 7. Format de Sortie & Livrables
+217: 
+218: Tout plan produit est un fichier Markdown conforme à [gabarit-plan-session.md](resources/gabarit-plan-session.md) sous :  
+219: `_plan-réalisation-tutos/S[X]/plan-developpement.md`
+220: 
+221: Il s'accompagne obligatoirement de la **création ou mise à jour des entités Jekyll correspondantes** :
+222: 1. **Fiche de Session :** `_sessions/S[X].md` (avec la liste exacte des `uas:` actives).
+223: 2. **Fiche de Domaine :** `_domaines/D.XXX.Y.[mini-code].md` (créée si inexistante).
+224: 3. **Fiches d'Unités d'Apprentissage :** `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md` (créées si inexistantes, ou synchronisées).
+225: 4. **Fiche de cadrage :** `_plan-réalisation-tutos/S[X]/README.md`.
+226: 5. **Fichiers stubs de tutoriels :** `_tutos/[Domaine]/[UA]/[Code-Tuto]/[slug].md` sans contenu avec `en_construction: true` (selon [`gabarit-tuto-en-construction.md`](resources/gabarit-tuto-en-construction.md)).
+227: 
+228: Le plan s'ouvre obligatoirement par son Front Matter d'audit :
+229: ```yaml
+230: ---
+231: session: "S[X]"
+232: version: "1.0.0"
+233: audite: true
+234: date_audit: "AAAA-MM-JJ"
+235: statut: "audité et validé"
+236: ---
+237: ```
+238: 
+239: Chaque fiche de tutoriel comporte impérativement :
+240: ```text
+241: ### T.[Code] — [Titre Technique Équilibré : Un Seul Objectif Concret]
+242: *Objectif logique : [Titre Logique / Pédagogique]*
+243: *Unité d'Apprentissage (UA) :* UA.[Code] — [Libellé officiel de l'UA] ([Domaine])
+244: 
+245: - **Progression pédagogique (Brique de code vers le Projet d'imitation) :**
+246:   [Explication claire de la brique de code spécifique ajoutée ou transformée à cette étape pour faire progresser le code hérité vers le livrable final du projet d'imitation].
+247: - 1. Ce que l'apprenant doit apprendre (Notions, syntaxe, fonctions, bonnes pratiques)
+248: - 2. Description technique de la réalisation (Actions concrètes sur le code du projet)
+249: - 3. Fichiers impactés (Issus de dossier-depart/)
+250: - 4. État de départ (E_n-1 avec extrait de code)
+251: - 5. État d'arrivée (E_n avec extrait de code)
+252: - 6. Livrable physique tapé par l'apprenant (Code source ou fichier commandes.md) & Fichier cible dans le projet
+253: ```
+254: 
+255: ---
+256: 
+257: ## 8. Contrôle Qualité (Checklist Binaire)
+258: 
+259: - [ ] Le Front Matter du plan contient-il `version:`, `audite:` (booléen), `date_audit:` et `statut:` ?
+260: - [ ] Le sous-dossier `doc/` existe-t-il et contient-il un guide d'utilisation opérationnel (`doc/how-to-use.md`) ?
+261: - [ ] Le point de départ (`dossier-depart/`) et l'aboutissement (livrable complet transformé) sont-ils clairement identifiés ?
+262: - [ ] Tout nouvel outil intègre-t-il son étape Hello World (installation et préparation de l'environnement local) ?
+263: - [ ] Une étape Démarrage Rapide (Quickstart) sur un fichier isolé précède-t-elle le projet applicatif ?
+264: - [ ] Chaque tutoriel porte-t-il un **titre équilibré centré sur la notion technique à apprendre**, sans mentionner les entités du cas projet (pas d'Article, Catégorie, etc.) ?
+265: - [ ] L'**Unité d'Apprentissage (UA)** de rattachement est-elle clairement affichée pour chaque tutoriel ?
+266: - [ ] La **progression pédagogique et la brique de code ajoutée** vers le Projet d'imitation sont-elles explicitées pour chaque étape ?
+267: - [ ] Chaque fiche de tutoriel contient-elle la description technique complète et ce que l'on doit apprendre ?
+268: - [ ] Chaque fiche indique-t-elle les fichiers impactés, ainsi que les extraits de code $E_{n-1}$ et $E_n$ ?
+269: - [ ] Tous les livrables spécifiés sont-ils obligatoirement du **code source tapé ou un fichier `commandes.md`** (zéro justification verbale ou constat visuel sans code) ?
+270: - [ ] La session respecte-t-elle la règle de granularité : **1 seule UA par domaine par défaut**, et **exactement 2 UAs** (1. « Bien démarrer » + 2. Formation du Projet d'imitation) en cas de démarrage technologique ?
+271: - [ ] La fiche de session `_sessions/S[X].md` existe-t-elle physiquement et sa liste `uas:` est-elle rigoureusement alignée ?
+272: - [ ] Chaque domaine référencé existe-t-il physiquement sous `_domaines/` ?
+273: - [ ] Chaque UA référencée dans le plan existe-t-elle physiquement sous `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md` avec toutes ses rubriques conformes ?
+274: - [ ] Les fichiers stubs de tous les tutoriels planifiés sont-ils créés sous `_tutos/[Domaine]/[UA]/[Code-Tuto]/[slug].md` sans contenu avec `en_construction: true` ?
+275: - [ ] L'état de départ ($E_{n-1}$) correspond-il exactement à la sortie du tutoriel précédent (zéro trou) ?
+276: - [ ] Tous les fichiers créés ou modifiés sont-ils encodés en **UTF-8 sans BOM** ?
+277: - [ ] Le plan permet-il à `tutorial-writer` de rédiger directement le support sans avoir à concevoir la technique ?
+278: 
+279: ---
+280: 
+281: ## 9. Gestion des Erreurs Fréquentes
+282: | Erreur Typique | Cause | Solution Immédiate |
+283: | :--- | :--- | :--- |
+284: | Mentionner l'entité métier dans le titre H3 | Focalisation sur le cas projet | Reformuler avec un objectif technique pur (notion, structure, syntaxe) |
+285: | Sauter l'installation locale lors d'une nouvelle techno | Présupposer un environnement déjà prêt | Insérer le sas « Bien Démarrer » avec `commandes.md` |
+286: | Éparpiller de multiples micro-UAs par session | Découpage atomique excessif | Regrouper en 1 seule UA par domaine (ou 2 au démarrage technologique) |
+287: | Entité citée absente des dossiers Jekyll | Oubli de synchronisation | Créer immédiatement la fiche dans `_sessions/`, `_domaines/` ou `_uas/` |
+288: | Tutoriels planifiés sans fichier sous `_tutos/` | Oubli de génération des stubs | Créer immédiatement les fichiers sous `_tutos/[Domaine]/[UA]/[Code]/[slug].md` avec `en_construction: true` et corps vierge |
 
 ---
 
-### Parcours B : Audit & Refonte d'un Plan Existant
-1. **Étape 1 : Diagnostic des Ruptures Cognitives :**
-   - Parcourir les tutoriels planifiés dans l'ordre chronologique.
-   - Identifier tout prérequis manquant (environnement, debug, notions syntaxiques non introduites).
-2. **Étape 2 : Audit du Titrage (Le Juste Équilibre) :**
-   - Éliminer les titres trop abstraits et simplifier les titres surchargés de détails techniques vers **un seul objectif technique concret**.
-3. **Étape 3 : Audit de Granularité et des Entités Référencées :**
-   - Réduire à 1 UA (ou 2 au démarrage technologique) par domaine.
-   - Vérifier et créer ou aligner les fichiers correspondants sous `_sessions/`, `_domaines/` et `_uas/`.
-4. **Étape 4 : Audit de Précision Technique :**
-   - Compléter chaque fiche avec les 6 rubriques techniques obligatoires.
-5. **Étape 5 : Restructuration Chirurgicale du Plan :**
-   - Réécrire le fichier `plan-developpement.md` selon le gabarit normé enrichi.
-   - Mettre à jour le Front Matter (`audite: true`, `statut: "audité et validé"`).
+## 10. Exemples Concrets (Few-Shot)
 
----
-
-## 6. Format de Sortie & Livrables
-
-Tout plan produit est un fichier Markdown conforme à [gabarit-plan-session.md](resources/gabarit-plan-session.md) sous :  
-`_plan-réalisation-tutos/S[X]/plan-developpement.md`
-
-Il s'accompagne obligatoirement de la **création ou mise à jour des entités Jekyll correspondantes** :
-1. **Fiche de Session :** `_sessions/S[X].md` (avec la liste exacte des `uas:` actives).
-2. **Fiche de Domaine :** `_domaines/D.XXX.Y.[mini-code].md` (créée si inexistante).
-3. **Fiches d'Unités d'Apprentissage :** `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md` (créées si inexistantes, ou synchronisées).
-4. **Fiche de cadrage :** `_plan-réalisation-tutos/S[X]/README.md`.
-
-Le plan s'ouvre obligatoirement par son Front Matter d'audit :
-```yaml
----
-session: "S[X]"
-version: "1.0.0"
-audite: true
-date_audit: "AAAA-MM-JJ"
-statut: "audité et validé"
----
-```
-
-Chaque fiche de tutoriel comporte impérativement :
-```text
-### T.[Code] — [Titre Technique Équilibré : Un Seul Objectif Concret]
-*Objectif logique : [Titre Logique / Pédagogique]*
-*Unité d'Apprentissage (UA) :* UA.[Code] — [Libellé officiel de l'UA] ([Domaine])
-
-- **Progression pédagogique (Brique de code vers le Projet d'imitation) :**
-  [Explication claire de la brique de code spécifique ajoutée ou transformée à cette étape pour faire progresser le code hérité vers le livrable final du projet d'imitation].
-- 1. Ce que l'apprenant doit apprendre (Notions, syntaxe, fonctions, bonnes pratiques)
-- 2. Description technique de la réalisation (Actions concrètes sur le code du projet)
-- 3. Fichiers impactés (Issus de dossier-depart/)
-- 4. État de départ (E_n-1 avec extrait de code)
-- 5. État d'arrivée (E_n avec extrait de code)
-- 6. Livrable physique tapé par l'apprenant (Code source ou fichier commandes.md) & Fichier cible dans le projet
-```
-
----
-
-## 7. Contrôle Qualité (Checklist Binaire)
-
-- [ ] Le Front Matter du plan contient-il `version:`, `audite:` (booléen), `date_audit:` et `statut:` ?
-- [ ] Le point de départ (`dossier-depart/`) et l'aboutissement (livrable complet transformé) sont-ils clairement identifiés ?
-- [ ] Tout nouvel outil intègre-t-il son étape Hello World (installation et préparation de l'environnement local) ?
-- [ ] Une étape Démarrage Rapide (Quickstart) sur un fichier isolé précède-t-elle le projet applicatif ?
-- [ ] Chaque tutoriel porte-t-il un **titre équilibré centré sur la notion technique à apprendre**, sans mentionner les entités du cas projet (pas d'Article, Catégorie, etc.) ?
-- [ ] L'**Unité d'Apprentissage (UA)** de rattachement est-elle clairement affichée pour chaque tutoriel ?
-- [ ] La **progression pédagogique et la brique de code ajoutée** vers le Projet d'imitation sont-elles explicitées pour chaque étape ?
-- [ ] Chaque fiche de tutoriel contient-elle la description technique complète et ce que l'on doit apprendre ?
-- [ ] Chaque fiche indique-t-elle les fichiers impactés, ainsi que les extraits de code $E_{n-1}$ et $E_n$ ?
-- [ ] Tous les livrables spécifiés sont-ils obligatoirement du **code source tapé ou un fichier `commandes.md`** (zéro justification verbale ou constat visuel sans code) ?
-- [ ] La session respecte-t-elle la règle de granularité : **1 seule UA par domaine par défaut**, et **exactement 2 UAs** (1. « Bien démarrer » + 2. Formation du Projet d'imitation) en cas de démarrage technologique ?
-- [ ] La fiche de session `_sessions/S[X].md` existe-t-elle physiquement et sa liste `uas:` est-elle rigoureusement alignée ?
-- [ ] Chaque domaine référencé existe-t-il physiquement sous `_domaines/` ?
-- [ ] Chaque UA référencée dans le plan existe-t-elle physiquement sous `_uas/[D.XXX.Y.mini-code]/UA.XXX.YY.md` avec toutes ses rubriques conformes ?
-- [ ] L'état de départ ($E_{n-1}$) correspond-il exactement à la sortie du tutoriel précédent (zéro trou) ?
-- [ ] Tous les fichiers créés ou modifiés sont-ils encodés en **UTF-8 sans BOM** ?
-- [ ] Le plan permet-il à `tutorial-writer` de rédiger directement le support sans avoir à concevoir la technique ?
-
----
-
-## 8. Exemples de Titrage Équilibré (Few-Shot)
+### Exemples de Titrage Équilibré :
 
 | Titre Trop Abstrait (Banni) | Titre Trop Surchargé ou Lié au Projet (Banni) | Titre Équilibré Retenu (Normé) | Sous-Titre Logique Associé |
 | :--- | :--- | :--- | :--- |
@@ -256,3 +302,4 @@ Chaque fiche de tutoriel comporte impérativement :
 | Répéter un traitement | Boucler sur les articles avec foreach et htmlspecialchars | **Parcourir une collection avec la boucle foreach** | *Générer dynamiquement une liste d'éléments sécurisés* |
 | Contrôler un traitement | Conditionner l'affichage du badge de l'article avec if/else | **Adapter l'affichage avec la condition if / else** | *Contrôler dynamiquement le rendu visuel selon une donnée* |
 | Dynamiser une liste | Générer les filtres de catégories du blog avec foreach | **Générer des liens dynamiques avec la boucle foreach** | *Répéter un affichage de liens avec paramètres* |
+
