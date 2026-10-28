@@ -36,7 +36,7 @@ Pour garantir l'unicité des plans et éviter toute redondance, chaque volet est
 
 ### A. Progression de Développement Web Applicatif (Spécifique à ce Sprint)
 * **[plan-developpement.md](plan-developpement.md) :**  
-  Plan d'apprentissage pas-à-pas intégrant le SQL, la connexion MySQL avec PDO et l'affichage dynamique pour la page d'accueil (`UA.124.11`, `UA.124.12`, `UA.124.21`, `UA.124.22`, `UA.125.14`).
+  Plan d'apprentissage pas-à-pas en 7 étapes découpées intégrant le démarrage MySQL avec Workbench, la création DDL, l'insertion DML, la jointure SQL, la connexion PDO, l'extraction avec `fetchAll` et l'affichage dynamique (`UA.124.11`, `UA.124.12`, `UA.124.21`, `UA.124.22`).
 
 ### B. Domaines Transversaux Mobilisés (Référencés depuis les Sessions S1 et S2)
 * **[plan-architecture.md](../S2/plan-architecture.md) :**  
