@@ -17,19 +17,19 @@ data_php: ""
 
 ## 1. Contexte & Objectif
 
-Dans les étapes précédentes, votre application affichait les articles extraits de la base de données. Cependant, votre feuille de style contient encore de nombreuses répétitions : la même police de caractères, la même couleur de texte et les mêmes marges sont réécrites pour plusieurs éléments distincts.
+Dans les sessions précédentes, vous avez construit l'affichage de votre blog avec une feuille de style unique `css/style.css`. Cependant, au fil des ajouts, ce fichier s'est alourdi de nombreuses règles redondantes : la même police de caractères, la même couleur de texte sombre (`#111827`) et des marges identiques sont répétées sur plusieurs sélecteurs de titres et de paragraphes.
 
-Dans ce tutoriel, vous allez apprendre à simplifier et organiser votre code CSS. Vous allez utiliser les **sélecteurs groupés** pour appliquer une règle commune à plusieurs balises en une seule fois. Vous allez également exploiter l'**héritage CSS** en déclarant vos styles typographiques sur le conteneur principal (`body`) pour que tous les éléments enfants en bénéficient automatiquement.
+Dans ce premier tutoriel d'harmonisation CSS, vous allez simplifier et assainir votre feuille de style. Vous allez utiliser les **sélecteurs groupés** (séparés par une virgule `,`) pour appliquer une règle commune à plusieurs éléments en une seule déclaration. Vous allez également exploiter l'**héritage CSS** en confiant la typographie générale au conteneur principal (`body`) pour que tous les blocs enfants en bénéficient automatiquement.
 
-* **Objectif technique :** Factoriser la feuille de style en regroupant les sélecteurs avec la virgule (`,`), transmettre la typographie globale via `body`, et vérifier que la présentation du blog reste parfaitement intacte sans code dupliqué.
-* **Prérequis :** Maîtriser les sélecteurs CSS élémentaires (`balise`, `.classe`, `#id`) et les propriétés de texte (`font-family`, `color`, `line-height`).
+* **Objectif technique :** Factoriser `css/style.css` en regroupant les sélecteurs de titres avec la virgule, transmettre la police et la couleur par héritage sur `body`, et vérifier dans le navigateur que le rendu visuel reste rigoureusement intact sans code dupliqué.
+* **Prérequis :** Savoir cibler les balises HTML (`h1`, `h2`, `h3`, `body`) et manipuler les classes CSS de base du blog (`.carte-contenu`).
 
 ```mermaid
 flowchart TD
-    A["1. Identifier les styles répétés dans components.css"] --> B["2. Déplacer la police et la couleur générale dans body"]
-    B --> C["3. Regrouper les sélecteurs de titres avec la virgule"]
-    C --> D["4. Supprimer les déclarations redondantes"]
-    D --> E["5. Valider le rendu visuel dans le navigateur"]
+    A["1. Identifier les déclarations répétées dans css/style.css"] --> B["2. Déclarer la police et la couleur générale une seule fois sur body"]
+    B --> C["3. Regrouper les sélecteurs de titres : h1, h2, h3, .carte-contenu h3"]
+    C --> D["4. Supprimer les déclarations redondantes dans les classes enfants"]
+    D --> E["5. Valider le rendu dans le navigateur (zéro régression)"]
 ```
 
 ---
@@ -38,11 +38,11 @@ flowchart TD
 
 ### 2.1. Les sélecteurs groupés avec la virgule
 
-Lorsque plusieurs éléments HTML doivent partager exactement les mêmes propriétés visuelles, il est inutile d'écrire plusieurs blocs CSS séparés.  
-En CSS, vous pouvez séparer plusieurs sélecteurs par une **virgule (`,`)**. Le navigateur applique alors les déclarations à tous les éléments listés.
+Lorsque plusieurs éléments HTML doivent partager les mêmes caractéristiques visuelles, il est inutile d'écrire des blocs CSS séparés.  
+En CSS, vous pouvez séparer plusieurs sélecteurs par une **virgule (`,`)**. Le navigateur applique le même bloc de déclarations à chacun d'entre eux.
 
 ```css
-/* Sans groupement : Répétition inutile */
+/* Sans groupement : Répétition inutile de code */
 h1 {
     color: #111827;
     margin-top: 0;
@@ -51,118 +51,108 @@ h2 {
     color: #111827;
     margin-top: 0;
 }
+.carte-contenu h3 {
+    color: #111827;
+    margin-top: 0;
+}
 
 /* Avec sélecteur groupé : Code propre et factorisé */
-h1, h2, h3 {
+h1, h2, h3, .carte-contenu h3 {
     color: #111827;
     margin-top: 0;
 }
 ```
 
-* Chaque sélecteur conserve son rôle, mais la règle n'est déclarée qu'une seule fois.
-* Vous pouvez combiner des balises et des classes : `h2, .titre-section, .titre-carte`.
+* Chaque élément conserve son identité propre, mais la règle commune n'est écrite qu'une seule fois.
+* Vous pouvez mixer balises standard et sélecteurs de classes.
 
 ### 2.2. Le mécanisme d'héritage en CSS
 
-En HTML, les éléments sont imbriqués les uns dans les autres selon une relation parent-enfant. L'**héritage** est le mécanisme par lequel certaines propriétés appliquées à un élément parent sont transmises automatiquement à tous ses enfants.
+En HTML, les balises sont organisées en arborescence parent-enfant. L'**héritage** est le mécanisme par lequel les propriétés appliquées à un élément parent sont transmises naturellement à ses descendants.
 
-* **Propriétés héritées naturellement :** Toutes les propriétés liées au texte et à la typographie (`font-family`, `color`, `line-height`, `font-size`, `text-align`).
-* **Propriétés NON héritées :** Les propriétés du modèle de boîte (`margin`, `padding`, `border`, `background-color`, `width`, `height`).
+* **Propriétés héritées :** Les styles typographiques et textuels (`font-family`, `color`, `line-height`, `font-size`, `text-align`).
+* **Propriétés non héritées :** Les propriétés du modèle de boîte (`margin`, `padding`, `border`, `background-color`, `width`, `height`).
 
 ```css
-/* Définir une seule fois les propriétés de texte sur le parent global */
+/* Définir une seule fois les styles de texte sur body */
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #1f2937;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* Tous les paragraphes <p> et listes <li> héritent automatiquement de cette police et couleur */
+/* Tous les paragraphes <p> et éléments du blog héritent de cette police et couleur */
 ```
 
 ### 2.3. L'ordre des règles et la cascade
 
-Le terme **Cascading** dans CSS signifie que les règles se combinent ou s'écrasent selon un ordre précis.  
-Lorsque deux règles ciblent le même élément avec le même niveau de priorité (spécificité égale), **la dernière règle écrite dans le fichier l'emporte toujours**.
+Le terme **Cascade** signifie que les règles s'appliquent selon un ordre précis.  
+Lorsque deux règles ciblent le même élément avec un même niveau de priorité (spécificité égale), **la dernière règle écrite dans la feuille de style l'emporte toujours**.
 
 ```css
-p {
-    color: #1f2937; /* Règle générale */
+body {
+    color: #1f2937; /* Couleur générale héritée par défaut */
 }
 
-.texte-important {
-    color: #dc2626; /* Cette règle plus spécifique ou placée après écrase la couleur générale */
+h1, h2, h3 {
+    color: #111827; /* Cette règle plus précise écrase la couleur pour les titres */
 }
 ```
 
-* Organisez toujours vos règles de la plus générale (`body`, balises de base) vers la plus spécifique (classes de composants).
+* Placez toujours les règles globales en tête de fichier, puis les règles spécifiques en dessous.
 
 ---
 
 ## 3. Pratique & Réalisation Guidée
 
-### Étape 1 — Analyser la feuille de style du projet
+### Étape 1 — Analyser la feuille de style du blog
 
-1. Ouvrez votre éditeur de code et explorez le fichier de style de votre blog :
+1. Ouvrez votre éditeur de code et examinez la feuille de style de votre projet :
    ```text
-   css/components.css
+   css/style.css
    ```
-2. Observez que la propriété `font-family` ou la couleur `#1f2937` est répétée sur plusieurs classes : `.carte-article`, `.article-contenu`, `p`.
-3. Repérez également les titres `.titre-section` et `.titre-carte` qui utilisent la même couleur sombre `#111827` et `margin-top: 0`.
+2. Observez la règle `body` au début du fichier : elle déclare déjà la police globale `font-family: Arial, Helvetica, sans-serif;` et la couleur principale de texte `color: #1f2937;`.
+3. Repérez les différentes déclarations de titres dans le fichier :
+   - Les titres de section `h1` et `h2`.
+   - Le titre des cartes d'articles `.carte-contenu h3`.
+   - Ils utilisent tous la même couleur foncée `#111827` et une marge supérieure nulle (`margin-top: 0`).
 
-### Étape 2 — Appliquer la typographie générale sur l'élément body
+### Étape 2 — Regrouper les sélecteurs de titres
 
-1. Ouvrez le fichier de style de base `css/style.css` (ou `css/components.css`).
-2. Ajoutez ou modifiez la règle du sélecteur parent `body` :
-
-```css
-/* Typographie et couleurs globales transmises par héritage */
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #1f2937;
-    line-height: 1.6;
-    margin: 0;
-    background-color: #f9fafb;
-}
-```
-
-3. Supprimez les déclarations `font-family` présentes dans vos paragraphes et vos cartes : ils en héritent désormais naturellement.
-
-### Étape 3 — Regrouper les sélecteurs de titres
-
-1. Dans `css/components.css`, regroupez les sélecteurs de titres avec la virgule :
+1. Dans `css/style.css`, sous la règle `body`, insérez une règle groupée mutualisant les caractéristiques communes des titres :
 
 ```css
-/* Styles communs pour les titres du blog */
-h1, h2, h3, .titre-section, .titre-carte {
+/* Mutualisation des styles communs pour l'ensemble des titres du blog */
+h1, h2, h3, .carte-contenu h3 {
     color: #111827;
     margin-top: 0;
     font-weight: 700;
 }
 ```
 
-2. Conservez uniquement les propriétés spécifiques (comme la taille de police `font-size`) dans chaque règle individuelle :
+2. Dans la règle `.carte-contenu h3`, conservez uniquement ses propriétés spécifiques (taille et marge inférieure) :
 
 ```css
-.titre-section {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.titre-carte {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+.carte-contenu h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
 }
 ```
 
-### Étape 4 — Tester l'affichage dans le navigateur
+### Étape 3 — Nettoyer les déclarations de police redondantes
+
+1. Parcourez `css/style.css`.
+2. Si la propriété `font-family: Arial, ...` est répétée dans les paragraphes ou les blocs de contenu, supprimez-la : ces éléments héritent directement de la règle `body`.
+3. Enregistrez le fichier `css/style.css`.
+
+### Étape 4 — Tester le rendu visuel dans le navigateur
 
 1. Lancez votre serveur PHP local si ce n'est pas déjà fait :
    ```bash
    php -S localhost:8000
    ```
 2. Ouvrez votre navigateur sur `http://localhost:8000/index.php`.
-3. Vérifiez que la typographie de tous les textes et titres reste harmonieuse et parfaitement lisible.
+3. Vérifiez que la page d'accueil conserve rigoureusement son aspect visuel : les titres sont toujours nets et sombres, et les textes restent parfaitement lisibles sans duplication de code.
 
 ---
 
@@ -178,53 +168,48 @@ css/harmoniser-presentation-interface/mutualiser-regles-selecteurs-groupes-herit
 
 ### 4.2. Contenu attendu du livrable
 
-Déposez dans ce dossier votre fichier **`components.css`** (ou `style.css`) factorisé :
+Déposez dans ce dossier votre fichier **`style.css`** factorisé :
 
 ```css
 /* Livrable : Feuille CSS factorisée avec héritage et sélecteurs groupés */
 
-/* 1. Règle parent globale : Transmission par héritage */
+/* 1. Base globale transmise par héritage */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #1f2937;
-    line-height: 1.6;
     margin: 0;
+    color: #1f2937;
     background-color: #f9fafb;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
 }
 
-/* 2. Sélecteurs groupés : Mutualisation des règles de titres */
-h1, h2, h3, .titre-section, .titre-carte {
+/* 2. Règle groupée pour l'ensemble des titres du blog */
+h1, h2, h3, .carte-contenu h3 {
     color: #111827;
     margin-top: 0;
     font-weight: 700;
 }
 
-/* 3. Règles spécifiques ciblées */
-.titre-section {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.titre-carte {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+/* 3. Règles spécifiques conservant uniquement leurs propriétés propres */
+.carte-contenu h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
 }
 ```
 
 ### 4.3. Critères de réussite
 
 * [ ] Le fichier commence sans BOM et respecte la syntaxe CSS standard.
-* [ ] La règle `body` déclare la police globale (`font-family`) et la couleur principale de texte (`color`).
-* [ ] Les sélecteurs de titres sont groupés avec une virgule (`,`).
-* [ ] Aucune déclaration typographique redondante n'est présente dans les classes enfants.
-* [ ] Le rendu visuel de la page dans le navigateur reste rigoureusement identique sans régression.
+* [ ] La règle `body` transmet la typographie par héritage à l'ensemble du document.
+* [ ] Les sélecteurs de titres du blog (`h1, h2, h3, .carte-contenu h3`) sont regroupés avec une virgule.
+* [ ] Aucune déclaration redondante de `font-family` ou de `color: #111827` ne subsiste inutilement.
+* [ ] La page du blog s'affiche dans le navigateur sans aucune dégradation visuelle.
 
 ---
 
 ## 5. Glossaire
 
 * **Sélecteur groupé** : Liste de plusieurs sélecteurs CSS séparés par une virgule pour appliquer un même bloc de déclarations à plusieurs éléments.
-* **Héritage CSS** : Mécanisme qui transmet automatiquement certaines propriétés de style d'un élément parent (comme `body`) à ses éléments enfants.
-* **Propriété héritée** : Propriété de style (ex. `color`, `font-family`) appliquée automatiquement aux descendants d'un élément.
-* **Cascade CSS** : Ensemble de règles déterminant quelle propriété s'applique lorsqu'un élément est ciblé par plusieurs déclarations concurrentes.
+* **Héritage CSS** : Mécanisme qui transmet automatiquement certaines propriétés de style d'un élément parent (comme `body`) à ses éléments descendants.
+* **Propriété héritée** : Propriété de style (ex. `color`, `font-family`) appliquée automatiquement aux enfants d'un élément HTML.
+* **Cascade CSS** : Ensemble de règles déterminant quelle déclaration s'applique lorsqu'un élément est ciblé par plusieurs règles concurrentes.
 * **Spécificité** : Score de priorité attribué à un sélecteur CSS déterminant quelle règle l'emporte en cas de conflit.

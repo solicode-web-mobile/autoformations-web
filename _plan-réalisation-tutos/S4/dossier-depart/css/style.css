@@ -1,173 +1,16 @@
 /* =========================================================
-   COMPONENTS (components.css)
-   Composants réutilisables : Boutons, Cartes, Étiquettes
+   STYLE DU BLOG PERSONNEL (style.css)
+   Feuille de style unifiée (Niveau N1 - S2 à S6)
+   Couleurs brutes sans variables natives, styles de base
 ========================================================= */
 
-/* BOUTONS */
-.bouton-principal {
-    display: inline-block;
-    padding: 10px 18px;
-    color: white;
-    background: var(--couleur-primaire);
-    border-radius: 8px;
-}
-
-.bouton-principal:hover {
-    background: var(--couleur-primaire-hover);
-}
-
-.bouton-secondaire {
-    display: inline-block;
-    padding: 10px 18px;
-    color: var(--couleur-texte);
-    background: white;
-    border: 1px solid var(--couleur-bordure);
-    border-radius: 8px;
-}
-
-.bouton-secondaire:hover {
-    color: var(--couleur-primaire);
-    border-color: var(--couleur-primaire);
-}
-
-
-/* CARTES D'ARTICLES */
-.carte-article {
-    flex: 1;
-    overflow: hidden;
-    background: white;
-    border: 1px solid var(--couleur-bordure);
-    border-radius: 16px;
-}
-
-.carte-image {
-    display: block;
-}
-
-.carte-image img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.carte-contenu {
-    padding: 20px;
-}
-
-.carte-contenu h3 {
-    margin: 0;
-    color: var(--couleur-titre);
-    font-family: Georgia, serif;
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-.carte-contenu p {
-    margin: 12px 0;
-    color: var(--couleur-secondaire);
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.carte-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    padding-top: 16px;
-    color: #9ca3af;
-    font-size: 12px;
-    border-top: 1px solid #f3f4f6;
-}
-
-
-/* ÉTIQUETTES CATÉGORIE (BADGES) */
-.etiquette-categorie {
-    display: inline-block;
-    margin: 16px 16px 0;
-    padding: 6px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    background: #f0f6ff;
-    border-radius: 99px;
-}
-
-.etiquette-categorie.bleu { color: #1c5bba; }
-.etiquette-categorie.rose { color: #db2777; background: #fdf2f8; }
-.etiquette-categorie.vert { color: #059669; background: #ecfdf5; }
-
-/* Filtres de catégorie (Pilules) */
-.pilule-filtre {
-    padding: 10px 16px;
-    color: #4b5563;
-    background: white;
-    border: 1px solid var(--couleur-bordure);
-    border-radius: 8px;
-}
-
-.pilule-filtre:hover {
-    color: var(--couleur-primaire);
-    border-color: var(--couleur-primaire);
-}
-
-.pilule-filtre.actif {
-    color: white;
-    background: var(--couleur-titre);
-}
-
-/* PAGINATION */
-.pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 64px;
-}
-
-.bouton-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: var(--couleur-secondaire);
-    background: white;
-    border: 1px solid var(--couleur-bordure);
-    border-radius: 50%;
-    font-weight: 500;
-}
-
-.bouton-pagination:hover {
-    color: var(--couleur-primaire);
-    background: #f0f6ff;
-    border-color: #e0edff;
-}
-
-.bouton-pagination.actif {
-    color: white;
-    background: var(--couleur-primaire);
-    border-color: var(--couleur-primaire);
-}
-/* =========================================================
-   GLOBAL (global.css)
-   Variables natives, polices, reset basique
-========================================================= */
-
-:root {
-    --couleur-texte: #1f2937;
-    --couleur-fond: #f9fafb;
-    --couleur-primaire: #2673e8;
-    --couleur-primaire-hover: #1c5bba;
-    --couleur-secondaire: #6b7280;
-    --couleur-titre: #111827;
-    --couleur-bordure: #e5e7eb;
-}
-
+/* 1. TYPOGRAPHIE & BASE GLOBALE */
 body {
     margin: 0;
-    color: var(--couleur-texte);
-    background: var(--couleur-fond);
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
+    color: #1f2937;
+    background-color: #f9fafb;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
 }
 
 img {
@@ -179,238 +22,233 @@ a {
     color: inherit;
     text-decoration: none;
 }
-/* =========================================================
-   LAYOUT (layout.css)
-   En-tête et pied de page communs à toutes les pages
-========================================================= */
 
-/* EN-TÊTE DU SITE (HEADER) */
-.en-tete-site {
-    padding: 20px 24px;
-    background: white;
-    border-bottom: 1px solid var(--couleur-bordure);
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.barre-navigation {
+/* 2. EN-TÊTE & NAVIGATION */
+.en-tete-site, .en-tete {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 16px 0;
+}
+
+.barre-navigation, .navigation {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .logo {
-    font-family: Georgia, serif;
-    font-size: 22px;
-    font-weight: 900;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .logo-sombre {
-    color: var(--couleur-titre);
+    color: #111827;
 }
 
 .logo-couleur {
-    color: var(--couleur-primaire);
+    color: #2673e8;
 }
 
 .liens-navigation {
     display: flex;
-    gap: 24px;
+    gap: 20px;
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 
 .liens-navigation a {
-    color: var(--couleur-secondaire);
-    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
 }
 
-.liens-navigation a:hover {
-    color: var(--couleur-primaire);
+.liens-navigation a.actif {
+    color: #2673e8;
 }
 
-
-/* PIED DE PAGE (FOOTER) */
-.pied-de-page {
-    margin-top: 80px;
-    padding: 48px 24px 24px;
-    background: white;
-    border-top: 1px solid var(--couleur-bordure);
-}
-
-.conteneur-pied-de-page {
-    display: flex;
-    justify-content: space-between;
-    gap: 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.colonne-pied-de-page {
-    flex: 1;
-}
-
-.colonne-pied-de-page h2 {
-    margin: 0 0 16px;
-    color: var(--couleur-titre);
-    font-size: 16px;
-}
-
-.colonne-pied-de-page p {
-    max-width: 320px;
-    margin: 0;
-    color: var(--couleur-secondaire);
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.colonne-pied-de-page ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.colonne-pied-de-page li {
-    margin-bottom: 10px;
-}
-
-.colonne-pied-de-page a {
-    color: var(--couleur-secondaire);
-    font-size: 14px;
-}
-
-.colonne-pied-de-page a:hover {
-    color: var(--couleur-primaire);
-}
-
-.bas-pied-de-page {
-    max-width: 1200px;
-    margin: 40px auto 0;
-    padding-top: 20px;
-    text-align: center;
-    border-top: 1px solid var(--couleur-bordure);
-}
-
-.bas-pied-de-page p {
-    margin: 0;
-    color: #9ca3af;
-    font-size: 12px;
-}
-/* =========================================================
-   PAGES (pages.css)
-   Styles spécifiques aux différentes pages
-========================================================= */
-
-/* PAGE ACCUEIL : BANNIÈRE (HERO) */
+/* 3. BANNIÈRE D'ACCUEIL (HERO) */
 .banniere-accueil {
-    padding: 96px 24px;
+    background-color: #ffffff;
+    padding: 64px 20px;
     text-align: center;
-    background: #ffffff;
-    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-    background-size: 24px 24px;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .banniere-accueil h1 {
-    max-width: 850px;
-    margin: 0 auto;
-    color: #0a2042;
-    font-family: Georgia, serif;
-    font-size: 56px;
-    font-weight: 900;
-    line-height: 1.15;
+    font-size: 2.5rem;
+    color: #111827;
+    margin: 0 0 16px;
 }
 
 .banniere-accueil h1 span {
-    color: var(--couleur-primaire);
+    color: #2673e8;
 }
 
 .banniere-accueil p {
-    max-width: 680px;
-    margin: 24px auto 0;
-    color: var(--couleur-secondaire);
-    font-size: 17px;
-    line-height: 1.7;
+    color: #6b7280;
+    font-size: 1.15rem;
+    max-width: 650px;
+    margin: 0 auto 24px;
 }
 
 .actions-banniere {
     display: flex;
+    gap: 12px;
     justify-content: center;
-    gap: 16px;
-    margin-top: 28px;
 }
 
-/* PAGE ACCUEIL : SECTION ARTICLES */
+/* 4. BOUTONS */
+.bouton-principal {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2673e8;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.bouton-secondaire {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* 5. ARTICLES & GRILLE D'ACCUEIL */
 .section-articles {
-    padding: 80px 24px;
+    padding: 48px 0;
 }
 
 .conteneur-articles {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .filtre-categories {
-    margin-bottom: 64px;
+    margin-bottom: 32px;
 }
 
 .filtre-categories h2 {
-    margin: 0 0 20px;
-    color: var(--couleur-titre);
-    font-size: 18px;
+    color: #111827;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
 }
 
 .liste-filtres {
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
-    gap: 12px;
+}
+
+.pilule-filtre {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.pilule-filtre.actif {
+    background-color: #2673e8;
+    color: #ffffff;
+    border-color: #2673e8;
 }
 
 .entete-liste-articles {
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 32px;
+    align-items: center;
+    margin-bottom: 24px;
 }
 
 .entete-liste-articles h2 {
+    color: #111827;
     margin: 0;
-    color: var(--couleur-titre);
-    font-family: Georgia, serif;
-    font-size: 32px;
 }
 
 .entete-liste-articles p {
-    margin: 8px 0 0;
-    color: var(--couleur-secondaire);
-}
-
-.lien-voir-tout {
-    color: var(--couleur-primaire);
-    font-size: 14px;
-    font-weight: 600;
+    color: #6b7280;
+    margin: 4px 0 0;
 }
 
 .grille-articles {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
 }
 
+/* 6. CARTE D'ARTICLE */
+.carte-article {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
 
-/* PAGE DÉTAIL ARTICLE */
+.carte-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.etiquette-categorie, .badge-categorie {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 16px 16px 0;
+    background-color: #f0f6ff;
+    color: #1c5bba;
+}
+
+.carte-contenu {
+    padding: 16px;
+}
+
+.carte-contenu h3 {
+    margin: 0 0 8px;
+    color: #111827;
+    font-size: 1.2rem;
+}
+
+.carte-contenu p {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin: 0 0 16px;
+}
+
+.carte-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 12px;
+}
+
+/* 7. PAGE DE DÉTAIL D'ARTICLE */
 .entete-article-detail {
-    padding: 96px 24px 64px;
-    background: var(--couleur-fond);
     text-align: center;
+    padding: 48px 0 24px;
 }
 
 .entete-article-detail h1 {
-    margin: 0 auto;
-    color: var(--couleur-titre);
-    font-family: Georgia, serif;
-    font-size: 50px;
-    line-height: 1.15;
+    font-size: 2.25rem;
+    color: #111827;
+    max-width: 800px;
+    margin: 16px auto;
 }
 
 .auteur-article {
@@ -418,146 +256,125 @@ a {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: 16px;
 }
 
 .auteur-article img {
-    display: inline-block;
-    width: 44px;
-    height: 44px;
-    border: 2px solid white;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
 }
 
-.auteur-article span {
-    display: block;
-    color: #9ca3af;
-    font-size: 12px;
-}
-
 .couverture-article {
-    height: 250px;
-    margin: 0;
+    margin: 24px 0;
 }
 
 .couverture-article img {
     width: 100%;
-    height: 100%;
+    max-height: 450px;
     object-fit: cover;
+    border-radius: 12px;
 }
 
-.conteneur-principal-article {
-    max-width: 920px;
-    margin: -100px auto 80px;
-    padding: 0 24px;
-}
-
-.corps-article {
-    padding: 110px 80px;
-    color: var(--couleur-texte);
-    background: white;
-    border: 1px solid #f3f4f6;
-    border-radius: 40px;
-    font-size: 16px;
-}
-
-.corps-article h2,
-.corps-article h3 {
-    color: #0a2042;
-    font-family: Georgia, serif;
-    font-weight: 900;
-    line-height: 1.3;
-}
-
-.corps-article h2 { margin: 0 0 24px; font-size: 32px; }
-.corps-article h3 { margin: 48px 0 20px; font-size: 22px; }
-
-.corps-article p { margin: 0 0 24px; }
-.corps-article ul { margin: 0 0 24px; padding-left: 24px; }
-.corps-article li { margin-bottom: 12px; }
-.corps-article strong { color: var(--couleur-titre); }
-
-.corps-article code {
-    padding: 3px 7px;
-    color: #0a2042;
-    background: #f0f6ff;
-    border-radius: 5px;
-    font-family: monospace;
-    font-size: 14px;
-}
-
-.figure-article { margin: 32px 0; }
-.figure-article img { width: 100%; border-radius: 16px; }
-.figure-article figcaption {
-    margin-top: 10px;
-    color: var(--couleur-secondaire);
-    font-size: 13px;
-    text-align: center;
-}
-
-.citation-article {
-    margin: 40px 0;
-    padding: 24px 28px;
-    color: #4b5563;
-    background: #f0f6ff;
-    border-left: 4px solid var(--couleur-primaire);
-    border-radius: 0 12px 12px 0;
-}
-
-.citation-article p { margin: 0; font-style: italic; }
-.citation-article cite {
-    display: block;
-    margin-top: 12px;
-    color: var(--couleur-secondaire);
-    font-size: 13px;
-    font-style: normal;
-}
-
-/* EN-TÊTE DE PAGE SIMPLE (Ex: À Propos, Catégorie) */
-.entete-page-simple {
-    padding: 96px 24px;
-    text-align: center;
-    background: white;
-    border-bottom: 1px solid var(--couleur-bordure);
-}
-
-.entete-page-simple .etiquette {
-    display: inline-block;
-    margin-bottom: 16px;
-    padding: 6px 16px;
-    color: var(--couleur-secondaire);
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    background: white;
-    border: 1px solid var(--couleur-bordure);
-    border-radius: 99px;
-}
-
-.entete-page-simple h1 {
-    margin: 0 0 24px;
-    color: var(--couleur-titre);
-    font-family: Georgia, serif;
-    font-size: 48px;
-    font-weight: 900;
-}
-
-.entete-page-simple p {
-    max-width: 680px;
+.corps-texte {
+    max-width: 800px;
     margin: 0 auto;
-    color: var(--couleur-secondaire);
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    color: #1f2937;
+    line-height: 1.8;
 }
 
-/* PHOTO DE PROFIL (À Propos) */
-.photo-profil {
-    display: block;
-    width: 160px;
-    height: 160px;
-    margin: 0 auto 48px;
-    object-fit: cover;
-    border: 4px solid white;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.actions-retour {
+    max-width: 800px;
+    margin: 32px auto 0;
+}
+
+/* 8. PAGE CATÉGORIES & À PROPOS */
+.en-tete-categorie {
+    margin-bottom: 32px;
+}
+
+.grille-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.carte-categorie {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+.carte-categorie h2 {
+    color: #111827;
+    margin: 0 0 16px;
+}
+
+.page-apropos {
+    padding: 48px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.liste-technologies {
+    padding-left: 20px;
+    color: #1f2937;
+}
+
+/* 9. PIED DE PAGE */
+.pied-de-page {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    padding: 48px 0 24px;
+    margin-top: 64px;
+}
+
+.conteneur-pied-de-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+}
+
+.colonne-pied-de-page h2 {
+    font-size: 1.1rem;
+    color: #111827;
+    margin: 0 0 12px;
+}
+
+.colonne-pied-de-page p {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.colonne-pied-de-page ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.colonne-pied-de-page ul li {
+    margin-bottom: 8px;
+}
+
+.colonne-pied-de-page ul a {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.bas-pied-de-page {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    padding: 16px 20px 0;
+    border-top: 1px solid #f3f4f6;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.85rem;
 }

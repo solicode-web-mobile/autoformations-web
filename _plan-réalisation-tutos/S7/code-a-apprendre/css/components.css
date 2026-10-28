@@ -1,0 +1,203 @@
+/* =========================================================
+   COMPONENTS (components.css)
+   Composants modulaires et réutilisables avec variables CSS et :hover
+========================================================= */
+
+/* BOUTONS */
+.bouton-principal {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--couleur-primaire);
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.bouton-principal:hover {
+    background-color: var(--couleur-primaire-hover);
+    transform: translateY(-1px);
+}
+
+.bouton-principal:focus {
+    outline: 2px solid var(--couleur-primaire);
+    outline-offset: 2px;
+}
+
+.bouton-secondaire {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: var(--couleur-texte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.bouton-secondaire:hover {
+    border-color: var(--couleur-primaire);
+    color: var(--couleur-primaire);
+}
+
+.bouton-secondaire:focus {
+    outline: 2px solid var(--couleur-primaire);
+    outline-offset: 2px;
+}
+
+/* CARTES D'ARTICLES */
+.carte-article {
+    background-color: #ffffff;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carte-article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.carte-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carte-contenu {
+    padding: 16px;
+}
+
+.carte-contenu h3 {
+    margin: 0 0 8px;
+    color: var(--couleur-titre);
+    font-size: 1.2rem;
+}
+
+.carte-contenu p {
+    color: var(--couleur-secondaire);
+    font-size: 0.95rem;
+    margin: 0 0 16px;
+}
+
+.carte-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 12px;
+}
+
+/* BADGES DE CATÉGORIES */
+.etiquette-categorie, .badge-categorie {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 16px 16px 0;
+    background-color: #f0f6ff;
+    color: #1c5bba;
+    transition: opacity 0.2s ease;
+}
+
+.etiquette-categorie:hover, .badge-categorie:hover {
+    opacity: 0.85;
+}
+
+/* FILTRES PAR THÈME */
+.liste-filtres {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pilule-filtre {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 9999px;
+    color: var(--couleur-secondaire);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.pilule-filtre:hover {
+    border-color: var(--couleur-primaire);
+    color: var(--couleur-primaire);
+}
+
+.pilule-filtre.actif {
+    background-color: var(--couleur-primaire);
+    color: #ffffff;
+    border-color: var(--couleur-primaire);
+}
+
+/* COMPOSANTS DE DÉTAIL D'ARTICLE */
+.entete-article-detail {
+    text-align: center;
+    padding: 48px 0 24px;
+}
+
+.entete-article-detail h1 {
+    font-size: 2.25rem;
+    color: var(--couleur-titre);
+    max-width: 800px;
+    margin: 16px auto;
+}
+
+.auteur-article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.auteur-article img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.couverture-article {
+    margin: 24px 0;
+}
+
+.couverture-article img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.corps-texte {
+    font-size: 1.1rem;
+    color: var(--couleur-texte);
+    line-height: 1.8;
+}
+
+/* COMPOSANTS CATÉGORIES & CARTES THÉMATIQUES */
+.carte-categorie {
+    background-color: #ffffff;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carte-categorie:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.carte-categorie h2 {
+    color: var(--couleur-titre);
+    margin: 0 0 16px;
+}
