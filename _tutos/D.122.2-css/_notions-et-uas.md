@@ -154,14 +154,9 @@ Les notions nouvelles doivent donc concerner principalement la réutilisation de
 
 | ID | Titre | Objectif d’apprentissage | Notions techniques |
 | --- | --- | --- | --- |
-| **T.122.241** | Réutiliser une classe CSS | Appliquer le même style à plusieurs éléments | classes réutilisables |
-| **T.122.242** | Regrouper les règles communes | Réduire les répétitions dans la feuille CSS | sélecteurs groupés, règles communes |
-| **T.122.243** | Comprendre la cascade CSS | Comprendre pourquoi une règle est appliquée ou remplacée | cascade, ordre des règles, spécificité simple |
-| **T.122.244** | Comprendre l’héritage | Éviter de répéter certains styles sur tous les éléments | héritage, propriétés héritées |
-| **T.122.245** | Gérer les états d’un élément | Donner un retour visuel aux interactions | `:hover`, `:focus`, pseudo-classes simples |
-| **T.122.246** | Centraliser les valeurs visuelles | Réutiliser les couleurs et espacements communs | variables CSS, `:root`, `--nom`, `var()` |
-| **T.122.247** | Construire des styles communs aux pages | Harmoniser les pages Accueil, Détail et Catégories | feuille CSS commune, classes communes, composants |
-| **T.122.24.8** | Projet de synthèse — Harmonisation du Blog | Uniformiser la présentation via des fichiers séparés | `global.css`, `layout.css`, `components.css`, balises `<link>` |
+| **T.122.241** | Mutualiser les règles avec les sélecteurs groupés et l'héritage | Réduire les répétitions dans la feuille CSS et exploiter la transmission naturelle des styles de texte | classes réutilisables, sélecteurs groupés (`,`), cascade, héritage |
+| **T.122.242** | Dynamiser les interactions avec la pseudo-classe :hover | Offrir un retour visuel interactif au survol des liens, boutons et cartes | pseudo-classes `:hover` et `:focus`, transitions visuelles |
+| **T.122.243** | Centraliser la charte graphique avec les variables CSS | Piloter la palette de couleurs depuis :root et structurer les feuilles de style partagées | variables CSS `:root`, `var()`, architecture modulaire (`global.css`, `layout.css`, `components.css`) |
 
 ### Règles strictes à appliquer en S7
 
@@ -266,14 +261,9 @@ S3
 
 S7
 └── UA.122.24 — Harmoniser la présentation d’une interface
-    ├── T.122.241  Réutiliser une classe
-    ├── T.122.242  Règles communes
-    ├── T.122.243  Cascade
-    ├── T.122.244  Héritage
-    ├── T.122.245  États
-    ├── T.122.246  Variables CSS
-    ├── T.122.247  Styles communs
-    └── T.122.24.8 Synthèse
+    ├── T.122.241  Mutualiser règles & héritage
+    ├── T.122.242  Interactions :hover
+    └── T.122.243  Variables CSS & architecture modulaire
 
 S12
 └── UA.122.25 — Adapter une interface aux écrans
