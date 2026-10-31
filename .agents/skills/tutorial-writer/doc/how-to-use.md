@@ -42,9 +42,9 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 ---
 
 ## 4. Prérequis & Données d'Entrée
-- **Fiches didactiques de domaine (Chargement OBLIGATOIRE avant toute rédaction) :**
-  - `resources/domaines-pedagogiques.md` (index des 17 domaines).
-  - Fiche modulaire du domaine concerné dans `resources/` (ex: `resources/domaine-php-sql.md`, `resources/domaine-css.md`, `resources/domaine-algo.md`).
+- **Fiches didactiques de domaine (Spécifiques au cursus local — Chargement OBLIGATOIRE avant toute rédaction) :**
+  - `.agents/resources/domaines/domaines-pedagogiques.md` (index des 17 domaines).
+  - Fiche modulaire du domaine concerné dans `.agents/resources/domaines/` (ex: `.agents/resources/domaines/domaine-php-sql.md`, `.agents/resources/domaines/domaine-css.md`, `.agents/resources/domaines/domaine-algo.md`).
 - **Plan de cadrage :**
   - Fiche technique du tutoriel issue de `_plan-réalisation-tutos/S[X]/plan-developpement.md`.
 - **Règles applicables :**
@@ -54,7 +54,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 ---
 
 ## 5. Déroulement Pas-à-Pas (Ce que fait l'Agent)
-1. **Étape 1 — Cadrage & Chargement du Domaine :** Identifie le domaine technique et charge obligatoirement la fiche `resources/domaine-[code].md` associée.
+1. **Étape 1 — Cadrage & Chargement du Domaine :** Identifie le domaine technique et charge obligatoirement la fiche `.agents/resources/domaines/domaine-[code].md` associée.
 2. **Étape 2 — Structuration du Front Matter & Layout :** Renseigne `layout: tuto`, l'UA, la compétence, le domaine, la session, et insère `window.pageData` si interactif.
 3. **Étape 3 — Rédaction de la Théorie Simplifiée :** Développe une théorie illustrée très concise structurée en **3 à 4 H3 maximum**, avec schémas ou extraits courts.
 4. **Étape 4 — Définition du Glossaire :** Insère un glossaire concis donnant une définition simple d'une ligne pour chaque nouveau terme technique.
@@ -79,7 +79,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 ## 7. Pièges Fréquents & Bonnes Pratiques
 | Piège Fréquent | Risque | Bonne Pratique |
 | :--- | :--- | :--- |
-| Rédiger sans charger la fiche du domaine | Violations des contraintes didactiques propres au domaine | Charger obligatoirement `resources/domaine-[code].md` dès la première étape |
+| Rédiger sans charger la fiche du domaine | Violations des contraintes didactiques propres au domaine | Charger obligatoirement `.agents/resources/domaines/domaine-[code].md` dès la première étape |
 | Rédiger une théorie académique trop longue | Décrochage de l'apprenant | Limiter strictement la théorie à 3 ou 4 H3 très visuels |
 | Multiplier les exercices dans la pratique | Surcharge cognitive inutile | Un seul cas d'application direct suffit pour valider la compréhension |
 | Demander une capture d'écran comme livrable | Violation de la règle des livrables | Le livrable doit toujours être le code source tapé ou un journal `commandes.md` |

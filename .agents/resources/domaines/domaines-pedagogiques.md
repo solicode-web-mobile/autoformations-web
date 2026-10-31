@@ -1,8 +1,8 @@
 # Index Didactique des 17 Domaines de Compétence
 
 > **Répertoire d'Orientation & Règles Didactiques — Solicode**  
-> **Compétence :** `tutorial-writer`  
-> Chaque domaine possède sa propre fiche didactique détaillée dans ce dossier `resources/`.
+> **Ressources Locales de l'Agent :** Cursus N1 (Autoformations Web)  
+> Chaque domaine possède sa propre fiche didactique détaillée dans `.agents/resources/domaines/`.
 
 ---
 

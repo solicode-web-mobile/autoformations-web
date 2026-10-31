@@ -1,7 +1,7 @@
 ---
 name: tutorial-writer
 description: Conçoit et rédige des tutoriels techniques (unitaires ou en série progressive vers un code final) nativement simplifiés, concrets et vérifiables pour les apprenants, en chargeant obligatoirement les règles didactiques du domaine concerné et en rappelant l'emplacement exact du livrable dans le dépôt annuel.
-version: 2.5.0
+version: 2.6.0
 inspiration:
   source: "solicode-pedagogy"
   plugin: "pedagogy-referential"
@@ -46,9 +46,9 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 - **Données d'entrée pour une série progressive :**
   1. Le **Plan des tutoriels de l'UA** : Liste ordonnée des tutoriels avec leurs notions cibles.
   2. Le **Code source final d'arrivée** : Fichier(s) complet(s) ou maquette terminée représentant le livrable final attendu à l'issue de l'UA.
-- **Ressources didactiques internes par domaine (Chargement OBLIGATOIRE dès le cadrage) :**
-  - [domaines-pedagogiques.md](resources/domaines-pedagogiques.md) : Index central d'orientation des 17 domaines techniques.
-  - **Fiche modulaire dédiée au domaine en cours de rédaction** dans `resources/` (ex: [domaine-algo.md](resources/domaine-algo.md) pour l'algorithmique, [domaine-conception.md](resources/domaine-conception.md) pour les gabarits SVG de diagrammes MCD Merise, [domaine-css.md](resources/domaine-css.md), [domaine-php-sql.md](resources/domaine-php-sql.md), etc.).
+- **Ressources didactiques par domaine (Spécifiques au cursus local — Chargement OBLIGATOIRE dès le cadrage) :**
+  - [.agents/resources/domaines/domaines-pedagogiques.md](../../resources/domaines/domaines-pedagogiques.md) : Index central d'orientation des 17 domaines techniques du cursus local.
+  - **Fiche modulaire dédiée au domaine en cours de rédaction** dans `.agents/resources/domaines/` (ex: [domaine-algo.md](../../resources/domaines/domaine-algo.md) pour l'algorithmique, [domaine-conception.md](../../resources/domaines/domaine-conception.md) pour les gabarits SVG de diagrammes MCD Merise, [domaine-css.md](../../resources/domaines/domaine-css.md), [domaine-php-sql.md](../../resources/domaines/domaine-php-sql.md), etc.).
 - **Ressources transversales du projet :**
   - Les règles pédagogiques locales du niveau dans `.agents/rules/` (Directives de style et de progression).
   - `.agents/rules/standards-techniques.md` (Encodage UTF-8, règles Jekyll, `window.pageData`, livrables GitHub/MD).
@@ -57,7 +57,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 ---
 
 # 4. Contraintes & Règles Inviolables
-- **Chargement Obligatoire de la Fiche Domaine :** Avant TOUTE rédaction, simplification ou refonte d'un tutoriel, l'agent DOIT impérativement identifier le domaine technique concerné (ex: `D.121.1-algo` → `resources/domaine-algo.md`, `D.112.1-conception` → `resources/domaine-conception.md`) et charger sa fiche didactique depuis `resources/`. L'agent applique strictement les contraintes propres au domaine (formats de code imposés, composants visuels spécifiques comme `array-svg.html`, structure du livrable, interdictions thématiques). Interdiction formelle d'engager la rédaction sans avoir consulté la fiche du domaine.
+- **Chargement Obligatoire de la Fiche Domaine :** Avant TOUTE rédaction, simplification ou refonte d'un tutoriel, l'agent DOIT impérativement identifier le domaine technique concerné (ex: `D.121.1-algo` → `.agents/resources/domaines/domaine-algo.md`, `D.112.1-conception` → `.agents/resources/domaines/domaine-conception.md`) et charger sa fiche didactique depuis les ressources locales de l'agent (`.agents/resources/domaines/`). L'agent applique strictement les contraintes propres au domaine (formats de code imposés, composants visuels spécifiques comme `array-svg.html`, structure du livrable, interdictions thématiques). Interdiction formelle d'engager la rédaction sans avoir consulté la fiche du domaine.
 - **Preuve par le Code & Dépôt Unique des Autoformations :** L'apprenant dispose d'un **dépôt GitHub unique pour l'ensemble des livrables de l'année**, organisé par les **noms lisibles** (et NON les codes alphanumériques) des domaines, des UA et des tutoriels :
   ```text
   [nom-domaine]/[nom-ua]/[nom-tutoriel]/[nom-fichier]
@@ -85,7 +85,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 
 ### Parcours A : Rédaction d'une Série de Tutoriels en Progression (Vers le Code Final)
 1. **Étape 1 : Cadrage, Chargement du Domaine & Analyse du Code Cible :**
-   - Identifier le domaine de l'UA et charger obligatoirement la fiche correspondante `resources/domaine-[nom].md` (via `domaines-pedagogiques.md`).
+   - Identifier le domaine de l'UA et charger obligatoirement la fiche correspondante `.agents/resources/domaines/domaine-[nom].md` (via `domaines-pedagogiques.md`).
    - Relever les règles didactiques et contraintes techniques imposées pour ce domaine.
    - Étudier l'architecture du code cible (HTML, CSS, JS, PHP, SQL) et identifier les blocs fonctionnels indépendants.
 2. **Étape 2 : Découpage en Itérations & Alignement avec le Plan de l'UA :**
@@ -100,7 +100,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 
 ### Parcours B : Rédaction d'un Tutoriel Unitaire Autonome
 1. **Étape 1 : Cadrage & Chargement de la Fiche Didactique du Domaine :**
-   - Identifier le domaine technique et charger obligatoirement sa fiche `resources/domaine-[nom].md` (via `domaines-pedagogiques.md`).
+   - Identifier le domaine technique et charger obligatoirement sa fiche `.agents/resources/domaines/domaine-[nom].md` (via `domaines-pedagogiques.md`).
    - Extraire les contraintes spécifiques au domaine (composants visuels, formats de code, exigences de livrable).
    - Déterminer l'arborescence exacte de destination dans le dépôt global de l'apprenant (`[nom-domaine]/[nom-ua]/[nom-tutoriel]/` ou `[nom-domaine]/[nom-tutoriel]/`).
    - Définir l'objectif SMART, le domaine et les prérequis.
@@ -111,7 +111,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 
 ### Parcours C : Modernisation d'un Ancien Tutoriel Existant
 1. **Étape 1 : Audit & Chargement de la Fiche Didactique du Domaine :**
-   - Identifier le domaine du tutoriel et charger obligatoirement sa fiche `resources/domaine-[nom].md`.
+   - Identifier le domaine du tutoriel et charger obligatoirement sa fiche `.agents/resources/domaines/domaine-[nom].md`.
    - Auditer le tutoriel au regard des règles du domaine (composants visuels imposés, code autonome, rappel de l'emplacement exact dans le dépôt d'autoformation avec les noms).
    - Élaguer le gras théorique et supprimer les longues introductions ou distinctions académiques non manipulées.
 2. **Étape 2 : Schématisation & Mutualisation :** Remplacer le texte verbeux par des schémas visuels (Mermaid / SVG) et unifier les exercices dispersés.
@@ -186,7 +186,7 @@ window.pageData = {
 ---
 
 # 8. Contrôle Qualité (Checklist Binaire)
-- [ ] La fiche didactique du domaine (`resources/domaine-[nom].md`) a-t-elle été obligatoirement chargée et ses règles spécifiques appliquées ?
+- [ ] La fiche didactique du domaine (`.agents/resources/domaines/domaine-[nom].md`) a-t-elle été obligatoirement chargée et ses règles spécifiques appliquées ?
 - [ ] L'emplacement exact du livrable dans le dépôt global d'autoformation utilise-t-il les **noms** (et NON les codes) sous la forme `[nom-domaine]/[nom-ua]/[nom-tutoriel]/` ?
 - [ ] La pratique utilise-t-elle le **strict minimum de code** pour faire comprendre l'objectif sans chercher à entraîner l'apprenant à la compétence (rôle réservé aux Prototypes et Projets) ?
 - [ ] Les étapes pratiques portent-elles des titres techniques clairs (sans mention de "Travail à faire (Livrable)") et le livrable est-il isolé dans une section dédiée finale ?
@@ -212,7 +212,7 @@ window.pageData = {
 | Utiliser les codes alphanumériques (UA.xxx, T.xxx) pour le chemin du livrable | Mauvaise convention d'arborescence | Utiliser impérativement les noms explicites : `[nom-domaine]/[nom-ua]/[nom-tutoriel]/` |
 | Oubli de l'emplacement du livrable ou consigne d'un nouveau dépôt | Non-respect de l'organisation centralisée du dépôt annuel | Rappeler systématiquement le chemin exact `[nom-domaine]/[nom-ua]/[nom-tutoriel]/` dans le dépôt global d'autoformation |
 | Écraser ou omettre le code des premières étapes pratiques | Perte du travail de l'apprenant | Concevoir le livrable comme l'accumulation ordonnée des étapes de manipulation |
-| Rédiger ou simplifier sans charger la fiche du domaine | Oubli de vérifier les contraintes techniques propres au domaine | Consulter systématiquement `resources/domaines-pedagogiques.md` et charger `resources/domaine-[nom].md` dès le cadrage |
+| Rédiger ou simplifier sans charger la fiche du domaine | Oubli de vérifier les contraintes techniques propres au domaine | Consulter systématiquement `.agents/resources/domaines/domaines-pedagogiques.md` et charger `.agents/resources/domaines/domaine-[nom].md` dès le cadrage |
 | Rédiger un tutoriel verbeux pour le simplifier ensuite | Mauvaise posture de conception | Rédiger directement la version épurée et synthétique |
 | Rupture de continuité dans une série | Tutoriel N déconnecté du résultat de N-1 | Vérifier que le code de départ de N reprend exactement le code final de N-1 |
 | Bloc de code non exécutable | Variable non déclarée ou absence de `console.log` | Déclarer systématiquement les variables avec `let`/`const` |

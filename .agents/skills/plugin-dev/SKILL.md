@@ -37,6 +37,7 @@ Ce méta-skill assure la gouvernance technique complète de l'écosystème IA : 
 - **Respect Strict des 10 Rubriques :** Aucun skill ne peut être publié s'il omet l'une des 10 rubriques normées.
 - **Dossier de Documentation Obligatoire (`doc/how-to-use.md`) :** Tout skill créé ou maintenu DOIT obligatoirement posséder un sous-dossier `doc/` renfermant un guide d'utilisation opérationnel (`doc/how-to-use.md`). Ce guide formalise clairement la mission, les cas d'usage concrets, les prompts types pour l'activer, les prérequis, les étapes opératoires pas-à-pas et la procédure de vérification des livrables.
 - **Encapsulation Stricte des Ressources (Niveau Skill vs Niveau Agent) :** Tout fichier méthodologique, guide ou gabarit utilisé exclusivement par une seule compétence DOIT impérativement être encapsulé dans son sous-dossier `resources/` (principe de divulgation progressive). Il est formellement interdit de déposer des ressources mono-compétence au niveau Agent (`.agents/references/`). Le niveau Agent est strictement réservé aux conventions et standards transversaux partagés par plusieurs compétences ou régissant le projet dans sa globalité.
+  - *Exception Multi-Niveaux (Cursus Locaux) :* Les ressources didactiques propres à un cursus ou un niveau d'apprentissage donné (ex: fiches de domaines pédagogiques N1, N2...) ne doivent JAMAIS être encapsulées dans un skill partagé synchronisé (`tutorial-writer`), car chaque niveau possède ses propres technologies et domaines. Elles doivent obligatoirement résider dans les ressources locales de l'agent (`.agents/resources/domaines/`) et rester exclues de `theme-sync.json`.
 - **Hiérarchie et Non-Contradiction des Règles :**
   - Une règle locale (`.agents/rules/`, `AGENTS.md`) prime sur une recommandation générale, mais ne doit jamais violer une règle critique de sécurité (`critical-rules.md`) sans arbitrage explicite.
   - Chaque règle doit être concise, univoque et comporter un déclencheur explicite (`trigger: always_on` ou conditionnel).
@@ -83,6 +84,7 @@ Ce méta-skill assure la gouvernance technique complète de l'écosystème IA : 
 # 6. Gestion des Ambiguïtés & Décisions
 - **Arbitrage Emplacement des Ressources (Skill vs Agent) :**
   - Si la ressource est exploitée exclusivement par un skill particulier (ex: gabarits éditoriaux d'un rédacteur) ➔ Emplacement obligatoire : `<skill>/resources/[fichier].md` (chargée à la demande dans la section 3 du skill).
+  - Si la ressource est propre au niveau d'apprentissage local (ex: fiches didactiques des domaines N1/N2) ➔ Emplacement : `.agents/resources/domaines/` (fichiers locaux non synchronisés, exclus de `theme-sync.json`).
   - Si la ressource définit un standard d'ingénierie transverse, des conventions d'architecture partagées ou des directives du dépôt ➔ Emplacement : `.agents/references/conventions/` ou `.agents/references/standards/`.
 - **Arbitrage Skill vs Règle :**
   - Si l'instruction est une contrainte permanente ou un garde-fou transversal (ex: affichage des compétences, style de réponse, interdiction de migration) ➔ Créer une **Règle** (`.agents/rules/` ou `AGENTS.md`).

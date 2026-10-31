@@ -60,7 +60,7 @@ Son rôle primordial est de garantir la **stricte progression incrémentale sans
   - `_plan-réalisation-tutos/S*/dossier-depart/` (code de départ).
   - `_plan-réalisation-tutos/S*/code-a-apprendre/` (code cible).
 - **Fiches didactiques des domaines techniques :**
-  - `.agents/skills/tutorial-writer/resources/domaine-[nom].md` (HTML, CSS, JS, PHP, SQL, PHP-SQL).
+  - `.agents/resources/domaines/domaine-[nom].md` (HTML, CSS, JS, PHP, SQL, PHP-SQL).
 - **Standards techniques :**
   - `.agents/rules/standards-techniques.md` (Encodage UTF-8 strict sans BOM, convention des livrables).
 

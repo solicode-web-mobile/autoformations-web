@@ -43,12 +43,12 @@ $$\text{Code de départ } (E_{n-1}) + \text{Livrables des tutoriels } (\Delta) \
   - `_plan-réalisation-tutos/S*/code-a-apprendre/`
   - `_plan-réalisation-tutos/S*/plan-developpement.md`
 - **Fiches didactiques par domaine (Chargement impératif selon la technologie modifiée) :**
-  - HTML : `skills/tutorial-writer/resources/domaine-html.md`
-  - CSS : `skills/tutorial-writer/resources/domaine-css.md`
-  - JavaScript : `skills/tutorial-writer/resources/domaine-js.md`
-  - PHP : `skills/tutorial-writer/resources/domaine-php.md`
-  - SQL : `skills/tutorial-writer/resources/domaine-sql.md`
-  - PHP & SQL : `skills/tutorial-writer/resources/domaine-php-sql.md`
+  - HTML : `.agents/resources/domaines/domaine-html.md`
+  - CSS : `.agents/resources/domaines/domaine-css.md`
+  - JavaScript : `.agents/resources/domaines/domaine-js.md`
+  - PHP : `.agents/resources/domaines/domaine-php.md`
+  - SQL : `.agents/resources/domaines/domaine-sql.md`
+  - PHP & SQL : `.agents/resources/domaines/domaine-php-sql.md`
 - **Scripts & Utilitaires d'Automatisation :**
   - `scripts/sync-dossiers-depart.cjs` : Script Node.js de synchronisation miroir stricte entre `_plan-réalisation-tutos/` et le dépôt centralisé `D:\solicode-web-mobile\dossiers-depart-n1`.
   - `scripts/sync-dossiers-depart.ps1` : Wrapper PowerShell pour exécution native sous Windows avec support de `--session` et `--dry-run`.
