@@ -20,7 +20,7 @@ statut: "audité et validé"
 **Voie de progression :** [Ex: Développement Web Applicatif Fil Rouge (HTML, CSS, PHP, SQL, Architecture)]  
 **Session :** S[X] — [Titre clair de la session]  
 **Mini-code :** `[slug-de-la-session]`  
-**Niveau :** N1 (Débutant)  
+**Niveau :** [N1 / N2 / N3]  
 
 ---
 

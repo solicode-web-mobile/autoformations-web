@@ -13,7 +13,7 @@ Ce skill est l'**artisan pédagogique universel** chargé de concevoir et rédig
 Tout tutoriel produit est **directement et nativement simplifié dès sa conception** : sans surcharge cognitive, visuel d'abord, théorie courte (3 à 4 H3 max), et pratique ultra-ciblée.
 
 ### Trajectoire Pédagogique Globale
-L'apprentissage au sein du cursus Spartel s'articule rigoureusement selon trois jalons complémentaires :
+L'apprentissage au sein du cursus Solicode s'articule rigoureusement selon trois jalons complémentaires :
 $$\text{Tutoriel (Comprendre avec le minimum de code)} \longrightarrow \text{Prototype (Pratiquer \& consolider)} \longrightarrow \text{Projet (Développer la compétence métier)}$$
 
 > **Principe Cardinal de Charge Minimale :**
@@ -50,7 +50,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
   - [domaines-pedagogiques.md](resources/domaines-pedagogiques.md) : Index central d'orientation des 17 domaines techniques.
   - **Fiche modulaire dédiée au domaine en cours de rédaction** dans `resources/` (ex: [domaine-algo.md](resources/domaine-algo.md) pour l'algorithmique, [domaine-conception.md](resources/domaine-conception.md) pour les gabarits SVG de diagrammes MCD Merise, [domaine-css.md](resources/domaine-css.md), [domaine-php-sql.md](resources/domaine-php-sql.md), etc.).
 - **Ressources transversales du projet :**
-  - `.agents/rules/pedagogie-spartel.md` (Directives de style et progression N1).
+  - Les règles pédagogiques locales du niveau dans `.agents/rules/` (Directives de style et de progression).
   - `.agents/rules/standards-techniques.md` (Encodage UTF-8, règles Jekyll, `window.pageData`, livrables GitHub/MD).
   - Code réel et démonstrateurs sous `/code/`.
 
@@ -229,7 +229,7 @@ window.pageData = {
 > **Tutoriel 2 (CSS) :** Reprendre `index.html` de T1, appliquer les styles Flexbox et l'arrondi. Emplacement livrable : `css/mise-en-page/carte-utilisateur/style.css`.  
 > **Tutoriel 3 (JS) :** Reprendre le composant stylisé de T2, ajouter le bouton interactif "Suivre" avec `addEventListener`. Emplacement livrable : `js/animations-dom/carte-utilisateur/main.js`.
 
-### Exemple B : Exercice Pratique Mutualisé (Tableau d'Action N1)
+### Exemple B : Exercice Pratique Mutualisé (Tableau d'Action Didactique)
 > | Étape | Action à réaliser | Fichier modifié | Résultat attendu |
 > | :-: | :--- | :--- | :--- |
 > | 1 | Ajouter la classe `.actif` au premier onglet | `index.html` | L'onglet passe en fond bleu |

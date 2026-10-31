@@ -1,7 +1,7 @@
 # Guide d'Utilisation du Skill : tutorial-planer
 
 ## 1. Présentation & Rôle
-`tutorial-planer` est l'**architecte et ingénieur de la progression pédagogique** des tutoriels au sein du cursus Solicode (Niveau N1 Débutant).  
+`tutorial-planer` est l'**architecte et ingénieur de la progression pédagogique** des tutoriels au sein du cursus Solicode (Niveaux N1, N2 ou N3 selon le dépôt courant).  
 Il intervient en amont de `tutorial-writer` pour concevoir, auditer et ordonnancer les plans de réalisation technique par session ou sprint (`_plan-réalisation-tutos/S[X]/plan-developpement.md`).
 
 7: Sa mission est de transformer méthodiquement le code hérité (`dossier-depart/`) vers le livrable complet de la session (`code-a-apprendre/`) sans aucune rupture cognitive ($E_{n-1} \rightarrow E_n$), de garantir l'intégrité référentielle des entités Jekyll (`_sessions/`, `_domaines/`, `_uas/`), et d'initialiser immédiatement les fichiers stubs de tutoriels sous `_tutos/` avec l'état `en_construction: true`.
@@ -54,7 +54,7 @@ Il intervient en amont de `tutorial-writer` pour concevoir, auditer et ordonnanc
 54:   - `resources/gabarit-tuto-en-construction.md` (structure canonique des stubs `en_construction: true`).
 55:   - `resources/methode-bien-demarrer.md` (sas d'installation si nouvelle technologie).
 56: - **Règles applicables :**
-57:   - `.agents/rules/pedagogie-spartel.md` (niveau A1-A2, cycle actif).
+57:   - Les règles pédagogiques locales dans `.agents/rules/` (cycle actif, niveau de langue adapté).
 58:   - `.agents/rules/standards-techniques.md` (UTF-8 sans BOM, livrables de code source).
 59: 
 60: ---

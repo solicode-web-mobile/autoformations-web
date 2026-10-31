@@ -2,6 +2,7 @@
   "hubPath": "D:/solicode-lms/skills-workspace",
   "skills": {
     "local": [
+      "dev-n1",
       "sync-theme",
       "dev-jekyll",
       "tutorial-planer"

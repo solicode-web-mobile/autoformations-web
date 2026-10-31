@@ -1,6 +1,6 @@
 # Index Didactique des 17 Domaines de Compétence
 
-> **Répertoire d'Orientation & Règles Didactiques — Spartel N1**  
+> **Répertoire d'Orientation & Règles Didactiques — Solicode**  
 > **Compétence :** `tutorial-writer`  
 > Chaque domaine possède sa propre fiche didactique détaillée dans ce dossier `resources/`.
 
@@ -10,7 +10,7 @@
 
 | N° | Domaine Technique | Fiche Dédiée | Synthèse des Règles Clés |
 | :-: | :--- | :--- | :--- |
-| 1 | **Pédagogie Active** | [domaine-active.md](domaine-active.md) | Cycle d'apprentissage N1, posture de guidage, interdiction de captures d'écran. |
+| 1 | **Pédagogie Active** | [domaine-active.md](domaine-active.md) | Cycle d'apprentissage actif, posture de guidage, interdiction de captures d'écran. |
 | 2 | **Algorithmique** | [domaine-algo.md](domaine-algo.md) | Code autonome exécutable, `array-svg.html`, livrable `.js` pur. |
 | 3 | **Analyse des Besoins** | [domaine-analyse.md](domaine-analyse.md) | Cas d'étude narratif obligatoire, tableaux acteurs/rôles, aucun code. |
 | 4 | **Architecture Applicative** | [domaine-architecture.md](domaine-architecture.md) | Séparation des préoccupations (SoC), arborescences indentées, sous-dossiers. |

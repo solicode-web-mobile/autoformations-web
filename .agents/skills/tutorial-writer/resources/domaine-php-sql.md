@@ -1,6 +1,6 @@
 # Domaine PHP & Base de Données (`domaine-php-sql`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Connexion PDO, requêtes préparées, CRUD dynamique, sécurité SQL.
 

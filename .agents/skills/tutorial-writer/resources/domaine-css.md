@@ -1,6 +1,6 @@
 # Domaine CSS & Mise en Page (`domaine-css`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Styles, sélecteurs, modèle de boîte, Flexbox, CSS Grid, Responsive.
 

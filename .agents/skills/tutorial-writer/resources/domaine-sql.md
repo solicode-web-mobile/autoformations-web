@@ -1,6 +1,6 @@
 # Domaine SQL (`domaine-sql`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Langage de requêtes relationnelles, DDL, DML, sélections, jointures.
 

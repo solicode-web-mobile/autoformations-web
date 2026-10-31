@@ -1,7 +1,7 @@
 # Guide d'Utilisation du Skill : tutorial-writer
 
 ## 1. Présentation & Rôle
-`tutorial-writer` est l'**artisan pédagogique universel** chargé de concevoir et rédiger les guides d'apprentissage techniques pas-à-pas (tutoriels) pour les apprenants débutants (Niveau N1 Solicode).
+`tutorial-writer` est l'**artisan pédagogique universel** chargé de concevoir et rédiger les guides d'apprentissage techniques pas-à-pas (tutoriels) pour les apprenants Solicode (Niveaux N1, N2, N3 selon les règles locales du dépôt).
 
 Tout tutoriel produit est **directement et nativement simplifié dès sa conception** : sans surcharge cognitive, visuel d'abord, théorie courte (3 à 4 H3 max), et pratique ultra-ciblée. Il applique en permanence le cycle de pédagogie active :
 $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Expérimenter} \longrightarrow \text{Réaliser} \longrightarrow \text{Réutiliser}$$
@@ -12,7 +12,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 - **Quand utiliser ce skill :**
   - Rédaction d'une **série progressive de tutoriels** à partir d'un plan de session validé (`plan-developpement.md`) et du code cible.
   - Rédaction d'un **tutoriel unitaire autonome** (apprentissage isolé d'une notion avec son micro-livrable).
-  - Modernisation ou allègement d'un tutoriel existant trop verbeux ou dense pour le niveau N1 débutant.
+  - Modernisation ou allègement d'un tutoriel existant trop verbeux ou dense pour le niveau visé.
   - Création ou mise à jour des démonstrateurs interactifs associés sous `/code/`.
 - **Quand NE PAS utiliser ce skill :**
   - Cadrage technique, découpage incrémental ou création d'UAs ➔ Utiliser `tutorial-planer`.
@@ -31,7 +31,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 
 ```markdown
 # Rédaction d'un tutoriel unitaire autonome
-@[.agents/skills/tutorial-writer/SKILL.md] Rédige un tutoriel unitaire simplifié pour apprendre à styliser un bouton animé en CSS Flexbox (Niveau N1 Débutant).
+@[.agents/skills/tutorial-writer/SKILL.md] Rédige un tutoriel unitaire simplifié pour apprendre à styliser un bouton animé en CSS Flexbox.
 ```
 
 ```markdown
@@ -48,7 +48,7 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 - **Plan de cadrage :**
   - Fiche technique du tutoriel issue de `_plan-réalisation-tutos/S[X]/plan-developpement.md`.
 - **Règles applicables :**
-  - `.agents/rules/pedagogie-spartel.md` (Français A1-A2, impératif direct, glossaire obligatoire d'une ligne pour chaque terme technique introduit).
+  - Les règles pédagogiques locales dans `.agents/rules/` (style direct, niveau de langue adapté, glossaire concis pour chaque nouveau terme technique introduit).
   - `.agents/rules/standards-techniques.md` (Strict UTF-8 sans BOM, insertion du script `window.pageData` sous le frontmatter si éditeur interactif, livrable physique de code).
 
 ---
@@ -80,6 +80,6 @@ $$\text{Comprendre} \longrightarrow \text{Reproduire} \longrightarrow \text{Exp�
 | Piège Fréquent | Risque | Bonne Pratique |
 | :--- | :--- | :--- |
 | Rédiger sans charger la fiche du domaine | Violations des contraintes didactiques propres au domaine | Charger obligatoirement `resources/domaine-[code].md` dès la première étape |
-| Rédiger une théorie académique trop longue | Décrochage de l'apprenant N1 | Limiter strictement la théorie à 3 ou 4 H3 très visuels |
+| Rédiger une théorie académique trop longue | Décrochage de l'apprenant | Limiter strictement la théorie à 3 ou 4 H3 très visuels |
 | Multiplier les exercices dans la pratique | Surcharge cognitive inutile | Un seul cas d'application direct suffit pour valider la compréhension |
 | Demander une capture d'écran comme livrable | Violation de la règle des livrables | Le livrable doit toujours être le code source tapé ou un journal `commandes.md` |

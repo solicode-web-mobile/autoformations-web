@@ -1,6 +1,6 @@
 # Domaine Algorithmique (`domaine-algo`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Logique de programmation, variables, boucles, conditions, tableaux, fonctions.
 

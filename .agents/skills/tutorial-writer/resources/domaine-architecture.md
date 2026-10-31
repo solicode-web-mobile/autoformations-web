@@ -1,6 +1,6 @@
 # Domaine Architecture Applicative (`domaine-architecture`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Structuration de projet, séparation des préoccupations (SoC), arborescences.
 

@@ -1,6 +1,6 @@
 # Domaine Pédagogie Active (`domaine-active`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Démarche d'apprentissage actif et posture pédagogique.
 

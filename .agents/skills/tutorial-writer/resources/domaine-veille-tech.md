@@ -1,6 +1,6 @@
 # Domaine Veille Technologique & Culture Numérique (`domaine-veille-tech`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Culture web, vulgarisation, protocoles, architectures Internet, veille.
 

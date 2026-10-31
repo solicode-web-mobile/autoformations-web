@@ -1,6 +1,6 @@
 # Domaine Git & Gestion de Versions (`domaine-git`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Gestion de versions, ligne de commande Git, dépôts GitHub.
 

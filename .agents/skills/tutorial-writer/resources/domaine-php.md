@@ -1,6 +1,6 @@
 # Domaine PHP Procédural (`domaine-php`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Syntaxe procédurale, variables, tableaux associatifs, formulaires, superglobales.
 

@@ -1,6 +1,6 @@
 # Domaine Débogage & Résolution d'Anomalies (`domaine-debug`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Méthodologie d'investigation, analyse d'erreurs, DevTools, logs.
 

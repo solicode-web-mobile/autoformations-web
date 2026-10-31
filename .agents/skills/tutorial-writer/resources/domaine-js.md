@@ -1,6 +1,6 @@
 # Domaine JavaScript & DOM (`domaine-js`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Manipulation du DOM, écouteurs d'événements, interactions dynamiques.
 

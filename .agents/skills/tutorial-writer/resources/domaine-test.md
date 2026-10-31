@@ -1,6 +1,6 @@
 # Domaine Test & Vérification (`domaine-test`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Plans de test manuels, cas limites, non-régression, validation recette.
 

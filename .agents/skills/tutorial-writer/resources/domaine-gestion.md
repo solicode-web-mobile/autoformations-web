@@ -1,6 +1,6 @@
 # Domaine Gestion Personnelle du Travail (`domaine-gestion`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Méthodologie personnelle, estimation, Kanban, autonomie, gestion du blocage.
 

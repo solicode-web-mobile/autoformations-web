@@ -1,6 +1,6 @@
 # Domaine HTML & Sémantique (`domaine-html`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Balises sémantiques, accessibilité, structure de documents, formulaires.
 

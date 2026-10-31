@@ -1,6 +1,6 @@
 # Domaine Analyse des Besoins (`domaine-analyse`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Expression des besoins, cas d'utilisation, personas, scénarios utilisateurs.
 

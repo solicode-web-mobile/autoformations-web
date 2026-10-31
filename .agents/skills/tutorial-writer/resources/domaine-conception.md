@@ -1,6 +1,6 @@
 # Domaine Conception de Données (`domaine-conception`)
 
-> **Ressource Didactique & Norme Graphique — Spartel N1**  
+> **Ressource Didactique & Norme Graphique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Modélisation conceptuelle des données (Merise / MCD).
 

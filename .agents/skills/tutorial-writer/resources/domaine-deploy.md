@@ -1,6 +1,6 @@
 # Domaine Déploiement & Environnement Local (`domaine-deploy`)
 
-> **Ressource Didactique — Spartel N1**  
+> **Ressource Didactique — Solicode**  
 > **Compétence associée :** `tutorial-writer`  
 > **Périmètre :** Serveurs locaux (Live Server, Laragon, Apache), URLs vs chemins de fichiers.
 

@@ -1,6 +1,6 @@
 # Méthode Pédagogique « Bien Démarrer » (Getting Started Générique)
 
-Ce guide méthodologique définit le protocole pédagogique obligatoire lors de l'introduction de tout nouveau langage de programmation, runtime, outil en ligne de commande ou framework au sein du cursus Solicode (Niveau N1 Débutant).
+Ce guide méthodologique définit le protocole pédagogique obligatoire lors de l'introduction de tout nouveau langage de programmation, runtime, outil en ligne de commande ou framework au sein du cursus Solicode (Niveaux N1, N2, N3).
 
 ---
 

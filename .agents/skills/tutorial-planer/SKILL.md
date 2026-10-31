@@ -9,7 +9,7 @@ inspiration:
 ---
 
 # 1. Mission
-Ce skill est l'**architecte et ingénieur de la progression pédagogique** des tutoriels au sein du cursus Solicode (Niveau N1 Débutant).
+Ce skill est l'**architecte et ingénieur de la progression pédagogique** des tutoriels au sein du cursus Solicode (Niveaux N1, N2 ou N3 selon le dépôt courant).
 Il intervient en amont de [tutorial-writer](../tutorial-writer/SKILL.md) pour concevoir, auditer et ordonnancer les plans de réalisation par session ou sprint (`_plan-réalisation-tutos/SX/plan-developpement.md`).
 
 Sa vocation est de garantir un parcours d'apprentissage **sans rupture cognitive et sans saut de connaissance** :
@@ -143,7 +143,7 @@ Ce mécanisme réserve immédiatement la route Jekyll, insère le badge 🚧 dan
   - [gabarit-ua.md](resources/gabarit-ua.md) : Gabarit normé pour créer une Unité d'Apprentissage (`_uas/[domaine]/UA.XXX.YY.md`).
   - [gabarit-tuto-en-construction.md](resources/gabarit-tuto-en-construction.md) : Gabarit normé pour initialiser les fichiers stubs de tutoriels (`en_construction: true`).
 - **Ressources transversales du projet :**
-  - `.agents/rules/pedagogie-spartel.md` (Directives didactiques N1 et cycle actif).
+  - Les règles pédagogiques locales du niveau dans `.agents/rules/` (directives didactiques et cycle actif).
   - `.agents/rules/standards-techniques.md` (Encodage UTF-8 sans BOM, conventions de nommage et livrables).
 
 ---
