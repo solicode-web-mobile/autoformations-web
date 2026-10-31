@@ -3,7 +3,7 @@ title: "Démarrer un environnement PHP (Apache)"
 layout: tuto
 slug: "demarrer-environnement-php"
 permalink: /tutos/demarrer-environnement-php/
-tuto_id: "T.141.12.1"
+tuto_id: "T.141.121"
 type: "classique"
 version: "normal"
 ua: "UA.141.12"
@@ -57,7 +57,7 @@ Vous devez savoir :
 - séparer le traitement et l'affichage ;
 - utiliser un navigateur Web.
 
-Vous devez aussi avoir réalisé le tutoriel **T.125.13.1 — Séparer traitement et affichage en PHP**.
+Vous devez aussi avoir réalisé le tutoriel **T.125.131 — Séparer traitement et affichage en PHP**.
 
 ## Données de départ
 

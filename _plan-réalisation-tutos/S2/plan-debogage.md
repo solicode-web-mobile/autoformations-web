@@ -40,17 +40,17 @@ Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur 
 
 | Identifiant | Session | Titre du tutoriel | Unité ciblée | Livrable attendu |
 | :--- | :---: | :--- | :---: | :--- |
-| **T.125.21.1** | **S2** | Explorer l'onglet Console des DevTools du navigateur | UA.125.21 | Console ouverte et messages d'erreurs identifiés. |
-| **T.125.21.2** | **S2** | Déboguer un script JavaScript pas à pas avec des breakpoints | UA.125.21 | Trace de débogage avec suivi des variables. |
-| **T.125.22.1** | **S6** | Traquer une anomalie dans un script serveur PHP | UA.125.22 | Ligne responsable du dysfonctionnement identifiée. |
-| **T.125.23.1** | **S7** | Corriger une variable mal transmise dans l'URL | UA.125.23 | Erreur résolue et affichage vérifié après correction. |
-| **T.125.24.1** | **S9** | Déboguer un parcours complet de soumission de formulaire | UA.125.24 | Rapport de diagnostic et correction du cycle complet. |
+| **T.125.211** | **S2** | Explorer l'onglet Console des DevTools du navigateur | UA.125.21 | Console ouverte et messages d'erreurs identifiés. |
+| **T.125.212** | **S2** | Déboguer un script JavaScript pas à pas avec des breakpoints | UA.125.21 | Trace de débogage avec suivi des variables. |
+| **T.125.221** | **S6** | Traquer une anomalie dans un script serveur PHP | UA.125.22 | Ligne responsable du dysfonctionnement identifiée. |
+| **T.125.231** | **S7** | Corriger une variable mal transmise dans l'URL | UA.125.23 | Erreur résolue et affichage vérifié après correction. |
+| **T.125.241** | **S9** | Déboguer un parcours complet de soumission de formulaire | UA.125.24 | Rapport de diagnostic et correction du cycle complet. |
 
 ---
 
 ## 4. Fiches Détaillées des Tutoriels Mobilisés en Session S2
 
-### T.125.21.1 — Explorer l'onglet Console des DevTools du navigateur
+### T.125.211 — Explorer l'onglet Console des DevTools du navigateur
 - **Objectif :** Prendre l'habitude de garder la console ouverte pour repérer immédiatement les fautes de frappe et les ressources introuvables.
 - **Notions :** Outils de développement du navigateur (`F12`), onglet Console, messages de type *Error*, *Warning* et *Info*.
 - **Consigne pas-à-pas :**
@@ -63,7 +63,7 @@ Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur 
 
 ---
 
-### T.125.21.2 — Déboguer un script JavaScript pas à pas avec des breakpoints
+### T.125.212 — Déboguer un script JavaScript pas à pas avec des breakpoints
 - **Objectif :** Figer le temps et suivre l'évolution d'une boucle ou d'une condition pas à pas sans multiplier les `console.log()`.
 - **Notions :** Onglet *Sources / Débogueur*, point d'arrêt (*Breakpoint*), panneau des variables locales (*Scope*), bouton *Step Over* (`F10`).
 - **Consigne pas-à-pas :**

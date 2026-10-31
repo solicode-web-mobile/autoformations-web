@@ -3,7 +3,7 @@ title: "Réparer une erreur avant le commit avec git restore"
 layout: tuto
 slug: "reparer-restore"
 permalink: /tutos/:slug/
-tuto_id: "T.151.15.2"
+tuto_id: "T.151.152"
 type: "classique"
 version: "normal"
 simplified: true

@@ -49,26 +49,26 @@ flowchart TD
 
 * **UA.122.34 — Contrôler les données saisies côté navigateur :**  
   Intercepter la soumission du formulaire de connexion avec JavaScript pour vérifier la présence d'une adresse email valide et d'un mot de passe non vide avant l'envoi au serveur.
-  - **T.122.34.1 — Valider le formulaire de connexion côté client avec JavaScript**  
+  - **T.122.341 — Valider le formulaire de connexion côté client avec JavaScript**  
     *Livrable :* Script client alertant l'utilisateur en cas de saisie incomplète | *Fichier :* `js/auth-validation.js`
 
 #### Réaliser le traitement serveur (D.123.1, php)
 
 * **UA.123.18 — Organiser un traitement PHP complet (Sécurisation des accès) :**  
   Créer le mécanisme de protection par session PHP avec `session_start()`, initialisation des variables de session et redirection automatique si l'accès est refusé.
-  - **T.123.18.2 — Gérer la session utilisateur et le verrou d'accès check.php**  
+  - **T.123.182 — Gérer la session utilisateur et le verrou d'accès check.php**  
     *Livrable :* Fichier `check.php` protégeant les pages et script `logout.php` | *Fichier :* `admin/auth/check.php`, `admin/auth/logout.php`
 
 #### Exploiter les données (D.124.1, sql)
 
 * **UA.124.16 — Combiner les critères d’une requête :**  
   Construire une requête SQL combinant les critères de recherche pour identifier l'utilisateur administrateur par son email unique (`WHERE email = :email`).
-  - **T.124.16.1 — Rechercher et identifier l'administrateur en SQL**  
+  - **T.124.161 — Rechercher et identifier l'administrateur en SQL**  
     *Livrable :* Requête préparée ciblant l'utilisateur par son adresse email | *Fichier :* `admin/auth/login.php`
 
 * **UA.124.25 — Vérifier et corriger l’exploitation des données :**  
   Contrôler la validité de l'empreinte de mot de passe (`password_verify()`), identifier les éventuelles erreurs d'authentification et afficher un message sécurisé sans dévoiler d'informations sensibles.
-  - **T.124.25.1 — Vérifier le mot de passe et gérer les erreurs d'authentification**  
+  - **T.124.251 — Vérifier le mot de passe et gérer les erreurs d'authentification**  
     *Livrable :* Contrôleur `login.php` complet avec gestion des échecs de connexion | *Fichier :* `admin/auth/login.php`
 
 ### ⏭️ Perspectives Futures (Sessions S11 & S12)
@@ -79,7 +79,7 @@ flowchart TD
 
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
-### T.122.34.1 — Valider le formulaire de connexion côté client avec JavaScript
+### T.122.341 — Valider le formulaire de connexion côté client avec JavaScript
 - **Objectif :** Offrir un retour immédiat à l'utilisateur avant même que la requête HTTP ne parte vers le serveur.
 - **Notions :** Sélection du formulaire avec `document.querySelector()`, ciblage des champs avec `document.getElementById()`, écouteur d'événement `submit`, vérification de chaîne (`includes('@')`), annulation de l'envoi avec `event.preventDefault()`.
 - **Consigne pour l'apprenant :**
@@ -90,7 +90,7 @@ flowchart TD
 
 ---
 
-### T.124.16.1 — Rechercher et identifier l'administrateur en SQL
+### T.124.161 — Rechercher et identifier l'administrateur en SQL
 - **Objectif :** Récupérer de façon sécurisée les informations de l'administrateur à partir de son email.
 - **Notions :** Requête préparée `$pdo->prepare()`, clause `WHERE email = :email`, méthode `fetch()`.
 - **Consigne pour l'apprenant :**
@@ -101,7 +101,7 @@ flowchart TD
 
 ---
 
-### T.124.25.1 — Vérifier le mot de passe et gérer les erreurs d'authentification
+### T.124.251 — Vérifier le mot de passe et gérer les erreurs d'authentification
 - **Objectif :** Valider l'accès de façon sécurisée et gérer les situations où les identifiants sont erronés.
 - **Notions :** Fonction PHP `password_verify($password, $hash)`, initialisation de `$_SESSION`, message d'erreur générique.
 - **Consigne pour l'apprenant :**
@@ -112,7 +112,7 @@ flowchart TD
 
 ---
 
-### T.123.18.2 — Gérer la session utilisateur et le verrou d'accès check.php
+### T.123.182 — Gérer la session utilisateur et le verrou d'accès check.php
 - **Objectif :** Verrouiller l'accès à toutes les pages sensibles de l'espace administration et gérer la déconnexion complète.
 - **Notions :** `session_start()`, tableau superglobal `$_SESSION`, vérification `isset($_SESSION['utilisateur_id'])`, vidage des variables avec `session_unset()`, destruction complète avec `session_destroy()`.
 - **Consigne pour l'apprenant :**

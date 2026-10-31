@@ -3,7 +3,7 @@ title: "Comprendre les concepts de base : Git et GitHub"
 layout: tuto
 slug: "concepts-base-git-github"
 permalink: /tutos/concepts-base-git-github/
-tuto_id: "T.151.11.2"
+tuto_id: "T.151.112"
 type: "classique"
 version: "normal"
 ua: "UA.151.11"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Comprendre la différence fondamentale entre Git (l'outil local sur votre ordinateur) et GitHub (la plateforme de partage sur Internet), et appréhender le lien entre dépôt local et dépôt distant.
-- **Prérequis :** Avoir installé et configuré Git (tutoriel T.151.11.1).
+- **Prérequis :** Avoir installé et configuré Git (tutoriel T.151.111).
 
 ---
 

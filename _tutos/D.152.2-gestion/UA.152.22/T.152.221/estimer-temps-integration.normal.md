@@ -3,7 +3,7 @@ title: "Estimer le temps nécessaire pour une tâche d'intégration"
 layout: tuto
 slug: "estimer-temps-integration"
 permalink: /tutos/:slug/
-tuto_id: "T.152.22.1"
+tuto_id: "T.152.221"
 type: "classique"
 version: "normal"
 ua: "UA.152.22"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Découper un travail d'intégration Web en composants clés, estimer une durée réaliste en heures et construire un tableau prévisionnel d'avancement.
-- **Prérequis :** Savoir identifier les livrables d'une page Web et manipuler une fiche de tâche (`T.152.21.2`).
+- **Prérequis :** Savoir identifier les livrables d'une page Web et manipuler une fiche de tâche (`T.152.212`).
 
 ---
 

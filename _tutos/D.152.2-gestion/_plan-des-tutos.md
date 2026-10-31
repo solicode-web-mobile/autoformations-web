@@ -44,21 +44,21 @@ Un développeur professionnel ne se contente pas d'écrire du code : il sait pla
 
 | Identifiant | Session | Titre du tutoriel | Unité ciblée | Livrable attendu |
 | :--- | :---: | :--- | :---: | :--- |
-| **T.152.21.1** | **S2** | Analyser une consigne et identifier les critères d'acceptation | UA.152.21 | Liste des critères de réussite validée. |
-| **T.152.21.2** | **S2** | Rédiger une fiche de tâche synthétique | UA.152.21 | Fiche de tâche complétée pour la page article. |
-| **T.152.22.1** | **S3** | Estimer le temps nécessaire pour une tâche d'intégration | UA.152.22 | Tableau prévisionnel d'heures par composant. |
-| **T.152.23.1** | **S5** | Découper un sprint en sous-tâches indépendantes | UA.152.23 | Découpage séquentiel d'une page PHP en 4 étapes. |
-| **T.152.24.1** | **S6** | Mettre en place et actualiser un tableau Kanban simple | UA.152.24 | Tableau Kanban physique ou numérique à jour. |
-| **T.152.25.1** | **S7** | Mesurer l'écart entre temps estimé et temps réel | UA.152.25 | Bilan d'analyse des écarts de temps constatés. |
-| **T.152.26.1** | **S8** | Structurer une demande d'aide face à un blocage | UA.152.26 | Message SOS rédigé selon la méthode 3 étapes. |
-| **T.152.27.1** | **S9** | Préparer un compte-rendu d'avancement pour son tuteur | UA.152.27 | Message de reporting quotidien structuré. |
-| **T.152.28.1** | **S10** | Réaliser la revue finale du suivi de projet | UA.152.28 | Synthèse globale de l'avancement du projet. |
+| **T.152.211** | **S2** | Analyser une consigne et identifier les critères d'acceptation | UA.152.21 | Liste des critères de réussite validée. |
+| **T.152.212** | **S2** | Rédiger une fiche de tâche synthétique | UA.152.21 | Fiche de tâche complétée pour la page article. |
+| **T.152.221** | **S3** | Estimer le temps nécessaire pour une tâche d'intégration | UA.152.22 | Tableau prévisionnel d'heures par composant. |
+| **T.152.231** | **S5** | Découper un sprint en sous-tâches indépendantes | UA.152.23 | Découpage séquentiel d'une page PHP en 4 étapes. |
+| **T.152.241** | **S6** | Mettre en place et actualiser un tableau Kanban simple | UA.152.24 | Tableau Kanban physique ou numérique à jour. |
+| **T.152.251** | **S7** | Mesurer l'écart entre temps estimé et temps réel | UA.152.25 | Bilan d'analyse des écarts de temps constatés. |
+| **T.152.261** | **S8** | Structurer une demande d'aide face à un blocage | UA.152.26 | Message SOS rédigé selon la méthode 3 étapes. |
+| **T.152.271** | **S9** | Préparer un compte-rendu d'avancement pour son tuteur | UA.152.27 | Message de reporting quotidien structuré. |
+| **T.152.281** | **S10** | Réaliser la revue finale du suivi de projet | UA.152.28 | Synthèse globale de l'avancement du projet. |
 
 ---
 
 ## 4. Fiches Détaillées des Tutoriels Mobilisés en Session S2
 
-### T.152.21.1 — Analyser une consigne et identifier les critères d'acceptation
+### T.152.211 — Analyser une consigne et identifier les critères d'acceptation
 - **Objectif :** Savoir lire une consigne technique et repérer exactement les conditions nécessaires pour considérer la tâche comme réussie.
 - **Notions :** Périmètre technique, résultat observable, critères d'acceptation (*Acceptance Criteria*).
 - **Consigne pas-à-pas :**
@@ -72,7 +72,7 @@ Un développeur professionnel ne se contente pas d'écrire du code : il sait pla
 
 ---
 
-### T.152.21.2 — Rédiger une fiche de tâche synthétique
+### T.152.212 — Rédiger une fiche de tâche synthétique
 - **Objectif :** Formaliser sur un support court (fiche markdown ou carnet de bord) les éléments clés de sa mission avant de coder.
 - **Notions :** Fiche de tâche (*Task Sheet*), intitulé précis, livrables, temps alloué.
 - **Consigne pas-à-pas :**

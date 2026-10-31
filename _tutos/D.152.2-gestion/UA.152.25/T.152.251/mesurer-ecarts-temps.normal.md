@@ -3,7 +3,7 @@ title: "Mesurer l'écart entre temps estimé et temps réel"
 layout: tuto
 slug: "mesurer-ecarts-temps"
 permalink: /tutos/:slug/
-tuto_id: "T.152.25.1"
+tuto_id: "T.152.251"
 type: "classique"
 version: "normal"
 ua: "UA.152.25"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Noter le temps réel passé sur ses développements, calculer l'écart avec les heures prévues et analyser les causes pour améliorer ses estimations futures.
-- **Prérequis :** Savoir estimer une tâche technique (`T.152.22.1`) et suivre son travail avec un Kanban (`T.152.24.1`).
+- **Prérequis :** Savoir estimer une tâche technique (`T.152.221`) et suivre son travail avec un Kanban (`T.152.241`).
 
 ---
 

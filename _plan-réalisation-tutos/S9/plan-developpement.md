@@ -42,26 +42,26 @@ flowchart TD
 
 * **UA.122.33 — Gérer les événements utilisateur :**  
   Associer des traitements JavaScript aux actions de l'utilisateur (écouteur `change` sur la sélection de fichier pour prévisualiser le nom ou confirmation `click` avant suppression).
-  - **T.122.33.1 — Gérer les événements utilisateur dans le formulaire d'article**  
+  - **T.122.331 — Gérer les événements utilisateur dans le formulaire d'article**  
     *Livrable :* Script JavaScript interactif réagissant aux saisies et clics | *Fichier :* `js/admin.js`
 
 #### Réaliser le traitement serveur (D.123.1, php)
 
 * **UA.123.18 — Organiser un traitement PHP complet :**  
   Combiner variables, conditions, boucles, listes déroulantes de catégories et d'auteurs, réception de fichiers avec `$_FILES`, et redirection après enregistrement pour construire un flux serveur complet.
-  - **T.123.18.1 — Traiter l'enregistrement complet d'un article en PHP**  
+  - **T.123.181 — Traiter l'enregistrement complet d'un article en PHP**  
     *Livrable :* Contrôleur `form.php` gérant l'ensemble du cycle de saisie et de validation | *Fichier :* `admin/articles/form.php`
 
 #### Exploiter les données (D.124.1, sql)
 
 * **UA.124.15 — Limiter les résultats SQL :**  
   Construire une requête SQL utilisant la clause `LIMIT` pour restreindre la quantité d'articles affichés et éviter les surcharges.
-  - **T.124.15.1 — Restreindre le nombre d'articles affichés avec LIMIT**  
+  - **T.124.151 — Restreindre le nombre d'articles affichés avec LIMIT**  
     *Livrable :* Requête de consultation bornée avec la clause LIMIT | *Fichier :* `admin/articles/liste.php`
 
 * **UA.124.24 — Exploiter des données issues de plusieurs tables :**  
   Construire une requête SQL combinant plusieurs jointures (`JOIN categories` et `JOIN auteurs`) afin d'afficher des données explicites dans la liste d'administration.
-  - **T.124.24.1 — Récupérer les articles avec leurs catégories et auteurs liés**  
+  - **T.124.241 — Récupérer les articles avec leurs catégories et auteurs liés**  
     *Livrable :* Requête multi-tables retournant les articles avec leurs libellés associés | *Fichier :* `admin/articles/liste.php`
 
 ### ⏭️ Perspectives Futures (Sessions S10 à S12)
@@ -72,7 +72,7 @@ flowchart TD
 
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
-### T.124.24.1 — Récupérer les articles avec leurs catégories et auteurs liés
+### T.124.241 — Récupérer les articles avec leurs catégories et auteurs liés
 - **Objectif :** Afficher un tableau d'articles lisible comprenant le nom de la catégorie et le nom de l'auteur au lieu de simples clés étrangères numériques.
 - **Notions :** Jointure SQL interne `JOIN ... ON ...`, alias de tables (`a`, `c`, `aut`), sélection de champs spécifiques.
 - **Consigne pour l'apprenant :**
@@ -83,7 +83,7 @@ flowchart TD
 
 ---
 
-### T.124.15.1 — Restreindre le nombre d'articles affichés avec LIMIT
+### T.124.151 — Restreindre le nombre d'articles affichés avec LIMIT
 - **Objectif :** Contrôler la volumétrie des résultats retournés par le serveur de base de données.
 - **Notions :** Mot-clé SQL `LIMIT [nombre]`, performance des requêtes, tri préalable avec `ORDER BY`.
 - **Consigne pour l'apprenant :**
@@ -93,7 +93,7 @@ flowchart TD
 
 ---
 
-### T.123.18.1 — Traiter l'enregistrement complet d'un article en PHP
+### T.123.181 — Traiter l'enregistrement complet d'un article en PHP
 - **Objectif :** Construire le contrôleur PHP gérant l'affichage du formulaire, le chargement des dépendances, l'upload de photo et l'enregistrement des données soumises.
 - **Notions :**
   - Requêtes préparées `INSERT INTO` et `UPDATE`.
@@ -111,7 +111,7 @@ flowchart TD
 
 ---
 
-### T.122.33.1 — Gérer les événements utilisateur dans le formulaire d'article
+### T.122.331 — Gérer les événements utilisateur dans le formulaire d'article
 - **Objectif :** Enrichir le confort utilisateur en réagissant aux actions sur le formulaire.
 - **Notions :** Écouteurs d'événements `addEventListener('change')`, mise à jour d'un texte d'aide dans le DOM.
 - **Consigne pour l'apprenant :**

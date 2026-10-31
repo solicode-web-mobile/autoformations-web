@@ -46,24 +46,24 @@ Git est abordé de manière progressive, pratique et rassurante :
 
 | Identifiant | Session | Titre du tutoriel | Unité ciblée | Livrable attendu |
 | :--- | :---: | :--- | :---: | :--- |
-| **T.151.11.1** | **S2** | Configurer son identité Git dans le terminal | UA.151.11 | Nom et email renseignés avec `git config`. |
-| **T.151.11.2** | **S2** | Initialiser le dépôt local du Blog | UA.151.11 | Dépôt local créé avec `git init`. |
-| **T.151.11.3** | **S2** | Relier le projet à un dépôt GitHub distant | UA.151.11 | Dépôt distant configuré avec `git remote add origin`. |
-| **T.151.11.4** | **S2** | Réaliser son premier commit et son premier push | UA.151.11 | Code de la page article visible sur GitHub. |
-| **T.151.12.1** | **S3** | Comprendre les 3 zones de Git | UA.151.12 | Schéma d'exécution Dossier ➔ Index ➔ Dépôt. |
-| **T.151.12.2** | **S3** | La routine locale du développeur : status, add, commit | UA.151.12 | Commit de modification enregistré localement. |
-| **T.151.13.1** | **S5** | Rédiger des messages de commit professionnels | UA.151.13 | Historique avec verbes d'action et messages clairs. |
-| **T.151.14.1** | **S6** | Explorer l'historique des commits avec git log | UA.151.14 | Liste des versions visualisée dans le terminal. |
-| **T.151.15.1** | **S7** | Créer un fichier .gitignore et annuler des erreurs | UA.151.15 | Fichier `.gitignore` actif et modifications annulées. |
-| **T.151.16.1** | **S8** | Synchroniser son travail avec git push et git pull | UA.151.16 | Modifications partagées et récupérées sans conflit. |
-| **T.151.17.1** | **S9** | Cloner un projet existant depuis GitHub | UA.151.17 | Projet cloné dans un nouvel environnement de test. |
-| **T.151.18.1** | **S10** | Vérifier l'état de sauvegarde complète du projet | UA.151.18 | Rapport de conformité du dépôt GitHub final. |
+| **T.151.111** | **S2** | Configurer son identité Git dans le terminal | UA.151.11 | Nom et email renseignés avec `git config`. |
+| **T.151.112** | **S2** | Initialiser le dépôt local du Blog | UA.151.11 | Dépôt local créé avec `git init`. |
+| **T.151.113** | **S2** | Relier le projet à un dépôt GitHub distant | UA.151.11 | Dépôt distant configuré avec `git remote add origin`. |
+| **T.151.114** | **S2** | Réaliser son premier commit et son premier push | UA.151.11 | Code de la page article visible sur GitHub. |
+| **T.151.121** | **S3** | Comprendre les 3 zones de Git | UA.151.12 | Schéma d'exécution Dossier ➔ Index ➔ Dépôt. |
+| **T.151.122** | **S3** | La routine locale du développeur : status, add, commit | UA.151.12 | Commit de modification enregistré localement. |
+| **T.151.131** | **S5** | Rédiger des messages de commit professionnels | UA.151.13 | Historique avec verbes d'action et messages clairs. |
+| **T.151.141** | **S6** | Explorer l'historique des commits avec git log | UA.151.14 | Liste des versions visualisée dans le terminal. |
+| **T.151.151** | **S7** | Créer un fichier .gitignore et annuler des erreurs | UA.151.15 | Fichier `.gitignore` actif et modifications annulées. |
+| **T.151.161** | **S8** | Synchroniser son travail avec git push et git pull | UA.151.16 | Modifications partagées et récupérées sans conflit. |
+| **T.151.171** | **S9** | Cloner un projet existant depuis GitHub | UA.151.17 | Projet cloné dans un nouvel environnement de test. |
+| **T.151.181** | **S10** | Vérifier l'état de sauvegarde complète du projet | UA.151.18 | Rapport de conformité du dépôt GitHub final. |
 
 ---
 
 ## 4. Fiches Détaillées des Tutoriels Mobilisés en Session S2
 
-### T.151.11.1 — Configurer son identité Git dans le terminal
+### T.151.111 — Configurer son identité Git dans le terminal
 - **Objectif :** Indiquer à Git le nom et l'adresse email de l'auteur pour signer chaque sauvegarde.
 - **Notions :** Commandes `git config --global user.name` et `git config --global user.email`.
 - **Consigne pas-à-pas :**
@@ -75,7 +75,7 @@ Git est abordé de manière progressive, pratique et rassurante :
 
 ---
 
-### T.151.11.2 — Initialiser le dépôt local du Blog
+### T.151.112 — Initialiser le dépôt local du Blog
 - **Objectif :** Transformer le dossier de travail du Blog en un dépôt suivi par Git.
 - **Notions :** Commande `git init`, création du dossier invisible `.git/`.
 - **Consigne pas-à-pas :**
@@ -86,7 +86,7 @@ Git est abordé de manière progressive, pratique et rassurante :
 
 ---
 
-### T.151.11.3 — Relier le projet à un dépôt GitHub distant
+### T.151.113 — Relier le projet à un dépôt GitHub distant
 - **Objectif :** Établir la passerelle entre l'ordinateur de l'apprenant et son compte GitHub.
 - **Notions :** Dépôt public GitHub, URL de dépôt, commande `git remote add origin <URL>`.
 - **Consigne pas-à-pas :**
@@ -99,7 +99,7 @@ Git est abordé de manière progressive, pratique et rassurante :
 
 ---
 
-### T.151.11.4 — Réaliser son premier commit et son premier push
+### T.151.114 — Réaliser son premier commit et son premier push
 - **Objectif :** Enregistrer la première version de la page article et l'envoyer sur GitHub.
 - **Notions :** `git add .`, `git commit -m "..."`, `git branch -M main`, `git push -u origin main`.
 - **Consigne pas-à-pas :**

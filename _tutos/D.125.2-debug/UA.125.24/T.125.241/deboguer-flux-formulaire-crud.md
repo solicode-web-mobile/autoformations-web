@@ -3,7 +3,7 @@ title: "Déboguer un parcours complet de soumission de formulaire"
 layout: tuto
 slug: "deboguer-flux-formulaire-crud"
 permalink: /tutos/deboguer-flux-formulaire-crud/
-tuto_id: "T.125.24.1"
+tuto_id: "T.125.241"
 type: "classique"
 version: "normal"
 ua: "UA.125.24"

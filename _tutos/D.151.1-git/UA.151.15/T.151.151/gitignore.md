@@ -3,7 +3,7 @@ title: "Créer et configurer un fichier .gitignore"
 layout: tuto
 slug: "creer-gitignore"
 permalink: /tutos/:slug/
-tuto_id: "T.151.15.1"
+tuto_id: "T.151.151"
 type: "classique"
 version: "normal"
 simplified: true

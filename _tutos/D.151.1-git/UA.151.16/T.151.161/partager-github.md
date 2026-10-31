@@ -3,7 +3,7 @@ title: "Partager son travail sur Internet avec git push"
 layout: tuto
 slug: "partager-github"
 permalink: /tutos/:slug/
-tuto_id: "T.151.16.1"
+tuto_id: "T.151.161"
 type: "classique"
 version: "normal"
 simplified: true

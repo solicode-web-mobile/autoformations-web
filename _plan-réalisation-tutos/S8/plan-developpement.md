@@ -54,40 +54,40 @@ flowchart TD
 
 * **UA.122.15 — Construire un formulaire HTML :**  
   Construire un formulaire permettant à l'utilisateur de saisir des données structurées pour une catégorie (`nom_categorie`, `couleur_categorie`) en utilisant les balises `<form>`, `<input>` et un bouton de soumission.
-  - **T.122.15.1 — Créer le formulaire de gestion d'une catégorie**  
+  - **T.122.151 — Créer le formulaire de gestion d'une catégorie**  
     *Livrable :* Formulaire HTML avec champs de saisie et méthode POST | *Fichier :* `admin/categories/form-template.php`
 
 * **UA.122.32 — Sélectionner et manipuler le DOM :**  
   Sélectionner des éléments du DOM avec `document.querySelectorAll()` et intercepter l'événement de clic pour afficher une boîte de confirmation avant suppression.
-  - **T.122.32.1 — Interagir avec le DOM pour confirmer une suppression**  
+  - **T.122.321 — Interagir avec le DOM pour confirmer une suppression**  
     *Livrable :* Script client interceptant les clics sur les liens de suppression | *Fichier :* `js/admin.js`
 
 #### Réaliser le traitement serveur (D.123.1, php)
 
 * **UA.123.17 — Contrôler les données reçues :**  
   Vérifier les données transmises par la méthode `POST` (`$_POST`), nettoyer les valeurs avec `trim()`, vérifier qu'aucun champ obligatoire n'est vide et gérer les messages d'erreur.
-  - **T.123.17.1 — Valider les données du formulaire de catégorie en PHP**  
+  - **T.123.171 — Valider les données du formulaire de catégorie en PHP**  
     *Livrable :* Contrôle complet des champs POST avec message d'erreur si invalide | *Fichier :* `admin/categories/form.php`
 
 #### Exploiter les données (D.124.1, sql)
 
 * **UA.124.14 — Trier les résultats SQL :**  
   Construire une requête SQL utilisant la clause `ORDER BY` pour afficher les catégories triées par ordre alphabétique (`ORDER BY libelle ASC`).
-  - **T.124.14.1 — Afficher et trier la liste des catégories en SQL**  
+  - **T.124.141 — Afficher et trier la liste des catégories en SQL**  
     *Livrable :* Requête de sélection avec tri alphabétique et comptage d'articles | *Fichier :* `admin/categories/liste.php`
 
 * **UA.124.23 — Exploiter les critères de recherche dans PHP :**  
   Construire et exécuter des requêtes préparées PDO d'insertion (`INSERT INTO`), de modification (`UPDATE`) et de suppression (`DELETE`) à partir des données transmises par l'application.
-  - **T.124.23.1 — Insérer et modifier une catégorie avec des requêtes préparées**  
+  - **T.124.231 — Insérer et modifier une catégorie avec des requêtes préparées**  
     *Livrable :* Insertion (INSERT) ou mise à jour (UPDATE) sécurisée en base de données | *Fichier :* `admin/categories/form.php`
-  - **T.124.23.2 — Supprimer une catégorie en base de données**  
+  - **T.124.232 — Supprimer une catégorie en base de données**  
     *Livrable :* Suppression sécurisée d'une catégorie ciblée par son identifiant | *Fichier :* `admin/categories/liste.php`
 
 #### Structurer et déboguer une solution (D.125.1, architecture)
 
 * **UA.125.16 — Structurer la partie Public et Admin :**  
   Structurer l'application Web dynamique en isolant la partie administration dans un dossier dédié `admin/`, avec son propre tableau de bord `admin/index.php`, ses sous-dossiers par entité et ses feuilles de style spécifiques.
-  - **T.125.16.1 — Mettre en place l'architecture du dossier admin et son tableau de bord**  
+  - **T.125.161 — Mettre en place l'architecture du dossier admin et son tableau de bord**  
     *Livrable :* Arborescence `admin/` créée et page d'accueil d'administration fonctionnelle | *Fichier :* `admin/index.php`
 
 ### ⏭️ Perspectives Futures (Sessions S9 à S12)
@@ -98,7 +98,7 @@ flowchart TD
 
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
-### T.125.16.1 — Mettre en place l'architecture du dossier admin et son tableau de bord
+### T.125.161 — Mettre en place l'architecture du dossier admin et son tableau de bord
 - **Objectif :** Créer l'architecture de fichiers pour séparer nettement la consultation publique et l'espace de gestion.
 - **Notions :** Séparation des espaces Web, liens relatifs inter-dossiers (`../../db.php`), page d'accueil d'administration.
 - **Consigne pour l'apprenant :**
@@ -109,7 +109,7 @@ flowchart TD
 
 ---
 
-### T.124.14.1 — Afficher et trier la liste des catégories en SQL
+### T.124.141 — Afficher et trier la liste des catégories en SQL
 - **Objectif :** Lister toutes les catégories enregistrées en base de données, ordonnées par ordre alphabétique avec le nombre d'articles rattachés.
 - **Notions :** Clause SQL `ORDER BY nom_colonne ASC`, fonction d'agrégation `COUNT(a.id)`, jointure `LEFT JOIN articles a ON ...`, regroupement avec `GROUP BY c.id`.
 - **Consigne pour l'apprenant :**
@@ -121,7 +121,7 @@ flowchart TD
 
 ---
 
-### T.122.15.1 — Créer le formulaire de gestion d'une catégorie
+### T.122.151 — Créer le formulaire de gestion d'une catégorie
 - **Objectif :** Construire l'interface de saisie pour ajouter ou éditer une catégorie.
 - **Notions :** Balises HTML `<form method="POST">`, `<label>`, `<input type="text">`, `<input type="color">`, bouton de soumission, protection de l'affichage avec `htmlspecialchars()`.
 - **Consigne pour l'apprenant :**
@@ -132,7 +132,7 @@ flowchart TD
 
 ---
 
-### T.123.17.1 — Valider les données du formulaire de catégorie en PHP
+### T.123.171 — Valider les données du formulaire de catégorie en PHP
 - **Objectif :** Vérifier que les informations transmises par l'utilisateur sont conformes avant tout enregistrement.
 - **Notions :** Détection de la méthode HTTP avec `$_SERVER['REQUEST_METHOD'] === 'POST'`, superglobale `$_POST`, nettoyage avec `trim()`, vérification avec `empty()`, gestion d'une variable `$erreur`, arrêt d'urgence avec `die()`.
 - **Consigne pour l'apprenant :**
@@ -144,7 +144,7 @@ flowchart TD
 
 ---
 
-### T.124.23.1 — Insérer et modifier une catégorie avec des requêtes préparées
+### T.124.231 — Insérer et modifier une catégorie avec des requêtes préparées
 - **Objectif :** Enregistrer les données validées en base de données en mode création ou en mode mise à jour.
 - **Notions :** Requêtes préparées `INSERT INTO`, `UPDATE ... WHERE`, redirection HTTP `header('Location: liste.php')` suivie de `exit()`.
 - **Consigne pour l'apprenant :**
@@ -156,7 +156,7 @@ flowchart TD
 
 ---
 
-### T.124.23.2 — Supprimer une catégorie en base de données
+### T.124.232 — Supprimer une catégorie en base de données
 - **Objectif :** Supprimer une catégorie sélectionnée depuis le tableau de bord d'administration.
 - **Notions :** Requête préparée `DELETE FROM ... WHERE id = :id`, sécurité des clés étrangères.
 - **Consigne pour l'apprenant :**
@@ -167,7 +167,7 @@ flowchart TD
 
 ---
 
-### T.122.32.1 — Interagir avec le DOM pour confirmer une suppression
+### T.122.321 — Interagir avec le DOM pour confirmer une suppression
 - **Objectif :** Éviter les suppressions accidentelles grâce à une invite de confirmation JavaScript côté client.
 - **Notions :** Méthodes de sélection DOM `document.querySelector()` (élément unique) et `document.querySelectorAll()` (collection d'éléments), écouteur d'événement `addEventListener('click')`, fonction `confirm()`, méthode `preventDefault()`.
 - **Consigne pour l'apprenant :**

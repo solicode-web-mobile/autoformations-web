@@ -53,7 +53,7 @@ Ce mécanisme réserve immédiatement la route Jekyll, insère le badge 🚧 dan
    - *Interdiction des entités du projet dans le titre :* Ne jamais mentionner les entités métier du cas d'exemple (ex: pas d'« Article », « Catégorie », « Badge », « Produit » dans le titre). Ce sont de simples données d'illustration utilisées dans le projet. L'apprenant doit mémoriser la compétence technique transférable, pas le cas particulier.
    - *À proscrire (Trop abstrait / académique) :* « Contrôler un traitement », « Répéter un traitement », « Manipuler les expressions ».
    - *À proscrire également (Trop technique / surchargé) :* « Installer PHP CLI, tester php -S et activer display_errors dans php.ini ».
-   - **Règle retenue (Le juste équilibre) :** Le titre principal en H3 exprime **un seul objectif technique concret centré sur la notion à apprendre** (ex: `### T.123.12.1 — Déclarer et manipuler un tableau associatif`).  
+   - **Règle retenue (Le juste équilibre) :** Le titre principal en H3 exprime **un seul objectif technique concret centré sur la notion à apprendre** (ex: `### T.123.121 — Déclarer et manipuler un tableau associatif`).  
      Le **sous-titre** explicite l'**objectif logique / pédagogique** (ex: `*Objectif logique : Modéliser et stocker une collection de données en mémoire*`).
 3. **Sas Générique « Bien Démarrer » :**
    Avant d'engager le livrable d'un projet applicatif dans un nouveau langage, runtime, framework ou outil, passage obligatoire par deux paliers préalables :

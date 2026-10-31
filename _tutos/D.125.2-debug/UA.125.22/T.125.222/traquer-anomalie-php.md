@@ -3,7 +3,7 @@ title: "Traquer une anomalie dans un script PHP"
 layout: tuto
 slug: "traquer-anomalie-php"
 permalink: /tutos/traquer-anomalie-php/
-tuto_id: "T.125.22.2"
+tuto_id: "T.125.222"
 type: "classique"
 version: "normal"
 ua: "UA.125.22"
@@ -19,7 +19,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Utiliser les points d'arrêt et l'exécution pas à pas avec Xdebug dans VS Code pour suivre une boucle en PHP, observer l'évolution d'une variable en direct et corriger une erreur de logique de calcul.
-- **Prérequis :** Avoir configuré et testé Xdebug avec VS Code (tutoriel T.125.22.1), connaître la syntaxe des tableaux et de la boucle `foreach` en PHP.
+- **Prérequis :** Avoir configuré et testé Xdebug avec VS Code (tutoriel T.125.221), connaître la syntaxe des tableaux et de la boucle `foreach` en PHP.
 
 ---
 

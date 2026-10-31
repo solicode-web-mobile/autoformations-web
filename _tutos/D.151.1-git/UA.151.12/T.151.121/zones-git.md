@@ -3,7 +3,7 @@ title: "Les 3 zones de Git expliquées simplement"
 layout: tuto
 slug: "3-zones-git"
 permalink: /tutos/3-zones-git/
-tuto_id: "T.151.12.1"
+tuto_id: "T.151.121"
 type: "classique"
 version: "normal"
 ua: "UA.151.12"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Comprendre le parcours d'un fichier dans Git, du moment où vous le modifiez dans votre éditeur jusqu'à son enregistrement durable dans l'historique.
-- **Prérequis :** Avoir compris la différence entre Git et GitHub (T.151.11.2).
+- **Prérequis :** Avoir compris la différence entre Git et GitHub (T.151.112).
 
 ---
 

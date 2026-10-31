@@ -26,29 +26,29 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 * **UA.122.11 — Construire la structure de base d'une page HTML :**  
   Créer une page HTML minimale valide avec déclaration DOCTYPE, balises racines et métadonnées.
-  - **T.122.11.1 — Créer le squelette HTML5 valide**  
+  - **T.122.111 — Créer le squelette HTML5 valide**  
     *Livrable :* Page HTML avec balises `<!DOCTYPE>`, `<html>`, `<head>`, `<body>` | *Fichier :* `public-article.html`
-  - **T.122.11.2 — Définir les métadonnées et lier le CSS**  
+  - **T.122.112 — Définir les métadonnées et lier le CSS**  
     *Livrable :* Balises `<meta charset="UTF-8">`, `<title>` et `<link rel="stylesheet">` | *Fichier :* `public-article.html`
 
 * **UA.122.12 — Structurer les contenus HTML :**  
   Choisir la balise sémantique appropriée pour chaque contenu de l'article (titre, auteur, date, chapitres, listes, citations, extraits de code).
-  - **T.122.12.1 — Structurer l'en-tête de l'article**  
+  - **T.122.121 — Structurer l'en-tête de l'article**  
     *Livrable :* En-tête `<header>` avec catégorie, titre `<h1>`, photo et nom de l'auteur | *Fichier :* `public-article.html`
-  - **T.122.12.2 — Intégrer l'image principale de couverture**  
+  - **T.122.122 — Intégrer l'image principale de couverture**  
     *Livrable :* Balise `<figure>` contenant `<img src="..." alt="...">` | *Fichier :* `public-article.html`
-  - **T.122.12.3 — Structurer le contenu rédactionnel**  
+  - **T.122.123 — Structurer le contenu rédactionnel**  
     *Livrable :* Corps d'article avec `<section>`, `<h2>`, `<p>`, `<ul>`, `<blockquote>` et `<pre><code>` | *Fichier :* `public-article.html`
 
 #### Mettre en forme une page (D.122.2, css)
 
 * **UA.122.21 — Appliquer des règles CSS :**  
   Mettre en forme le texte, définir les couleurs, espacer les blocs avec marges et rembourrages, et styliser les éléments graphiques.
-  - **T.122.21.1 — Définir la typographie et les couleurs**  
+  - **T.122.211 — Définir la typographie et les couleurs**  
     *Livrable :* Règles CSS globales de police (`font-family`), couleur (`color`), fond (`background`) | *Fichier :* `css/style.css`
-  - **T.122.21.2 — Gérer les espacements et dimensions**  
+  - **T.122.212 — Gérer les espacements et dimensions**  
     *Livrable :* Utilisation de `margin`, `padding`, `max-width` pour centrer et aérer le contenu | *Fichier :* `css/style.css`
-  - **T.122.21.3 — Styliser les détails graphiques**  
+  - **T.122.213 — Styliser les détails graphiques**  
     *Livrable :* Badge de catégorie arrondi, photo auteur circulaire, citation encadrée | *Fichier :* `css/style.css`
 
 ### ⏭️ Perspectives Futures (Sessions S3 à S12)
@@ -59,7 +59,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
-### T.122.11.1 — Créer le squelette HTML5 valide
+### T.122.111 — Créer le squelette HTML5 valide
 - **Objectif :** Créer un fichier HTML propre et conforme aux standards du Web.
 - **Notions :** Déclaration `<!DOCTYPE html>`, balise racine `<html lang="fr">`, en-tête technique `<head>`, zone visible `<body>`.
 - **Consigne pour l'apprenant :**
@@ -70,7 +70,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ---
 
-### T.122.11.2 — Définir les métadonnées et lier le CSS
+### T.122.112 — Définir les métadonnées et lier le CSS
 - **Objectif :** Configurer l'encodage des caractères, le titre de l'onglet et relier la feuille de style externe.
 - **Notions :** `<meta charset="UTF-8">`, `<title>`, balise `<link rel="stylesheet" href="css/style.css">`.
 - **Consigne pour l'apprenant :**
@@ -81,7 +81,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ---
 
-### T.122.12.1 — Structurer l'en-tête de l'article
+### T.122.121 — Structurer l'en-tête de l'article
 - **Objectif :** Construire le bloc d'introduction de l'article avec ses métadonnées visibles.
 - **Notions :** Balises sémantiques `<article>`, `<header>`, `<span>`, `<h1>`, `<div>`, `<img>`, `<strong>`, `<time>`.
 - **Consigne pour l'apprenant :**
@@ -94,7 +94,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ---
 
-### T.122.12.2 — Intégrer l'image principale de couverture
+### T.122.122 — Intégrer l'image principale de couverture
 - **Objectif :** Afficher l'illustration principale de l'article de manière sémantique et accessible.
 - **Notions :** Balises `<figure>`, `<img>`, attributs obligatoires `src` et `alt`.
 - **Consigne pour l'apprenant :**
@@ -105,7 +105,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ---
 
-### T.122.12.3 — Structurer le contenu rédactionnel
+### T.122.123 — Structurer le contenu rédactionnel
 - **Objectif :** Organiser le texte de l'article avec des balises sémantiques riches.
 - **Notions :** `<main>`, `<section>`, `<h2>`, `<p>`, `<ul>`, `<li>`, `<blockquote>`, `<pre>`, `<code>`.
 - **Consigne pour l'apprenant :**
@@ -118,7 +118,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ---
 
-### T.122.21.1 — Définir la typographie et les couleurs
+### T.122.211 — Définir la typographie et les couleurs
 - **Objectif :** Appliquer une charte visuelle sobre et professionnelle avec CSS.
 - **Notions :** Sélecteurs d'éléments (`body`, `h1`, `h2`), propriétés `font-family`, `color`, `background-color`, `line-height`.
 - **Consigne pour l'apprenant :**
@@ -129,7 +129,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ---
 
-### T.122.21.2 — Gérer les espacements et dimensions
+### T.122.212 — Gérer les espacements et dimensions
 - **Objectif :** Centrer le contenu et contrôler l'espace entre les blocs pour une lecture confortable.
 - **Notions :** `max-width`, `margin: 0 auto`, `padding`, boîte de modèle CSS.
 - **Consigne pour l'apprenant :**
@@ -140,7 +140,7 @@ Dans cette deuxième session, l'apprenant écrit son **premier code Web d'applic
 
 ---
 
-### T.122.21.3 — Styliser les détails graphiques
+### T.122.213 — Styliser les détails graphiques
 - **Objectif :** Apporter les finitions visuelles modernes à la page.
 - **Notions :** `border-radius: 50%` pour l'avatar, `border-radius: 20px` pour le badge catégorie, bordure gauche sur `<blockquote>`.
 - **Consigne pour l'apprenant :**

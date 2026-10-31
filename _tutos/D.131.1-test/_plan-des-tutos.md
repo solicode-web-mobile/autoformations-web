@@ -6,8 +6,8 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 | Session | Identifiant | Titre | Objectif | Livrable |
 | :--- | :--- | :--- | :--- | :--- |
-| **S9** | **T.131.11.1** | Réaliser une vérification manuelle | Exécuter un scénario de test et vérifier le résultat. | Fiche de vérification remplie (OK/KO). |
-| **S11** | **T.131.12.1** | Vérifier une régression | Refaire un ancien test pour s'assurer que les nouveautés n'ont rien cassé. | Fiche de régression (Avant/Après). |
+| **S9** | **T.131.111** | Réaliser une vérification manuelle | Exécuter un scénario de test et vérifier le résultat. | Fiche de vérification remplie (OK/KO). |
+| **S11** | **T.131.121** | Vérifier une régression | Refaire un ancien test pour s'assurer que les nouveautés n'ont rien cassé. | Fiche de régression (Avant/Après). |
 
 ---
 
@@ -15,7 +15,7 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ### UA.131.11 - Réaliser une vérification manuelle
 
-#### T.131.11.1 - Réaliser une vérification manuelle
+#### T.131.111 - Réaliser une vérification manuelle
 *   **Objectif :** Exécuter méthodiquement un scénario simple pour statuer si une fonctionnalité fonctionne ou non.
 *   **Description :** L'apprenant reçoit une fiche de test vierge. Il réalise les actions demandées, observe le comportement, le compare avec le résultat attendu, et donne le statut final (OK/KO). Il apprend à ne pas tester au hasard.
 *   **Notions abordées :** Vérification, scénario, action, donnée de test, résultat attendu, résultat obtenu, statut, anomalie.
@@ -26,7 +26,7 @@ Ce document présente le découpage de la formation en tutoriels pratiques, bas�
 
 ### UA.131.12 - Vérifier une régression
 
-#### T.131.12.1 - Vérifier une régression
+#### T.131.121 - Vérifier une régression
 *   **Objectif :** Prendre conscience qu'ajouter du code peut introduire des bugs sur l'existant.
 *   **Description :** L'apprenant reprend sa fiche de test validée en S9 et rejoue exactement les mêmes actions, sans rien changer au scénario, pour valider que le statut est toujours "OK". Si un "OK" passe à "KO", il aura détecté une régression.
 *   **Notions abordées :** Modification, fonctionnalité existante, réexécution, régression, avant/après, comparaison.

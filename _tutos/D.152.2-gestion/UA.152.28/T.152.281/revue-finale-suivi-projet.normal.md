@@ -3,7 +3,7 @@ title: "Réaliser la revue finale du suivi de projet"
 layout: tuto
 slug: "revue-finale-suivi-projet"
 permalink: /tutos/:slug/
-tuto_id: "T.152.28.1"
+tuto_id: "T.152.281"
 type: "classique"
 version: "normal"
 ua: "UA.152.28"

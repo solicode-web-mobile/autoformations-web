@@ -29,32 +29,32 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 * **UA.122.13 — Structurer les zones d’une interface HTML :**  
   Construire l'organisation sémantique globale de la page d'accueil en séparant l'en-tête (`<header>`), la navigation (`<nav>`), la bannière de bienvenue (`<section class="hero">`), la zone principale (`<main>`) et le pied de page (`<footer>`).
-  - **T.122.13.1 — Structurer l'en-tête global et la barre de navigation**  
+  - **T.122.131 — Structurer l'en-tête global et la barre de navigation**  
     *Livrable :* Balises `<header>` et `<nav>` avec logo et liens | *Fichier :* `public-index.html`
-  - **T.122.13.2 — Structurer la section de présentation (Hero Banner)**  
+  - **T.122.132 — Structurer la section de présentation (Hero Banner)**  
     *Livrable :* Zone de bienvenue `<section class="hero">` | *Fichier :* `public-index.html`
-  - **T.122.13.3 — Structurer le pied de page du site**  
+  - **T.122.133 — Structurer le pied de page du site**  
     *Livrable :* Pied de page sémantique `<footer>` avec mentions | *Fichier :* `public-index.html`
 
 * **UA.122.14 — Structurer des ensembles répétitifs en HTML :**  
   Concevoir un modèle de carte d'article homogène et le répéter pour afficher plusieurs articles récents de façon régulière.
-  - **T.122.14.1 — Créer la structure d'une carte d'article répétitive**  
+  - **T.122.141 — Créer la structure d'une carte d'article répétitive**  
     *Livrable :* Bloc `<article class="article-card">` complet | *Fichier :* `public-index.html`
-  - **T.122.14.2 — Répéter les cartes et relier vers la page de détail**  
+  - **T.122.142 — Répéter les cartes et relier vers la page de détail**  
     *Livrable :* Grille de 6 articles avec liens `<a href="public-article.html">` | *Fichier :* `public-index.html`
 
 #### Mettre en forme une page (D.122.2, css)
 
 * **UA.122.22 — Gérer les dimensions et les espacements :**  
   Contrôler la largeur des conteneurs (`max-width: 1200px`), le centrage (`margin: 0 auto`) et l'aération entre les cartes avec `gap`.
-  - **T.122.22.1 — Définir les conteneurs et les dimensions du site**  
+  - **T.122.221 — Définir les conteneurs et les dimensions du site**  
     *Livrable :* Classe `.container` avec `max-width` et centrage | *Fichier :* `css/layout.css`
 
 * **UA.122.23 — Disposer les éléments avec CSS :**  
   Utiliser les propriétés fondamentales de Flexbox (`display: flex`, `justify-content`, `align-items`, `flex-wrap`) pour aligner la barre de menu et agencer la grille de cartes d'articles.
-  - **T.122.23.1 — Aligner la barre de navigation avec Flexbox**  
+  - **T.122.231 — Aligner la barre de navigation avec Flexbox**  
     *Livrable :* Menu aligné avec `display: flex` et `space-between` | *Fichier :* `css/layout.css`
-  - **T.122.23.2 — Agencer les cartes d'articles en grille Flexbox**  
+  - **T.122.232 — Agencer les cartes d'articles en grille Flexbox**  
     *Livrable :* Grille multi-colonnes responsive avec `flex-wrap` et `gap` | *Fichier :* `css/components.css`
 
 ### ⏭️ Perspectives Futures (Sessions S4 à S12)
@@ -65,7 +65,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
-### T.122.13.1 — Structurer l'en-tête global et la barre de navigation
+### T.122.131 — Structurer l'en-tête global et la barre de navigation
 - **Objectif :** Créer la barre de navigation visible en haut de toutes les pages du Blog.
 - **Notions :** Balises sémantiques `<header>`, `<nav>`, `<ul>`, `<li>`, `<a>`.
 - **Consigne pour l'apprenant :**
@@ -79,7 +79,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ---
 
-### T.122.13.2 — Structurer la section de présentation (Hero Banner)
+### T.122.132 — Structurer la section de présentation (Hero Banner)
 - **Objectif :** Accueillir le visiteur avec un titre accrocheur et une courte description de la ligne éditoriale du Blog.
 - **Notions :** `<section class="hero">`, `<h1>`, `<p class="lead">`.
 - **Consigne pour l'apprenant :**
@@ -90,7 +90,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ---
 
-### T.122.13.3 — Structurer le pied de page du site
+### T.122.133 — Structurer le pied de page du site
 - **Objectif :** Terminer la page avec un pied de page sémantique clair.
 - **Notions :** `<footer>`, copyright, date dynamique ou statique, liens secondaires.
 - **Consigne pour l'apprenant :**
@@ -101,7 +101,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ---
 
-### T.122.14.1 — Créer la structure d'une carte d'article répétitive
+### T.122.141 — Créer la structure d'une carte d'article répétitive
 - **Objectif :** Modéliser un composant réutilisable pour présenter un résumé d'article.
 - **Notions :** `<article class="article-card">`, image d'illustration, badge catégorie, titre `<h3>`, extrait de texte, métadonnées auteur et date.
 - **Consigne pour l'apprenant :**
@@ -115,7 +115,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ---
 
-### T.122.14.2 — Répéter les cartes et relier vers la page de détail
+### T.122.142 — Répéter les cartes et relier vers la page de détail
 - **Objectif :** Présenter une collection de plusieurs articles et rendre chaque carte cliquable vers sa page complète.
 - **Notions :** Réutilisation de structure HTML, attribut `href="public-article.html"`, accessibilité.
 - **Consigne pour l'apprenant :**
@@ -126,7 +126,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ---
 
-### T.122.22.1 — Définir les conteneurs et les dimensions du site
+### T.122.221 — Définir les conteneurs et les dimensions du site
 - **Objectif :** Éviter que les contenus s'étirent sur toute la largeur des grands écrans.
 - **Notions :** Classe utilitaire `.container`, `max-width: 1200px`, `margin: 0 auto`, `padding: 0 16px`.
 - **Consigne pour l'apprenant :**
@@ -139,7 +139,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ---
 
-### T.122.23.1 — Aligner la barre de navigation avec Flexbox
+### T.122.231 — Aligner la barre de navigation avec Flexbox
 - **Objectif :** Disposer le logo à gauche, les liens au centre et le bouton d'administration à droite sur une même ligne.
 - **Notions :** `display: flex`, `justify-content: space-between`, `align-items: center`, `gap: 20px`.
 - **Consigne pour l'apprenant :**
@@ -152,7 +152,7 @@ Dans cette troisième session, l'apprenant passe d'une page isolée à un **site
 
 ---
 
-### T.122.23.2 — Agencer les cartes d'articles en grille Flexbox
+### T.122.232 — Agencer les cartes d'articles en grille Flexbox
 - **Objectif :** Aligner les cartes d'articles par rangées de 3 colonnes avec des gouttières régulières.
 - **Notions :** Conteneur `.articles-grid`, `display: flex`, `flex-wrap: wrap`, `gap: 24px`, calcul de largeur d'élément `flex: 0 0 calc(33.333% - 16px)`.
 - **Consigne pour l'apprenant :**

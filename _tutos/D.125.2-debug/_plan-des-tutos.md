@@ -44,17 +44,17 @@ Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur 
 
 | Identifiant | Session | Titre du tutoriel | Unité ciblée | Action & Résolution attendue |
 | :--- | :---: | :--- | :---: | :--- |
-| **T.125.21.1** | **S2** | Déboguer un script JavaScript pas à pas avec des breakpoints | UA.125.21 | Point d'arrêt posé, exécution pas à pas (`F10`), erreur de calcul corrigée. |
-| **T.125.22.1** | **S6** | Installer et tester Xdebug avec VS Code | UA.125.22 | Module activé dans `php.ini`, extension configurée, point d'arrêt testé. |
-| **T.125.22.2** | **S6** | Traquer une anomalie dans un script PHP | UA.125.22 | Points d'arrêt sur boucle foreach, erreur de calcul corrigée. |
-| **T.125.23.1** | **S7** | Corriger une variable mal transmise dans l'URL | UA.125.23 | Erreur de paramètre URL identifiée et affichage par catégorie rétabli. |
-| **T.125.24.1** | **S9** | Déboguer un parcours complet de soumission de formulaire | UA.125.24 | Suivi du flux complet (HTML → PHP → SQL) et résolution de l'anomalie de bout en bout. |
+| **T.125.211** | **S2** | Déboguer un script JavaScript pas à pas avec des breakpoints | UA.125.21 | Point d'arrêt posé, exécution pas à pas (`F10`), erreur de calcul corrigée. |
+| **T.125.221** | **S6** | Installer et tester Xdebug avec VS Code | UA.125.22 | Module activé dans `php.ini`, extension configurée, point d'arrêt testé. |
+| **T.125.222** | **S6** | Traquer une anomalie dans un script PHP | UA.125.22 | Points d'arrêt sur boucle foreach, erreur de calcul corrigée. |
+| **T.125.231** | **S7** | Corriger une variable mal transmise dans l'URL | UA.125.23 | Erreur de paramètre URL identifiée et affichage par catégorie rétabli. |
+| **T.125.241** | **S9** | Déboguer un parcours complet de soumission de formulaire | UA.125.24 | Suivi du flux complet (HTML → PHP → SQL) et résolution de l'anomalie de bout en bout. |
 
 ---
 
 ## 4. Fiche Détaillée — Session S2 (UA.125.21)
 
-### T.125.21.1 — Déboguer un script JavaScript pas à pas avec des breakpoints
+### T.125.211 — Déboguer un script JavaScript pas à pas avec des breakpoints
 
 - **Objectif :** Figer le temps et suivre l'évolution d'un calcul pas à pas sans multiplier les `console.log()`.
 - **Notions :** DevTools (`F12`), onglet *Sources / Débogueur*, point d'arrêt (*Breakpoint*), panneau des variables locales (*Scope*), bouton *Step Over* (`F10`).
@@ -73,7 +73,7 @@ Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur 
 
 ## 5. Fiches Préparatoires — Sessions Futures (S6, S7, S9)
 
-### S6 — UA.125.22 : T.125.22.1 — Installer et tester Xdebug avec VS Code
+### S6 — UA.125.22 : T.125.221 — Installer et tester Xdebug avec VS Code
 - **Objectif :** Mettre en place l'environnement de débogage serveur PHP et valider un premier point d'arrêt.
 - **Environnement :** PHP + Xdebug + VS Code.
 - **Situation :** Script simple `test-debug.php`.
@@ -85,7 +85,7 @@ Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur 
 
 ---
 
-### S6 — UA.125.22 : T.125.22.2 — Traquer une anomalie dans un script PHP
+### S6 — UA.125.22 : T.125.222 — Traquer une anomalie dans un script PHP
 - **Objectif :** Suivre pas à pas l'exécution d'une boucle PHP avec Xdebug, observer l'évolution des variables locales et corriger une erreur de logique de calcul.
 - **Environnement :** PHP + Xdebug + VS Code.
 - **Situation :** Le calcul du cumul des lectures d'articles du Blog produit un résultat faux.
@@ -97,7 +97,7 @@ Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur 
 
 ---
 
-### S7 — UA.125.23 : T.125.23.1 — Corriger une variable mal transmise dans l'URL
+### S7 — UA.125.23 : T.125.231 — Corriger une variable mal transmise dans l'URL
 - **Objectif :** Corriger une erreur ciblée liée à la transmission d'un paramètre dans une requête Web.
 - **Environnement :** PHP + application Blog.
 - **Situation :** Le filtre par catégorie ne renvoie aucun article lorsqu'on clique sur un lien de navigation.
@@ -110,7 +110,7 @@ Une erreur n'est pas un échec, c'est l'indice normal qui guide le développeur 
 
 ---
 
-### S9 — UA.125.24 : T.125.24.1 — Déboguer un parcours complet de soumission de formulaire
+### S9 — UA.125.24 : T.125.241 — Déboguer un parcours complet de soumission de formulaire
 - **Objectif :** Suivre une donnée tout au long d'un cycle complet (Frontend → Serveur → Base de données → Redirection).
 - **Environnement :** PHP + MySQL + application Blog (partie Admin).
 - **Situation :** L'ajout d'un nouvel article depuis le formulaire d'administration ne produit aucun enregistrement en base.

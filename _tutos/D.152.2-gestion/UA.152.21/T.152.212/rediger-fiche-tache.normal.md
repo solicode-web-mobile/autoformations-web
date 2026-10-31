@@ -3,7 +3,7 @@ title: "Rédiger une fiche de tâche synthétique"
 layout: tuto
 slug: "rediger-fiche-tache"
 permalink: /tutos/:slug/
-tuto_id: "T.152.21.2"
+tuto_id: "T.152.212"
 type: "classique"
 version: "normal"
 ua: "UA.152.21"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Rédiger une fiche de tâche courte en Markdown pour formaliser sa mission, ses livrables et ses vérifications avant de commencer à coder.
-- **Prérequis :** Avoir analysé la consigne et extrait les critères d'acceptation (Tutoriel `T.152.21.1`).
+- **Prérequis :** Avoir analysé la consigne et extrait les critères d'acceptation (Tutoriel `T.152.211`).
 
 ---
 

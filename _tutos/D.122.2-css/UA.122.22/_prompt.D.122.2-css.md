@@ -1183,7 +1183,7 @@ Cette UA constitue le **socle fondamental**. Les tutoriels existants sont conser
 |     7 | **T.122.217**   | Dimensions                | `width`, `height`, `max-width`, image `width: 100%`, `object-fit: cover`                                     |
 |     8 | **T.122.218**   | Espacements & Bordures    | `margin: auto`, raccourcis `margin`, marge négative, `padding`, `border`, `border-radius`                    |
 |     9 | **T.122.219**   | Affichage CSS             | `display: none`, `display: block`, modification du comportement d’un élément                                 |
-|    10 | **T.122.21.10** | Projet de Synthèse CSS    | réinvestissement global                                                                                      |
+|    10 | **T.122.2110** | Projet de Synthèse CSS    | réinvestissement global                                                                                      |
 
 Le projet de synthèse existant va déjà assez loin : architecture top-down, styles globaux, images fluides, dimensions, espacements, bordures et composants éditoriaux. 
 
@@ -1223,7 +1223,7 @@ Les notions réellement nouvelles sont surtout `box-sizing`, les contraintes de 
 | **T.122.223**  | Organiser l’espace dans une carte              | Séparer clairement contenu, image, titre et texte                                           | `padding`, `margin`, raccourcis d’espacement                                     |
 | **T.122.224**  | Espacer plusieurs éléments avec `gap`          | Gérer simplement les espaces entre plusieurs éléments                                       | `gap`, `row-gap`, `column-gap`                                                   |
 | **T.122.225**  | Construire une carte d’article homogène        | Réunir dimensionnement, espace et bordure dans un composant réutilisable                    | `box-sizing`, `max-width`, `padding`, `margin`, `gap`, `border`, `border-radius` |
-| **T.122.22.6** | Projet de synthèse — Cartes d’articles         | Appliquer les acquis à plusieurs cartes homogènes de la page d’accueil                      | synthèse de l’UA                                                                 |
+| **T.122.226** | Projet de synthèse — Cartes d’articles         | Appliquer les acquis à plusieurs cartes homogènes de la page d’accueil                      | synthèse de l’UA                                                                 |
 
 #### Pourquoi ne pas refaire `width`, `margin` et `padding` ?
 
@@ -1289,7 +1289,7 @@ Les notions nouvelles doivent donc concerner principalement la réutilisation de
 | **T.122.245**  | Gérer les états d’un élément               | Donner un retour visuel aux interactions                 | `:hover`, `:focus`, pseudo-classes simples                     |
 | **T.122.246**  | Centraliser les valeurs visuelles          | Réutiliser les couleurs et espacements communs           | variables CSS, `:root`, `--nom`, `var()`                       |
 | **T.122.247**  | Construire des styles communs aux pages    | Harmoniser les pages Accueil, Détail et Catégories       | feuille CSS commune, classes communes, composants              |
-| **T.122.24.8** | Projet de synthèse — Harmonisation du Blog | Uniformiser la présentation via des fichiers séparés     | `global.css`, `layout.css`, `components.css`, balises `<link>` |
+| **T.122.248** | Projet de synthèse — Harmonisation du Blog | Uniformiser la présentation via des fichiers séparés     | `global.css`, `layout.css`, `components.css`, balises `<link>` |
 
 #### Règles strictes à appliquer en S7
 
@@ -1354,7 +1354,7 @@ S2
     ├── T.122.217  Dimensions
     ├── T.122.218  Espacements & Bordures
     ├── T.122.219  Affichage CSS
-    └── T.122.21.10 Projet de Synthèse CSS
+    └── T.122.2110 Projet de Synthèse CSS
 
 S3
 ├── UA.122.22 — Gérer les dimensions et les espacements
@@ -1363,7 +1363,7 @@ S3
 │   ├── T.122.223  Espace dans une carte
 │   ├── T.122.224  Espacement avec gap
 │   ├── T.122.225  Carte d’article homogène
-│   └── T.122.22.6 Synthèse
+│   └── T.122.226 Synthèse
 │
 └── UA.122.23 — Disposer les éléments avec CSS
     ├── T.122.231  Découvrir Flexbox
@@ -1384,7 +1384,7 @@ S7
     ├── T.122.245  États
     ├── T.122.246  Variables CSS
     ├── T.122.247  Styles communs
-    └── T.122.24.8 Synthèse
+    └── T.122.248 Synthèse
 
 S12
 └── UA.122.25 — Adapter une interface aux écrans
@@ -1446,9 +1446,9 @@ Il comprend :
 
 ---
 
-## 10. Point de vigilance sur T.122.21.10
+## 10. Point de vigilance sur T.122.2110
 
-Le tutoriel existant T.122.21.10 est rédigé comme une **validation de l’ensemble du module CSS** et indique comme prérequis la maîtrise des tutoriels 1 à 9.
+Le tutoriel existant T.122.2110 est rédigé comme une **validation de l’ensemble du module CSS** et indique comme prérequis la maîtrise des tutoriels 1 à 9.
 
 Comme il est déclaré **intouchable**, je ne recommande pas de le modifier.
 

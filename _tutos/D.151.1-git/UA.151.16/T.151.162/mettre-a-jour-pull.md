@@ -3,7 +3,7 @@ title: "Mettre à jour son ordinateur avec git pull"
 layout: tuto
 slug: "mettre-a-jour-pull"
 permalink: /tutos/:slug/
-tuto_id: "T.151.16.2"
+tuto_id: "T.151.162"
 type: "classique"
 version: "normal"
 simplified: true

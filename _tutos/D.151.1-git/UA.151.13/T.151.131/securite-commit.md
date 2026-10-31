@@ -3,7 +3,7 @@ title: "Rédiger des messages de commit professionnels et sécurisés"
 layout: tuto
 slug: "securite-commit"
 permalink: /tutos/securite-commit/
-tuto_id: "T.151.13.1"
+tuto_id: "T.151.131"
 type: "classique"
 version: "normal"
 ua: "UA.151.13"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Vérifier ses modifications avec `git diff` avant de créer un commit, éviter d'enregistrer des informations sensibles (mots de passe, clés) et rédiger un message de commit atomique et professionnel.
-- **Prérequis :** Maîtriser le cycle local `git status`, `git add` et `git commit` (tutoriel T.151.12.2).
+- **Prérequis :** Maîtriser le cycle local `git status`, `git add` et `git commit` (tutoriel T.151.122).
 
 ---
 

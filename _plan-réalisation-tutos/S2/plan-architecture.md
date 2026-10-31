@@ -43,19 +43,19 @@ Structurer une application Web consiste à ranger méthodiquement chaque éléme
 
 | Identifiant | Session | Titre du tutoriel | Unité ciblée | Livrable attendu |
 | :--- | :---: | :--- | :---: | :--- |
-| **T.125.11.1** | **S2** | Séparer le contenu, les styles et les médias | UA.125.11 | Arborescence avec dossiers `css/` et `images/`. |
-| **T.125.11.2** | **S2** | Construire et vérifier les chemins relatifs d'une page | UA.125.11 | Liens d'images et de CSS fonctionnels sans erreur 404. |
-| **T.125.12.1** | **S3** | Organiser les ressources partagées pour un site multi-pages | UA.125.12 | Deux pages HTML (`index` et `article`) partageant le même CSS. |
-| **T.125.13.1** | **S4** | Séparer la logique de traitement et le template d'affichage | UA.125.13 | Séparation nette entre `index.php` et `index-template.php`. |
-| **T.125.14.1** | **S6** | Isoler la configuration et la connexion à la base de données | UA.125.14 | Fichier `db.php` indépendant inclus dans le traitement. |
-| **T.125.15.1** | **S7** | Factoriser les blocs d'affichage récurrents | UA.125.15 | Architecture modulaire avec fonctions et inclusions sécurisées. |
-| **T.125.16.1** | **S8** | Structurer le sous-dossier sécurisé de l'administration | UA.125.16 | Dossier `admin/` indépendant avec son propre agencement. |
+| **T.125.111** | **S2** | Séparer le contenu, les styles et les médias | UA.125.11 | Arborescence avec dossiers `css/` et `images/`. |
+| **T.125.112** | **S2** | Construire et vérifier les chemins relatifs d'une page | UA.125.11 | Liens d'images et de CSS fonctionnels sans erreur 404. |
+| **T.125.121** | **S3** | Organiser les ressources partagées pour un site multi-pages | UA.125.12 | Deux pages HTML (`index` et `article`) partageant le même CSS. |
+| **T.125.131** | **S4** | Séparer la logique de traitement et le template d'affichage | UA.125.13 | Séparation nette entre `index.php` et `index-template.php`. |
+| **T.125.141** | **S6** | Isoler la configuration et la connexion à la base de données | UA.125.14 | Fichier `db.php` indépendant inclus dans le traitement. |
+| **T.125.151** | **S7** | Factoriser les blocs d'affichage récurrents | UA.125.15 | Architecture modulaire avec fonctions et inclusions sécurisées. |
+| **T.125.161** | **S8** | Structurer le sous-dossier sécurisé de l'administration | UA.125.16 | Dossier `admin/` indépendant avec son propre agencement. |
 
 ---
 
 ## 4. Fiches Détaillées des Tutoriels Mobilisés en Session S2
 
-### T.125.11.1 — Séparer le contenu, les styles et les médias
+### T.125.111 — Séparer le contenu, les styles et les médias
 - **Objectif :** Construire une arborescence de fichiers professionnelle dès la première page réalisée.
 - **Notions :** Racine du projet, sous-dossiers dédiés (`css/`, `images/`), lisibilité du code.
 - **Consigne pas-à-pas :**
@@ -68,7 +68,7 @@ Structurer une application Web consiste à ranger méthodiquement chaque éléme
 
 ---
 
-### T.125.11.2 — Construire et vérifier les chemins relatifs d'une page
+### T.125.112 — Construire et vérifier les chemins relatifs d'une page
 - **Objectif :** Maîtriser l'écriture des chemins relatifs pour relier les ressources sans dépendre de l'emplacement du projet sur le disque dur.
 - **Notions :** Chemin relatif descendant (`dossier/fichier`), nom exact avec respect de la casse, vérification dans le navigateur.
 - **Consigne pas-à-pas :**

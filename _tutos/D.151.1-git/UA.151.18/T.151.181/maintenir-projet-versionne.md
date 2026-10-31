@@ -3,7 +3,7 @@ title: "Maintenir un dépôt propre et récupérable"
 layout: tuto
 slug: "maintenir-projet-versionne"
 permalink: /tutos/:slug/
-tuto_id: "T.151.18.1"
+tuto_id: "T.151.181"
 type: "classique"
 version: "normal"
 simplified: true

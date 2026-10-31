@@ -48,16 +48,16 @@ flowchart TD
 
 * **UA.122.25 — Adapter une interface aux écrans :**  
   Adapter la disposition, les marges et les dimensions des composants de l'interface lorsque la largeur d'affichage change en utilisant les requêtes médias CSS (`@media`).
-  - **T.122.25.1 — Adapter la navigation et la grille publique sur mobile**  
+  - **T.122.251 — Adapter la navigation et la grille publique sur mobile**  
     *Livrable :* Règles CSS responsive pour l'en-tête et les cartes d'articles | *Fichier :* `css/responsive.css`
-  - **T.122.25.2 — Adapter l'espace administration aux petits écrans**  
+  - **T.122.252 — Adapter l'espace administration aux petits écrans**  
     *Livrable :* Tableaux défilants et barre latérale adaptée sur smartphone | *Fichier :* `css/responsive.css`
 
 #### Finalisation et Déploiement Applicatif
 
-* **T.125.16.2 — Script d'installation et recette finale de l'application :**  
+* **T.125.162 — Script d'installation et recette finale de l'application :**  
   Automatiser le déploiement de la base de données et vérifier l'ensemble des parcours pour garantir une présentation sans accroc.
-  - **T.125.16.2 — Déployer et valider l'application pour la soutenance**  
+  - **T.125.162 — Déployer et valider l'application pour la soutenance**  
     *Livrable :* Script `install.php` opérationnel et recette finale validée | *Fichier :* `install.php`
 
 ### ⏭️ Perspectives Futures (Transition vers le Niveau N2)
@@ -67,7 +67,7 @@ flowchart TD
 
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
-### T.122.25.1 — Adapter la navigation et la grille publique sur mobile
+### T.122.251 — Adapter la navigation et la grille publique sur mobile
 - **Objectif :** Rendre les pages publiques du Blog agréables à lire sur smartphone et tablette sans zoom ni défilement horizontal parasite.
 - **Notions :** `<meta name="viewport">`, règles `@media (max-width: 768px)`, flex-direction en colonne, grille 1 colonne.
 - **Consigne pour l'apprenant :**
@@ -79,7 +79,7 @@ flowchart TD
 
 ---
 
-### T.122.25.2 — Adapter l'espace administration aux petits écrans
+### T.122.252 — Adapter l'espace administration aux petits écrans
 - **Objectif :** Permettre à un administrateur d'utiliser le Back-Office sur un écran portable ou une tablette.
 - **Notions :** Règle `overflow-x: auto` pour les tableaux volumineux, empilement de la barre latérale.
 - **Consigne pour l'apprenant :**
@@ -90,7 +90,7 @@ flowchart TD
 
 ---
 
-### T.125.16.2 — Déployer et valider l'application pour la soutenance
+### T.125.162 — Déployer et valider l'application pour la soutenance
 - **Objectif :** Faciliter la mise en route du projet par un tiers (correcteur, jury, recruteur).
 - **Notions :** Exécution de scripts SQL via PDO, vérification globale de bout-en-bout.
 - **Consigne pour l'apprenant :**

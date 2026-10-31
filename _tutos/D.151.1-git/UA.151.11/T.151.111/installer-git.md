@@ -3,7 +3,7 @@ title: "Installer et configurer Git sur son ordinateur"
 layout: tuto
 slug: "installer-git"
 permalink: /tutos/installer-git/
-tuto_id: "T.151.11.1"
+tuto_id: "T.151.111"
 type: "classique"
 version: "normal"
 ua: "UA.151.11"

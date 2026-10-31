@@ -3,7 +3,7 @@ title: "Structurer une demande d'aide face à un blocage"
 layout: tuto
 slug: "demande-aide-blocage"
 permalink: /tutos/:slug/
-tuto_id: "T.152.26.1"
+tuto_id: "T.152.261"
 type: "classique"
 version: "normal"
 ua: "UA.152.26"

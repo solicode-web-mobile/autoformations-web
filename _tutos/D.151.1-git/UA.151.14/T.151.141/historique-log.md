@@ -3,7 +3,7 @@ title: "Lire l'historique du projet avec git log"
 layout: tuto
 slug: "historique-log"
 permalink: /tutos/historique-log/
-tuto_id: "T.151.14.1"
+tuto_id: "T.151.141"
 type: "classique"
 version: "normal"
 ua: "UA.151.14"

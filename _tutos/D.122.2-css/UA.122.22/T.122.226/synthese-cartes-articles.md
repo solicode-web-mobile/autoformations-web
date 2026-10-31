@@ -3,7 +3,7 @@ title: "Projet de synthèse — Modèle de boîte"
 layout: tuto
 slug: "synthese-cartes-articles"
 permalink: /tutos/synthese-cartes-articles/
-tuto_id: "T.122.22.6"
+tuto_id: "T.122.226"
 type: "classique"
 version: "normal"
 ua: "UA.122.22"

@@ -3,7 +3,7 @@ title: "Mettre en place et actualiser un tableau Kanban simple"
 layout: tuto
 slug: "tableau-kanban-suivi"
 permalink: /tutos/:slug/
-tuto_id: "T.152.24.1"
+tuto_id: "T.152.241"
 type: "classique"
 version: "normal"
 ua: "UA.152.24"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Créer un tableau Kanban à trois colonnes (*À faire*, *En cours*, *Terminé*), y organiser ses tâches techniques et actualiser leur état au fur et à mesure du développement.
-- **Prérequis :** Savoir découper un travail en sous-tâches indépendantes (`T.152.23.1`).
+- **Prérequis :** Savoir découper un travail en sous-tâches indépendantes (`T.152.231`).
 
 ---
 

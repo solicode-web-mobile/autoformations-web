@@ -3,7 +3,7 @@ title: "La routine locale du développeur (Terminal)"
 layout: tuto
 slug: "routine-locale"
 permalink: /tutos/routine-locale/
-tuto_id: "T.151.12.2"
+tuto_id: "T.151.122"
 type: "classique"
 version: "normal"
 ua: "UA.151.12"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Maîtriser le cycle fondamental de sauvegarde locale dans le terminal à l'aide des trois commandes clés : `git status`, `git add` et `git commit`.
-- **Prérequis :** Avoir compris les 3 zones de Git (T.151.12.1) et avoir un dépôt local initialisé.
+- **Prérequis :** Avoir compris les 3 zones de Git (T.151.121) et avoir un dépôt local initialisé.
 
 ---
 

@@ -3,7 +3,7 @@ title: "Projet de Synthèse CSS"
 layout: tuto
 slug: "tutoriel-synthese-css"
 permalink: /tutos/:slug/compact
-tuto_id: "T.122.21.10"
+tuto_id: "T.122.2110"
 type: "classique"
 version: "compact"
 ua: "UA.122.21"

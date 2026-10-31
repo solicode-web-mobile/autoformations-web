@@ -55,35 +55,35 @@ flowchart LR
 
 | Identifiant | Session | Titre du tutoriel | Unité ciblée | Action & Résultat attendu |
 | :--- | :---: | :--- | :---: | :--- |
-| **T.151.11.1** | **S2** | Installer et configurer Git sur son ordinateur | UA.151.11 | Git installé, identité (`user.name`, `user.email`) enregistrée. |
-| **T.151.11.2** | **S2** | Comprendre les concepts de base : Git et GitHub | UA.151.11 | Distinction locale vs distante assimilée avec schémas. |
-| **T.151.11.3** | **S2** | Sauvegarder son code en un clic avec VS Code | UA.151.11 | Premier dépôt cloné, commit et synchronisation via l'interface. |
-| **T.151.12.1** | **S3** | Les 3 zones de Git expliquées simplement | UA.151.12 | Modèle mental assimilé (Dossier → Préparation → Dépôt). |
-| **T.151.12.2** | **S3** | La routine locale du développeur (Terminal) | UA.151.12 | Cycle complet maîtrisé : `git status`, `git add`, `git commit`. |
-| **T.151.13.1** | **S5** | Rédiger des messages de commit professionnels | UA.151.13 | Commits atomiques avec verbes d'action et vérification préalable. |
-| **T.151.14.1** | **S6** | Lire l'historique du projet avec git log | UA.151.14 | Historique affiché, hashes identifiés et options `--oneline`. |
-| **T.151.15.1** | **S7** | Créer et configurer un fichier .gitignore | UA.151.15 | Fichiers temporaires et secrets ignorés par Git. |
-| **T.151.15.2** | **S7** | Réparer une erreur avant la sauvegarde avec git restore | UA.151.15 | Annulation de modifications non souhaitées sans perte de données. |
-| **T.151.16.1** | **S8** | Partager son travail sur Internet avec git push | UA.151.16 | Commits locaux envoyés avec succès sur GitHub. |
-| **T.151.16.2** | **S8** | Mettre à jour son ordinateur avec git pull | UA.151.16 | Modifications distantes récupérées localement sans conflit. |
-| **T.151.17.1** | **S9** | Cloner un projet existant depuis GitHub | UA.151.17 | Projet cloné en terminal avec `git clone` dans un nouveau dossier. |
-| **T.151.18.1** | **S10** | Vérifier l'état de sauvegarde complète du projet | UA.151.18 | Dépôt propre, synchronisé et certifié récupérable. |
+| **T.151.111** | **S2** | Installer et configurer Git sur son ordinateur | UA.151.11 | Git installé, identité (`user.name`, `user.email`) enregistrée. |
+| **T.151.112** | **S2** | Comprendre les concepts de base : Git et GitHub | UA.151.11 | Distinction locale vs distante assimilée avec schémas. |
+| **T.151.113** | **S2** | Sauvegarder son code en un clic avec VS Code | UA.151.11 | Premier dépôt cloné, commit et synchronisation via l'interface. |
+| **T.151.121** | **S3** | Les 3 zones de Git expliquées simplement | UA.151.12 | Modèle mental assimilé (Dossier → Préparation → Dépôt). |
+| **T.151.122** | **S3** | La routine locale du développeur (Terminal) | UA.151.12 | Cycle complet maîtrisé : `git status`, `git add`, `git commit`. |
+| **T.151.131** | **S5** | Rédiger des messages de commit professionnels | UA.151.13 | Commits atomiques avec verbes d'action et vérification préalable. |
+| **T.151.141** | **S6** | Lire l'historique du projet avec git log | UA.151.14 | Historique affiché, hashes identifiés et options `--oneline`. |
+| **T.151.151** | **S7** | Créer et configurer un fichier .gitignore | UA.151.15 | Fichiers temporaires et secrets ignorés par Git. |
+| **T.151.152** | **S7** | Réparer une erreur avant la sauvegarde avec git restore | UA.151.15 | Annulation de modifications non souhaitées sans perte de données. |
+| **T.151.161** | **S8** | Partager son travail sur Internet avec git push | UA.151.16 | Commits locaux envoyés avec succès sur GitHub. |
+| **T.151.162** | **S8** | Mettre à jour son ordinateur avec git pull | UA.151.16 | Modifications distantes récupérées localement sans conflit. |
+| **T.151.171** | **S9** | Cloner un projet existant depuis GitHub | UA.151.17 | Projet cloné en terminal avec `git clone` dans un nouveau dossier. |
+| **T.151.181** | **S10** | Vérifier l'état de sauvegarde complète du projet | UA.151.18 | Dépôt propre, synchronisé et certifié récupérable. |
 
 ---
 
 ## 4. Fiches Détaillées — Session S2 (UA.151.11)
 
-### T.151.11.1 — Installer et configurer Git sur son ordinateur
+### T.151.111 — Installer et configurer Git sur son ordinateur
 - **Objectif :** Vérifier l'installation de Git et renseigner son identité auteur pour signer les sauvegardes.
 - **Notions :** `git --version`, `git config --global user.name`, `git config --global user.email`.
 - **Validation :** La commande `git config --list` affiche le nom et l'email de l'apprenant.
 
-### T.151.11.2 — Comprendre les concepts de base : Git et GitHub
+### T.151.112 — Comprendre les concepts de base : Git et GitHub
 - **Objectif :** Différencier l'outil local (Git) de la plateforme de partage distante (GitHub).
 - **Notions :** Gestion de versions, dépôt local, dépôt distant, synchronisation.
 - **Validation :** L'apprenant sait identifier si une action relève de la machine locale ou d'Internet.
 
-### T.151.11.3 — Sauvegarder son code en un clic avec VS Code
+### T.151.113 — Sauvegarder son code en un clic avec VS Code
 - **Objectif :** Cloner son premier dépôt GitHub et effectuer le cycle de sauvegarde complet via les boutons de VS Code.
 - **Notions :** Panneau Contrôle de code source, bouton Cloner, bouton Préparer (`+`), Commit et Synchroniser.
 - **Validation :** Le fichier `index.html` est visible sur GitHub avec son message de commit.

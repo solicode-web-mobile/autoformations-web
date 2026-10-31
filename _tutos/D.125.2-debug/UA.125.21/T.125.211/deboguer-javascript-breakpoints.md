@@ -3,7 +3,7 @@ title: "Déboguer un script JavaScript avec des breakpoints"
 layout: tuto
 slug: "deboguer-javascript-breakpoints"
 permalink: /tutos/deboguer-javascript-breakpoints/
-tuto_id: "T.125.21.1"
+tuto_id: "T.125.211"
 type: "classique"
 version: "normal"
 ua: "UA.125.21"

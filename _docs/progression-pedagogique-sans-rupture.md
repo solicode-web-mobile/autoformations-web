@@ -20,7 +20,7 @@ Lorsque la rupture se produit, l'apprenant ne sait plus quoi faire, perd confian
 L'audit du plan initial de la session **S4 (Transition vers le PHP dynamique)** a mis en lumière cinq mécanismes générateurs de rupture cognitive :
 
 ### 2.1. L'Illusion de l'Évidence Environnementale (Le saut sans installation)
-- **Ce qui était fait :** Le plan démarrait directement par le tutoriel `T.123.11.1 — Écrire son premier script PHP` dans `index.php` au milieu des dossiers HTML/CSS du Blog.
+- **Ce qui était fait :** Le plan démarrait directement par le tutoriel `T.123.111 — Écrire son premier script PHP` dans `index.php` au milieu des dossiers HTML/CSS du Blog.
 - **Pourquoi cela générait une rupture :** On présupposait que PHP était déjà installé sur la machine de l'apprenant, configuré dans le PATH et opérationnel. En réalité, un apprenant débutant sur Windows n'a pas nécessairement PHP fonctionnel en ligne de commande ni de serveur local lancé. Tenter d'ouvrir un fichier `.php` par double-clic dans un navigateur affiche le code source brut au lieu de l'exécuter, plongeant l'apprenant dans l'incompréhension.
 
 ### 2.2. Le Piège Fatal du Silence des Erreurs (*White Screen of Death*)
@@ -101,8 +101,8 @@ Avant de toucher au code de l'application fil rouge, tout nouveau langage ou out
 ### Pilier C : Titrage Technique Concret en Priorité
 - **Principe :** Le titre principal d'un tutoriel doit mentionner la **technique concrète**, la commande, la fonction ou le fichier manipulé. Le titre conceptuel devient le sous-titre pédagogique.
 - **Exemple concret :**
-  - *Ancien titre :* `T.123.13.1 — Contrôler un traitement avec des conditions`
-  - *Nouveau titre normé :* `T.123.13.1 — Conditionner l'affichage du badge avec if / else`  
+  - *Ancien titre :* `T.123.131 — Contrôler un traitement avec des conditions`
+  - *Nouveau titre normé :* `T.123.131 — Conditionner l'affichage du badge avec if / else`  
     *Objectif logique : Contrôler dynamiquement le rendu visuel selon une donnée*
 - **Bénéfice :** Repérage instantané dans la documentation, recherche facilitée et ancrage mémoriel fort.
 

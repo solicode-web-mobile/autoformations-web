@@ -3,7 +3,7 @@ title: "Analyser une consigne et identifier les critères d'acceptation"
 layout: tuto
 slug: "analyser-consigne-criteres"
 permalink: /tutos/:slug/
-tuto_id: "T.152.21.1"
+tuto_id: "T.152.211"
 type: "classique"
 version: "normal"
 ua: "UA.152.21"

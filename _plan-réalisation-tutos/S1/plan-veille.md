@@ -32,11 +32,11 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.11.1** | Créer et partager une présentation de veille | Découvrir l'outil Google Slides / Docs et générer un lien de partage accessible. | Slide modèle partagée avec lien public. |
-| **T.161.11.2** | Comprendre le fonctionnement d'Internet et du Web | Distinguer Internet du Web et comprendre le dialogue Client / Serveur via HTTP. | Schéma illustré du trajet d'une requête HTTP. |
-| **T.161.11.3** | Identifier les 4 langages fondamentaux du Web | Comprendre le rôle distinct de HTML, CSS, JavaScript et PHP dans une application Web. | Tableau comparatif des 4 langages et de leur exécution. |
-| **T.161.11.4** | Découvrir le métier et les outils du développeur | Comprendre les activités d'un développeur (coder, tester, déboguer) et le rôle de Git. | Fiche de synthèse sur les compétences du développeur N1. |
-| **T.161.11.5** | Veille prospective : Découvrir les bases de HTML5 et CSS3 | Découvrir le rôle du balisage sémantique et des feuilles de style pour préparer S2. | Slide de veille : *« Pourquoi structurer une page avec HTML5 et CSS3 ? »*. |
+| **T.161.111** | Créer et partager une présentation de veille | Découvrir l'outil Google Slides / Docs et générer un lien de partage accessible. | Slide modèle partagée avec lien public. |
+| **T.161.112** | Comprendre le fonctionnement d'Internet et du Web | Distinguer Internet du Web et comprendre le dialogue Client / Serveur via HTTP. | Schéma illustré du trajet d'une requête HTTP. |
+| **T.161.113** | Identifier les 4 langages fondamentaux du Web | Comprendre le rôle distinct de HTML, CSS, JavaScript et PHP dans une application Web. | Tableau comparatif des 4 langages et de leur exécution. |
+| **T.161.114** | Découvrir le métier et les outils du développeur | Comprendre les activités d'un développeur (coder, tester, déboguer) et le rôle de Git. | Fiche de synthèse sur les compétences du développeur N1. |
+| **T.161.115** | Veille prospective : Découvrir les bases de HTML5 et CSS3 | Découvrir le rôle du balisage sémantique et des feuilles de style pour préparer S2. | Slide de veille : *« Pourquoi structurer une page avec HTML5 et CSS3 ? »*. |
 
 ---
 
@@ -46,7 +46,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.12.1** | Veille prospective : Découvrir Flexbox et CSS Grid | Comprendre comment agencer plusieurs cartes d'articles sans tableaux HTML. | Slide partagée sur l'agencement avec Flexbox et Grid. |
+| **T.161.121** | Veille prospective : Découvrir Flexbox et CSS Grid | Comprendre comment agencer plusieurs cartes d'articles sans tableaux HTML. | Slide partagée sur l'agencement avec Flexbox et Grid. |
 
 ---
 
@@ -56,7 +56,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.13.1** | Veille prospective : Du statique au dynamique avec PHP | Découvrir le serveur Web local (Apache) et la génération dynamique de pages PHP. | Slide partagée sur le traitement serveur PHP. |
+| **T.161.131** | Veille prospective : Du statique au dynamique avec PHP | Découvrir le serveur Web local (Apache) et la génération dynamique de pages PHP. | Slide partagée sur le traitement serveur PHP. |
 
 ---
 
@@ -66,7 +66,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.14.1** | Veille prospective : Fonctions et inclusion en PHP | Comprendre l'intérêt de découper son code en blocs réutilisables et d'inclure des fichiers. | Slide partagée sur les fonctions et templates PHP. |
+| **T.161.141** | Veille prospective : Fonctions et inclusion en PHP | Comprendre l'intérêt de découper son code en blocs réutilisables et d'inclure des fichiers. | Slide partagée sur les fonctions et templates PHP. |
 
 ---
 
@@ -76,7 +76,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.15.1** | Veille prospective : Bases de données et MySQL | Comprendre ce qu'est un SGBDR, une table et le rôle sécurisant de l'extension PDO. | Slide partagée sur les bases MySQL et PDO. |
+| **T.161.151** | Veille prospective : Bases de données et MySQL | Comprendre ce qu'est un SGBDR, une table et le rôle sécurisant de l'extension PDO. | Slide partagée sur les bases MySQL et PDO. |
 
 ---
 
@@ -106,7 +106,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.17.1** | Veille prospective : Architecture Back-Office et CRUD | Découvrir l'espace administration privé et les 4 opérations fondamentales sur les données. | Slide partagée sur le CRUD et l'administration. |
+| **T.161.171** | Veille prospective : Architecture Back-Office et CRUD | Découvrir l'espace administration privé et les 4 opérations fondamentales sur les données. | Slide partagée sur le CRUD et l'administration. |
 
 ---
 
@@ -116,7 +116,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.18.1** | Veille prospective : Soumission sécurisée en POST | Comprendre la transmission des données masquées dans le corps de requête et le contrôle de validité. | Slide partagée sur la soumission sécurisée POST. |
+| **T.161.181** | Veille prospective : Soumission sécurisée en POST | Comprendre la transmission des données masquées dans le corps de requête et le contrôle de validité. | Slide partagée sur la soumission sécurisée POST. |
 
 ---
 
@@ -126,7 +126,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.19.1** | Veille prospective : Sessions utilisateur et hachage Bcrypt | Comprendre comment maintenir l'état connecté et pourquoi ne jamais stocker un mot de passe en clair. | Slide partagée sur les sessions PHP et le hachage. |
+| **T.161.191** | Veille prospective : Sessions utilisateur et hachage Bcrypt | Comprendre comment maintenir l'état connecté et pourquoi ne jamais stocker un mot de passe en clair. | Slide partagée sur les sessions PHP et le hachage. |
 
 ---
 
@@ -136,7 +136,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.110.1** | Veille prospective : Recherche textuelle SQL et filtres | Comprendre comment rechercher un mot-clé dans les colonnes SQL et combiner plusieurs filtres. | Slide partagée sur la recherche et les filtres SQL. |
+| **T.161.1101** | Veille prospective : Recherche textuelle SQL et filtres | Comprendre comment rechercher un mot-clé dans les colonnes SQL et combiner plusieurs filtres. | Slide partagée sur la recherche et les filtres SQL. |
 
 ---
 
@@ -146,7 +146,7 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.111.1** | Veille prospective : Recette applicative et soutenance | Comprendre comment tester méthodiquement son projet et structurer sa présentation devant un jury. | Slide partagée sur la recette et la soutenance. |
+| **T.161.1111** | Veille prospective : Recette applicative et soutenance | Comprendre comment tester méthodiquement son projet et structurer sa présentation devant un jury. | Slide partagée sur la recette et la soutenance. |
 
 ---
 
@@ -156,4 +156,4 @@ La veille technologique développe chez l'apprenant la curiosité, l'esprit crit
 
 | Identifiant | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :--- | :--- | :--- |
-| **T.161.112.1** | Veille prospective : L'écosystème professionnel et le niveau N2 | Découvrir les outils et frameworks modernes utilisés en entreprise pour orienter son perfectionnement. | Slide partagée sur l'écosystème pro et le niveau N2. |
+| **T.161.1121** | Veille prospective : L'écosystème professionnel et le niveau N2 | Découvrir les outils et frameworks modernes utilisés en entreprise pour orienter son perfectionnement. | Slide partagée sur l'écosystème pro et le niveau N2. |

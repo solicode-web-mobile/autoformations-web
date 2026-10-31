@@ -3,7 +3,7 @@ title: "Installer et tester Xdebug avec VS Code"
 layout: tuto
 slug: "installer-tester-xdebug"
 permalink: /tutos/installer-tester-xdebug/
-tuto_id: "T.125.22.1"
+tuto_id: "T.125.221"
 type: "classique"
 version: "normal"
 ua: "UA.125.22"

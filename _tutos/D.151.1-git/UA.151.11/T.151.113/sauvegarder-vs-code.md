@@ -3,7 +3,7 @@ title: "Sauvegarder son code en un clic avec VS Code"
 layout: tuto
 slug: "sauvegarder-vs-code"
 permalink: /tutos/sauvegarder-vs-code/
-tuto_id: "T.151.11.3"
+tuto_id: "T.151.113"
 type: "classique"
 version: "normal"
 ua: "UA.151.11"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Utiliser l'interface graphique de Visual Studio Code pour cloner son premier dépôt GitHub, préparer les modifications, créer son premier commit et synchroniser son travail en ligne.
-- **Prérequis :** Git installé et configuré (T.151.11.1), un compte sur [GitHub.com](https://github.com) et Visual Studio Code.
+- **Prérequis :** Git installé et configuré (T.151.111), un compte sur [GitHub.com](https://github.com) et Visual Studio Code.
 
 ---
 

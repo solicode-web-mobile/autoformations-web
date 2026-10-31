@@ -3,7 +3,7 @@ title: "Préparer un compte-rendu d'avancement pour son tuteur"
 layout: tuto
 slug: "compte-rendu-avancement-tuteur"
 permalink: /tutos/:slug/
-tuto_id: "T.152.27.1"
+tuto_id: "T.152.271"
 type: "classique"
 version: "normal"
 ua: "UA.152.27"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Rédiger un compte-rendu d'activité journalier (Daily Reporting) clair et synthétique, structuré autour des 3 questions clés de l'industrie logicielle.
-- **Prérequis :** Savoir suivre ses tâches avec un tableau Kanban (`T.152.24.1`) et formuler un blocage (`T.152.26.1`).
+- **Prérequis :** Savoir suivre ses tâches avec un tableau Kanban (`T.152.241`) et formuler un blocage (`T.152.261`).
 
 ---
 

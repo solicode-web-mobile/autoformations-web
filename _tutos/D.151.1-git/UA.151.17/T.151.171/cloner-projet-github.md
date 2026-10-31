@@ -3,7 +3,7 @@ title: "Cloner et remettre en service un projet avec git clone"
 layout: tuto
 slug: "cloner-projet-github"
 permalink: /tutos/:slug/
-tuto_id: "T.151.17.1"
+tuto_id: "T.151.171"
 type: "classique"
 version: "normal"
 simplified: true

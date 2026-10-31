@@ -3,7 +3,7 @@ title: "Corriger une variable mal transmise dans l'URL"
 layout: tuto
 slug: "corriger-erreur-url-get"
 permalink: /tutos/corriger-erreur-url-get/
-tuto_id: "T.125.23.1"
+tuto_id: "T.125.231"
 type: "classique"
 version: "normal"
 ua: "UA.125.23"

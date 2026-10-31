@@ -3,7 +3,7 @@ title: "Découper un sprint en sous-tâches indépendantes"
 layout: tuto
 slug: "decouper-sprint-sous-taches"
 permalink: /tutos/:slug/
-tuto_id: "T.152.23.1"
+tuto_id: "T.152.231"
 type: "classique"
 version: "normal"
 ua: "UA.152.23"
@@ -18,7 +18,7 @@ simplified: true
 ## 1. Contexte & Objectif
 
 - **Objectif :** Décomposer une demande globale de sprint en une suite de 4 sous-tâches techniques indépendantes, ordonnées selon leurs dépendances et vérifiables une par une.
-- **Prérequis :** Savoir estimer la durée d'une action technique (`T.152.22.1`) et identifier les langages du Web.
+- **Prérequis :** Savoir estimer la durée d'une action technique (`T.152.221`) et identifier les langages du Web.
 
 ---
 

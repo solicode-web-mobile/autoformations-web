@@ -24,19 +24,19 @@ La conception de données à la Spartel Dev Academy est **inductive** :
 
 | Identifiant | Session | Titre du tutoriel | Objectif d'apprentissage | Livrable attendu |
 | :--- | :---: | :--- | :--- | :--- |
-| **T.112.11.1** | **S1** | Comprendre le rôle des données dans une application | Identifier pourquoi une application Web a besoin de données structurées et persistantes. | Liste initiale des données observées sur le Blog personnel. |
-| **T.112.12.1** | **S2** | Construire le dictionnaire de données | Relever toutes les données de la page détail et préciser leur format, taille et contraintes. | Dictionnaire de données structuré et normalisé. |
-| **T.112.13.1** | **S3** | Déterminer les dépendances fonctionnelles et entités | Regrouper les propriétés logiquement dépendantes d'un même identifiant en entités. | Liste des entités isolées avec leurs propriétés et identifiants. |
-| **T.112.14.1** | **S4** | Déterminer les relations et les cardinalités | Déduire les liens logiques entre entités (qui écrit quoi, qui classe quoi) et les cardinalités. | Tableau des associations et règles de gestion validées. |
-| **T.112.14.2** | **S4** | Construire le Schéma MCD complet | Assembler entités et associations dans un schéma conceptuel unifié du Blog. | Document graphique du MCD (`mcd-blog`). |
-| **T.112.15.1** | **S5/S6** | Transformer le MCD en Modèle Logique de Données (MLD) | Appliquer les règles de passage relationnelles pour générer les tables, clés primaires et étrangères. | Schéma relationnel MLD et script SQL initial (`database.sql`). |
+| **T.112.111** | **S1** | Comprendre le rôle des données dans une application | Identifier pourquoi une application Web a besoin de données structurées et persistantes. | Liste initiale des données observées sur le Blog personnel. |
+| **T.112.121** | **S2** | Construire le dictionnaire de données | Relever toutes les données de la page détail et préciser leur format, taille et contraintes. | Dictionnaire de données structuré et normalisé. |
+| **T.112.131** | **S3** | Déterminer les dépendances fonctionnelles et entités | Regrouper les propriétés logiquement dépendantes d'un même identifiant en entités. | Liste des entités isolées avec leurs propriétés et identifiants. |
+| **T.112.141** | **S4** | Déterminer les relations et les cardinalités | Déduire les liens logiques entre entités (qui écrit quoi, qui classe quoi) et les cardinalités. | Tableau des associations et règles de gestion validées. |
+| **T.112.142** | **S4** | Construire le Schéma MCD complet | Assembler entités et associations dans un schéma conceptuel unifié du Blog. | Document graphique du MCD (`mcd-blog`). |
+| **T.112.151** | **S5/S6** | Transformer le MCD en Modèle Logique de Données (MLD) | Appliquer les règles de passage relationnelles pour générer les tables, clés primaires et étrangères. | Schéma relationnel MLD et script SQL initial (`database.sql`). |
 
 ---
 
 ## 3. Fiches Détaillées des Tutoriels par Unité d'Apprentissage
 
 ### UA.112.11 — Comprendre le rôle des données dans une application (Session S1)
-* **T.112.11.1 — Découvrir l'importance des données dans une application Web**
+* **T.112.111 — Découvrir l'importance des données dans une application Web**
   - **Objectif :** Distinguer le contenant (l'interface HTML) du contenu (les données métier affichées).
   - **Description :** L'apprenant observe les maquettes du Blog personnel et identifie les données indispensables : le titre de l'article, son contenu textuel, la date de publication, le nom de l'auteur, et la catégorie thématique.
   - **Notions :** Donnée persistante vs donnée d'affichage, information métier, rôle d'une base de données.
@@ -45,7 +45,7 @@ La conception de données à la Spartel Dev Academy est **inductive** :
 ---
 
 ### UA.112.12 — Construire le dictionnaire de données (Session S2)
-* **T.112.12.1 — Construire le dictionnaire de données de la page détail**
+* **T.112.121 — Construire le dictionnaire de données de la page détail**
   - **Objectif :** Décrire précisément chaque champ d'information repéré sur l'écran.
   - **Description :** L'apprenant consigne dans un tableau chaque donnée avec son nom technique, son libellé en français, son type informatique (Texte court, Texte long, Date, Entier), sa longueur maximale et ses contraintes (obligatoire ou facultatif).
   - **Notions :** Attribut, type de donnée, longueur, contrainte d'intégrité de domaine.
@@ -54,7 +54,7 @@ La conception de données à la Spartel Dev Academy est **inductive** :
 ---
 
 ### UA.112.13 — Déterminer les dépendances fonctionnelles et entités (Session S3)
-* **T.112.13.1 — Isoler les entités à partir des dépendances fonctionnelles**
+* **T.112.131 — Isoler les entités à partir des dépendances fonctionnelles**
   - **Objectif :** Éviter les données mélangées en séparant les concepts métier autonomes.
   - **Description :** L'apprenant constate que l'auteur a ses propres données (nom, email, bio) indépendantes de l'article. Il sépare ainsi 3 entités distinctes : `ARTICLE`, `AUTEUR` et `CATEGORIE`, chacune dotée d'un identifiant souligné.
   - **Notions :** Dépendance fonctionnelle élémentaire, concept d'entité, attribut identifiant (clé conceptuelle).
@@ -63,13 +63,13 @@ La conception de données à la Spartel Dev Academy est **inductive** :
 ---
 
 ### UA.112.14 — Déterminer les entités et construire le MCD (Session S4)
-* **T.112.14.1 — Déterminer les relations et les cardinalités**
+* **T.112.141 — Déterminer les relations et les cardinalités**
   - **Objectif :** Exprimer formellement les règles de gestion du Blog.
   - **Description :** L'apprenant applique les règles : Un article est obligatoirement rédigé par 1 et 1 seul auteur (1,1) ; un auteur peut rédiger 0 ou plusieurs articles (0,n). De même pour la catégorie (1,1 et 0,n).
   - **Notions :** Association binaire, cardinalités minimale et maximale.
   - **Livrable :** Tableau des associations.
 
-* **T.112.14.2 — Construire le Schéma Conceptuel de Données (MCD)**
+* **T.112.142 — Construire le Schéma Conceptuel de Données (MCD)**
   - **Objectif :** Unifier entités et associations dans une représentation visuelle claire.
   - **Description :** Réalisation du schéma graphique du MCD reliant `ARTICLE`, `AUTEUR` et `CATEGORIE`.
   - **Livrable :** Schéma conceptuel du Blog (`mcd-blog`).
@@ -77,7 +77,7 @@ La conception de données à la Spartel Dev Academy est **inductive** :
 ---
 
 ### UA.112.15 — Construire le MLD (Session S5 / S6)
-* **T.112.15.1 — Passer du MCD au MLD relationnel pour MySQL**
+* **T.112.151 — Passer du MCD au MLD relationnel pour MySQL**
   - **Objectif :** Traduire le schéma conceptuel en tables relationnelles exploitables par un SGBD MySQL.
   - **Description :** L'apprenant applique la règle de cardinalité (1,1 ➔ 0,n) : la clé primaire de l'entité côté 0,n migre comme clé étrangère dans la table côté 1,1 (`auteur_id` et `categorie_id` dans la table `articles`).
   - **Notions :** Table, colonne, clé primaire (`PRIMARY KEY`), clé étrangère (`FOREIGN KEY`).

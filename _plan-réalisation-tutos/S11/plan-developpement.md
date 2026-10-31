@@ -52,19 +52,19 @@ flowchart TD
 
 * **UA.122.35 — Modifier dynamiquement l’interface :**  
   Modifier l'affichage des lignes du tableau d'articles sans rechargement de page en altérant dynamiquement leur visibilité via la propriété CSS `style.display`.
-  - **T.122.35.1 — Filtrer les lignes d'un tableau HTML en temps réel**  
+  - **T.122.351 — Filtrer les lignes d'un tableau HTML en temps réel**  
     *Livrable :* Script client filtrant le tableau au fur et à mesure de la frappe | *Fichier :* `js/admin-recherche.js`
 
 * **UA.122.36 — Combiner les interactions JavaScript :**  
   Combiner l'événement `input` sur le champ de recherche, le comptage des résultats visibles, et la création dynamique d'une ligne d'avertissement avec `document.createElement()` si aucun article ne correspond.
-  - **T.122.36.1 — Gérer les retours visuels et l'état vide en JavaScript**  
+  - **T.122.361 — Gérer les retours visuels et l'état vide en JavaScript**  
     *Livrable :* Message interactif injecté dans le DOM si aucun résultat n'est trouvé | *Fichier :* `js/admin-recherche.js`
 
 #### Exploiter les données (D.124.1, sql)
 
 * **UA.124.17 — Vérifier et corriger une requête SQL simple :**  
   Observer le résultat d'une requête de recherche avec `LIKE`, diagnostiquer les erreurs de syntaxe ou de placement des pourcentages (`%`), et corriger la requête pour obtenir les correspondances attendues.
-  - **T.124.17.1 — Construire et corriger la recherche textuelle avec LIKE**  
+  - **T.124.171 — Construire et corriger la recherche textuelle avec LIKE**  
     *Livrable :* Requête préparée SQL fonctionnelle filtrant sur le titre des articles | *Fichier :* `admin/articles/liste.php`
 
 ### ⏭️ Perspectives Futures (Session S12)
@@ -74,7 +74,7 @@ flowchart TD
 
 ## 3. Fiches de Conception Détaillées des Tutoriels
 
-### T.124.17.1 — Construire et corriger la recherche textuelle avec LIKE
+### T.124.171 — Construire et corriger la recherche textuelle avec LIKE
 - **Objectif :** Récupérer uniquement les articles dont le titre contient le mot ou les lettres recherchés.
 - **Notions :** Opérateur SQL `LIKE`, jokers de remplacement `%`, paramètre préparé nommé `:recherche`, transmission `$_GET['q']`.
 - **Consigne pour l'apprenant :**
@@ -86,7 +86,7 @@ flowchart TD
 
 ---
 
-### T.122.35.1 — Filtrer les lignes d'un tableau HTML en temps réel
+### T.122.351 — Filtrer les lignes d'un tableau HTML en temps réel
 - **Objectif :** Rendre l'interface ultra-réactive en filtrant directement les lignes affichées au clavier sans attendre de requête serveur.
 - **Notions :** Événement `input`, méthode `toLowerCase()`, méthode `includes()`, style CSS `display = 'none'` / `display = ''`.
 - **Consigne pour l'apprenant :**
@@ -98,7 +98,7 @@ flowchart TD
 
 ---
 
-### T.122.36.1 — Gérer les retours visuels et l'état vide en JavaScript
+### T.122.361 — Gérer les retours visuels et l'état vide en JavaScript
 - **Objectif :** Informer explicitement l'utilisateur si aucun article ne correspond à son filtre direct.
 - **Notions :** Compteur d'éléments visibles, `document.createElement('tr')`, manipulation de `appendChild()`.
 - **Consigne pour l'apprenant :**

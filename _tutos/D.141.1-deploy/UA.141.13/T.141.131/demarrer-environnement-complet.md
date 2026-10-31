@@ -3,7 +3,7 @@ title: "Démarrer un environnement complet avec MySQL"
 layout: tuto
 slug: "demarrer-environnement-complet"
 permalink: /tutos/demarrer-environnement-complet/
-tuto_id: "T.141.13.1"
+tuto_id: "T.141.131"
 type: "classique"
 version: "normal"
 ua: "UA.141.13"
@@ -59,8 +59,8 @@ Vous devez savoir :
 
 Vous devez aussi avoir réalisé :
 
-- **T.141.12.1 — Démarrer un environnement PHP (Apache)** ;
-- **T.125.14.1 — Isoler l'accès à la base de données**.
+- **T.141.121 — Démarrer un environnement PHP (Apache)** ;
+- **T.125.141 — Isoler l'accès à la base de données**.
 
 Vous devez disposer du fichier SQL de votre application.
 

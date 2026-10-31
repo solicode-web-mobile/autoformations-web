@@ -3,7 +3,7 @@ title: "Démarrer un serveur statique local"
 layout: tuto
 slug: "demarrer-serveur-statique"
 permalink: /tutos/demarrer-serveur-statique/
-tuto_id: "T.141.11.1"
+tuto_id: "T.141.111"
 type: "classique"
 version: "normal"
 ua: "UA.141.11"
@@ -166,7 +166,7 @@ Le navigateur affiche votre page avec la bonne adresse et reflète les modificat
 <button class="btn btn-primary btn-toggle-resultat">Afficher le résultat</button>
 <iframe
     class="auto-wrapper tuto-resultat"
-    src="{{'/code/deploy/T.141.11.1.html' | relative_url}}"
+    src="{{'/code/deploy/T.141.111.html' | relative_url}}"
     height="450"
     title="Résultat attendu">
 </iframe>
